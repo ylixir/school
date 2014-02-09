@@ -1,0 +1,68 @@
+\documentclass{article}
+\usepackage{fullpage}
+\usepackage{nopageno} 
+\usepackage{amsmath}
+\usepackage{amssymb}
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+
+\begin{document}
+\title{Notes}
+\date{February 3, 2014}
+\maketitle
+\subsection*{homework 2 number 36}
+pick 0,1,2,\dots,$n_i$ things of type $i$. $(n_1+1)(n_2+1)\cdots(n_k+1)$
+\subsection*{homework 3 number 47}
+$\pi_n$ is the set of partitions of $\{1,\dots,n\}$ into nonempty subsets. $1|25|34$. Top is $1234$ bottom is $1|2|3|4$ $1|2|3|4\to 12|3|4$. $123|45$ and $1|25|34$ are incomparable.
+
+\section*{go}
+\begin{align*}
+  {s_i}^2&=1\\
+  s_is_j&=s_js_i \qquad |i-j|>1\\
+  s_is_{i+1}s_i&=s_{i+1}s_is_{i+1}
+\end{align*}
+
+$314624\to s_2\to 215634\to 125634\to124635\to124536\to123546\to123456$
+
+$s_4s_5s_3s_4s_1s_2$
+
+$s_4s_3s_1s_2s_5s_4$
+
+these are called "reduced words for 315624"
+
+also try to bring to $123456$ byswapping \#'s in adjacent positions.
+How many ways can we make a permutation? infinite. How many ways to make reduced words for a permutation? this is hard.
+
+\subsection*{Theorem of Stanley}
+The number of reduced words for (the longest permutation) $n,n-1,n-2,\cdots,3,2,1$ equals the number of standard Young tableaux of shape (half grid with sides of $n-1$, makes a kind of right triangle). Fill with integers $\{1,\dots,\text{\# boxes}\}$
+\subsubsection*{note}
+there exists a nice counting formula for the standard young tableux called the hook length formula.
+
+\subsubsection*{note to self}
+definition of determinant here. put it down!
+
+\subsection*{4.3 generating combinations (subsets)}
+how do we represent subsets of $\{x_{n-1},x_{n-2}\dots,x_1,x_0\}$?
+\# subsets is $2^n$. each $x_i$ is either therrre or not there so we can represent subsets with lenght $n$ binary strings.
+\subsection*{example}
+$x=\{x_7,\dots,x_1,x_0\}->01010110$. What number is this in binary? $2+4+16+64=86$
+
+so we can generate subsets or combinations lexicographically:
+\subsubsection*{example}
+generate all subsets of $x_1,x_2,x_3$.
+
+$\{\}=000$ and to $001=1=\{x_0\},010=2=\{x_1\},011=3=\{x_0,x_1\},100=4,101=5,110=6,111=7$
+
+note that this is not ideal if you want to minimize change from one item to the next. notice how from $3\to4$ everything changes.
+
+\subsubsection*{definition}
+a \emph{gray code} is a sequence of subsets such that the change when you move from one subset to the next is minimal.
+
+\begin{align*}
+  0&1-&-1&1\\
+  &|&&|\\
+  0&0-&-0&1
+\end{align*}
+notice that walking along the square is a gray code.
+\end{document}

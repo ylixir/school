@@ -1,0 +1,55 @@
+\documentclass{article}
+\usepackage{fullpage}
+\usepackage{nopageno}
+\usepackage{amsmath}
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+
+\begin{document}
+\title{Notes}
+\date{January 27, 2014}
+\maketitle
+\section*{11}
+set of 3 integers from 1 to 20 without consecutive integers
+
+total minus all three minus 2 and one not
+$\frac{20!}{17!3!}-18-$
+\section*{17,18}
+from last time, placing four rooks on chessboard so they don't attack
+
+pick one spot, removes row and column, pick another, again removes row and column this is wrong $64*(64-15)*(64-15-13)*(64-15-13-11)$
+
+or pick 4 rows and 4 columns $\left(\begin{array}{c}8\\4\end{array}\right)$ for both
+multiply by the ways to place 4 rooks on a 4x4 board which is 4!
+
+but our rooks have colors! two white, two black
+once you place the rooks, count the ways to color them: $\left(\begin{array}{c}4\\2\end{array}\right)$
+
+\section*{50}
+so pick the two corners of the rectangle, place 2 non-attacking rooks, this defines two more, and pick the last square for the 5th rook
+$\left(\begin{array}{c}8\\2\end{array}\right)^2\cdot60$
+
+\section*{setup for permutations}
+placements of $n$ non-attacking rooks on and $n\cross n$  is a bijections of the permutations of $\{1,2,...,n\}$
+
+permutations of 1,2,3 are:
+123,132,213,231,312,321
+
+this is lex order
+
+lets define a bijection of 4 rooks on 4x4 board, for each row, record the column of the rook. there are many ways of doing this, different countries do it differently.
+
+\section*{algorithm in chapter 4 for generating permutations}
+question: how can we list all the permutations of $[n]=\{1,...,n\}$ 
+
+answer: we need an algorithm
+
+another choice:(johnson, trotter...) ~1960
+
+inductive idea: construct permutations of $[n]$ by inserting $n$ in all possible ways into the permutations of $[n-1]$.
+
+algorithm: p91
+
+sage has Permutations(n) command
+\end{document}

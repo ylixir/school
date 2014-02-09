@@ -1,0 +1,61 @@
+\documentclass{article}
+\usepackage{fullpage}
+\usepackage{nopageno}
+\usepackage{amsmath}
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+\newcommand{\degree}{\ensuremath{^\circ}}
+
+\begin{document}
+Jon Allen
+
+HW 09
+
+Transform
+\begin{align*}
+  \text{PDE}&&&u_t=u_{xx}&0<x<1\\
+  \text{BCs}&&&\left\{
+  \begin{aligned}
+    &u_x(0,t)=0\\
+    &u_x(1,t)+hu(1,t)=1
+  \end{aligned}
+  \right.&0<t<\infty\\
+  \text{IC}&&&u(x,0)=\sin(\pi x)&0\leq x\leq1
+\end{align*}
+into a new problem with zero BCs; Is the new PDE homogeneous?
+
+Cribbing from the text we ``seek a solution of the form'':
+\begin{align*}
+  u(x,t)&=A(t)[1-x]+B(t)x+U(x,t)\\
+  &=S(x,t)+U(x,t)\\
+  S(x,t)&=A(t)[1-x]+B(t)x\\
+  S_x&=B(t)-A(t)
+  \intertext{New BCs become}
+  S_x(0,t)&=0=B(t)-A(t)\\
+  &B(t)=A(t)\\
+  S_x(1,t)+hS(1,t)&=1=B(t)-A(t)+hB(t)\\
+  &=1=hB(t)\\
+  &\frac{1}{h}=B(t)=A(t)\\
+  \intertext{Now we have}
+  u(x,t)&=\frac{1}{h}[1-x]+\frac{x}{h}+U(x,t)=\frac{1}{h}+U(x,t)\\
+  u_t&=U_t\\
+  u_x&=U_x\\
+  u_{xx}&=U_{xx}\\
+  U(x,0)&=u(x,0)-\frac{1}{h}=\sin(\pi x)-\frac{1}{h}\\
+  1&=u_x(1,t)+hu(1,t)=U_x(1,t)+h(\frac{1}{h}+U(1,t))\\
+  0&=U_x(1,t)+hU(1,t)
+\end{align*}
+And putting it all together we have:
+\begin{align*}
+  \text{PDE}&&&U_t=U_{xx}&0<x<1\\
+  \text{BCs}&&&\left\{
+  \begin{aligned}
+    &U_x(0,t)=0\\
+    &U_x(1,t)+hU(1,t)=0
+  \end{aligned}
+  \right.&0<t<\infty\\
+  \text{IC}&&&U(x,0)=\sin(\pi x)-\frac{1}{h}&0\leq x\leq1
+\end{align*}
+This new PDE is homogeneous.
+\end{document}

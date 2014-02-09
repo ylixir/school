@@ -1,0 +1,98 @@
+\documentclass{article}
+\usepackage{fullpage}
+\usepackage{nopageno}
+\usepackage{amsmath}
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+
+\begin{document}
+\title{Notes}
+\date{December 9, 2013}
+\maketitle
+\section*{6.3}
+\subsection*{example}
+write system in matrix form
+\begin{align*}
+  x'&=2x+y\\
+  y'&=x-5y\\
+  \mathbb{X}&=\left(\begin{array}{c}x\\y\end{array}\right)\\
+  A&=\left(\begin{array}{cc}2&1\\1&-5\end{array}\right)\\
+  \mathbb{X}'&=A\mathbb{X}\\
+\end{align*}
+\subsection*{10}
+find the wronksian of $\left(\begin{array}{c}t\\1\end{array}\right)$ and $\left(\begin{array}{c}-t\\1\end{array}\right)$
+\begin{align*}
+  W&=\left\lvert\begin{array}{cc}t&-t\\1&1\end{array}\right\rvert\\
+     &=t-(-t)=2t
+\end{align*}
+\subsection*{11}
+\begin{align*}
+  \left(\begin{array}{c}\cos 2t\\-2\sin 2t\end{array}\right) &\text{and} \left(\begin{array}{c}\sin 2t\\-2\cos 2t\end{array}\right)\\
+  W&=\left\lvert\begin{array}{cc}\cos 2t&\sin 2t\\-2\sin 2t&-2\cos 2t\end{array}\right\rvert\\
+  &=-2\cos^2 2t-(-2\sin^2 2t)\\
+  -2\cos^2 2t+2\sin^2 2t\\
+  &=-2(\cos^2 2t-\sin^2 2t)\\
+  &=-2\cos 4t\\
+  &=0 \text{if} t=\frac{\pi}{8}
+\end{align*}
+so it's dependent
+\subsection*{2}
+\begin{align*}
+  A&=\left(\begin{array}{4&0\\3&1}\end{array}\right)\quad \begin{array}{cc}\lambda_1=2,& v_1=\left(\begin{array}{c}0\\1\end{array}\right)\\\lambda_2=4,&v_1=\left(\begin{array}{c}-4\\1\end{array}\right)\end{array}\\
+  \left(\begin{array}{c}x\\y\end{array}\right)'&=\left(\begin{array}{cc}4&0\\3&1\end{array}\right)\left(\begin{array}{c}x\\y\end{array}\right)\\
+  \left(\begin{array}{x\\y}\end{array}\right)&=c_1\left(\begin{array}{c}0\\1\end{array}\right)e^{2t}+c_2\left(\begin{array}{c}-4\\1\end{array}\right)e^{4t}\\
+  &=\left(\begin{array}{c}0-4c_2e^{4t}\\4e^{2t}+c_2e^{4t}\end{array}\right)
+\end{align*}
+\subsection*{3}
+find x and y for
+\begin{align*}
+  \frac{\mathrm{d}x}{\mathrm{d}t}&=-4t\\
+  \frac{\mathrm{d}y}{\mathrm{d}t}&=-x+2y\\
+  A&=\left(\begin{array}{cc}-4&0\\-1&2\end{array}\right)\\
+  \intertext{find eigenvalues and eigenvectors}
+  \left\lvert\begin{array}{cc}-4-\lambda&0\\-1&2-\lambda\end{array}\right\rvert&=0\\
+  (-4-\lambda)(2-\lambda)-0&=0\\
+  \lambda&=-4,2\\
+  \intertext{to find eigenvector for -4}
+  \left(\begin{array}{cc}-4-\lambda&0\\-1&2-\lambda\end{array}\right)\left(\begin{array}{c}x_1\\x_2\end{array}\right)&=\left(\begin{array}{c}0\\0\end{array}\right)\\
+  \left(\begin{array}{cc}0&0\\-1&6\end{array}\right)\left(\begin{array}{c}x_1\\x_2\end{array}\right)&=\left(\begin{array}{c}0\\0\end{array}\right)\\
+  -x_1+6x_2&=0\\
+  6x_2&=x_1\\
+  x_2&=1,\quad x_1=6\\
+  \text{eigenvector}&=\left(\begin{array}{c}6\\1\end{array}\right)\\
+  \intertext{to find eigenvector for 2}
+  \left(\begin{array}{cc}-6&0\\-1&0\end{array}\right)\left(\begin{array}{c}x_1\\x_2\end{array}\right)&=\left(\begin{array}{c}0\\0\end{array}\right)\\
+  -6x_1&=0\\
+  -x_1&=0\\
+  x_1&=0\\
+  \text{choose} x_2&=1\\
+  \text{eigenvector}&=\left(\begin{array}{c}0\\1\end{array}\right)\\
+  \left(\begin{array}{c}x\\y\end{array}\right)&=c_1\left(\begin{array}{c}6\\1\end{array}\right)e^{-4t}+c_2\left(\begin{array}{c}0\\1\end{array}\right)e^{2t}
+\end{align*}
+\subsection*{13}
+\begin{align*}
+  \frac{\mathrm{d}x}{\mathrm{d}t}&=x-10y\\
+  \frac{\mathrm{d}y}{\mathrm{d}t}&=-7x+10y\\
+  A&=\left(\begin{array}{cc}1&-10\\-7&10\end{array}\right)\\
+  \left\lvert\begin{array}{cc}1-\lambda&-10\\-7&10-\lambda\end{array}\right\rvert&=0\\
+  (1-\lambda)(10-\lambda)-70&=0\\
+  10-11\lambda+\lambda^2-10&=0\\
+  \lambda^2-11\lambda-60&=0\\
+  (\lambda-15)(\lambda+4)&=0\\
+  \lambda&=15-4\\
+  \left(\begin{array}{cc}-14&-10\\-7&-5\end{array}\right)\left(\begin{array}{c}x_1\\x_2\end{array}\right)&=\left(\begin{array}{c}0\\0\end{array}\right)\\
+  -14x_1-10x_2&=0\\
+  -7x_1-5x_2&=0\\
+  x_1&=-\frac{5}{7}x_2\\
+  x_1&=-5\\
+  x_2&=7\\
+  \text{eigenvector}&=\left(\begin{array}{c}-5\\7\end{array}\right)\\
+  \left(\begin{array}{cc}5&-10\\-7&14\end{array}\right)\left(\begin{array}{c}x_1\\x_2\end{array}\right)&=\left(\begin{array}{c}0\\0\end{array}\right)\\
+  5x_1-10x_2&=0\\
+  -7x_1+14x_2&=0\\
+  x_1&=2\\
+  x_2&=1
+  \text{eigenvector}&=\left(\begin{array}{c}2\\1\end{array}\right)
+\end{align*}
+\end{document}

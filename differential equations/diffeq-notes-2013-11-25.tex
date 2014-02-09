@@ -1,0 +1,51 @@
+\documentclass{article}
+\usepackage{fullpage}
+\usepackage{nopageno}
+\usepackage{amsmath}
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+
+\begin{document}
+\title{Notes}
+\date{November 20, 2013}
+\maketitle
+\section*{exam 2}
+4.4 has 1 problem for 20 points
+4.7 has one problem for 20 points
+5.1 has 1 problem for 10 points
+8.1-8.3 has one point (technically from 8.3) for 20 points
+8.5 has one problem for 30 points
+
+most should be similar to class problems, one is exactly the same as in class even
+
+\section*{section 5.1}
+determine the spring constant of the spring with natural length 10 in that is stretched to a distance 13 in by an object weighing 5 lb
+\begin{align*}
+    m\frac{\mathrm{d}^2x}{\mathrm{d}t^2}+kx&=0\\
+    x(0)&=\alpha\\
+    x'(0)&=\beta
+\end{align*}
+\subsection*{solution}
+``English'' units
+\begin{align*}
+    s&=3\text{in}\\
+    &=\frac{3}{12}\text{ft}=\frac{1}{4}\text{ft}\\
+    F&=ks\\
+    5&=k\frac{1}{4}\\
+    k&=20\text{lb/ft}\\
+    F&=mg\\
+    5&=m32\\
+    m&=\frac{5}{32}\text{slug}
+\end{align*}
+\section*{random question example}
+\begin{align*}
+    \mathcal{L}^{-1}\left\{\frac{4s}{(s^2+16)^2}\right\}\\
+    \sin 4t &\to \frac{4}{s^2+16}\\
+    t\sin 4t &\to -\frac{\mathrm{d}}{\mathrm{d}x}(\frac{4}{s^2+16})\\
+    &=\frac{4(2s)}{(s^2+16)^2}\\
+    &=\frac{8s}{(s^2+16)^2}\\
+    \mathcal{L}\{t^nf(t)&=(-1)^n\frac{\mathrm{d}^nF}{\mathrm{d}s^n}\}\\
+    \frac{1}{2}t\sin 4t&\to \frac{4s}{(s^2+16)^2}
+\end{align*}
+\end{document}

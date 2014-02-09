@@ -1,0 +1,36 @@
+\documentclass{article}
+\usepackage{fullpage}
+\usepackage{nopageno}
+\usepackage{amsmath}
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+\newcommand{\degree}{\ensuremath{^\circ}}
+
+\begin{document}
+Jon Allen
+
+HW 04
+
+\begin{align*}
+  u_t&=\alpha^2u_{xx} & 0<x&<1 & 0<&t<\infty\\
+  u_x(0,t)&=0 & u_x(1,t)&=0 & u(x,0)&=\sin(\pi x)\\
+  u_t=0&=\alpha^2u_{xx} &
+  \int{0\,\mathrm{d}x}&=\int{\alpha^2u_{xx}\,\mathrm{d}x} &
+  c_1&=\alpha^2u_x\\
+  \int{c_1\,\mathrm{d}x}&=\int{\alpha^2u_{x}\,\mathrm{d}x} &
+  c_1x+c_2&=\alpha^2U(x) &
+  U(x)&=\frac{c_1}{\alpha^2}x+\frac{c_2}{\alpha^2} \\
+  \intertext{Simplify constants}
+  U(x)&=c_1x+c_2 & U'(x)&=c_1 & U'(0)&=U'(1)=0\\
+  c_1&=0 & U(x)&=c_2
+\end{align*}
+If the problem is interpreted as the temperature of a rod, then the rod is completely insulated. The amount of heat in the system never changes. We know that the amount of heat initially is $\int_0^1{\sin(\pi x)\,\mathrm{d}x}$.
+Because $U(x)=c_2$ we know that when the system reaches a steady state, the amount of heat is $\int_0^1{c_2\,\mathrm{d}x}$.
+\begin{align*}
+  \int_0^1{c_2\,\mathrm{d}x}&=\int_0^1{\sin(\pi x)\,\mathrm{d}x}\\
+  \left[c_2x\right]_0^1&=\left[-\frac{1}{\pi}\cos(\pi x)\right]_0^1\\
+  c_2&=-\frac{1}{\pi}(-1)--\frac{1}{\pi}(1)=\frac{2}{\pi}
+\end{align*}
+So our steady state is $U(x)=\frac{2}{\pi}$
+\end{document}

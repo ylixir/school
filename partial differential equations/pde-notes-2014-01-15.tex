@@ -1,0 +1,66 @@
+\documentclass{article}
+\usepackage{fullpage}
+\usepackage{nopageno}
+\usepackage{amsmath}
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+
+\begin{document}
+\title{Notes}
+\date{January 15, 2014}
+\maketitle
+
+grading is 70\% hw, 30\% final
+
+speed is 1 lesson per lecture. need to read because there won't be enough class time to cover everything.
+covering through chapter 4, 36 lessons.
+
+\section*{lesson 1 introduction}
+heat flow experiment. page 11
+\begin{align*}
+  \frac{\partial u}{\partial t},U_t\\
+  \frac{\partial u}{\partial t}&=\alpha^2\frac{\partial^2 u}{\partial x^2}\intertext{lesson 2 heat equatin in 1 space variable, diffusion equation}\\
+  u(t,x)\\
+  U_{xx}+U_{yy}=0\intertext{this is laplace's/potential equation is 2-space variables}\\
+  Au_{xx}+Bu_{xy}+Cu_{yy}+Du_x+Eu_y+FU&=0 \text{or} f(x,y)\\
+  L[u]*=0 \text{or} f(x,y)
+\end{align*}
+
+this was general 2nd order linear PDE
+\begin{align*}
+  L[\alpha u_1+\beta u_2]=\alpha L[u_1]+\beta L[u_2]\\
+\end{align*}
+note: is A, B, ... are functions of x,y then it is still linear
+\begin{align*}
+  L&=A(x,y)\frac{\partial^2}{\partial x^2}+B(x,y)\frac{\partial^2}{\partial x\partial y}+...
+\end{align*}
+homogeneous and nonhomogeneous. homogeneous if it is equal to zero and nonhomogeneous if it is equal to a function of x,y
+
+if $L[u]=0$ and $u_1,u_2$ are solutions then any linear combination is also a solution ($\alpha u_1+\beta u_2$) and here is why
+\begin{align*}
+  L[\alpha u_1+\beta u_2]&=\alpha L[u_1]+\beta L[u_2]=\alpha 0+\beta 0=0
+\end{align*}
+linear pdes are classified as parabolic (ch 2) hyperbolic (ch 3) and elliptic (ch 4).
+\begin{align*}
+  B^2-4AC&=0 \text{parabolic}\\
+  B^2-4AC&>0 \text{hyperbolic}\\
+  B^2-4AC&<0 \text{elliptic}\\
+\end{align*}
+looks like the discriminant for quadradic equation. we'll start to understand this in the second half of chapter 3.
+
+page 7 contains a table of classifications
+
+\subsection*{page 8 example exercises}
+\begin{align*}
+  \frac{\mathrm{d}^2u}{\mathrm{d}x^2}&=0\\
+  u(x)&=\alpha x+\beta\\
+  \frac{\partial u}{\partial x}&=0\\
+  u&=u(x,y) on \mathbb{R}^2\\
+  u&=f(y)\\
+  \frac{\partial^2 u}{\partial x\partial y}&=0\\
+  \frac{\partial }{\partial x}\left(\frac{\partial u}{\partial y}\right)&=0\\
+  \frac{\partial u}{\partial y}&=f(y)\\
+  u(x,y)&=F(y)+g(x) \text{where} F'(y)=f(y)
+\end{align*}
+\end{document}

@@ -1,0 +1,26 @@
+\documentclass{article}
+\usepackage{fullpage}
+\usepackage{nopageno}
+\usepackage{amsmath}
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+\newcommand{\degree}{\ensuremath{^\circ}}
+
+\begin{document}
+Jon Allen
+
+HW 02
+
+\begin{align*}
+  u_t&=\alpha^2u_{xx}-\beta u & 0&<x<1\\
+  u(0,t)&=1 & u(1,t)&=1\\
+  \intertext{Setting the rate of change over time to zero}
+  u_t&=0 & 0&=\alpha^2 u_{xx}-\beta u\\
+  0&=\alpha^2r^2+0r+-\beta & r&=\frac{\pm\sqrt{-4\alpha^2(-\beta)}}{2\alpha^2}\\
+  \intertext{Using the condition from the text that $\beta>0$}
+  r&=\pm\sqrt{\frac{4\alpha^2\beta}{4\alpha^4}}=\pm\sqrt{\frac{\beta}{\alpha^2}}=\pm\frac{\sqrt{\beta}}{\alpha} &
+  U(x)&=c_1e^{x\sqrt{\beta}/\alpha}+c_2e^{-x\sqrt{\beta}/\alpha}
+\end{align*}
+Since it is stated that heat is lost we know that the conservation condition $U'(0)=U'(L)$ will not hold. This is because the energy in the system is not conserved.
+\end{document}

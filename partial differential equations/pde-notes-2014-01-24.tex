@@ -1,0 +1,72 @@
+\documentclass{article}
+\usepackage{fullpage}
+\usepackage{nopageno}
+\usepackage{amsmath}
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+
+\begin{document}
+\title{Notes}
+\date{January 24, 2014}
+\maketitle
+\section*{page 26 number 2}
+
+notice that pde is stated for the interior of the region
+model can break down on the edges
+u stays at zero for time zero which is consistent with initial condition
+notice that the slope at $x=1$ for initial condition is $-\pi$ but is 1 for boundary condition
+
+heat is flowing in (proportional to negative slope).
+
+second boundary condition says that heat flow into the rod at x=1 (temperature gradient at $x=1$ is positive) which means low temperature inside, high temperature outside
+
+notice boundary conditions are $0<t<\infty$ so initial condition doesn't intersect boundary condition, because solution is discontinuous at $t=0$
+
+\section*{last time}
+lessons 2 and 3 where PDE is $u_t=\alpha^2 u_{xx}$ IC is $u(x,0)$ for different types of pde's and different types of bc's
+
+\section*{lesson 4}
+derivation of pde
+page 28
+letter A is area of cross section
+\subsection*{condition 1}
+rod consists of homogeneous conducting material.  temperature varies in rod, but substrate doesn't. homogeneous medium.
+\subsection*{condition 2}
+laterally insulated-no heat flow across lateral surface
+\subsection*{condtion 3}
+thin rod, temperature is uniform across cross section.
+\begin{align*}
+  u_t&=\alpha^2u_{xx} \text{on} 0<x<L, 0<t<\infty\\
+  u(x,t)=\text{temperature in degrees}& u(x,t)& \text{is degrees}\\
+  \text{total heat energy in} [x_1,x_2]=\int_{x_1}^{x_2}{cupA,\mathrm{d}x} & c&=\text{specific heat}=\frac{\text{calories}}{\text{degree of mass}}\\
+  &&p&=\text{density}\\
+  \text{rate of change of energy}&=\frac{\mathrm{d}}{\mathrm{d}t}\int_{x_1}^{x_2}{cupA,\mathrm{d}x}=\int_{x_1}^{x_2}{cpu_t A,\mathrm{d}x}\\
+  \intertext{law of conservation of energy}
+  &=\text{flow rate of energy at end points}+\text{generation rate of energy(internal)}\\
+  \text{generation rate}&=\int_{x_1}^{x_2}{f(s,t)A,\mathrm{d}s} & f&=\frac{\text{cal}}{\text{sec cm}^3}\\
+  \text{flow rate}&=-DA(c\rho u)_x \frac{\text{cal}}{\text{cm}^2}\\
+  \intertext{D is thermal diffusivity}
+  &=-DA(c\rho u)_x-(-DA(c\rho u)_x)+\int_{x_1}^{x_2}{f(s,t)A,\mathrm{d}s}
+\end{align*}
+
+we are thinking of stuff flowing into and out of the region $[x_1,x_2]$
+\subsection*{condition 1}
+tube of solution of stuff. homogeneous medium (liquid)
+\subsection*{condition 2}
+tube (glass or whatever) allows no flow of stuff through it. similar to insulation above.
+\subsection*{condition 3}
+concentration of stuff is uniform by symmetry
+\begin{align*}
+  \omega_t=D\omega_{xx} \text{on} 0<x<L, 0<t<+\infty\\
+  \omega(x,t)=\text{density of stuff}\\
+  \text{total stuff in} [x_1,x_2]=\int_{x_1}^{x_2}{\omega(x,t)A,\mathrm{d}x}
+  \text{rate of change of stuff}&=\frac{\mathrm{d}}{\mathrm{d}t}\int_{x_1}^{x_2}{\omega A,\mathrm{d}x}=\int_{x_1}^{x_2}{\omega_t A,\mathrm{d}x}\\
+  \intertext{law of conservation of stuff (mass or whatever)}
+  &=\text{flow rate of stuff at endpoints}+\text{generation rate of stuff}
+  \text{generation rate}&=\frac{\text{stuff}}{\text{sec}}=\int_{x_1}^{x_2}{f(s,t)A,\mathrm{d}s} & f&=\frac{\text{stuff}}{\text{sec cm}^3}\\
+  \text{flow rate of stuff at x}&=-DA\omega_x\\
+  \intertext{D is diffusion coefficient cm squared per second, this is Fick's law}
+  &=-DA\omega_x(x_1,t)-(-DA\omega_x(x_2,t))+\int_{x_1}^{x_2}{f(s,t)A,\mathrm{d}s}
+\end{align*}
+\end{document}

@@ -1,0 +1,52 @@
+\documentclass{article}
+\usepackage{fullpage}
+\usepackage{nopageno} 
+\usepackage{amsmath}
+\usepackage{amssymb}
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+
+\begin{document}
+\title{Notes}
+\date{February 7, 2014}
+\maketitle
+\section*{gray codes}
+cyclic vs noncyclic
+
+reflected$\to$ specific. inductive definition, algorithm.
+
+went over proof of generating algorithm. It's in the book
+\section*{generating r subsets}
+\[S=\{x_{n-1},x_{n-2},\dots,x_1,x_0\}\equiv \{1,2,\dots,n\}\]
+subsets are equivalent to words in letters $\{1,\dots,n\}$ where the word is increasing (strictly).
+
+\subsection*{example}
+want to generate 2-subsets of $\{x_3,x_2,x_1,x_0\}=\{1,2,3,4\}$
+\[0_40_31_21_1\approx\{x_1,x_0\}\approx12\]
+
+binary order's are lexicographical, squashed...
+
+it's better to do lexicographic order on the \emph{words} (r-subsets).
+\begin{align*}
+  12&&
+  13&&
+  14&&
+  23&&
+  24&&
+  34
+\end{align*}
+\subsection*{algorithm}
+begin with $a_1a_2\cdots a_r=12\dots r$. Find the farthest right position such that $a_k+1\leq n$ and $a_k+1$ is not in the word. Then the next word is $a_1\dots a_{k-1}(a_k+1)(a_k+2)(a_k+3)\dots(a_k+r-k+1)$
+
+\subsubsection*{do 26 and 28}
+12 
+\subsubsection*{28}
+2,3,4,6,9,10$\to$2,3,4,7,8,9
+\section*{problems 31\&32}
+generating r-premutations:
+
+gnerate r-subsets
+
+for each r-subset generate the permutations
+\end{document}

@@ -1,0 +1,107 @@
+\documentclass{article}
+\usepackage{fullpage}
+\usepackage{nopageno}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+
+\begin{document}
+\title{Notes}
+\date{January 31, 2014}
+\maketitle
+\section*{homework}
+due on feb 7.
+\subsection*{hw 6}
+lesson 5 number 3, plot sum of 4 terms (of expansion)
+\subsection*{hw 7}
+lesson 5 number 4
+\subsection*{hw 8}
+lesson 5 number 5
+\subsection*{hw 9}
+lesson 6 number 3, note solution of pde not asked
+
+\section*{note}
+type 2 boundary, typo in board discussion (missing factor of A)
+
+\section*{lesson 5}
+separation of variables
+
+pde $u_t=\alpha^2u_{xx}$
+
+Separation of variables requires linear homogeneous pdes because to form $\sum\limits_\lambda T_\lambda(t)\mathbb{X}_\lambda(t)$
+\subsection*{step 1}
+find fundamental solutions
+\begin{align*}
+  u=T(t)\mathbb{X}\\
+  T_\lambda(t)\mathbb{X}_\lambda(t)=e^{-\lambda^2\alpha^2t}[A\sin(\lambda x)+B\cos(\lambda x)], x>0
+\end{align*}
+half the general discussion of "separation constants"
+\subsection*{step 2}
+gave $\lambda=n\pi$ for $n=1,2,\dots$.
+\begin{align*}
+  T_{n\pi}(t)\mathbb{X}_n\pi(t)=e^{-(n\pi\alpha)^2t}\cdot A_n\cdot\sin(n\pi x)
+\end{align*}
+\subsection*{step 3}
+\begin{align*}
+  \phi(x)=\sum\limits_{n=1}^\infty{A_n\sin(n\pi x)
+\end{align*}
+condition for uniform convergence of the expansion is $\phi(0)=\phi(1)=0$ and $\phi'(x)$ is piecewise continuous
+
+how to find $A_n$?
+\begin{align*}
+  \int_0^1{\sin(m\pi x)\sin(n\pi x)\,\mathrm{d}x}&=0, m\neq n\\
+    &=\frac{1}{2}, m=n
+  \int_0^1{\phi(x)\sin(N\pi x)\,\mathrm{d}x}\\
+  \int_0^1{i\left(\sum\limits_{n=1}^\infty{A_n\sin(n\pi x)}\right)\sin(N\pi x)\,\mathrm{d}x}\\
+  \sum\limits_{n=1}^\infty{A_n}\int_0^1{i\left(\sin(n\pi x)\right)\sin(N\pi x)\,\mathrm{d}x}\\
+  &=0+A_N\cdot\frac{1}{2}
+\end{align*}
+this is the orthagonality property for $\sin(m\pi x}$
+$\int_0^1{f(x)g(x)}$ defines an inner product (dot produt for vectors) on "vectors" $f(x)$
+
+\subsection*{answer}
+\[u(x,t)=\sum\limits_{n=1}^\infty{A_ne^{-(n\pi\alpha)^2 t}\sin(n\pi x)\]
+
+dates back to bernoulli in 1700's, big controversy, lagrange etc says bernoulli was wrong, no concept of convergence. cauchy develops this in 1819. the proof of a convergence of Fourier series is given by dirichlet in 1821
+
+\section*{lesson 6}
+transforming nonhomogeneou BC's into homogeneous ones. PDE: $u_t=\alpha^2u_{xx}+f(x,t), x<x<L,0<t<\infty$ with BC of (page 47) 
+\begin{align*}
+  \alpha_1u_x(0,t)+\beta_1u(0,t)=g_1(t)\\
+  \alpha_2u_x(L,t)+\beta_2u(L,t)=g_2(t)\\
+  0<t<\infty
+\end{align*}
+and IC of $u(x,0)=\phi(x)$ on $0\leq x\leq L$
+
+(page 46)introduce transformation $u(x,t)=A(t)\left(1-\frac{x}{L}\right)+B(t)\frac{x}{L}+U(x,t)$ substitute to get a problem for $U(x,t)$ with homogeneous BC
+
+PDE $U_t=\alpha^2U_{xx}+[\text{nonhomogeneous term with }f(x,t),A(t),B(t)]$
+
+IC $U(x,0)=\phi(x) -A(0)\left(1-\frac{x}{L}\right) -B(0)\frac{x}{L}$
+
+BC 
+\begin{align*}
+  \alpha_1U_x(0,t)+B_1(U(0,t)=\dots g_1(t),A(t),b(t)\dots=0\\
+  \alpha_2U_x(L,t)+B_2(U(L,t)=\dots g_2(t),A(t),b(t)\dots=0
+\end{align*}
+find $A(t),B(t)$
+\section*{lesson 7}
+more complicated separation of variables
+
+\begin{align*}
+  \text{PDE}&& u_t&=\alpha^2u_{xx}&0<x<1&,0t<\infty\\
+  \text{BC}&& u(0,t)&=0\\
+  && u_x(1,t)+hu(1,t)&=0 & h>0\\
+  \text{IC}&& u(x,0)&=\phi(x)
+\end{align*}
+\subsection*{step 1}
+look for separated solutions
+\begin{align*}
+  u&=T(t)X(x)
+\end{align*}
+Find $T_\lambda(t)X_\lambda(x)=e^{-x^2\alpha^2 t}(A\sin(\lambda x)+B\cos(\lambda x))$
+\subsection*{step 2}
+want solutions satisfying BC
+\end{document}

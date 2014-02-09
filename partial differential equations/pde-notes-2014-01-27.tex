@@ -1,0 +1,83 @@
+\documentclass{article}
+\usepackage{fullpage}
+\usepackage{nopageno}
+\usepackage{amsmath}
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+
+\begin{document}
+\title{Notes}
+\date{January 27, 2014}
+\maketitle
+\section*{last time}
+\subsection*{temp in rod}
+derivation of pde
+page 28
+letter A is area of cross section
+\subsection*{condition 1}
+rod consists of homogeneous conducting material.  temperature varies in rod, but substrate doesn't. homogeneous medium.
+\subsection*{condition 2}
+laterally insulated-no heat flow across lateral surface
+\subsection*{condtion 3}
+thin rod, temperature is uniform across cross section.
+\begin{align*}
+  u_t&=\alpha^2u_{xx} \text{on} 0<x<L, 0<t<\infty\\
+  u(x,t)=\text{temperature in degrees}& u(x,t)& \text{is degrees}\\
+  \text{total heat energy in} [x_1,x_2]=\int_{x_1}^{x_2}{cupA,\mathrm{d}x} & c&=\text{specific heat}=\frac{\text{calories}}{\text{degree of mass}}\\
+  &&p&=\text{density}\\
+  \text{rate of change of energy}&=\frac{\mathrm{d}}{\mathrm{d}t}\int_{x_1}^{x_2}{cupA,\mathrm{d}x}=\int_{x_1}^{x_2}{cpu_t A,\mathrm{d}x}\\
+  \intertext{law of conservation of energy}
+  &=\text{flow rate of energy at end points}+\text{generation rate of energy(internal)}\\
+  \text{generation rate}&=\int_{x_1}^{x_2}{f(s,t)A,\mathrm{d}s} & f&=\frac{\text{cal}}{\text{sec cm}^3}\\
+  \text{flow rate}&=-DA(c\rho u)_x \frac{\text{cal}}{\text{cm}^2}\\
+  \intertext{D is thermal diffusivity}
+  &=-DA(c\rho u)_x-(-DA(c\rho u)_x)\\
+  &+\int_{x_1}^{x_2}{f(s,t)A,\mathrm{d}s}\\
+  &=-Dc\rho Au_x(x_1,t)+Dc\rho Au_x(x_2,t)\\
+  &+\int_{x_1}^{x_2}{f(s,t)A\,\mathrm{d}s}\\
+  \intertext{note: page 29 says f is external source of heat with cal per cm sec but should be internal and cal per cm cubed sec}
+  &=-kAu_x(x_1,t)+kAu_x(x_2,t)\\
+  \intertext{use of k is standard and has units cal per degree cm sec}
+  \int_{x_1}^{x_2}{c\rho u_tA\,\mathrm{d}s}&=\int_{x_1}^{x_2}{kAu_{xx}\,\mathrm{d}s}+\int_{x_1}^{x_2}{fA\,\mathrm{d}s}
+\end{align*}
+this is Fourier's law for heat flow in one dimension
+
+\subsubsection*{note:}assumptions are that derivatives and second derivatives are continuous
+\subsection*{stuff in solution in tube}
+we are thinking of stuff flowing into and out of the region $[x_1,x_2]$
+\subsection*{condition 1}
+tube of solution of stuff. homogeneous medium (liquid)
+\subsection*{condition 2}
+tube (glass or whatever) allows no flow of stuff through it. similar to insulation above.
+\subsection*{condition 3}
+concentration of stuff is uniform by symmetry
+\begin{align*}
+  \omega_t=D\omega_{xx} \text{on} 0<x<L, 0<t<+\infty\\
+  \omega(x,t)=\text{density of stuff}\\
+  \text{total stuff in} [x_1,x_2]=\int_{x_1}^{x_2}{\omega(x,t)A,\mathrm{d}x}
+  \text{rate of change of stuff}&=\frac{\mathrm{d}}{\mathrm{d}t}\int_{x_1}^{x_2}{\omega A,\mathrm{d}x}=\int_{x_1}^{x_2}{\omega_t A,\mathrm{d}x}\\
+  \intertext{law of conservation of stuff (mass or whatever)}
+  &=\text{flow rate of stuff at endpoints}+\text{generation rate of stuff}
+  \text{generation rate}&=\frac{\text{stuff}}{\text{sec}}=\int_{x_1}^{x_2}{f(s,t)A,\mathrm{d}s} & f&=\frac{\text{stuff}}{\text{sec cm}^3}\\
+  \text{flow rate of stuff at x}&=-DA\omega_x\\
+  \intertext{D is diffusion coefficient cm squared per second, this is Fick's law}
+  &=-DA\omega_x(x_1,t)-(-DA\omega_x(x_2,t))\\
+  &+\int_{x_1}^{x_2}{f(s,t)A,\mathrm{d}s}\\
+  \text{rate of change of stuff in }[x_1,x_2]&=\int_x_1^x_2{\omega_t(x,t)A\,\mathrm{d}s}\\
+  &=(\text{flow in + direction at }x_1)-(\text{flow in positive direction at }x_2)+(\text{generation of stuff inside }[x_1,x_2])
+  &=\int_{x_1}^{x_2}{DA\omega_{ xx}(s,t)\,\mathrm{d}s}+\int_{x_1}^{x_2}{f(s,t)A,\mathrm{d}s}\\
+  0&=\int_{x_1}^{x_2}{(\omega_t-D\omega_{xx}-f)\,\mathrm{d}s}\text{ at all }t>0\\
+  \intertext{claim: integrand is 0 for all x, this is because interval is arbitrary so if we can find a 0 from integrand not being 0 then we can find a non-zero interval}
+  \omega_t&=D\omega_{xx}+f(x,t)
+\end{align*}
+
+\section*{lesson 3}
+boundary conditions at beginning are
+
+1) $u=g(t)$ temperature is $g(t)$
+
+2) $u_x+\lambda u=g(t)$
+
+3) $u_x=g(t)$ heat flow is proportional to $g(t)$
+\end{document}

@@ -1,0 +1,86 @@
+\documentclass{article}
+\usepackage{fullpage}
+\usepackage{nopageno}
+\usepackage{amsmath}
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+
+\begin{document}
+\title{Notes}
+\date{February 3, 2014}
+\maketitle
+\section*{last time}
+\section*{lesson 7}
+\subsection*{step 1}
+solve pde for fundamental solutions
+\begin{align*}
+  u&=T(t)X(x)\\
+  \frac{T'(t)}{\alpha^2T(t)}&=\frac{X'(x)}{X(x)}=\text{separation constant}\\
+  \intertext{phyysical considerationsindicatethat solutionsdeca to 0. simplify by assigning sep constant $\leq0$}\\
+  \frac{T'(t)}{\alpha^2T(t)}&=\frac{X''(x)}{X(x)}=-\lambda^2\leq0 &T(x)X(x)=e^{-\alpha^2\lambda^2t}\\
+\end{align*}
+\subsection*{step 2}
+solve pde and bc. solve $X''(x)+\lambda^2X(x)=0 with X(0)=0$.
+
+\subsubsection*{case $\lambda=0$}
+\begin{align*}
+  X''(x)&=0\\
+  X&=ax+b\\
+  X(0)&=0 \text{ gives} b=0\\
+  X'(1)+hX^{(1)}&=0\\
+  \intertext{only trivial solution$X=0$}
+  X&=ax
+  \intertext{ohter BC gives $a(h+1)=0$ give $a=0$}
+\end{align*}
+\subsubsection*{case $\lambda>0$}
+\begin{align*}
+  X(x)&=a\sin(\lambda x)+b\cos(\lambda x)\\
+  X(0)&=0\to b=0\\
+  &=a\sin(\lambda x)\\
+  X'(1)+hX(1)&=0\\
+  \lambda\cos(\lambda)+h\sin(\lambda)&=0\\
+  X'(x)&=a\lambda\cos(\lambda x)\\
+  \intertext{this is on page 52}
+  a\lambda\cos(\lambda)+ha\sin(\lambda&=0\\
+  a(\lambda\cos(\lambda)+h\sin(\lambda))&=0\\
+\end{align*}
+question: can $\cos(\lambda)=0$? no! then $\sin(\lambda)=0$. but $\cos^2+\sin^2=1$. Sothe equation becomes $\tan\lambda)=-\frac{\lambda}{h}$. And from the graph we see that there are infinitely many positively roots $0<\lambda<\lambda_2<\lambda_3<\dots$.
+\begin{align*}
+  \frac{\pi}{2}&<\lambda_1<\pi\\
+  \frac{3\pi}{2}&<\lambda_2<2\pi\\
+  n\pi-\pi/2&<y_n<n\pi\\
+  \lambda_n-(n\pi-\pi/2)&\to0 \text{ as } n\to\infty
+\end{align*}
+so back to the case:
+\begin{align*}
+  X(x)=a_n\sin(\lambda_nx)\\
+  \intertext{where $\lambda_n$ is positive root to $\tan(\lambda)=-\lambda/h$}
+  \intertext{find solutions}
+  u_n&=e^{-\alpha^2{\lambda_n}^2t}a_n\sin(\lambda_nx)\text{ with }\tan(\lambda_n)=-\lambda_n/h\\
+  \text{so }&\sum\limits_{n=1}^\infty{a_ne^{-\alpha^2{\lambda_n}^2t}\sin(\lambda_nx)}
+\end{align*}
+\subsection*{step 3}
+find the coefficients $a_n$: want $\sum\limits_{n=1}^\infty{a_n\sin(\lambda_nx)}=\phi(x)$ on $0<x<1$.
+
+recall in lesson 5: $\sum\limits_{n=1}^\infty{a_sin(n\pi x)=\phi(x)}\left\{\begin{aligned}u(0,t)=0\\u(1,t)=0\end{aligned}\right\}$.
+Used othagonality $\int_0^1{\sin(m\pi x)\sin(n\pi x)\,\mathrm{d}x}$ for $m\neq n$
+\begin{align*}
+  \int_0^1{\sin(m\pi x)\sin(n\pi x\,\mathrm{d}x}&=0, m\neq n\\
+  \int_0^1{(\sin(n\pi x))^2\,\mathrm{d}x}&=\frac{1}{2}, m=n\\
+  &\left\{\begin{aligned}
+    \cos(a+b)&=\cos(a)\cos(b)-\sin(a)\sin(b)\\
+    \cos(a-b)&=\cos(a)\cos(b)+\sin(a)\sin(b)\\
+    \sin(a)\sin(b)&=\frac{1}{2}(-\cos(a+b)+\cos(a-b))
+  \end{aligned}\right.
+\end{align*}
+\subsubsection*{sturn-liouville theory}
+\begin{align*}
+  X_n(x)&=\sin(\lambda_n x)\\
+  \text{claim }&\int_0^1{X_m(x)X_n(x)\mathrm{d}x}\text{ for } m\neq n\\
+  \intertext{use $X_n(x)$ solve $X''(x)+\lambda^2X(x), X(0)=0, X'(1)+hX(1)=0$}
+  \text{set }& I=\int_0^1{X_m(x)X_n(x)\mathrm{d}x}\\
+  \lambda_n^2I&=\int_0^1{X_m(x)\left(\lambda_n^2X_n\right)\mathrm{d}x}=
+\end{align*}
+
+\end{document}

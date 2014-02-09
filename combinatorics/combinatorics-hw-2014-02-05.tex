@@ -1,0 +1,117 @@
+\documentclass{article}
+\usepackage{fullpage}
+\usepackage{nopageno} 
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[normalem]{ulem}
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+
+\begin{document}
+Jon Allen
+
+February 3, 2014
+
+\section*{1}
+Which permutation follows 31524? And precedes it?
+First the five is threaded left in 1234, then right in 1243, then left in 1423
+\section*{2}
+Determine the mobile integers in $\overrightarrow{4}\,\overleftarrow{8}\,\overrightarrow{3}\,\overleftarrow{1}\,\overrightarrow{6}\,\overleftarrow{7}\,\overleftarrow{2}\,\overrightarrow{5}$
+
+The mobile integers are the ones that are pointing to a smaller integer next to them, namely 8,3,7.
+\section*{4}
+Prove that in the algorithm of Section 4.1, which generates directly the permutations of $\{1,2,\dots,n\}$, the directions of 1 and 2 never change.
+
+First we observe that the only way to change the direction of an integer $p$ is if it is greater than the largest mobile integer $m$. We can readily see that one is the smallest number in our list, and therefore cannot be larger than any number and can never have it's direction changed. The only integer smaller than 2 is 1. If 2 is to have it's direction changed then we need one to be the largest mobile integer. In order to be a mobile integer a number must be pointing at a smaller number. Since 1 is the smallest number it can never be pointing at a smaller number and never be mobile. Therefore 2 can never be greater than the greatest mobile integer and can never change it's direction.$\Box$
+\section*{6}
+Determine the inversion sequences of the following permutations of $\{1,2,\dots,8\}$:
+\subsection*{a}
+35168274 has an inversion sequence of 2,4,0,4,0,0,1,0
+\subsection*{b}
+83476215 has an inversion sequence of 6,5,1,1,3,2,1,0
+\section*{7}
+Construct the permutations of $\{1,2,\dots,8\}$ whose inversion sequences are
+\subsection*{a}
+2,5,5,0,2,1,1,0 has a permutation of 48165723
+\subsection*{b}
+6,6,1,4,2,1,0,0 has a permutation of 73658412
+\section*{8}
+How many permutations of $\{1,2,3,4,5,6\}$ have
+\subsection*{a}
+exactly 15 inversions? Notice that the inversion sequence with the maximum number of inversions is 5,4,3,2,1,0. This sequence has 5+4+3+2+1=15 inversions. Since each inversion sequence is associated with one permutation and since there is only one inversion sequence with 15 inversions we know there is only one permutation with 15 inversions.
+\subsection*{b}
+exactly 14 inversions? Lets take the permutation from (a). It happens to be 654321. Notice that swapping any two numbers in this permutation will reduce the inversion number by 1. We can do 5 different swaps, so there are 5 different permutations that have 14 inversions.
+\subsection*{c}
+exactly 13 inversions? This is similar to (b). Lets take any of the 5 permutations from (b). Of the five swaps available for each of these permutations one will revert the swap we did to change from (a) to (b) and change the inversion number from 14 to 15. The remaining 4 swaps will reduce the inversions to 13. So we have 4*5=20 permutations with 13 inversions. But some of these are duplicates (mirror swaps). So lets count the mirrors and subtract them. If the first two are swapped then we have $n-1-2$ possible mirror swaps. Similarly for the next two we have $n-2-2$ and so on to $n-(n-2)-2$ for the last pair. So for our final count we have $20-\sum\limits_{i=1}^4{6-i-2}=20-(4(6-2)-4-3-2-1)=20-6=14$
+\section*{9}
+Show that the largest number of inversions of a permutation of $\{1,2,\dots,n\}$ equals $n(n-1)/2$. Determine the unique permutation with $n(n-1)/2$ inversions. Also determine all those permutations with one fewer inversion.
+
+Notice that the maximum value for each $b_i$ in the inversion sequence is $n-i$. Notice further that for maximum values of $b_i$ we have $b_1+b_n=(n-1)+(n-n)=n-1$ and $b_2+b_{n-1}=(n-2)+(n-n+1)=n-1$ and even $b_i+b_{n-i+1}=(n-i)+(n-(n-i+1))=n-i+n-n+i-1=n-1.$ Further we observe (again for maximum values of our $b$'s) that $\sum\limits_{i=1}^n{b_{n-i+1}}=b_n+b_{n-1}+b_{n-2}+\dots+b_1=b_1+\dots+b_{n-2}+b_{n-1}+b_n=\sum\limits_{i=1}^n{b_i}$ And putting it all together to get the maximum number of inversions:
+\begin{align*}
+  \sum\limits_{i=1}^n{b_i}&=\frac{2}{2}\sum\limits_{i=1}^n{b_i}\\
+  &=\frac{\sum\limits_{i=1}^n{b_i}+\sum\limits_{i=1}^n{b_{n-i+1}}}{2}\\
+  &=\frac{\sum\limits_{i=1}^n{b_i+b_{n-i+1}}}{2}\\
+  &=\frac{\sum\limits_{i=1}^n{n-1}}{2}\\
+  &=\frac{n(n-1)}{2}
+\end{align*}
+Now to determine the permutation with the maximum number of inversions. We'll say the inversion sequence for this permutation is $b_1,b_2,\dots,b_n$. Since all $b_i$ has maximum value we know that $b_n=0,b_{n-1}=1,\dots,b_2=n-2,b_1=n-1$. Lets start with $n$ and go backwords (algorithm 1 in the text). 
+\begin{align*}
+  n\\
+  n(n-1)\\
+  n(n-1)(n-2)\\
+  \vdots\\
+  n(n-1)(n-2)\dots21
+\end{align*}
+Since the above sequence has the maximum number of inversions, swapping any two numbers will ``undo'' an inversion, or in other words, reduce the number of inversions by one. In this way we can generate all the permutations with one fewer inversions.
+\section*{10}
+Bring the permutations 256143 and 436251 to 123456by successive switches of adjacent numbers.
+\begin{align*}
+  256143&&436251\\
+  251643&&436215\\
+  215643&&436125\\
+  125643&&431625\\
+  125634&&413625\\
+  125364&&143625\\
+  123564&&143265\\
+  123546&&142365\\
+  123456&&124365\\
+  &&123465\\
+  &&123456\\
+\end{align*}
+\section*{59}
+Let $n\geq2$ be an integer. Prove that the total number of inversions of \emph{all} $n!$ permutations of $1,2,\dots,n$ equals
+\begin{align*}
+  \frac{1}{2}n!\binom{n}{2}&=n!\frac{n(n-1)}{4}
+\end{align*}
+(\emph{Hint:} Pair up the permutations so that the number of inversions in each pair is $n(n-1)/2$.)
+\subsection*{proof}
+Lets start with the permutations $12\dots n$ and $n\dots21$ We have established that the inversions of $n\dots21$ is $n(n-1)/2$ (see problem 9). Similarly we see that the inversions of $12\dots n$ is zero. Lets take the in-order permutation $12\dots n$. We can swap any two numbers to get a new permutation with 1 inversion. Similarly we can swap any two numbers in the $n\dots21$ permutation to get $\frac{n(n-1)}{2}-1$ inversions. As we continue to generate permutations by swapping numbers we see that we generate the same number of unique permutations that have $\frac{n(n-1)}{2}-i$ inversions and $i$ inversions. Since the number of permutations with $\frac{n(n-1)}{2}-i$ inversions always matches the number of permutations with $i$ inversions, lets just add these inversion numbers together to get $\frac{n(n-1)}{2}$. And we know that we have $n!$ total permutations. We have half this many pairs of permutations whose inversions add to make $\frac{n(n-1)}{2}$. So the total number of inversion for all permutations of $1,2,\dots,n$ is $\frac{n!}{2}\frac{n(n-1)}{2}=n!\frac{n(n-1)}{4}=\frac{1}{2}n!\frac{n(n-1)(n-2)!}{2(n-2)!}=\frac{1}{2}n!\binom{n}{2}$
+\section*{38}
+ Let $(X_1, \leq_1)$ and $(X_2,\leq_2)$ be partially ordered sets. Define a relation $T$ on the set 
+\[X_1\times X_2=\{(x_1,x_2):x_1 \text{ in } X_1,x_2 \text{ in } X_2\}\]
+by
+\[(x_1,x_2)T(x_1',x_2')\text{ if and only if } x_1\leq_1 x_1'\text{ and }x_2\leq_2x_2'\]
+Prove that $(X_1\times X_2,T)$ is a partially ordered set. $(X_1\times X_2,T)$ is called the \emph{direct product} of $(X_1,\leq_1)$ and $(X_2,\leq_2)$ and is also denoted by $(X_1,\leq_1)\times(X_2,\leq_2)$. More genreally, prove that the direct product of $(X_1,\leq_1)\times(X_2,\leq_2)\times\dots\times(X_m,\leq_m)$ of partially ordered sets is also a partially ordered set.
+\section*{42}
+Describe the cover relation for the partial order $\subseteq$ on the collection $\mathcal{P}(X)$ of all subsets of a set X.
+
+If we pick two subsets $S_1\subseteq X$ and $S_2\subseteq X$ then $S_1$ is covered by $S_2$ if and only if $S_1\subset S_2$ and there is no $S_3\subseteq X$ such that $S_1\subset S_3\subset S_2$.
+\section*{47}
+Let $\Pi_n$ denote the set of all partitions of the set $\{1,2,\dots,n\}$ into \emph{nonempty} sets. Given two partitions $\pi$ and $\sigma$ in $\Pi_n$, define $\pi\leq\sigma$, provided that each part of $\pi$ is contained in a part of $\sigma$. Thus, the partition $\pi$ can be obtained by partitioning the parts of $\sigma$. This relation is usually expressed by saying that $\pi$ is a \emph{refinement} of $\sigma$
+\subsection*{a}
+Prove that the relation of refinement is a partial order on $\Pi_n$.
+\subsubsection*{proof}
+We first show that this relation is reflexive. Let's take a non-empty partition of $\{1,2,\dots,n\}$ (from here on called $S$) and call this partition $\pi$. $\pi$ is of course a partition of $\pi$ and so the relation is reflexive. Now lets take a partition $\pi_1$ of $\sigma$ such that $\pi_1\neq\sigma$. If $\pi_1\leq\sigma$ then because $\pi_1\neq\sigma$ we know that there is some $\pi_2\leq\sigma$ such that $\pi_2\cap\pi_1$. This means that $\sigma\nleq\pi_1$. So the relation is antisymmetric. Now let us take some $\phi\leq\pi$ and $\pi\leq\sigma$. Since $\phi$ is a partition of $\pi$ and $\pi$ is a partition of $\sigma$ we know that $\phi$ is a partitions of $\sigma$ or $\phi\leq\sigma$. So our relation is transitive. And thus all the requirement for our relation to be a partial order are met.$\Box$ 
+\subsection*{c}
+Construct the Diagram of $(\Pi_n,\leq)$ for $n=1,2,3\text{ and }4$.
+\section*{48}
+Consider the partial order $\leq$ on the set $X$ of positive integers given by ``is a divisor of.'' Let $a$ and $b$ be two integers. Let $c$ be the largest integer such that $c\leq a$ and $c\leq b$, and let $d$ be the smallest integer such that $a\leq d$ and $b\leq d$. What are $c$ and $d$?
+
+This is another way of saying $c|a$ and $c|b$ and $a|d$ and $b|d$. We know then that $c|d$. I don't think we can really say much else about them. They could be equal or not. Since $c$ is a divisor of $d$ it is not bigger than $d$.
+\section*{Proof}
+\subsection*{Hypothesis}
+Given a permutation $\pi$, the inversion number of $s_i(\pi)$ differs from the inversion number of $\pi$ by exactly 1 (where $s_i$ is the operator that switches $i$ and $i+1$).
+\subsection*{proof}
+
+\end{document}

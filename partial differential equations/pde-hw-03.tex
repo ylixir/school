@@ -1,0 +1,33 @@
+\documentclass{article}
+\usepackage{fullpage}
+\usepackage{nopageno}
+\usepackage{amsmath}
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+\newcommand{\degree}{\ensuremath{^\circ}}
+
+\begin{document}
+Jon Allen
+
+HW 03
+
+\begin{align*}
+  u_t&=\alpha^2 u_{xx} & 0< x&<1 & 0&<t<\infty\\
+  u(0,t)&=0 & u_x(1,t)&=1 & u(x,0)&=\sin (\pi x)\\
+  u_t=0&=\alpha^2u_{xx} &
+  \int{0\,\mathrm{d}x}&=\int{\alpha^2u_{xx}\,\mathrm{d}x} &
+  c_1&=\alpha^2u_x\\
+  \int{c_1\,\mathrm{d}x}&=\int{\alpha^2u_{x}\,\mathrm{d}x} &
+  c_1x+c_2&=\alpha^2U(x) &
+  U(x)&=\frac{c_1}{\alpha^2}x+\frac{c_2}{\alpha^2}
+\end{align*}
+And simplifying the constants
+\begin{align*}
+  U(x)&=c_1x+c_2 & U(0)&=0=c_2\\
+  U(x)&=c_1x & U'(x)&=c_1\\
+  U'(1)&=1=c_1 & U(x)&=x
+\end{align*}
+
+A steady state seems plausible to me. We could interpret this math as a laterally insulated rod with the temperature of one end held at 0\degree and the other receiving a constant flow of heat. At some point it will stabilize to where the end being held at 0\degree will be cooling at the same rate that the other end is being heated. And in fact that's what we find with the math, because $U(x)=x$ leads to $U'(x)=1$.
+\end{document}

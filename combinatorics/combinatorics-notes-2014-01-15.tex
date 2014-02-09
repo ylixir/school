@@ -1,0 +1,38 @@
+\documentclass{article}
+\usepackage{fullpage}
+\usepackage{nopageno}
+\usepackage{amsmath}
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+
+\begin{document}
+\title{Notes}
+\date{January 15, 2014}
+\maketitle
+
+will be working in sage, brush up on python.
+
+\section*{tools for counting}
+problem 1
+standard young tableaux (SYT) 2xn
+recurrence relations
+problem 2
+non-crossing (perfect) matching of 2n
+rotational symmetry or more generally symmetry
+problem 3
+Dych path of length 2n
+problem 4
+binary parenthezations
+problem 5
+triangulations of (n+2)-gon
+
+we want a bijection to map these objects
+for 3<->4 /<->( and \<->)
+for 1<->2 top row must be smaller of pair and similarly bottom row corresponds to larger number in the pair
+conditions for increasing in columns is the same as non crossing line condition
+for 2<->3<->4 smaller number is up or left, and greater is down or left
+
+these are all catalan objects
+the number of catalan objects of size n is $\frac{1}{n+1}\left(\begin{array}{c}2n\\n\end{array}\right)=\frac{1}{n+1}\cdot \frac{(2n)!}{n!n!}$
+\end{document}

@@ -1,0 +1,44 @@
+\documentclass{article}
+\usepackage{fullpage}
+\usepackage{nopageno}
+\usepackage{amsmath}
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+\newcommand{\degree}{\ensuremath{^\circ}}
+
+\begin{document}
+Jon Allen
+
+HW 01
+
+\begin{align*}
+  u_t &= \alpha^2 u_{xx}+1 & 0 &< x < 1\\
+  u(0,t) &= 0 &
+  u(1,t) &= 1\\
+  \intertext{Temperature is steady when it doesn't change with time}
+  u_t &= 0 & 0 &= \alpha^2 u_{xx}+1\\
+  \int{0\,\mathrm{d}x}&=\int{\alpha^2 u_{xx}+1\,\mathrm{d}x} &
+  c_1 &= \alpha^2 u_x+x\\
+  \int{c_1\,\mathrm{d}x}&=\int{\alpha^2 u_x+x\,\mathrm{d}x} &
+  c_1x&=\alpha^2 U(x)+\frac{x^2}{2}+c_2\\
+  U(x) &=-\frac{x^2}{2\alpha^2}+\frac{c_1}{\alpha^2}x-\frac{c_2}{\alpha^2} &
+  U(0)&=0=-\frac{c_2}{\alpha^2}\\
+  U(1)&=1=-\frac{1}{2\alpha^2}+\frac{c_1}{\alpha^2} &
+  \alpha^2&=c_1-\frac{1}{2},\quad c_1>\frac{1}{2}\\
+  U(x)&=-\frac{x^2}{2(c_1-\frac{1}{2})}+\frac{c_1}{c_1-\frac{1}{2}}x &
+  U(x)&=-x^2\frac{1}{2c_1-1}+\frac{c_1-\frac{1}{2}+\frac{1}{2}}{c_1-\frac{1}{2}}x\\
+  U(x)&=-x^2\frac{1}{2c_1-1}+x\left(1+\frac{1}{2c_1-1}\right) &
+  U(x)&=-c_3x^2+c_3x+x,\quad c_3>0
+\end{align*}
+Intuitively we know that the conservation condition won't hold. Because there is a heat source, the total energy in the system isn't constant. But let's verify.
+\begin{align*}
+  U'(x)&=-2c_3x+c_3+1\\
+  U'(0)&=c_3+1\\
+  U'(L)=U'(1)&=-2c_3+c_3+1=-c_3+1\\
+  U'(0)&=U'(L)\\
+  c_3+1&=-c_3+1\\
+  c_3&\neq-c_3
+\end{align*}
+Because $c_3>0$ we see that $U'(0)$ is never equal to $U'(L)$
+\end{document}

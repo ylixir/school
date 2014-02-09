@@ -1,0 +1,68 @@
+\documentclass{article}
+\usepackage{fullpage}
+\usepackage{nopageno}
+\usepackage{amsmath}
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+
+\begin{document}
+\title{Notes}
+\date{December 2, 2013}
+\maketitle
+\section*{final exam}
+syllabus is everything done in class
+
+8.4+8.7: unit step function and l-r-c circuit application
+
+\section*{unit step function 8.4}
+\begin{align*}
+  f(t)&=0,0\leq t\leq a\\
+      &=1, t>a\\
+      &=U(t-a)\\
+  g(t)&=1,0\leq t\leq b\\
+      &=0, t>b\\
+      &=U(t)-U(t-b)
+\end{align*}
+Take any $f(t)$ then $\mathcal{L}\{f(t-a)U(t-a)\}=e^{-at}F(s)$
+\subsection*{example}
+compute $\mathcal{L}\{(t-2)U(t-2)\}$
+\begin{align*}
+  \mathcal{L}\{(t-2)U(t-2)\}&=e^{-2t}\frac{1}{s^2}
+\end{align*}
+\subsection*{example}
+compute the laplace transform of $\cos(t-\frac{\pi}{2})U(t-\frac{\pi}{2})$
+\begin{align*}
+  \mathcal{L}{\left\{\cos\left(t-\frac{\pi}{2}\right)U\left(t-\frac{\pi}{2}\right)\right\}}&=e^{-\frac{\pi}{2}t}\frac{s}{s^2+1}
+\end{align*}
+\subsection*{example}
+\begin{align*}
+  y''+9y&=\left\{
+  \begin{aligned}
+    1,\quad&0\leq t<\pi\\
+    0,\quad&t>\pi
+  \end{aligned}
+  \right.,\quad y(0)=y'(0)=0\\
+  &=1-U(t-\pi)\\
+  \mathcal{L}\{y(t)\}&=Y(s)\\
+  s^2Y(s)-sy(0)-y'(0)+9Y(s)&=\frac{1}{s}-\frac{e^{-\pi t}}{s}\\
+  Y(s)(s^2+9)&=\frac{1-e^{-\pi t}}{s}\\
+  Y(s)&=\frac{1}{s(s^2+9)}-\frac{e^{-\pi t}}{s(s^2+9)}\\
+  \frac{1}{s(s^2+9)}&=\frac{A}{s}+\frac{Bs+c}{s^2+9}\\
+  1&=A(s^2+9)+Bs^2+Cs=(A+B)s^2+Cs+9A\\
+  C&=0,\quad A+B=0,\quad 1=9A\\
+  A&=\frac{1}{9},\quad B=-\frac{1}{9},\quad C=0\\
+  Y(s)&=\frac{1}{9s}-\frac{1}{9}\cdot\frac{s}{s^2+9}-e^{-\pi t}\left[\frac{1}{9s}-\frac{1}{9}\cdot\frac{s}{s^2+9}\right]\\
+  y(t)&=\frac{1}{9}-\frac{1}{9}\cos 3t-\left(\frac{1}{9}-\frac{1}{9}\cos3(t-\pi)\right)U(t-\pi)
+\end{align*}
+\subsection*{example}
+\begin{align*}
+  \mathcal{L}^{-1}\left[\frac{e^{-\frac{\pi s}{2}}}{s^2+16}\right]\\
+  F(s)&=\frac{1}{s^2+16},\quad a=\frac{\pi}{2}\\
+  f(t)&=\frac{1}{4}\sin \left[4\left(t-\frac{\pi}{2}\right)\right]U\left(t-\frac{\pi}{2}\right)
+\end{align*}
+\subsection*{example}
+\begin{align*}
+  \mathcal{L}^{-1}\left[\frac{e^{-5s}}{s^5}\right]&=\frac{1}{24}(t-5)^4U(t-5)
+\end{align*}
+\end{document}

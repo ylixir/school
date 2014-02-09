@@ -1,0 +1,25 @@
+\documentclass{article}
+\usepackage{fullpage}
+\usepackage{nopageno}
+\usepackage{amsmath}
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+\newcommand{\degree}{\ensuremath{^\circ}}
+
+\begin{document}
+Jon Allen
+
+HW 08
+
+\begin{align*}
+  u(x,t)&=\sum\limits_{n=1}^\infty{A_ne^{-(n\pi\alpha)^2t}\sin(n\pi x)}\\
+  u(x,0)&=\sum\limits_{n=1}^\infty{A_n\sin(n\pi x)}\\
+  &=\sin(2\pi x)+\frac{1}{3}\sin(4\pi x)+\frac{1}{5}\sin(6\pi x)\\
+  A_2&=1\\
+  A_4&=\frac{1}{3}\\
+  A_6&=\frac{1}{5}\\
+  \text{all other }A_n&=0\\
+  u(x,t)&=e^{-4(\pi\alpha)^2t}\sin(2\pi x)+\frac{1}{3}e^{-16(\pi\alpha)^2t}\sin(4\pi x)+\frac{1}{5}e^{-36(\pi\alpha)^2t}\sin(6\pi x)
+\end{align*}
+\end{document}

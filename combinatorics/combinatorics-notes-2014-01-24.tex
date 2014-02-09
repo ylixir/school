@@ -1,0 +1,48 @@
+\documentclass{article}
+\usepackage{fullpage}
+\usepackage{nopageno}
+\usepackage{amsmath}
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+
+\begin{document}
+\title{Notes}
+\date{January 24, 2014}
+\maketitle
+how to count subsets consiting of r object from n types (m\&m's/colors)
+
+ordered arrangement or unordered
+
+no repetition of types/colors, repetition with infinite supply, repetition with restricted supply
+
+$x_i$ of type $i$
+
+number one from worksheet is ordered with repetition with infinite supply
+
+2.2 ordered arrangement with no repetition: $\frac{n!}{(n-r)!}=P(n,r)$
+
+2.4 ordered arrangement with repetition and restricted supply: $\frac{n!}{(n-r)!x_1!x_2!...}$
+
+2.4 ordered arrangement with repetition and infinite supply: $n^r$
+
+2.3 unordered arrangement with no repetition: $\frac{P(n,r)}{r!}=\frac{n!}{(n-r)!r!}=\left(\begin{array}{c}n\\r\end{array}\right)$
+
+2.5 unordered arrangement with repetition and an infinite supply: $\left(\begin{array}{c}r+n-1\\r\end{array}\right)$
+
+unordered arrangement with repetition and a restricted supply: harder
+
+\subsection*{example 1}
+how many positive integral solutions of $x_1+x_2+x_3+x_4+x_5=42$ are there where positive is $\geq0$
+
+$x_1|x_2|x_3|x_4|x_5$ and put 42 things in every part. it unordered repetition with infinite supply. $\left(\begin{array}{c}42+5-1\\42\end{array}\right)$
+
+\subsection*{example 2}
+how  many integral solutions to $x_1+x_2+x_3=10, x_1\geq-8, x_2\geq2, x_3\geq0$
+
+$x_1+8=y_1, x_2-2=y_2, x_3=y_3$ so $y_1+y_2+y_3=16$ and the answer is $\left(\begin{array}{c}16+3-1\\16\end{array}\right)$
+
+\subsection*{example 3}
+take a chessboard (8x8) take out all the pieces but rooks, now we have 4 rooks that we want to place such that they aren't attacking.
+
+\end{document}

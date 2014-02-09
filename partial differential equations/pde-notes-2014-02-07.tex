@@ -1,0 +1,72 @@
+\documentclass{article}
+\usepackage{fullpage}
+\usepackage{nopageno}
+\usepackage{amsmath}
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+
+\begin{document}
+\title{Notes}
+\date{February 7, 2014}
+\maketitle
+\section*{homework}
+due next friday 14 feb
+\subsection*{lesson 7 number 1}
+\subsubsection*{hw 10}
+find general series solution for PDE and BC's.
+\subsubsection*{hw 11}
+solve the IC. Explain how orthogonality is used.
+\subsection*{number 3}
+\subsubsection*{hw 12}
+find general series solution for PDE and BC's.
+\subsubsection*{hw 13}
+solve the IC. note questions about steady-state behavior.
+\subsection*{lesson 9 number 4}
+\subsubsection*{hw 14}
+find the general series solution for PDE and BC's.
+\subsubsection*{hw 15}
+show the eigen functions are orthogonal and solve the IC.
+\section*{lesson 9}
+\begin{align*}
+  &PDE&u_t&=\alpha^2u_{xx}+f(x,t),& 0<x<1,&0<t<\infty\\
+  &BC's&0&=\alpha_1u_x(0,t)+\beta_1u(0,t),&&0<t<\infty\\
+  &&0&=\alpha_2u_x(1,t)+\beta_2u(1,t),&&0<t<\infty\\
+  &IC&u(x,0)&=\phi(x),&0<x<1\\
+  &PDE&u_t=\alpha^2u_{xx}\to &u=T(t)X(x)\\
+  &&&\frac{T'(t)}{\alpha^2T(t)}=\frac{X''(x)}{X(x)}\\
+  &&&\text{separation constant}=-\lambda\\
+  &&&\text{assume const $\leq$0}\\
+  u&=e^{-\alpha^2\lambda t}X(x)\\
+  0&=X''(x)+\lambda^2X(x)\\
+  &=\alpha_1X'(0)+\beta_1X(x)\\
+  &=\alpha_2X'(1)+\beta_2X(1)
+\end{align*}
+special case of sturm-louisville theorem (sp?)
+
+\subsection*{results}
+there are nontrivial solutions $X_n(x)$ for a sequence of values $\lambda=\lambda_n$
+\[\lambda_1<\lambda_2<\lambda_3 \text{ and } \lambda_n\to\infty\]
+for \[\lambda_m\neq\lambda_n,\int_0^1{X_m(x)X_n(x)\,\mathrm{d}x}=0\text{ (orthagonality)}\]
+
+we have $u(x,t)=\sum\limits_{n=1}^\infty{c_ne^{-\alpha^2\lambda_n t}X_n(x)}$
+
+How do we find $c_n$ in $u(x,t)=\sum\limits_{n=1}^\infty{c_ne^{-\alpha^2\lambda_n t}X_n(x)}$? because the original pde is linear, the sum of the solutions is a solution. similarly for the boundary conditions. Use orthogonality of $X_n(x)$'s and the initial condition $u(x,0)=\phi(x)$.
+
+What about $u_t=\alpha^2u_{xx}+f(x,t)$? Try solutions $u=\sum\limits_{n=1}^\infty{u_n(t)X_n(x)}$. write $f(x,t)=\sum\limits_{n=1}^\infty{f(n(t)X_n(x)}$. In the PDE: $\sum\limits_{n=1}^\infty{{u_n}'(t)X_n(x)=\alpha^2\sum\limits_{n=1}^\infty{u_n(t){X_n}''(x)}}+\sum\limits_{n=1}^\infty{f_n(t)X_n(x)}$
+
+Now ${x_n}''(x)=-\lambda_nX_n(x)$
+
+For each $n$:
+\[{u_n}'(t)=-\alpha^2\lambda_nu_n(t)+f_n(t)\]
+
+\subsubsection*{note}
+\[f_n(t)\int_0^1{(X_n(x))^2\,\mathrm{d}x}=\int_0^1{f(x,t)X_n(x)\,\mathrm{d}x}\]
+
+since $f_n(t)$ is known we have
+\[({u_n}'+\alpha^2\lambda_nu_n=f_n(t))e^{\alpha^2\lambda_nt}\frac{\mathrm{d}}{\mathrm{d}t}\left(e^{\alpha^2\lambda_nt}u_n(t)\right)=e^{\alpha^2\lambda_nt}f_n(t)\]
+\[\to e^{\alpha^2\lambda_nt}u_n(t)-u_n(0)=\int_0^t{e^{\alpha^2\lambda_n u}f_n(u)\,\mathrm{d}u}\]
+\[\to u_n(t)=u_n(0)e^{-\alpha^2\lambda_nt}+\int_0^t{e^{-\alpha^2\lambda_n(t-u)}f_n(u)\,\mathrm{d}u}\]
+\subsubsection*{note}
+initial condition is $\sum\limits_{n=1}^\infty{u_n(0)X_n(x)}=\phi(x)$
+\end{document}

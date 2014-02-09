@@ -1,0 +1,36 @@
+\documentclass{article}
+\usepackage{fullpage}
+\usepackage{nopageno}
+\usepackage{amsmath}
+\usepackage{graphics}
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+\newcommand{\degree}{\ensuremath{^\circ}}
+
+\begin{document}
+Jon Allen
+
+HW 06
+
+\begin{align*}
+  \phi(x)&=\sum\limits_{n=1}^\infty{A_n\sin(n\pi x)}&A_n&=2\int_0^1{\phi(x)\sin(n\pi x)\,\mathrm{d}x}\\
+  1&=\sum\limits_{n=1}^\infty{A_n\sin(n\pi x)}&A_n&=2\int_0^1{\sin(n\pi x)\,\mathrm{d}x}\\
+  u&=n\pi x,\quad \mathrm{d}u=n\pi & A_n&=\frac{2}{n\pi}\int_0^1{\sin(u)\,\mathrm{d}u}\\
+  A_n&=\frac{2}{n\pi}\left[-\cos u\right]_0^1=\frac{2}{n\pi}\left[-\cos(n\pi x)\right]_0^1
+  &A_n&=\frac{2}{n\pi}\left[-\cos(n\pi)+\cos(0)\right]=\frac{2}{n\pi}\left(1-\cos(n\pi)\right)\\
+  A_n&=\frac{2}{n\pi}\left(1-(-1)^n\right)
+\end{align*}
+So $A_n$ is zero for all even $n$s and $\frac{4}{n\pi}$ for odd.
+\begin{align*}
+  \phi(x)&=\sum\limits_{n=1}^\infty{\frac{4}{(2n-1)\pi}\sin((2n-1)\pi x)}\\
+  &=\frac{4}{\pi}\left(\sin(\pi x)+\frac{1}{3}\sin(3\pi x)+\frac{1}{5}\sin(5\pi x)+\frac{1}{7}\sin(7\pi x)+\cdots\right)
+\end{align*}
+%\begin{figure}[tbp]
+%  \begin{center}
+    \input{pde-hw-06-plot-01.tex}
+%    \caption{Graph caption}
+%    \label{graph:graph1}
+%  \end{center}
+%\end{figure}
+\end{document}

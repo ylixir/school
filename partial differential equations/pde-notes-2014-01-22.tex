@@ -1,0 +1,67 @@
+\documentclass{article}
+\usepackage{fullpage}
+\usepackage{nopageno}
+\usepackage{amsmath}
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+
+\begin{document}
+\title{Notes}
+\date{January 22, 2014}
+\maketitle
+
+\section*{prototype problem}
+lesson 2
+
+PDE is $u_t=\alpha^2u_{xx}$ on $0<x<L,0<t<\infty$
+
+initial conditions $u(x,0)=?$ on $0<x<L,t=0$
+
+boundary conditions $u(0,t)=T_1$ and $u(L,t)=T_2$ where $x=0,L$ and $0\leq t<\infty$
+
+other types:
+\begin{align*}
+  u_t&=\alpha^2 u_{xx}-\beta (u-u_0), \beta > 0\\
+  u_t&=\alpha^2 u_{xx}+f(x,t)\\
+  u_t&=\alpha^2 u_{xx}-\omega u_x
+\end{align*}
+
+\section*{steady state solution}
+a solution independant of time. $u=U(x)$
+
+PDE becomes $0=\alpha^2 U_{xx}$
+\begin{align*}
+  U''(x)&=0\\
+  U(x)&=c_2x+c_1\\
+  U(0)&=T_1\\
+  U(L)&=T_2\\
+  U(x)&=T_1+c_2x\\
+  U(L)&=T_2=T_1+c_2L\\
+  c_2&=\frac{T_2-T_1}{L}\\
+  U(x)&=T_1+\frac{T_2-T_1}{L}x
+\end{align*}
+\section*{energy conservation stuff}
+the temperature of the bar determines the total heat energy
+\begin{align*}
+  E&=\int_0^L{cu(x,t),\mathrm{d}x}\\
+  c&=\text{specific heat} \left(\frac{cal}{\mathrm{d}y cm}\right)\\
+  \frac{\mathrm{d}E}{\mathrm{d}t}&=\frac{\mathrm{d}}{\mathrm{d}t}\int_0^L{cu,\mathrm{d}x}=c\int_0^L{\frac{\partial u}{\partial t},\mathrm{d}x}=c\int_0^L{\alpha^2 u_{xx},\mathrm{d}x}=\alpha^2 c(u_x(L,t)-u_x(0,t))
+\end{align*}
+for steady state: $\frac{\mathrm{d}E}{\mathrm{d}t}=\alpha^2 c(\frac{T_2-T_1}{L}-\frac{T_2-T_1}{L})=0$
+\section*{lesson 3}
+fourier's law of heat flow: the rate of flow of heat energy at the position $x_0$ (in positive direction in bar) is equal to $-k\frac{\partial u}{\partial x}(x_0,t)$
+
+see page 22 in text
+
+rate of heat flow is $\frac{\text{calories/sec}}{\text{cm}^2}=\frac{\text{cal}}{\text{sec deg cm}}\cdot\frac{\text{deg}}{\text{cm}}$
+
+heat flow at $x=L$ is $\alpha^2 c u_x(L,t)$ and heat flow at $x=0$ is $\alpha^2 c u_2(0,t)$
+\section*{boundary conditions}
+at a boundary, common conditions are:
+\begin{align*}
+  u&=g(t)\\
+  u_x+\lambda u&=g(t)\\
+  u_x&=g(t) \text{most commonly} u_x=0 \text{called insulated condition}
+\end{align*}
+\end{document}

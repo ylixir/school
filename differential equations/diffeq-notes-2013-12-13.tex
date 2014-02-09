@@ -1,0 +1,80 @@
+\documentclass{article}
+\usepackage{fullpage}
+\usepackage{nopageno}
+\usepackage{amsmath}
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+
+\begin{document}
+\title{Notes}
+\date{December 13, 2013}
+\maketitle
+\section*{final exam}
+thursday dec 19. see blackboard for details
+
+unit step function is zero before a and 1 after. denoted U(t-a)
+\begin{align*}
+  \mathcal{L}\{U(t-a)\}&=\frac{e^{-as}}{s}\\
+  \mathcal{L}\{f(t-a)U(t-a)\}&=e^{-as}F(s)
+\end{align*}
+for the exam you should be able to write a problem in terms of the unit step function. for example function that starts as 10 and switches to 0 at 2 is
+\begin{align*}
+  f(t)&=10-10U(t-a)
+  \mathcal{L}\{f(t)\}&=\frac{10}{s}-\frac{10}{s}e^{-2s}
+\end{align*}
+that is one possibility for exam, another is suppose you are given function. compute inverse laplace
+\begin{align*}
+  \frac{e^{-\frac{\pi s}{r6s}}}{s^3}\\
+  \mathcal{L}^{-1}\{\frac{e^{-\frac{\pi s}{r6s}}}{s^3}\}\\
+  \mathcal{L}^{-1}\{e^{-as}F(s)\}&=f(t-a)U(t-a)\\
+  a&=\frac{\pi}{6}\\
+  F(s)&-\frac{2}{2}\frac{1}{s^3}\\
+  f(t)&=\frac{1}{2}t^2\\
+  \mathcal{L}^{-1}\{\frac{e^{-\frac{\pi s}{r6s}}}{s^3}\}&=\frac{1}{2}(t-\frac{\pi}{6})U(t-\frac{\pi}{6})
+\end{align*}
+\subsection*{announcement}
+he'll be in office from 1-3 on mw and in mathin tomorrow from 11-1
+\subsection*{example}
+\begin{align*}
+  x\frac{\mathrm{d}y}{\mathrm{d}x}+y&=e^{-x}\\
+  \frac{\mathrm{d}y}{\mathrm{d}x}+\frac{1}{x}y&=\frac{e^{-x}}{x}\\
+  \intertext{it is linear, so compute integration factor}
+  e^{int{\frac{1}{x}\,\mathrm{d}x}}=e^{\ln x}&=x\\
+  \intertext{multiply out by integration factor, it's already in exact form}
+  x\frac{\mathrm{d}y}{\mathrm{d}x}+y&=e^{-x}\\
+  \frac{\mathrm{d}}{\mathrm{d}x}\left(y*IF\right)&=e^{-x}\\
+  \frac{\mathrm{d}}{\mathrm{d}x}\left(yx\right)&=e^{-x}\\
+  \int{d(yx)}&=int{e^{-x}\,\mathrm{d}x}
+\end{align*}
+in the exam there is an integral differentiation problem like this
+\begin{align*}
+  \frac{\mathrm{d}y}{\mathrm{d}x}-4y+4\int_0^t{y(u)\,\mathrm{d}u}&=t^4e^{2t}\\
+  y(0)&=0\\
+  \mathcal{L}\{y(t)\}&=Y(s)\\
+  \mathcal{L}\{\frac{\mathrm{d}y}{\mathrm{d}t}\}&=sY(s)-y(0)\\
+  \mathcal{L}\{-4y\}&=-4Y(s)\\
+  \mathcal{L}\{4\int_0^t{y(u)\,\mathrm{d}u}\}&=\frac{4}{s}Y(s)\\
+  \mathcal{L}\{t^4\}&=\frac{4!}{s^5}=\frac{24}{s^5}\\
+  \mathcal{L}\{t^4e^{2t}\}&=\frac{24}{(s-2)^5}\\
+  (s-4+\frac{4}{s})Y(s)&=\frac{24}{(s-2)^5}\\
+  (s^2-4s+4)Y(s)&=\frac{24s}{(s-2)^5}\\
+  (s-2)^2Y(s)&=\frac{24s}{(s-2)^5}\\
+  Y(s)&=\frac{24s}{(s-2)^7}\\
+  &=\frac{24(s-2)+48}{(s-2)^7}\\
+  &=\frac{24}{(s-2)^6}+\frac{48}{(s-2)^7}\\
+  y(t)&=\frac{1}{5}t^5e^{2t}+\frac{1}{15}t^6e^{2t}
+\end{align*}
+\begin{align*}
+  y^2\mathrm{d}t+2ty\mathrm{d}y&=0 \intertext{check for exactness}\\
+  \frac{\partial M}{\partial y}&=\frac{\partial N}{\partial t}=2y\\
+  \frac{\partial f}{\partial t}&=y^2\\
+  \frac{\partial f}{\partial y}&=2ty\\
+  \int{\mathrm{d}f}&=\int{y^2\mathrm{d}t}=y^2t+\phi(y)\\
+  \frac{\partial f}{\partial y}&=2yt+\phi'(y)\\
+  2ty&=2yt+\phi'(y)\\
+  \phi'(y)&=0\\
+  \phi'(y)&=C\\
+  y^2t+C&=\text{constant}\\
+\end{align*}
+\end{document}

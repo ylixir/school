@@ -1,0 +1,86 @@
+\documentclass{article}
+\usepackage{fullpage}
+\usepackage{nopageno}
+\usepackage{amsmath}
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+
+\begin{document}
+\title{Notes}
+\date{December 6, 2013}
+\maketitle
+quiz in 6.2-6.4 fri?
+
+\section*{section 6.3}
+\begin{align*}
+  x'&=3x+3y\\
+  y'&=3x+8y \intertext{both x and y are functions of t}
+\end{align*}
+\subsection*{example}
+show that $\left(\begin{array}{c}-2e^{2t}\\e^t\end{array}\right)$ is a solution of $\mathbb{X}'\left(\begin{array}{cc}1&-2\\2&6 \end{array}\right)\mathbb{x}$
+\begin{align*}
+  \mathbb{X}'&=\left(\begin{array}{c}
+      -4e^{2t}\\2e^{2t}
+      \end{array}\right)
+  &=\left(\begin{array}{cc}
+      1&-2\\2&6
+      \end{array}\right)
+  \left(\begin{array}{c}
+      -2e^{2t}\\e^{2t}
+      \end{array}\right)
+  &=\left(\begin{array}{c}
+      -2e^{2t}-2e^{2t}\\
+      -4e^{2t}+6e^{2t}
+      \end{array}\right)
+  &=\left(\begin{array}{c}
+      -4e^{2t}\\2e^{2t}
+      \end{array}\right)
+\end{align*}
+\begin{align*}
+  W&=\left\lvert\begin{array}{cc}y_1&y_2\\y_1'&y_2'\end{array}\right\rvert\\
+  \phi_1&=\left(\begin{array}{c}\alpha_1(t)\\\alpha_2(t)\end{array}\right)\\
+  \phi_2&=\left(\begin{array}{c}\beta_1(t)\\\beta_2(t)\end{array}\right)\\
+  W(\phi_1,\phi_2)&=\left(\begin{array}{cc}\alpha_1&\beta_1\\ \alpha_2&\beta_2 \end{array}\right)
+\end{align*}
+\subsection*{example}
+check if $\phi$'s are independant solutions
+\begin{align*}
+  \mathbb{X}'&=\left(\begin{array}{cc}4&-3\\-2&-1 \end{array}\right)\mathbb{X}\\
+  \phi_1&=\left(\begin{array}{c}e^{-2t}\\2e^{-2t} \end{array}\right)\\
+  \phi_2&=\left(\begin{array}{c}3e^{5t}\\e^{5t} \end{array}\right)\\
+  W(\phi_1,\phi_2)&=e^{3t}+6e^{3t}=7e^{3t}\neq0
+\end{align*}
+they are independant
+
+\subsection*{eigenvalues}
+\begin{align*}
+  A&=\left(\begin{array}{cc}2&3\\-4&-5\end{array}\right)
+\end{align*}
+find the eigenvalue of A
+\begin{align*}
+  \left\lvert\righ\left(\begin{array}{cc}2-\lambda&3\\-4&-5-\lambda\end{array}\right)t\rvert&=0\\
+    (2-\lambda)(-5-\lambda)+12&=0\\
+    -10-2\lambda+5\lambda+\lambda^2+12&=0\\
+    \lambda^2+3\lambda+2&=0\\
+    (\lambda+1)(\lambda+2)&=0\\
+    \lambda&=-1,-2
+\end{align*}
+eigenvector corresponding to $\lambda=-1$
+\begin{align*}
+  A\left(\begin{array}{c}x_1\\x_2\end{array}\right)&=-1\left(\begin{array}{c}x_1&x_2\end{array}\right)\\
+  \left(\begin{array}{cc}2&3\\-4&-5\end{array}\right)\left(\begin{array}{c}x_1&x_2\end{array}\right)&=-\left(\begin{array}{c}x_1&x_2\end{array}\right)\\
+  \left(\begin{array}{c}2x_1+3x_2\\-4x_1-5x_2\end{array}\right)=-\left(\begin{array}{c}x_1&x_2\end{array}\right)\\
+  2x_1+3x_2&=-x_1\\
+  -4x_1-5x_2&=x_2\\
+  3x_1+3x_2&=0\\
+  -4x_1-4x_2&=0\\
+  x_1+x_2&=0\\
+  x_1&=x_2 \intertext{choose}
+  x_1&=1,x_2=-1\\
+  \text{eigenvector}&=\left(\begin{array}{c}1\\-1\end{array}\right)
+\end{align*}
+eigenvector corresponding to $\lambda=-2$ is $\left(\begin{array}{c}3\\-4\end{array}\right)$
+  
+quiz show that eigenvector
+\end{document}
