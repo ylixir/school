@@ -1,0 +1,64 @@
+\documentclass{article}
+\usepackage{fullpage}
+\usepackage{nopageno}
+\usepackage{amsmath}
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+
+\begin{document}
+\title{Notes}
+\date{February 10, 2014}
+\maketitle
+\section*{Lesson 10}
+\subsection*{use of integral transforms}
+\begin{align*}
+  \intertext{sine or fourier transform?}
+  \mathcal{F}_s[f]&=\frac{2}{\pi}\int_0^\infty{f(t)\sin(\omega t)\,\mathrm{d}t}=F(\omega)\\
+  {\mathcal{F}_s}^{-1}[F]&=\int_0^\infty{F(\omega)\sin(\omega t)\,\mathrm{d}\omega}=f(t)\\
+  \intertext{Laplace}
+  \mathcal{L}[f]&=F(s)=\int_0^\infty{e^{-st}f(t)\,\mathrm{d}t}
+\end{align*}
+Start with a problem in terms of (say) time t. Original solutioon $f(t)$. Transform it to an equation (in s). Solve for $F(s)$. Inversion $F(s)\to f(t)$. Simplest way of inverstion: Use a table of transforms.
+\begin{align*}
+  &\text{Laplace}&&f(t)&&F(s)\\
+  &&&t^p&&\frac{T(p+1)}{S^{p+}}\\
+  &&&\cos(at)&&\frac{s}{s^2+a^2}\\
+  &&&\vdots&&\vdots\\
+\end{align*}
+\subsubsection*{note}
+when you first see laplace transforms you do not see an inversion formula written down. This is because it turns out that the inversion formula requires complex analysis. Even to write down.
+\[f(t)=\frac{1}{2\pi i}\int_{c-i\infty}^{c+i\infty}{F(s)e^t\,\mathrm{d}s}\]
+This is covered in chapter 13.
+\emph{extra credit for using this inversion formula. Talk to him about it}
+\subsection*{some properties of sine transform}
+\begin{align*}
+  \mathcal{F}_s[f']&=\frac{2}{\pi}\int_0^\infty{f'(t)\sin(\omega t)\,\mathrm{d}t}\\
+  &=\frac{2}{\pi}\left(\left.f(t)\sin(\omega t)\right|_0^\infty-\int_0^\infty{f(t)\cdot \omega\cos(\omega t)\,\mathrm{d}t}\right)\\
+  &=\frac{2}{\pi}\left(0-0-\omega\int_0^\infty{f(t)\cdot \cos(\omega t)\,\mathrm{d}t}\right)\\
+  &=-\omega\mathcal{F}_c[f]\\
+  \mathcal{F}_s[f'']&=-\omega\mathcal{F}_c[f']=-\omega^2\mathcal{F}_s[f]-\frac{2\omega}{\pi}f(0)\\
+  \mathcal{F}_c[f']&=+\omega\mathcal{F}_s[f]-\frac{2}{\pi}f(0)
+\end{align*}
+\subsection*{example p. 77}
+\begin{align*}
+  \text{PDE}&&u_t&=\alpha^2u_{xx}&0&<x<\infty &0&<t<\infty\\
+  \text{BC}&&u(0,t)&=A&&&0&<t<\infty\\
+  \text{IC}&&u(x,0)&=0&0&<x<\infty
+\end{align*}
+indefinite length rod. starts at zero temp.
+
+use integral transforms to solve this. specifically the sine transform.
+\begin{align*}
+  \mathcal{F}_s[f]&=\frac{2}{\pi}\int_0^\infty{f(t)\sin(\omega t)\,\mathrm{d}t}=F(\omega)\\
+  \mathcal{F}_s[u_t]&=\alpha^2\mathcal{F}_s[u_{xx}]\\
+  &=\alpha^2(-\omega^2U(\omega,t)+\frac{2}{\pi}\omega Au(0.t))\\
+  \intertext{note:}
+  \frac{2}{\pi}\int_0^\infty{\sin(\omega x)\frac{\partial u}{\partial t}(x,t)\,\mathrm{d}x}&=\frac{\partial}{\partial t}\left[\frac{2}{\pi}\int_0^\infty{]sin(\omega x)u(x,t)\,\mathrm{d}x}\right]\\
+  U(\omega,t)&=C(\omega)e^{-\alpha^2\omega^2t}+\frac{2}{\pi}\frac{A}{\omega}\\
+  \intertext{as $t\to0^+$}
+  U(\omega,t)&\to\frac{2}{\pi}\int_0^\infty{\sin(\omega t)\cdot0\,\mathrm{d}t}\text{ initial condition}\\
+  0&=C(\omega)+\frac{2}{\pi}\frac{A}{\omega}\\
+  U(\omega,t)&=\frac{2}{\pi}\frac{A}{\omega}\left(1-e^{-\alpha^2\omega^2t}\right)\text{ sine transform of the solution $u(x,t)$}
+\end{align*}
+\end{document}
