@@ -1,0 +1,33 @@
+\documentclass{article}
+\usepackage{fullpage}
+\usepackage{nopageno}
+\begin{document}
+\title{Section 1.1 Problems 2, 18, 26, 46}
+\author{Jon Allen}
+\date{September 4, 2013}
+\maketitle
+\section*{\#2}
+Determine if each of the following equations is an ODE or a PDE. If the equation is an ODE, then determine (a) the order of the ODE and (b) if the equation is leinear or nonlinear.
+
+$y\frac{\mathrm{d}y}{\mathrm{d}x}+y^4=\sin x$
+
+The equation is an ODE of order one. It is nonlinear as neither the $y\frac{\mathrm{d}y}{\mathrm{d}x}$ term or the $y^4$ term fit the definition for linearity.
+\section*{\#18}
+Verify that the given function is a solution to the corresponding differential equation.
+
+$\mathrm{d}y/\mathrm{d}x+xy=0$, $y(x)=e^{-x^2/2}$
+
+We find $\frac{\mathrm{d}y}{\mathrm{d}x}=-xe^{-x^2/2}$. Substituting this result into the differential equation we find $-xe^{-x^2/2}+x\cdot e^{-x^2/2}=0$ which is true. The given function is a solution to the differential equation.
+\section*{\#26}
+Verify that the given function is a solution to the corresponding differential equation.
+
+$y'''-2y''=0$, $y=A+Bt+Ce^{2t}$
+
+We start by finding the first, second and third derivatives of $y$. $y'=B+2Ce^{2t}$, $y''=4Ce^{2t}$, $y'''=8Ce^{2t}$. Substituting $y'''$ and $y''$ into the differential we have $8Ce^{2t}-2\cdot4Ce^{2t}=0$. We see that the function $y$ is a solution to the differential equation regardless of the values of $A$, $B$, and $C$.
+\section*{\#46}
+Use the indicated conditions with the indicated solution to determine the solution to the given problem.
+
+$\mathrm{d}y/\mathrm{d}t+y=\sin t$, $y(0)=-1$, $y(t)=Ae^{-t}-\frac{1}{2}\cos t+\frac{1}{2}\sin t$
+
+First we substitute the initial value of $y(0)=-1$ into $y(t)$ to obtain $-1=Ae^0-\frac{1}{2}\cdot1+\frac{1}{2}\cdot0=A-\frac{1}{2}$ or $A=-\frac{1}{2}$. Our solution then is $y(t)=-\frac{1}{2}\left(e^{-t}+\cos t-\sin t\right)$
+\end{document}

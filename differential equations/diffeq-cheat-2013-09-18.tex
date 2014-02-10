@@ -1,0 +1,38 @@
+\documentclass{article}
+\usepackage{fullpage}
+\usepackage{nopageno}
+\usepackage{amsmath}
+\begin{document}
+\section*{separable}
+\begin{align*}
+g(y)\,\mathrm{d}y&=f(t)\,\mathrm{d}t & g(y)y'&=f(t)\\
+\int{g(y)\,\mathrm{d}y}&=\int{f(t)\,\mathrm{d}t}
+\end{align*}
+\section*{first order linear}
+\begin{align*}
+\frac{\mathrm{d}y}{\mathrm{d}t}+p(t)y&=q(t) & \mu(t)&=e^{\int{p(t)\,\mathrm{d}t}}\\
+\frac{\mathrm{d}}{\mathrm{d}t}\left(\mu(t)y\right)&=\mu(t)\frac{\mathrm{d}y}{\mathrm{d}t}+p(t)\mu(t)y & \mu(t)y&=\int{\mu(t)q(t)\,\mathrm{d}t}
+\end{align*}
+\section*{exact}
+\begin{align*}
+M(t,y)\,\mathrm{d}t+N(t,y)\,\mathrm{d}y&=0 & \frac{\partial M}{\partial y}&=\frac{\partial N}{\partial y}\\
+\int{M(t,y)\,\mathrm{d}t}+\phi(y)&=f(t,y) & \phi'(y)&=N(x,y)-\frac{\mathrm{d}}{\mathrm{d}y}\left(\int{M(t,y)\,\mathrm{d}t}\right)\\
+\int{M(t,y)\,\mathrm{d}t}+\int{\phi'(y)\,\mathrm{d}y}&=f(t,y)
+\end{align*}
+Solution is $f(t,y)=C$
+\section*{bernoulli}
+\begin{align*}
+\frac{\mathrm{d}y}{\mathrm{d}t}+p(t)y&=q(t)y^n & w&=y^{1-n)}\\
+\frac{\mathrm{d}w}{\mathrm{d}t}+(1-n)p(t)w&=(1-n)q(t)
+\end{align*}
+Solve as first order linear, then back substitute
+\section*{homogeneous}
+\begin{align*}
+M(t,y)\,\mathrm{d}t+N(t,y)\,\mathrm{d}y&=0 & M(xt,xy)+N(xt,xy)&=x^n\left(M(t,y)+N(t,y)\right)\\
+\end{align*}
+substitute with $y=wt$ if $N(t,y)$ is simpler and $t=wy$ if $M(t,y)$ is simpler
+\begin{align*}
+\mathrm{d}y&=w\,\mathrm{d}t+t\,\mathrm{d}w &\mathrm{d}t&=w\,\mathrm{d}y+y\,\mathrm{d}w
+\end{align*}
+Solve as a separable equation
+\end{document}

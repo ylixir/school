@@ -1,0 +1,73 @@
+\documentclass{article}
+\usepackage{fullpage}
+\usepackage{nopageno}
+\usepackage{amsmath}
+\usepackage{MnSymbol}
+
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+\newcommand{\degree}{\ensuremath{^\circ}}
+
+\begin{document}
+Jon Allen
+
+January 29, 2014
+
+\section*{1}
+For each of the four subsets of the two properties (a) and (b), count the number of four-digit numbers whose digits are either 1,2,3,4, or 5:
+(a) The digits are distinct. (b) The number is even.
+\subsection*{$\emptyset$}
+By the multiplication principle there are $5^4$ four-digit numbers, or 625.
+\subsection*{a}
+Every choice we make reduces the number of choices for the next choice by one. So if we have $n$ options, and have to choose $r$ times then by the multiplication principle we have $n\cdot(n-1)\cdot...\cdot(n-r+1)=\frac{n!}{(n-r)!}$ and then our answer is $\frac{5!}{1!}=5!=120$
+\subsection*{b}
+Another way of saying this is how many ways can you make an ordered pair of three-digit numbers and a number $\in\{2,4\}$? By the multiplication principle $5^3\cdot2=250$
+\subsection*{a and b}
+So for our units digit we have 2 or 4 for choices. For our thousands we have 4 choices left, then 3 for our hundreds, 2 for our tens. So by the multiplication principle $2\cdot4\cdot3\cdot2=48$
+\section*{2}
+We can order the cards of each suite in $(52/4)!$ ways. We can order the suites in $4!$ ways. So we can order a deck with all the cards of the same suite together in $13!4!=149448499200$ ways.
+\section*{11}
+There are ${20 \choose 3}=\frac{20!}{3!17!}$ different 3 element subsets of $\{1,...,20\}$. There are 18 subsets that contain 3 consecutive numbers. There are 17 subsets that contain 1 and 2 but not 3, and the same for 19 and 20 but not 18. There are $19-2$ pairs of consecutive digits left and each of these pairs has 16 choices for the last element of the set. So subtracting all these from the total we have $\frac{20!}{17!3!}-18-2\cdot17-17\cdot16=816$
+\section*{17}
+Since the number of rooks is the same as the number of rows and columns, we can just say that each column gets a rook and only worry about counting the different ways we can put them into the rows. Since each time you place a rook you remove an available row. So we have $6!=720$ ways of placing the rooks. Now we color them. Say the first rook is red, then any of the remaining 5 can also be red. If the second rook is red we have 4 that can be red left. And so on giving us $720\cdot(5+4+3+2+1)=15\cdot720=10800$ ways to place the colored rooks.
+\section*{18}
+Let us choose 6 columns and 6 rows from the 8 where the rooks will be placed. That gives us ${8 \choose 6}^2=(\frac{8!}{2!6!})^2=28^2=784$ row and column combinations to put the rooks down. We already know from the previous problem that there are 10800 ways to put these rooks down into these 784 different rows and columns so we have $784*10800=8467200$ ways to place these rooks.
+\section*{20}
+Fixing 0 in place there are $9!$ circular permutations of the set. If we then also fix the 9 in place we have $8!$ permutations. So the number of circular permutations where they are not opposite is $9!-8!=322560$.
+\section*{26}
+Pretty straighforward application of Theorem 2.4.3. $\frac{(mn)!}{m\cdot n!}$ if the teams have names. $\frac{(mn)!}{m\cdot m!n!}$ if the teams are not named.
+\section*{29}
+We observe that the size of $S$ is $n_1+n_2+\cdots+n_k=n_1+n=n+1$. Applying Theorem 2.4.2 we see that the number of linear permutations of $S$ is $\frac{(n+1)!}{n_1!n_2!\cdots n_k!}$. Now let's partition the linear permutations into parts so that two linear permutations of $S$ correspond to the same circular permutation of $S$ if and only if they are in the same part. Then the number of parts will be the number of circular permutations. We also notice that each part will contain $n+1$ linear permutations. So the number of permutations is:
+\[\frac{\frac{(n+1)!}{n_1!n_2!\cdots n_k!}}{n+1}=\frac{(n+1)n!}{(n+1)\cdot 1\cdot n_2!\cdots n_k!}=\frac{n!}{n_1!\cdots n_k!}\]
+And we have our result.$\Box$
+\section*{31}
+First we have a 3-permutation of the winners. Each of these permutations can be paired with any of the 3 combinations of the remaining 12 teams. Our answer then is $P(15,3){12 \choose 3}=\frac{15!}{12!}\cdot\frac{12!}{3!9!}=\frac{15!}{3!9!}=600600$
+\section*{36}
+For each type $i$ we can have $n_i+1$ different repetition numbers in the submultiset. We add one to account for not having any of type $i$ in the submultiset. By the multiplication principal then the number of submultisets is $(n_1+1)(n_2+1)\dots(n_k+1)$.
+\section*{38}
+\begin{align*}
+  30&=x_1+x_2+x_3+x_4\\
+  y_1&=x_1-2, y_2=x_2, y_3=x_3+5, y_4=x_4-8\\
+  25&=x_1+x_2+x_3+x_4\\
+\end{align*}
+And by Theorem 2.5.1 the number of solutions are ${25+4-1 \choose 25}=\frac{28!}{25!3!}=3276$
+\section*{45}
+\subsection*{a}
+Think of this as a 20 combination of a set with 5 types and infinite repetition. So by theorem 2.5.1 we have ${20+5-1 \choose 20}=\frac{24!}{20!4!}=10626$
+\subsection*{b}
+Lets imagine we assign a number to each book, according to the shelf it goes on. Then the number of ways we can put the books on each shelf is the number of permutations of length 20 of the numbers 1-5 which is $5^{20}=95367431640625$
+\subsection*{c}
+We can order the books in $21!$ different ways. Lets imagine the books are stacked up and we need to slot the five shelves into the 21 spaces between the books and at the ends of the books. Since the books are all on shelves we know that the fifth shelf is at the 21st slot. We also can have empty shelves so any shelf can occupy the same slot as any other shelf. So we need to find how many 4 combinations of 21 items with repetition or ${4+21-1 \choose 4}$ and by the multiplication principle we have $21!\frac{24!}{4!20!}=542892351516584509440000$
+\section*{50}
+What we really need to do is figure out how many ways we can place 2 non-attacking rooks on the board. This will constrain the next two rooks to only one possibility. Then pick any one of the last 60 spots for the fifth rook. So for the first two rooks placement we have ${8 \choose 2}$ ways of choosing both the rows and the columns and then we have $2!$ ways of placing the rooks into the rows and columns. But then we will have duplicates after placing the next two rooks, so eliminate duplicate by only placing the first two in $2!/2=1$ ways. And putting it all together with the multiplication principal we have ${8 \choose 2}^2\cdot60=1680$
+\section*{55}
+\subsection*{a}
+TRISKAIDEKAPHOBIA rearranged to make counting easier AAABDEHIIIKKOPRST. And just copy the MISSISSIPPI example to get $\frac{17!}{3!1!1!1!1!3!2!1!1!1!1!1!}=\frac{17!}{3!3!2!}=4940103168000$
+\subsection*{b}
+FLOCCINAUCINIHILIPILIFICATION rearranged to make counting easier AACCCCFFHIIIIIIIIILLLNNNOOPTU and $\frac{29!}{2!4!2!9!3!3!2!}=3525105002372553600000$
+\subsection*{c}
+PNEUMONOULTRAMICROSCOPICSILICOVOLCANOCONIOSIS rearranged to make counting easier AACCCCCCEIIIIIILLLMMNNNNOOOOOOOOOPPRRSSSSTUUV and $\frac{45!}{2!6!1!6!3!2!4!9!2!2!4!1!2!1!}=\frac{45!}{2!^56!^23!4!^29!}=5749897770076560698733077346243840000000$
+\subsection*{d}
+DERMATOGLYPHICS rearranged to make counting easier ACDEGHIOLMPRSTY and there are no duplicate letters so it's just the number of permutations of 15 digits which is $15!=1307674368000$
+\end{document}

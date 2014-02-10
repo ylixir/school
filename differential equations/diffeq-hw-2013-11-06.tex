@@ -1,0 +1,56 @@
+\documentclass{article}
+\usepackage{fullpage}
+\usepackage{nopageno}
+\usepackage{amsmath}
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+\newcommand{\degree}{\ensuremath{^\circ}}
+
+\begin{document}
+Jon Allen
+
+November 6, 2013
+
+\section*{5.1}
+
+\subsection*{\#13}
+A 6-lb object stretches a spring 6 in. If the object is lifted 3 in. above the equilibrium
+position and released, determine the time required for the mass to return to its equilibrium
+position. What is the displacement of the object at t = 5 s? If the object is released from
+its equilibrium position with a downward initial velocity of 1 ft/s, determine the time
+required for the object to return to its equilibrium position.
+\subsubsection*{solution}
+\begin{align*}
+	s&=\frac{1}{2} & F&=6 & a&=g=32\\
+	\alpha&=-\frac{1}{4} & \beta&=0 &	F&=ks=ma\\
+	k&=12 & m&=\frac{3}{16} & \omega&=\sqrt{\frac{k}{m}}=\sqrt{\frac{12\cdot16}{3}}=8\\
+	x(t)&=-\frac{1}{4}\cos 8t & 0&=-\frac{1}{4}\cos 8t & t&=\frac{1}{8}\arccos 0=\frac{\pi}{16}\approx 0.196\text{s}\\
+	x(5)&=-\frac{1}{4}\cos 40\approx 0.167\text{ft} & \alpha&=0 &	\beta&=1\\
+	x(t)&=\frac{1}{8}\sin 8t & 0&=\frac{1}{8}\sin 8t &	t&=\frac{1}{8}\arcsin 0=\frac{\pi}{8}\approx0.393\text{s}
+\end{align*}
+
+\subsection*{\#14}
+A 16-lb weight stretches a spring 8 in. If the weight is lowered 4 in. below the equilibrium
+position and released, find the time required for the weight to return to the equilibrium
+position. What is the displacement of the weight at t = 4 s? If the weight is released from
+its equilibrium position with an upward initial velocity of 2 ft/s, determine the time required
+for the weight to return to the equilibrium position.
+\subsubsection*{solution}
+\begin{align*}
+	s&=\frac{2}{3} & F&=16 & a&=g=32\\
+	\alpha&=\frac{1}{3} & \beta&=0 &	F&=ks=ma\\
+	k&=24 & m&=\frac{1}{2} & \omega&=\sqrt{\frac{k}{m}}=\sqrt{48}=4\sqrt{3}\\
+	x(t)&=\frac{1}{3}\cos(4\sqrt{3}\cdot t) & 0&=\frac{1}{3}\cos(4\sqrt{3}\cdot t) & t&=\frac{1}{4\sqrt{3}}\arccos 0=\frac{\pi}{8\sqrt{3}}\approx0.227\text{s}\\
+	x(4)&=\frac{1}{3}\cos(16\sqrt{3})\approx -0.282\text{ft} & \alpha&=0 & \beta&=-2\\
+	x(t)&=-\frac{1}{2\sqrt{3}}\sin(4\sqrt{3}\cdot t) & 0&=-\frac{1}{2\sqrt{3}}\sin(4\sqrt{3}\cdot t) & t&=\frac{1}{4\sqrt{3}}\arcsin 0=\frac{\pi}{4\sqrt{3}}\approx0.453\text{s}
+\end{align*}
+\section*{5.2}
+
+\subsection*{\#3}
+\[\frac{1}{4}\frac{\mathrm{d}^2x}{\mathrm{d}t^2}+2\frac{\mathrm{d}x}{\mathrm{d}t}+x=0,\quad x(0)=-\frac{1}{2},\quad x'(0)=1\]
+\subsubsection*{solution}
+The mass $m=\frac{1}{4}$slugs, the spring constat $k=1$lb/ft, and the damping coefficient $c=2$. The object starts 6 inches above equilibrium and is thrown down with an initial velocity of 1ft/s.
+
+
+\end{document}

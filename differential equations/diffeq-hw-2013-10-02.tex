@@ -1,0 +1,63 @@
+\documentclass{article}
+\usepackage{fullpage}
+\usepackage{nopageno}
+\usepackage{amsmath}
+\allowdisplaybreaks
+\begin{document}
+\title{Homework 5}
+\author{Jon Allen}
+\date{October 2, 2013}
+\maketitle
+\section*{Section 3.1 Problems 19,20}
+\subsection*{19}
+Solve the logistic equation $\frac{\mathrm{d}y}{\mathrm{d}t}=\alpha y\left(1-\frac{1}{K}y\right)$ by viewing it as a Bernoulli equation.
+\begin{align*}
+\frac{\mathrm{d}y}{\mathrm{d}t}&=\alpha y-\frac{\alpha}{K}y^2\\
+\frac{\mathrm{d}y}{\mathrm{d}t}-\alpha y&=-\frac{\alpha}{K}y^2 & w&=\frac{1}{y}\\
+-\frac{1}{y^2}\frac{\mathrm{d}y}{\mathrm{d}t}+\alpha\frac{1}{y}&=\frac{\alpha}{K} & \frac{\mathrm{d}w}{\mathrm{d}t}&=-\frac{1}{y^2}\frac{\mathrm{d}y}{\mathrm{d}t}\\
+\frac{\mathrm{d}w}{\mathrm{d}t}+\alpha w&=\frac{\alphae}{K} & \mu(t)&=e^{\int{\alpha\,\mathrm{d}t}}\\
+\mu(t)w&=\int{\mu(t)\frac{\alpha}{K}\,\mathrm{d}t} & \mu(t)&=e^{\alpha t}\\
+e^{\alpha t}w&=\frac{1}{K}\int{\alpha e^{\alpha t}\,\mathrm{d}t}=\frac{e^{\alpha t}+C}{K}\\
+\frac{1}{y}&=\frac{1+Ce^{-\alpha t}}{K}&y&=\frac{K}{1+Ce^{-\alpha t}}
+\end{align*}
+\subsection*{20}
+What is the limmiting population, $\displaystyle\lim_{t\to\infty}y(t)$, of the United states population using the result obtained in Example 3.1.5?
+\begin{align*}
+y(t)&=\frac{0.159}{0.00053+0.02947e^{-0.03t}}\\
+\lim_{t\to\infty}y(t)&=\lim_{t\to\infty}\frac{0.159}{0.00053+0.02947e^{-0.03t}}\\
+\lim_{t\to\infty}y(t)&=\frac{0.159}{0.00053+0.02947e^{-0.03\infty}}\\
+\lim_{t\to\infty}y(t)&=\frac{0.159}{0.00053+0.02947e^{-\infty}}\\
+\lim_{t\to\infty}y(t)&=\frac{0.159}{0.00053+0.02947\frac{1}{e^{\infty}}}\\
+\lim_{t\to\infty}y(t)&=\frac{0.159}{0.00053+0.02947\cdot0}\\
+\lim_{t\to\infty}y(t)&=300
+\end{align*}
+\section*{Section 3.2 Problems 7,8}
+Use equation $T=(T_0-T_s)e^{kt}+T_s$
+\subsection*{7}
+A thermometer that reads 90$^\circ$F is placed in a room with temperature 70$^\circ$F. After 3 min, the thermometer reads 80$^\circ$F. What does the thermometer read after 5 min?
+\begin{align*}
+	T_s&=70\\
+	T_0&=90\\
+	T(3)&=80=(90-70)e^{3k}+70\\
+	\frac{10}{20}&=e^{3k}\\
+	\ln\frac{1}{2}&=3k\\
+	k&=\frac{1}{3}\ln\frac{1}{2}\\
+	T(5)&=20e^{\frac{5}{3}\ln\frac{1}{2}}+70\approx76.3^\circ\mathrm{F}
+\end{align*}
+\subsection*{8}
+A thermometer is placed outdoors with temperature 80$^\circ$F. After 2 min, the thermometer reads 68$^\circ$F, and after 5 min, it reads 72$^\circ$F. What was the initial temperature reading of the thermometer?
+\begin{align*}
+	T_s&=80\\
+	T(2)&=68\\
+	T(5)&=72\\
+	T(t)-T_s&=(T_0-T_s)e^{kt}\\
+	\frac{T(t)-T_s}{e^{kt}}&=T_0-T_s\\
+	\frac{T(t)-T_s}{e^{kt}}+T_s&=T_0\\
+	\frac{T(2)-80}{e^{2k}}&=\frac{T(5)-80}{e^{5k}}=\frac{T(5)-80}{e^{2k}e^{3k}}\\
+	68-80&=\frac{72-80}{e^{3k}}\\
+	e^{3k}&=\frac{-8}{-12}\\
+	k&=\frac{1}{3}\ln\frac{2}{3}\\
+	T_0&=\frac{T(2)-80}{e^{\frac{2}{3}\ln\frac{2}{3}}}+80=\frac{68-80}{(2/3)^{2/3}}+80=-\frac{12}{(2/3)^{2/3}}+80\\
+	T_0&\approx64.3^\circ\mathrm{F}
+\end{align*}
+\end{document}

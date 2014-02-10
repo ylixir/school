@@ -1,0 +1,97 @@
+\documentclass{article}
+\usepackage{fullpage}
+\usepackage{nopageno}
+\usepackage{amsmath}
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+\newcommand{\degree}{\ensuremath{^\circ}}
+
+\begin{document}
+Jon Allen
+
+November 20, 2013
+
+\section*{8.3}
+In Exercises 1–15, use Laplace transforms to solve the IVPs. Briefly describe how each
+equation could be solved using other methods such as undetermined coefficients or variation
+of parameters.
+\subsection*{\#12}
+\[y'''+y'=0,\quad y(0)=y'(0)=0,\quad y''(0)=1\]
+this could be solved by integrating to get $y''+y=C$ and then proceeding with the method of undetermined coefficients
+\subsubsection*{solution}
+\begin{align*}
+	y'''+y'&=0\\
+	\mathcal{L}\{y(t)\}&=Y(s)\\
+	\mathcal{L}\{y'''\}+\mathcal{L}\{y'\}&=\mathcal{L}\{0\}\\
+	s^3\mathcal{L}\{y(t)\}-s^2y(0)-sy'(0)-y''(0)+s\mathcal{L}\{y(t)\}-y(0)&=0\\
+	Y(s)\left(s^3+s\right)-1&=0\\
+	Y(s)\left(s^3+s\right)&=1\\
+	Y(s)&=\frac{1}{s(s^2+1)}\\
+	\frac{1}{s(s^2+1)}&=\frac{A}{s}+\frac{B}{s^2+1}\\
+	1&=A(s^2+1)+Bs\\
+	A=1, \quad s^2+Bs=0,\quad B&=-s\\
+	Y(s)&=\frac{1}{s}-\frac{s}{s^2+1}\\
+	y(t)&=1-\cos t
+\end{align*}
+\subsection*{\#13}
+\[y'''-y'=e^t+e^{-t},\quad y(0)=y'(0)=y''(0)=0\]
+This could be solved essentially the same way that I describe for \#10, it's just the right hand side of the equation will be a little more complicated
+\subsubsection*{solution}
+\begin{align*}
+	y'''-y'&=e^t+e^{-t}\\
+	\mathcal{L}\{y(t)\}&=Y(s)\\
+	\mathcal{L}\{y'''\}-\mathcal{L}\{y'\}&=\mathcal{L}\{e^t+e^{-t}\}\\
+	s^3\mathcal{L}\{y(t)\}-s^2y(0)-sy'(0)-y''(0)-s\mathcal{L}\{y(t)\}+y(0)&=\frac{1}{s-1}+\frac{1}{s+1}\\
+	Y(s)(s^3-s)&=\frac{1}{s-1}+\frac{1}{s+1}\\
+	Y(s)s(s^2-1)&=\frac{s+1+s-1}{s^2-1}\\
+	Y(s)&=\frac{2}{(s-1)^2(s+1)^2}\\
+	\frac{A}{(s-1)}+\frac{B}{(s-1)^2}+\frac{C}{(s+1)}+\frac{D}{(s+1)^2}&=\frac{1}{(s-1)^2(s+1)^2}\\
+	A(s-1)(s+1)^2+B(s+1)^2+C(s+1)(s-1)^2+D(s-1)^2&=1\\
+	As^3+As^2-As-A+Bs^2+B2s+B+Cs^3-Cs^2-Cs+C+Ds^2-D2s+D&=1\\
+	s^3(A+C)+s^2(A+B-C+D)+s(-A+2B-C-2D)+(-A+B+C+D)&=1,\quad A=-C\\
+	s^2(B-2C+D)+s(2B-2D)+(B+2C+D)&=1,\quad B=D\\
+	s^2(2D-2C)+(2D+2C)&=1,\quad C=D\\
+	4D&=1,\quad D=\frac{1}{4}\\
+	\frac{2}{4}\left(-\frac{1}{s-1}+\frac{1}{(s-1)^2}+\frac{1}{s+1}+\frac{1}{(s+1)^2}\right)&=Y(s)\\
+	y(t)&=\frac{1}{2}\left(-e^t+te^t+e^{-t}+te^{-t}\right)
+\end{align*}
+\section*{8.5}
+
+\subsection*{\#10}
+find the laplace transform of $h$ where $h(t)=\int_0^t{v\cos(t-v)\,\mathrm{d}v}$
+\subsubsection*{solution}
+\begin{align*}
+	f(t)&=\cos t,\quad g(t)=t\\
+	\mathcal{L}\{h(t)\}&=\mathcal{L}\{f*g\}=\mathcal{L}\{f(t)\}\mathcal{L}\{g(t)\}\\
+	\mathcal{L}\{h(t)\}&=\frac{s}{s^2+1}\cdot\frac{1}{s^2}=\frac{1}{s^3+s}
+\end{align*}
+
+\subsection*{\#18}
+find the inverse laplace of $\frac{s}{(s^2+1)^2}$
+\subsubsection*{solution}
+\begin{align*}
+	\frac{s}{(s^2+1)^2}&=\frac{s}{s^2+1}\cdot\frac{1}{s^2+1}\\
+	\mathcal{L}\{\sin t\}&=\frac{1}{s^2+1},\quad \mathcal{L}\{\cos t\}=\frac{s}{s^2+1}\\
+	\frac{s}{(s^2+1)^2}&=\mathcal{L}\{\cos t\}\mathcal{L}\{\sin t\}=\mathcal{L}\{\cos t*\sin t\}\\
+	\mathcal{L}^{-1}\left\{\frac{s}{(s^2+1)^2}\right\}&=\int_0^t{\cos(t-v)\sin v\,\mathrm{d}v}
+\end{align*}
+
+\subsection*{\#27 extra credit}
+finish this to get +2 points on exam
+solve $\frac{\mathrm{d}y}{\mathrm{d}t}-4y+4\int_0^t{y(v)\,\mathrm{d}v}=t^3e^{2t},y(0)=0$
+\subsubsection*{solution}
+\begin{align*}
+    g(t)&=1\\
+    sY(s)-4Y(s)+4\frac{1}{s}Y(s)&=\frac{6}{(s-2)^4}\\
+    Y(s)\left[s-4+\frac{4}{s}\right]&=\frac{6}{(s-2)^4}\\
+    Y(s)\left[\frac{s^2-4s+4}{s}\right]&=\frac{6}{(s-2)^4}\\
+	Y(s)\left[(s-2)^2\right]&=\frac{6s}{(s-2)^4}\\
+	Y(s)&=\frac{6s}{(s-2)^6}=\frac{6(s-2)+12}{(s-2)^6}=\frac{6}{(s-2)^5}+\frac{12}{(s-2)^6}\\
+	    &=\frac{1}{4}\cdot\frac{24}{(s-2)^5}+\frac{1}{10}\cdot\frac{120}{(s-2)^6}=\frac{1}{4}\cdot\frac{4!}{(s-2)^5}+\frac{1}{10}\cdot\frac{5!}{(s-2)^6}\\
+	\mathcal{L}\{e^{at}t^n\}&=\frac{n!}{(s-a)^{n+1}}\\
+	y(t)&=\frac{1}{4}e^{2t}t^4+\frac{1}{10}e^{2t}t^5
+\end{align*}
+
+
+\end{document}

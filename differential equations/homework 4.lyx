@@ -1,0 +1,327 @@
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
+\begin_document
+\begin_header
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize letterpaper
+\use_geometry false
+\use_amsmath 1
+\use_esint 1
+\use_mhchem 1
+\use_mathdots 1
+\cite_engine basic
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 1in
+\topmargin 1in
+\rightmargin 1in
+\bottommargin 1in
+\headheight 0.1cm
+\headsep 0.1cm
+\footskip 0.1cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+Jon Allen
+\end_layout
+
+\begin_layout Standard
+Homework 4
+\end_layout
+
+\begin_layout Standard
+September 25
+\end_layout
+
+\begin_layout Section*
+2.5
+\end_layout
+
+\begin_layout Subsection*
+29
+\end_layout
+
+\begin_layout Standard
+Solve 
+\begin_inset Formula $(t^{2}-y^{2})\mathrm{d}y+(y^{2}+ty)\mathrm{d}t=0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $(x^{2}t^{2}-x^{2}y^{2})=x^{2}(t^{2}-y^{2})=(x^{2}y^{2}+xtxy)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The equation is homogeneous so we substitute 
+\begin_inset Formula $t=vy$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+(v^{2}y^{2}-y^{2})\,\mathrm{d}y+(y^{2}+vy^{2})(y\,\mathrm{d}v+v\,\mathrm{d}y) & =0\\
+(v^{2}y^{2}-y^{2})\,\mathrm{d}y+y^{2}y\,\mathrm{d}v+vy^{2}y\,\mathrm{d}v+y^{2}v\,\mathrm{d}y+vy^{2}v\,\mathrm{d}y & =0\\
+(v^{2}y^{2}-y^{2}+y^{2}v+v^{2}y^{2})\,\mathrm{d}y+(y^{3}+vy^{3})\,\mathrm{d}v & =0\\
+y^{2}(v^{2}-1+v+v^{2})\,\mathrm{d}y+y^{3}(1+v)\,\mathrm{d}v & =0\\
+y^{2}(2v^{2}+v-1)\,\mathrm{d}y+y^{3}(1+v)\,\mathrm{d}v & =0\\
+y^{2}(2v^{2}+v-1)\,\mathrm{d}y & =-y^{3}(1+v)\,\mathrm{d}v\\
+\frac{1}{y}\,\mathrm{d}y & =-\frac{1+v}{2v^{2}+v-1}\,\mathrm{d}v\\
+\frac{1}{y}\,\mathrm{d}y & =-\frac{1+v}{(v+1)(2v-1)}\,\mathrm{d}v\\
+\frac{1}{y}\,\mathrm{d}y & =-\frac{1}{2v-1}\,\mathrm{d}v & u=2v-1\\
+\int\frac{1}{y}\,\mathrm{d}y & =-\frac{1}{2}\int\frac{1}{u}\,\mathrm{d}u & \mathrm{d}u=2\mathrm{d}v\\
+\ln y & =\ln\frac{1}{\sqrt{2v-1}}+C_{0}\\
+y & =e^{C_{0}}\frac{1}{\sqrt{2v-1}} & e^{C_{0}}=C\\
+y & =C\frac{1}{\sqrt{2\frac{t}{y}-1}}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+36
+\end_layout
+
+\begin_layout Standard
+Solve 
+\begin_inset Formula $(t+y)\,\mathrm{d}t-t\,\mathrm{d}y=0,y(1)=1$
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+(tx+yx)-tx & =xM(x,y)+xN(x,y)
+\end{align*}
+
+\end_inset
+
+The equation is homogeneous and 
+\begin_inset Formula $N(x,y)$
+\end_inset
+
+is simpler so set 
+\begin_inset Formula $y=wt$
+\end_inset
+
+and 
+\begin_inset Formula $\mathrm{d}y=t\mathrm{\, d}w+w\,\mathrm{d}t$
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+(t+wt)\,\mathrm{d}t-t(t\mathrm{\, d}w+w\,\mathrm{d}t) & =0\\
+t\,\mathrm{d}t-t^{2}\,\mathrm{d}w & =0\\
+\frac{1}{t}\,\mathrm{d}t & =\mathrm{d}w\\
+\int\frac{1}{t}\,\mathrm{d}t & =\int\mathrm{d}w\\
+\ln t & =\frac{y}{t}+C_{0} & C=-C_{0}\\
+y & =t(\ln t+C)\\
+1 & =1(0+C)=C\\
+y & =t\ln t+t
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+2.6
+\end_layout
+
+\begin_layout Standard
+Do only the case for h=0.1
+\end_layout
+
+\begin_layout Subsection*
+2
+\end_layout
+
+\begin_layout Standard
+Approximate the solution to the IVP 
+\begin_inset Formula $y'=4x-y+1,y(0)=0$
+\end_inset
+
+at 
+\begin_inset Formula $x=1$
+\end_inset
+
+for 
+\begin_inset Formula $h=0.1$
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+y_{0} & =0\\
+y_{1} & =0.1*(4*0-0+1)+0=0.1\\
+y_{2} & =0.1*(4*0.1-0.1+1)+0.1=0.23\\
+y_{3} & =0.1*(4*0.2-0.23+1)+0.23=0.387\\
+y_{4} & =0.1*(4*0.3-0.387+1)+0.387=0.5683\\
+y_{5} & =0.1*(4*0.4-0.5683+1)+0.5683=0.77147\\
+y_{6} & =0.1*(4*0.5-0.77147+1)+0.77147=.9943230000000001\\
+y_{7} & =0.1*(4*0.6-.994323+1)+.994323=1.2348907\\
+y_{8} & =0.1*(4*0.7-1.2348907+1)+1.2348907=1.49140163\\
+y_{9} & =0.1*(4*0.8-1.49140163+1)+1.49140163=1.762261467\\
+y_{10} & =0.1*(4*0.9-1.762261467+1)+1.762261467=2.0460353203\\
+y(1) & \approx2.0460353203
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+3
+\end_layout
+
+\begin_layout Standard
+Approximate the solution to the IVP 
+\begin_inset Formula $y'-x=y^{2}-1,y(0)=1$
+\end_inset
+
+at 
+\begin_inset Formula $x=1$
+\end_inset
+
+for 
+\begin_inset Formula $h=0.1$
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+y_{0} & =1\\
+y_{1} & =0.1*(y_{0}^{2}-1+0)+y_{0}=1\\
+y_{2} & =0.1*(y_{1}^{2}-1+0.1)+y_{1}=1.01\\
+y_{3} & =0.1*(y_{2}^{2}-1+0.2)+y_{2}=1.03201\\
+y_{4} & =0.1*(y_{3}^{2}-1+0.3)+y_{3}=1.06851446401\\
+y_{5} & =0.1*(y_{4}^{2}-1+0.4)+y_{4}=1.122686779989858\\
+y_{6} & =0.1*(y_{5}^{2}-1+0.5)+y_{5}=1.198729340586257\\
+y_{7} & =0.1*(y_{6}^{2}-1+0.6)+y_{6}=1.302424543784494\\
+y_{8} & =0.1*(y_{7}^{2}-1+0.7)+y_{7}=1.442055513009718\\
+y_{9} & =0.1*(y_{8}^{2}-1+0.8)+y_{8}=1.630007923269891\\
+y_{10} & =0.1*(y_{9}^{2}-1+0.9)+y_{9}=1.885700506262153\\
+y(1) & \approx1.885700506262153
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+3.1
+\end_layout
+
+\begin_layout Subsection*
+5
+\end_layout
+
+\begin_layout Standard
+Suppose that the half-life of an element is 1000 h.
+ If there are initially 100 g, how much remains after 1 h? How much remains
+ after 500 h?
+\begin_inset Formula 
+\begin{align*}
+y(0) & =100\\
+y(1000) & =50\\
+y(t) & =100e^{kt}\\
+50 & =100e^{1000m}\\
+\left(\frac{5}{10}\right)^{1/1000} & =e^{m}\\
+\frac{\ln\frac{1}{2}}{1000} & =m\\
+y(1) & =100e^{m}=99.93070929904525\mathrm{g}\\
+y(500) & =100e^{500m}=70.71067811865476\mathrm{g}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+6
+\end_layout
+
+\begin_layout Standard
+Suppose that the population of a small town is initially 5000.
+ Due to the construction of an interstate highway, the population doubles
+ over the next year.
+ If the rate of growth is proportional to the current population, when will
+ the population reach 25,000? What is the population after 5 years?
+\begin_inset Formula 
+\begin{align*}
+y(0) & =5000\\
+y(1) & =10000\\
+y(t) & =y_{0}e^{mt}\\
+10000 & =5000e^{m}\\
+\ln2 & =m\\
+25000 & =5000e^{t\ln2}\\
+\ln5 & =t\ln2\\
+t & =\frac{\ln5}{\ln2}\approx2.3\mathrm{years}\\
+y(5) & =5000e^{5\ln2}=5000*2^{5}=160000\mathrm{people}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

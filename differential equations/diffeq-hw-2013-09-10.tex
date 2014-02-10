@@ -1,0 +1,72 @@
+\documentclass{article}
+\usepackage{fullpage}
+\usepackage{nopageno}
+\usepackage{amsmath}
+\begin{document}
+Jon Allen
+
+September 11, 2013
+
+Section 2.2 Problems 25,28,43,51 Section 2.3 Problems 13,19
+\section*{2.2}
+\subsection*{25}
+Solve \(x \sin \left( x^2 \right) \mathrm{d}x=\frac{\cos \sqrt{y}}{\sqrt{y}}\mathrm{d}y\)
+
+\(u=x^2, \mathrm{d}u=2x\,\mathrm{d}x, v=y^{1/2}, \mathrm{d}v=\frac{1}{2}y^{-1/2}\,\mathrm{d}y\)
+
+\begin{align*}
+\frac{1}{2}\int{\sin u\,\mathrm{d}u}&=2\int{\cos v\,\mathrm{d}v}\\
+-\frac{1}{2}\cos{x^2}&=2\sin{\sqrt{y}}+C
+\end{align*}
+\subsection*{28}
+Solve \(\frac{\mathrm{d}\phi}{\mathrm{d}\theta}=\frac{\left(5-2\cos\theta\right)^3 \sin\theta\cos^4\phi}{\sin\phi}\)
+
+\( \frac{\sin\phi}{\cos^4\phi}\,\mathrm{d}\phi=\left(5-2\cos\theta\right)^3\sin\theta\,\mathrm{d}\theta,\quad u=\cos\phi,\quad \mathrm{d}u=-\sin\phi\,\mathrm{d}\phi,\quad v=5-2\cos\theta,\quad \mathrm{d}v=2\sin\theta\,\mathrm{d}\theta \)
+\begin{align*}
+-\int{u^{-4}\,\mathrm{d}u}&=\frac{1}{2}\int{v^3\,\mathrm{d}v}\\
+\frac{1}{3}u^{-3}&=\frac{1}{8}v^4+C\\
+\frac{1}{3}\cos^3\phi&=\frac{1}{8}\left(5-2\cos\theta\right)^4+C
+\end{align*}
+\subsection*{43}
+Solve the IVP
+\(\mathrm{d}x=\cos{y}\mathrm{d}y, x(0)=2\)
+\begin{align*}
+\int{\mathrm{d}x}&=\int{\cos{y}\mathrm{d}y}\\
+x&=\sin{y} + C\\
+2&=\sin{0}+C\\
+x&=\sin{y}+2
+\end{align*}
+\subsection*{51}
+Solve the IVP
+\(\frac{\mathrm{d}y}{\mathrm{d}x}=\frac{1}{1+x^2},\; y(0)=1\)
+\begin{align*}
+\int{\mathrm{d}y}&=\int{\frac{1}{1+x^2}\,\mathrm{d}x}\\
+y&=\arctan{x}+C\\
+1&=\arctan{0}+C=1\\
+y&=\arctan{x}+1
+\end{align*}
+\section*{2.3}
+\subsection*{13}
+Solve \(\frac{\mathrm{d}y}{\mathrm{d}t}+y\cot{t}=\cos{t}\)
+\begin{align*}
+\mu (t)&=e^{\int{\cot{t}\,\mathrm{d}t}}\\
+\cot t&=\frac{\cos t}{\sin t},\;u=\sin t,\;\mathrm{d}u=\cos t\,\mathrm{d}t\\
+\mu(t)&=e^{\int{\frac{1}{u}\,\mathrm{d}u}}\\
+&=e^{\ln\left\lvert\sin t\right\rvert}=\sin t\\
+\int{\frac{\mathrm{d}}{\mathrm{d}t}\left(y\sin t\right)\,\mathrm{d}t}&=\int{\sin{t}\cos{t}\,\mathrm{d}t},\;u=\sin t,\;\mathrm{d}u=\cos t\,\mathrm{d}t\\
+y\sin t&=\frac{\sin^2 t}{2}+C\\
+y&=\frac{1}{2}\sin t+C\csc t
+\end{align*}
+Note that \(-\frac{1}{2}\cos t \cot t+C_0\csc t=-\frac{1}{2}\frac{\cos^2 t}{\sin t}+C_0\csc t=-\frac{1}{2}\frac{1-\sin^2 t}{\sin t}+C_0\csc t=-\frac{1}{2}\left(\frac{1}{\sin t}-\sin t\right)+C_0\csc t=\frac{1}{2}\sin t-\frac{1}{2}\csc t+C_0\csc t=\frac{1}{2}\sin t+(C_0-\frac{1}{2})\csc t=\frac{1}{2}\sin t+C_1\csc t\) and so my answer is equivalent to the book's answer.
+\subsection*{19}
+Solve \(\frac{\mathrm{d}\theta}{\mathrm{d}r}-r\theta=r\)
+\begin{align*}
+\mu(r)&=e^{\int{-r\,\mathrm{d}r}}=e^{-\frac{r^2}{2}}\\
+\int{\frac{\mathrm{d}}{\mathrm{d}t}\left(\theta e^{-\frac{r^2}{2}}\right)\,\mathrm{d}t}&=\int{r e^{-\frac{r^2}{2}}\,\mathrm{d}r}\\
+\theta e^{-\frac{r^2}{2}}&=-e^{-\frac{r^2}{2}}+C\\
+\theta&=-1+Ce^{\frac{r^2}{2}}
+\end{align*}
+
+
+
+\end{document}

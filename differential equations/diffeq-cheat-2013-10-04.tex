@@ -1,0 +1,67 @@
+\documentclass{article}
+\usepackage{fullpage}
+\usepackage{nopageno}
+\usepackage{amsmath}
+\allowdisplaybreaks
+\begin{document}
+\section*{separable}
+\begin{align*}
+g(y)\,\mathrm{d}y&=f(t)\,\mathrm{d}t & g(y)y'&=f(t) & \int{g(y)\,\mathrm{d}y}&=\int{f(t)\,\mathrm{d}t}
+\end{align*}
+\section*{first order linear}
+\begin{align*}
+\frac{\mathrm{d}y}{\mathrm{d}t}+p(t)y&=q(t) & \mu(t)&=e^{\int{p(t)\,\mathrm{d}t}}\\
+\frac{\mathrm{d}}{\mathrm{d}t}\left(\mu(t)y\right)&=\mu(t)\frac{\mathrm{d}y}{\mathrm{d}t}+p(t)\mu(t)y & \mu(t)y&=\int{\mu(t)q(t)\,\mathrm{d}t}
+\end{align*}
+\section*{exact}
+\begin{align*}
+M(t,y)\,\mathrm{d}t+N(t,y)\,\mathrm{d}y&=0 & \frac{\partial M}{\partial y}&=\frac{\partial N}{\partial t}\\
+\int{M(t,y)\,\mathrm{d}t}+\phi(y)&=f(t,y) & \phi'(y)&=N(x,y)-\frac{\mathrm{d}}{\mathrm{d}y}\left(\int{M(t,y)\,\mathrm{d}t}\right)\\
+\int{M(t,y)\,\mathrm{d}t}+\int{\phi'(y)\,\mathrm{d}y}&=f(t,y)
+\end{align*}
+Solution is $f(t,y)=C$
+\section*{bernoulli}
+\begin{align*}
+\frac{\mathrm{d}y}{\mathrm{d}t}+p(t)y&=q(t)y^n & \frac{1}{y^n}\frac{\mathrm{d}y}{\mathrm{d}t}+p(t)y^{1-n}&=q(t)\\
+w&=y^{1-n} & \frac{\mathrm{d}w}{\mathrm{d}t}&=(1-n)\frac{1}{y^{n}}\frac{\mathrm{d}y}{\mathrm{d}t}\\
+\frac{\mathrm{d}w}{\mathrm{d}t}+(1-n)p(t)w&=(1-n)q(t)
+\end{align*}
+Solve as first order linear, then back substitute
+\section*{homogeneous}
+\begin{align*}
+M(t,y)\,\mathrm{d}t+N(t,y)\,\mathrm{d}y&=0 & M(xt,xy)+N(xt,xy)&=x^n\left(M(t,y)+N(t,y)\right)\\
+\mathrm{d}y&=w\,\mathrm{d}t+t\,\mathrm{d}w &\mathrm{d}t&=w\,\mathrm{d}y+y\,\mathrm{d}w
+\end{align*}
+Substitute with $y=wt$ if $N(t,y)$ is simpler and $t=wy$ if $M(t,y)$ is simpler. Solve as a separable equation
+\section*{population}
+\begin{align*}
+\mathrm{growth}\,\mathrm{and}&\,\mathrm{decay}&\mathrm{Logistical}&\,{}\mathrm{equation}\\
+y(t)&=y_0 e^{kt}&y&=\frac{ry_0}{ay_0+(r-ay_0)e^{-rt}}
+\end{align*}
+\section*{Newton's law of cooling}
+\[T(t)=\left(T_0-T_s\right)e^{kt}+T_s\]
+\section*{Newton's laws of motion}
+Acceleration is $a=g=9.8\mathrm{m/sec^2}=32\mathrm{ft/sec^2}$ and position is $s$ and velocity is $v$.
+\begin{align*}
+	v&=v_0+at\\
+	s&=v_0t+\frac{1}{2}at^2\\
+	v^2&={v_0}^2+2as
+\end{align*}
+\section*{trigonometric identities}
+\begin{align*}
+	\sin x&=\frac{1}{\csc x} & \sin(-x)&=-\sin x & \cos(-x)&=\cos x\\
+	\sin(u\pm v)&=\sin u \cos v \pm \cos u \sin v & \cos(u \pm v)&=\cos u \cos v \mp \sin u \sin v & \sin 2u&=2\sin u \cos u\\
+	\cos 2u&=\cos^2 u - \sin^2 u & \cos 2u&=2\cos^2 u - 1 & \cos 2u&=1 - 2\sin^2 u\\
+	\sin^2 u&=\frac{1-\cos 2u}{2} & \cos^2 u&=\frac{1+\cos 2u}{2}
+\end{align*}
+\begin{align*}
+	\sin u \pm \sin(v)&=2\sin\left(\frac{u\pm v}{2}\right)\cos\left(\frac{u \mp v}{2}\right) & \cos u + \cos v&=2\cos\left(\frac{u + v}{2}\right)\cos\left(\frac{u - v}{2}\right)\\
+	\cos u - \cos v&=-2\sin\left(\frac{u + v}{2}\right)\sin\left(\frac{u - v}{2}\right) & \sin u\sin v&=\frac{1}{2}[\cos(u-v)-\cos(u+v)]\\
+	\cos u\cos v&=\frac{1}{2}[\cos(u-v)+\cos(u+v)] & \sin u\cos v&=\frac{1}{2}[\sin(u+v)+\sin(u-v)]
+\end{align*}
+\section*{integration rules}
+\begin{align*}
+	\int{e^{au}\sin(bu)\,\mathrm{d}u}&=e^{au}\frac{a\sin(bu)-b\cos(bu)}{b^2+a^2} &
+	\int{e^{au}\cos(bu)\,\mathrm{d}u}&=e^{au}\frac{b\sin(bu)+a\cos(bu)}{b^2+a^2}
+\end{align*}
+\end{document}

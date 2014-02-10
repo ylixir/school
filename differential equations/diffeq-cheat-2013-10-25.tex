@@ -1,0 +1,106 @@
+\documentclass{article}
+\usepackage{fullpage}
+\usepackage{nopageno}
+\usepackage{amsmath}
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+\newcommand{\degree}{\ensuremath{^\circ}}
+
+\begin{document}
+
+\section*{first order linear}
+\begin{align*}
+\frac{\mathrm{d}y}{\mathrm{d}t}+p(t)y&=q(t) & \mu(t)&=e^{\int{p(t)\,\mathrm{d}t}}\\
+\frac{\mathrm{d}}{\mathrm{d}t}\left(\mu(t)y\right)&=\mu(t)\frac{\mathrm{d}y}{\mathrm{d}t}+p(t)\mu(t)y & \mu(t)y&=\int{\mu(t)q(t)\,\mathrm{d}t}
+\end{align*}
+
+\section*{exact}
+\begin{align*}
+M(t,y)\,\mathrm{d}t+N(t,y)\,\mathrm{d}y&=0 & \frac{\partial M}{\partial y}&=\frac{\partial N}{\partial t}\\
+\int{M(t,y)\,\mathrm{d}t}+\phi(y)&=f(t,y) & \phi'(y)&=N(x,y)-\frac{\mathrm{d}}{\mathrm{d}y}\left(\int{M(t,y)\,\mathrm{d}t}\right)\\
+\int{M(t,y)\,\mathrm{d}t}+\int{\phi'(y)\,\mathrm{d}y}&=f(t,y)
+\end{align*}
+Solution is $f(t,y)=C$
+
+\section*{bernoulli}
+\begin{align*}
+\frac{\mathrm{d}y}{\mathrm{d}t}+p(t)y&=q(t)y^n & \frac{1}{y^n}\frac{\mathrm{d}y}{\mathrm{d}t}+p(t)y^{1-n}&=q(t)\\
+w&=y^{1-n} & \frac{\mathrm{d}w}{\mathrm{d}t}&=(1-n)\frac{1}{y^{n}}\frac{\mathrm{d}y}{\mathrm{d}t}\\
+\frac{\mathrm{d}w}{\mathrm{d}t}+(1-n)p(t)w&=(1-n)q(t)
+\end{align*}
+Solve as first order linear, then back substitute
+
+\section*{homogeneous}
+\begin{align*}
+M(t,y)\,\mathrm{d}t+N(t,y)\,\mathrm{d}y&=0 & M(xt,xy)+N(xt,xy)&=x^n\left(M(t,y)+N(t,y)\right)\\
+\mathrm{d}y&=w\,\mathrm{d}t+t\,\mathrm{d}w &\mathrm{d}t&=w\,\mathrm{d}y+y\,\mathrm{d}w
+\end{align*}
+Substitute with $y=wt$ if $N(t,y)$ is simpler and $t=wy$ if $M(t,y)$ is simpler. Solve as a separable equation
+
+\section*{trigonometric identities}
+\begin{align*}
+	\sin x&=\frac{1}{\csc x} & \sin(-x)&=-\sin x & \cos(-x)&=\cos x\\
+	\sin(u\pm v)&=\sin u \cos v \pm \cos u \sin v & \cos(u \pm v)&=\cos u \cos v \mp \sin u \sin v & \sin 2u&=2\sin u \cos u\\
+	\cos 2u&=\cos^2 u - \sin^2 u & \cos 2u&=2\cos^2 u - 1 & \cos 2u&=1 - 2\sin^2 u\\
+	\sin^2 u&=\frac{1-\cos 2u}{2} & \cos^2 u&=\frac{1+\cos 2u}{2}
+\end{align*}
+\begin{align*}
+	\sin u \pm \sin(v)&=2\sin\left(\frac{u\pm v}{2}\right)\cos\left(\frac{u \mp v}{2}\right) & \cos u + \cos v&=2\cos\left(\frac{u + v}{2}\right)\cos\left(\frac{u - v}{2}\right)\\
+	\cos u - \cos v&=-2\sin\left(\frac{u + v}{2}\right)\sin\left(\frac{u - v}{2}\right) & \sin u\sin v&=\frac{1}{2}[\cos(u-v)-\cos(u+v)]\\
+	\cos u\cos v&=\frac{1}{2}[\cos(u-v)+\cos(u+v)] & \sin u\cos v&=\frac{1}{2}[\sin(u+v)+\sin(u-v)]
+\end{align*}
+
+\section*{Wronskian}
+\begin{align*}
+	W(y_1,y_2)&=\abs{
+	\begin{aligned}
+	y_1&&y_2\\
+	y_1'&&y_2'
+	\end{aligned}
+	}=y_1y_2'-y_2y_1'
+\end{align*}
+$y_1$ and $y_2$ are linearly independent if $W\neq0$
+
+\section*{reduction of order}
+given $y''+p(t)y'+q(t)y=0$ and a known solution $y_1$ then full solution is given by
+\begin{align*}
+	y_s&=c_1y_1+c_2y_2=c_1y_1+c_2v(t)y_1 & v(t)&=\int{\frac{1}{{y_1}^2}e^{-\int{p(t)\,\mathrm{d}t}}\,\mathrm{d}t}
+\end{align*}
+
+\section*{second order linear homogeneous with constant coefficient}
+\begin{align*}
+	ay''+by'+cy=0&\rightarrow ar^2+br+c=0 &
+	r&=\frac{-b\pm\sqrt{b^2-4ac}}{2a} \\
+	y_s&=
+	\begin{cases}
+		c_1e^{r_1t}+c_2e^{r_2t} & r_1\neq r_2\\
+		(c_1+c_2t)e^{rt} & r_1=r_2\\
+		e^{\alpha t}\left[c_1\cos(\beta t)+c_2\sin(\beta t)\right] & r=\alpha\pm\beta i
+	\end{cases}
+\end{align*}
+
+\section*{method of undetermined coefficients}
+solution of $ay''+by'+cy=f(t)$ is $y_s=y_h+y_p$ where $y_h$ is solution to corresponding homogeneous equation
+\begin{align*}
+	f(t)&=t^me^{\alpha t} &&\text{or}& f(t)&=t^me^{\alpha t}\sin \beta t  \quad\text{or}\quad f(t)=t^me^{\alpha t}\cos \beta t\\
+	S&=\{e^{\alpha t},e^{\alpha t}t,e^{\alpha t}t^2,...,e^{\alpha t}t^m\} &&&
+	S&=\left\{
+	\begin{aligned}
+		&e^{\alpha t}\sin\beta t,e^{\alpha t}\cos\beta t,
+		te^{\alpha t}\sin\beta t,te^{\alpha t}\cos\beta t,\\
+		&t^2e^{\alpha t}\sin\beta t, t^2e^{\alpha t}\cos\beta t,...,
+		t^me^{\alpha t}\sin\beta t,t^me^{\alpha t}\cos\beta t
+	\end{aligned}
+	\right\}
+\end{align*}
+if $S_h\cap S_p\neq\emptyset$ then $S_p\rightarrow t^nS_p$. This will make $y_h$ and $y_p$ linearly independant. If $f(t)$ has more than one term then $S_p$ is the union of the solution set for each term. Throw out constant coefficients in $f(t)$
+\[y_p=a_1S_p[1]+a_2S_p[2]+...+a_mS_p[m]\]
+Solve for all $a_n$ and we are done.
+
+\section*{variation of parameters}
+$ay''+by'+cy=f(t)$ for any $f(t)$. More general than undetermined coefficients. $W$ refers to the Wronskian.
+\begin{align*}
+	y_s&=y_h+y_p & y_h&=c_1y_1+c_2y_2 & y_p&=u_1y_1+u_2y_2 & {u_1}'&=-\frac{y_2f}{W} & {u_2}'&=\frac{y_1f}{W}
+\end{align*}
+\end{document}
