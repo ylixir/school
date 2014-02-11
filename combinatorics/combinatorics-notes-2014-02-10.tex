@@ -1,0 +1,41 @@
+\documentclass{article}
+\usepackage{fullpage}
+\usepackage{nopageno} 
+\usepackage{amsmath}
+\usepackage{amssymb}
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+
+\begin{document}
+\title{Notes}
+\date{February 10, 2014}
+\maketitle
+\section*{homework}
+for number 35 write down subsets in lexicographic order, and complements (this will be reverse lexicographic order)
+
+number 33 has a theorem in the book
+\section*{pigeonhole principle}
+this probably won't be on the test, but "it will blow my mind"
+
+so if we have 11 cups and 12 markers than distributing the markers we have at least one cup with 2 markers. or if you have $n$ holes and $n+1$ pigeons then you will have at least one hole with more than one pigeon.
+\subsection*{aside}
+we have 24 people in the class. what are the chances that anyone has the same birthday?
+\subsection*{in math mathyness}
+\subsubsection*{abstract pigeonhole principle}
+let $x$ and $y$ be finite sets and $f:x\Rightarrow y$. If $|x|>|y|$ then $f$ is not injective. If $|x|=|y|$ then $f$ is surjective if and only if $f$ is injective (that is bijective).
+\subsection*{example}
+given a sequence$a_1,\dots,a_m,a_i\in\mathbb{N}\quad \forall i$. $\exists$ consecutive $a_i$'s whose sum is divisible by $m$.
+\subsubsection*{proof}
+consider $a_1,a_1+a_2,a_1+a_2+a_3,\dots,a_1+a_2+\dots+a_m$. Suppose none of these are divisible by $m$. So the remainders of each sum when divided by m are in $\{1,\dots,m-1\}$. So $\exists k<l$ such that $a_1+\dots+a_k$ and $a_1+\dots+a_l$have the same remainder $r$. So $\exists b,c\in\mathbb{N}$ such that
+\begin{align*}
+  a_1+\dots+a_l&=cm+r\\
+  -(a_1+\dots+a_k&=bm+r)\\
+  a_{k+1}+\dots+a_l&=(c-b)m
+\end{align*}
+So $a_{k+1}+\dots+a_l$ is divisible by $m$.
+\subsubsection*{note}
+what if $a_i$'s$\in\mathbb{Z}$?
+\subsection*{back to the birthday problem}
+use the subtraction principle. The number of ways for 24 people to have a pair with the same birthday is the total number of birthday distributions minus the number of ways to have distinct birthdays. So $365^{24}$ is the total number of was for people to have birthdays. And $\frac{365!}{(365-24)!}$ is the number of ways to have distinct birthdays. And the number of ways for 24 people to have a pair of the same birthday is $365^{24}-\frac{365!}{(365-24)!}$.
+\end{document}
