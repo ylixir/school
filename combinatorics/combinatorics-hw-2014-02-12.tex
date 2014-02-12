@@ -135,12 +135,51 @@ Using theorem 4.4.2 we have:
 Consider the r-subsets of $\{1,2,\dots,n\}$ in lexicographic order.
 \subsection*{(a)}
 What are the first $(n-r+1)$ $r$-subsets?
+\begin{align*}
+  \{1,2,\dots, (r-1),&r\}\\
+  \{1,2,\dots, (r-1),&(r+1)\}\\
+  &\vdots\\
+  \{1,2,\dots, (r-1),&n\}
+\end{align*}
+The first $(n-r+1)$ subsets all contain $1,2,\dots,(r-1)$ and then one last element that is all the numbers $r,\dots,n$
 \subsection*{(b)}
 What are the last $(r+1)$ $r$-subsets?
+\begin{align*}
+  \{(n-r+1)(n-r+2)\dots(n-1)(n)\}\\
+  \{(n-r)(n-r+2)\dots(n-1)(n)\}\\
+  \{(n-r)(n-r+1)(n-r+3)\dots(n-1)(n)\}\\
+  \{(n-r)(n-r+1)\dots(n-1)\}
+\end{align*}
+Basically the last subset is the last $r$ elements. Each of the preceeding $r$ subsets decreases by one the element that corresponds with how far from the last subset we are.
 \section*{35}
-The \emph{complement} $\bar{A}$ of an $r$-subset $A$ of $\{1,2,\dots,n\}$ is the $((n-r)$-subset of $\{1,2,\dots,n\}$, consisting of all those elements that do not belong to $A$. Let $M=\binom{n}{r}$, the number of $r$-subsets and, at the same time, the number of $(n-r)$-subsets of $\{1,2,\dots,n\}$. Prove that, if
+The \emph{complement} $\bar{A}$ of an $r$-subset $A$ of $\{1,2,\dots,n\}$ is the $(n-r)$-subset of $\{1,2,\dots,n\}$, consisting of all those elements that do not belong to $A$. Let $M=\binom{n}{r}$, the number of $r$-subsets and, at the same time, the number of $(n-r)$-subsets of $\{1,2,\dots,n\}$. Prove that, if
 \[A_1,A_2,A_3,\dots,A_M\]
 are the $r$-subsets in lexicographic order, then
 \[\overline{A_M},\dots,\overline{A_3},\;\overline{A_2},\;\overline{A_1}\]
 are the $(n-r)$-subsets in lexicographic order.
+\subsection*{lemma}
+Reversing theorem 4.4.1 from the text we get the following lemma.
+
+Let $a_1a_2\dots a_r$ be an $r$-subset of $\{1,2,\dots,n\}$. The last $r$-subset in the lexicographic ordering is $(n-r+1)(n-r+2)\dots n$. Assume that $a_1a_2\dots a_r\neq 12\dots r$. Let $k$ be the largest integer such that $a_k>1$ and $a_k-1$ is different from each of $a_1,\dots,a_{k-1}$ then the $r$-subset that is the immediate predecessor of $a_1a_2\dots a_r$ in the lexicographic ordering is $a_1\dots a_{k-1}(a_k-1)(n-r+k+1)\dots n$
+\subsection*{Proof}
+First let's take care of the trivial cases.
+
+Let $n<r$. Then $A_1=A_M=\emptyset$ and $\overline{A_1}=\overline{A_M}=\{1,2,\dots,n\}$. Since there is only one subset we are done.
+
+Let $n=r$. Then $A_1=A_M=\{1,2,\dots,n\}$ and $\overline{A_1}=\overline{A_M}=\emptyset$. Since there is only one subset we are done.
+
+Let $n>r$
+
+Let's look at $A_1$. It is $\{1,2,\dots,r\}$. We also know that $A_M$ is $\{(n-r+1),(n-r+2),\dots,n\}$ so $\overline{A_M}$ is $\{1,2,\dots,(n-r)\}$ which is by definition the first $(n-r)$-subset in lexicographical order.
+
+Now we find that $A_{M-1}$ is $\{n-r,n-r+2,\dots,n\}$. The complement of this is $\{1,2,\dots,n-r-1,n-r+1\}$. And the successor to $\overline{A_M}$ is $\{1,2,\dots,n-r-1,n-r+1\}$ So we see that the hypothesis holds for $A_M$ and $A_{M-1}$
+
+Now lets take some random subset $A_i=a_1a_2\dots a_{n-r}$. Determine $k$ as in the lemma above. Then
+\[a_1a_2\dots a_r=a_1\dots a_{k-1}a_k(n-r+k+1)\dots n\]
+where \[a_k-1>a_{k-1}\]
+Thus the immediate predecessor of $a_1a_2\dots a_r$ is $A_{i-1}=a_1\dots a_{k-1}(a_k-1)(n-r+k+1)\dots n$
+
+Let us take $\overline{A_{i}}$. We know that $a_k(a_k+1)\dots (a_k+r-k-1)(a_k+r-k)\not\in\overline{A_i}$ and $a_1\dots a_{k-1}\not\in\overline{A_i}$ but that $a_k-1\in\overline{A_i}$. Further we know that $(a_k+r-k+1)\dots n\in\overline{A_i}$. Notice that if we ``shift'' this $r-k$ places we have $a_k+1\dots n-r+k$ and $|a_k+1\dots n-r+k|=|(a_k+r-k+1)\dots n|$. We don't really care anything about the part of $\overline{A_i}$ before $a_k$ so we'll just call it $b_1\dots b_p$. So the successor to $\overline{A_i}$ is $b_1\dots b_pa_k(a_k+1)(a_k+2)\dots (n-r+k)$.
+And if we examine $\overline{A_{i-1}}$ we will have the same $b_1\dots b_p$ that $\overline{A_i}$ has since we didn't change anything before $a_k$. And we have $(a_k-1)(n-r+k+1)\dots n\not\in\overline{A_{i-1}}$. Anything leftover must be in $\overline{A_{i-1}}$ so we have $\overline{A_{i-1}}=b_1\dots b_pa_k(a_k+1)\dots(n-r+k)$. Which is precisely the successor of $\overline{A_i}$ and so we have proven our result by induction.
+
 \end{document}
