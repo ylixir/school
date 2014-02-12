@@ -19,43 +19,128 @@ Generate the 6-tuples of 0s and 1s by using the base 2 arithmetic generating sch
 000000$\to\emptyset$ 000001$\to\{x_0\}$
 000010$\to\{x_1\}$ 000011$\to\{x_1,x_0\}$
 000100$\to\{x_2\}$ 000101$\to\{x_2,x_0\}$
-000110$\to\{x_2,x_1,x_0\}$ 000111$\to\{x_2,x_1,x_0\}$
-001000$\to\{x_3,x_0\}$ 001001$\to\{x_3,x_0\}$
-001010$\to\{x_3,x_1,x_0\}$ 001011$\to\{x_3,x_1,x_0\}$
-001100$\to\{x_3,x_2,x_0\}$ 001101$\to\{x_3,x_2,x_0\}$
-001110$\to\{x_3,x_2,x_1,x_0\}$ 001111$\to\{x_3,x_2,x_1,x_0\}$
-010000$\to\{x_4,x_0\}$ 010001$\to\{x_4,x_0\}$
-010010$\to\{x_4,x_1,x_0\}$ 010011$\to\{x_4,x_1,x_0\}$
-010100$\to\{x_4,x_2,x_0\}$ 010101$\to\{x_4,x_2,x_0\}$
-010110$\to\{x_4,x_2,x_1,x_0\}$ 010111$\to\{x_4,x_2,x_1,x_0\}$
-011000$\to\{x_4,x_3,x_0\}$ 011001$\to\{x_4,x_3,x_0\}$
-011010$\to\{x_4,x_3,x_1,x_0\}$ 011011$\to\{x_4,x_3,x_1,x_0\}$
-011100$\to\{x_4,x_3,x_2,x_0\}$ 011101$\to\{x_4,x_3,x_2,x_0\}$
-011110$\to\{x_4,x_3,x_2,x_1,x_0\}$ 011111$\to\{x_4,x_3,x_2,x_1,x_0\}$
-100000 100001$\to\{x_5,x_0\}$
-100010 100011$\to\{x_5,x_1,x_0\}$
-100100 100101$\to\{x_5,x_2,x_0\}$
-100110 100111$\to\{x_5,x_2,x_1,x_0\}$
-101000 101001$\to\{x_5,x_3,x_0\}$
-101010 101011$\to\{x_5,x_3,x_1,x_0\}$
-101100 101101$\to\{x_5,x_3,x_2,x_0\}$
-101110 101111$\to\{x_5,x_3,x_2,x_1,x_0\}$
-110000 110001$\to\{x_5,x_4,x_0\}$
-110010 110011$\to\{x_5,x_4,x_1,x_0\}$
-110100 110101$\to\{x_5,x_4,x_2,x_0\}$
-110110 110111$\to\{x_5,x_4,x_2x_1,x_0\}$
-111000 111001$\to\{x_5,x_4,x_3,x_0\}$
-111010 111011$\to\{x_5,x_4,x_3,x_1,x_0\}$
-111100 111101$\to\{x_5,x_4,x_3,x_2,x_0\}$
-111110 111111$\to\{x_5,x_4,x_3,x_2,x_1,x_0\}$
+000110$\to\{x_2,x_1\}$ 000111$\to\{x_2,x_1,x_0\}$
+001000$\to\{x_3\}$ 001001$\to\{x_3,x_0\}$
+001010$\to\{x_3,x_1\}$ 001011$\to\{x_3,x_1,x_0\}$
+001100$\to\{x_3,x_2\}$ 001101$\to\{x_3,x_2,x_0\}$
+001110$\to\{x_3,x_2,x_1\}$ 001111$\to\{x_3,x_2,x_1,x_0\}$
+010000$\to\{x_4\}$ 010001$\to\{x_4,x_0\}$
+010010$\to\{x_4,x_1\}$ 010011$\to\{x_4,x_1,x_0\}$
+010100$\to\{x_4,x_2\}$ 010101$\to\{x_4,x_2,x_0\}$
+010110$\to\{x_4,x_2,x_1\}$ 010111$\to\{x_4,x_2,x_1,x_0\}$
+011000$\to\{x_4,x_3\}$ 011001$\to\{x_4,x_3,x_0\}$
+011010$\to\{x_4,x_3,x_1\}$ 011011$\to\{x_4,x_3,x_1,x_0\}$
+011100$\to\{x_4,x_3,x_2\}$ 011101$\to\{x_4,x_3,x_2,x_0\}$
+011110$\to\{x_4,x_3,x_2,x_1\}$ 011111$\to\{x_4,x_3,x_2,x_1,x_0\}$
+100000$\to\{x_5\}$ 100001$\to\{x_5,x_0\}$
+100010$\to\{x_5,x_1\}$ 100011$\to\{x_5,x_1,x_0\}$
+100100$\to\{x_5,x_2\}$ 100101$\to\{x_5,x_2,x_0\}$
+100110$\to\{x_5,x_2,x_1\}$ 100111$\to\{x_5,x_2,x_1,x_0\}$
+101000$\to\{x_5,x_3\}$ 101001$\to\{x_5,x_3,x_0\}$
+101010$\to\{x_5,x_3,x_1\}$ 101011$\to\{x_5,x_3,x_1,x_0\}$
+101100$\to\{x_5,x_3,x_2\}$ 101101$\to\{x_5,x_3,x_2,x_0\}$
+101110$\to\{x_5,x_3,x_2,x_1\}$ 101111$\to\{x_5,x_3,x_2,x_1,x_0\}$
+110000$\to\{x_5,x_4\}$ 110001$\to\{x_5,x_4,x_0\}$
+110010$\to\{x_5,x_4,x_1\}$ 110011$\to\{x_5,x_4,x_1,x_0\}$
+110100$\to\{x_5,x_4,x_2\}$ 110101$\to\{x_5,x_4,x_2,x_0\}$
+110110$\to\{x_5,x_4,x_2x_1\}$ 110111$\to\{x_5,x_4,x_2x_1,x_0\}$
+111000$\to\{x_5,x_4,x_3\}$ 111001$\to\{x_5,x_4,x_3,x_0\}$
+111010$\to\{x_5,x_4,x_3,x_1\}$ 111011$\to\{x_5,x_4,x_3,x_1,x_0\}$
+111100$\to\{x_5,x_4,x_3,x_2\}$ 111101$\to\{x_5,x_4,x_3,x_2,x_0\}$
+111110$\to\{x_5,x_4,x_3,x_2,x_1\}$ 111111$\to\{x_5,x_4,x_3,x_2,x_1,x_0\}$
 \section*{16}
+For each of the subsets (a), (b), (c), and (d) in the preceding exercise, determine the subset that immediately \emph{precedes} it in the base 2 arithmetic generating scheme.
+\subsection*{(a)}
+$\{x_4,x_1,x_0\}=00010011\gets00010010$, or $\{x_4,x_1\}$.
+\subsection*{(b)}
+$\{x_7,x_5,x_3\}=10101000\gets10100111$, or $\{x_7,x_5,x_2,x_1,x_0\}$
+\subsection*{(c)}
+$\{x_7,x_5,x_4,x_3,x_2,x_1,x_0\}=10111111\gets10111110$, or $\{x_7,x_5,x_4,x_3,x_2,x_1\}$
+\subsection*{(d)}
+$\{x_0\}=00000001\gets00000000$, or $\emptyset$
 \section*{17}
+Which subset of $\{x_7,x_6,\dots,x_1,x_0\}$ is 150th on the list of subsets of $S$ when the base 2 arithmetic generating scheme is used? 200th? 250th? (As in Section 4.3, the places on the list are numbered beginning with 0.)
+\begin{align*}
+  2^0&=1&
+  2^1&=2&
+  2^2&=4&
+  2^3&=8&
+  2^4&=16&
+  2^5&=32&
+  2^6&=64&
+  2^7&=128
+\end{align*}
+\begin{align*}
+  150&=128+16+4+2\to\{x_7,x_4,x_2,x_1\}&
+  200&=128+64+8\to\{x_7,x_6,x_3\}\\
+  250&=128+64+32+16+8+2\to\{x_7,x_6,x_5,x_4,x_3,x_1\}
+\end{align*}
 \section*{22}
+Determine the reflected Gray code of order 6.
+
+000000 000001 000011 000010 000110 000111 000101 000100
+001100 001101 001111 001110 001010 001011 001001 001000
+011000 011001 011011 011010 011110 011111 011101 011100
+010100 010101 010111 010110 010010 010011 010001 010000
+110000 110001 110011 110010 110110 110111 110101 110100
+111100 111101 111111 111110 111010 111011 111001 111000
+101000 101001 101011 101010 101110 101111 101101 101100
+100100 100101 100111 100110 100010 100011 100001 100000
+
 \section*{24}
+Determine the predecessors of each of the 9-tuples in Exercise 23 in the reflected Gray code of order 9.
+\subsection*{(a)}
+$010100110\gets010100010$
+\subsection*{(b)}
+$110001100\gets110000100$
+\subsection*{(c)}
+$111111111\gets111111110$
 \section*{27}
+Generate the 2-subsets of $\{1,2,3,4,5,6\}$ in lexicographic order by using the algorithm described in Section 4.4.
+\[\begin{array}{ccc}
+  12&23&35\\
+  13&24&36\\
+  14&25&45\\
+  15&26&46\\
+  16&34&56\\
+\end{array}\]
 \section*{29}
+Determine the 7-subset of $\{1,2,\dots,15\}$ that immediately follows 1,2,4,6,8,14,15 in the lexicographic order. Then determine the 7-subset that immediately precedes 1,2,4,6,8,14,15.
+
+Since 14 and 15 are as high as we can go we increment the 8 and start counting from there.
+\[1,2,4,6,8,14,15\text{ is followed by }1,2,4,6,9,10,11\]
+
+Since we can't decrement the 15 to 14 because we already have a 14 we decrement the 14 to 13 and leave the 15 since it is the max and we want it to roll over on the next count up.
+\[1,2,4,6,8,14,15\text{is preceded by}1,2,4,6,8,13,15\]
+
 \section*{31}
+Generate the 3-permutations of $\{1,2,3,4,5\}$
+\begin{align*}
+  \begin{array}{cccccccccc}
+    123&124&125&134&135&145&234&235&245&345\\
+    132&142&152&143&153&154&243&253&254&354\\
+    312&412&512&413&513&514&423&523&524&534\\
+    321&421&521&431&531&541&432&532&542&543\\
+    231&241&251&341&351&451&342&352&452&453\\
+    213&214&215&314&315&415&324&325&425&435\\
+  \end{array}
+\end{align*}
 \section*{33}
+In which position does the subset 2489 occur in the lexicographic order of the 4-subsets of $\{1,2,3,4,5,6,7,8,9\}$?
+
+Using theorem 4.4.2 we have:
+\[\binom{9}{4}-\binom{7}{4}-\binom{5}{3}-\binom{1}{2}-\binom{0}{1}=\frac{9!}{4!(9-4)!}-\frac{7!}{4!(7-4)!}-\frac{5!}{4!(5-3)!}-0-0=81\]
+
 \section*{34}
+Consider the r-subsets of $\{1,2,\dots,n\}$ in lexicographic order.
+\subsection*{(a)}
+What are the first $(n-r+1)$ $r$-subsets?
+\subsection*{(b)}
+What are the last $(r+1)$ $r$-subsets?
 \section*{35}
+The \emph{complement} $\bar{A}$ of an $r$-subset $A$ of $\{1,2,\dots,n\}$ is the $((n-r)$-subset of $\{1,2,\dots,n\}$, consisting of all those elements that do not belong to $A$. Let $M=\binom{n}{r}$, the number of $r$-subsets and, at the same time, the number of $(n-r)$-subsets of $\{1,2,\dots,n\}$. Prove that, if
+\[A_1,A_2,A_3,\dots,A_M\]
+are the $r$-subsets in lexicographic order, then
+\[\overline{A_M},\dots,\overline{A_3},\;\overline{A_2},\;\overline{A_1}\]
+are the $(n-r)$-subsets in lexicographic order.
 \end{document}

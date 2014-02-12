@@ -1,0 +1,79 @@
+\documentclass{article}
+\usepackage{fullpage}
+\usepackage{nopageno}
+\usepackage{amsmath}
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+
+\begin{document}
+\title{Notes}
+\date{February 12, 2014}
+\maketitle
+\section*{lesson 10}
+\subsection*{outside of class}
+sine transform
+\begin{align*}
+  \left\{
+  \begin{aligned}
+    \mathcal{F}_s[f]&=F(\omega )=\frac{2}{\pi }\int_0^\infty{\sin(\omega x)f(x)\,\mathrm{d}x}\\
+    {\mathcal{F}_s}^{-1}[F]&=f(t)=\int_0^\infty{\sin \omega x)F(\omega )\,\mathrm{d}\omega }
+  \end{aligned}
+  \right.
+\end{align*}
+\begin{align*}
+  U(\omega ,t)&=\frac{2A}{\pi \omega }\left(1-e^{-\alpha^2\omega^2t}\right)&&\gets\text{sine transform of u(x,t)}\\
+  u(x,t)&=A \text{ \emph{erfc}}\left(\frac{x}{2\alpha \sqrt{t}}\right)&&\gets\text{look up in a table}
+\end{align*}
+complementary error function
+\begin{align*}
+  PDE&&u_t&=\alpha ^2u_{xx}&0&<x<\infty,&0&<t<\infty\\
+  BC&&u(0,t)&=A&&&0&<t<\infty\\
+  IC&&u(x,0)&=0&0&<x<\infty
+\end{align*}
+converted PDE in $x,t$ to ODE in $t$ (with $\omega $ as a parameter)
+\subsection*{now the outside of class bit}
+we want to find
+\begin{align*}
+  u(x,t)&=\int_0^\infty{\sin(\omega x)U(\omega ,t)\,\mathrm{d}\omega }\\
+  &=\int_0^\infty{\sin(\omega x)\frac{2A}{\pi \omega }\left(1-e^{-\alpha ^2t\omega ^2}\right)\,\mathrm{d}\omega }
+\end{align*}
+two pieces
+\begin{align*}
+  I_1(x)&-\int_0^\infty{\frac{\sin(\omega x)}{\omega }\,\mathrm{d}w}&I_2&=\int_0^\infty{\frac{\sin(\omega x)}{\omega }e^{-\alpha ^2t\omega ^2}\,\mathrm{d}\omega }\\
+  \intertext{note:}
+  \frac{\sin(\omega x}{\omega }e^{-\alpha ^2t\omega ^2}&\to x \text{ as } \omega \to0
+\end{align*}
+\begin{align*}
+  \int_0^\infty{\frac{\sin(\omega x}{\omega }\,\mathrm{d}x}&=-\frac{1}{x}\cos(\omega x)\frac{1}{\omega }\mid_1^\infty{}+\int_1^\infty{\frac{1}{x}\cos(\omega x)\frac{-\mathrm{d}\omega }{\omega ^2}}\\
+  \left\lvert\frac{\sin(\omega )}{\omega }\right\rvert\leq\frac{1}{\omega }&\qquad\left\lvert\frac{\cos(\omega x}{\omega ^2}\right\rvert\leq\frac{1}{\omega ^2}
+\end{align*}
+very slow convergence, and oscillating, difficult to do numerically. approaches from calc 2:
+\begin{align*}
+  1)&\text{ elementary antiderivatives - NO}\\
+  2)&\text{ series expansion - get answers that are infinite series}\\
+  3)&\text{ convert to a differential equation and solve that}\\
+  4)&\text{ contour integration (in complex analysis)}
+\end{align*}
+\begin{align*}
+  I_1(x)&=\int\limits_{\omega =0}^{\omega= \infty}{\frac{sin(\omega x}{\omega }\,\mathrm{d}\omega }=\int_0^\infty{\frac{\sin(\omega )}{\omega }\,\mathrm{d}\omega }\text{ constant}\\
+  \intertext{define}
+  f(s)&=\int_0^\infty{e^{s\omega }\frac{\sin(\omega }{\omega }\,\mathrm{d}\omega }\\
+  \lim\limits_{s\to 0}f(0)&=I_1(const)\\
+  f'(s)&=\frac{\mathrm{d}}{\mathrm{d}s}\int_0^infty{e^{-s\omega }\frac{\sin(\omega )}{\omega }\,\mathrm{d}\omega }\\
+  &=\int_0^\infty{\frac{\partial}{\partial s}\underbrace{\overbrace{\left(e^{-s\omega }\frac{\sin(\omega )}{\omega }\right)}}\,\mathrm{d}\omega }\\
+  &=-\int_0^\infty{e^{-s\omega }\sin(\omega )\,\mathrm{d}\omega }\text{ can be done by integrating by parts}\\
+  &=-\frac{1}{1+s^2}\\
+  f(s)&=-\arctan(s)+C\\
+  \lim\limits_{s\to\infty}f(s)&=0\\
+  0&=c-\lim\limits_{s\to\infty}\arctan(s)\\
+  c&=\frac{\pi }{2}
+\end{align*}
+back to the second piece
+\begin{align*}
+  \omega &=\frac{s}{\alpha \sqrt{t}}\\
+  I_2&={\int\limits_{s=0}}^\infty{\frac{\sin\left(\frac{sx}{\alpha \sqrt{t}}\right)}{s}e^{-s^2}\,\mathrm{d}s}\\
+  \beta &=\frac{x}{\alpha \sqrt{t}}>0\\
+  I_2(\beta )&=\int_0^\infty{\frac{\sin(\beta s}{s}e^{-s^2}\,\mathrm{d}s}
+\end{align*}
+\end{document}
