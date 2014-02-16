@@ -1,0 +1,59 @@
+\documentclass{article}
+\usepackage{fullpage}
+\usepackage{nopageno}
+\usepackage{amsmath}
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+\newcommand{\degree}{\ensuremath{^\circ}}
+
+\begin{document}
+Jon Allen
+
+HW 10
+
+Lesson 7 problem 1. Find general series solution for PDE and BC's.
+\begin{align*}
+  PDE&&&\quad u_t=u_{xx}&0&<x<1&0&<t<\infty\\
+  BCs&&&\left\{
+  \begin{aligned}
+    &u(0,t)=0\\
+    &u_x(1,t)=0
+  \end{aligned}
+  \right.&&&0&<t<\infty\\
+  IC&&&\quad u(x,0)=x&0&\leq x\leq 1
+\end{align*}
+\begin{align*}
+  u(x,t)&=X(x)T(t)&u_t=u_{xx}&=XT'=X''T\\
+  \frac{XT'}{XT}&=\frac{X''T}{XT}&\frac{T'}{T}=\frac{X''}{X}&=\mu \\
+  T'-\mu T&=0&X''-\mu X&=0
+\end{align*}
+First $\mu $ is not positive as that would cause $T(t)$ to grow to infinity and therefore $u$ to grow to infinity which doesn't make physical sense. Let's see if $\mu =0$
+\begin{align*}
+  X'&=0&X(x)&=A+Bx\\
+  u(0,t)&=X(0)T(t)&u_x(1,t)&=X'(1)T(t)\\
+  &=AT(t)=0&&=BT(t)=0\\
+  A&=0&B&=0
+\end{align*}
+Since this gives only the trivial solution ($u(x,t)=0$) which is not interesting, we will just assume $\mu<0$.
+\begin{align*}
+  \mu&=-\lambda ^2\\
+  T'+\lambda ^2T&=0&
+  X''+\lambda ^2X&=0\\
+  \frac{\mathrm{d}}{\mathrm{d}t}\left(e^{\int{\lambda ^2\,\mathrm{d}t}}T\right)&
+  =e^{\int{\lambda ^2\,\mathrm{d}t}}T'+\lambda ^2e^{\int{\lambda ^2\,\mathrm{d}t}}T&
+  r^2+0r+\lambda ^2&=0\\
+  e^{\int{\lambda ^2\,\mathrm{d}t}}T&
+  =\int{e^{\int{\lambda ^2\,\mathrm{d}t}}\cdot 0\,\mathrm{d}t}=A&
+  \frac{-0\pm\sqrt{0^2-4\lambda ^2}}{2}&=r\\
+  T&=Ae^{-\lambda ^2t}&0\pm\lambda i&=r\\
+  &&B\cos(\lambda x)+C\sin(\lambda x)&=X\\
+  u(x,t)=XT&=e^{-\lambda ^2t}\left[A\sin(\lambda x)+B\cos(\lambda x)\right]&\lambda e^{-\lambda ^2t}\left[A\cos(\lambda x)-B\sin(\lambda x)\right]&=u_x\\
+  u(0,t)&=e^{-\lambda ^2t}B=0
+  &\lambda e^{-\lambda ^2t}\left[A\cos(\lambda)-B\sin(\lambda)\right]&=u_x(1,t)=0\\
+  B&=0&A\lambda e^{-\lambda ^2t}\cos(\lambda)&=0\\
+  &&\cos(\lambda) &=0\\
+  \lambda_n&=\frac{2n-1}{2}\pi &
+  u(x,t)=\sum\limits_{n=1}^\infty&{a_ne^{-{\lambda_n}^2t}\sin(\lambda_n x)}
+\end{align*}
+\end{document}

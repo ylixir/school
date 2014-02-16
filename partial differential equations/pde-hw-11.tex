@@ -1,0 +1,49 @@
+\documentclass{article}
+\usepackage{fullpage}
+\usepackage{nopageno}
+\usepackage{amsmath}
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+\newcommand{\degree}{\ensuremath{^\circ}}
+
+\begin{document}
+Jon Allen
+
+HW 11
+
+Lesson 7 problem 1. Solve the IC. Explain how orthogonality is used.
+\begin{align*}
+  PDE&&&\quad u_t=u_{xx}&0&<x<1&0&<t<\infty\\
+  BCs&&&\left\{
+  \begin{aligned}
+    &u(0,t)=0\\
+    &u_x(1,t)=0
+  \end{aligned}
+  \right.&&&0&<t<\infty\\
+  IC&&&\quad u(x,0)=x&0&\leq x\leq 1
+\end{align*}
+\begin{align*}
+  \lambda_n&=\frac{2n-1}{2}\pi &
+  u(x,t)&=\sum\limits_{n=1}^\infty{a_ne^{-{\lambda_n}^2t}\sin(\lambda_n x)}\\
+  u(x,0)=x&=\sum\limits_{n=1}^\infty{a_n\sin(\lambda_n x)}&
+  \int_0^1{\xi\sin(\lambda_m\xi)\,\mathrm{d}\xi}&=\sum\limits_{n=1}^\infty{a_n\int_0^1{\sin(\lambda_n\xi)\sin(\lambda_m\xi)\,\mathrm{d}\xi}}
+\end{align*}
+Because $\left\{\sin(\lambda_ix)\right\}_{0\leq i\leq n}$ are orthogonal functions we can convert the above equation into the following.
+\begin{align*}
+  \int_0^1{\xi\sin(\lambda_m\xi)\,\mathrm{d}\xi}&=a_m\int_0^1{\sin(\lambda_m\xi)^2\,\mathrm{d}\xi}\\
+  &=a_m\cdot-\frac{\sin(2\lambda_m)-2\lambda_m}{4\lambda_m}\\
+  &=a_m\frac{\lambda_m-\sin(\lambda_m)\cos(\lambda_m)}{2\lambda_m}\\
+  \intertext{Recall that we discovered in HW 10 that $\cos(\lambda)=0$}
+  &=\frac{a_m}{2}\\
+  a_n&=2\int_0^1{\xi\sin(\lambda_n\xi)\,\mathrm{d}\xi}\\
+  &=2\left[\frac{\sin(\lambda_nx)-\lambda_nx\cos(\lambda_nx)}{{\lambda_n}^2}\right]_0^1\\
+  &=2\left[\frac{\sin(\lambda_n1)-\lambda_n1\cos(\lambda_n1)}{{\lambda_n}^2}-\frac{\sin(\lambda_n0)-\lambda_n0\cos(\lambda_n0)}{{\lambda_n}^2}\right]\\
+  &=2\left[\frac{\sin(\lambda_n)}{{\lambda_n}^2}-\frac{0}{{\lambda_n}^2}\right]=2\left[\frac{\sin(\lambda_n)}{{\lambda_n}^2}\right]\\
+  &=2\left[\frac{\sin\left(\frac{2n-1}{2}\pi\right)}{\left(\frac{2n-1}{2}\pi\right)^2}\right]\\
+  &=\frac{8\sin\left(\frac{2n-1}{2}\pi\right)}{(2n-1)^2\pi^2}\\
+  &=-1^{\left(n+1\right)}\frac{8}{(2n-1)^2\pi^2}\\
+  u(x,t)&=\sum\limits_{n=1}^\infty{-1^{\left(n+1\right)}\frac{8}{(2n-1)^2\pi^2}e^{-{\lambda_n}^2t}\sin(\lambda_n x)}\\
+  &=\sum\limits_{n=1}^\infty{-1^{\left(n+1\right)}\frac{8}{(2n-1)^2\pi^2}e^{-\left(\frac{2n-1}{2}\pi\right)^2t}\sin\left[\left(\frac{2n-1}{2}\pi\right) x\right]}\\
+\end{align*}
+\end{document}

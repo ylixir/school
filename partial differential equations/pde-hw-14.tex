@@ -1,0 +1,41 @@
+\documentclass{article}
+\usepackage{fullpage}
+\usepackage{nopageno}
+\usepackage{amsmath}
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+\newcommand{\degree}{\ensuremath{^\circ}}
+
+\begin{document}
+Jon Allen
+
+HW 14
+
+Lesson 9 problem 4. Find general series solution for PDE and BC's.
+\begin{align*}
+  PDE&&&\quad u_t=u_{xx}+\sin(\pi x)&0&<x<1&0&<t<\infty\\
+  BCs&&&\left\{
+  \begin{aligned}
+    &u(0,t)=0\\
+    &u(1,t)=0
+  \end{aligned}
+  \right.&&&0&<t<\infty\\
+  IC&&&\quad u(x,0)=0&0&\leq x\leq 1
+\end{align*}
+We need to find the coefficients $T_n(t)$ in
+\begin{align*}
+  u(x,t)&=\sum\limits_{n=1}^\infty{T_n(t)\sin(n\pi x)}
+\end{align*}
+Substituting into the original problem we have
+\begin{align*}
+  \sum\limits_{n=1}^\infty{T_n(t)\sin(n\pi x)}&=-\sum\limits_{n=1}^\infty{(n\pi)^2T_n(t)\sin(n\pi x)}+\sum\limits_{n=1}^\infty{f_n(t)\sin(n\pi x)}\\
+  \sum\limits_{n=1}^\infty{T_n(t)\sin 0}&=0\\
+  \sum\limits_{n=1}^\infty{T_n(t)\sin(n\pi)}&=0\\
+  \sum\limits_{n=1}^\infty{T_n(0)\sin(n\pi)}&=0\\
+\end{align*}
+We can rewrite the pde to get
+\begin{align*}
+  \sum\limits_{n=1}^\infty{T_n(t)\sin(n\pi x)+(n\pi)^2T_n(t)\sin(n\pi x)-f_n(t)\sin(n\pi x)}&=0\\
+\end{align*}
+\end{document}

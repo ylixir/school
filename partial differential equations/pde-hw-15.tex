@@ -1,0 +1,47 @@
+\documentclass{article}
+\usepackage{fullpage}
+\usepackage{nopageno}
+\usepackage{amsmath}
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+\newcommand{\degree}{\ensuremath{^\circ}}
+
+\begin{document}
+Jon Allen
+
+HW 15
+
+We substitute this expansion into the problem to get, notice we establish orthagonality with different values of $n$
+\begin{align*}
+  T_n'+(n\pi )^2T_n&=f_n(t)=2\int_0^1{\sin(\pi x)\sin(n\pi x)\,\mathrm{d}x}=\left\{
+  \begin{aligned}
+    1&&n&=1\\
+    0&&n&\neq 1
+  \end{aligned}\right.\\
+  T_n(0)&=2\int_0^1{0\,\mathrm{d}\xi}=0
+\end{align*}
+We really only have two cases to worry about
+\begin{align*}
+  (n&=1)&\left.
+  \begin{aligned}
+    T_1'+\pi^2T_1&=1\\
+    T_1(0)&=0
+  \end{aligned}
+  \right\}&\Rightarrow& e^{\int{\pi ^2\,\mathrm{d}t}}T_1&=\int{1\,\mathrm{d}t}\\
+  &&&&T_1&=xe^{-\pi^2t}+c_1\\
+  &&&&&=xe^{-\pi^2t}\\
+  (n&\geq2)&\left.
+  \begin{aligned}
+    T_2'+\pi^2T_2&=0\\
+    T_2(0)&=0
+  \end{aligned}
+  \right\}&\Rightarrow& e^{\int{\pi ^2\,\mathrm{d}t}}T_2&=\int{0\,\mathrm{d}t}\\
+  &&&&T_2&=c_1e^{-\pi^2t}\\
+  &&&&&=0
+\end{align*}
+So our solution looks like 
+\begin{align*}
+  u(x,t)&=xe^{-t\pi^2}\sin(\pi x)
+\end{align*}
+\end{document}

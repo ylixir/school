@@ -1,0 +1,42 @@
+\documentclass{article}
+\usepackage{fullpage}
+\usepackage{nopageno}
+\usepackage{amsmath}
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+
+\begin{document}
+\title{Notes}
+\date{February 14, 2014}
+\maketitle
+\section*{homework}
+\subsection*{hw 16}
+lesson 10 exercise 3. Find the cosine transform $U(\omega ,t)$ of the solution $u(x,t)$.
+\subsection*{hw 17}
+find the inverse transform $u(x,t)$. Hint use mathematica
+\subsection*{hw 18}
+plot the solutioon $u(x,t)$ for $t=0.01,0.1,1.0$ (take $\alpha ^2=1$)
+\section*{homework help}
+lesson 9. non-homogeneous pde. $u_t=\alpha u_{xx}+f(x,t)$ find fundamental solutions of the form $T(t)X(x)$ where $X(x)$ and $\lambda $ are eigendata for the homogeneous BC.
+
+He wrote $-\lambda ^2$ originally instead of $\lambda $.
+
+The separation constant occurs
+\begin{align*}
+  \frac{T'(t)}{\alpha ^2T(t)}=\frac{X''(x)}{X(x)}=\mu \text{ the separation constant}
+\end{align*}
+To find the separation constant study the hom. BC. It's okay to restrict to $\leq 0$
+
+\section*{question?}
+\begin{align*}
+  I&=\int_0^\infty{\frac{\sin(\omega x}{\omega }e^{-\alpha ^2\omega ^2t}\,\mathrm{d}\omega }=\int_0^\infty{\frac{\sin(\frac{x}{\alpha \sqrt{t}}s)}{s}e^{-s^2}\,\mathrm{d}s}\\
+  I(\beta)&=\int_0^\infty{\frac{\sin(\beta s}{s}e^{-s^2}\,\mathrm{d}s}\qquad\beta =\frac{x}{\alpha \sqrt{t}}
+\end{align*}
+Do we know any special values for $I(\beta)$?
+\begin{align*}
+  \beta &=0&I&=0\\
+  &&&=\int_0^\infty{\frac{\sin(\beta s)}{s}\,\mathrm{d}s}=\int_0^\infty{\frac{\sin(s)}{s}\,\mathrm{d}s}=\frac{\pi }{2}\\
+  &&&s\gets\frac{s}{\beta }
+\end{align*}
+\end{document}
