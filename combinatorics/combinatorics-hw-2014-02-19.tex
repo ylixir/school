@@ -1,18 +1,20 @@
 \documentclass{article}
-\usepackage{fullpage}
-\usepackage{nopageno} 
+%\usepackage{fullpage}
+%\usepackage{nopageno} 
+\usepackage[margin=1.5in]{geometry}
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage[normalem]{ulem}
+\usepackage{fancyhdr}
+%\renewcommand\headheight{12pt}
+\pagestyle{fancy}
+\lhead{February 19, 2014}
+\rhead{Jon Allen}
 \allowdisplaybreaks
 
 \newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
 
 \begin{document}
-Jon Allen
-
-February 19, 2014
-
 \section*{Chapter 3}
 \subsection*{4.}
 Show that if $n+1$ integers are chosen from the set $\{1,2,\dots,2n\}$, then there are always two which differ by 1.
@@ -33,6 +35,28 @@ Use the pigeonhole principle to prove that the decimal expansion of a rational n
 \begin{align*}
   \frac{34,478}{99,900}&=0.345125125125\cdots.
 \end{align*}
+\subsection*{proof}
+We assume the $n>0$ because if $n=0$ we don't really have a rational number and if $n<0$ we can simply multiply by $\frac{-1}{-1}$ to make $n$ positive.
+
+Now we will start building our decimal representation of our number by dividing.
+\begin{align*}
+  m&=q_0n+r_0,\qquad 0\le r_0\le n-1
+\end{align*}
+Now we have an integer part $q_0$ and our fractional decimal part $\frac{r_0}{n}$. We expand our fractional decimal digits by multiplying successive remainders by 10 and dividing by $n$ repeatedly. So for our $\frac{1}{10^i}$ place we have:
+\begin{align*}
+  r_{i-1}\cdot10&=q_in+r_i
+\end{align*}
+This will give us $q_i$ which is the digit in the $\frac{1}{10^i}$th spot. Notice that because we are dividing by $n$ our remainders will always satisfy $0\le r_i\le n-1$. Now lets take some sequence of $n$ remainders from our fractional expansion. Say $r_i,\dots,r_{i+n-1}$. Because we have $n$ remainders which can have $n-1$ possible values, we know from the pigeon hole principle that at least two of these remainders are the same. Lets pick $r_j$ from the sequence $r_i,\dots,r_{i+n-1}$ such that $r_j=r_i$. Applying the division algorithm to obtain:
+\begin{align*}
+  r_{i}\cdot10&=q_{i+1}n+r_{i+1}=r_{j}\cdot10\\
+  r_{j}\cdot10&=q_{j+1}n+r_{j+1}=r_{i}\cdot10
+\end{align*}
+We know that because the remainders and quotients of division are unique $q_{i+1}=q_{j+1}$ and $r_{i+1}=r_{j+1}$. Given this we can say from induction that for any integer $1\le k$
+\begin{align*}
+  q_{i+k}&=q_{j+k}\\
+  r_{i+k}&=r_{j+k}
+\end{align*}
+And in fact $q_{i+k}=q_{j+k}=q_{i+2(j-i)+k}=q_{i+3(j-i)+k}=q_{i+4(j-i)+k}=\dots$ and so we see that fractional part of the decimal representation of the ratio will at some point begin to repeat.$\Box$
 \subsection*{12.}
 Show by example that the conclusion of the Chinese rmainder theorem (Application 6) need not hold when $m$ and $n$ are not relatively prime.
 

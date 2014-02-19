@@ -1,0 +1,66 @@
+\documentclass{article}
+\usepackage{fullpage}
+\usepackage{nopageno}
+\usepackage{amsmath}
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+
+\begin{document}
+\title{Notes}
+\date{February 19, 2014}
+\maketitle
+
+\section*{leftover}
+sine integral transform (evaluating integrals explicitly)
+
+find:
+\begin{align*}
+  I&=\int_0^\infty{\frac{\sin(x\omega }{\omega }e^{-\alpha ^2t\omega ^2}\,\mathrm{d}\omega },& &&x&>0\\
+  \intertext{convert to}
+  I=I(\beta )&=\int_0^\infty{\frac{\sin(\beta s}{s}e^{-s^2}\,\mathrm{d}s}&&&\text{write }\beta =\frac{x}{\alpha \sqrt{t}}&>0\\
+  \intertext{note}
+  I(\beta )&=\int_0^\infty{\frac{\sin(s)}{s}e^{-s^2/\beta ^2}\,\mathrm{d}s}
+  &\to&& 0 \text{ as }\beta &\to 0\\
+  &&\to&&\frac{\pi }{2}\text{ as }\beta &\to+\infty\\
+  \intertext{end note}
+  I'(\beta )&=\frac{\mathrm{d}}{\mathrm{d}\beta }\int_0^\infty{\cos(\beta s)e^{-s^2}\,\mathrm{d}s}&u&=e^{-s^2}&\mathrm{d}v&=\cos(\beta s)\mathrm{d}s\\
+  &&\mathrm{d}u&=-2se^{-s^2}\mathrm{d}s&v&=\frac{1}{\beta }\sin(\beta s)\\
+  I'(\beta )&=\left.e^{-s^2}\frac{1}{\beta }\sin(\beta s)\right\rvert_0^\infty-\int_0^\infty{\frac{\sin(\beta s)}{\beta }(-2se^{-s^2})\,\mathrm{d}s}\\
+  &=+\frac{2}{\beta }\int_0^\infty{\sin(\beta s)se^{-s^2}\,\mathrm{d}s}\\
+  &=\frac{2}{\beta }\left(-I''(\beta )\right)\\
+  I''(\beta )&=\int_0^\infty{\sin(\beta s)se^{-s^2}\,\mathrm{d}s}=-\frac{\beta }{2}I'(\beta )\\
+  I'(\beta )&=c_1e^{-\beta^2 /4}\\
+  I(\beta )&=c_2-c_1\int_\beta^\infty{e^{t^2/4}\,\mathrm{d}t}\text{ note the integration starting at }\beta \\
+  &=c_2-0\\
+  &=\frac{\pi }{2}-c_1\int_\beta^\infty{e^{-t^2/4}\,\mathrm{d}t}\\
+  I(0)&=\frac{\pi }{2}-c_1\int_0^\infty{e^{-t^2/4}\,\mathrm{d}t}\\
+  \intertext{fact $\int_0^\infty{e^{-x^2}\,\mathrm{d}x}=\frac{\sqrt{\pi }}{2}$}
+  \frac{1}{2}\int_0^\infty{e^{-t^4}\,\mathrm{d}t}&=\frac{\sqrt{\pi }}{2}\\
+  I(\beta )&=\frac{\pi }{2}-\frac{\sqrt{\pi }}{2}\int_x^\infty{e^{-x^2/4}\,\mathrm{d}x}\\
+  \intertext{note error function (erf)}
+  \text{erf}(x)&=\frac{2}{\sqrt{\pi }}\int_0^\infty{e^{-t^2}\,\mathrm{d}t}\to1 \text{ as }x\to\infty\\
+  \text{erfc}(x)&=1-\text{erf}(x)=\frac{2}{\sqrt{\pi }}\int_x^\infty{e^{-t^2}\,\mathrm{d}t}\\
+  \intertext{graph on page 79}
+  \intertext{end note}
+  x&=2t&\mathrm{d}x&=2\mathrm{d}t\\
+  0&=\frac{\pi }{2}-c_2\sqrt{\pi }&\frac{\sqrt{\pi }}{2}&=c_1\\
+  I(\beta )&=\frac{\pi }{2}-\frac{\sqrt{\pi} }{2}\int_{t/2\cdot2t?}^\infty{2e^{-t^2}\,\mathrm{d}t}\\
+  &=\frac{\pi }{2}-\frac{\sqrt{\pi }}{2}\cdot2\cdot\frac{\sqrt{\pi }}{2}\left(\frac{2}{\sqrt{\pi }}\int_{2t}^\infty{e^{-u^2}\,\mathrm{d}u}\right)\\
+  &=\frac{\pi }{2}-\frac{\pi }{2}\text{erfc}\left(\frac{\beta }{2}\right)\\
+  \intertext{solution on p79}
+  u(x,t)&=A\text{erfc}\left(\frac{x}{2\alpha \sqrt{t}}\right)
+\end{align*}
+\section*{last homework problem (hw09)}
+we can do this without paying attention to formula's at all because the idea is so simple.
+\begin{align*}
+  u_x(0,t)&=0=f(t)\\
+  u_x(1,t)+hu(1,t)&=1=g(t)
+\end{align*}
+introduce $u(x,t)=\omega (x,t)+\text{adjustment}$. This adjustment is chosen to obtain hetorgeneous boundary conditions ($f(t)=g(t)=0$). Take adjustment to be $+a(t)+bt)x$ because original boundary values (0 and 1) lie on a line.
+\begin{align*}
+  u&=\omega +a(t)+b(t)x\\
+  \omega_x(0,t)+b(t)+0&=f(t)\\
+  (\omega_x(1,t)+b(t))+h(\omega (1,t)+a(t)+b(t)\cdot1)&=g(t)
+\end{align*}
+\end{document}
