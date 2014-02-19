@@ -16,10 +16,18 @@ February 19, 2014
 \section*{Chapter 3}
 \subsection*{4.}
 Show that if $n+1$ integers are chosen from the set $\{1,2,\dots,2n\}$, then there are always two which differ by 1.
+\subsection*{proof}
+Since we want all the integers to differ by more than one, we can only pickevery other integer from $\{1,2,\dots,2n\}$. This gives us a maximum of $n$ integers. Since we are choosing $n+1$ integers, we know that at least two of them must differ by only one.$\Box$
 \subsection*{5.}
 Show that if $n+1$ distinct integers are chosen from the set $\{1,2,\dots,3n\}$, then there are always two which differ by at most 2.
+\subsection*{proof}
+Since we want all the integers to differ by more than two, we can only pickevery third integer from $\{1,2,\dots,3n\}$. This gives us a maximum of $n$ integers. Since we are choosing $n+1$ integers, we know that at least two of them must differ by two or less.$\Box$
 \subsection*{6.}
 Generalize Exercises 4 and 5.
+\subsection*{hypothesis}
+If $n+1$ distinct integers are chosen from the set $\{1,2,\dots,mn\}$ where $m$ is a positive integer then there are always two which differ by at most $m-1$.
+\subsection*{proof}
+We can select at most $n$ integers which have a difference of $m$ or more. Since we are selecting $n+1$ integers then we must have at least two which differ by $m-1$ or less.$\Box$
 \subsection*{8.}
 Use the pigeonhole principle to prove that the decimal expansion of a rational number $m/n$ eventually is repeating. For example,
 \begin{align*}
@@ -27,4 +35,16 @@ Use the pigeonhole principle to prove that the decimal expansion of a rational n
 \end{align*}
 \subsection*{12.}
 Show by example that the conclusion of the Chinese rmainder theorem (Application 6) need not hold when $m$ and $n$ are not relatively prime.
+
+Take 3 and 9 for $m$ and $n$. Take $2$ and $4$ for $a$ and $b$. Then we should be able to find an $x$ such that:
+\begin{align*}
+  x&=3p+2\\
+  x&=9q+4\\
+  3p+2&=9q+4\\
+  3p&=9q+2\\
+  3&\mid 3p\\
+  3&\nmid 9q+2\\
+  3p&\neq9q+2\\
+\end{align*}
+So we see that $x$ does not exist
 \end{document}
