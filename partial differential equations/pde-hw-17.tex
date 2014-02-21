@@ -1,0 +1,27 @@
+\documentclass{article}
+\usepackage{fullpage}
+\usepackage{nopageno}
+\usepackage{amsmath}
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+\newcommand{\degree}{\ensuremath{^\circ}}
+
+\begin{document}
+Jon Allen
+
+HW 17
+
+Find the inverse transform u(x,t). Hint use mathematica.
+\begin{align*}
+  U(t)&=\frac{2}{\pi }\frac{\sin(\omega )}{\omega }e^{-(\omega \alpha )^2t}\\
+  {\mathcal{F}_c}^{-1}[U]&=u(x,t)\\
+  &=\int_0^\infty{U(t)\cos(\omega x)\,\mathrm{d}\omega }\\
+  &=\frac{2}{\pi }\int_0^\infty{\frac{\sin(\omega )\cos(\omega x)}{\omega e^{(\omega \alpha )^2t}}\,\mathrm{d}\omega }\\
+  &=\frac{2}{\pi }\int_0^\infty{\frac{1}{\omega }e^{-\omega^2\alpha^2t}\sin(\omega )\cos(\omega x)\mathrm{d}\omega }
+\end{align*}
+Punching the above integral into Mathematica we get the following:
+\begin{align*}
+  u(x,t)&=\frac{1}{2}\left[\text{erf}\left(\frac{x+1}{2\sqrt{\alpha^2t}}\right)-\text{erf}\left(\frac{x-1}{2\sqrt{\alpha^2t}}\right)\right]
+\end{align*}
+\end{document}

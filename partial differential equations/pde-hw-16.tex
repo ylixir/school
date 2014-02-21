@@ -1,0 +1,60 @@
+\documentclass{article}
+\usepackage{fullpage}
+\usepackage{nopageno}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+\newcommand{\degree}{\ensuremath{^\circ}}
+
+\begin{document}
+Jon Allen
+
+HW 16
+
+Lesson 10 exercise 3. Find the cosine transform $U(\omega ,t)$ of the solution $u(x,t)$
+
+Solve by means of the sine \emph{or} cosine transform
+\begin{align*}
+  \text{PDE}&&u_t&=\alpha ^2u_{xx}&0<&x<\infty\\
+  \text{BC}&&u_x(0,t)&=0&0<&t<\infty\\
+  \text{IC}&&u(x,0)&=H(1-x)&0\le&x<\infty
+\end{align*}
+where $H(x)$ is the \emph{Heaviside function}:
+\begin{align*}
+  H(x)&=
+  \begin{cases}
+    0&0\le x<1\\
+    1&1\le x
+  \end{cases}
+\end{align*}
+\emph{Note:} The text is wrong. The above is actually the function $H(1-x)$ not the function $H(x)$.
+
+%In other words, the IC looks like this
+%\begin{center}
+%  \input{pde-hw-16-plot-01.tex}
+%\end{center}
+
+\begin{align*}
+  \mathcal{F}_c[u_t]&=\alpha ^2\mathcal{F}_c[u_{xx}]\\
+  \mathcal{F}_c[u_t]&=\frac{2}{\pi }\int_0^\infty{u_t\cos(\omega x)\,\mathrm{d}x}&
+  \mathcal{F}_c[u_{xx}]&=\frac{2}{\pi }\int_0^\infty{u_{xx}\cos(\omega x)\,\mathrm{d}x}\\
+  &=\frac{\partial}{\partial t}\left[\frac{2}{\pi }\int_0^\infty{u\cos(\omega x)\,\mathrm{d}x}\right]&
+  &=-\frac{2}{\pi }{u_x}'(0,t)-\omega^2\mathcal{F}_c[u]\\
+  &=\frac{\mathrm{d}}{\mathrm{d}t}\mathcal{F}_c[u]=\frac{\mathrm{d}}{\mathrm{d}t}U(t)&
+  &=-\omega^2U(t)\\
+  \frac{\mathrm{d}U}{\mathrm{d}t}&=\alpha^2\left[-\omega^2U(t)\right]&
+  \mathcal{F}_c[u(x,0)]&=\frac{2}{\pi }\int_0^\infty{H(1-x)\cos(\omega x)\,\mathrm{d}x}\\
+  U'+\omega^2\alpha^2U&=0
+  &&=\frac{2}{\pi }\int_0^1{\cos(\omega x)\,\mathrm{d}x}\\
+  \mu &=e^{\int{(\omega \alpha )^2\,\mathrm{d}t}}
+  &&=\frac{2}{\pi }\left[\frac{\sin(\omega x)}{\omega }\right]_0^1\\
+  &=e^{(\omega \alpha )^2t}
+  &U(0)&=\frac{2}{\pi }\frac{\sin(\omega )}{\omega }\\
+  e^{\omega^2 \alpha^2t}U&=\int{0\,\mathrm{d}t}&
+  U(t)&=c_1e^{-\omega ^2\alpha^2t}\\
+  U(0)&=c_1e^0=c_1=\frac{2}{\pi }\frac{\sin(\omega )}{\omega }&
+  U(t)&=\frac{2}{\pi }\frac{\sin(\omega )}{\omega }e^{-\omega ^2\alpha^2t}\\
+\end{align*}
+\end{document}
