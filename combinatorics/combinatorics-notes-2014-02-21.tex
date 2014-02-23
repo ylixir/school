@@ -1,0 +1,88 @@
+\documentclass{article}
+\usepackage{fullpage}
+\usepackage{nopageno} 
+\usepackage{amsmath}
+\usepackage{amssymb}
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+
+\begin{document}
+\title{Notes}
+\date{February 21, 2014}
+\maketitle
+
+last time, we derived Pascal's equation:
+\begin{align*}
+  \binom{n}{k}&=\binom{n-1}{k-1}+\binom{n-1}{k}
+\end{align*}
+\section*{combinatorial proof:}
+
+$\binom{n}{k}$ counts the number of $k$-elt subsets $S$ of $[n]$. 2 cases.
+\subsubsection*{case 1}
+$n\in S$ then the remaining elts of $S$ are chosen from $[n-1]$ in $\binom{n-1}{k-1}$ ways
+\subsubsection*{case 2}
+$n\not\in S$ then $S$ is made up of $k$-elts from $[n-1]$. There are $\binom{n-1}{k}$ such subsets.
+
+Therefore $\binom{n}{k}=\binom{n-1}{k-1}+\binom{n-1}{k}$
+$\Box$
+
+\section*{fibanacci in pascal's triangle}
+neat
+\section*{combinatorial proof of binomial theorem}
+$\overbrace{(x+y)(x+y)\dots(x+y)}^{n\text{-factors}}=(x+1)^n$. Each term in the sum arises from picking $x$ or $y$ in each of the $n$ factors. The coefficients of $x^ky^{n-k}$ counts the number of ways to pick $k$ $x$'s. This is counted by $\binom{n}{k}$
+\section*{moving on}
+notice if you set $x-y=1$, you obtain:
+\begin{align*}
+  2^n&=\sum\limits_{k=0}^n{\binom{n}{k}}
+\end{align*}
+if you set $y=1$ you get
+\begin{align*}
+  (1+x)^n&=\sum\limits_{k=0}^n{\binom{n}{k}x^k}
+\end{align*}
+\subsection*{wksht 6}
+$x=3, y=1$ in binomial theorem.
+\begin{align*}
+  (3+1)^{10}&=\sum\limits_{k=0}^{10}{\binom{10}{k}3^k1^{10-k}}
+  &=4^{10}
+\end{align*}
+\subsection*{wksht 7}
+\subsection*{wksht 8}
+Vandermonde convolution:
+\begin{align*}
+  000&\dots0&m\text{ things}\\
+  000&\dots0&n\text{ things}\\
+\end{align*}
+choose k things
+\subsection*{wksht 9}
+calculus proof
+\begin{align*}
+  \sum\limits_{k=0}^n{k\binom{n}{k}x^{k-1}}&=\frac{\mathrm{d}}{\mathrm{d}x}\sum\limits_{k=0}^n{\binom{n}{k}x^k}\\
+  &=\frac{\mathrm{d}}{\mathrm{d}x}(1+n)^n\\
+  &=n(1+x)^{n-1}
+\end{align*}
+set $x=1$ $\sum\limits_{k=0}^n{k\binom{n}{k}}=n(1+1)^{n-1}=n2^{n-1}$
+\section*{question}
+What does this sum equal:
+$\binom{n}{0}^2+\binom{n}{1}^2+\binom{n}{2}^2+\dots+\binom{n}{n}^2$
+\begin{align*}
+  \sum\limits_{k=0}^n{\binom{n}{k}^2}&=\sum\limits_{k=0}^n{\binom{n}{k}\binom{n}{n-k}}\\
+  &=\binom{2n}{n}
+\end{align*}
+\section*{sidebar}
+\subsection*{question:}is there any meaning to something like $\binom{12/7}{3}$?
+\subsection*{answer}
+for and $n\in\mathbb{R},k\in\mathbb{Z}$ let $\binom{n}{k}=\begin{cases}\frac{\overbrace{n(n-1)(n-2)\dots(n-k+1)}^{k \text{ factors}}}{k!}&\text{if } k\ge1\\1&\text{if }k=0\\0&\text{if }k\le-1\end{cases}$
+\begin{align*}
+  \binom{12/7}{3}&=\frac{12/7(12/7-1)(12/7-2)}{3!}=\frac{-20}{7^3}
+\end{align*}
+Is it a good definition? yes. e.g. it is true that
+\begin{align*}
+  \binom{12/7}{3}&=\binom{5/7}{2}+\binom{5/7}{3}
+\end{align*}
+\section*{iterate pascal's identity:}
+\begin{align*}
+  \binom{n}{k}&=\binom{n-1}{k}+\binom{n-1}{k-1}\\
+  \binom{n}{k}&=\binom{n-1}{k}+\binom{n-1}{k-1}+\binom{n-2}{k-2}\\
+\end{align*}
+\end{document}
