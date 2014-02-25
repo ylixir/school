@@ -1,0 +1,82 @@
+\documentclass{article}
+\usepackage{fullpage}
+\usepackage{nopageno}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+
+\begin{document}
+\title{Notes}
+\date{February 24, 2014}
+\maketitle
+
+\section*{lesson 12}
+\subsection*{definition}
+Given $f(x)$ on $\mathbb{R}$.
+\begin{align*}
+  \mathcal{F}[f]&=F(\xi)=\frac{1}{\sqrt{2\pi }}\int_{-\infty}^{+\infty}{e^{-i\xi x}f(x)\,\mathrm{d}x}
+\end{align*}
+Inverse transform recovers $f(x)$ from $F(\xi)$:
+\begin{align*}
+  f(x)&=\frac{1}{\sqrt{2\pi }}\int_{-\infty}^{+\infty}{e^{+i\xi x}F(\xi)\,\mathrm{d}\xi}&\text{Deep Theorem}
+\end{align*}
+\subsection*{problem}
+page 93
+\begin{align*}
+  PDE&&u_t&=\alpha ^2u_{xx}&-\infty<&x<\infty&0<&t<\infty\\
+  IC&&u(x,0)&=\phi(x)&-\infty<&x<\infty
+\end{align*}
+apply $\mathcal{F}$ to pde. $U(\xi,t)=\mathcal{F}[u(x,t)]$. Use property 3 (derivative): $\mathcal{F}[u_{xx}]=$
+
+How are $\mathcal{F}[f']$ and $\mathcal{F}[f]$ related? page 91.
+\begin{align*}
+  \mathcal{F}[f']&=\frac{1}{\sqrt{2\pi }}\int_{-\infty}^{+\infty}{e^{-i\xi x}f'(x)\,\mathrm{d}x}\\
+  &=\frac{1}{\sqrt{2\pi }}\left[e^{-i\xi x}f(x)\right]_{-\infty}^{+\infty}-\int_{-\infty}^{+\infty}{(-i\xi)e^{-i\xi x}f(x)\,\mathrm{d}x}\\
+  \intertext{\emph{note:} implicit conditions on $f(x)$ to insure integrals exist $f(+\infty)=f(-\infty)=0$}
+  &=0+i\xi\frac{1}{\sqrt{2\pi }}\int_{-\infty}^{+\infty}{e^{-i\xi x}f(x)\,\mathrm{d}x}\\
+  \intertext{property 3}
+  \mathcal{F}[f']&=i\xi\mathcal{F}[f]\\
+  \mathcal{F}[f'']&=\xi^2\mathcal{F}[f]
+\end{align*}
+So $\mathcal{F}[u_{xx}]=-\xi^2U(\xi,t)$. $\frac{\mathrm{d}U}{\mathrm{d}t}=-\alpha ^2\xi^2U$ with $U(\xi,0)=\phi(\xi)$
+
+\subsubsection*{step 2}
+solve prolem $U(\xi,t)=\phi(\xi)e^{-\alpha ^2\xi^2 t}$.
+\subsubsection*{step 3}
+invert transform
+
+\subsection*{property 4}
+\subsubsection*{convolution theorem}
+definition: given $f(x),gx)$ on $\mathbb{R}$
+\begin{align*}
+  f*g(x)&=1\frac{1}{\sqrt{2\pi }}\int_{-\infty}^{+\infty}{f(x-s)g(s)\,\mathrm{d}s}\\
+  \intertext{theorem}
+  \mathcal{F}[f*g(x)]&=\mathcal{F}[f]\mathcal{F}[g]=F(\xi)G(\xi)&\text{deep theorem}
+\end{align*}
+sample calculation: find the convolution of two functions. Text example
+\begin{align*}
+  \left.\begin{aligned}
+    f(x)&=x\\
+    g(x)&=e^{-x^2}
+  \end{aligned}\right\}&f*g(x)=\frac{x}{\sqrt{2}}\\
+  f*g(x)&=\frac{1}{\sqrt{2\pi }}\int_{-\infty}^{+\infty}{f(x-u)g(u)\,\mathrm{d}u}\\
+  &=\frac{1}{\sqrt{2\pi }}\int_{-\infty}^{+\infty}{(x-u)e^{-u^2}\,\mathrm{d}u}\\
+  &=\frac{1}{\sqrt{2\pi }}\left[x\int_{-\infty}^{+\infty}{e^{-u^2}\,\mathrm{d}u}-\int_{-\infty}^{+\infty}{ue^{-u^2}\,\mathrm{d}u}\right]&\text{odd integral}\\
+  &=\frac{x}{\sqrt{2\pi }}\sqrt{\pi }
+  f(x)&=e^{-x^2}\\
+  g(x)&=x\\
+  f*g(x)&=\frac{1}{\sqrt{\pi }}\int_{-\infty}^{+\infty}{e^{-(x-u)^2}u\,\mathrm{d}u}\\
+  \intertext{property:$f*g(x)=g*f(x)$ commutativity}
+  f*g(x)&=\frac{1}{\sqrt{2\pi }}\int_{-\infty}^{+\infty}{f(x-u)g(u)\,\mathrm{d}u}\\
+  u&=-\infty\qquad\gets x-u\\
+  x-u&=+\infty
+\end{align*}
+note that the definition in the book has a negative $i$ and mathematica doesn't. and then that makes the signs flipped on the inverse transform as well. CAREFUL!!!
+\begin{align*}
+  u(x,t)&=\int_{-\infty}^{\infty}{\phi(x-u)\frac{1}{\sqrt{\pi}}\frac{1}{2\alpha \sqrt{t}}e^{-\frac{u^2}{2/\alpha ^2t}}\,\mathrm{d}u}\\
+  \int_{-\infty}^{\infty}{\frac{1}{\sqrt{\pi}}\frac{1}{2\alpha \sqrt{t}}e^{-\frac{u^2}{2/\alpha ^2t}}\,\mathrm{d}u}&=\int_{-\infty}^{\infty}{\frac{1}{\sqrt{\pi}}\frac{1}{2\alpha \sqrt{t}}e^{-\frac{u^2}{2/\alpha ^2t}}\,\mathrm{d}u}\\
+  u(x,t)&=\int_{-\infty}^\infty{\phi(x)f(x-u)\,\mathrm{d}u}\text{ positive with unit area}
+\end{align*}
+\end{document}

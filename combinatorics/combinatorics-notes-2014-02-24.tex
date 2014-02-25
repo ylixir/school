@@ -1,0 +1,88 @@
+\documentclass{article}
+\usepackage{fullpage}
+\usepackage{nopageno} 
+\usepackage{amsmath}
+\usepackage{amssymb}
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+
+\begin{document}
+\title{Notes}
+\date{February 24, 2014}
+\maketitle
+\section*{test}
+grades: a-85, b-70, c-55
+\subsection*{2}
+\subsubsection*{b}
+$\not000\mid\not1111\mid\not000\mid\not11$
+
+8 spots, 3 dividers, $\binom{11}{3}$
+\subsection*{4}
+\subsubsection*{c}
+y covers x if $x\ne y, x\le y, x\le z\le y$ then $z=x$ or $z=y$ 
+\subsubsection*{d}
+find $s_i(42513)$ has 1 more inversion than 42513
+\section*{homework}
+\subsection*{17}
+multiply  both sides by n+1
+\subsection*{27}
+start with right hand side (side with summation), figure out how to count that, forget about left hand side. write what it equals and use what you get from right to algebraically get left. okay to show that is equivalent to lhs.
+\subsection*{14)21)}
+prove using formula for $\binom{r}{k}$ (algebraically)
+\subsection*{16}
+indefinite integral, get constant, substitute to find c.
+\section*{high points of 5.3 and maybe 5.5}
+\begin{align*}
+  \binom{n}{k}&=\binom{n-1}{k}+\binom{n-1}{k-1}\\
+  \binom{n}{k}&=\binom{n-1}{k}+\binom{n-2}{k-1}+\binom{n-2}{k-2}\\
+  \binom{n}{k}&=\binom{n-1}{k}+\binom{n-2}{k-1}+\binom{n-3}{k-2}+\dots+\binom{n-k}{1}+\binom{n-k-1}{0}+\binom{n-k-1}{-1}\\
+\intertext{replace $n-k-1$ by n so $n\to n+k+1$}
+  \binom{n+k+1}{k}&=\binom{n+k}{k}+\binom{n+k-1}{k-1}+\dots+\binom{n+1}{1}+\binom{n}{0}\\
+\end{align*}
+another:
+\begin{align*}
+  \binom{n+1}{k+1}&=\binom{0}{k}+\binom{1}{k}+\dots+\binom{n}{k}\\
+\end{align*}
+gamma function?
+
+for any $n\in\mathbb{R},k\in\mathbb{Z}$
+\begin{align*}
+  \binom{n}{k}
+  \begin{cases}
+    \frac{n(n-1)\dots(n-k+1)}{k!}=\frac{\overbrace{(n)_k}^{\text{falling factorial}}}{k!}&\text{if }k\ge1\\
+    1&\text{if }k=0\\
+    0&\text{if }k\le-1
+  \end{cases}
+\end{align*}
+this def work for $n\in\mathbb{C}$ and most identities still work. if you want $n,k\in\mathbb{C}$ us gamma function, but some identities fail
+
+\section*{5.5}
+for $\alpha \in\mathbb{R}, 0\le\lvert x\rvert<\lvert y\rvert$
+\begin{align*}
+  (x+y)^{\alpha }=\sum\limits_{k=0}^\infty{\binom{\alpha}{k}x^ky^{\alpha -k}}
+\end{align*}
+this is an infiniteseries! proof via calculus analysis. ide (1-var):
+\begin{align*}
+  f(x)&\approx f(0)+\frac{f'(0)}{1!}x+\frac{f''(0)}{2!}x^2+\dots+\frac{f^k(0)}{k!}x^k+\dots\\
+  f(x)&=(1+x)^\alpha \\
+  f'(x)&=\alpha (1+x)^{\alpha-1}\\
+  f''(x)&=\alpha(\alpha -1)(1+x)^{\alpha-2}\\
+  &\vdots\\
+  f^k(x)&=(\alpha)_k(1+x)^{\alpha-k}\\
+  (1+x)^\alpha &\approx 1+\frac{\alpha }{1!}
+\end{align*}
+2 interestin cases:
+\begin{align*}
+  \alpha&=\frac{1}{2}&\sqrt{x+y}&\approx\\
+  \alpha &=-n,&n\in\mathbb{N}\\
+  (1+x)^{-n}&=\frac{1}{(1+x)^n}=\sum\limits_{k=0}^\infty{\binom{n}{k}x^k}=\sum\limits_{k=0}^\infty{(-1)^k\binom{n+k-1}{k}x^k}=\sum\limits_{k=0}^\infty{\binom{n+k-1}{k}(-x)^k}
+\end{align*}
+you will sho in \#21 that for $n\in\mathbb{N},\binom{-n}{k}=(-1)^k\binom{n+k-1}{k}$
+
+special case $n=1$
+\begin{align*}
+  \frac{1}{1-z}&=\sum\limits_{k=0}^\infty{\binom{k}{k}}
+\end{align*}
+all this stuff is on page 148(161) my brain is done now, go through this later.
+\end{document}
