@@ -1,0 +1,42 @@
+\documentclass{article}
+\usepackage{fullpage}
+\usepackage{nopageno}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+
+\begin{document}
+\title{Notes}
+\date{February 26, 2014}
+\maketitle
+
+\section*{lesson 13}
+laplace transform for $ft)$ on $0\le t<\infty$
+\begin{align*}
+  \mathcal{L}\{f\}&=F(x)=\int_0^{\infty}{e^{-st}f(t)\,\mathrm{d}t}\\
+  \intertext{inverse transform}
+  f(t)&=\frac{1}{2\pi i}\int_{c-i\infty}^{c+i\infty}{F(s)e^{st}\,\mathrm{d}s}
+\end{align*}
+note $F(s)$ will typically be defined on $s\ge s_0$ (as described in introductory courses). $F(x)$ is analytic on $\text{Re}(s_s)\ge s_0$ on half-planes in $\mathbb{C}$.
+
+page 101
+\begin{align*}
+  PDE&&u_t&=u_{xx}&0\le&x<\infty,&0<&t<\infty\\
+  BC&&u_x(0,t)-u(0,t)&=0&&&0<&t<\infty\\
+  IC&&u(x,0)=u_0
+\end{align*}
+$u_x$ is temperature gradient. $u_x=u$. $-cu_x$ is heat flow (in positive direction). when $u>0$ heat flows out of the rod and if $u<0$ then heat is flowing into rod. if the BC had a + instead of a $-$ we would have an unstable condition where more heat means the heat increases at a greater rate and boom. extra credit for this neh?
+\begin{align*}
+  U(x,s)&=\mathcal{L}\{u(x,t)\}\\
+  \mathcal{L}\{f'(t)\}&=sF(s)-f(0)\\
+\end{align*}
+\begin{align*}
+  PDE&&sU(x,s)-u(x,0)&=U_{xx}(x,s)\\
+  &&\frac{\mathrm{d}^2U}{\mathrm{d}x^2}-sU&=-u_0\\
+  BC&&U_x(0,s)-U(0,s)&=0\\
+  \intertext{solution of DE. Can assume s is positive (and large)}
+  &&U(x,s)&=c_1\text{ etc from pg 102}
+\end{align*}
+\end{document}

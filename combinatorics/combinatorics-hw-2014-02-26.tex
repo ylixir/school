@@ -53,7 +53,9 @@ Use \emph{combinatorial} reasoning to prove the identity (5.2).
 \begin{align*}
   k\binom{n}{k}&=n\binom{n-1}{k-1}
 \end{align*}
-Imagine an ordered pair. The first item in the pair is a set with $k$ elements chosen from a set with $n$ elements. The second item in the pair is one of the elements from the first item. Then we have $\binom{n}{k}$ ways to choose the first item and $k$ ways to choose the second item. This gives us $k\binom{n}{k}$ possible ordered pairs. Now lets choose the second item first. We have $n$ possibilities for this item. Since we know that the second item comes from the first, we have already chosen one element in our first item. We need now only choose the $k-1$ remaining elements from the $n-1$ sized set. We can do this in $\binom{n-1}{k-1}$ ways. This gives us $n\binom{n-1}{k-1}$ possible ordered pairs. And we have our identity.
+Imagine an ordered pair $(A,a)$. The first item in the pair is a set $A$ with $k$ elements chosen from a set $S$ with $n$ elements. So $\lvert A\rvert=k, \lvert S\rvert=n,$ and $A\subset S$. The second item in the pair is one of the elements from the first item ($a\in A$). Then we have $\binom{n}{k}$ ways to choose $A$ and $k$ ways to choose $a$. This gives us $k\binom{n}{k}$ possible ordered pairs.
+
+Now lets choose $a$ first. Because $a\in S$ and $\lvert S\rvert=n$ we have $n$ possibilities $a$. Since we know that $a\in A$, we have already chosen one element of $A$. We need now only choose the $k-1$ elements of $A\setminus a$ from the $n-1$ sized set $S\setminus a$. We can do this in $\binom{n-1}{k-1}$ ways. This gives us $n\binom{n-1}{k-1}$ possible ordered pairs. And we have our identity.$\Box$
 \subsection*{11.}
 Use \emph{combinatorial} reasoning to prove the identity (in the form given)
 \begin{align*}
@@ -61,9 +63,9 @@ Use \emph{combinatorial} reasoning to prove the identity (in the form given)
 \end{align*}
 (\emph{Hint:} Let $S$ be a set with three distinguished elements $a, b,$ and $c$ and count certain $k$-subsets of $S$.)
 
-Imagine we have a set $\{x_1,x_2,\dots,x_{n-3},a,b,c\}$. We can grab $k$ elements out of this set in $\binom{n}{k}$ ways. If we want to grab $k$ elements out of the set, but none of them are $a,b,c$ we can do so in $\binom{n-3}{k}$ ways. So $\binom{n}{k}-\binom{n-3}{k}$ is the number of ways to choose $k$ elements from the set where at least one of the elements is $a,b$, or $c$.
+Imagine we have a set $S=\{x_1,x_2,\dots,x_{n-3},a,b,c\}$. We can grab $k$ elements from $S$ in $\binom{n}{k}$ ways. If we want to grab $k$ elements out $S$, but none of them are $a,b,c$ we can do so in $\binom{n-3}{k}$ ways. So $\binom{n}{k}-\binom{n-3}{k}$ is the number of ways to choose $k$ elements from the set where at least one of the elements is $a,b$, or $c$.
 
-Now lets count this quantity from the other end. First lets find all the sets that have $a$ in them. Since we've already chosen $a$ we can choose $k-1$ elements out of the $n-1$ sized set, or $\binom{n-1}{k-1}$. Now we want to find all the sets that contain $b$. When we counted the sets with $a$ in them that also included the sets that have both $a$ and $b$ in them. So we choose $b$ and then we need to grab all the sets of $k-1$ size from the $n-2$ sized set that have neither $b$ nor $a$ which is $\binom{n-2}{k-1}$. And similarly the sets that contain $c$ but neither $a$ nor $b$ are sized $\binom{n-3}{k-1}$. So we see that the number ways to choos $k$ elements from $\{x_1,x_2,\dots,x_{n-3},a,b,c\}$ where at least one of the elements is $a,b,$ or $c$ is $\binom{n-1}{k-1}+\binom{n-2}{k-1}+\binom{n-3}{k-1}$. And we have our identity.
+Now lets count this quantity from the other end. First lets find all the sets that have $a$ in them. Since we've already chosen $a$ we can choose $k-1$ elements out of the $n-1$ sized set $S\setminus a$, or $\binom{n-1}{k-1}$. Now we want to find all the sets that contain $b$. When we counted the sets with $a$ in them that also included the sets that have both $a$ and $b$ in them. So we choose $b$ and then we need to grab all the sets of $k-1$ size from the $n-2$ sized set $S\setminus\{a,b\}$. The ways we can do this is $\binom{n-2}{k-1}$. And similarly the sets that contain $c$ but neither $a$ nor $b$ count $\binom{n-3}{k-1}$. So we see that the number ways to choose $k$ elements from $\{x_1,x_2,\dots,x_{n-3},a,b,c\}$ where at least one of the elements is $a,b,$ or $c$ is $\binom{n-1}{k-1}+\binom{n-2}{k-1}+\binom{n-3}{k-1}$. And we have our identity.$\Box$
 \subsection*{14.}
 Prove that
 \[\binom{r}{k}=\frac{r}{r-k}\binom{r-1}{k}\]
@@ -80,19 +82,20 @@ The binomial coefficient is defined by
 \end{align*}
 We have three cases to prove then. We'll do the trivial cases first, and then the more involved case.
 \subsubsection*{case $k\le-1$}
-In this case $\binom{r}{k}=0$ and $\binom{r-1}{k}=0$ and we see that both sides of our hypothesis are $0$ and so the equality holds in this case.
+In this case $\binom{r}{k}=0$ and $\binom{r-1}{k}=0$. We see that both sides of our equality are $0$ and so the hypothesis holds in this case.
 \subsubsection*{case $k=0$}
-In this case we have $\binom{r}{k}=\binom{r-1}{k}=1$ and $\frac{r}{r-k}=\frac{r}{r-0}=1$. And both sides of our hypothesis are 1 so the equality holds for this case as well.
+In this case we have $\binom{r}{k}=\binom{r-1}{k}=1$ and $\frac{r}{r-k}=\frac{r}{r-0}=1$. And both sides of our equality are $1$ so the hypothesis holds for this case as well.
 \subsubsection*{case $k\ge1$}
 We will let the algebra do the talking for this case.
 \begin{align*}
   \binom{r}{k}&=\frac{r(r-1)\cdots(r-k+1)}{k!}\\
   &=r\frac{(r-1)\cdots(r-k+1)(r-k)}{k!(r-k)}\\
   &=\frac{r}{(r-k)}\frac{(r-1)\cdots(r-k+1)(r-k)}{k!}\\
+  \intertext{Now we add and subtract one from the terms that contain $k$ and group the result for our convenience.}
   &=\frac{r}{(r-k)}\frac{(r-1)((r-1)-1)\cdots((r-1)-k+2)((r-1)-k+1)}{k!}\\
   &=\frac{r}{r-k}\binom{r-1}{k}
 \end{align*}
-And we now see our equality holds for all cases and the hypothesis is proven.$\Box$
+So the equality holds for all cases and our hypothesis is proven.$\Box$
 \subsection*{15.}
 Prove, that for every integer $n>1,$
 \[\binom{n}{1}-2\binom{n}{2}+3\binom{n}{3}+\dots+(-1)^{n-1}n\binom{n}{n}=0\]
@@ -111,10 +114,13 @@ And as predicted we have our result.$\Box$
 By integrating the binomial expansion, prove that, for a positive integer $n$,
 \[1+\frac{1}{2}\binom{n}{1}+\frac{1}{3}\binom{n}{2}+\dots+\frac{1}{n+1}\binom{n}{n}=\frac{2^{n+1}-1}{n+1}.\]
 \begin{align*}
-  &1+\frac{1}{2}\binom{n}{1}+\frac{1}{3}\binom{n}{2}+\dots+\frac{1}{n+1}\binom{n}{n}\\
-  =&\sum\limits_{k=0}^n{\frac{1}{k+1}\binom{n}{k}}\\
-  \intertext{let $x=1$}
-  =&\sum\limits_{k=0}^n{\frac{1}{k+1}\binom{n}{k}}\\
+  \int_0^1{\sum\limits_{k=0}^n{\binom{n}{k}x^k}\,\mathrm{d}x}&=\int_0^1{(1+x)^n\,\mathrm{d}x}\\
+  \sum\limits_{k=0}^n{\binom{n}{k}\int_0^1{x^k\,\mathrm{d}x}}&=\int_0^1{(1+x)^n\,\mathrm{d}x}\\
+  \sum\limits_{k=0}^n{\binom{n}{k}\left[\frac{x^{k+1}}{k+1}\right]_0^1}&=\left.\frac{(1+x)^{n+1}}{n+1}\right\rvert_0^1\\
+  \sum\limits_{k=0}^n{\binom{n}{k}\left[\frac{1^{k+1}}{k+1}-\frac{0^{k+1}}{k+1}\right]}&=\frac{(1+1)^{n+1}}{n+1}-\frac{(1+0)^{n+1}}{n+1}\\
+  \sum\limits_{k=0}^n{\binom{n}{k}\left[\frac{1}{k+1}-0\right]}&=\frac{2^{n+1}}{n+1}-\frac{1}{n+1}\\
+  \sum\limits_{k=0}^n{\frac{1}{k+1}\binom{n}{k}}&=\frac{2^{n+1}-1}{n+1}\\
+  1+\frac{1}{2}\binom{n}{1}+\frac{1}{3}\binom{n}{2}+\dots+\frac{1}{n+1}\binom{n}{n}&=\frac{2^{n+1}-1}{n+1}
 \end{align*}
 \subsection*{17.}
 Prove the identity in the previous exercise by  using (5.2) and (5.3).
@@ -145,16 +151,25 @@ If $k=0$ $\binom{-r}{k}=1$ and $(-1)^0\binom{r+k-1}{k}=1$. If $k\le-1$ then $\bi
 Let $n$ and $k$ be positive integers. Give a combinatorial proof of the identity (5.15):
 \[n(n+1)2^{n-2}=\sum\limits_{k=1}^n{k^2\binom{n}{k}}.\]
 \subsection*{proof}
-Imagine we have a 3-tuple which consists of firstly a $k$ element set of things chosen from a set with $n$ elements and then 2 items which each consist of one of the elements from the set that makes the first item. We then have $k^2\binom{n}{k}$ possible 3-tuples with the first element of size $k$. If we want to count how many tuples are possible for any $k\ge1$ then we arrive at the formula $\sum\limits_{k=1}^n{k^2\binom{n}{k}}$.
+Imagine we have a 3-tuple $(A,a,b)$. We'll say $A$ is a subset of some set $S$ where $\lvert A\rvert=k$ and $\lvert S\rvert=n$ for some integers $k,n$ such that $0<k\le n$. Let $a,b\in A$. We then have $k^2\binom{n}{k}$ possible 3-tuples where $A$ is of size $k$. If we want to count how many tuples are possible for all $k$ then we arrive at the formula $\sum\limits_{k=1}^n{k^2\binom{n}{k}}$.
 
-Now let us instead choose the last two items in the 3-tuple first. We have two cases here. Either the last two items are the same, or they are different. If they are the same then we have $n$ choices for these items. If they are different we have $n(n-1)$ choices. Now if we imagine for the first item, each element of the $n$ sized set can either be in the first item or not. Since we have already chosen one or two items to be in the set we have $2^{n-1}$ posibilities in the first case and $2^{n-2}$ possibilities in the second case. This gives us the following formula to count all the possible 3-tuples:
+Now let us instead choose the last two items in the 3-tuple first. We have two cases here. Either the last two items are the same, or they are different. If they are the same then we have $n$ choices for these items. If they are different we have $n(n-1)$ choices. Now if imagine that each element of $S$ can either be in $A$ or not. Since we have already chosen $a,b\in A$ we have $2^{n-1}$ posibilities if $a=b$ and $2^{n-2}$ possibilities if $a\ne b$. This gives us the following formula to count all the possible 3-tuples:
 \begin{align*}
   n2^{n-1}+n(n-1)2^{n-2}&=2n2^{n-2}+n(n-1)2^{n-2}\\
   &=2^{n-2}(2n+n^2-n)\\
   &=2^{n-2}(n^2+n)\\
   &=n(n+1)2^{n-2}
 \end{align*}
+And we see both sides of our hypothesis count these 3-tuples and are therefore equal.$\Box$
 \subsection*{28.}
-Let $n$ and $k$ be positie integers. Give a combinatorial proof that
+Let $n$ and $k$ be positive integers. Give a combinatorial proof that
 \[\sum\limits_{k=1}^n{k\binom{n}{k}^2}=n\binom{2n-1}{n-1}\]
+\subsection*{proof}
+We want to form an ordered pair $(C,a)$ consisting firstly a set $C$, and secondly, an element $a$ from that set. The set has $n$ elements ($\lvert C\rvert=n$) and is a subset of the union of two subsets of some disjoint sets $A$ and $B$ which contain $n$ elements each. So $\lvert A\rvert=\lvert B\rvert=n$ and $C\subset(A\cup B)$. The second item in the pair is in $A$. So $a\in A$ and $a\in C$. Let's count how many ordered pairs we can make.
+
+First let's choose $a\in C$ from $A$. We can do this in $n$ different ways. Now we choose the rest of $C$ (or $C\setminus a$) by grabbing $n-1$ elements from $(A\cup B)\setminus a$. We can do this in $\binom{2n-1}{n-1}$ ways. So we can build the ordered pairs in $n\binom{2n-1}{n-1}$ ways.
+
+Now lets count in a different way. First we take some $k$ elements from $A$ where $1\le k\le n$. We can do this in $\binom{n}{k}$ ways. We can choose $a$ in $k$ different ways from these elements. We then choose $n-k$ elements from $B$ to complete set $C$. We can do this in $\binom{n}{n-k}$. We can then form an ordered pair where $k$ elements come from $A$ and $n-k$ elements come from $B$ in $k\binom{n}{k}\binom{n}{n-k}$. It is trivial to show that $\binom{n}{k}=\binom{n}{n-k}$. So adding together the number of ways we can form the ordered pairs in this way for all possible values of $k$ we have $\sum\limits_{k=1}^n{k\binom{n}{k}^2}$.
+
+And we see then that $\sum\limits_{k=1}^n{k\binom{n}{k}^2}=n\binom{2n-1}{n-1}$.$\Box$
 \end{document}
