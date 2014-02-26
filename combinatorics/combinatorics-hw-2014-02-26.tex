@@ -18,33 +18,143 @@
 \section*{Chapter 5}
 \subsection*{5.}
 Expand $(2x-y)^7$ using the binomial theorem.
+\begin{align*}
+  (2x-y)^7&=\sum\limits_{k=0}^7{\binom{7}{k}(2x)^{7-k}(-y)^k}\\
+  &=\binom{7}{0}2^7x^7y^0-\binom{7}{1}2^6x^6y^1+\binom{7}{2}2^5x^5y^2-\binom{7}{3}2^4x^4y^3\\
+  &\qquad+\binom{7}{4}2^3x^3y^4-\binom{7}{5}2^2x^2y^5+\binom{7}{6}2^1x^1y^6-\binom{7}{7}2^0x^0y^7\\
+  &=128x^7-7\cdot64x^6y+21\cdot32x^5y^2-35\cdot16x^4y^3\\
+  &\qquad+35\cdot8x^3y^4-21\cdot4x^2y^5+7\cdot2xy^6-y^7\\
+  &=128x^7-448x^6y+672x^5y^2-560x^4y^3+280x^3y^4-84x^2y^5+14xy^6-y^7
+\end{align*}
 \subsection*{7.}
 Use the binomial theorem to prove that
 \begin{align*}
   3^n&=\sum\limits_{k=0}^n{\binom{n}{k}2^k}.
 \end{align*}
+\begin{align*}
+  \sum\limits_{k=0}^n{\binom{n}{k}2^k}&=\sum\limits_{k=0}^n{\binom{n}{k}1^{n-k}2^k}\\
+  &=(1+2)^n\\
+  &=3^n
+\end{align*}
 Generalize to find the sum
 \begin{align*}
-  \sum\limits_{k=0}^n{\binom{n}{k}r^k}
+  \sum\limits_{k=0}^n{\binom{n}{k}r^k}&=\sum\limits_{k=0}^n{\binom{n}{k}1^{n-k}r^k}=(1+r)^n
 \end{align*}
 \subsection*{8.}
 Use the binomialtheorem to prove that
 \begin{align*}
   2^n&=\sum\limits_{k=0}^n{(-1)^k\binom{n}{k}3^{n-k}}.
 \end{align*}
+\begin{align*}
+  \sum\limits_{k=0}^n{(-1)^k\binom{n}{k}3^{n-k}}&=(3-1)^n=2^n
+\end{align*}
 \subsection*{10.}
 Use \emph{combinatorial} reasoning to prove the identity (5.2).
+\begin{align*}
+  k\binom{n}{k}&=n\binom{n-1}{k-1}
+\end{align*}
+Imagine an ordered pair. The first item in the pair is a set with $k$ elements chosen from a set with $n$ elements. The second item in the pair is one of the elements from the first item. Then we have $\binom{n}{k}$ ways to choose the first item and $k$ ways to choose the second item. This gives us $k\binom{n}{k}$ possible ordered pairs. Now lets choose the second item first. We have $n$ possibilities for this item. Since we know that the second item comes from the first, we have already chosen one element in our first item. We need now only choose the $k-1$ remaining elements from the $n-1$ sized set. We can do this in $\binom{n-1}{k-1}$ ways. This gives us $n\binom{n-1}{k-1}$ possible ordered pairs. And we have our identity.
 \subsection*{11.}
 Use \emph{combinatorial} reasoning to prove the identity (in the form given)
 \begin{align*}
   \binom{n}{k}-\binom{n-3}{k}&=\binom{n-1}{k-1}+\binom{n-2}{k-1}+\binom{n-3}{k-1}
 \end{align*}
 (\emph{Hint:} Let $S$ be a set with three distinguished elements $a, b,$ and $c$ and count certain $k$-subsets of $S$.)
+
+Imagine we have a set $\{x_1,x_2,\dots,x_{n-3},a,b,c\}$. We can grab $k$ elements out of this set in $\binom{n}{k}$ ways. If we want to grab $k$ elements out of the set, but none of them are $a,b,c$ we can do so in $\binom{n-3}{k}$ ways. So $\binom{n}{k}-\binom{n-3}{k}$ is the number of ways to choose $k$ elements from the set where at least one of the elements is $a,b$, or $c$.
+
+Now lets count this quantity from the other end. First lets find all the sets that have $a$ in them. Since we've already chosen $a$ we can choose $k-1$ elements out of the $n-1$ sized set, or $\binom{n-1}{k-1}$. Now we want to find all the sets that contain $b$. When we counted the sets with $a$ in them that also included the sets that have both $a$ and $b$ in them. So we choose $b$ and then we need to grab all the sets of $k-1$ size from the $n-2$ sized set that have neither $b$ nor $a$ which is $\binom{n-2}{k-1}$. And similarly the sets that contain $c$ but neither $a$ nor $b$ are sized $\binom{n-3}{k-1}$. So we see that the number ways to choos $k$ elements from $\{x_1,x_2,\dots,x_{n-3},a,b,c\}$ where at least one of the elements is $a,b,$ or $c$ is $\binom{n-1}{k-1}+\binom{n-2}{k-1}+\binom{n-3}{k-1}$. And we have our identity.
 \subsection*{14.}
+Prove that
+\[\binom{r}{k}=\frac{r}{r-k}\binom{r-1}{k}\]
+for $r$ a real number and $k$ an integer with $r\ne k$.
+\subsection*{proof}
+The binomial coefficient is defined by
+\begin{align*}
+  \binom{r}{k}&=
+  \begin{cases}
+    \frac{r(r-1)\cdots(r-k+1)}{k!}&\text{if }k\ge 1\\
+    1&\text{if }k=0\\
+    0&\text{if }k\le-1
+  \end{cases}
+\end{align*}
+We have three cases to prove then. We'll do the trivial cases first, and then the more involved case.
+\subsubsection*{case $k\le-1$}
+In this case $\binom{r}{k}=0$ and $\binom{r-1}{k}=0$ and we see that both sides of our hypothesis are $0$ and so the equality holds in this case.
+\subsubsection*{case $k=0$}
+In this case we have $\binom{r}{k}=\binom{r-1}{k}=1$ and $\frac{r}{r-k}=\frac{r}{r-0}=1$. And both sides of our hypothesis are 1 so the equality holds for this case as well.
+\subsubsection*{case $k\ge1$}
+We will let the algebra do the talking for this case.
+\begin{align*}
+  \binom{r}{k}&=\frac{r(r-1)\cdots(r-k+1)}{k!}\\
+  &=r\frac{(r-1)\cdots(r-k+1)(r-k)}{k!(r-k)}\\
+  &=\frac{r}{(r-k)}\frac{(r-1)\cdots(r-k+1)(r-k)}{k!}\\
+  &=\frac{r}{(r-k)}\frac{(r-1)((r-1)-1)\cdots((r-1)-k+2)((r-1)-k+1)}{k!}\\
+  &=\frac{r}{r-k}\binom{r-1}{k}
+\end{align*}
+And we now see our equality holds for all cases and the hypothesis is proven.$\Box$
 \subsection*{15.}
+Prove, that for every integer $n>1,$
+\[\binom{n}{1}-2\binom{n}{2}+3\binom{n}{3}+\dots+(-1)^{n-1}n\binom{n}{n}=0\]
+\subsection*{proof}
+First we we will convert our equation to use the summation notation. Then we will apply identity 5.2 followed by the application of the binomial theorem. This should give us our result in short order.
+\begin{align*}
+  0&=\binom{n}{1}-2\binom{n}{2}+3\binom{n}{3}+\dots+(-1)^{n-1}n\binom{n}{n}\\
+  &=\sum\limits_{k=1}^n{(-1)^{k-1}k\binom{n}{k}}\\
+  &=\sum\limits_{k=1}^n{(-1)^{k-1}n\binom{n-1}{k-1}}\\
+  &=n\sum\limits_{k=0}^{n-1}{(-1)^{k}\binom{n-1}{k}}\\
+  &=n\sum\limits_{k=0}^{n-1}{\binom{n-1}{k}1^{(n-1)-k}(-1)^{k}}\\
+  &=n(1-1)^{n-1}=n\cdot0^{n-1}=0
+\end{align*}
+And as predicted we have our result.$\Box$
 \subsection*{16.}
+By integrating the binomial expansion, prove that, for a positive integer $n$,
+\[1+\frac{1}{2}\binom{n}{1}+\frac{1}{3}\binom{n}{2}+\dots+\frac{1}{n+1}\binom{n}{n}=\frac{2^{n+1}-1}{n+1}.\]
+\begin{align*}
+  &1+\frac{1}{2}\binom{n}{1}+\frac{1}{3}\binom{n}{2}+\dots+\frac{1}{n+1}\binom{n}{n}\\
+  =&\sum\limits_{k=0}^n{\frac{1}{k+1}\binom{n}{k}}\\
+  \intertext{let $x=1$}
+  =&\sum\limits_{k=0}^n{\frac{1}{k+1}\binom{n}{k}}\\
+\end{align*}
 \subsection*{17.}
+Prove the identity in the previous exercise by  using (5.2) and (5.3).
+\begin{align*}
+  \frac{2^{n+1}-1}{n+1}&=1+\frac{1}{2}\binom{n}{1}+\frac{1}{3}\binom{n}{2}+\dots+\frac{1}{n+1}\binom{n}{n}\\
+  (n+1)\frac{2^{n+1}-1}{n+1}&=(n+1)\sum\limits_{k=0}^n{\frac{1}{k+1}\binom{n}{k}}\\
+  2^{n+1}-1&=\sum\limits_{k=0}^n{\frac{1}{k+1}(n+1)\binom{n}{k}}\\
+  \intertext{Apply identity 5.2}
+  &=\sum\limits_{k=0}^n{\frac{1}{k+1}(k+1)\binom{n+1}{k+1}}\\
+  &=\sum\limits_{k=0}^n{\binom{n+1}{k+1}}=\sum\limits_{k=1}^{n+1}{\binom{n+1}{k}}\\
+  &=-\binom{n+1}{0}+\sum\limits_{k=0}^{n+1}{\binom{n+1}{k}}\\
+  \intertext{simplify and apply 5.3}
+  &=-1+2^{n+1}
+\end{align*}
 \subsection*{21.}
+Prove that, for all real nmbers $r$ and all integers $k$,
+\[\binom{-r}{k}=(-1)^k\binom{r+k-1}{k}.\]
+If $k=0$ $\binom{-r}{k}=1$ and $(-1)^0\binom{r+k-1}{k}=1$. If $k\le-1$ then $\binom{-r}{k}=0$ and $(-1)^k\binom{r+k-1}{k}=(-1)^k\cdot0=0$. If $k\ge1$ then:
+\begin{align*}
+  \binom{-r}{k}&=\frac{-r(-r-1)\cdots(-r-k+1)}{k!}\\
+  &=\frac{1}{k!}\prod_{n=0}^{k-1}{(-r)-n}=\frac{(-1)^k}{k!}\prod_{n=0}^{k-1}{r+n}\\
+  &=\frac{(-1)^k}{k!}\prod_{n=0}^{k-1}{(r+k-1)+(n-(k-1))}\\
+  &=\frac{(-1)^k}{k!}\prod_{n=-(k-1)}^{0}{(r+k-1)+n}=\frac{(-1)^k}{k!}\prod_{n=0}^{k-1}{(r+k-1)-n}\\
+  &=(-1)^k\frac{(r+k-1)(r+k-1-1)\cdots(r+k-1-k+1)}{k!}\\
+  \binom{-r}{k}&=(-1)^k\binom{r+k-1}{k}
+\end{align*}
 \subsection*{27.}
+Let $n$ and $k$ be positive integers. Give a combinatorial proof of the identity (5.15):
+\[n(n+1)2^{n-2}=\sum\limits_{k=1}^n{k^2\binom{n}{k}}.\]
+\subsection*{proof}
+Imagine we have a 3-tuple which consists of firstly a $k$ element set of things chosen from a set with $n$ elements and then 2 items which each consist of one of the elements from the set that makes the first item. We then have $k^2\binom{n}{k}$ possible 3-tuples with the first element of size $k$. If we want to count how many tuples are possible for any $k\ge1$ then we arrive at the formula $\sum\limits_{k=1}^n{k^2\binom{n}{k}}$.
+
+Now let us instead choose the last two items in the 3-tuple first. We have two cases here. Either the last two items are the same, or they are different. If they are the same then we have $n$ choices for these items. If they are different we have $n(n-1)$ choices. Now if we imagine for the first item, each element of the $n$ sized set can either be in the first item or not. Since we have already chosen one or two items to be in the set we have $2^{n-1}$ posibilities in the first case and $2^{n-2}$ possibilities in the second case. This gives us the following formula to count all the possible 3-tuples:
+\begin{align*}
+  n2^{n-1}+n(n-1)2^{n-2}&=2n2^{n-2}+n(n-1)2^{n-2}\\
+  &=2^{n-2}(2n+n^2-n)\\
+  &=2^{n-2}(n^2+n)\\
+  &=n(n+1)2^{n-2}
+\end{align*}
 \subsection*{28.}
+Let $n$ and $k$ be positie integers. Give a combinatorial proof that
+\[\sum\limits_{k=1}^n{k\binom{n}{k}^2}=n\binom{2n-1}{n-1}\]
 \end{document}
