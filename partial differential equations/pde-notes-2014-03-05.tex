@@ -1,0 +1,65 @@
+\documentclass{article}
+\usepackage{fullpage}
+\usepackage{nopageno}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+
+\begin{document}
+\title{Notes}
+\date{March 3, 2014}
+\maketitle
+\begin{align*}
+  L&=\text{length}\\
+  \alpha ^2&=\text{diffusion}\\
+  &=\left[\frac{\text{cm}^2}{\text{sec}}\right]\\
+\end{align*}
+homework, in \#20 we are deriving when change of variables will and won't work. \#21 is deriving a little more complicated version for the remaining cases.
+
+oh snap the equation i couldn't read last time was the gamma function. $\Gamma(x)=\int_0^\infty{e^{-t}t^{x-1}}$. We understan $n!$ what is $x!$
+\begin{align*}
+  n!&=\int_0^\infty{e^{-t}t^{x-1}\,\mathrm{d}t}\\
+  x!&=\int_0^\infty{e^{-t}t^{x}\,\mathrm{d}t},\,x>-1\\
+  \Gamma(n+1)&=n!\\
+  \Gamma\left(\frac{1}{2}\right)&=\pi^{1/2}\\
+  \Gamma(x+1)&=x\Gamma(x)\\
+  t^p&\to\frac{\Gamma(p+1)}{s^{p+1}}
+\end{align*}
+okay on to dlmf.nist.gov  
+handbook of mathematical functions? written/editted by by abramowitz and stegan. part of a government project to get a standardized reference of mathematical functions. update to it is NIST Handbook of Mathematical Functions. Which is precisely this web site. \emph{THE} reference for special functions.
+reference we want is 5.2 and 5.3, famma function. 5.12 beta function is relevant to homework exercises.
+
+\section*{lesson 13}
+page 102
+
+obtained $U(x,s)=u_0\left(\frac{1}{s}-\frac{\sqrt{s}}{s(\sqrt{s}+1)}e^{-x\sqrt{s}}\right)$. Text claims that $u(x,t)=u_0(1-(\text{erfc}(\frac{x}{2\sqrt{2}})-\text{erfc}(\sqrt{t}+\frac{x}{2\sqrt{t}})e^{x+t})$. The text tables are not adequate. Mathematica does not handle it.
+
+\emph{note:}
+\begin{align*}
+  &\qquad\frac{\sqrt{s}}{s(\sqrt{s}+1)}e^{-a\sqrt{s}}&(a>0)\\
+  &=\frac{1}{\sqrt{s}(\sqrt{s}+1)}e^{-a\sqrt{s}}\\
+  &=(\frac{1}{\sqrt{s}}-\frac{1}{\sqrt{s}+1})e^{-a\sqrt{s}}
+\end{align*}
+\subsection*{case 1}
+\begin{align*}
+  F(s)&=\frac{1}{\sqrt{s}}e^{-\sqrt{s}}\to f(t)\text{? in table}
+\end{align*}
+approach
+\begin{align*}
+  G(s)&=e^{-\sqrt{s}}\to g(t)\\
+  \intertext{\emph{note}}
+  \frac{\mathrm{d}}{\mathrm{d}s}(e^{-\sqrt{s}})&=e^{-\sqrt{s}}\cdot-\frac{1}{2}\frac{1}{\sqrt{s}}=-\frac{1}{2}F(s)\\
+  \frac{\mathrm{d}}{\mathrm{d}s}(e^{-\sqrt{s}})&=\frac{\mathrm{d}}{\mathrm{d}s}(G(s))\to -tg(t)=-\frac{1}{2}f(t)\\
+  G'(s)&=-\frac{1}{2}s^{-1/2}e^{-\sqrt{s}}\to -tg(t)\\
+  \vdots\\
+  4sG''(s)+2G'(s)-G(s)&=0\\
+  4sG''(s)-t^2g(t)\mid_{t=0}+2G'(s)-G(s)&=0\\
+  4\frac{\mathrm{d}}{\mathrm{d}t}\left[t^2g(t)\right]+2(-tg(t)-g(t)&=0\\
+  4t^2\frac{\mathrm{d}g}{\mathrm{d}t}+6tg(t)-g(t)&=0\\
+  \frac{\mathrm{d}g}{\mathrm{d}t}+\left(\frac{3}{2t}-\frac{1}{4t^2}\right)g&=0\\
+  \intertext{integrating factor}
+  \mu &=t^{3/2}\cdot e^{1/4t}
+\end{align*}
+\end{document}

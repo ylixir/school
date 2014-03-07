@@ -1,0 +1,134 @@
+\documentclass{article}
+%\usepackage{fullpage}
+%\usepackage{nopageno} 
+\usepackage[margin=1.5in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[normalem]{ulem}
+\usepackage{fancyhdr}
+%\renewcommand\headheight{12pt}
+\pagestyle{fancy}
+\lhead{March 5, 2014}
+\rhead{Jon Allen}
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+
+\begin{document}
+\section*{Chapter 4}
+\subsection*{\#43}
+Let $X=\{a,b,c,d,e,f\}$ and let the relation $R$ on $X$ be defined by $a\,R\,b,b\,R\,c,c\,R\,d,a\,R\,e,e\,R\,f,f\,R\,d$. Verify that $R$ is the cover relation of a partially ordered set, and determine all the linear extensions of this partial order.
+\begin{align*}
+  a<_cb<_cc<_cd\\
+  a<_ce<_cf<_cd
+\end{align*}
+Looks like $R$ is a cover relation since no elements can fit between any others, and all the elements are accounted for. I'll list the linear extensions now. These are basically all the combinations that have $a$ and $d$ on the ends and that respect $b<c, e<f$
+\begin{align*}
+  a<b<c<e<f<d\\
+  a<b<e<c<f<d\\
+  a<b<e<f<c<d\\
+  a<e<b<c<f<d\\
+  a<e<b<f<c<d\\
+  a<e<f<b<c<d
+\end{align*}
+\subsection*{\#50}
+Consider the partially ordered set $(X,\subseteq)$ of subsets of the set $X=\{a,b,c\}$ of three elements. How many linear extensions are there?
+
+There is one set of no elements, 3 sets of 1 and 2 elements each, and one set of three elements. The number of linear extensions is the number of ways we can arrange the 1 and 2 element sets multiplied together. So $(3!)^2$ or 36.
+\section*{Chapter 5}
+\subsection*{\#22}
+Prove that, for all real number $r$ and all integers $k$ and $m$,
+\[\binom{r}{m}\binom{m}{k}=\binom{r}{k}\binom{r-k}{m-k}\]
+I'll just let the algebra speak for itself
+\begin{align*}
+  \binom{r}{m}\binom{m}{k}&=\frac{r(r-1)\dots(r-m+1)}{m!}\cdot\frac{m!}{k!(m-k)!}\\
+  &=\frac{r(r-1)\dots(r-k+1)(r-k)(r-k-1)\dots(r-m+1)}{k!(m-k)!}\\
+  &=\frac{r(r-1)\dots(r-k+1)}{k!}\frac{(r-k)(r-k-1)\dots(r-m+1)}{(m-k)!}\\
+  &=\binom{r}{k}\frac{(r-k)(r-k-1)\dots((r-k)-(m-k)+1)}{(m-k)!}\\
+  &=\binom{r}{k}\binom{r-k}{m-k}\\
+\Box
+\end{align*}
+\subsection*{\#25}
+Use a combinatorial argument to prov the \emph{Vandermonde convolution} for the binomial coefficients: For all positive integers $m_1,m_2$ and $n$,
+\[\sum\limits_{k=0}^n{\binom{m_1}{k}\binom{m_2}{n-k}}=\binom{m_1+m_2}{n}\]
+Deduce the identity (5.16) as a special case.
+\subsubsection*{proof}
+Let $S$ be a set with $m_1+m_2$ elements.
+The right side counts the number of $n$-subsets of $S$.
+We partition $S$ into two subsets, $A$ and $B$, of $m_1$ and $m_2$ elements respectively.
+We use this partition of $S$ to partition the $n$ subsets of $S$.
+Each $n$-sized subset of $S$ contains $k$ elements from $A$ and $n-k$ elements from $B$.
+Here, $k$ may be any integer between $0$ and $n$.
+We partition the $n$-subsets of $S$ into $n+1$ parts,
+\[C_0,C_1,C_2,\dots,C_n,\]
+Where $C_k$ consists of those $n$-subsets which contain $k$ elements from $A$ and $n-k$ elements from $B$. By the addition principle,
+\[\binom{m_1+m_2}{n}=\abs{C_0}+\abs{C_1}+\abs{C_1}+\dots+\abs{C_n}.\]
+An $n$-subset in $C_k$ is obtained by choosing $k$ elements from $A$ (there are $\binom{m_1}{k}$ choice) and then $(n-k)$ elements from $B$ (there are $\binom{m_2}{n-k}$ choices).
+Hence by the multiplication principle,
+\[\abs{C_k}=\binom{m_1}{n}\binom{m_2}{n-k},\quad(k=0,1,\dots,n)\]
+Combining our last two equations, we have our result
+\[\sum\limits_{k=0}^n{\binom{m_1}{k}\binom{m_2}{n-k}}=\binom{m_1+m_2}{n}\]
+$\Box$
+
+Deducing $\sum\limits_{k=0}^n{\binom{n}{k}^2}=\binom{2n}{n},\quad(n\ge 0)$ is pretty straightforward. We just have to set $m_1=m_2=n$ and then we have $m_1+m_2=2n$. Since $\binom{n}{k}=\binom{n}{n-k}$
+\begin{align*}
+  \sum\limits_{k=0}^n{\binom{m_1}{k}\binom{m_2}{n-k}}=\binom{m_1+m_2}{n}\\
+  \sum\limits_{k=0}^n{\binom{n}{k}\binom{n}{n-k}}=\binom{2n}{n}\\
+  \sum\limits_{k=0}^n{\binom{n}{k}\binom{n}{k}}=\binom{2n}{n}\\
+  \sum\limits_{k=0}^n{\binom{n}{k}^2}=\binom{2n}{n}\\
+\end{align*}
+\subsection*{\#26}
+Let $n$ and $k$ be integers with $1\le k\le n$. Prove that
+\[\sum\limits_{k=0}^n{\binom{n}{k}\binom{n}{k-1}=\frac{1}{2}\binom{2n+2}{n+1}-\binom{2n}{n}}\]
+\subsection*{\#29}
+Find and prove a formula for
+\[\sum\limits_{r,s,t\ge 0}{\binom{m_1}{r}\binom{m_2}{s}\binom{m_3}{t}}\]
+\[r+s+t=n\]
+The formula is:
+\[\binom{m_1+m_2+m_3}{n}=\sum\limits_{r,s,t\ge 0}{\binom{m_1}{r}\binom{m_2}{s}\binom{m_3}{t}}\]
+\subsubsection*{proof}
+Imagine we have a set $S$ partitioned into parts $A,B$ and $C$ sized $m_1,m_2$ and $m_3$ respectively. We can grab $n$ elements from $S$ in $\binom{m_1+m_2+m_3}{n}$ different ways. Now lets take some positive integers $r,s,t$ such that $r+s+t=n$. Lets imagine that when we grab our $n$ elements, that $r$ of them come from $A$, $s$ from $B$ and $t$ from $C$. The number of ways we can do this is $\binom{m_1}{r}\binom{m_2}{s}\binom{m_3}{t}$. Now if we wish to count all the ways we can grab those $n$ elements we must sum $\binom{m_1}{r}\binom{m_2}{s}\binom{m_3}{t}$ for all values of $r,s$ and $t$, which is $\sum\limits_{r,s,t\ge 0}{\binom{m_1}{r}\binom{m_2}{s}\binom{m_3}{t}}$. And so we see the formulas must be equal.$\Box$
+\subsection*{\#43}
+Prove by induction on $n$ that, for $n$ a positive integer,
+\[\frac{1}{(1-z)^n}=\sum\limits_{k=0}^\infty{\binom{n+k-1}{k}z^k},\quad\abs{z}<1.\]
+Assume the validity of
+\[\frac{1}{1-z}=\sum\limits_{k=0}^\infty{z^k},\quad\abs{z}<1.\]
+You may use a combinatorial proof instead of induction.
+\begin{align*}
+  \frac{1}{(1-z)^n}=\sum\limits_{k=0}^\infty{\binom{n+k-1}{k}z^k}\\
+  \frac{1}{(1-z)^{n+1}}=\frac{1}{(1-z)^n(1-z)}\\
+  \frac{1}{(1-z)^{n+1}}=\sum\limits_{k=0}^\infty{\binom{n+k-1}{k}\frac{z^k}{1-z}}\\
+  \frac{1}{(1-z)^{n+1}}=\sum\limits_{k=0}^\infty{\frac{(n+k-1)(n+k-2)\dots(n+1)n}{k!(n+k-1-k)!}\frac{z^k}{1-z}}\\
+  \frac{1}{(1-z)^{n+1}}=\sum\limits_{k=0}^\infty{\frac{(n+k)(n+k-1)\dots(n+2)(n+1)}{k!(n+k-k)!}z^k}\\
+  \frac{1}{(1-z)^{n+1}}=\sum\limits_{k=0}^\infty{\frac{(n+k-1+1)(n+k-2+1)\dots(n+1+1)(n+1)}{k!(n+k-1-k+1)!}z^k}\\
+\end{align*}
+\subsection*{\#46}
+Use Newton's binomial theorem to approximate $\sqrt{30}$. You may use the formula on p. 149.
+\begin{align*}
+  \sqrt{30}=\sqrt{25+5}&=5(1+0.2)^{1/2}=1+\sum\limits_{k=1}^\infty{\frac{(-1)^{k-1}}{k\cdot2^{2k-1}}\binom{2k-2}{k-1}0.2^k}\\
+  &=5\left(1+\frac{1}{2}0.2-\frac{1}{2\cdot2^3}\binom{2}{1}0.2^2+\frac{1}{3\cdot2^5}\binom{4}{2}0.2^3-\dots\right)\\
+  &\approx5.4775
+\end{align*}
+\subsection*{\#47}
+Use Newton's binomial theorem to approximate $10^{1/3}$. It should be sufficient to evaluate 1/3 choose $k$ for $k=0,1,2,3$
+\begin{align*}
+  \sqrt[3]{10}&=\sqrt[3]{8(1+0.25)}=2\sqrt[3]{1+0.25}\\
+  &=2(1+0.25)^{1/3}\\
+  &=2\cdot\sum\limits_{k=0}^\infty{\binom{1/3}{k}0.25^k}\\
+  &=2+2\cdot\sum\limits_{k=1}^\infty{\binom{1/3}{k}0.25^k}\\
+  &=2+2\frac{1}{3}\cdot\frac{1}{4}+2\cdot\sum\limits_{k=2}^\infty{\binom{1/3}{k}0.25^k}\\
+  &=2+\frac{1}{6}+2\frac{\frac{1}{3}\cdot-\frac{2}{3}}{2}\left(\frac{1}{4}\right)^2+2\cdot\sum\limits_{k=3}^\infty{\binom{1/3}{k}0.25^k}\\
+  &=2+\frac{1}{6}-\frac{1}{72}+2\frac{\frac{1}{3}\cdot-\frac{2}{3}\cdot-\frac{5}{3}}{3!}\left(\frac{1}{4}\right)^3+2\cdot\sum\limits_{k=4}^\infty{\binom{1/3}{k}0.25^k}\\
+  &=2+\frac{1}{6}-\frac{1}{72}+\frac{5}{27\cdot6}\left(\frac{1}{4}\right)^2+2\cdot\sum\limits_{k=4}^\infty{\binom{1/3}{k}0.25^k}\\
+  &=2+\frac{1}{6}-\frac{1}{72}+\frac{5}{2592}+2\cdot\sum\limits_{k=4}^\infty{\binom{1/3}{k}0.25^k}\\
+  &\approx2.1547+2\cdot\sum\limits_{k=4}^\infty{\binom{1/3}{k}0.25^k}\\
+\end{align*}
+\subsection*{\#48}
+Use theorem 5.6.1 to show that, if $m$ and $n$ are positive integers, then a partially ordered set of $mn+1$ elements has a chain of size $m+1$ or an antichain of size $n+1$.
+\subsection*{\#50}
+Consider the partially ordered set $(X,\mid)$ on the set $X=\{1,2,\dots,12\}$ of the first 12 positive integers, partially ordered by ``is divisible by.''
+\subsubsection*{(a)}
+Determine a chain of largest size and a partition of $X$ into the smallest number of antichains.
+\subsubsection*{(b)}
+Determine an antichain of largest zise and a partition of $X$ into the smallest number of chains.
+\end{document}
