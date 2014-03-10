@@ -11,5 +11,41 @@
 \title{Notes}
 \date{March 10, 2014}
 \maketitle
+\section*{lesson 13}
+$U(x,s)=\frac{u_0}{s}-\frac{u_0}{s(\sqrt{s}+1}e^{-x\sqrt{s}}\to u(x,t)=u_0\left[1-(\text{erfc}(\frac{x}{2\sqrt{t}})-\text{erfc}(\sqrt{t}+\frac{x}{2\sqrt{t}})e^{x+t}\right]$
+
+mixup, he wrote $\frac{u_0}{s}-\frac{u_0\sqrt{s}}{s(\sqrt{s}+1)}e^{-\sqrt{s}x}$ but want $F(s)=\frac{1}{s(\sqrt{s}+1)}e^{-a\sqrt{s}}\to f(t)=?$ and then $F(\frac{s}{a^2})=\frac{a^3}{s(\sqrt{s}+a)}e^{-\sqrt{s}}\to a^2f(a^2t)$ concentrate on $G(s)=\frac{e^{-s}}{s(\sqrt{s}+a)}=\frac{(\sqrt{s}-a)e^{-\sqrt{s}}}{s(s-a^2)}$ and then $(s-a^2)G(s)=\frac{1}{\sqrt{s}}e^{-\sqrt{s}}-\frac{a}{s}e^{-\sqrt{s}}$ step 3 solve $a'(t)-a^2g(t)=\dots$
+
+\section*{number 19 from handout}
+\begin{align*}
+  f(t)&=\text{erfc}\left(\frac{a}{2\sqrt{t}}\right)
+\end{align*}
+in process of inverting (notes from 2 lectures back) $F(s)=e^{-\sqrt{s}}$ we obtained a DE for $f(t)$.
+\begin{align*}
+  f(t)&=c_1t^{-3/2}e^{-\frac{1}{4t}}\\
+  \lim\limits_{s\to\infty}se^{-\sqrt{s}}&=f(0)\\
+  \lim\limits_{s\to0^+}e^{-\sqrt{s}}&=1=\int_0^\infty{f(t)\,\mathrm{d}t}\\
+  \int_0^\infty{f(t)\,\mathrm{d}t}&=c\int_0^\infty{t^{-3/2}e^{-\frac{1}{4t}}\,\mathrm{d}t}=1\\
+  \Gamma(x)&=\int_0^\infty{e^{-t}t^{x-1},\mathrm{d}t}\\
+  u&=\frac{1}{4t}\\
+  t&=\frac{1}{4u}\\
+  \mathrm{d}t&=-\frac{1}{4u^2}\mathrm{d}u\\
+  \int_0^\infty{f(t)\,\mathrm{d}t}&=c\int_0^\infty{4u^{3/2}e^{-u}\frac{-1}{4u^2}\,\mathrm{d}t}\\
+  1&=c\int_0^\infty{e^{-u}u^{-1/2}4^{1/2}\,\mathrm{d}u}\\
+  &=2c\int_0^\infty{e^{-u}u^{-1/2}\,\mathrm{d}u}=2c\Gamma\left(\frac{1}{2}\right)\\
+  c&=\frac{1}{2\Gamma(1/2)}=\frac{1}{2\sqrt{\pi}}\\
+  F(s)&=e^{-\sqrt{s}}\to f(t)\\
+  F'(s)&=-\frac{1}{2\sqrt{s}}e^{-\sqrt{s}}\to -tf(t)\\
+  &\frac{1}{\sqrt{s}}\to 2tf(t)=2t\frac{1}{2\sqrt{\pi}}t^{-3/2}e^{-\frac{1}{rt}}\\
+  e^{-\sqrt{s}}&\to\frac{1}{2\sqrt{\pi}}t^{-3/2}e^{-1/(4t)}\\
+  \frac{1}{\sqrt{s}}&\to\frac{1}{\sqrt{\pi}}t^{-1/2}e^{-1/(4t)}\\
+  F(s)&\to f(t)\\
+  \frac{1}{s}F(s)&\to\int_0^t{f(u)\,\mathrm{d}u}\\
+  \frac{1}{s}e^{-\sqrt{s}}&\to \frac{1}{2\sqrt{gp}}\int_{n=0}^{u=t}{e^{-1/(4u)}u^{-3/2}\,\mathrm{d}u}\\
+  \vdots\\
+  g'(t)-a^2g(t)&=\frac{1}{\sqrt{\pi t}}e^{1/(4t)}-a\cdot\text{erfc}\left(\frac{1}{2\sqrt{t}}\right)
+  \intertext{multiply by $e^{-a^2t}$ which is integrating factor}
+  \frac{\mathrm{d}}{\mathrm{d}t}\left(e^{-a^t}\right)&=
+\end{align*}
 
 \end{document}
