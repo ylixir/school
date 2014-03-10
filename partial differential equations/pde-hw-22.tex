@@ -1,0 +1,23 @@
+\documentclass{article}
+\usepackage{fullpage}
+\usepackage{nopageno}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+\newcommand{\degree}{\ensuremath{^\circ}}
+
+\begin{document}
+Jon Allen
+
+HW 18
+
+Plot the solution $u(x,t)$ for $t=0.01,0.1,1.0$ with $\alpha^2=1$
+\begin{align*}
+   u(x,t)&=\frac{1}{2}\left[\text{erf}\left(\frac{x+1}{2\sqrt{t}}\right)-\text{erf}\left(\frac{x-1}{2\sqrt{t}}\right)\right]
+\end{align*}
+\begin{center}
+  \input{pde-hw-18-plot-01.tex}
+\end{center}
+\end{document}

@@ -1,0 +1,45 @@
+\documentclass{article}
+\usepackage{fullpage}
+\usepackage{nopageno} 
+\usepackage{amsmath}
+\usepackage{amssymb}
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+
+\begin{document}
+\title{Notes}
+\date{March 7, 2014}
+\maketitle
+\section*{worksheet}
+\subsection*{2}
+multinomial theorem
+\[(x_1+x_2+\dots+x_t)^n=\sum\limits{\binom{n}{r_1}\binom{n-r_1}{r_z}\dots\binom{n-r_1-\dots-r_{t-1}}{r_t}{x_1}^{r_1}{x_2}^{r_2}\dots{x_t}^{r_t}}\]
+combinatorial proof sketch
+
+\emph{``would be sufficient for an exam''}
+\begin{align*}
+  (x_1+\dots+x_t)(x_1+\dots+x_t)\dots(x_1+\dots+x_t)
+\end{align*}
+when you multiply out, each term is a word in the letters $x_1,\dots,x_t$
+\begin{align*}
+  \underbrace{x_2x_5x_2x_1x_3x_1}_n
+\end{align*}
+so the coefficient of ${x_1}^{r_1}{x_2}^{r_2}\dots{x_t}^{r_t}$ counts \# words of length $n$ with $\underbrace{r_ix_i}_{\text{letter distribution}}$'s
+\section*{example 39}
+find the coefficient of ${x_1}^3x_2{x_3}^4{x_5}^2$ in $(x_1+\dots+x_5)^{10}$. $\frac{10!}{3!1!4!2!}$
+\section*{other example}
+what is $\sum\limits_{n_1+n_2+n_3=n}{\binom{n}{n_1,n_2,n_3}(-1)^{n_2}}$. use multinomial thm, plug in 1,-1,1 for x's
+\section*{other example}
+what is $\sum\limits_{n_1+n_2+n_3=n}{\binom{n}{n_1,n_2,n_3,n_4}(-1)^{n_2+n_4}}=(1-1+1-1)^n=0$
+\section*{chapter 6}
+\subsection*{principle of inclusion-exclusion}
+$\abs{A_1\cup A_2\cup A_3\dots\cup A_n}=\abs{\cup_{i=1}^n{A_i}}=\sum\limits_{i=1}^n{\abs{A_1}}-\sum\limits_{i\ne j}{\abs{A_i\cap A_j}}+\sum\limits{\abs{A_i\cap A_j\cap A_k}}-\dots+(-1)^{n+1}\abs{A_1\cap\dots\cap A_n}$
+\subsection*{application 1}
+find \# integers between 1 and 1000. that are not divisible by 5,6, or 8.
+$A_i=$set of integers between 1-1000 divisible by $i$. consider $A_5,A_6,A_8$
+
+we are looking for $A_5\cup A_6\cup A_8$
+
+$\left\lvert A_5\right\rvert+\left\lvert A_6\right\rvert+\left\lvert A_8\right\rvert-\left\lvert A_5\cap A_6\right\rvert-\left\lvert A_5\cap A_8\right\rvert-\left\lvert A_6\cap A_8\right\rvert+\left\lvert A_5\cap A_6\cap A_8\right\rvert$
+\end{document}

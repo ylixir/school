@@ -1,0 +1,65 @@
+\documentclass{article}
+\usepackage{fullpage}
+\usepackage{nopageno}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{enumerate}
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+\newcommand{\degree}{\ensuremath{^\circ}}
+
+\begin{document}
+Jon Allen
+
+HW 19
+
+Let $X$ and $T$ be physical variables for distance and time. Consider the following general diffusion problem for $u(X,T)$:
+\begin{align*}
+  \text{PDE}&&\frac{\partial u}{\partial t}&=\alpha^2\frac{\partial^2u}{\alpha x^2}+F(X,T)&0<&X<L,&0<&T<+\infty\\
+  \text{BC}&&\alpha_1L\frac{\partial u}{\partial X}(0,T)+\beta _1u(0,t)&=G_1(T)&&&0<&T<+\infty\\
+  &&\alpha_2L\frac{\partial u}{\partial X}(L,T)+\beta_2u(L,t)&=G_1(T)\\
+  \text{IC}&&u(X,0)&=\phi(X)&0<&X<L\\
+  \intertext{\emph{Note:}}
+  {\alpha_1}^2+{\beta_1}^2&\ne0&
+  {\alpha_2}^2+{\beta_2}^2&\ne0\\
+\end{align*}
+\begin{enumerate}[(a)]
+\item
+If the units for $X$ and $T$ are [cm] and [sec] respectively (and $u$ is taken as temerature with units [deg]), what are the units for $L,\alpha^2,F,\phi,$ and for $\alpha_1,\beta_2,\alpha_2,\beta_2$?
+\begin{align*}
+  \frac{\text{deg}}{\text{sec}}&=\alpha^2\frac{\text{deg}}{\text{cm}^2}+F&\alpha\cdot\text{cm}\frac{\text{deg}}{\text{cm}}+\beta\cdot\text{deg}&=\text{deg}\\
+  F&=\frac{\text{deg}}{\text{sec}}&\alpha\cdot\text{deg}=\beta\cdot\text{deg}&=\text{deg}\\
+  \alpha^2&=\frac{\text{cm}^2}{\text{sec}}&\alpha_{1,2}=\beta_{1,2}=1&=\text{dimensionless}\\
+  L&=\text{cm}&\phi(X)&=\text{deg}\\
+\end{align*}
+Define dimensionless variables $x,t$ by $x=X/L$ and $t=\frac{\alpha^2}{L^2}T$. Define $w(x,t)=u(X,T)$
+\item
+Find $\frac{\partial u}{\partial T},\frac{\partial u}{\partial X},\frac{\partial^2 u}{\partial X^2}$ in terms of $\frac{\partial w}{\partial t},\frac{\partial w}{\partial x},\frac{\partial^2 w}{\partial x^2}$.
+\begin{align*}
+  \frac{\partial u}{\partial T}&=\frac{\partial }{\partial T}\left(w(x,t)\right)&\frac{\partial u}{\partial X}&=\frac{\partial }{\partial X}(w(x,t))\\
+  T&=\frac{L^2}{\alpha^2}t&X&=xL&\\
+  &=\frac{\partial w}{\partial \left(\frac{L^2}{\alpha^2}t\right)}&&=\frac{\partial }{\partial (xL)}(w(x,t))\\
+  \frac{\partial u}{\partial T}&=\frac{\alpha^2}{L^2}\frac{\partial w}{\partial t}\\
+\end{align*}
+\item
+Show that the PDE can be written as
+\begin{align*}
+  \text{PDE}&&\frac{\partial w}{\partial t}&=\frac{\partial^2 w}{\partial x^2}+f(x,t)&0<&x<1,&0<&t<+\infty\\
+\end{align*}
+What is $f(x,t)$ in terms of $F(X,T)$?
+\item
+Show hat the BC can be written as
+\begin{align*}
+  \text{BC}&&\alpha_1\frac{\partial w}{\partial x}(0,t)+\beta_1w(0,t)&=g_1(t)&0<&t<+\infty\\
+  &&\alpha_2\frac{\partial w}{\partial x}(1,t)+\beta_2w(1,t)&=g_2(t)&0<&t<+\infty
+\end{align*}
+What are $g_1(t)$ and $g_2(t)$ in terms of $G_1(T)$ and $G_2(T)$?
+\item
+Show that the IC can be written as
+\begin{align*}
+  \text{IC}&&w(x,0)&=\phi(x)&0<&x<1
+\end{align*}
+What is $\phi(x)$ in terms of $\phi(X)$?
+\end{enumerate}
+\end{document}

@@ -1,0 +1,66 @@
+\documentclass{article}
+\usepackage{fullpage}
+\usepackage{nopageno}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+
+\begin{document}
+\title{Notes}
+\date{March 7, 2014}
+\maketitle
+homework 14-15
+
+sturm-lionville expansions. The last stage of separation of variales (on finite intevals)
+
+\begin{align*}
+  \text{PDE}&&u_t&=u_{xx}+\underbrace{f(x,t)}_{\sin(\lambda,x)}&\text{on }0<x<1\\
+  \text{BC}&&u(0,t)&=0\\
+  &&u_x(1,t)+u(1,t)&=0
+\end{align*}
+standard approach (incorrect). theeigenfunctions are $\sin(n\pi x)=X_n(x)$ do not satisfy the BC. The problem is driven by the boundary condition.
+
+correct answer looks like this?
+\begin{align*}
+  u(x,t)&=\sum\limits{c_nT_n(t)X_n(x)}
+\end{align*}
+where $X_n(x)$ satisfy the BC. and $X_n(x)$ satisfies the separated equation $\frac{{X_n}''}{X_n(s)}=-\lambda_n$.
+
+In lesson 9, there is a detailed example that has
+\begin{align*}
+  \text{BC}&&u(0,t)&=0\\
+  &&u(1,t)&=0\\
+  \text{PDE}&&u_t&=u_{xx}+f(x,t)
+\end{align*}
+solution is written out in detail and $X_n(x)=\sin(n\pi x)$ appear (because of the BC).
+
+In class, BC looked more like (see notes on 2/7)
+\begin{align*}
+  \text{PDE}&&u_t&=\alpha^2u_{xx}+f(x,t)\\
+  \text{BC}&&0&=\alpha_1u_x(0,t)+\beta_1u(0,t)\\
+  &&0&=\alpha_2u_x(1,t)+\beta_2u(1,t)\\
+  \text{IC}&&u(x,0)&=\phi(x)
+\end{align*}
+see page 65-66 in text (81-82). Step 1 on page 66. set $u(x,t)=\sum\limits{c_nT_n(t)X_n(x)}$ where $X_n(x)$ are eigenfunctions for the homogeneous PDE (and homogeneous BC)
+
+Try $T(t)X(x)$. $u_t=\alpha^2u_{xx}$ gives $\frac{T'(t)}{\alpha^2T(t)}=\frac{X''(x)}{X(x)}=-\lambda^2\le0$. So $X''(x)+\lambda^2X(x)=0$.
+\begin{align*}
+  \text{BC}&&X(0)&=0\\
+  &&X'(1)+X(1)&=0\\
+  X(x)&=a\cos(\lambda x)+b\sin(\lambda x)\\
+  X(0)&=0=a\cos(0)+b\sin(0)\to a=0\\
+  X'(x)&=+b\lambda\cos(\lambda x)\\
+  X'(1)+X(1)&=0\\
+  X_n(x)&=\sin(\lambda_n x) \text{ where } \tan(\lambda)=-\lambda\\
+  u(x,t)&=\sum\limits_{n=1}^\infty{T_n(t)\sin(\lambda_nx)}\\
+  f(x,t)&=\sum\limits{f_n(t)\sin(\lambda_nx)}\\
+  {T_n}'(t)&=\alpha_2(-{\lambda_n}^2)T_n(t)+f_n(t)
+\end{align*}
+coefficient of $\sin(\lambda_nx)$
+
+we need $\lambda\cos(\lambda)+\sin(\lambda)=0, \lambda>0$. $\cos(\lambda)=0$? no, else $\sin(\lambda)=0$. So divide out by cosine to get $\lambda+\tan(\lambda)=0$. Showed that eigenfunctions $\sin(\lambda x)$ are orthogonal.
+
+Homework due date extended to 3/14
+\end{document}
