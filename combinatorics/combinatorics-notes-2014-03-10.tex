@@ -1,0 +1,65 @@
+\documentclass{article}
+\usepackage{fullpage}
+\usepackage{nopageno} 
+\usepackage{amsmath}
+\usepackage{amssymb}
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+
+\begin{document}
+\title{Notes}
+\date{March 10, 2014}
+\maketitle
+\section*{homework}
+\#30:
+$\{12,13,14,23,24,34\}$ is only antichain. Not $1234$ or $\emptyset$ since they are comparable to everything.
+
+\section*{our counting box from way back}
+\begin{tabular}{|r|c|c|c|}
+  \hline
+  &none&unlimited&restricted supply\\
+  \hline
+  ordered&$\frac{n!}{(n-r)!}$&$n^r$&$\frac{n!}{(n-r)!x_1!x_2!\dots x_n!}$\\
+  \hline
+  unordered&$\frac{n!}{(n-r)!r!}=\binom{n}{r}$&$\binom{r+n-1}{r}$&*use inclusion-exclusion\\
+  &$k_1=k_2=\dots=k_n=1$&$k_1=k_2=\dots=k_n=r$ (or $\infty$)&$1\le k_i$\\
+  \hline
+\end{tabular}
+
+unify bottom row into the folowing problem:
+
+What is the number of r-combinations taken from the multiset $\{k_1\cdot a_1,k_2\cdot a_2,\dots,k_n\cdot a_n\}$?
+
+$=\{\underbrace{a_1,a_1,\dots,a_1}_{k_1\text{ copies}},\underbrace{a_2,\dots,a_2}_{k_2},\dots,\underbrace{a_n,\dots,a_n}_{k_n}\}$
+
+
+pick r elts from above
+\subsection*{example}
+in how many ways could you choose 12 pieces of candy if there are at the store: 13 butterscotch, 4 root beer barrels, 8 lemon heads, 5 cinnamon.
+
+our multiset is $\{13\cdot b,4\cdot r, 8\cdot l, 5\cdot c\}$. butterscotch$>12=\infty$ so $\{\infty\cdot b,4\cdot r, 8\cdot l, 5\cdot c\}$ lest $S=\{12-\text{combinations of }\{\infty\cdot b,\infty\cdot r,\infty\cdot l,\infty\cdot c\}\}$
+\begin{align*}
+  \left\lvert S\right\rvert&=\binom{12+4-1}{12}\\
+  &=\binom{15}{12}\\
+\text{Let }A_r&=\{12-\text{combinations in $S$ with }\ge5\; r\text{'s}\}\\
+\text{Let }A_l&=\{12-\text{combinations in $S$ with }\ge9\; l\text{'s}\}\\
+\text{Let }A_c&=\{12-\text{combinations in $S$ with }\ge6\; c\text{'s}\}\\
+\end{align*}
+$\left\lvert S\right\rvert-\left\lvert A_r\cup A_l\cup A_c\right\rvert$ do this with inclusion exclusion
+
+$A_r=\{rrrrr\text{ and 7 others}\}=$7-combinations from 4 types (infinite supply). $\left\lvert A_r\right\rvert=\binom{7+4-1}{7}$. $\left\lvert A_l\right\rvert=\binom{3+4-1}{3}$, $\left\lvert A_c\right\rvert=\binom{6+4-1}{6}$. similarly with intersections.
+
+Rewrite example as follows: what is the \# of nonnegative integral solutions to 
+\begin{align*}
+  x_1+x_2+x_3+x_4=12
+\end{align*}
+where $0\le x_2\le4,x_3\le8,x_4\le5,x_1\le\infty$
+
+exam question?
+equivalently to $y_1+y_2+y_3+y_4=$ where $\le y_1\le\quad \le y_2\le\quad\le y_3\le$
+
+equivalently to $y_1+y_2+y_3+y_4=$ where $4\le y_1\le\infty\quad 1\le y_2\le5\quad-1\le y_3\le7\quad 2\le y_4\le7$
+
+so we've done $y_1=x_1+4,y_2=x_2+1,y_3=x_3-1,y_4=x_4+2$
+\end{document}
