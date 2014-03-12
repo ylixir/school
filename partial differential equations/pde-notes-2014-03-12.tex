@@ -1,0 +1,39 @@
+\documentclass{article}
+\usepackage{fullpage}
+\usepackage{nopageno}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+
+\begin{document}
+\title{Notes}
+\date{March 12, 2014}
+\maketitle
+\begin{align*}
+  G(s)&=\frac{1}{s}\frac{1}{\sqrt{s}+a}e^{-\sqrt{s}}\\
+  (s-a^2)G(s)&=\frac{1}{\sqrt{s}}e^{-\sqrt{s}}-\frac{a}{s}e^{-\sqrt{s}}\\
+  \intertext{assuming $g(0)=0$}
+  \frac{\mathrm{d}g}{\mathrm{d}t}-a^2g(t)&=\frac{1}{\sqrt{\pi t}}e^{-1/4t}-a\text{erfc}(\frac{1}{2\sqrt{t}})\\
+  \intertext{with $g(0)=0$ integrating factor $\omega=e^{-a^2t}$}
+  \frac{\mathrm{d}}{\mathrm{d}t}\left(e^{-a^2t}g(t)\right)&=\frac{e^{-a^2t}}{\sqrt{\pi t}e^{-1/4t}}-ae^{-a^2t}\text{erfc}(\frac{1}{2\sqrt{t}})&\text{decays exponentially}
+  \intertext{instead of integrating from $0\to t$ rewrite as $t\to\infty$ with arbitrary constant}
+  \int_0^t{}&=-\int_t^\infty{}+C\\
+  \int_0^t{\frac{\mathrm{d}}{\mathrm{d}t}\left(e^{-a^2t}g(t)\right)}&=-\int_t^\infty{\frac{e^{-a^2t}}{\sqrt{\pi t}}e^{-1/4t}-ae^{-a^2t}\text{erfc}(\frac{1}{2\sqrt{t}})}\\
+  e^{-a^2t}g(t)-0&=-\int_t^\infty{\frac{1}{\sqrt{\pi t}}e^{-a^2u-1/4u}\,\mathrm{d}u}+\int_t^\infty{ae^{-a^2u}\text{erfc}(\frac{1}{2\sqrt{u}})\,\mathrm{d}u}+C\\
+  \int_t^\infty{e^{a^2u}\text{erfc}\left(\frac{1}{2\sqrt{u}}\right)\,\mathrm{d}u}&=\int_t^\infty{\text{erfc}\left(\frac{1}{2\sqrt{t}}\mathrm{d}(\frac{-1}{a^2}e^{-a^2u})\right)}\\
+  &=\left.\text{erfc}(\frac{1}{2\sqrt{u}})\frac{-1}{a^2}e^{-a^2u}\right\rvert_t^\infty+\frac{1}{a^2}\int_t^\infty{e^{-a^2u}\mathrm{d}(\text{erfc}(\frac{1}{2\sqrt{u}}))}\\
+  &=\frac{1}{a^2}e^{-a^2t}\text{erfc}(\frac{1}{2\sqrt{t}})+\frac{1}{a^2}\int_t^\infty{e^{-a^2u}\left(\frac{-2}{\sqrt{\pi}}e^{-1/4u}\underbrace{\frac{1}{2}(-\frac{1}{2})u^{-3/2}\mathrm{d}u}_{\mathrm{d}(1/2\sqrt{u})}\right)}\\
+  e^{-a^2t}g(t)-0&=-\int_t^\infty{\frac{1}{\sqrt{\pi u}}e^{-a^2u-\frac{1}{4u}}}+\frac{1}{a}e^{-a^2t}\text{erfc}(\frac{1}{2\sqrt{t}}+\frac{1\;2}{4a\sqrt{\pi}}\int_t^\infty{e^{-a^2u-1/4u}\frac{\mathrm{d}u}{u^{3/2}}}
+  &\vdots\\
+  g(t)&=\frac{1}{a}\text{erfc}\left(\frac{1}{2\sqrt{t}}\right)-\frac{1}{a}e^{a^2t+a}\cdot\text{erfc}\left(a\sqrt{t}+\frac{1}{2\sqrt{t}}\right)+C\\
+  g(0)&=0=0-\frac{1}{a}e^a\cdot0+C\\C&=0\\
+\end{align*}
+homework 23
+\begin{align*}
+  g(t)&=\int_0^t{e^t\cdot h(u)\mathrm{d}u}\\
+  f(t)&=g'(t)\\
+  g(t)&=e^t\cdot\int_0^t{h(u)\mathrm{d}u}
+\end{align*}
+\end{document}
