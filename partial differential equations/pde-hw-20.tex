@@ -3,6 +3,7 @@
 \usepackage{nopageno}
 \usepackage{amsmath}
 \usepackage{graphicx}
+\usepackage{enumerate}
 \allowdisplaybreaks
 
 \newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
@@ -11,13 +12,57 @@
 \begin{document}
 Jon Allen
 
-HW 18
+HW 20
 
-Plot the solution $u(x,t)$ for $t=0.01,0.1,1.0$ with $\alpha^2=1$
+CASE 1. $\alpha_2\beta_1-\alpha_1\beta_2+\beta_1\beta_2\ne0$
+
+Given the problem:
 \begin{align*}
-   u(x,t)&=\frac{1}{2}\left[\text{erf}\left(\frac{x+1}{2\sqrt{t}}\right)-\text{erf}\left(\frac{x-1}{2\sqrt{t}}\right)\right]
+  \text{PDE}&&\frac{\partial u}{\partial t}&=\frac{\partial ^2u}{\partial x^2}+f(x,t)&0<&x<1,&0<&t<\infty\\
+  \text{BC}&&g_1(t)&=\alpha_1\frac{\partial u}{\partial x}(0,t)+\beta_1u(0,t)&&&0<&t<\infty\\
+  &&g_2(t)&=\alpha_2\frac{\partial u}{\partial x}(1,t)+\beta_2u(1,t)&{\alpha_1}^2&+{\beta_1}^2\ne0&{\alpha_2}^2&+{\beta_2}^2\ne0\\
+  \text{IC}&&u(x,0)&=\phi(x)&0<&x<1
 \end{align*}
-\begin{center}
-  \input{pde-hw-18-plot-01.tex}
-\end{center}
+Introduce the change of variables
+\begin{itemize}
+\item
+$u(x,t)=w(x,t)+a(t)x+b(t)(1-x)$
+\end{itemize}
+where $a(t), b(t)$ are to be determined so that $w(x,t)$ satisfies the homogeneous BC:
+\begin{align*}
+  \text{BC}&&\alpha_1\frac{\partial w}{\partial x}(0,t)+\beta_1w(0,t)&=0&0<&t<\infty\\
+  &&\alpha_2\frac{\partial w}{\partial x}(1,t)+\beta_2w(1,t)&=0
+\end{align*}
+\begin{enumerate}[(a)]
+\item
+Assuming $a(t), b(t)$ can be found so that $w(x,t)$ satisfies homogeneous BC, give the resulting PDE and IC for $w(x,t)$. (State it in terms of $a(t),b(t)$ - solving for them is done next.)
+\begin{align*}
+  \text{PDE}&&\frac{\partial u}{\partial t}&=\frac{\partial ^2u}{\partial x^2}+f(x,t)&0<&x<1,&0<&t<\infty\\
+  &&\frac{\partial }{\partial t}\left(w(x,t)+a(t)x+b(t)(1-x)\right)&=\frac{\partial ^2}{\partial x^2}\left(w(x,t)+a(t)x+b(t)(1-x)\right)+f(x,t)\\
+  &&\frac{\partial w}{\partial t}+x\frac{\mathrm{d} a}{\mathrm{d} t}+(1-x)\frac{\mathrm{d} b}{\mathrm{d} t}&=\frac{\partial ^2w}{\partial x^2}+\underbrace{\frac{\partial ^2}{\partial x^2}(a(t)x)}_{\to 0}+\underbrace{\frac{\partial ^2}{\partial x^2}(b(t)(1-x))}_{\to 0}+f(x,t)\\
+  &&\frac{\partial w}{\partial t}+x\frac{\mathrm{d} a}{\mathrm{d} t}+(1-x)\frac{\mathrm{d} b}{\mathrm{d} t}&=\frac{\partial ^2w}{\partial x^2}+f(x,t)\\
+  \text{IC}&&u(x,0)&=\phi(x)&0<&x<1\\
+  &&\phi(x)&=w(x,0)+a(0)x+b(0)(1-x)
+\end{align*}
+\item
+Show that homogeneous BC for $w(x,t)$ can be achieved (that is, a solution for $a(t),b(t)$ can be found) for \emph{arbitrary} functions $g_1(t),g_2(t)$ in the original problem if and only if $\alpha_2\beta_1-\alpha_1\beta_2+\beta_1\beta_2\ne0$
+\begin{align*}
+  g_1(t)&=\alpha_1\frac{\partial u}{\partial x}(0,t)+\beta_1u(0,t)\\
+  g_2(t)&=\alpha_2\frac{\partial u}{\partial x}(1,t)+\beta_2u(1,t)\\
+  g_1(t)&=\alpha_1\frac{\partial}{\partial x}\left(w(0,t)+a(t)\cdot0+b(t)(1-0)\right)+\beta_1\left(w(0,t)+a(t)\cdot0+b(t)(1-0)\right)\\
+  &=\alpha_1\frac{\partial w}{\partial x}(0,t)+\beta_1w(0,t)+\beta_1b(t)\\
+  g_1(t)-\beta_1b(t)&=\alpha_1\frac{\partial w}{\partial x}(0,t)+\beta_1w(0,t)=0\\
+  g_2(t)&=\alpha_2\frac{\partial}{\partial x}\left(w(1,t)+a(t)\cdot1+b(t)(1-1)\right)+\beta_2\left(w(1,t)+a(t)\cdot1+b(t)(1-1)\right)\\
+  &=\alpha_2\frac{\partial w}{\partial x}(1,t)+\beta_2w(1,t)+\beta_2a(t)\\
+  g_2(t)-\beta_2a(t)&=\alpha_2\frac{\partial w}{\partial x}(1,t)+\beta_2w(1,t)=0\\
+\end{align*}
+\item
+Assuming $\alpha_2\beta_1-\alpha_1\beta_2+\beta_1\beta_2\ne0$, give the solution for $a(t),b(t)$ in terms of $g_1(t),g_2(t)$.
+\begin{align*}
+  g_1(t)&=\beta_1b(t)\\
+  \frac{1}{\beta_1}g_1(t)&=b(t)\\
+  g_2(t)&=\beta_2a(t)\\
+  \frac{1}{\beta_2}g_2(t)&=a(t)
+\end{align*}
+\end{enumerate}
 \end{document}

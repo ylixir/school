@@ -3,6 +3,7 @@
 \usepackage{nopageno}
 \usepackage{amsmath}
 \usepackage{graphicx}
+\usepackage{enumerate}
 \allowdisplaybreaks
 
 \newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
@@ -11,13 +12,15 @@
 \begin{document}
 Jon Allen
 
-HW 18
+HW 24
 
-Plot the solution $u(x,t)$ for $t=0.01,0.1,1.0$ with $\alpha^2=1$
+Match the usual transform table result $f(t)=\frac{1}{\sqrt{\pi t}}-e^t\text{erfc}\left(\sqrt{t}\right)$
 \begin{align*}
-   u(x,t)&=\frac{1}{2}\left[\text{erf}\left(\frac{x+1}{2\sqrt{t}}\right)-\text{erf}\left(\frac{x-1}{2\sqrt{t}}\right)\right]
+  g(t)&=e^tc_1-e^{t}\text{erfc}(\sqrt{t})-1\\
+  g(t)&=\int_0^t{f(u)\,\mathrm{d}u}\\
+  f(t)&=\frac{1}{\sqrt{\pi t}}-e^t\text{erfc}\left(\sqrt{t}\right)\\
+  g(t)&=\int_0^t{\frac{1}{\sqrt{\pi u}}-e^u\text{erfc}\left(\sqrt{u}\right)\,\mathrm{d}u}\\
+  &=\left\lvert\frac{\ln u}{\sqrt{\pi}}-e^u\text{erfc}(\sqrt{u})+2\frac{\sqrt{u}}{\sqrt{\pi}}\right\rvert_0^t\quad\text{used maxima to integrate the second term}\\
+  &=\frac{\ln t}{\sqrt{\pi}}-e^t\text{erfc}(\sqrt{t})+2\frac{\sqrt{t}}{\sqrt{\pi}}-\frac{\ln 0}{\sqrt{\pi}}+e^0\text{erfc}(\sqrt{0})
 \end{align*}
-\begin{center}
-  \input{pde-hw-18-plot-01.tex}
-\end{center}
 \end{document}

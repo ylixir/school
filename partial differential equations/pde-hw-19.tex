@@ -17,9 +17,9 @@ HW 19
 Let $X$ and $T$ be physical variables for distance and time. Consider the following general diffusion problem for $u(X,T)$:
 \begin{align*}
   \text{PDE}&&\frac{\partial u}{\partial t}&=\alpha^2\frac{\partial^2u}{\alpha x^2}+F(X,T)&0<&X<L,&0<&T<+\infty\\
-  \text{BC}&&\alpha_1L\frac{\partial u}{\partial X}(0,T)+\beta _1u(0,t)&=G_1(T)&&&0<&T<+\infty\\
-  &&\alpha_2L\frac{\partial u}{\partial X}(L,T)+\beta_2u(L,t)&=G_1(T)\\
-  \text{IC}&&u(X,0)&=\phi(X)&0<&X<L\\
+  \text{BC}&&G_1(T)&=\alpha_1L\frac{\partial u}{\partial X}(0,T)+\beta _1u(0,T)&&&0<&T<+\infty\\
+  &&G_2(T)&=\alpha_2L\frac{\partial u}{\partial X}(L,T)+\beta_2u(L,T)\\
+  \text{IC}&&u(X,0)&=\Phi(X)&0<&X<L\\
   \intertext{\emph{Note:}}
   {\alpha_1}^2+{\beta_1}^2&\ne0&
   {\alpha_2}^2+{\beta_2}^2&\ne0\\
@@ -37,29 +37,57 @@ Define dimensionless variables $x,t$ by $x=X/L$ and $t=\frac{\alpha^2}{L^2}T$. D
 \item
 Find $\frac{\partial u}{\partial T},\frac{\partial u}{\partial X},\frac{\partial^2 u}{\partial X^2}$ in terms of $\frac{\partial w}{\partial t},\frac{\partial w}{\partial x},\frac{\partial^2 w}{\partial x^2}$.
 \begin{align*}
-  \frac{\partial u}{\partial T}&=\frac{\partial }{\partial T}\left(w(x,t)\right)&\frac{\partial u}{\partial X}&=\frac{\partial }{\partial X}(w(x,t))\\
   T&=\frac{L^2}{\alpha^2}t&X&=xL&\\
+  \frac{\partial u}{\partial T}&=\frac{\partial }{\partial T}\left(w(x,t)\right)&\frac{\partial u}{\partial X}&=\frac{\partial }{\partial X}(w(x,t))\\
   &=\frac{\partial w}{\partial \left(\frac{L^2}{\alpha^2}t\right)}&&=\frac{\partial }{\partial (xL)}(w(x,t))\\
-  \frac{\partial u}{\partial T}&=\frac{\alpha^2}{L^2}\frac{\partial w}{\partial t}\\
+  \frac{\partial u}{\partial T}&=\frac{\alpha^2}{L^2}\frac{\partial w}{\partial t}&\frac{\partial u}{\partial X}&=\frac{1}{L}\frac{\partial w}{\partial x}\\
+  \frac{\partial ^2u}{\partial X^2}&=\frac{\partial }{\partial X}\left(\frac{1}{L}\frac{\partial w}{\partial x}\right)&\frac{\partial ^2u}{\partial X^2}&=\frac{1}{L}\frac{\partial }{\partial \left(xL\right)}\left(\frac{\partial w}{\partial x}\right)\\
+  &=\frac{1}{L^2}\frac{\partial}{\partial x}\left(\frac{\partial w}{\partial x}\right)&&=\frac{1}{L^2}\frac{\partial ^2w}{\partial x^2}
 \end{align*}
 \item
 Show that the PDE can be written as
 \begin{align*}
   \text{PDE}&&\frac{\partial w}{\partial t}&=\frac{\partial^2 w}{\partial x^2}+f(x,t)&0<&x<1,&0<&t<+\infty\\
 \end{align*}
+\begin{align*}
+  \text{PDE}&&\frac{\partial u}{\partial t}&=\alpha^2\frac{\partial^2u}{\alpha x^2}+F(X,T)&0<&X<L,&0<&T<+\infty\\
+  &&\frac{\alpha^2}{L^2}\frac{\partial w}{\partial t}&=\alpha^2\frac{1}{L^2}\frac{\partial ^2w}{\partial x^2}+F(X,T)&0<&xL<L,&0<&\frac{L^2}{\alpha^2}t<+\infty\\
+  &&\frac{\partial w}{\partial t}&=\frac{\partial ^2w}{\partial x^2}+\frac{L^2}{\alpha^2}F(X,T)&0<&x<1,&0<&t<+\infty\\
+  &&\frac{\partial w}{\partial t}&=\frac{\partial ^2w}{\partial x^2}+\frac{L^2}{\alpha^2}F\left(Lx,\frac{L^2}{\alpha^2}t\right)&0<&x<1,&0<&t<+\infty\\
+  &&\frac{\partial w}{\partial t}&=\frac{\partial ^2w}{\partial x^2}+f(x,t)&0<&x<1,&0<&t<+\infty\\
+\end{align*}
 What is $f(x,t)$ in terms of $F(X,T)$?
+
+\[f(x,t)=\frac{L^2}{\alpha^2}F\left(Lx,\frac{L^2}{\alpha^2}t\right)\]
+
 \item
 Show hat the BC can be written as
 \begin{align*}
   \text{BC}&&\alpha_1\frac{\partial w}{\partial x}(0,t)+\beta_1w(0,t)&=g_1(t)&0<&t<+\infty\\
-  &&\alpha_2\frac{\partial w}{\partial x}(1,t)+\beta_2w(1,t)&=g_2(t)&0<&t<+\infty
+  &&\alpha_2\frac{\partial w}{\partial x}(1,t)+\beta_2w(1,t)&=g_2(t)&0<&t<+\infty\\
+  \text{BC}&&\alpha_1L\frac{\partial u}{\partial X}(0,T)+\beta _1u(0,t)&=G_1(T)&0<&T<+\infty\\
+  &&\alpha_1L\frac{1}{L}\frac{\partial w}{\partial x}(0,t)+\beta _1w(0,t)&=G_1\left(\frac{L^2}{\alpha^2}t\right)&0<&\frac{L^2}{\alpha^2}t<+\infty\\
+  &&\alpha_1\frac{\partial w}{\partial x}(0,t)+\beta _1w(0,t)&=g_1(t)&0<&t<+\infty\\
+  &&\alpha_2L\frac{\partial u}{\partial X}(L,T)+\beta_2u(L,t)&=G_2(T)\\
+  &&\alpha_2L\frac{1}{L}\frac{\partial w}{\partial x}\left(\frac{L}{L},t\right)+\beta _2w\left(\frac{L}{L},t\right)&=G_2\left(\frac{L^2}{\alpha^2}t\right)&0<&\frac{L^2}{\alpha^2}t<+\infty\\
+  &&\alpha_2\frac{\partial w}{\partial x}\left(1,t\right)+\beta _2w\left(1,t\right)&=g_2\left(t\right)&0<&t<+\infty\\
 \end{align*}
 What are $g_1(t)$ and $g_2(t)$ in terms of $G_1(T)$ and $G_2(T)$?
+\begin{align*}
+  g_1(t)&=G_1\left(\frac{L^2}{\alpha^2}t\right)&
+  g_2(t)&=G_2\left(\frac{L^2}{\alpha^2}t\right)
+\end{align*}
 \item
 Show that the IC can be written as
 \begin{align*}
-  \text{IC}&&w(x,0)&=\phi(x)&0<&x<1
+  \text{IC}&&w(x,0)&=\phi(x)&0<&x<1\\
+  \text{IC}&&u(X,0)&=\Phi(X)&0<&X<L\\
+  &&u(X,0)=w(x,0)&=\Phi(Lx)&0<&Lx<L\\
+  &&w(x,0)&=\phi(x)&0<&x<1\\
 \end{align*}
-What is $\phi(x)$ in terms of $\phi(X)$?
+What is $\phi(x)$ in terms of $\Phi(X)$?
+
+\[\phi(x)=\Phi(Lx)=\Phi(X)\]
+
 \end{enumerate}
 \end{document}

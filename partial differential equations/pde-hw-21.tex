@@ -3,6 +3,7 @@
 \usepackage{nopageno}
 \usepackage{amsmath}
 \usepackage{graphicx}
+\usepackage{enumerate}
 \allowdisplaybreaks
 
 \newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
@@ -11,13 +12,31 @@
 \begin{document}
 Jon Allen
 
-HW 18
+HW 21
 
-Plot the solution $u(x,t)$ for $t=0.01,0.1,1.0$ with $\alpha^2=1$
+CASE 2: $\alpha_2\beta_1-\alpha_1\beta_2+\beta_1\beta_2=0$
+
+Given the problem:
 \begin{align*}
-   u(x,t)&=\frac{1}{2}\left[\text{erf}\left(\frac{x+1}{2\sqrt{t}}\right)-\text{erf}\left(\frac{x-1}{2\sqrt{t}}\right)\right]
+  \text{PDE}&&\frac{\partial u}{\partial t}&=\frac{\partial ^2u}{\partial x^2}+f(x,t)&0<&x<1,&0<&t<\infty\\
+  \text{BC}&&g_1(t)&=\alpha_1\frac{\partial u}{\partial x}(0,t)+\beta_1u(0,t)&&&0<&t<\infty\\
+  &&g_2(t)&=\alpha_2\frac{\partial u}{\partial x}(1,t)+\beta_2u(1,t)&{\alpha_1}^2&+{\beta_1}^2\ne0&{\alpha_2}^2&+{\beta_2}^2\ne0\\
+  \text{IC}&&u(x,0)&=\phi(x)&0<&x<1
 \end{align*}
-\begin{center}
-  \input{pde-hw-18-plot-01.tex}
-\end{center}
+Assume $\alpha_2\beta_1-\alpha_1\beta_2+\beta_1\beta_2=0$. A change of vriables of the form $u=w+a(t)x+b(t)(1-x)$ cannot convert the problem to homogeneous BC for $w$ for arbitrary $g_1(t),g_2(t)$. Consider the change of variables
+\begin{itemize}
+\item
+$u(x,t)=w(x,t)+a(t)x^p+b(t)(1-x)^p$ with $p>1$
+\end{itemize}
+Here $a(t),b(t)$ and $p$ are to be determined so that $w(x,t)$ satisfies the homogeneous BC:
+\begin{align*}
+  \text{BC}&&\alpha_1\frac{\partial w}{\partial x}(0,t)+\beta_1w(0,t)&=0&0<&t<\infty\\
+  &&\alpha_2\frac{\partial w}{\partial x}(1,t)+\beta_2w(1,t)&=0
+\end{align*}
+\begin{enumerate}[(a)]
+\item
+Show that there always exist values $p>1$ such that the homogeneous BC for $w(x,t)$ can be achieved (that is, a solution for $a(t),b(t)$ can be found) for \emph{arbitrary} functions $g_1(t),g_2(t)$ in the original problem. This will involve conditions on $p$ in terms of $\alpha_1,\alpha_2,\beta_1,\beta_2$.
+\item
+
+\end{enumerate}
 \end{document}

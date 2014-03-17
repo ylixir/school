@@ -1,0 +1,63 @@
+\documentclass{article}
+\usepackage{fullpage}
+\usepackage{nopageno}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+
+\begin{document}
+\title{Notes}
+\date{March 14, 2014}
+\maketitle
+very interesting use of laplace transforms. straight from the text
+\section*{lesson 14 page 122}
+duhamel's principle.
+
+\subsubsection*{easy problem}
+\begin{align*}
+  \text{PDE}&&w_t&=w_{xx}\\
+  \text{BC}&&w(0,t)&=0\\
+  &&w(1,t)&=1\\
+  \text{IC}&&w(x,0)&=0
+\end{align*}
+subsubsection*{hard problem}
+\begin{align*}
+  &&&&&&z&=u+v\\
+  \text{PDE}&&u_t&=u_{xx}&v_t&=v_{xx}
+  &z_t&=z_{xx}\\
+  \text{BC}&&u(0,t)&=0&v(0,t)&=0
+  &z(0,t)&=0\\
+  &&u(1,t)&=g(t)&v(1,t)&=0
+  &z(1,t)&=g(t)\\
+  \text{IC}&&u(x,0)&=0&v(x,0)&=\phi(x)
+  &z(x,0)&=\phi(x)\\
+\end{align*}
+$\mathcal{L}$ with respect to time
+\begin{align*}
+  sW(x,s)-\underbrace{w(x,0)}_{\to 0}&=W_{xx}(x,s)\\
+  W_{xx}-SW&=0\text{ on }0<x<1&U_{xx}-sU&=0\\
+  W(0,s)&=0 \text{ and } W(1,s)=\frac{1}{s}&U(0,s)&=0 \text{ and }U(1,s)=G(s)\\
+  W&=c_1\sinh(\sqrt{s}x)+c_2\cosh(\sqrt{s}x)\\
+  \frac{\mathrm{d}^2y}{\mathrm{d}x^2}-sy&=0&y&=e^{rx}\\
+  &&r^2-s&=0&r&=\pm\sqrt{s}\\
+  y&=a_1e^{-\sqrt{s}x}+a_2e^{\sqrt{s}x}\\
+  \sinh(z)&=\frac{1}{2}(e^z-e^{-z})\\
+  \cosh(z)&=\frac{1}{2}(e^z+e^{-z})\\
+  W&=c_1\sinh(\sqrt{s}x)\\
+  \frac{1}{s}&=c_1\sinh(\sqrt{s})\\
+  W(x,s)&=\frac{1}{s}\frac{\sinh(\sqrt{s}x)}{\cosh(\sqrt{s})}\\
+  U&=c_1\sinh(\sqrt{s}x)\\
+  G(s)&=c_1\sinh(\sqrt{s})\\
+  U(x,s)&=G(s)\frac{\sinh(\sqrt{s}x}{\sinh(\sqrt{s})}=G(s)sW(x,s)\\
+  \text{note: }sW(x,s)-\underbrace{w(x,0)}_{\to 0}&=\mathcal{L}\{w_t\}\\
+  u(x,t)&=\int_0^t{g(t-u)w_t(x,u)\,\mathrm{d}u}\\
+  &=g(t-u)w(x,u)\mid_0^t-\int_0^t{(-g'(t-u)w(x,u)\,\mathrm{d}u}
+  \intertext{page 107 (124)}
+  w(x,t)&=x+\frac{2}{\pi}\sum\limits_{n=1}^\infty{\frac{(-1)^n}{n}e^{-(n\pi)^2t}\sin(n\pi x)}\text{ from eigenfunction expansion}
+\end{align*}
+
+homework \#27
+lesson 14, exercise 4 $g(t)=\sin(t)$. take $\alpha^2=1$. due friday, 28 march.
+\end{document}

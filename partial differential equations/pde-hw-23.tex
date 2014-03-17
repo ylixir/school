@@ -3,6 +3,7 @@
 \usepackage{nopageno}
 \usepackage{amsmath}
 \usepackage{graphicx}
+\usepackage{enumerate}
 \allowdisplaybreaks
 
 \newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
@@ -11,13 +12,43 @@
 \begin{document}
 Jon Allen
 
-HW 18
+HW 23
 
-Plot the solution $u(x,t)$ for $t=0.01,0.1,1.0$ with $\alpha^2=1$
+Given $F(s)=\frac{1}{1+\sqrt{s}}$
+\begin{enumerate}[(a)]
+\item
+Introduce $G(s)=\frac{1}{s}F(s)$ and show that $sG(s)-G(s)=\frac{1}{\sqrt{s}}-\frac{1}{s}$
 \begin{align*}
-   u(x,t)&=\frac{1}{2}\left[\text{erf}\left(\frac{x+1}{2\sqrt{t}}\right)-\text{erf}\left(\frac{x-1}{2\sqrt{t}}\right)\right]
+  sG(s)-G(s)&=G(s)(s-1)\\
+  &=(s-1)\frac{1}{s}\frac{1}{1+\sqrt{s}}\\
+  &=\frac{1}{s}\frac{(1+\sqrt{s})(1-\sqrt{s})}{1+\sqrt{s}}\\
+  &=\frac{1}{s}-\frac{\sqrt{s}}{s}\\
+  &=\frac{1}{s}-\frac{1}{\sqrt{s}}\\
 \end{align*}
-\begin{center}
-  \input{pde-hw-18-plot-01.tex}
-\end{center}
+\item
+Now obtain a first order DE for $g(t)$. You may assume $g(0)=0$, but show where this assumption is used.
+\begin{align*}
+  \mathcal{L}^{-1}\{sG(s)-G(s)\}&=\mathcal{L}^{-1}\left\{\frac{1}{s}-\frac{1}{\sqrt{s}}\right\}\\
+  \mathcal{L}^{-1}\{sG(s)-0\}-g(t)&=1-\mathcal{L}^{-1}\left\{\frac{\sqrt{\pi}}{\sqrt{\pi}}\frac{1}{\sqrt{s}}\right\}\\
+  \mathcal{L}^{-1}\{sG(s)-g(0)\}-g(t)&=1-\frac{1}{\sqrt{\pi}}\mathcal{L}^{-1}\left\{\frac{\Gamma(1/2)}{s^{1/2}}\right\}\\
+  g'(t)-g(t)&=1-\frac{1}{\sqrt{\pi}}t^{-1/2}=1-\frac{1}{\sqrt{t\pi}}\\
+\end{align*}
+\item
+Solve for $g(t)$
+\begin{align*}
+  \frac{\mathrm{d}}{\mathrm{d}t}\left(e^{\int{-1\,\mathrm{d}t}}g(t)\right)&=e^{-\int{\mathrm{d}t}}\left(1-\frac{1}{\sqrt{t\pi}}\right)\\
+  e^{-t}g(t)&=\int{e^{-t}-\frac{e^-t}{\sqrt{t\pi}}\,\mathrm{d}t}\\
+  e^{-t}g(t)&=-e^{-t}-\text{erfc}(\sqrt{t})+c_1\quad\text{used maxima here}\\
+  g(t)&=-1-e^{t}\text{erfc}(\sqrt{t})+e^tc_1\\
+  g(t)&=e^tc_1-e^{t}\text{erfc}(\sqrt{t})-1\\
+\end{align*}
+\item
+The relation $G(s)=\frac{1}{s}F(s)$ implies a relation between $g(t)$ and $f(t)$. What is the relation?
+\begin{align*}
+  G(s)&=\frac{1}{s}F(s)\\
+  \mathcal{L}^{-1}\{G(s)\}&=\mathcal{L}^{-1}\{\frac{1}{s}F(s)\}\\
+  g(t)&=\int_0^t{f(u)\,\mathrm{d}u}
+\end{align*}
+Use it to find $f(t)$
+\end{enumerate}
 \end{document}

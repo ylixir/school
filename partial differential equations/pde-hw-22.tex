@@ -3,6 +3,7 @@
 \usepackage{nopageno}
 \usepackage{amsmath}
 \usepackage{graphicx}
+\usepackage{enumerate}
 \allowdisplaybreaks
 
 \newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
@@ -11,13 +12,36 @@
 \begin{document}
 Jon Allen
 
-HW 18
+HW 22
 
-Plot the solution $u(x,t)$ for $t=0.01,0.1,1.0$ with $\alpha^2=1$
+Given $F(s)=\frac{1}{1+\sqrt{s}}$
+\begin{enumerate}[(a)]
+\item
+Find $f(t)$ by expanding $F(s)$ in reciprocal powers and inverting termwise.
+
 \begin{align*}
-   u(x,t)&=\frac{1}{2}\left[\text{erf}\left(\frac{x+1}{2\sqrt{t}}\right)-\text{erf}\left(\frac{x-1}{2\sqrt{t}}\right)\right]
+  \mathcal{L}^-1\{F(s)\}&=\mathcal{L}^-1\left\{\frac{1}{1+\sqrt{s}}\right\}\\
+  &=\mathcal{L}^-1\left\{\sum\limits_{n=0}^\infty{(-1)^ns^{n/2}}\right\}\\
+  &=\sum\limits_{n=0}^\infty{(-1)^n\mathcal{L}^-1\left\{s^{n/2}\right\}}\\
+  \mathcal{L}^{-1}\{s^n\}&=\frac{t^{-n-1}}{\Gamma(-n)}\\
+  &=\sum\limits_{n=0}^\infty{(-1)^n\frac{t^{-n/2-1}}{\Gamma(-n/2)}}\\
 \end{align*}
-\begin{center}
-  \input{pde-hw-18-plot-01.tex}
-\end{center}
+\item
+Reduce all occurrences of the gamma function to ordinary factorials
+\begin{align*}
+  &=\sum\limits_{n=0}^\infty{(-1)^n\frac{t^{-n/2-1}}{(-1-n/2)!}}\quad\text{used computer to get this}\\
+\end{align*}
+This result isn't really sane, but it seems to be closest to what you are looking for. I also have this, but it's not right either I think.
+\begin{align*}
+  &=\mathcal{L}^-1\left\{\frac{1-\sqrt{s}}{1-s}\right\}\\
+  &=e^t-\mathcal{L}^-1\left\{\frac{\sqrt{s}}{1-s}\right\}\\
+  &=e^t+\frac{1}{2}\mathcal{L}^-1\left\{\frac{1}{\sqrt{s}+1}\right\}+\frac{1}{2}\mathcal{L}^-1\left\{\frac{1}{\sqrt{s}-1}\right\}\\
+  \frac{1}{2}\mathcal{L}^-1\left\{\frac{1}{1+\sqrt{s}}\right\}&=e^t+\frac{1}{2}\mathcal{L}^-1\left\{\frac{1}{\sqrt{s}-1}\right\}\\
+  \mathcal{L}^-1\left\{\frac{1}{1+\sqrt{s}}\right\}&=2e^t+\mathcal{L}^-1\left\{\frac{\sqrt{s}+1}{s-1}\right\}\\
+  &=2e^t+e^t+\mathcal{L}^-1\left\{\frac{\sqrt{s}}{s-1}\right\}\\
+  &=2e^t+e^t+\frac{1}{2}\mathcal{L}^-1\left\{\frac{1}{\sqrt{s}+1}\right\}+\frac{1}{2}\mathcal{L}^-1\left\{\frac{1}{\sqrt{s}-1}\right\}\\
+  &=4e^t+2e^t+\mathcal{L}^-1\left\{\frac{\sqrt{s}+1}{s-1}\right\}\\
+  f(t)&=\sum\limits_{n=1}^\infty{2^ne^t}
+\end{align*}
+\end{enumerate}
 \end{document}
