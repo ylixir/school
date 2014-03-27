@@ -1,0 +1,49 @@
+\documentclass{article}
+\usepackage{fullpage}
+\usepackage{nopageno} 
+\usepackage{amsmath}
+\usepackage{amssymb}
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+
+\begin{document}
+\title{Notes}
+\date{March 24, 2014}
+\maketitle
+\section*{homework}
+\subsection*{\#10}
+looking for solutions to $x_1+x_2+\dots+x_k=r, 0\le x_i\le n_i$. If there is a solution to this equation that satisfies this, then you should be able to use in/ex principle to show that the intersection is $\emptyset$. $A_i=$solutions to plynomial such that $x_i>n_i$. Show that $A_1\cap A_2\cap\dots\cap A_k=\emptyset$ 
+\subsection*{\#24a}
+find \# of ways to place 6 nonattacking rooks on the board shown. 
+%\begin{table}[|c|c|c|c|c|c|]
+%x&x\\
+%\end{table}
+$=6!-r_15!+r_24!-r_33!+r_42!-r_51!+r_60!$
+\begin{align*}
+  r_i&=&\text{\# of ways to place $i$ rooks on forbidden positions}\\
+  r_1&=6&\text{number of forbidden positions}\\
+  r_2&=\binom{3}{2}\cdot2^2&\text{pick 2 rows, pick one of 2 spots in each row}\\
+  r_3&=2^3\\
+  r_4&=0\\
+  r_5&=0\\
+  r_6&=0
+\end{align*}
+\section*{project fun time}
+inverse of a permutation. 
+\begin{align*}
+  321547896\\
+  123456789\\
+  321549678
+\end{align*}
+use combinatorial collection template to edit.
+
+\subsection*{resources}
+sage reference manual, wolfram mathworld, wikipedia, arxiv.org
+
+links in statistic thingie to oeis
+
+link from wiki to statistics page.
+
+dyck paths and permutations are most well developed examples. example: [[St000013]]
+\end{document}

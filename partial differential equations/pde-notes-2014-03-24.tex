@@ -1,0 +1,78 @@
+\documentclass{article}
+\usepackage{fullpage}
+\usepackage{nopageno}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumerate}
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+
+\begin{document}
+\title{Notes}
+\date{March 24, 2014}
+\maketitle
+\section*{lesson 16 wave equation}
+obtain $u_{tt}=\alpha^2 u_{xx}$ and other forms.
+
+1740s ``vibrating string''
+
+equilibrium position
+
+violin string. tension T is grams cm/sec$^2$. density $\rho$ is grams/cm. we are looking at segemnt of string $x_0-\frac{\Delta x}{2}<x_0<x_0+\frac{\Delta x}{2}$. mass is $\rho\Delta x$ and $u(x,t)$ is vertical displacement from equilibrium. Assumptions, difference in length from $\Delta x$ causes no change in mass. horizontal shifts are negligible.
+
+this is page 125(141) in text.
+
+Newton says $F=ma$. So $\rho\Delta xu_{tt}=$vertical force on segment arising from string forces+etc.
+
+Tension acts tangentially to $x_0-\frac{\Delta x}{2}$ and $x_0+\frac{\Delta x}{2}$. $\theta$ is angle from tangential line to horizontal with $\theta_1$ being on the left. Tension$=T\sin \theta_2-T\sin\theta_2$. notice that $\tan\theta=u_x$ so \[\sin\theta=\frac{u_x}{\sqrt{1+{u_x}^2}}\].
+
+So we have
+\[\rho\Delta xu_{tt}=T\left[\left(\frac{u_x}{\sqrt{1+{u_x}^2}}\right)_{x_0+\frac{\Delta x}{2}}-\left(\frac{u_x}{\sqrt{1+{u_x}^2}}\right)_{x_0-\frac{\Delta x}{2}}\right]\]
+\begin{align*}
+  \rho u_{tt}&=\frac{T}{\Delta x}\Delta\left(\frac{u_x}{\sqrt{1+{u_x}^2}}\right)+\frac{\text{etc}}{\Delta x}\\
+  \rho u_{tt}&=T\frac{\partial }{\partial x}\left(\frac{u_x}{\sqrt{1+{u_x}^2}}\right)+\lim\limits_{\Delta x\to0}\frac{\text{etc}}{\Delta x}\\
+  \intertext{note}
+  \frac{\mathrm{d}}{\mathrm{d}x}\left[u_x(1+{u_x}^2)^{-1/2}\right]&=u_{xx}(1+u_x^2)+u_x(-1/2)...\\
+  \rho u_{tt}&=T\frac{u_{xx}}{(1+{u_x}^2)^{3/2}}+\lim_{\Delta x\to0}\left(\text{etc}/\Delta x\right)
+\end{align*}
+more assumptions:tension remains essentially constant and $\left\lvert u_x\right\rvert$ is small
+
+Since $\left\lvert u_x\right\rvert$ is small we have
+\begin{align*}
+  \rho u_{tt}&=Tu_{xx}+\lim_{\Delta x\to0}\frac{\text{etc}}{\Delta x}
+\end{align*}
+other forces on segment might be
+\begin{enumerate}
+\item
+$F(x,t)$ is vertical force per unit length (gravity)
+\item
+$-\gamma  u$ is elastic restoring force per unit length
+\item
+$-\beta u_t$ is frictional force (of medium) per unit length
+\item
+etc is additional forces on segment of length $\Delta x$
+\end{enumerate}
+$=F(x_0,t)\Delta x-\gamma u\Delta x-\beta u_t\Delta x$
+
+$\alpha$=``velocity''
+
+\begin{align*}
+  \text{PDE}&&u_{tt}&=\alpha^2u_{xx}&0<&t<\infty\\
+  &&&&\text{various }&\text{x-internal}\\
+  \text{BC}\\
+  \text{IC}&&u(x,0)&=\phi(x)\\
+  &&u_t(x,0)&=\psi(x)
+\end{align*}
+question: are there travelling wave solutions? this means a function that depends on x and t such that $u(x,t)=f(x-ct)$. So wave is being translated through time with speed c.
+\begin{align*}
+  u(x,t)&=f(x-ct)\\
+  u_x&=f'(x-ct)\\
+  u_{xx}&=f''(x-ct)\\
+  u_t&=f'(x-ct)(-c)\\
+  u_{tt}&=f''(x-ct)(-c)^2
+  \intertext{back substitute into pde}
+  f''(x-ct)c^2&=\alpha^2 f''(x-ct)\\
+  c=\pm\alpha
+\end{align*}
+\end{document}

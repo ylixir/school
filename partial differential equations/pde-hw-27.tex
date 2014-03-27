@@ -1,0 +1,29 @@
+\documentclass{article}
+\usepackage{fullpage}
+\usepackage{nopageno}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+\newcommand{\degree}{\ensuremath{^\circ}}
+
+\begin{document}
+Jon Allen
+
+HW 27
+
+Lesson 14, exercise 4. Take $g(t)=\sin(t)$. Take $\alpha^2=1$.
+
+Using Duhamel's principle, what is the solution of the IBVP
+\begin{align*}
+  \text{PDE}&&&\quad u_t=\alpha^2u_{xx}&0<&x<1&0<&t<\infty\\
+  \text{BCs}&&&
+  \begin{cases}
+  u(0,t)&=0\\
+  u(1,t)&=\sin t
+  \end{cases}
+  &&&0<&t<\infty\\
+  \text{IC}&&&\quad u(x,0)=0&0\le&x\le1
+\end{align*}
+\end{document}
