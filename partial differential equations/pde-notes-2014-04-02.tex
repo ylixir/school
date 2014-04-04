@@ -1,0 +1,95 @@
+\documentclass{article}
+\usepackage{fullpage}
+\usepackage{nopageno}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumerate}
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+
+\begin{document}
+\title{Notes}
+\date{April 2, 2014}
+\maketitle
+\section*{lesson 19 (bc)}
+\section*{lesson 20 solution by separation of variables}
+\begin{align*}
+  \text{PDE}&&u_{tt}&=c^2u_{xx}&0<&x<L&0<&t<\infty\\
+  \text{BC}&&&&x=0,&x=L\\
+  \text{IC}&&u(x,0)&=f(x)\\
+  &&u_t(x,0)&=g(x)
+\end{align*}
+\section*{19}
+names book gives for boundaries
+\begin{enumerate}
+\item
+controlled endpoints
+\begin{align*}
+  u(0,t)&=g_1(t)\\
+  u(L,t)&=g_2(t)
+\end{align*}
+1st kind, dirichlet
+\item
+force at boundaries
+\begin{align*}
+  u_x(0,t)&=g_1(t)\\
+  u_x(L,t)&=g_2(t)
+\end{align*}
+snd kind newmann
+\item
+elastic attachement
+\begin{align*}
+  u_x(0,t)+cu(0,t)&=g_1(t)\\
+  u_x(L,t)+cu(L,t)&=g_2(t)
+\end{align*}
+3rd kind, mixed or robin
+\end{enumerate}
+using terminology like transverse, longitudinal and torsional waves.
+Transverse waves vibrate perpindicular to reference axis or direction of motion. Like a jump rope.
+Longitudinal waves vibrate parallel to reference axis/direction of motion. Like a slinky.
+Torsional waves represent rotational vibrations about reference axis or direction of motion.
+
+\subsubsection*{2nd kind}
+recall that vertical force$=T\cdot\sin(\theta)=T\cdot\frac{\tan(\theta)}{\sec(\theta)}=T\cdot\frac{x_x}{\sqrt{1+{u_x}^2}}$. Zero vertical force at enpoint means $T\cdot\frac{x_x}{\sqrt{1+{u_x}^2}}=0$ or $u_x=0$. So frictionless endpoints. When there is an applied force on the endpoints, then the derivative picks up something.
+
+Note that in longitudinal displacement (slinky example) maximum displacement is at the top, because that is where the most force is. as you go down, less force, less displacement.
+
+\subsubsection*{3rd kind}
+page 150. Still frictionless, but elastic attachment.
+
+vertical force of spring is $-hl\sin(\theta)=-hl_0\frac{\sin(\theta)}{\cos(\theta)}=-hu=T\frac{u_x}{\sqrt{1+{u_x}^2}}$. Assum $\sqrt{1+{u_x}^2}\approx 1$ then $Tu_x=-hu$. Note that $l$ is the length of the little spring contraption and $l_0$ is the initial (short) length.
+\section*{20}
+separation of variables
+\begin{align*}
+  u&=X(x)T(t)\\
+  X(x)T''(t)&=c^2X''(x)T(t)\\
+  \frac{T''(t)}{c^2T(t)}&=\frac{X''(x)}{X(x)}=\lambda\\
+  \intertext{$\lambda$ is a constant, separation constant}
+  -\infty&<\lambda<\infty\\
+  T''-c^2\lambda T&=0,\quad X''-\lambda X=0\\
+  0&<t<\infty\quad 0<x<L\\
+  \frac{\mathrm{d}^2y}{\mathrm{d}x^2}-\mu^2&=0\quad e^{\mu x},e^{-\mu x}\\
+  \frac{\mathrm{d}^2y}{\mathrm{d}x^2}+0&=0\quad 1,x\\
+  \frac{\mathrm{d}^2y}{\mathrm{d}x^2}+\mu^2&=0\quad \cos(\mu x),\sin(\mu x)\\
+\end{align*}
+cases are
+\begin{enumerate}
+\item
+$\lambda=\mu^2$ positive
+\item
+$\lambda=0$
+\item
+$\lambda=-\mu^2$ negative
+\end{enumerate}
+earlier, $\lambda=\mu^2$ was eliminated on the ground that it gave exponntially increasing solutions in time $t$. Time solutions now $e^{+\mu ct},e^{-\mu ct}$.
+
+The real reason $\mu^2>0$ can be eliminated is that the BC for $X(x)$ cannot be satisfied. $\lambda=\mu^2>0$ $X''-\mu^2X=0$
+\begin{align*}
+  X&=c_1\cosh(\mu x)+c_2\sinh(\mu x)\\
+  X(0)&=0=c_1\cdot1+c_2\cdot0\quad c_1=0\\
+  X&=c_2\sinh(\mu x)\\
+  X(L)&=0=c_2\sinh(\mu L)
+\end{align*}
+want nontrivial solution $c_2\ne0$. $\sinh(\mu L)=0$, only solution is $\mu=0$ and since $\mu^2>0$ we have no solutions.
+\end{document}

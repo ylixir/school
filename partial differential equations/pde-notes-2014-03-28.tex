@@ -1,0 +1,72 @@
+\documentclass{article}
+\usepackage{fullpage}
+\usepackage{nopageno}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumerate}
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+
+\begin{document}
+\title{Notes}
+\date{March 28, 2014}
+\maketitle
+result from last time (D'Alemberts' solution)
+\begin{align*}
+  \text{PDE}&&u_{tt}&=c^2u_{xx}&-\infty<&x<+\infty&0<&t<\infty\\
+  \text{IC}&&u(x,0)&=f(x)\\
+  &&u_t(x,0)&=g(x)\\
+  \hline
+  &&u(x,t)&=\frac{1}{2}(f(x-ct)+f(x+ct))+\frac{1}{2c}\int_{x-ct}^{x+ct}{g(s)\mathrm{d}s}\\
+\end{align*}
+\section*{18 properties of this solution}
+\begin{enumerate}[C{a}se 1.]
+\item
+\begin{align*}
+  \text{IC}&&\left.\begin{aligned}u(x,0)&=f(x)\\u_t(x,0)&=0\end{aligned}\right\}\text{ Solution }u(x,t)=\frac{1}{2}\left[\underbrace{f(x-ct)}_{\text{wave moving right}}+\underbrace{f(x+ct)}_{\text{wave moving left}}\right]
+\end{align*}
+\item
+\begin{align*}
+  \text{IC}&&\left.\begin{aligned}u(x,0)&=0\\u_t(x,0)&=g(x)\end{aligned}\right\}\text{ Solution }u(x,t)=\frac{1}{2c}\int_{x-ct}^{x+ct}{g(s)\,\mathrm{d}s}
+\end{align*}
+value of $g$ over a widening interval
+
+see graphs on pages 139-141 (155-157)
+\end{enumerate}
+\begin{align*}
+  \text{PDE}&&u_{tt}&=c^2u_{xx}&0<&x<\infty&0<&t<\infty\\
+  \text{BC}&&u(0,t)&=0&&&0<&t<\infty\\
+  \text{IC}&&u(x,0)&=f(x)&0<&x<\infty\\
+  &&u_t(x,0)&=g(x)
+\end{align*}
+as last time $u(x,t)=\phi(x-ct)+\psi(x+ct)$ general solution -- IC's and BC are not used.
+
+Match IC:
+\begin{align*}
+  \phi(x)+\psi(x)&=f(x)&0<&x<\infty\\
+  -c\phi'(x)+c\psi'(x)&=g(x)&\to&-\phi(x)++\psi(x)\\
+  &&=&\frac{1}{c}\int_0^x{g(s)\,\mathrm{d}s}+K\\
+  \phi(x)&=\frac{1}{2}f(x)-\frac{1}{2c}\int_0^x{g(s)\,\mathrm{d}s}+ \frac{k}{2}\\
+  \psi(x)&=\frac{1}{2}f(x)+\frac{1}{2c}\int_0^x{g(s)\,\mathrm{d}s}+ \frac{k}{2}\\
+  u(x,t)&=\phi(x-ct)+\psi(x+ct)
+\end{align*}
+k cancel out. $x+ct>0$ so $\psi(x+ct)$ is no problem. $x-ct$ changes sign.
+
+What is $\phi(x-ct)$ when $x-ct<0$?
+
+now lets look at the boundary condition
+
+\begin{align*}
+  \text{BC}&&u(0,t)&=0=\phi(-ct)+\psi(ct)\text{ for}&0<&t<\infty\\
+  \text{for }&&-\infty&<x<0,&\phi(x)&=-\psi(-x)\\
+  \text{for }&&x-ct&>0,&u(x,t)&=\phi(x-ct)+\psi(x+ct)\\
+  &&&&&=\frac{1}{2}\left[f(x-ct)+f(x+ct)\right]+\frac{1}{2c}\int_{x-ct}^{x+ct}{g(s)\,\mathrm{d}s}\\
+  \text{for }&&x-ct&<0,&u(x,t)&=-\psi(x-ct)+\psi(x+ct)\\
+  &&&&&=\frac{1}{2}\left[f(x-ct)+f(x+ct)\right]+\frac{1}{2c}\int_{x-ct}^{x+ct}{g(s)\,\mathrm{d}s}
+\end{align*}
+more on page 143(159)
+
+
+homework \#28 \& \#29 due next friday (first friday of april) lession 17 exercise 3 and exercise 4
+\end{document}

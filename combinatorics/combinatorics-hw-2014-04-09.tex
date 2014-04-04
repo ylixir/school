@@ -1,0 +1,388 @@
+\documentclass{article}
+%\usepackage{fullpage}
+%\usepackage{nopageno} 
+\usepackage[margin=1.5in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[normalem]{ulem}
+\usepackage{fancyhdr}
+%\renewcommand\headheight{12pt}
+\pagestyle{fancy}
+\lhead{March 26, 2014}
+\rhead{Jon Allen}
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+
+\begin{document}
+\begin{enumerate}
+\setcounter{enumi}{4}
+\item
+Determine the number of 10-combinations of the multiset
+\[S=\{\infty\cdot a,4\cdot b,5\cdot c,7\cdot d\}\]
+We need to find the number of combinations of the set with infinite repetition  minus the number of combinations that have more than 4 $b$'s, 5 $c$'s, 7 $d$'s. The inclusion exclusion principle isn't super useful here because there are no combinations where two items exceed their repetiontion number because they wouldn't fit in the 10 combination if they did. Nevertheless, using the inclusion exclusion principle we have
+\begin{align*}
+  &\binom{10+4-1}{10}-\binom{5+4-1}{5}-\binom{4+4-1}{4}-\binom{2+4-1}{2}+0+0+0-0\\
+  &\binom{13}{10}-\binom{8}{5}-\binom{7}{4}-\binom{5}{2}+0+0+0-0\\
+  &\frac{13!}{10!3!}-\frac{8!}{5!3!}-\frac{7!}{4!3!}-\frac{5!}{2!3!}\\
+  &286-56-35-10\\
+  &185
+\end{align*}
+\item
+A bakery sells chocolate, cinnamon, and plain doughnuts and at a particular time has 6 chcolate, 6 cinnamon and 3 plain. If a box contains 12 doughnuts, how many different options are there for a box of doughnuts?
+
+This problem is similar to problem 5 but choose 12-combinations of the multiset
+\[S=\{6\cdot a,6\cdot b,3\cdot c\}\]
+Again using inclusion-exclusion
+\begin{align*}
+  &\binom{12+3-1}{12}-2\cdot\binom{5+3-1}{5}-\binom{8+3-1}{8}+0+2\cdot\binom{1+3-1}{1}-0\\
+  &\binom{14}{12}-2\cdot\binom{7}{5}-\binom{10}{8}+0+2\cdot\binom{3}{1}-0\\
+  &91-42-25+6\\
+  &10
+\end{align*}
+\setcounter{enumi}{7}
+\item
+Determine the number of solutions of the equation $x_1+x_2+x_3+x_4+x_5=14$ in positive integers $x_1,x_2,x_3,x_4$ and $x_5$ not exceeding 5.
+
+We are choosing 14-combinations from the multiset $\{5\cdot x_1,5\cdot x_2,5\cdot x_3,5\cdot x_4,5\cdot x_5\}$ where each $x_i$ has value 1 so they add to 14. But because the integers are positive, or non-zero, our set has at least one of each element. Stripping out one of each element we are looking for a 9 combination of the multiset $\{4\cdot x_1,4\cdot x_2,4\cdot x_3,4\cdot x_4,4\cdot x_5\}$. Because if we have two or more elements chosen more than four times we have minimum 10 elements which exceeds the size of the set we are choosing our inclusion-exclusion principle simplifies quite a bit.
+\begin{align*}
+  \binom{9+5-1}{9}-\binom{5}{1}\binom{4+5-1}{4}&=\binom{13}{9}-5\cdot\binom{8}{4}\\
+  &=\frac{13!}{9!4!}-5\cdot\frac{8!}{4!4!}\\
+  &=715-5\cdot 70=365
+\end{align*}
+\item
+Determine the number of integral solutions of the equation
+\[x_1+x_2+x_3+x_4=20\]
+that satisfy
+\[1\le x_1\le6,0\le x_2\le7,4\le x_3\le8,2\le x_4\le 6\]
+Introducing new variables
+\[y_1=x_1-1,y_2=x_2,y_3=x_3-4,y_4=x_4-2\]
+\[y_1+y_2+y_3+y_4=13\]
+\[0\le y_1\le 5,0\le y_2\le 7,0\le y_3\le 4,0\le y_4\le 4\]
+And using similar logic to previous problems we have
+\begin{align*}
+  &\binom{13+4-1}{13}-\binom{7+4-1}{7}-\binom{5+4-1}{5}-2\cdot\binom{8+4-1}{8}\\
+  &\quad+0+2\cdot\binom{2+4-1}{2}+2\cdot\binom{0+4-1}{0}+\binom{3+4-1}{3}\\
+  &\quad-\binom{4}{3}\cdot0+\binom{4}{4}\cdot0\\
+  =&\binom{16}{13}-\binom{10}{7}-\binom{8}{5}-2\cdot\binom{11}{8}+2\cdot\binom{5}{2}+2+\binom{6}{3}\\
+  =&\frac{16!}{3!13!}-\frac{10!}{7!3!}-\frac{8!}{5!3!}-2\frac{11!}{8!3!}+2\frac{5!}{2!3!}+2+\frac{6!}{3!3!}\\
+  =&560-120-56-330+20+2+20\\
+  =&96
+\end{align*}
+\item
+Let $S$ be a multiset with $k$ distinct objects with given repetition numbers $n_1,n_2,\dots,n_k$, respectively.
+Let $r$ be a positive integer such that there is at least one $r$-combination of $S$.
+Show that, in applyiing the inclusion-exclusion principle to determine the number of $r$-combinations of $S$, one has $A_1\cap A_2\cap\dots\cap A_k=\emptyset$
+
+Because each $A_i$ has $n_i+1$ element of the $i$-object we can obtain $\left\lvert A_1\cap A_2\cap\dots\cap A_k\right\rvert$ with the formula $\sum\limits_{i=1}^k{n_i+1}$. But $\left\lvert S\right\rvert=\sum\limits_{i=1}^k{n_i}$ and $\sum\limits_{i=1}^k{n_i+1}>\sum\limits_{i=1}^k{n_i}\ge r$ because there is at least one $r$-combination. Since we can't pull more objects out of $S$ than there exist in $S$ we know $\left\lvert A_1\cap A_2\cap\dots\cap A_k\right\rvert=0$ and $A_1\cap A_2\cap\dots\cap A_k=\emptyset$
+\item
+Determine the number of permutations of $\{1,2,\dots,8\}$ in which no even integer is in its natural position.
+
+Total permutations are 8!. Number of even integers is 4. Number of permutations where 1, 2, 3, or 4 specific integers are in their natural position are $7!, 6!, 5!, 4!$ respectively. So using the inclusion-exclusion principle to subtract the number of permutations that have an even integer in it's natural position from the total number of permutations, we have:
+\begin{align*}
+  8!-4\cdot7!+\binom{4}{2}6!-\binom{4}{3}5!+\binom{4}{4}4!&=40320-4\cdot5040+6\cdot720-4\cdot120+24\\
+  &=24024
+\end{align*}
+\setcounter{enumi}{12}
+\item
+Determine the number of permutations of $\{1,2,\dots,9\}$ in which at least one odd integer is in its natural position.
+
+Using similar logic to the previous problem we have
+\begin{align*}
+  \binom{5}{1}8!-\binom{5}{2}7!+\binom{5}{3}6!-\binom{5}{4}5!+\binom{5}{5}4!&=5\cdot8!-10\cdot7!+10\cdot6!-5\cdot5!+4!\\
+  &=157824
+\end{align*}
+\item
+Determine a general formulat for the number of permutations of the set $\{1,2,\dots,n\}$ in which exactly $k$ integers are in their natural position.
+
+First we choose our $k$ integers. We can do this in $\binom{n}{k}$ different ways. And using Theorem 6.3.1 from the book to find the number of derangements of the remaining $n-k$ for each of the $\binom{n}{k}$ choices we have
+\begin{align*}
+  \binom{n}{k}(n-k)!\sum\limits_{i=0}^{n-k}{\frac{(-1)^i}{i!}}
+\end{align*}
+\setcounter{enumi}{23}
+\item
+What is the number of ways to place six nonattacking rooks on the 6-by-6 boardswith forbidden positions as shown?
+\begin{enumerate}
+\item
+\begin{tabular}{|c|c|c|c|c|c|}
+\hline
+x&x&&&&\\
+\hline
+&&x&x&&\\
+\hline
+&&&&x&x\\
+\hline
+&&&&&\\
+\hline
+&&&&&\\
+\hline
+&&&&&\\
+\hline
+\end{tabular}
+
+Question is equivalent to finding how many ways to make a permutation $i_1i_2i_3i_4i_5i_6$ from $\{1,2,3,4,5,6\}$ where $i_1\ne1,2$ and $i_2\ne3,4$ and $i_3\ne5,6$.
+
+\begin{tabular}{c|c|c|c|c}
+  condition&
+  none&
+  any one bad $i$&
+  any two bad $i$'s&
+  all three bad $i$'s
+  \\
+  \hline
+  permutations&
+  6!&
+  $(3)\cdot2\cdot5!$&
+  $(3)\cdot2\cdot2\cdot4!$&
+  $2\cdot2\cdot2\cdot3!$
+\end{tabular}
+\[6!-6\cdot5!+12\cdot4!-8\cdot3!=720-720+288-48=240\]
+\item
+\begin{tabular}{|c|c|c|c|c|c|}
+\hline
+x&x&&&&\\
+\hline
+x&x&&&&\\
+\hline
+&&x&x&&\\
+\hline
+&&x&x&&\\
+\hline
+&&&&x&x\\
+\hline
+&&&&x&x\\
+\hline
+\end{tabular}
+
+With logic as above
+
+\begin{tabular}{c|c|c|c|c}
+  condition&
+  none&
+  any one bad&
+  two bad overlapped&
+  two bad non overlapped
+  \\
+  \hline
+  permutations&
+  6!&
+  $(6)\cdot2\cdot5!$&
+  $(3)\cdot2\cdot4!$&
+  $(12)\cdot2\cdot2\cdot4!$
+\end{tabular}
+
+\begin{tabular}{c|c|c|c}
+  condition&
+  3 non overlapped&
+  2 overlapped 1 not&
+  2 and 2 overlapped
+  \\
+  \hline
+  permutations&
+  $(8)\cdot2\cdot2\cdot2\cdot3!$&
+  $(12)\cdot2\cdot2\cdot3!$&
+  $(3)\cdot2\cdot2\cdot2!$
+\end{tabular}
+
+\begin{tabular}{c|c|c|c}
+  condition&
+  2 overlaped 2 not&
+  2 and 2 overlaped 1 not&
+  all
+  \\
+  \hline
+  permutations&
+  $(12)\cdot2\cdot2\cdot2\cdot2!$&
+  $(6)\cdot2\cdot2\cdot2\cdot1!$&
+  $2^3$
+\end{tabular}
+\begin{align*}
+  6!-12\cdot5!+6\cdot4!+48\cdot4!-64\cdot3!-48\cdot3!+12\cdot2!+96\cdot2!-48\cdot1!+8=80
+\end{align*}
+
+\item
+\begin{tabular}{|c|c|c|c|c|c|}
+\hline
+x&x&&&&\\
+\hline
+&x&x&&&\\
+\hline
+&&x&&&\\
+\hline
+&&&&x&x\\
+\hline
+&&&&&x\\
+\hline
+&&&&&\\
+\hline
+\end{tabular}
+Again as above
+
+\begin{tabular}{c|c|c|c|c|c}
+condition&
+none&
+pos 1,2 or 4 bad&
+pos 3 or 5 bad&
+1 \& 2 bad&
+2\&3 or 4\&5
+\\
+\hline
+permutations&
+6!&
+$(3)\cdot2\cdot5!$&
+$(2)\cdot5!$&
+$3\cdot4!$&
+$(2)\cdot4!$
+\end{tabular}
+
+\begin{tabular}{c|c|c|c|c|c|c|c}
+condition&
+1\&4 or 2\&4&
+3\&5&
+2's left&
+1,2\&3&
+1,2\&4&
+1,2\&5&
+2,3\&4
+\\
+\hline
+permutations&
+$(2)\cdot2\cdot2\cdot4!$&
+$4!$&
+$(4)\cdot2\cdot4!$&
+$3!$&
+$3\cdot2\cdot3!$&
+$3\cdot3!$&
+$2\cdot3!$
+\end{tabular}
+\begin{tabular}{c|c|c|c|c|c|c|c|c}
+condition&
+2,3\&5&
+1,3\&4&
+1,3\&5&
+1,4\&5&
+2,4\&5&
+3,4\&5&
+1,2,3,4&
+1,2,3,5
+\\
+\hline
+permutations&
+3!&
+$2\cdot2\cdot3!$&
+$2\cdot3!$&
+$2\cdot3!$&
+$2\cdot3!$&
+$3!$&
+$2\cdot2!$&
+$2!$
+\end{tabular}
+
+\begin{tabular}{c|c|c|c|c}
+  condition&
+  1,2,4,5&
+  1,3,4,5&
+  2,3,4,5&
+  all
+  \\
+  \hline
+  permutations&
+  $3\cdot2!$&
+  $2\cdot2!$&
+  2!&
+  1!
+\end{tabular}
+\begin{align*}
+  &6!-8\cdot5!+(5+8+1+8)4!-(1+6+3+2+1+4+2+2+2+1)3!+9\cdot2!-1!\\
+  =&6-8\cdot5!+22\cdot4!-24\cdot3!+9\cdot2!-1!=161
+\end{align*}
+\end{enumerate}
+\setcounter{enumi}{25}
+\item
+Count the permutations $i_1i_2i_3i_4i_5i_6$ of $\{1,2,3,4,5,6\}$ where $i_1\ne1,2,3;i_2\ne1;i_3\ne1;i_5\ne5,6;$ and $i_6\ne5,6$
+
+\begin{tabular}{c|c|c|c|c|c}
+condition&
+none&
+$i_1=1,2,3$&
+$i_2,i_3=1$&
+$i_5,i_6=5,6$&
+$i_1=2,3$ and $i_2,i_3=1$
+\\
+\hline
+permutations&
+$6!$&
+$3\cdot5!$&
+$2\cdot5!$&
+$2\cdot2\cdot5!$&
+$(2)\cdot2\cdot4!$
+\end{tabular}
+
+\begin{tabular}{c|c|c|c}
+condition&
+$i_1=1,2,3$ and $i_5,i_6=5,6$&
+$i_2=i_3=1$&
+$i_2,i_3=1$ and $i_5,i_6=5,6$
+\\
+\hline
+permutations&
+$(2)\cdot3\cdot2\cdot4!$&
+$(1)\cdot0$&
+$(2\cdot2)\cdot2\cdot4!$
+\end{tabular}
+
+\begin{tabular}{c|c|c}
+condition&
+$i_5=5,6$ and $i_6=5,6$&
+$i_1=1,2,3$ and $i_2=i_3=1$
+\\
+\hline
+permutations&
+$(1)\cdot2\cdot4!$&
+$(1)\cdot0$
+\end{tabular}
+
+\begin{tabular}{c|c|c}
+condition&
+$i_1=2,3$ and $i_2,i_3=1$ and $i_5,i_6=5,6$&
+$i_1=1,2,3$ and $i_5=5,6$ and $i_6=5,6$
+\\
+\hline
+permutations&
+$(2\cdot2)\cdot2\cdot2\cdot3!$&
+$(1)\cdot3\cdot2\cdot3!$
+\end{tabular}
+
+\begin{tabular}{c|c|c}
+condition&
+$i_2=i_3=1$ and $i_5,i_6=5,6$&
+$i_2,i_3=1$ and $i_5=5,6$ and $i_6=5,6$
+\\
+\hline
+permutations&
+$(2)\cdot0$&
+$(2)\cdot2\cdot3!$
+\end{tabular}
+
+\begin{tabular}{c|c}
+condition&
+$i_1=2,3$ $i_2,i_3=1$ and $i_5=5,6$ and $i_6=5,6$
+\\
+\hline
+permutations&
+$(2)\cdot2\cdot2\cdot2!$
+\end{tabular}
+
+We needn't concern ourselves with any more possibilities as they will contain the impossible condition $i_2=i_3=1$
+\begin{align*}
+  &6!\\
+  &-3\cdot5!-2\cdot5!-4\cdot5!\\
+  &+4\cdot4!+12\cdot4!+8\cdot4!+2\cdot4!\\
+  &-16\cdot3!-6\cdot3!-4\cdot3!\\
+  &+8\cdot2!\\
+  =&6!-9\cdot5!+26\cdot4!-26\cdot3!+8\cdot2!\\
+  =&720-1080+26\cdot24-26\cdot6+16\\
+  =&124
+\end{align*}
+\end{enumerate}
+\end{document}

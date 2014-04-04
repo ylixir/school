@@ -1,0 +1,42 @@
+\documentclass{article}
+%\usepackage{fullpage}
+\usepackage{nopageno}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage{tabu}
+\usepackage{longtable}
+\usepackage{mathrsfs}
+\usepackage[margin=1in]{geometry}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\lhead{HW 29}
+\rhead{Jon Allen}
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+\newcommand{\degree}{\ensuremath{^\circ}}
+
+\begin{document}
+What is the solution to the inital-value problem
+\begin{align*}
+  \text{PDE}&&&\quad u_{tt}=u_{xx}&-\infty<&x<\infty&0<&t<\infty\\
+  \text{ICs}&&&\begin{cases}u(x,0)&=0\\u_t(x,0)&=xe^{-x^2}\end{cases}&-\infty<&x<\infty
+\end{align*}
+
+Graph the solution $u(x,t)$ for vairous values of time.
+
+\begin{align*}
+  u(x,t)&=\frac{1}{2}\left[f(x-ct)+f(x+ct)\right]+\frac{1}{2c}\int_{x-ct}^{x+ct}{g(\xi)\,\mathrm{d}\xi}\\
+  f(x)&=0\\
+  g(x)&=xe^{-x^2}\\
+  c&=\pm1\\
+  u(x,t)&=\pm\frac{1}{2}\int_{x\mp t}^{x\pm t}{\xi e^{-\xi^2}\mathrm{d}\xi}\\
+  -\frac{1}{2}\int_{x+t}^{x-t}{\xi e^{-\xi^2}\mathrm{d}\xi}&=\frac{1}{2}\int_{x-t}^{x+t}{\xi e^{-\xi^2}\mathrm{d}\xi}\\
+  \mu&=-\xi^2\quad \mathrm{d}\mu=-2\xi\mathrm{d}\xi\\
+  u(x,t)&=-\frac{1}{2\cdot2}\int_{x-t}^{x+t}{-2\xi e^{-\xi^2}\mathrm{d}\xi}\\
+  &=\frac{1}{4}\int_{-(x+t)^2}^{-(x-t)^2}{e^\mu\mathrm{d}\mu}\\
+  &=\frac{1}{4}\left[e^{-(x-t)^2}-e^{-(x+t)^2}\right]
+\end{align*}
+\input{pde-hw-29-plot-01.tex}
+\end{document}

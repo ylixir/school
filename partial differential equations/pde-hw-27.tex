@@ -1,21 +1,23 @@
 \documentclass{article}
-\usepackage{fullpage}
+%\usepackage{fullpage}
 \usepackage{nopageno}
 \usepackage{amsmath}
 \usepackage{graphicx}
+\usepackage{tabu}
+\usepackage{longtable}
+\usepackage{mathrsfs}
+\usepackage[margin=1in]{geometry}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\lhead{HW 27}
+\rhead{Jon Allen}
 \allowdisplaybreaks
 
 \newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
 \newcommand{\degree}{\ensuremath{^\circ}}
 
 \begin{document}
-Jon Allen
-
-HW 27
-
-Lesson 14, exercise 4. Take $g(t)=\sin(t)$. Take $\alpha^2=1$.
-
-Using Duhamel's principle, what is the solution of the IBVP
+Using Duhamel's principle, what is the solution of the IBVP. Take $g(t)=\sin(t)$. Take $\alpha^2=1$.
 \begin{align*}
   \text{PDE}&&&\quad u_t=\alpha^2u_{xx}&0<&x<1&0<&t<\infty\\
   \text{BCs}&&&
@@ -25,5 +27,83 @@ Using Duhamel's principle, what is the solution of the IBVP
   \end{cases}
   &&&0<&t<\infty\\
   \text{IC}&&&\quad u(x,0)=0&0\le&x\le1
+\end{align*}
+Lets do a side by side as in the text.
+
+\begin{longtabu}{X|X}
+  \emph{Easy Problem}
+  &
+  \emph{Hard Problem}\\
+  {\begin{align*}
+    w_t&=\alpha^2w_{xx}\\
+    w(0,t)&=0\\
+    w(1,t)&=1\\
+    w(x,0)&=0\\
+    \mathscr{L}\{w(x,t)\}&=W(x,s)\\
+    \frac{\mathrm{d}}{\mathrm{d}s}W(x,s)&=sW(x,s)-w(x,0)\\
+    &=sW(x,s)\\
+    0&=\alpha^2\frac{\mathrm{d}^2}{\mathrm{d}x^2}W(x,s)-sW(x,s)\\
+    0&=\alpha^2r^2+0r-s\\
+    r&=\frac{\pm\sqrt{4\alpha^2s}}{2\alpha^2}\\
+    r&=\pm\frac{\sqrt{s}}{\alpha}\\
+    W(x,s)&=c_1e^{\frac{\sqrt{s}}{\alpha}x}+c_2e^{-\frac{\sqrt{s}}{\alpha}x}\\
+    W(0,s)&=0=c_1+c_2\\
+    W(1,s)&=\frac{1}{s}=c_1e^{\frac{\sqrt{s}}{\alpha}}-c_1e^{-\frac{\sqrt{s}}{\alpha}}\\
+    \frac{1}{2s}&=c_1\sinh\frac{\sqrt{s}}{\alpha}\\
+    W(x,s)&=\frac{1}{s}\frac{e^{\frac{\sqrt{s}}{\alpha}x}-e^{-\frac{\sqrt{s}}{\alpha}x}}{2\sinh\frac{\sqrt{s}}{\alpha}}\\
+    &=\frac{1}{s}\left[\frac{\sinh\left(\frac{\sqrt{s}}{\alpha}x\right)}{\sinh\frac{\sqrt{s}}{\alpha}}\right]\\
+    \mathscr{L}^{-1}\left\{\frac{1}{s}\left[\frac{\sinh\left(\sqrt{s}x\right)}{\sinh\sqrt{s}}\right]\right\}&=x+\frac{2}{\pi}\sum\limits_{n=1}^\infty{\frac{(-1)^n}{n}e^{-(n\pi)^2t}\sin(n\pi x)}\\
+  \end{align*}}
+  &
+  {\begin{align*}
+    u_t&=\alpha^2u_{xx}\\
+    u(0,t)&=0\\
+    u(1,t)&=\sin t\\
+    u(x,0)&=0\\
+    \mathscr{L}\{u(x,t)\}&=U(x,s)\\
+    \frac{\mathrm{d}}{\mathrm{d}s}U(x,s)&=sU(x,s)-u(x,0)\\
+    &=sU(x,s)\\
+    0&=\alpha^2\frac{\mathrm{d}^2}{\mathrm{d}x^2}U(x,s)-sU(x,s)\\
+    \vdots\\
+    U(x,s)&=c_1e^{\frac{\sqrt{s}}{\alpha}x}+c_2e^{-\frac{\sqrt{s}}{\alpha}x}\\
+    U(0,s)&=0=c_1+c_2\\
+    U(1,s)&=F(s)=\frac{1}{s^2+1}\\
+    &=c_1e^{\frac{\sqrt{s}}{\alpha}}-c_1e^{-\frac{\sqrt{s}}{\alpha}}\\
+    \frac{1}{2}F(s)&=c_1\sinh\frac{\sqrt{s}}{\alpha}\\
+    U(x,s)&=F(s)\frac{e^{\frac{\sqrt{s}}{\alpha}x}-e^{-\frac{\sqrt{s}}{\alpha}x}}{2\sinh\frac{\sqrt{s}}{\alpha}}\\
+    &=F(s)\left[\frac{\sinh\left(\frac{\sqrt{s}}{\alpha}x\right)}{\sinh\frac{\sqrt{s}}{\alpha}}\right]\\
+    &=F(s)\left\{s\left[\frac{\sinh\left(\frac{\sqrt{s}}{\alpha}x\right)}{s\sinh\frac{\sqrt{s}}{\alpha}}\right]\right\}\\
+    \mathscr{L}\{w_t\}&=sW-w(x,0)\quad w(x,0)=0\\
+    U(x,s)&=F(s)\mathscr{L}\{w_t\}\\
+  \end{align*}}
+\end{longtabu}
+\begin{longtabu}{X|X}
+  {\begin{align*}
+    \mathscr{L}^{-1}\left\{W\left(x,\frac{s}{\alpha}\right)\right\}&=\alpha w(x,\alpha t)\\
+    &=\alpha x+\frac{2\alpha}{\pi}\sum\limits_{n=1}^\infty{\frac{(-1)^n}{n}e^{-(n\pi)^2\frac{t}{\alpha}}\sin(n\pi x)}\\
+  \end{align*}}
+  &
+  {\begin{align*}
+    u(x,t)&=\mathscr{L}^{-1}\{F(s)\mathscr{L}\{w_t\}\}\\
+    &=f(t)*w_t(t)\\
+    &=\int_0^t{f(\tau)w_\tau(x,t-\tau)\mathrm{d}\tau}\\
+    &=\int_0^t{w(x,t-\tau)f'(\tau)\mathrm{d}\tau}+f(0)w(x,t)\\
+  \end{align*}}
+\end{longtabu}
+\begin{align*}
+  u(x,t)&=\int_0^t{\alpha x\cos\tau+\frac{2\alpha}{\pi}\cos\tau\sum\limits_{n=1}^\infty{\frac{(-1)^n}{n}e^{-(n\pi)^2\frac{t-\tau}{\alpha}}\sin(n\pi x)}\,\mathrm{d}\tau}\\
+  &=\alpha x\int_0^t{\cos\tau\,\mathrm{d}\tau}+\frac{2\alpha}{\pi}\sum\limits_{n=1}^\infty{\left(\frac{(-1)^n}{n} \sin(n\pi x)\int_0^t{e^{-(n\pi)^2\frac{t-\tau}{\alpha}}\cos\tau\,\mathrm{d}\tau}\right)}\\
+  &=\alpha x\int_0^t{\cos\tau\,\mathrm{d}\tau}+\frac{2\alpha}{\pi}\sum\limits_{n=1}^\infty{\left(\frac{(-1)^n}{n} \sin(n\pi x)\int_0^t{e^{-(n\pi)^2\frac{t}{\alpha}+(n\pi)^2\frac{\tau}{\alpha}}\cos\tau\,\mathrm{d}\tau}\right)}\\
+  &=\alpha x\int_0^t{\cos\tau\,\mathrm{d}\tau}+\frac{2\alpha}{\pi}\sum\limits_{n=1}^\infty{\left(\frac{(-1)^n}{n} \sin(n\pi x)e^{-(n\pi)^2\frac{t}{\alpha}}\int_0^t{e^{(n\pi)^2\frac{\tau}{\alpha}}\cos\tau\,\mathrm{d}\tau}\right)}
+  \text{ use maxima to do second integral}\\
+  &=\alpha x\sin t+\frac{2\alpha}{\pi}\sum\limits_{n=1}^\infty{\left(\frac{(-1)^n}{n} \sin(n\pi x)e^{-(n\pi)^2\frac{t}{\alpha}}\left[\frac{e^{\frac{n^2\pi^2\tau}{\alpha}}\left(\sin\tau+\frac{n^2\pi^2\cos\tau}{\alpha}\right)}{\frac{n^4\pi^4}{\alpha^2}+1}\right]_0^t\right)}\\
+  &=\alpha x\sin t+\frac{2\alpha}{\pi}\sum\limits_{n=1}^\infty{\left(\frac{(-1)^n}{n} \sin(n\pi x)e^{-(n\pi)^2\frac{t}{\alpha}}\left[\frac{\alpha^2e^{\frac{n^2\pi^2\tau}{\alpha}}\left(\sin\tau+\frac{n^2\pi^2\cos\tau}{\alpha}\right)}{n^4\pi^4+\alpha^2}\right]_0^t\right)}\\
+  &=\alpha x\sin t+\frac{2\alpha^3}{\pi}\sum\limits_{n=1}^\infty{\left(\frac{(-1)^n}{n^5\pi^4+n\alpha^2} \sin(n\pi x)e^{-(n\pi)^2\frac{t}{\alpha}}\left[e^{\frac{n^2\pi^2\tau}{\alpha}}\left(\sin\tau+\frac{n^2\pi^2\cos\tau}{\alpha}\right)\right]_0^t\right)}\\
+  &=\alpha x\sin t+\frac{2\alpha^3}{\pi}\sum\limits_{n=1}^\infty{\left(\frac{(-1)^n}{n^5\pi^4+n\alpha^2} \sin(n\pi x)e^{-(n\pi)^2\frac{t}{\alpha}}\left[\begin{aligned}&e^{\frac{n^2\pi^2t}{\alpha}}\left(\sin t+\frac{n^2\pi^2\cos t}{\alpha}\right)\\&-e^{\frac{n^2\pi^20}{\alpha}}\left(\sin0+\frac{n^2\pi^2\cos0}{\alpha}\right)\end{aligned}\right]\right)}\\
+  &=\alpha x\sin t+\frac{2\alpha^3}{\pi}\sum\limits_{n=1}^\infty{\left(\frac{(-1)^n}{n^5\pi^4+n\alpha^2} \sin(n\pi x)e^{-(n\pi)^2\frac{t}{\alpha}}\left[e^{\frac{n^2\pi^2t}{\alpha}}\left(\sin t+\frac{n^2\pi^2\cos t}{\alpha}\right)-\frac{n^2\pi^2}{\alpha}\right]\right)}\\
+  &=\alpha x\sin t+\frac{2\alpha^3}{\pi}\sum\limits_{n=1}^\infty{\left(\frac{(-1)^n}{n^5\pi^4+n\alpha^2} \sin(n\pi x)\left[\sin t+\frac{n^2\pi^2\cos t}{\alpha}-e^{-(n\pi)^2\frac{t}{\alpha}}\frac{n^2\pi^2}{\alpha}\right]\right)}\\
+  \alpha^2&=1\text{ If I had put done this substitution at the beginning there would be no $\pm\alpha$ worries, so I assume $\alpha=1$}\\
+  u(x,t)&=\pm x\sin t+\frac{2}{\pi}\sum\limits_{n=1}^\infty{\left(\frac{(-1)^n}{n^5\pi^4+n} \sin(n\pi x)\left[\pm\sin t+n^2\pi^2\cos t-e^{\mp(n\pi)^2t}n^2\pi^2\right]\right)}\\
+  &=x\sin t+\frac{2}{\pi}\sum\limits_{n=1}^\infty{\left(\frac{(-1)^n}{n^5\pi^4+n} \sin(n\pi x)\left[\sin t+n^2\pi^2\cos t-e^{-(n\pi)^2t}n^2\pi^2\right]\right)}\\
 \end{align*}
 \end{document}
