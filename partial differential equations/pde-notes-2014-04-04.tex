@@ -1,0 +1,87 @@
+\documentclass{article}
+\usepackage{fullpage}
+\usepackage{nopageno}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumerate}
+\usepackage{gnuplottex}
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+
+\begin{document}
+\title{Notes}
+\date{April 4, 2014}
+\maketitle
+\section*{lesson 20 (continuing from last time}
+\begin{align*}
+  \text{PDE}&&&\;\;u_{tt}=c^2u_{xx}&0<&x<L&0<&t<\infty\\
+  \text{BC}&&&\left.\begin{aligned}
+    u(0,t)&=0\\
+    u(L,t)&=0
+  \end{aligned}\right\}&&&0<&t<\infty\\
+  \text{IC}&&&\left.\begin{aligned}
+    u(x,0)&=f(x)\\
+    u_t(x,0)&=g(x)
+  \end{aligned}\right\}&0<&x<L\\
+\end{align*}
+note $c^2=T/\rho$ tension over mass density.
+
+Separated solutions $u(x,t)=T(t)X(x)$
+\begin{align*}
+  \text{PDE}&&&\quad\frac{T''}{c^2T}=\frac{X''}{X}=\lambda\\
+  \text{cases}&&&\begin{cases}
+    \lambda=\mu^2>0&\text{only trivial solutions for $X(x)$ from BC}\\
+    \lambda=0&\text{$X''=0\;X=c_1+c_2x$ BC $X(0)=0=c_1\; X(L)=0=0+c_2L\to c_2=0$}\\
+    \lambda=\mu^2<0&\text{$X''+\mu^2X=0\;X=c_1\cos(\mu x)+c_2\sin(\mu x)$ BC $X(0)=0=c_1\cdot1+c_2\cdot0\to c_1=0$}\\
+    &X(L)=0=c_2\sin(\mu L)\to \sin(\mu L)=0
+  \end{cases}
+\end{align*}
+
+So $\mu L=n\pi$ give $\mu_n=n\pi/L$ for $n=1,2,3,\dots$
+
+Have $X_n(x)=\sin(\mu_nx)=\sin(n\pi\frac{x}{L})$ nontrivial solutions (eigenfunctions)
+
+Use $\frac{T''(t)}{c^2T(t)}=-{\mu_n}^2$ $T''(t)+c^2{\mu_n}^2T(t)=0$
+
+$T(t)=a_n\cos(c\mu_nt)+b_n\sin(c\mu_nt)$
+
+Separated solutions $u_n(x,t)=\left[a_n\cos(n\pi\frac{ct}{L})+b_n\sin(n\pi\frac{x}{L})\right]\sin(n\pi\frac{x}{L}$.
+
+$\sin(2\pi\omega t)$ where $\omega$ is frequency (oscillations/second) Hz. Frequency $\omega_n=n\frac{c}{2L}=n\sqrt{\frac{T}{\rho}}\cdot \frac{1}{2L}$ for $n=1,2,3,\dots$
+
+n=1
+\begin{gnuplot}
+plot [0:1] sin(pi*x)
+\end{gnuplot}
+
+n=2
+\begin{gnuplot}
+plot [0:1] sin(2*pi*x)
+\end{gnuplot}
+
+n=3
+\begin{gnuplot}
+plot [0:1] sin(3*pi*x)
+\end{gnuplot}
+
+All solutions have periods $\omega_1$, this is why same pitch happens when plucked in different places.
+
+\subsubsection*{page 154}
+
+\subsubsection*{Mersenne Laws for Strings}
+mid-1600s, First person to determine frequency of a pitch. middle c is $256/2^8$ Hz.
+\begin{enumerate}
+\item
+Frequency is proportional to root of tension $\alpha\;\sqrt{T}$
+\item
+Frequency is inversely proportional to length. $\alpha\;1/L$
+\item
+Freqency is inversely proportion to root of density. $\alpha\; \frac{1}{\sqrt{\rho}}$
+\end{enumerate}
+Fix $L,\rho$, and for low $T$ freq$=k_0\sqrt{\frac{T}{\rho}}\frac{1}{L}$
+
+$\sin(\omega t)$
+
+don't forget to add -shell-escape to the plugin
+\end{document}

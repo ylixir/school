@@ -1,0 +1,81 @@
+%shell-escape
+\documentclass{article}
+\usepackage{fullpage}
+\usepackage{nopageno}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumerate}
+\usepackage{gnuplottex}
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+
+\begin{document}
+\title{Notes}
+\date{April 7, 2014}
+\maketitle
+
+\section*{lesson 20}
+vibrating strings on the finite interval.
+\begin{align*}
+  \text{PDE}&&&\quad u_{tt}=c^2u_{xx}&0<&x<L&0<t<\infty\\
+  \text{BC}&&&\quad u(0,t)=0=u(L,t)&&&0<t<\infty\\
+  \text{IC}&&&\begin{cases}u(x,0)&=f(x)\\u_t(x,0)&=g(x)\end{cases}&0<&x<L
+\end{align*}
+looked for separated solutions $u=T(t)X(x)$
+
+found $u_n(x,t)=[a_n\sin(n\pi ct/L)+b_n\cos(n\pi ct/L)]\sin(n\pi x/L)$
+
+text p 157
+
+General solution $u(x,t)=\sum\limits_{n=1}^\infty{[a)n\sin(n\pi ct/L)+b_n\cos(n\pi ct/L)]\sin(n\pi x/L)}$ satisfies PDE (linear/hom) and BC(linear hom)
+
+set $t=0$ so $u(x,t)=\sum\limits_{n=1}^\infty{b_n\sin(n\pi x/L)}=f(x)$.
+
+Recal $\int_0^L{\sin(n\pi x/L)\sin(m\pi x/L)\mathrm{d}x}=0, m\ne n$ and $\int_0^L{\sin(n\pi x/L)}=L/2$.
+
+\begin{align*}
+  \int_0^L{\sum\limits_{n=1}^\infty{b_n\sin(n\pi x/L)}\mathrm{d}x}&=\int_0^L{f(x)\mathrm{d}x}\\
+  \int_0^L{\sin(m\pi x/L)\sum\limits_{n=1}^\infty{b_n\sin(n\pi x/L)}\mathrm{d}x}&=\int_0^L{\sin(m\pi x/L)f(x)\mathrm{d}x}\\
+\end{align*}
+blah blah, page 157
+\begin{align*}
+  u(x,t)&=\sum\limits_{n=1}^\infty{(a_n\sin(n\pi ct/L)+b_n\cos(n\pi ct/L))\sin(n\pi x/L}\\
+  u_t(x,t)&=\sum\limits_{n=1}^\infty{(n\pi \frac{c}{L} a_n\cos(n\pi ct/L)-n\pi\frac{c}{L} b_n\sin(n\pi ct/L))\sin(n\pi x/L}\\
+  u_t(x,t)&=\sum\limits_{n=1}^\infty{n\pi \frac{c}{L} a_n\sin(n\pi x/L)}=g(x)
+\end{align*}
+even in something like $\sin(\mu_n \frac{x}{L}$ where $\mu+tan(\mu)=0$ orthoganality will still be present. Sturm-Lionville theory gives this.
+\section*{lesson 21}
+the vibrating beam (4th order PDE)
+\begin{align*}
+  \text{PDE}&&&\quad u_{tt}=\alpha^2u_{xxxx}&0<&x<L&0<t<\infty\\
+  \text{BC}&&&\quad u(0,t)=0=u(L,t)&&&0<t<\infty\\
+  &&&\quad u_{xx}(0,t)=0=u_{xx}(L,t)\\
+  \text{IC}&&&\begin{cases}u(x,0)&=f(x)\\u_t(x,0)&=g(x)\end{cases}&0<&x<L
+\end{align*}
+HW will involve exer 1 on p 166-167
+$u(0,t)=0, u_{xx}(1,t)=0, u_x(1,t)=0, u_{xxx}(1,t)=0$  free end p 166.
+
+
+set $u=T(t)X(x)$
+\begin{align*}
+  \frac{T''}{-\alpha^2T}&=\frac{X''''}{X}=\lambda&\text{separation constant}\\
+  X''''-\lambda X&=0&\text{consider bc}\\
+\intertext{assume $\lambda>0$ since $\lambda\le0$ cannot satisfy bc}
+\lambda&=\omega^2>0\\
+X^{(4)}-\omega^2X=0\\
+X=e^{rx}\\
+X^{(4)}&=r^4e^{rx}-\omega^2e^{rx}\\
+r^4-\omega^2&=0\\
+r^2&=\pm\omega\\
+r&=\pm\sqrt{\omega},\pm i\sqrt{\omega}\\
+e^{\pm\sqrt{\omega}x},e^{\pm i\sqrt{\omega}x}\\
+X(x)&=C\cos(\sqrt{\omega}x)+D\sin(\sqrt{\omega}x)+E\cosh(\sqrt{\omega}x)+F\sinh(\sqrt{\omega}x
+\intertext{apply bc}
+  X(0)&=0=C+E\\
+  X''&=-C\omega\cos(\sqrt{\omega}x)-D\omega\sin(\sqrt{\omega}x)+E\omega\cosh(\sqrt{\omega}x)+F\omega\sinh(\sqrt{\omega}x)\\
+  X''(0)=0=-C\omega+E\omega\\
+  C&=E=0\\
+  \intertext{now at $x=L$}
+\end{align*}
+\end{document}

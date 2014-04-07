@@ -1,0 +1,66 @@
+\documentclass{article}
+\usepackage{fullpage}
+\usepackage{nopageno} 
+\usepackage{amsmath}
+\usepackage{amssymb}
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+
+\begin{document}
+\title{Notes}
+\date{April 4, 2014}
+\maketitle
+\section*{7.2 generating functions}
+we have fibonacci \#'s $0,1,1,2,3,5,8,\dots$. We wish to construct an algebraic function which encodes this sequence (or any sequence of numbers)
+
+Given a sequence $h_0,h_1,h_2,h_3,\dots$ define it's generating function to be the infinite series $g(x)=h_0+h_1x+h_2x^2+h_3x^3+\dots$
+
+\subsubsection*{example}
+Generating function for the fibanocci numbers is $f(x)=0+1\cdot x+1\cdot x^2+2\cdot x^3+3\cdot x^4+\dots$.
+
+\subsubsection*{goal}
+express generating functions in closed form.
+
+\subsubsection*{example}
+find the generating function for the sequence $1,1,1,\dots$. Generating function is $f(x)=1+x+x^2+x^3+\dots=\frac{1}{1-x}$. this is the geometric series formula.
+
+\subsubsection*{example}
+Find the generating function for the sequence $1,1,1,\dots,1,0,0,\dots$. This is a finite series.
+\[f(x)=1+x+x^2+\dots+x^{n-1}=\frac{1-x^n}{1-x}\]
+,
+\subsubsection*{example}
+what is the generating function for the sequence for $\binom{n}{0},\binom{n}{1},\binom{n}{2},\binom{n}{3},\dots,\binom{n}{n},0,0,\dots$. binomial theorem
+\[f(x)=(1+x)^n\]
+
+or if $\alpha\in\mathbb{R}$ the generating function for $\binom{\alpha}{0},\binom{\alpha}{1},\binom{\alpha}{2},\binom{\alpha}{3},\dots,\binom{\alpha}{n},0,0,\dots$
+\begin{enumerate}
+\setcounter{enumi}{12}
+\item
+\begin{enumerate}
+\item
+$\frac{1}{1-cx}$
+\item
+$\frac{1}{1+x}$
+\setcounter{enumii}{3}
+\item
+$e^x$
+\end{enumerate}
+\end{enumerate}
+
+\subsubsection*{example}
+the generating function for the fibonacci numbers is $f(x)=0+x+x^2+2x^3+3x^4+\dots$
+\begin{align*}
+  \sum\limits_{n=1}^\infty{f_nx^n}&=f_0+f_1x+\sum\limits_{n=2}^\infty{f_nx^n}\\
+  &=0+x+\sum\limits_{n=0}^\infty{f_{n+2}x^{n+2}}\\
+  &=x+x^2\sum\limits_{n=0}^\infty{(f_{n+1}+f_n)x^n}\\
+  &=x+x^2\sum\limits_{n=0}^\infty{f_{n+1}x^n}+x^2\sum\limits_{n=0}^\infty{f_nx^n}\\
+  &=x+x\sum\limits_{n=0}^\infty{f_{n}x^n}+x^2\sum\limits_{n=0}^\infty{f_nx^n}\\
+  (1-x-x^2)\sum\limits_{n=0}^\infty{f_{n}x^n}&=x\\
+  f(x)&=\frac{x}{1-x-x^2}
+\end{align*}
+\subsubsection*{example}
+find the generating function for $h_0,h_1,h_2,h_3,\dots$ where $h_n=\#$ n-combinations fo $\{\infty\cdot e_1,\infty\cdot e_2,\infty\cdot e_3,\infty\cdot e_4\}$
+
+find $g(x)=\sum\limits_{k=0}^\infty{h_kx^k}$ so $h_n$ is the coefficient of $x^n$. $h_n=\#$ non-negative solutions: $e_1+e_2+e_3+e_4=n=\binom{n+4-1}{n}$ so $x^n=x^{e_1}x^{e_2}x^{e_3}x^{e_4}$ so consider the product $(1+x+x^2+\dots)(1+x+x^2+\dots)(1+x+x^2+\dots)(1+x+x^2+\dots)$ with each term coming from $x^{e_n}$. Generating function is $\frac{1}{(1-x)^4}$
+\end{document}
