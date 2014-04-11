@@ -1,0 +1,87 @@
+%shell-escape
+\documentclass{article}
+\usepackage{fullpage}
+\usepackage{nopageno}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumerate}
+\usepackage{gnuplottex}
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+
+\begin{document}
+\title{Notes}
+\date{April 9, 2014}
+\maketitle
+\section*{lesson 21}
+\begin{align*}
+  \text{PDE}&&&u_{tt}=-u_{xxxx}&0<&x<1&0<&t<\infty\\
+  \text{BC}&&&u(0,t)=0=u(1,t)&&&0<&t<\infty\\
+  &&&u_{xx}(0,t)=0=u_{xx}(1,t)\\
+  \text{IC}&&&u(x,0)=f(x)&0<&x<1\\
+  &&&u_t(x,0)=g(x)
+\end{align*}
+
+$u=T(t)X(x)$ give $\frac{T''}{-T}=\frac{X''''}{X}=\lambda$
+
+assume $\lambda>0$ ($\lambda\le0$ can be eliminated by using bc)
+
+Have $X''''-\omega^2X=0$ with characteristic roots $\pm\sqrt{\omega},\pm i\sqrt{\omega}$ and solutions:
+\begin{align*}
+  &=C\cos(\sqrt{\omega}x)+D\sin(\sqrt{\omega}x)+E\cosh(\sqrt{\omega}x+F\sinh(\sqrt{\omega}x)\\
+  X''&=\omega(-C\cos(\sqrt{\omega}x)-D\sin(\sqrt{\omega}x)+E\cosh(\sqrt{\omega}x+F\sinh(\sqrt{\omega}x))\\
+  x&=0\to C=E=0\\
+  x&=1\to\left.\begin{aligned}
+    D\sin(\sqrt{\omega})+F\sinh(\sqrt{\omega})&=0\\
+    \omega(-D\sin(\sqrt{\omega})+F\sinh(\sqrt{\omega}))&=0
+  \end{aligned}\right\}\begin{aligned}
+    2F\sinh(\sqrt{\omega})=0&\implies F=0\\
+    2D\sin(\sqrt{\omega})=0&\implies\begin{aligned}\text{nontrivial when $\sin(\sqrt{\omega})=0$}\\\text{ and $\sqrt{\omega}=n\pi$ for $n=1,2,3,\dots$} 
+    \end{aligned}
+  \end{aligned}
+\end{align*}
+
+Have $X_n(x)=\sin(n\pi x)$ for $n=1,2,3,\dots$
+\begin{align*}
+  \frac{{T_n}''}{-T_n}&=\omega_n^2=(n\pi)^4\\
+  T_n''+(n\pi)^4T_n&=0\\
+  cos((n\pi)^2t),\sin((n\pi)^2t)
+\end{align*}
+
+Have $T_nX_n=a_n\sin((n\pi)^2t)+b_n\cos((n\pi)^2t)$ frequencies $\frac{n^2}{2}\pi, n=1,2,3,\dots$
+
+for pde and bc at $t=0$
+\begin{align*}
+  u(x,0)&=f(x)=\sum\limits_{n=1}^\infty{b_n\sin(n\pi x)}\to\text{use orthogonality}\\
+  u_t(x,0)&=g(x)=\sum\limits_{n=1}^\infty{a_n(n\pi)^2\sin(n\pi x)}
+\end{align*}
+
+
+he will give us a homework problem that will look like this
+\begin{align*}
+  \text{PDE}&&&\\
+  \text{BC}&&&\\
+  \text{IC}&&&
+\end{align*}
+hopefully the previous problem will help us work out the homework problem
+
+\section*{lesson 22}
+dimensional analysis
+
+object moving through a fluid (air). question: frictional force actin on the object. expect the force to be related to velocity V. want drag force $F_D$ in terms of V velocity of object. A is ``characteristic'' area associated with object (analysis should hold for similar objects). $\rho$ is fluid density
+\begin{align*}
+  F_D&\text{ units }\left[\frac{\text{mass}\cdot\text{length}}{\text{time}^2}\right]\\
+  V&\text{ units }\left[\frac{\text{length}}{\text{time}}\right]\\
+  A&\text{ units }\left[\text{length}^2\right]\\
+  \rho&\text{ units }\left[\frac{\text{mass}}{\text{length}^3}\right]\\
+\end{align*}
+we are looking for a dimensionless combination
+\begin{align*}
+  \frac{F_D}{\rho}&\text{ units }\left[\frac{\text{length}^4}{\text{time}^2}\right]\\
+  \frac{F_D}{\rho V^2}&\text{ units }\left[\text{length}^2\right]\\
+  \frac{F_D}{\rho AV^2}&=\text{dimensionless}\\
+  F_D&=C_D\cdot\rho AV^2\text{ where $C_D$ is dimensionless constant to be measured by experiment}
+\end{align*}
+$V^2$-law for drag
+\end{document}

@@ -1,0 +1,88 @@
+\documentclass{article}
+\usepackage{fullpage}
+\usepackage{nopageno} 
+\usepackage{amsmath}
+\usepackage{amssymb}
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+
+\begin{document}
+\title{Notes}
+\date{April 7, 2014}
+\maketitle
+cores maps: to\_partition and to\_bounded\_partition
+
+questions about homework
+
+generating functions for $h_0,h_1,h_2,\dots$ is $h(x)=h_0+h_1x+h_2x^2+h_3x^3+\dots$
+
+\subsection*{last time}
+$h_n=$\# of combinations of $e_1,e_2,e_3,e_4$ with infinite repetition. solution $e_1+e_2+e_3+e_4=n$
+
+$\underbrace{(1+x+x^2+\dots)}_{x^k\text{ means }e_1=k}(1+x+x^2+\dots)(1+x+x^2+\dots)(1+x+x^2+\dots)=\frac{1}{(1-x)^4}=\sum\limits_{n=0}^\infty{\binom{}{}}$
+
+\subsubsection*{example}
+what is the gf for sol'ns to $e_1+e_2+e_3+e_4=n$ where $e_1\ge2,e_2$ is even, $4\le e_3\le7, e_4$ is positive.
+
+\begin{align*}
+  \text{gf}&=(x^2+x^3+\dots)(1+x^2+x^4+\dots)(x^4+x^5+x^6+x^7)(x+x^2+\dots)\\
+  &=x^2(1+x+x^2+\dots)(1+(x^2)+(x^2)^2+\dots)x^4(1+x+x^2+x^3)x(1+x+x^2\dots)\\
+  &=x^7\frac{1}{(1-x)^2}\frac{1}{1-x^2}\frac{1-x^4}{1-x}=\frac{x^7(1-x^4)}{(1-x)^3(1-x^2)}
+\end{align*}
+\begin{enumerate}
+\setcounter{enumi}{13}
+\item
+\begin{enumerate}
+\item
+\begin{align*}
+  (x+x^3+x^5+\dots)^4&=x^4(1+x^2+(x^2)^2+\dots)^4=\frac{x^4}{(1-x^2}^4
+\end{align*}
+\item
+\begin{align*}
+  (1+x^3+x^6+\dots)^4&=\frac{1}{(1-x^3)^4}
+\end{align*}
+\end{enumerate}
+\end{enumerate}
+
+new generating functions from old ones
+
+start with $\frac{1}{1-x}=1+x+x^2+\dots$. Take derivative$=\frac{1}{(1-x)^2}=0+1+2x+3x^2+\dots$. So we have the generating function for $g_n=n+1$. Now we multiply both sides by $x$ to get $\frac{x}{(1-x)^2}=x+2x^2+3x^3+\dots$ which is the generating function for $h_n=n$
+
+\subsubsection*{generating functions on findstat}
+look at statistics database and at the number of inversions of inversions. an inversion is when a object in the permutation is ahead of it's natural place. eg 321 has 3 inversions. 
+
+\subsubsection*{object we can write generating function for that we can't count}
+let $P_n$ be the number of integer partitions of $n$, that is the number of ways to write $n$ as a sum of decreasing positive integers. eg partitions of 4:
+\begin{align*}
+  4\\
+  3+1\\
+  2+2\\
+  2+1+1\\
+  1+1+1+1\\
+\end{align*}
+so $P_4=5, P_1=1, P_2=2,P_3=3$
+
+what is a formula for this? don't know (at least not a closed formula)
+
+what is a generating function for $P_n$
+\begin{align*}
+  \text{g.f.}&=
+  \underbrace{(1+x^1+x^2+\dots)}_{\text{\#1's}}
+%  \underbrace{(1+x^2+x^3+\cdots)}_{\txt{\#2's}}
+  \underbrace{(1+x^3+x^6+x^9+\dots)}_{\text{\#3's}}\dots\\
+  &=\sum\limits_{n=0}^\infty{P_nx^n}=\frac{1}{1-x}\frac{1}{1-x^2}\frac{1}{1-x^3}\cdots
+\end{align*}
+\section*{section 7.3}
+for a sequence $h_0,h_1,h_2,\dots$ the exponential generating function is the infinite series $h_0+h_1x+h_2\frac{x^2}{2!}+h_3\frac{x^3}{3!}+h_4\frac{x^4}{4!}+\dots=\sum\limits_{n=0}^{\infty}{h_n\frac{x^n}{n!}}$
+
+\subsubsection*{example}
+the gf for 1,1,1,... $1+x+x^2/2!+x^3/3!+\dots=e^x$
+
+\subsubsection*{example}
+$1,a,a^2,\dots\to e^{ax}$
+\subsubsection*{example}
+find the exp gf for the k-permutations of [n]: p(n,0),p(n,1),\dots$=\frac{n!}{(n-k)!}$
+it's $(1+x)^n$
+\end{document}
+

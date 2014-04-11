@@ -1,0 +1,40 @@
+\documentclass{article}
+\usepackage{fullpage}
+\usepackage{nopageno} 
+\usepackage{amsmath}
+\usepackage{amssymb}
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+
+\begin{document}
+\title{Notes}
+\date{April 9, 2014}
+\maketitle
+generating function is $\sum\limits_{n=0}^\infty{h_nx^n}$ and exponential generating function is $\sum\limits_{n=0}^\infty{h_nx^n/n!}$
+
+\subsection*{theorem}
+let $S$ be the multiset $\{n_1\cdot a_1,n_2\cdot a_2,n_3\cdot a_3,dots,n_k\cdot a_k,\}$and $h_n$ be the number of $n$-permutations of $S$. The exponential generating function for $h_0,h_1,\dots$ is $g^{(e)}(x)=f_{n1}(x)f_{n2}(x)f_{n3}(x)\dots f_{nk}(x)$
+\subsubsection*{proof}
+see page 224(237)
+
+\subsection*{example}
+find $g^{(e)}$ for the number of n-digit numbers with digits 3,5,7 where the \# of 5's is even the number of 3's is more than 1 and at most 4 sevens.
+
+\begin{align*}
+  (x^2/2!+x^3/3!+\dots)(1+x^2/2!+x^4/4!+\dots)(1+x+x^2/2!+x^3/3!+x^4/4!)\\
+  \left(\sum\limits_{n=0}^\infty{x^{n+2}/(n+2)!}\right)\left(\sum\limits_{n=0}^\infty{x^{2n}/(2n)!}\right)\left(\sum\limits_{n=0}^4{x^{n}/(n)!}\right)\\
+  (e^x-1-x)(\frac{e^x+e^{-x}}{2})(...)
+\end{align*}
+
+find the number of ways to color the squares of a 1xn chessboard with red blue and green so that the number of red squares is odd and the number of green squares is positive.
+
+\begin{align*}
+  \frac{e^x-e^{-x}}{2}e^x\sum\limits_{n=0}^\infty{x^{n+1}/(n+1)!}\\
+  \frac{e^x-e^{-x}}{2}e^x(e^x-1)\\
+  \frac{e^x-e^{-x}}{2}(e^{2x}-e^x)\\
+  \frac{e^{3x}-e^{2x}-e^{x}+1}{2}\\
+  \frac{1}{2}+\frac{1}{2}\sum\limits_{n=0}^\infty{(3x)^n/n!-(2x)^n/n!-x^n/n!}\\
+\end{align*}
+\end{document}
+
