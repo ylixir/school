@@ -1,0 +1,73 @@
+%shell-escape
+\documentclass{article}
+\usepackage{fullpage}
+\usepackage{nopageno}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumerate}
+\usepackage{gnuplottex}
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+
+\begin{document}
+\title{Notes}
+\date{April 14, 2014}
+\maketitle
+homework due on 25 april now
+\section*{lesson 23}
+classification of pde's
+\begin{align*}
+  \text{PDE}&&&Au_{xx}+Bu_{xy}+Cu_{yy}+Du_{x}+Eu_y+Fu=G&A&=A(x,y),\dots,G=G(x,y)\\
+  \text{Idea:}&&&\text{New variables }\xi=\xi(x,y),\eta=\eta(x,y)\\
+  \text{PDE}&&&\hat{A}u_{\xi\xi}+\hat{B}u_{\xi\eta}+\hat{C}u_{\eta\eta}+\hat{D}u_{\xi}+\hat{E}u_\eta+\hat{F}u=\hat{G}&\hat{A}&,\dots,\hat{G}\text{ on page 177}\\
+  \text{Idea:}&&&\hat{A}=0=A\xi_x^2+B\xi_x\xi_y+C\xi_y^2\\
+  &&&\hat{C}=0=A\eta_x^2+B\eta_x\eta_y+C\eta_y^2\\
+  \text{curves:}&&&\xi=\text{constant have }\frac{\mathrm{d}y}{\mathrm{d}x}=-\frac{\xi_x}{\xi_y}\to A(\frac{\mathrm{d}y}{\mathrm{d}x})^2-B\frac{\mathrm{d}y}{\mathrm{d}x}+C=0\\
+  \text{curves:}&&&\eta=\text{constant have }\frac{\mathrm{d}y}{\mathrm{d}x}=-\frac{\eta_x}{\eta_y}\to A(\frac{\mathrm{d}y}{\mathrm{d}x})^2-B\frac{\mathrm{d}y}{\mathrm{d}x}+C=0\\
+  \intertext{in agreement with the text we take}
+  &&\frac{\mathrm{d}y}{\mathrm{d}x}&=\frac{1}{2A}\left(B-\sqrt{B^2-4AC}\right)&\xi&\equiv\text{const}\\
+  &&\frac{\mathrm{d}y}{\mathrm{d}x}&=\frac{1}{2A}\left(B+\sqrt{B^2-4AC}\right)&\eta&\equiv\text{const}
+\end{align*}
+define hyperbolic pde as $B^2-4AC>0$ and parabolis is $B^2-4AC=0$ and elliptic is $B^2-4AC>0$
+
+\subsubsection*{example}
+\begin{align*}
+  u_{tt}&=c^2u_{xx}&t&=y\\
+  c^2u_{xx}-u_{yy}&=0\\
+  A&=c^2\quad b=0\quad c=-1\quad D=E=F=G=0\\
+  \xi&\equiv\text{const}\quad\frac{\mathrm{d}y}{\mathrm{d}x}=\frac{1}{2C^2}\left[0-\sqrt{0+4C^2}\right]\\
+  &\quad=-\frac{1}{c}\\
+  y&=-\frac{x}{c}+\text{const determines }\xi\equiv\\
+  \eta&\equiv\text{const}\quad\frac{\mathrm{d}y}{\mathrm{d}x}=\frac{1}{2C^2}\left[0+\sqrt{0+4C^2}\right]\\
+  y&=\frac{x}{c}+\text{const determines }\eta\equiv\\
+  &\quad=\frac{1}{c}\\
+  \xi&=x+cy\\
+  \eta&=x-cy
+  \intertext{what is new pde?}
+  \hat{A}u_{\xi\xi}+\hat{B}u_{\xi\eta}+\hat{C}u_{\eta\eta}+\dots&=\hat{G}\\
+  0+\hat{B}+0+0&=0\quad\text{from 23.6 on page 177}\\
+  \intertext{new pde}
+  4c^2u_{\xi\eta}&=0\quad\text{or}\\
+  u_{\xi\eta}&=0\text{ this has general solutioon}
+\end{align*}
+\subsubsection*{example}
+\begin{align*}
+  y^2u_{xx}-x^2u_{yy}&=0\\
+  A&=y^2\quad b=0\quad c=-x^2\quad D=E=F=G=0\\
+  \frac{\mathrm{d}y}{\mathrm{d}x}&=\frac{1}{2y^2}\left[0-\sqrt{0+4y^2x^2}\right]=-\frac{x}{y}\\
+  x^2+y^2&=a_1\\
+  \xi&=x^2+y^2\\
+  \frac{\mathrm{d}y}{\mathrm{d}x}&=\frac{1}{2y^2}\left[0+\sqrt{0+4y^2x^2}\right]=\frac{x}{y}\\
+  x^2-y^2&=a_2\\
+  \eta&=x^2-y^2\\
+  \intertext{note typo in text around page 179, formulas on bottom of page not possible, sign errors}
+  \hat{A}&=\hat{C}=0\\
+  \hat{B}&=2y^22x2y+0+(-2x^2)(2y)(-2y)\\
+  \vdots\\
+  16x^2y^2u_{\xi\eta}+\hat{D}u_{\xi}+\hat{E}u_{\eta}&=0\\
+  \intertext{change coefficients from xy to $\xi\eta$}
+\end{align*}
+
+
+\end{document}

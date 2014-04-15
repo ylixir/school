@@ -1,0 +1,66 @@
+%shell-escape
+\documentclass{article}
+\usepackage{fullpage}
+\usepackage{nopageno}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumerate}
+\usepackage{gnuplottex}
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+
+\begin{document}
+\title{Notes}
+\date{April 11, 2014}
+\maketitle
+\section*{lesson 21}
+vibrating beam - done (hw in prep-later)
+
+\subsection*{lesson 22}
+dimensionless form - practice in past hw - discussion of dimensional analysis.
+
+\section*{lesson 23}
+classification of pde's
+
+hw 33 lesson  23 exercise 3. hw 34 lesson 23 exercise 4. hw 35 lesson 23 exercise 5. due fri april 18.
+
+general second order linear PDE (in x,y).
+\begin{align*}
+  Au_{xx}+Bu_{xy}+C_{yy}+Du_{x}+Eu_y+F_u&=G\\
+\end{align*}
+$A,\dots,G$ are functions of $x,y$. Basic question:can we simplify by changing variable:$\xi=\xi(x,y)$ and $\eta=\eta(x,y)$?
+
+new equations in new variables look like:
+\begin{align*}
+  \hat{A}u_{\xi\xi}+\hat{B}u_{\xi\eta}+\hat{C}u_{\eta\eta}+\hat{D}u_{\xi}+\hat{E}u_{\eta}+\hat{F}u&=\hat{G}\\
+  u_x&=u_\xi\xi_x+u_\eta\eta_x\\
+  u_y&=u_\xi\xi_y+u_\eta\eta_y\\
+  \intertext{the following are mentioned on page 177 exercise 2}
+  u_{xx}&=u_{\xi\xi}{\xi_x}^2+2u_{\xi\eta}\xi_x\eta_x+u_{\eta\eta}{\eta_x}^2+u_\xi\xi_{xx}+u_\eta\eta_{xx}\\
+  u_{xy}&=\frac{\partial }{\partial y}(u_x)\\
+  &=\frac{\partial }{\partial y}(u_\xi\xi_x+u_\eta\eta_x)\\
+  &=\frac{\partial }{\partial y}(u_\xi)\xi_x+u_\xi\xi_{xy}+\frac{\partial }{\partial y}(u_\eta)\eta_x+u_\eta\cdot\eta_{xy}\\
+  &=(u_{\xi\xi}\xi_y+u_{\xi \eta\eta_y})\xi_x+u_\xi\xi_{xy}+(u_{\eta\xi}\xi_y+u_{\eta\eta}\eta_y)\eta_x+u_\eta?\\
+  &=u_{\xi\xi}\xi_x\xi_y+u_{\xi\eta}(\xi_x\eta_y+\eta_x\xi_y)+u_{\eta\eta}\cdot\eta_x\eta_y+u_\xi\xi_{xy}+u_\eta\eta_{xy}\\
+  u_{yy}&=u_{\xi\xi}{\xi_y}^2+2u_{\xi\eta}\xi_y\eta_y+u_{\eta\eta}{\eta_y}^2+u_\xi\xi_{yy}+u_\eta\eta_{yy}\\
+\end{align*}
+the hat equations is obtained by expanding out the non-hat equations with the above. So $\hat{A}=u_{\xi\xi}(A{\xi_x}^2+B\xi_x\xi_y+C{\xi_y}^2)$ and so on.
+
+try setting $\hat{A}=0=\hat{C}$ 2 conditions to determine $\xi(,y),\eta(x,y)$
+\begin{align*}
+  \hat{A}=0=A\xi_x^2+B\xi_x\xi_y+C\xi_y^2\\
+  \hat{C}=0=A\eta_x^2+B\eta_x\eta_y+C\eta_y^2\\
+\end{align*}
+notice that a curve $\xi(x,y)=$constant.
+\begin{align*}
+  \frac{\mathrm{d}}{\mathrm{d}x}(\xi(x,y))&=\xi_x+\xi_y\frac{\mathrm{d}y}{\mathrm{d}x}=0\\
+  \frac{\mathrm{d}y}{\mathrm{d}x}&=-\frac{\xi_x}{\xi_y}\\
+\end{align*}
+
+these classifications come from the general quadratic in two variables:
+\begin{align*}
+  Ax^2+Bxy+Cy^2+Dx+Ey+F=0
+\end{align*}
+which gives you ellipse($B^2-4AC<0$), hyperboles($B^2-4AC>0$), parabolas($B^2-4AC=0$)
+\end{document}
