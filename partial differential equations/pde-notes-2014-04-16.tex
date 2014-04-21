@@ -1,0 +1,86 @@
+%shell-escape
+\documentclass{article}
+\usepackage{fullpage}
+\usepackage{nopageno}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumerate}
+\usepackage{gnuplottex}
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+
+\begin{document}
+\title{Notes}
+\date{April 16, 2014}
+\maketitle
+\section*{lesson 23}
+\subsection*{example continued}
+page 179
+\begin{align*}
+  0&=y^2u_{xx}-x^2u_{yy}\\
+  \xi&\equiv\text{constant}\\
+  \frac{\mathrm{d}y}{\mathrm{d}x}&=-\frac{x}{y}\to\xi=x^2+y^2&\frac{\mathrm{d}y}{\mathrm{d}x}&\frac{1}{2A}\left(B-\sqrt{B^2-4AC}\right)\\
+  \eta&\equiv\text{constant}\\
+  \frac{\mathrm{d}y}{\mathrm{d}x}&=\frac{x}{y}\to\eta=x^2-y^2&\frac{\mathrm{d}y}{\mathrm{d}x}&\frac{1}{2A}\left(B+\sqrt{B^2-4AC}\right)\\
+  \intertext{new PDE}
+  \hat{G}&=\hat{A}u_{\xi\xi}+\hat{B}u_{\xi\eta}+\hat{C}u_{\eta\eta}+\hat{D}u_\xi+\hat{E}u_\eta+\hat{F}u\\
+  \hat{A}&=\hat{C}=0&\text{by construction of }\xi,\eta
+  \intertext{formulas page 177}
+  \hat{B}&=2A\xi_x\eta_x+B(\xi_x\eta_y+\xi_y+\eta_x)+2C\xi_y\eta_y\\
+  &=16x^2y^2\\
+  \hat{D}&=A\xi_{xx}+B\xi_{xy}+C\xi_{yy}-D\xi_x+E\eta_x\\
+  &=(y^2)(2)+0+(-x^2)(+2)+0=2(y^2-x^2)\\
+  \hat{E}&=A\eta_{xx}+B\eta_{xy}+C\eta_{yy}+D\eta_x+E\eta_y\\
+  &=(y^2)(2)+0+(-x^2)(-2)+0=2(x^2+y^2)\\
+  \intertext{new PDE}
+  0&=16x^2y^2u_{\xi\eta}+2(y^2-x^2)u_\xi+2(x^2+y^2)u_\eta\\
+  0&=16\cdot\frac{1}{4}(\xi^2-\eta^2)u_{\xi\eta}-2\eta u_\xi+2\xi u_\eta\\
+  u_{\xi\eta}&=\frac{\eta u_\xi-\xi u_\eta}{2(\xi^2-\eta^2)}
+\end{align*}
+\subsection*{riemann's method}
+method of solution is riemann's method. this is not in text.
+
+to prepare ourself for this we need to think of hyperbolic equations in a more general setting
+\begin{align*}
+  \text{PDE}&&0&=c^2u_{xx}-u_{yy}&-\infty&<x<\infty&0&<y<\infty\\
+  \text{IC}&&u(x,0)&=f(x)&-\infty&<x<\infty\\
+  &&u_y(x,0)&=g(x)\\
+\end{align*}
+\begin{align*}
+  \text{PDE}&&0&=u_{xx}-u_{yy}&-\infty&<x<\infty&y>-\frac{1}{2}x\\
+  \intertext{IC on line $y=-\frac{1}{2}x$}
+  \text{IC}&&u(x,y)&=f(x)&-\infty&<x<\infty\\
+  &&u_y(x,y)&=g(x)\\
+\intertext{change variables}
+  \xi&=x-y\\
+  \eta&=x+y\\
+  u_{\xi\eta}&=0\\
+  u&=F(\xi)+G(\eta)\\
+  u&=F(x-y)+G(x+y)\\
+  \intertext{now match IC}
+  u(x,-\frac{1}{2}x)&=f(x)=F\left(\frac{3}{2}x\right)+G\left(\frac{1}{2}x\right)\\
+  u_y&=-F'(x-y)+G'(x+y)\\
+  u_y(x,-\frac{1}{2}x)&=g(x)=-F'\left(\frac{3}{2}x\right)+G'\left(\frac{1}{2}x\right)\\
+  \int_{x_0}^x{g(s)\,\mathrm{d}s}&=-\frac{2}{3}F\left(\frac{3}{2}x\right)+2G(\frac{1}{2}x)\\
+  \frac{2}{3}f(x)+\int_{x_0}^x{g(s)\,\mathrm{d}s}&=\frac{8}{3}G\left(\frac{1}{2}x\right)-2f(x)+\int_{x_0}^x{g(s)\,\mathrm{d}s}=-\frac{8}{3}F(\frac{3}{2}x)\\
+  G\left(\frac{1}{2}x\right)&=\frac{1}{4}f(x)+\frac{3}{8}\int_{x_0}^x{g(s)\,\mathrm{d}s}\\
+  G\left(x\right)&=\frac{1}{4}f(2x)+\frac{3}{8}\int_{x_0}^{2x}{g(s)\,\mathrm{d}s}\\
+  F\left(\frac{3}{2}x\right)&=\frac{3}{4}f(x)-\frac{3}{8}\int_{x_0}^x{g(s)\,\mathrm{d}s}\\
+  F\left(x\right)&=\frac{3}{4}f(\frac{2}{3}x)-\frac{3}{8}\int_{x_0}^{\frac{2}{3}x}{g(s)\,\mathrm{d}s}\\
+  u(x,y)&=F(x-y)+G(x+y)\\
+  &=\frac{3}{4}f\left(\frac{2}{3}(x-y)\right)-\frac{3}{8}\int_{x_0}^{\frac{2}{3}(x-y)}{g(s)\,\mathrm{d}s}\\
+  &\quad+\frac{1}{4}f\left(2(x+y)\right)+\frac{3}{8}\int_{x_0}^{2(x+y)}{g(s)\,\mathrm{d}s}\\
+  \intertext{check}
+  u_{xx}-u_{yy}&=0&\text{because has form }F(x-y)+G(x+y)\\
+  u(x,-\frac{1}{2}x)
+  &=\frac{3}{4}f\left(\frac{2}{3}(x+\frac{1}{2}x)\right)-\frac{3}{8}\int_{x_0}^{\frac{2}{3}(x-y)}{g(s)\,\mathrm{d}s}\\
+  &\quad+\frac{1}{4}f\left(2(x-\frac{1}{2}x)\right)+\frac{3}{8}\int_{x_0}^{2(x+y)}{g(s)\,\mathrm{d}s}\\
+  &=f(x)\\
+  u_y&=\frac{3}{4}\cdot-\frac{2}{3}f'(\frac{2}{3}(x-y))-\frac{3}{8}\cdot\frac{2}{3}g(\frac{2}{3}(x-y))\\
+  &\quad+\frac{1}{4}(2)f'(2(x+y))+\frac{3}{8}(2)g(2(x+y))\\
+  u_y&=-\frac{1}{2}f'(\frac{2}{3}(x-y))+\frac{1}{4}g(\frac{2}{3}(x-y))\\
+  &\quad+\frac{1}{2}f'(2(x+y))+\frac{3}{4}g(2(x+y))\\
+  u_y(x,-\frac{1}{2}x)&=g(x)
+\end{align*}
+\end{document}

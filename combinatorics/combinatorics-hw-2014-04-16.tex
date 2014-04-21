@@ -16,5 +16,164 @@
 \newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
 
 \begin{document}
+Read Sections 7.2 and 7.3 and do the following problems from Chapter 7: \#16, 17, 18, 19, 22, 24(a)(b)(c) (be sure to write your answer in closed form), 26, 28, 50 (Grad: 49).
+\begin{enumerate}
+\setcounter{enumi}{15}
+\item
+Formulate a combinatorial problem for which the generating function is
+\[(1+x+x^2)(1+x^2+x^4+x^6)(1+x^2+x^4+\cdots)(x+x^2+x^3+\cdots)\]
 
+How many combinations of red, yellow, green and blue colored pencils are there in which there are at most 2 red pencils, an even number of at most six yellow pencils, an even number of green pencils and at least one blue pencil?
+\item
+Determine the generating function  for the number $h_n$ of bags of fruit of apples, oranges, bananas, and pears in which there are an even number of apples, at most two oranges, a multiple of three number of bananas, and at most one pear. Then find a formula for $h_n$ from the generating function.
+
+\begin{align*}
+  g(x)&=\underbrace{\left(\sum\limits_{n=0}^\infty{x^{2n}}\right)}_{\text{even apples}}\underbrace{\left(\sum\limits_{n=0}^2{x^n}\right)}_{\text{oranges}\le 2}\underbrace{\left(\sum\limits_{n=0}^\infty{x^{3n}}\right)}_{3\mid \text{bananas}}\underbrace{\left(\sum\limits_{n=0}^1{x^{n}}\right)}_{\text{pears}\le 1}\\
+  &=\frac{1}{1-x^2}\left[\left(\sum\limits_{n=0}^\infty{x^n}\right)-\left(\sum\limits_{n=3}^\infty{x^n}\right)\right]\frac{1}{1-x^3}\left[\left(\sum\limits_{n=0}^\infty{x^n}\right)-\left(\sum\limits_{n=2}^\infty{x^n}\right)\right]\\
+  &=\frac{1}{1-x^2}\left[\left(1-x^3\right)\left(\sum\limits_{n=0}^\infty{x^n}\right)\right]\frac{1}{1-x^3}\left[\left(1-x^2\right)\left(\sum\limits_{n=0}^\infty{x^n}\right)\right]\\
+  &=\left(\frac{1}{1-x^2}\right)\left(\frac{1-x^3}{1-x}\right)\left(\frac{1}{1-x^3}\right)\left(\frac{1-x^2}{1-x}\right)\\
+  &=\frac{1}{(1-x)^2}
+  =\frac{\mathrm{d}}{\mathrm{d}x}\left(\frac{1}{1-x}\right)
+  =\frac{\mathrm{d}}{\mathrm{d}x}\sum\limits_{n=0}^\infty{x^n}\\
+  &=\sum\limits_{n=0}^\infty{nx^{n-1}}
+  =\sum\limits_{n=-1}^\infty{(n+1)x^{n}}
+  =0+\sum\limits_{n=0}^\infty{(n+1)x^{n}}\\
+  h_n&=n+1
+\end{align*}
+\item
+Determine the generating function for the number $h_n$ of nonnegative integral solutions of
+\[2e_1+5e_2+e_3+7e_4=n\]
+This is equivalent to saying how many ways can you pick $n$ items from the multiset $\{\infty\cdot e_1,\infty\cdot e_2,\infty\cdot e_3,\infty\cdot e_4\}$ where you have an even number of $e_1$'s, a multiple of 5 $e_2$'s and a multiple of 7 $e_4$'s.
+\begin{align*}
+  g(x)&=\left(\sum\limits_{n=0}^\infty{x^{2n}}\right)\left(\sum\limits_{n=0}^\infty{x^{5n}}\right)\left(\sum\limits_{n=0}^\infty{x^{n}}\right)\left(\sum\limits_{n=0}^\infty{x^{7n}}\right)\\
+  &=\left(\frac{1}{1-x^2}\right)\left(\frac{1}{1-x^5}\right)\left(\frac{1}{1-x}\right)\left(\frac{1}{1-x^7}\right)
+\end{align*}
+\item
+Let $h_0,h_1,h_2,\dots,h_n,\dots$ be the sequence defined by $h_n=\binom{n}{2},(n\ge0)$. Determine the generating function for the sequence.
+\begin{align*}
+  g(x)&=\sum\limits_{n=0}^\infty{\binom{n}{2}x^n}\\
+  &=\sum\limits_{n=0}^\infty{\frac{n!}{2!(n-2)!}x^n}\\
+  &=\frac{1}{2}\sum\limits_{n=0}^\infty{n(n-1)x^n}\\
+  h_n&=\frac{1}{2}(n^2-n)
+\end{align*}
+\setcounter{enumi}{21}
+\item
+Determine the exponential generating function for the sequence of factorials: $0!,1!,2!,3!,\dots,n!,\dots$
+\begin{align*}
+  g^{(e)}(x)&=\sum\limits_{n=0}^\infty{n!\cdot\frac{x^n}{n!}}\\
+  &=\sum\limits_{n=0}^\infty{x^n}\\
+  &=\frac{1}{1-x}
+\end{align*}
+\setcounter{enumi}{23}
+\item
+Let $S$ denote the multiset $\{\infty\cdot e_1,\infty\cdot e_2,\dots,\infty\cdot e_k\}$. Determine the exponential generating function for the sequence $h_0,h_1,h_2,\dots,h_n,\dots$, where $h_0=1$ and, for $n\ge 1$
+\begin{enumerate}
+\item
+$h_n$ equals the number of $n$-permutations of $S$ in which each object occurs an odd number of times.
+\begin{align*}
+  g^{(e)}(x)&=\left(x+\frac{x^3}{3!}+\frac{x^5}{5!}+\dots\right)^k\\
+  &=\left[\left(1+x+\frac{x^2}{2!}+\frac{x^3}{3!}+\dots\right)+\left(-1+x-\frac{x^2}{2!}+\frac{x^3}{3!}+\dots\right)\right]^k\frac{1}{2^k}\\
+  &=\left(\frac{1}{2}\sum\limits_{n=0}^\infty{\frac{x^n+(-x)^n}{n!}}\right)^k\\
+  &=\left(\frac{e^x+e^{-x}}{2}\right)^k
+\end{align*}
+\item
+$h_n$ equals the number of $n$-permutations of $S$ in which each object occurs at least four times.
+\begin{align*}
+  g^{(e)}(x)&=\left(\frac{x^4}{4!}+\frac{x^5}{5!}+\frac{x^6}{6!}+\dots\right)^k\\
+  &=\left(\sum\limits_{n=4}^\infty{\frac{x^n}{n!}}\right)^k=\left(-\frac{x^3}{3!}+\sum\limits_{n=3}^\infty{\frac{x^n}{n!}}\right)^k\\
+  &=\left(-1-x-\frac{x^2}{2!}-\frac{x^3}{3!}+\sum\limits_{n=3}^\infty{\frac{x^n}{n!}}\right)^k\\
+  &=\left(e^x-1-x-\frac{x^2}{2!}-\frac{x^3}{3!}\right)^k
+\end{align*}
+\item
+$h_n$ equals the number of $n$-permutations of $S$ in which $e_1$ occurs at least once, $e_2$ occurs at least twice, $\dots,e_k$ occurs at least $k$ times.
+\begin{align*}
+  g^{(e)}(x)&=\left(x+\frac{x^2}{2!}+\dots\right)\left(\frac{x^2}{2!}+\frac{x^3}{3!}+\dots\right)\dots\left(\frac{x^{k-1}}{(k-1)!}+\frac{x^k}{k!}+\dots\right)\\
+  &=\prod_{i=1}^k{\left(\sum\limits_{n=i}^\infty{\frac{x^n}{n!}}\right)}\\
+  &=\prod_{i=1}^k{\left(\sum\limits_{n=0}^\infty{\frac{x^n}{n!}}-\sum\limits_{n=0}^{i-1}{\frac{x^n}{n!}}\right)}\\
+  &=\prod_{i=1}^k{\left(e^x-\sum\limits_{n=0}^{i-1}{\frac{x^n}{n!}}\right)}\\
+\end{align*}
+\end{enumerate}
+\setcounter{enumi}{25}
+\item
+Determine the number of ways to color the squares of a 1-by-$n$ chessboard, using the colors red, blue, green, and orange if an even number of squares is to be colored red and an even number is to be colored green.
+\begin{align*}
+  g^{(e)}(x)&=\underbrace{\left(\sum\limits_{n=0}^\infty{\frac{x^{2n}}{(2n)!}}\right)^2}_{\text{red and green are even}}\cdot\overbrace{\left(\sum\limits_{n=0}^\infty{\frac{x^{n}}{n!}}\right)^2}^{\text{blue and orange are unrestricted}}\\
+  &=\left(\frac{1}{2}\sum\limits_{n=0}^\infty{\frac{x^n+(-x)^n}{n!}}\right)\left(e^x\right)^2\\
+  &=\frac{e^{2x}}{2}\left(\sum\limits_{n=0}^\infty{\frac{x^n}{n!}}+\sum\limits_{n=0}^\infty{\frac{(-x)^n}{n!}}\right)\\
+  &=\frac{e^{2x}}{2}\left(e^x+e^{-x}\right)=\frac{e^{3x}+e^x}{2}\\
+  &=\frac{1}{2}\sum\limits_{n=0}^\infty{\frac{(3x)^n+x^n}{n!}}=\sum\limits_{n=0}^\infty{\frac{3^n+1}{2}\cdot\frac{x^n}{n!}}
+\end{align*}
+So we can color the board $\frac{3^n+1}{2}$ ways
+\setcounter{enumi}{27}
+\item
+Determine the number of $n$-digit numbers with all digits at least 4, such that 4 and 6 each occur an even number of times, and 5 and 7 each occur at least once, there being no restriction on the digits 8 and 9.
+\begin{align*}
+  g^{(e)}(x)&=\underbrace{\left(\sum\limits_{n=0}^\infty{\frac{x^{2n}}{(2n)!}}\right)^2}_{\text{4,6 are even}}\cdot\overbrace{\left(\sum\limits_{n=1}^\infty{\frac{x^n}{n!}}\right)^2}^{\text{5,7 occur at least once}}\cdot\underbrace{\left(\sum\limits_{n=0}^\infty{\frac{x^n}{n!}}\right)^2}_{\text{8,9 are unrestricted}}\\
+  &=\left(\frac{1}{2}\sum\limits_{n=0}^\infty{\frac{x^n+(-x)^n}{n!}}\right)^2\left(-1+\sum\limits_{n=0}^\infty{\frac{x^n}{n!}}\right)^2\left(\sum\limits_{n=0}^\infty{\frac{x^n}{n!}}\right)^2\\
+  &=\frac{e^{2x}}{4}\left(e^x+e^{-x}\right)^2(e^x-1)^2\\
+  &=\frac{e^{2x}}{4}\left(e^{2x}+2+e^{-2x}\right)(e^{2x}-2e^x+1)\\
+  &=\frac{e^{2x}}{4}\left(e^{4x}-2e^{3x}+e^{2x}+2e^{2x}-4e^x+2+1-2e^{-x}+e^{-2x}\right)\\
+  &=\frac{e^{2x}}{4}\left(e^{4x}-2e^{3x}+3e^{2x}-4e^x+3-2e^{-x}+e^{-2x}\right)\\
+  &=\frac{1}{4}\left(e^{6x}-2e^{5x}+3e^{4x}-4e^{3x}+3e^{2x}-2e^{x}+1\right)\\
+  &=\frac{1}{4}+\frac{1}{4}\sum\limits_{n=0}^\infty{\frac{(6x)^n-2(5x)^n+3(4x)^n-4(3x)^n+3(2x)^n-2x^n}{n!}}\\
+  &=\frac{1}{4}+\frac{1}{4}\sum\limits_{n=0}^\infty{\left[6^n-2(5^n)+3(4^n)-4(3^n)+3(2^n)-2\right]\frac{x^n}{n!}}
+\end{align*}
+So the number of $n$-digit numbers that meet the criteria is 0 when $n=0$ and $\frac{1}{4}\left[6^n-2(5^n)+3(4^n)-4(3^n)+3(2^n)-2\right]$ when $n\ge1$
+\setcounter{enumi}{49}
+\item
+Call a subset of $S$ of the integers $\{1,2,\dots,n\}$ \emph{extraordinary} provided its smallest integer equals its size:
+\[\min\{x:x\in S\}=\lvert S\rvert.\]
+For example, $S=\{3,7,8\}$ is extraordinary. Let $g_n$ be the number of extraordinary subsets of $\{1,2,\dots,n\}$. Prove that
+\[g_n=g_{n-1}+g_{n-2},\quad(n\ge3),\]
+with $g_1=1$ and $g_2=1$.
+\subsubsection*{proof}
+The number of extraordinary subsets of $\{1,2,\dots,n\}$ is the sum of the number of extraordinary subsets of each size from 1 to $n$. A $k$ sized extraordinary subset of $\{1,2,\dots,n\}$ contains $k$ and $k-1$ elements of the set $\{k+1,k+2,\dots,n\}$. We can choose these $k-1$ elements in $\binom{n-(k+1)+1}{k-1}$ ways. Lets simplify a little:
+\begin{align*}
+  \binom{n-(k+1)+1}{k-1}&=\binom{n-k}{k-1}\\
+  g_n&=\sum\limits_{k=1}^n{\binom{n-k}{k-1}}\\
+  \binom{n+1}{k+1}&=\binom{n}{k}+\binom{n}{k+1}\\
+  g_n&=\sum\limits_{k=1}^n{\binom{n-k-1}{k-1-1}}+\sum\limits_{k=1}^n{\binom{n-k-1}{k-1}}\\
+  &=\binom{n-n-1}{n-2}+\sum\limits_{k=1}^{n-1}{\binom{n-k-1}{k-1-1}}+\binom{n-n-1}{n-1}+\sum\limits_{k=1}^{n-1}{\binom{n-k-1}{k-1}}\\
+  &=\frac{(n-n-1)!}{(n-n-1-(n-2))!(n-2)!}+\frac{(n-n-1)!}{(n-n-1-(n-1))!(n-1)!}\\&\quad+\sum\limits_{k=1}^{n-1}{\binom{n-k-1}{k-1-1}}+\sum\limits_{k=1}^{n-1}{\binom{(n-1)-k}{k-1}}\\
+  &=\frac{(-1)!}{(1-n)!(n-2)!}+\frac{(-1)!}{(-n)!(n-1)!}\\&\quad+\sum\limits_{k=1}^{n-1}{\binom{n-(k-1)}{(k-1)-1}}+g_{n-1}\\
+  &=\frac{(-1)!(n-1)}{(1-n)!(n-1)!}+\frac{(-1)!(1-n)}{(1-n)!(n-1)!}\\&\quad+\sum\limits_{k=0}^{n-2}{\binom{n-k}{k-1}}+g_{n-1}\\
+  &=\frac{(-1)!n-(-1)!+(-1)!-(-1)!n}{(1-n)!(n-1)!}\\&\quad+\binom{n}{-1}+\sum\limits_{k=1}^{n-2}{\binom{n-k}{k-1}}+g_{n-1}\\
+  &=0+\sum\limits_{k=1}^{n}{\binom{n-k}{k-1}}-\binom{n-(n-1)}{(n-1)-1}-\binom{n-n}{n-1}+g_{n-1}\\
+  &=\sum\limits_{k=1}^{n}{\binom{n-k}{k-1}}-\binom{1}{n-2}-\binom{0}{n-1}+g_{n-1}\\
+%  &=\sum\limits_{k=1}^{n-1}{\binom{n-k}{k-1}}+\binom{n-n}{n-1}
+\end{align*}
+%Now if we have $g_n$, then what is $g_{n-1}$? We have 
+%\begin{align*}
+%  g_{n-1}&=\sum\limits_{k=1}^{n-1}{\binom{n-k-1}{k-1}}\\
+%\end{align*}
+%Now lets see what happens if we add $g_{n}$ and $g_{n+1}$
+%\begin{align*}
+%  \sum\limits_{k=1}^{n}{\binom{n-k}{k-1}}+\sum\limits_{k=1}^{n+1}{\binom{(n+1)-k}{k-1}}&=\sum\limits_{k=1}^{n}{\binom{n-k}{k-1}}+\sum\limits_{k=1}^{n}{\binom{(n+1)-k}{k-1}}+\binom{(n+1)-(n+1)}{(n+1)-1}
+%\end{align*}
+%lets make an assumption and see if it holds
+%\begin{align*}
+%  \sum\limits_{k=1}^{n+2}{\binom{(n+2)-k}{k-1}}&=\sum\limits_{k=1}^{n}{\binom{n-k}{k-1}}+\sum\limits_{k=1}^{n}{\binom{(n+1)-k}{k-1}}+\binom{0}{n}\\
+%  \sum\limits_{k=1}^{n}{\binom{(n+2)-k}{k-1}}+\binom{0}{n+1}+\binom{1}{n}-\sum\limits_{k=1}^{n}{\binom{(n+1)-k}{k-1}}&=\sum\limits_{k=1}^{n}{\binom{n-k}{k-1}}\\
+%  \sum\limits_{k=1}^{n}{\binom{(n+2)-k}{k-1}}-\sum\limits_{k=1}^{n}{\binom{(n+1)-k}{k-1}}&=\sum\limits_{k=1}^{n}{\binom{n-k}{k-1}}\\
+%  \sum\limits_{k=1}^{n}{\frac{((n+2)-k)!}{(k-1)!((n+2)-k-(k-1))!}}\qquad&\\
+%  -\sum\limits_{k=1}^{n}{\frac{((n+1)-k)!}{(k-1)!((n+1)-k-(k-1))!}}&=\sum\limits_{k=1}^{n}{\frac{(n-k)!}{(k-1)!(n-k(k-1))!}}\\
+%  \sum\limits_{k=1}^{n}{\frac{(n-k+2)!}{(k-1)!(n-2k+3)!}}\qquad&\\
+%  -\sum\limits_{k=1}^{n}{\frac{(n-k+1)!}{(k-1)!(n-2k+2))!}}&=\sum\limits_{k=1}^{n}{\frac{(n-k)!}{(k-1)!(n-2k+1))!}}\\
+%  \sum\limits_{k=1}^{n}{\frac{(n-k+2)(n-k+1)(n-k)!}{(k-1)!(n-2k+3)(n-2k+2)(n-2k+1)!}}\qquad&\\
+%  -\sum\limits_{k=1}^{n}{\frac{(n-k+1)(n-k)!}{(k-1)!(n-2k+2)(n-2k+1)!}}&=\sum\limits_{k=1}^{n}{\frac{(n-k)!}{(k-1)!(n-2k+1))!}}\\
+%  \sum\limits_{k=1}^{n}{\left[\begin{aligned}\frac{(n-k+2)(n-k+1)}{(n-2k+3)(n-2k+2)}\\-\frac{(n-k+1)}{(n-2k+2)}\end{aligned}\right]\frac{(n-k)!}{(k-1)!(n-2k+1))!}}&=\sum\limits_{k=1}^{n}{\frac{(n-k)!}{(k-1)!(n-2k+1))!}}\\
+%  \sum\limits_{k=1}^{n}{\left[\frac{\begin{aligned}(n-k+2)(n-k+1)\\-(n-k+1)(n-2k+3)\end{aligned}}{(n-2k+3)(n-2k+2)}\right]\frac{(n-k)!}{(k-1)!(n-2k+1))!}}&=\sum\limits_{k=1}^{n}{\frac{(n-k)!}{(k-1)!(n-2k+1))!}}\\
+%  \sum\limits_{k=1}^{n}{\left[\frac{(n-k+1)(n-k+2-n+2k-3)}{(n-2k+3)(n-2k+2)}\right]\frac{(n-k)!}{(k-1)!(n-2k+1))!}}&=\sum\limits_{k=1}^{n}{\frac{(n-k)!}{(k-1)!(n-2k+1))!}}\\
+%  \sum\limits_{k=1}^{n}{\left[\frac{(n-k+1)(k-1)}{(n-2k+3)(n-2k+2)}\right]\frac{(n-k)!}{(k-1)!(n-2k+1))!}}&=\sum\limits_{k=1}^{n}{\frac{(n-k)!}{(k-1)!(n-2k+1))!}}\\
+%  \sum\limits_{k=1}^{n}{\left[\frac{1}{(n-2k+3)(n-2k+2)}\right]\frac{(n-k+1)!}{k!(n-2k+1))!}}&=\sum\limits_{k=1}^{n}{\frac{(n-k)!}{(k-1)!(n-2k+1))!}}\\
+%  \sum\limits_{k=1}^{n}{\left[\frac{1}{(n-2k+3)(n-2k+2)}\right]\binom{n-k+1}{k}}&=\sum\limits_{k=1}^{n}{\binom{n-k}{k-1}}\\
+%  \sum\limits_{k=2}^{n+1}{\left[\frac{\binom{(n-1)-(k-1)+1}{k-1}}{((n-1)-2(k-1)+3)((n-1)-2(k-1)+2)}\right]}&=\sum\limits_{k=1}^{n}{\binom{n-k}{k-1}}\\
+%  \sum\limits_{k=2}^{n+1}{\left[\frac{\binom{n-k+1}{k-1}}{(n-2k+4)(n-2k+3)}\right]}&=\sum\limits_{k=1}^{n}{\binom{n-k}{k-1}}\\
+%  \sum\limits_{k=1}^{n}{\left[\frac{\frac{n-k+1}{k}\binom{n-k}{k-1}}{(n-2k+3)(n-2k+2)}\right]}&=\sum\limits_{k=1}^{n}{\binom{n-k}{k-1}}\\
+%  &=\sum\limits_{k=1}^{n}{\binom{n-k}{k-1}}+\sum\limits_{k=1}^{n}{\frac{(n+1-k)!}{(k-1)!(n-k+1-k+1)!}}+\binom{0}{n}\\
+%  &=\sum\limits_{k=1}^{n}{\binom{n-k}{k-1}}+\sum\limits_{k=1}^{n}{\frac{(n+1-k)(n-k)!}{(k-1)!(n-k+1-k+1)(n-k+1-k)!}}\\
+%  &=\sum\limits_{k=1}^{n}{\binom{n-k}{k-1}}+\sum\limits_{k=1}^{n}{\frac{(n+1-k)}{(n+2-2k)}\binom{n-k}{k-1}}\\
+%  &=\sum\limits_{k=1}^{n}{\binom{n-k}{k-1}}+\sum\limits_{k=1}^{n}{\frac{(n-k+1)}{(n-2k+2)}\binom{n-k}{n-k+1}}\\
+%\end{align*}
+\end{enumerate}
 \end{document}
