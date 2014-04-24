@@ -1,0 +1,46 @@
+\documentclass{article}
+%\usepackage{fullpage}
+\usepackage{nopageno}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage{tabu}
+\usepackage{longtable}
+\usepackage{mathrsfs}
+\usepackage[margin=1in]{geometry}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\lhead{HW 34}
+\rhead{Jon Allen}
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+\newcommand{\degree}{\ensuremath{^\circ}}
+
+\begin{document}
+Continue with problem 3 by finding the new canonical equation.
+
+\[u_{\xi\eta}=\Phi(\xi,\eta,u,u_\xi,u_\eta)\]
+
+\begin{align*}
+  \xi&=y+2x\\
+  \eta&=y+\frac{1}{3}x\\
+  A&=3,\qquad
+  B=7,\qquad
+  C=2\\
+  D&=E=F=G=0\\
+  \xi_x&=2,\qquad \xi_y=1\\
+  \xi_{xx}&=\xi_{xy}=\xi_{yy}=0\\
+  \eta_x&=\frac{1}{3}\qquad\eta_y=1\\
+  \eta_{xx}&=\eta_{xy}=\eta_{yy}=0\\
+  \overline{A}&=\overline{C}=0
+\end{align*}
+We solved for $\overline{A}=\overline{C}=0$ to get $\xi,\eta$. Also, because all the second derivatives are zero along with $D,E,F$ we quickly see that $\overline{D}=\overline{E}=0$. And of course $\overline{F}=F=\overline{G}=G=0$.
+\begin{align*}
+  \overline{B}&=2A\xi_x\eta_x+B(\xi_x\eta_y+\xi_y\eta_x)+2C\xi_y\eta_y\\
+  &=2\cdot3\cdot2\cdot\frac{1}{3}+7\left(2\cdot1+1\cdot\frac{1}{3}\right)+4\\
+  &=\frac{12}{3}+14+\frac{7}{3}+4=\frac{19+18\cdot3}{3}\\
+  \overline{B}u_{\xi\eta}&=0\\
+  \overline{B}\ne0&\to u_{\xi\eta}=0
+\end{align*}
+\end{document}

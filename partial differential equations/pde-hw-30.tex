@@ -1,0 +1,127 @@
+\documentclass{article}
+%\usepackage{fullpage}
+\usepackage{nopageno}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage{tabu}
+\usepackage{longtable}
+\usepackage{mathrsfs}
+\usepackage[margin=1in]{geometry}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\lhead{HW 30}
+\rhead{Jon Allen}
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+\newcommand{\degree}{\ensuremath{^\circ}}
+
+\begin{document}
+\begin{align*}
+  \frac{X''(x)}{X(x)}&=\lambda&&\text{on}&0&<x<1\\
+  X'(0)&=0\\
+  X'(1)-X(1)&=0
+\end{align*}
+Show there is exactly one positive eigenvalue $\lambda={\mu_1}^2$ with corresponding eigenfunction $X_1(x)=\cosh(\mu_1x)$. Find $\int_0^1{X_1(x)^2\,\mathrm{d}x}$ as an \emph{algebraic} function of $\mu_1$ (eliminate hyperbolic functions by use of the eigenvalue equation). Find $\mu_1$ numerically.
+\begin{align*}
+  X''-\lambda X&=0\\
+  r^2-\lambda&=0\\
+  r&=\frac{0\pm\sqrt{0^2-4\cdot1\cdot(-\lambda)}}{2}=\frac{\pm2\sqrt{\lambda}}{2}\\
+  &=\pm\sqrt{\lambda}=\pm\sqrt{{\mu_1}^2}=\pm\mu_1\\
+  X(x)&=c_1e^{\mu_1x}+c_2e^{-\mu_1x}\\
+  &=\frac{c_1e^{\mu_1x}+c_1e^{\mu_1x}+c_2e^{-\mu_1x}+c_2e^{-\mu_1x}}{2}+\frac{c_1e^{-\mu_1x}-c_1e^{-\mu_1x}+c_2e^{\mu_1x}-c_2e^{\mu_1x}}{2}\\
+  &=\frac{c_1e^{\mu_1x}+c_1e^{-\mu_1x}+c_2e^{\mu_1x}+c_2e^{-\mu_1x}}{2}+\frac{c_1e^{\mu_1x}-c_1e^{-\mu_1x}-c_2e^{\mu_1x}+c_2e^{-\mu_1x}}{2}\\
+  &=(c_1+c_2)\frac{e^{\mu_1x}+e^{-\mu_1x}}{2}+(c_1-c_2)\frac{e^{\mu_1x}-e^{-\mu_1x}}{2}\\
+  &\Rightarrow c_1\cosh(\mu_1x)+c_2\sinh(\mu_1x)\\
+  X'(x)&=c_1\mu_1\sinh(\mu_1x)+c_2\mu_1\cosh(\mu_1x)\\
+  X'(0)=0&=c_1\mu_1\sinh(0)+c_2\mu_1\cosh(0)\\
+  &=c_2\mu_1\\
+  \mu_1\ne 0&\Rightarrow0=c_2\\
+  X(x)&=c_1\cosh(\mu_1x)\\
+%  X'(1)-X(1)=0&=c_1\mu_1\sinh(\mu_1)-c_1\cosh(\mu_1)\\
+%  c_1=0\text{ is trivial }&\Rightarrow \mu_1\sinh(\mu_1)=\cosh(\mu_1)\\
+%  \mu_1\frac{e^{\mu_1}-e^{-\mu_1}}{2}&=\frac{e^{\mu_1}+e^{-\mu_1}}{2}\\
+%  \mu_1&=\frac{e^{\mu_1}+e^{-\mu_1}}{e^{\mu_1}-e^{-\mu_1}}\\
+%  &=\frac{e^{2\mu_1}+1}{e^{2\mu_1}-1}\\
+%  \mu_1e^{2\mu_1}-\mu_1&=e^{2\mu_1}+1\\
+%  0&=e^{2\mu_1}(1-\mu_1)+\mu_1+1\\
+%  e^{2\mu_1}&=\frac{\mu_1+1}{\mu_1-1}\\
+%  e^{2\mu_1}&=1+\frac{2}{\mu_1-1}
+\end{align*}
+Let's assume that $\mu_1$ is not unique and see what happens.
+\begin{align*}
+  \cosh(\mu_1x)&=\cosh(\mu_2x)\\
+  \frac{e^{\mu_1x}+e^{-\mu_1x}}{2}&=\frac{e^{\mu_2x}+e^{-\mu_2x}}{2}\\
+  e^{\mu_1x}=a,&\quad e^{\mu_2x}=b\\
+  a+\frac{1}{a}&=b+\frac{1}{b}\\
+  a^2+1&=a(b+\frac{1}{b})\\
+  a^2-a(b+\frac{1}{b})+1&=0\\
+  a&=\frac{(b+\frac{1}{b})\pm\sqrt{(b+\frac{1}{b})^2-4}}{2}\\
+  &=\frac{(b+\frac{1}{b})\pm\sqrt{b^2+2+\frac{1}{b^2}-4}}{2}\\
+  &=\frac{b+\frac{1}{b}\pm\sqrt{b^2-2+\frac{1}{b^2}}}{2}\\
+  a&=\frac{b+\frac{1}{b}\pm\sqrt{(b-\frac{1}{b})^2}}{2}=\frac{b+\frac{1}{b}\pm(b-\frac{1}{b})}{2}\\
+  &=\frac{1}{2}(2b)\text{ or }\frac{1}{2}\left(\frac{2}{b}\right)\\
+  e^{\mu_1x}&=e^{\mu_2x}\text{ or }\frac{1}{e^{\mu_2x}}\\
+  \ln(e^{\mu_1x})&=\ln(e^{\mu_2x})\text{ or }\ln(e^{-\mu_2x})\\
+  \mu_1&=\pm\mu_2\Rightarrow (-\mu_1)^2=(\mu_1)^2=\lambda
+\end{align*}
+So we see $\lambda$ is unique if it is positive. Now lets do our integral.
+\begin{align*}
+  \int_0^1{X_1(x)^2\,\mathrm{d}x}&=\int_0^1{\cosh(\mu_1 x)^2\,\mathrm{d}x}\\
+  &=\int_0^1{\frac{(e^{\mu_1x}+e^{-\mu_1x})^2}{4}\,\mathrm{d}x}\\
+  &=\frac{1}{4}\int_0^1{(e^{2\mu_1x}+2+e^{-2\mu_1x})\,\mathrm{d}x}\\
+  &=\frac{1}{4}\left[\frac{e^{2\mu_1x}}{2\mu_1}+2x+\frac{e^{-2\mu_1x}}{-2\mu_1}\right]_0^1\\
+  &=\frac{1}{4}\left[\frac{1}{\mu_1}\frac{e^{2\mu_1x}-e^{-2\mu_1x}}{2}+2x\right]_0^1\\
+  &=\frac{1}{2\mu_1}\left[\frac{(e^{\mu_1x}+e^{-\mu_1x})(e^{\mu_1x}-e^{-\mu_1x})}{4}+\mu_1x\right]_0^1\\
+  &=\frac{1}{2\mu_1}\left[\cosh(\mu_1x)\sinh(\mu_1x)+\mu_1x\right]_0^1\\
+  &=\frac{1}{2\mu_1}\left[\cosh(\mu_1)\sinh(\mu_1)+\mu_1-\cosh(0)\sinh(0)\right]\\
+  &=\frac{1}{2\mu_1}\left[\cosh(\mu_1)\sinh(\mu_1)+\mu_1\right]\\
+  &=\frac{1}{2\mu_1}\cosh(\mu_1)\sinh(\mu_1)+\frac{1}{2}\\
+  &=\frac{1}{2{\mu_1}^2}\cosh(\mu_1)\mu_1\sinh(\mu_1)+\frac{1}{2}\\
+  &=\frac{1}{2{\mu_1}^2}X_1(1){X_1}'(1)+\frac{1}{2}\\
+\end{align*}
+And to find $\mu_1$
+\begin{align*}
+  X'(1)-X(1)&=0\\
+  \mu_1\sinh(\mu_1)-\cosh(\mu_1)&=0\\
+  \mu_1\frac{e^{\mu_1}-e^{-\mu_1}}{2}-\frac{e^{\mu_1}+e^{-\mu_1}}{2}&=0\\
+  \mu_1(e^{2\mu_1}-1)-(e^{2\mu_1}+1)&=0\\
+  e^{2\mu_1}(\mu_1-1)-\mu_1-1=0
+\end{align*}
+\begin{center}
+\begin{tabular}{c|c}
+$\mu_1$&$e^{2\mu_1}(\mu_1-1)-\mu_1-1$\\
+\hline
+0&$-2$\\
+\hline
+1&$-2$\\
+\hline
+2&$e^4-3\approx51.5$\\
+\hline
+$\frac{3}{2}$&$\frac{1}{2}\cdot e^3-\frac{5}{2}\approx7.5$\\
+\hline
+$\frac{5}{4}$&$\frac{1}{4}e^{5/2}-\frac{9}{4}\approx.8$\\
+\hline
+$\frac{9}{8}$&$\frac{1}{8}e^{9/4}-\frac{17}{8}\approx-.9$\\
+\hline
+$\frac{19}{16}$&$\frac{3}{16}e^{19/8}-\frac{35}{16}\approx-.17$\\
+\hline
+$\frac{39}{32}$&$\frac{7}{32}e^{39/16}-\frac{71}{32}\approx.28$\\
+\hline
+$\frac{77}{64}$&$\frac{13}{64}e^{77/32}-\frac{141}{64}\approx.05$\\
+\hline
+$\frac{153}{128}$&$\frac{25}{128}e^{153/64}-\frac{281}{128}\approx-.06$\\
+\hline
+$\frac{307}{256}$&$\frac{51}{256}e^{307/128}-\frac{563}{256}\approx-1.5$\\
+\hline
+$\frac{615}{512}$&$\frac{103}{512}e^{615/256}-\frac{1127}{512}\approx.02$\\
+\hline
+
+\end{tabular}
+
+$\mu_1\approx\frac{615}{512}\approx1.2$
+\end{center}
+
+
+\end{document}

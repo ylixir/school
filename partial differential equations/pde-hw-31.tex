@@ -1,0 +1,97 @@
+%shell-escape
+\documentclass{article}
+%\usepackage{fullpage}
+\usepackage{nopageno}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage{tabu}
+\usepackage{longtable}
+\usepackage{mathrsfs}
+\usepackage[margin=1in]{geometry}
+\usepackage{fancyhdr}
+\usepackage{amsfonts}
+\usepackage{gnuplottex}
+\pagestyle{fancy}
+\lhead{HW 31}
+\rhead{Jon Allen}
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+\newcommand{\degree}{\ensuremath{^\circ}}
+
+\begin{document}
+\begin{align*}
+  \frac{X''(x)}{X(x)}&=\lambda&&\text{on}&0&<x<1\\
+  X'(0)&=0\\
+  X'(1)-X(1)&=0
+\end{align*}
+Show there are infinitely many distinct eigenvalues $\lambda=-{\mu_n}^2$ with corresponding eigenfunctions $X_n(x)=\cos(\mu_nx)$ for $n=2,3,4,\dots$. Find $\int_0^1{X_n(x)^2\,\mathrm{d}x}$ as an \emph{algebraic} function of $\mu_n$. Find $\mu_2,\mu_3$ numerically.
+\begin{align*}
+  X''-\lambda X&=0\\
+  r^2-\lambda&=0\\
+  r&=\frac{0\pm\sqrt{0^2-4\cdot1\cdot(-\lambda)}}{2}=\frac{\pm2\sqrt{\lambda}}{2}\\
+  &=\pm\sqrt{\lambda}=\pm\sqrt{-{\mu_n}^2}=\pm\mu_ni\\
+  X_n(x)&=c_1\cos(\mu_n x)+c_2\sin(\mu_n x)\\
+  {X_n}'(x)&=-c_1\mu_n\sin(\mu_nx)+c_2\mu_n\cos(\mu_nx)\\
+  {X_n}'(0)=0&=-c_1\mu_n\sin(\mu_n0)+c_2\mu_n\cos(\mu_n0)\\
+  &=c_2\mu_n\\
+  0\ne\mu_n&\Rightarrow c_2=0\\
+  X_n(x)&=c_1\cos(\mu_nx)\\
+\end{align*}
+Lets see if we can find a $\mu_n\ne\mu_m$
+\begin{align*}
+  X_n(x)&=\cos(\mu_n x)\\
+  k&\in\mathbb{Z}\\
+  \cos(\mu_n x)&=\cos(2\pi k+\mu_n x)\\
+  \mu_m&=2\pi k+\mu_n\\
+  \cos(\mu_n x)&=\cos(\mu_m x)\\
+  \text{but }\mu_n&\ne\mu_m
+\end{align*}
+Also note that $\lvert\mathbb{Z}\rvert=\infty$ so there are infinitely many possibilities for $k$ and by extension $\mu_m$.
+
+
+Let's do the integral
+\begin{align*}
+  \int_0^1{X_n(x)^2\,\mathrm{d}x}&=\int_0^1{\cos(\mu_nx)^2\,\mathrm{d}x}\\
+  u=\cos(\mu_nx)&\quad\mathrm{d}v=\cos(\mu_nx)\mathrm{d}x\\
+  \mathrm{d}u=-\mu_n\sin(\mu_nx)&\quad v=\frac{1}{\mu_n}\sin(\mu_nx)\\
+  \int{\cos(\mu_nx)^2\,\mathrm{d}x}&=\frac{1}{\mu_n}\cos(\mu_nx)\sin(\mu_nx)+\int{\sin(\mu_nx)^2\,\mathrm{d}x}\\
+  &=\frac{1}{\mu_n}\cos(\mu_nx)\sin(\mu_nx)+\int{1-\cos(\mu_nx)^2\,\mathrm{d}x}\\
+  2\int{\cos(\mu_nx)^2\,\mathrm{d}x}&=\frac{1}{\mu_n}\cos(\mu_nx)\sin(\mu_nx)+\int{\mathrm{d}x}\\
+  \int{\cos(\mu_nx)^2\,\mathrm{d}x}&=\frac{1}{2\mu_n}\cos(\mu_nx)\sin(\mu_nx)+\frac{x}{2}\\
+  \int_0^1{\cos(\mu_nx)^2\,\mathrm{d}x}&=\left(\frac{1}{2\mu_n}\cos(\mu_n)\sin(\mu_n)+\frac{1}{2}\right)-\left(\frac{1}{2\mu_n}\cos(\mu_n0)\sin(\mu_n0)+\frac{0}{2}\right)\\
+  &=\frac{\cos(\mu_n)\mu_n\sin(\mu_n)}{2{\mu_n}^2}+\frac{1}{2}\\
+  &=\frac{X_n(1)^2}{2{\mu_n}^2}+\frac{1}{2}
+\end{align*}
+And now we attempt to find $\mu_2, \mu_3$ numerically. First we have to figure out what $\mu_1$ is. And setup Newton's method.
+\begin{align*}
+  X'(1)-X(1)&=0\\
+  -\mu_1\sin(\mu_1)-\cos(\mu_1)&=0\\
+  x_{n+1}&=x_n-\frac{f(x_n)}{f'(x_n)}\\
+  x_{n+1}&=x_n-\frac{-x_n\sin(x_n)-\cos(x_n)}{-x_n\cos(x_n)-\sin(x_n)+\sin(x_n)}\\
+  x_{n+1}&=x_n-\frac{x_n\sin(x_n)+\cos(x_n)}{x_n\cos(x_n)}\\
+  x_{n+1}&=x_n-\tan(x_n)-\frac{1}{x_n}\\
+\end{align*}
+\begin{gnuplot}plot [0:5]-x*sin(x)-cos(x),0\end{gnuplot}
+
+Three looks like a good place to start. $x_1=3$
+\begin{center}\begin{tabular}{c|c}
+  $n$&$x_n-\tan(x_n)-\frac{1}{x_n}$\\
+  \hline
+  1&2.809\\
+  \hline
+  2&2.798427\\
+  \hline
+  3&2.798386\\
+  \hline
+  4&2.798386\\
+\end{tabular}\end{center}
+\begin{align*}
+  \mu_1&\approx2.798386\\
+  \mu_1-2\pi&\approx-3.484799\\
+  \mu_n&\approx2\pi n-3.484799\\
+  \mu_2&\approx9.081571\\
+  \mu_3&\approx15.364757
+\end{align*}
+\end{document}

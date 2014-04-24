@@ -1,0 +1,73 @@
+%shell-escape
+\documentclass{article}
+\usepackage{fullpage}
+\usepackage{nopageno}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumerate}
+\usepackage{gnuplottex}
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+
+\begin{document}
+\title{Notes}
+\date{April 16, 2014}
+\maketitle
+finished lesson 23 (classification of PDEs-canonical form for hyperbolic PDEs).
+note: lesson 41 (canonical forms for parabolic ellipti pdes)
+moving outside text because classification $\ne$ solution. latst time: example of general I for hyperbolic pde $u_{xx}-u_{yy}=0$ with data on $x+2y=0$
+
+riemann's method for byperbolic pdes.
+\subsubsection*{start}
+operation $<[u]:=u_{\xi\eta}+a(\xi,\eta)u_{\xi}+b(\xi,\eta)u_{\eta}+c(\xi,\eta)u$
+
+curve $C$:$\eta=\phi(\xi)$ for $-\infty<\xi<+\infty$ with $\phi'(\xi)<0$ (alternate $\phi'(\xi)>0$)
+
+PDE $<[u]=F(\xi,\eta)$ on $\eta>\phi(\xi)$ on $\eta>\phi(\xi)$ (alternate $\eta<\phi(\xi)$)
+
+ic $u(\xi,\phi(\xi))=f(\xi)$ and $u_\xi(\xi,\phi(\xi))=g(\xi)$
+
+context start with hyperbolic pde with initial conditions and change to canonical coordinates $\xi,\eta$ and get new form here
+
+note: $u_\eta(\xi,\phi(\xi)$ is determined by initial condition.
+\begin{align*}
+  \frac{\mathrm{d}}{\mathrm{d}\xi}u(\xi,\phi(\xi))&=u_{\xi}(\xi,\phi(\xi))\frac{\mathrm{d}\xi}{\mathrm{d}\xi}+u_\eta(\xi,\phi(\xi))\frac{\mathrm{d}\phi}{\mathrm{d}\xi}=\frac{\mathrm{d}f}{\mathrm{d}\xi}\\
+  g(\xi)+u_\eta(\xi,\phi(\xi))\phi'(\xi)&=f'(\xi)
+\end{align*}
+note: we will find the explicit riemann function for the constant coefficient case (a,b,c constant)
+
+\section*{riemann's approach}
+Pick $(\xi_0,\eta_0)$ and introducej auxiliary  variables $(x,y)$. We will describe the Riemann function $R(\xi_0,\eta_0;x,y)$ wich gives $u(\xi_0,\eta_0)$ that is $u(\xi,\eta)$ because $(\xi_0,\eta_0)$ is arbitrary.
+
+\begin{gnuplot}
+plot [-1:1][-.25:1] (x-1)**2-0.5
+\end{gnuplot}
+recall
+\subsubsection*{divergence thm}
+region $R$, boundary $\partial R$
+\begin{align*}
+  \int\int_R{\nabla\cdot \vec{F}\,\mathrm{d}x\mathrm{d}y}&=\int_{\partial R}{\vec{F}\cdot\vec{n}\,\mathrm{d}s}&\vec{n}\text{ outer normal}\\
+  \int\int_R{\left(\frac{\partial A}{\partial x}+\frac{\partial B}{\partial y}\right)\,\mathrm{d}x\mathrm{d}y}&=\int_{\partial R}{(-B\,\mathrm{d}x+A\,\mathrm{d}y)}
+\end{align*}
+Identity for adjoint
+\begin{align*}
+  v L[u]-uM[v]&=\frac{\partial A}{\partial x}+\frac{\partial B}{\partial y}\text{ where }\begin{cases}A=\frac{1}{2}(vu_y-uv_y)+auv\\B=\frac{1}{2}(vu_x-uv_x)+buv\end{cases}\\
+  L&=\text{ as given}=u_{xy}+au_x+bu_+cu\\
+  M[v]&=v_{xy}-(av)_x-(bv)_y+cv\\
+  \int\int_{C_1C_2C_3}{(vL[u]-uM[v])\mathrm{d}x\mathrm{d}y}&=\int\int_{C_1C_2C_3}{(\frac{\partial A}{\partial x}+\frac{\partial B}{\partial y})\mathrm{d}x\mathrm{d}y}\\
+  &=\int\int_{C_1}{(-B\mathrm{d}x+A\mathrm{d}y)}\\
+  &\quad+\int\int_{C_2}{(-B\mathrm{d}x+A\mathrm{d}y)}\\
+  &\quad+\int\int_{C_3}{(-B\mathrm{d}x+A\mathrm{d}y)}\\
+\end{align*}
+of course $L[u]=F(x,y)$ and $v$ is the Riemann function chosen to have special properties.
+$\int\int_{C_1}{(-B\mathrm{d}x+A\mathrm{d}y)}$ involves $u,u_x,u_y$ on $y=\phi(x)$ and $v,v_x,v_y$ on $y=\phi(x)$
+\begin{align*}
+  \int_{C_2}{(-B\mathrm{d}x+A\mathrm{d}y)}&=\int_{C_2}{A\mathrm{d}y}\\
+  &=\int_{y=Q}^{y=P}{\frac{1}{2}(vu_y-v_yu)+auv\,\mathrm{d}y}\\
+  &=\left.\frac{1}{2}vu\right\rvert_Q^P-\int_Q^P{uv_y\,\mathrm{d}y}+\int_Q^P{auv\,\mathrm{d}y}\\
+  &=\frac{1}{2}\left[v(P)u(P)-v(Q)u(Q)\right]+\int_{Q}^P{u(v_y-av)\,\mathrm{d}y}\\
+  \int_{C_3}{(-B\mathrm{d}x+A\mathrm{d}y)}&=\int_R^P{\frac{1}{2}(vu_x-v_xu)+buv\,\mathrm{d}x}\\
+  &=\left.\frac{1}{2}vu\right\rvert_Q^P-\int_Q^P{uv_y\,\mathrm{d}y}+\int_Q^P{auv\,\mathrm{d}y}\\
+\end{align*}
+\end{document}

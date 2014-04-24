@@ -1,0 +1,39 @@
+\documentclass{article}
+%\usepackage{fullpage}
+\usepackage{nopageno}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage{tabu}
+\usepackage{longtable}
+\usepackage{mathrsfs}
+\usepackage[margin=1in]{geometry}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\lhead{HW 32}
+\rhead{Jon Allen}
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+\newcommand{\degree}{\ensuremath{^\circ}}
+
+\begin{document}
+Show that $\int_0^1{X_m(x)X_n(x)\,\mathrm{d}x}=0$ for ALL $m\ne n$ by integrating by parts. This calculation should make no explicit reference to trigonometric or hyperbolic functions.
+\begin{align*}
+  \frac{X''(x)}{X(x)}&=\lambda\\
+  X'(0)&=0\\
+  X'(1)-X(1)&=0\\
+  \int_0^1{X_m(x)X_n(x)\,\mathrm{d}x}&=\int_0^1{X_m(x)\frac{1}{\lambda_n}{X_n}''(x)\,\mathrm{d}x}\\
+  u=X_m(x)&\quad\mathrm{d}v={X_n}''(x)\mathrm{d}x\\
+  \mathrm{d}u={X_m}'(x)\mathrm{d}x&\quad v={X_n}'(x)\\
+  \int_0^1{X_m(x)X_n(x)\,\mathrm{d}x}&=\frac{1}{\lambda_n}\left[X_m(x){X_n}'(x)-\int{{X_m}'(x){X_n}'(x)\,\mathrm{d}x}\right]_0^1\\
+  u={X_m}'(x)&\quad\mathrm{d}v={X_n}'(x)\mathrm{d}x\\
+  \mathrm{d}u={X_m}''(x)\mathrm{d}x&\quad v=X_n(x)\\
+  \lambda_n\cdot\int_0^1{X_m(x)X_n(x)\,\mathrm{d}x}&=\left[X_m(x){X_n}'(x)-{X_m}'(x)X_n(x)+\int{{X_m}''(x){X_n}(x)\,\mathrm{d}x}\right]_0^1\\
+  &=\left[X_m(x){X_n}'(x)-{X_m}'(x)X_n(x)\right]_0^1+\int_0^1{\lambda_m X_m(x){X_n}(x)\,\mathrm{d}x}\\
+  (\lambda_n-\lambda_m)\cdot\int_0^1{X_m(x)X_n(x)\,\mathrm{d}x}&=\left[X_m(1){X_n}'(1)-{X_m}'(1)X_n(1)\right]-\left[X_m(0){X_n}'(0)-{X_m}'(0)X_n(0)\right]\\
+  X'(1)-X(1)=0&\to X'(1)=X(1)\\
+  \int_0^1{X_m(x)X_n(x)\,\mathrm{d}x}&=\frac{\left[X_m(1)X_n(1)-X_m(1)X_n(1)\right]-\left[X_m(0)\cdot0-0\cdot X_n(0)\right]}{\lambda_n-\lambda_m}\\
+  \int_0^1{X_m(x)X_n(x)\,\mathrm{d}x}&=0\\
+\end{align*}
+\end{document}

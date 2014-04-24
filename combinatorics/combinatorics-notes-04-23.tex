@@ -1,0 +1,51 @@
+\documentclass{article}
+\usepackage{fullpage}
+\usepackage{nopageno} 
+\usepackage{amsmath}
+\usepackage{amssymb}
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+
+\begin{document}
+\title{Notes}
+\date{April 26, 2014}
+\maketitle
+homework questions
+catalan problems (1,2,36), could prove formula directly but that can be hard, easier is write bijection from objects to catalan numbers.
+1)b to d, 2)a to d, 36)c to d
+
+\subsubsection*{worksheet}
+
+prove \# length 2n ballot seq$=\frac{1}{n+1}\binom{2n}{n}$
+
+a)$\binom{2n}{n}$
+
+b)$A_n+U_n=\binom{2n}{n}$
+
+c)$a_k=-1$, $a_1+a_2+\dots+a_{k-1}=0$
+
+d)is $k$ odd or even? odd
+
+e)one more one, one less negative one. this process gives all possible sequences ofn+1 1's and n-1 -1's. it is really a bijection from $A_n+U_n$ to n+1 1's and n-1 -1's. so $\abs{U_n}=\binom{2n}{n+1}$, $A_n=\binom{2n}{n}-\binom{2n}{n+1}$
+
+this leads to a catalan number.
+
+
+f)
+
+\section*{sterling numbers}
+\subsubsection*{warm up}
+how many ways are there to partition $\{1,2,\dots,p\}$ into $k$ indistinguishable boxes?
+
+$k$ choices for each object in set. $k^p$. but the boxes here are distinguisheable. divide by the number of permutations to eliminate distinguishability. $\frac{k^p}{k!}$.
+
+\subsubsection*{question}
+what if no box may be left empty? (choose k elements, then distribute)
+\subsubsection*{answer}
+use inclusion exclusion. let $A_i$=number of distributions where box i is empty.
+\begin{align*}
+  
+\end{align*}
+the bell number$B_p$ counts \# partitions of $\{1,\dots,p\}$ into nonempty indistinguishable boxes. This is sum of stirling numbers, sum of pth row of the triangle. 
+\end{document}

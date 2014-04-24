@@ -1,0 +1,32 @@
+\documentclass{article}
+%\usepackage{fullpage}
+\usepackage{nopageno}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage{tabu}
+\usepackage{longtable}
+\usepackage{mathrsfs}
+\usepackage[margin=1in]{geometry}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\lhead{HW 35}
+\rhead{Jon Allen}
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+\newcommand{\degree}{\ensuremath{^\circ}}
+
+\begin{document}
+Continue with problem 4 by finding the \emph{alternative} canonical form
+\[u_{\alpha\alpha}-u_{\beta\beta}=\Psi(\alpha,\beta,u,u_\alpha,u_\beta)\]
+\begin{align*}
+  \alpha(\xi,\eta)&=\xi+\eta\\
+  \beta(\xi,\eta)&=\xi-\eta\\
+  \alpha_\xi=1&\quad\alpha_\eta=1\\
+  \beta_\xi=1&\quad\beta_\eta=-1\\
+  u_{\xi}&=u_\alpha\alpha_\xi+u_\beta\beta_\xi=u_\alpha+u_\beta\\
+  u_{\xi\eta}&=u_{\alpha\alpha}\alpha_\eta+u_{\alpha\beta}\beta_\eta+u_{\beta\alpha}\alpha_\eta+u_{\beta\beta}\beta_\eta=u_{\alpha\alpha}-u_{\beta\beta}
+\end{align*}
+Since $u_{\xi\eta}=0$ we know $u_{\alpha\alpha}-u_{\beta\beta}=0$
+\end{document}
