@@ -1,0 +1,49 @@
+%shell-escape
+\documentclass{article}
+\usepackage{fullpage}
+\usepackage{nopageno}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumerate}
+\usepackage{gnuplottex}
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+
+\begin{document}
+\title{Notes}
+\date{April 25, 2014}
+\maketitle
+\section*{riemanns method}
+pde $L[u]=u_{\xi\eta}+a(\xi,\eta)u_\xi+b(\xi,\eta)u_\eta+c(\xi,\eta)u=F(\xi,\eta)$.  Boundary conditions $u(\xi,phi(\xi))=f(\xi), u_\xi(\xi,\phi(\xi))=g(\xi)$ for curve $C:\eta=\phi(\xi)$ with $\phi'(\xi)<0$.
+
+auxiliary problem, we obtained conditions defining $v(x,y)$. $(\xi_0,\eta_0)$ lies above curve $C=C_1$, $C_2$ is vertical line from $C_1$ to $(\xi_0,\eta_0)$ and $C_3$ is horizontal line.
+
+pde $M[v]=0$ in (at least in region $C_1C_2C_3$) ($M[v]=v_{xy}-(av)_x-(bv)_y+cv$. Boundary conditions $v_y-av=0$ on $C_2$ and $v_x-bv=0$ on $C_3$ and $v(\xi_0,\eta_0)=1$.
+
+last time $\int\int_{C_1C_2C_3}{v(x,y)F(x,y)\,\mathrm{d}x\mathrm{d}y}=\int_{C_1}{\left[(v_x-bv)\,\mathrm{d}x-u(v_y-av)\,\mathrm{d}y\right]}-\frac{1}{2}\left(u(Q)v(Q)+u(R)v(R)\right)+u(\xi_0,\eta_0$. Representation for $u(\xi_0,\eta_0)$ in terms of boundary data and $v(x,y)$
+
+$v(x,y)$ from this problem is the riemann function $R(\xi_0,\eta_0;x,y)$. 
+
+assume a,b,c are constants, the riemann function for $L[u]=u_{\xi\eta}+au_\xi+bu_\eta+cu$ can be found explicitly. $M[v]=v_{xy}-av_x-bv_y+cv=0$. $v=e^{bx+ay}\cdot w$, $v_x=(w_x+bw)e^{bx+ay}$, $v_y=(wy+aw)e^{bx+ay}$ and $v_{xy}=(w_{xy}+aw_x+bw_y+baw)e^{bx+ay}$.
+\begin{align*}
+  (w_{xy}+aw_x+bw_y+abw)-a(w_x+bw)-b(w_y+aw)+cw&=0\\
+  w_{xy}-abw+cw&=0=w_{xy}+(c-ab)w\\
+  (w_x+bw)-bw=0\\
+  w_x(x,\eta_0)&=0\text{ for }x\le\xi_0\\
+  w(\xi_0,\eta_0)&=e^{-(b\xi_0+a\eta_0)}\\
+  w(x,\eta_0)&=e^{-(b\xi_0+a\eta_0)}\text{ for }x\le\xi_0\\
+  v_y-av&=0\text{ for }x=\xi_0\\
+  (w_y+aw)-aw&=0\text{ for }y\le\eta_0\\
+  w(\xi_0,\eta_0)&=e^{-(b\xi_0+a\eta_0)}\\
+  w(\xi_0,y)&=e^{-(b\xi_0+a\eta_0)}
+\end{align*}
+$w$ is a constant along $C_2$ and $C_3$ so divide off the constant to get $w=1$. wait! $v=e^{bx+ay}\frac{w}{e^{b\xi_0+a\eta_0}}$ so this change gives $w=1$ on the boundary.
+
+Idea: maybe there is a solution of one symmetric variable. $z=(\xi_0-x)(\eta_0-y)\ge0$. Try  $w=h(z)$
+\begin{align*}
+  w_x&=h'(z)z_x&z_x&=-(\eta_0-y)\\
+  w_y&=h'(z)z_y&z_y&=-(\xi_0-x)\\
+  w_{xy}&=h'(z)z_{xy}+h''(x)z_xz_y&x_xz_y=z,z_{xy=1}\\
+\end{align*}
+\end{document}
