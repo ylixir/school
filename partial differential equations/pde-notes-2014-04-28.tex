@@ -1,0 +1,85 @@
+%shell-escape
+\documentclass{article}
+\usepackage{fullpage}
+\usepackage{nopageno}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumerate}
+\usepackage{gnuplottex}
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+
+\begin{document}
+\title{Notes}
+\date{April 28, 2014}
+\maketitle
+solution $w(\xi_0,\eta_o;x,y)$ is related to riemann function $v(\xi_0,\eta_0;x,y)$ for original problem by
+
+$v=e^{b(x-\xi_0)+a(y-\eta_0)}w(\xi_0,\eta_0;x,y)$. 
+
+Introduced $x=(\xi_0-x)(\eta_0-y)$
+\begin{align*}
+  w(x,y)&=h(z)\\
+  zh''(z)+h'(z)+(c+ab)h(z)&=0
+\end{align*}
+with $h(0)=1$ want $h(z)$ on $z\ge0$
+try $h(z)=\sum\limits_{n=0}^\infty{h_nz^n}$
+\begin{align*}
+  0&=z\sum\limits_{n=0}^\infty{h_nn(n-1)z^{n-2}}+\sum\limits_{n=0}^\infty{h_nnz^{n-1}}+(c+ab)\sum\limits_{n=0}^\infty{h_nz^{n}}\\
+  &=\sum\limits_{n=0}^\infty{h_nn^2z^{n-1}}+\sum\limits_{n=0}^\infty{(c+ab)h_nz^{n}}\\
+  &=\sum\limits_{n+1=1}^\infty{h_{n+1}(n+1)^2z^n}+\sum\limits_{n=0}^\infty{(c+ab)h_nz^{n}}\\
+\end{align*}
+for $n\ge0$ $(n+1)^2h_{n+1}=(ab-c)h_{n}, h_0=1$
+
+$n\ge1$
+\begin{align*}
+  h_n&=\frac{ab-c}{n^2}h_{n-1}=\frac{ab-c}{n^2}\cdot\frac{ab-c}{(n-1)^2}\dots
+\end{align*}
+so $h(z)=\sum\limits_{n=0}^\infty{\frac{(ab-c)^n}{n!n!}z^n}$ that is $w(x,y)=\sum\limits_{n=0}^\infty{\frac{(ab-c)^n}{n!n!}(\xi_0-x)^n(\eta_0-y)^n}$
+
+note series converges for $\abs{z}<\infty$
+
+note $J_0(x)=\sum\limits_{n=0}^\infty{\frac{(-x^2/4)^n}{n!n!}}$ and $I_0(x)=\sum\limits_{n=0}^\infty{\frac{(x^2/4)^n}{n!n!}}$ so $h(z)$ can be written as $J_0$ or $I_0$ depending on sign of $ab-c$
+
+\section*{lesson 30}
+vibrating drumhead
+\begin{align*}
+  \text{PDE}&&&u_{tt}=c^2(u_{xx}+u_{yy})&0&\le r\le1&0&<\theta<2\pi\\
+  \text{BC}&&&u(1,\theta,t)=0&&&0&<\theta<2\pi&t&>0\\
+  \text{IC}&&&u(r,\theta,0)=f(r,\theta)\\
+  &&&u_{t}(r,\theta,0)=g(r,\theta)
+\end{align*}
+$\nabla^2u=u_{xx}+u_{yy}$ (cartesian) is laplacian operator $=u_{rr}+\frac{1}{}u_{r}+\frac{1}{r^2}u_{\theta\theta}$ (polar) remember $x=r\cos(\theta)$ and y is multiple of r also.
+
+we will use separation of variables
+\begin{align*}
+  u&=U(r,\theta)T(t)\\
+  U&=R(r)\Theta(\theta)
+\end{align*}
+eigenfunction $U=R(r)$. note that this is a circle. nodel line. add in $\Theta$ and get radial nodel lines ($U=R(r)\Theta(\theta)$)
+
+chladni came up with sprinkling sand on surface of these things.
+\begin{align*}
+  u_r&=u_x\cos(\theta)
+\end{align*}
+\begin{align*}
+  \text{PDE}&&&\frac{T''(t)}{T(t)}=\left[U_{rr}+\frac{1}{r}U_{r}+\frac{1}{r^2}U_{\theta\theta}\right]=\text{separation constant}=-\lambda^2\text{ will assume less than 0}\\
+\end{align*}
+\begin{align*}
+  T''+c^2\lambda^2T&=0\leftarrow \text{trig solution}\\
+  U_{rr}+\frac{1}{r}U_r+\frac{1}{r^2}U_{\theta\theta}+\lambda^2U&=0\\
+  U&=R(r)\Theta(\theta)\\
+  R''(r)+\frac{1}{r}R'(r)+\frac{1}{r^2}R(r)\frac{\Theta''}{\Theta}+\lambda^2R&=0\\
+  \intertext{notice}
+  \frac{\Theta''(\theta)}{Theta(\theta)}&=\text{function of }r\\
+  &=\text{function of }\theta\\
+  &=\text{constant}\\
+  \Theta''+\mu^2\Theta&=0\\
+  \intertext{$\Theta$ must be $2\pi$ periodic}
+  \cos(\mu\theta),\sin(\mu\theta)$
+  \intertext{by periocity}
+  \mu=1,2,\\
+  $\Theta(\theta)=a_n\cos(n\theta)+b_n\sin(n\theta)$
+\end{align*}
+\end{document}
