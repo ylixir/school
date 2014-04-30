@@ -1,0 +1,192 @@
+\documentclass{article}
+%\usepackage{fullpage}
+%\usepackage{nopageno} 
+\usepackage[margin=1.5in]{geometry}
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, calc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[normalem]{ulem}
+\usepackage{fancyhdr}
+\usepackage{cancel}
+\usepackage{enumerate}
+%\renewcommand\headheight{12pt}
+\pagestyle{fancy}
+\lhead{April 30, 2014}
+\rhead{Jon Allen}
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+
+\begin{document}
+Part 1 (7 points): Due in class Wednesday, April 30.
+
+Chapter 8: \#11, 12 (do three parts), 15, 16, 22(b), 26 (do two parts), 27, 28, 30, (Grad: 29)
+
+(Hint for \#28: Use the 'more formal' definition of conjugate given in the book right before the example on p. 293.)
+
+
+\begin{enumerate}
+  \setcounter{enumi}{10}
+  \item
+  Compute the Stirling numbers of the second kind $S(8,k),\;(k=0,1,\dots,8)$.
+  \begin{align*}
+    S(8,0)&=0&S(8,8)&=1\\
+    \intertext{Cheating with figure 8.2 on page 284 to get $S(7,k)$}
+    S(8,1)&=S(7,1)+S(7,0)=1&S(8,2)&=2S(7,2)+S(7,1)=127\\
+    S(8,3)&=3S(7,3)+S(7,2)=966&S(8,4)&=4S(7,4)+S(7,3)=1701\\
+    S(8,5)&=5S(7,5)+S(7,4)=1050&S(8,6)&=6S(7,6)+S(7,5)=266\\
+    S(8,7)&=7S(7,7)+S(7,6)=28
+  \end{align*}
+  \item
+  (do three parts)
+
+  Prove that the Stirling numbers of the second kind satisfy the following relations:
+  \begin{enumerate}
+    \item
+    $S(n,1)=1,\;(n\ge1)$
+    \subsubsection*{proof}
+    We take as given that $S(n,0)=S(1,0)=0$ and $S(1,1)=1$ (equations 8.16 and 8.17 in the text). Now lets assume that $S(n-1,1)=1$
+    \begin{align*}
+      S(n,1)&=1\cdot S(n-1,1)+S(n-1,0)=1+0=1
+    \end{align*}
+    And induction says we win $\Box$
+    \item
+    $S(n,2)=2^{n-1}-1,\;(n\ge2)$
+    \subsubsection*{proof}
+    We wish count the ways of putting $n\ge2$ elements into 2 indistinguishable boxes such that no box is empty. We can put our n elements into two distinguishable boxes in $2^n$ ways (2 choices for each element, n times). Now we subtract the cases where the first box is empty and where the second box is empty. and we have $2^n-2$ ways to put the elements into distinguishable boxes. If we have two colors to paint these boxes, we can do so in $2!=2$ ways. So dividing by the ways of distinguishing the boxes we have $\frac{2n-2}{2}=2^{n-1}-1$ which is the result we want. $\Box$
+    \item
+    $S(n,n-1)=\binom{n}{2},\;(n\ge1)$
+    \subsubsection*{proof}
+    We wish to count the number of ways of putting $n\ge1$ elements into $n-1$ indistinguishable boxes such that no box is empty. From the pigeonhole principle we know that at least one box has more than one element. If now take one element from every box we have $n-(n-1)=1$ element left. So one box has the one element left plus the one element we removed for two elements altogether. So we see we must put the $n$ elements into the boxes so 2 elements share a box and all the others are in boxes by themselves. So if we wish to count the ways to put the elements in boxes, we could simply count the number of ways to choose the two elements that share a box. And of course if we have $n$ elements we can choose two of them in $\binom{n}{2}$ ways. Notice that $\binom{1}{2}=0=S(1,0)$ so this result also works for the special case where where this proof makes no sense because we only have one element. $\Box$
+%    \item
+%    $S(n,n-2)=\binom{n}{3}+3\binom{n}{4},\;(n\ge2)$
+  \end{enumerate}
+  \setcounter{enumi}{14}
+  \item
+  The number of partitions of a set of $n$ elements into $k$ distinguishable boxes (some of which may be empty) is $k^n$. By counting in a different way, prove that
+  \[k^n=\binom{k}{1}1!S(n,1)+\binom{k}{2}2!S(n,2)+\dots+\binom{k}{n}n!S(n,n).\]
+  (if $k>n$, define $S(n,k)$ to be 0.)
+  \subsubsection*{proof}
+  Imagine we have $n$ elements that we want to put into $k$ boxes in such a way that $i\ge1$ boxes have things in them, and the rest are empty. Then we can put these elements into $i$ indistinguishable boxes in $S(n,i)$ ways. Now we distinguish the boxes by ``painting'' them in $i$ ``colors'' which we can do $i!$ ways. So we can put the elements into $i$ distinguishable nonempty boxes in $i!S(n,i)$ ways. Now we can pick the boxes that have elements in them from the $k$ boxes in $\binom{k}{i}$ ways, for a total of $\binom{k}{i}i!S(n,i)$ ways to fill $i$ of $k$ distinguisheable boxes with $n$ objects. To find the total number of ways to distribute the $n$ objects we sum the ways to distribute the objects with all possible values of $i$. This must be $k^n$ and so we have our result
+  \begin{align*}
+    k^n&=\sum\limits_{i=1}^k{\binom{k}{i}i!S(n,i)}
+  \end{align*}
+  $\Box$
+  \item
+  Compute the Bell number $B_8$. (Cf. Exercise 11.)
+  \begin{align*}
+    B_p&=S(p,0)+S(p,1)+\dots+S(p,p)\\
+    B_8&=S(8,0)+S(8,1)+\dots+S(8,8)\\
+    &=0+1+127+966+1701+1050+266+28+1\\
+    &=4140
+  \end{align*}
+  \setcounter{enumi}{21}
+  \item
+  \begin{enumerate}
+    \setcounter{enumii}{1}
+    \item
+    Calculate the partition number $p_7$ and construct the diagram of the set $\mathcal{P}_7$, partially orderedby majorization
+    \begin{align*}
+      \begin{matrix}
+      &7^1\\
+      &\downarrow\\
+      &6^11^1\\
+      &\downarrow\\
+      &5^12^1\\
+      \downarrow&&\downarrow\\
+      5^11^2&&4^13^1\\
+      &\downarrow\\
+      &4^12^11^1\\
+      \downarrow&&\downarrow\\
+      4^11^3&&3^21^1\\
+      \downarrow&&\downarrow\\
+      \downarrow&&3^12^2\\
+      \to&\to\leftarrow&\leftarrow\\
+      &\downarrow\\
+      &\leftarrow\to&\\
+      \downarrow&&\downarrow\\
+      3^12^11^2&&2^31^1\\
+      \downarrow&&\downarrow\\
+      3^11^4&&\downarrow\\
+      \to&\to\leftarrow&\leftarrow\\
+      &\downarrow\\
+      &2^21^3\\
+      &\downarrow\\
+      &2^11^5\\
+      &\downarrow\\
+      &1^7
+      \end{matrix}
+    \end{align*}
+    And of course $p_7=15$
+  \end{enumerate}
+  \setcounter{enumi}{25}
+  \item
+  (do two parts)
+  
+  Determine the conjugate of each of the following partitions
+  \begin{enumerate}
+    \item
+    $12=5+4+2+1$
+
+    We observe that $\{5,4,2,1\}$ has 4 elements. This is the length of our first row. The last element is size 1, so there will be one of those. The difference between the last two elements is 1, so we have one row of 3 next. The difference between 4 and 2 is 2, so we have 2 rows of 2. And 5-4 makes the last row have only one element. The other answers are obtained similarly.
+
+    $12=4+3+2+2+1$
+    \item
+    $15=6+4+3+1+1$
+
+    $15=5+3+3+2+1+1$
+    \item
+    $20=6+6+4+4$
+    
+    $20=4+4+4+4+2+2$
+    \item
+    $21=6+5+4+3+2+1$
+
+    $21=6+5+4+3+2+1$
+    \item
+    $29=8+6+6+4+3+2$
+
+    $29=6+6+5+4+3+3+1+1$
+  \end{enumerate}
+  \item
+  For each integer $n>2$, determine a self-conjugate partition of $n$ that has at least two parts
+
+  If $n$ is odd, then make one row of length $\frac{n+1}{2}$ and $\frac{n-1}{2}$ rows of length 1. If $n$ is even then make a row of $\frac{n}{2}$, a row of 2, and $\frac{n-4}{2}$ rows of length 1.
+  \item
+  Prove that conjugation reverses the order of majorization; that is, if $\lambda$ and $\mu$ are partitions of $n$ and $\lambda$ is majorized by $\mu$, then $\mu^*$ is majorized by $\lambda^*$.
+  \subsubsection*{proof}
+  Let us define the notation $\lambda_k, \mu_k, {\lambda_k}^*,{\mu_k}^*$ as the size of the $k$th row of the $\lambda,\mu,\lambda^*,\mu*$ partitions. Because $\lambda$ majorizes $\mu$ we know two important things.
+  \begin{align*}
+    \lambda_1&\ge\mu_1\\
+    \sum\limits_{i=1}^k{\lambda_i}&\ge\sum\limits_{i=1}^k{\mu_i}
+  \end{align*}
+  Where $k$ is the number of partitions of $\lambda$ or $\mu$, whichever has fewer partitions. But of course we know that because these are partitions of $n$ the the sum of the partition sizes of the partition with less partitions must be $n$. So we see that
+  \begin{align*}
+    n=\sum\limits_{i=1}^k{\lambda_i}&\ge\sum\limits_{i=1}^k{\mu_i}\\
+    n=\sum\limits_{i=1}^k{\lambda_i}&=\sum\limits_{i=1}^k{\mu_i}+\sum\limits_{i=1}^l{\mu_i}
+  \end{align*}
+  And so $k$ is the number of partitions of $\lambda$ while $k+l$ is the number of partitions of $\mu$ where $k\ge{k+l}$.
+
+  Now when we conjugate these partitions we see that because $k$ is the number of rows of $\lambda$, ${\lambda_1}^*=k$. Similarly ${\mu_1}^*=k+l$. Now because $k\le{k+1}$ we know that ${\lambda_1}^*\le{\mu_1}^*$
+
+  Now we strip one element from each row of our partitions. This is effectively removing ${\lambda_1}^*$ and ${\mu_1}^*$. Now because the partial sums of $\lambda_i$ are more than the partial sums of $\mu_i$ we know that we have a new set of partial sums that fit the same rule.
+  We can repeat this until we run out of element, building our conjugates and the partial sum inequality will always hold. Now because the amount we have taken from our original partition and have put into our conjugate partition sums to n, and we start with the opposite inequality for our conjugate partitions (${\lambda_1}^*\le{\mu_1}^*)$ we know that as long as the inequality holds for the partial sum of the original partition, the opposite inequality will hold for the partial sums of the conjugate partitions. $\Box$
+
+%  Now if we strip off an element from each of the partitions, then we are left with the following for all $k\ge1$.
+%  \begin{align*}
+%    \sum\limits_{i=1}^k{\lambda_i}&\ge\sum\limits_{i=1}^k{\mu_i}\\
+%    \sum\limits_{i=1}^k{\lambda_i-1}&\ge\sum\limits_{i=1}^k{\mu_i-1}
+%  \end{align*}
+%  We have just stripped off the first row of our conjugated partitions. We have created some new groups of subsets (not really technically partitions anymore). Lets call these new groups $\lambda^+,\mu^+$. Notice that $\mu+$ is majorized by $\lambda+$. Now from the logic we just went over we can say that the first row of the conjugate of $\lambda+$ is shorter than the first row of the conjugate of $\mu^+$ and by extension ${\lambda_2}^*\le{\mu_2}^*$.
+%  If we follow this process out until we run out of rows/columns, we can see that it will always be true that ${\lambda_k}^*\le{\mu_k}^*$ and so $\lambda^*$ is majorized by $\mu^*$
+  \setcounter{enumi}{29}
+  \item
+  Prove that the partition function satisfies
+  \[p_n>p_{n-1}\;(n\ge2).\]
+  \subsubsection*{proof}
+  If we take the $p_{n-1}$ partitions of $n-1$ and add a single element partition to it, then we have $p_{n-1}$ partitions of $n$. Also note that $n^1$ is not a partition of $n-1$ but is a partition of $n$. So we have $p_n\ge {p_{n-1}+1}>p_{n-1}$ and our simple proof. $\Box$
+  \setcounter{enumi}{28}
+  \item (grad)
+\end{enumerate}
+\end{document}

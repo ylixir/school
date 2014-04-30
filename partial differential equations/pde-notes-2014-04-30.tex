@@ -1,0 +1,80 @@
+%shell-escape
+\documentclass{article}
+\usepackage{fullpage}
+\usepackage{nopageno}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumerate}
+\usepackage{gnuplottex}
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+
+\begin{document}
+\title{Notes}
+\date{April 30, 2014}
+\maketitle
+\section*{lesson 30}
+\begin{align*}
+  \text{pde}&&&u_{tt}=c^2\nabla^2u=c^2(u_{rr}+\frac{1}{r}u_r+1\frac{1}{r^2}u_{\theta\theta})\\
+  \text{bc}&&&u(1,\theta,t)=0\\
+  \text{ic}&&&u(r,\theta,0)=f(r,\theta)\\
+  &&&u_t(r,\theta,0)=g(r,\theta)
+\end{align*}
+\begin{align*}
+  \hline \\
+  u&=T(t)U(r,\theta)\to\frac{T''(t)}{c^2T(t)}=\frac{\nabla^2U}{U}=-\lambda^2\le0\\
+  \nabla^2U+\lambda^2U&=0 \text{ Helmholtz equation}\\
+  U&=R(r)\Theta(\theta)\\
+  0&=R''(r)+\frac{1}{r}R'(r)+\left(\frac{1}{r^2}\frac{\Theta''(\theta)}{\Theta(\theta)}+\lambda^2\right)R(r)\\
+  \intertext{solutionsmust be $2\pi$ periodicin $\theta$}
+  \Theta''(\theta)+n^2\Theta(\theta)&=0\\
+  n&=0,1,2,\dots\\
+  &\cos(n\theta),\sin(n\theta)\\
+  \hline\\
+  0&=R''(r)+\frac{1}{r}R'(r)+\left(\lambda^2-\frac{n^2}{r^2}\right)R(r)\\
+  \hline\\
+  \intertext{eigenvalues $\lambda$ will besuch that $R(1)=0$. Condition $R(r)$ should be bounded at $r=0$}
+  \lambda&=0\text{ not an eigenvalue}\\
+  0&=R''+\frac{1}{r}R'-\frac{n^2}{r^2}R\\
+  0&=r^2R''+rR'-n^2R \text{ Euler de}\\
+  R&=r^p\\
+  p(p-1)r^p+pr^p-n^2r^p&=0\\
+  p^2-n^2&=0\quad p=\pm n\\
+  \intertext{if $n=1,2,\dots$}
+  R
+  \intertext{if $n=0$}
+\end{align*}
+
+bessel function website is at http://dlmf.nist.gov/10.2
+
+$J_v(z)$ bessel functions of first kind, bounded at origin
+
+$Y_v(z)$ bessel functions of second kind, unbounded.
+
+also look at http://dlmf.nist.gov/10.8
+
+
+blah....
+\begin{align*}
+\hline
+\end{align*}
+
+$\lambda$ must satisfy $J_n(\lambda)=0$
+mathematica function name for bessel: BesselJZero[n,k] is $k^\text{th}$ zero of the Bessel function $J_n(x)$. add //N for numeric output
+
+\begin{align*}
+  U(r,\theta)&=J)n(k_{n,m}r)(a_n\cos(n\theta)+b_n\sin(n\theta))
+  \intertext{for}
+  n&=0,1,2,\dots\\
+  m&=1,2,3,\dots
+\end{align*}
+here $\lambda=k_{n,m}$
+\begin{align*}
+  T''(t)+c^2{k_{n,m}}^2T(t)=0
+\end{align*}
+has solutions $\cos(k_{n,m}ct),\sin(k_{n,m}ct)$
+
+frequency $\frac{k_{n,m}c}{2\pi}$
+figure 30.3 $n=$ the number of zeros of the trig part of $U(r,\theta)=J_n(k_{n,m}r)(a_n\cos(n\theta)+b_n\sin(n\theta))$
+\end{document}
