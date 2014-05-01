@@ -1,0 +1,69 @@
+\documentclass{article}
+\usepackage{fullpage}
+\usepackage{nopageno} 
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{cancel}
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, calc}
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+
+\begin{document}
+\title{Notes}
+\date{April 30, 2014}
+\maketitle
+counting formula $R_n=\sum\limits_{r=0}^n{\frac{1}{n-r+1}\binom{2n-r}{r,n-r,n-r}}$ where r=flat steps, and $R_n$ is number of large shroder paths.
+\begin{align*}
+  R_n&=2s_{n+1}\text{ s are dissections/small shrodinger paths}
+\end{align*}
+\section*{7.1/2}
+fibanocci numbers
+\begin{align*}
+  f_n=f_{n-1}+f_{n-2},f_0=1,f_1=1\\
+\end{align*}
+partial sums
+\begin{align*}
+  s_n=f_0+\dots+f_n=f_{n+2}-1
+\end{align*}
+proof by induction
+
+even odd odd patter
+
+using $f_n$'s to solve covering 2xn chessboard problems.
+
+fibonacci numbersare sum pascal triangle diagonal
+
+generating functions
+\begin{align*}
+  g(x)&=\sum\limits_{n=0}^\infty{h_nx^n}
+\end{align*}
+
+derive recurrence, use recurrence
+use reg generating functions for combination like things
+\section*{7.3}
+exponential generating functions
+use for counting permutation like things.
+need to be able to find a generating function and use it to find a counting formula.
+\section*{7.4/5}
+solving recurrence relations and ....
+
+know if it's linear, homogeneous, constant coefficients.
+
+method of generating functions know this.
+
+also can find general solution to homogen, find particular solution, combine solutions and determince constants.
+\section*{7.6/8.1}
+catalan stuff.
+catalan number is $C_n=\frac{1}{n+1}\binom{2n}{n}$
+
+say what is counted, give bijections. say why it's a bijection.
+\section*{8.2}
+
+\section*{8.3}
+self conjugate partitions, and partitions with only odd parts.
+
+odd and distinct
+\section*{8.5}
+\end{document}
