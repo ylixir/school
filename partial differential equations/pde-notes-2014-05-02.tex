@@ -1,0 +1,94 @@
+%shell-escape
+\documentclass{article}
+\usepackage{fullpage}
+\usepackage{nopageno}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumerate}
+\usepackage{gnuplottex}
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+
+\begin{document}
+\title{Notes}
+\date{May 2, 2014}
+\maketitle
+\begin{align*}
+  \intertext{pde}
+  u_{tt}&=c^2\nabla^2u\text{ on }0<r<1,0<\theta<2\pi,0<t<\infty\\
+  \intertext{bc}
+  u&=0\text{ on edge}\\
+  \intertext{ic}
+  u(r,\theta,0)&=f(r,\theta)\\
+  u_t(r,\theta,0)&=g(r,\theta)\\
+  \intertext{sep variables}
+  u&=T(t)U(r,\theta)\\
+  \frac{T''}{c^2T}&=\frac{\nabla^2U}{U}=-\lambda^2\le0\\
+  \intertext{note: $\frac{\nabla^2U}{U}=\lambda^2>0$ has no sulutions with use of modified bessel functions.}
+  \intertext{note: $-\lambda^2=0$ was eliminated using euler's diffeq}
+  \intertext{get}
+  U_{n,m}(r,\theta)&=J_n(k_{n,m}r)(\underbrace{a\sin(n\theta)+b\cos(n\theta)}_{=A\cos(n(\theta-\theta_0))})\intertext{ with }\lambda_{n,m}=k_{n,m}\\
+  n&=0,1,2,\dots\\
+  m&=1,2,3,\dots\\
+  k_{n,m}&=m^{\text{th}}\text{ positive root of }J_n(x)\\
+  T_{n,m}(t)&=\cos(k_{n,m}ct),\sin(k_{n,m}ct)\\
+  \intertext{general solution}
+  u&=\sum_{\begin{aligned}_{n\ge0}\\_{m\ge1}\end{aligned}}{J_n(k_{n,m}r)(\cos(k_{nm}ct)(a_{nm}\sin(n\theta)+b_{nm}\cos(n\theta))+\sin(k_{nm}ct)(c_{nm}\sin(n\theta)+d_{nm}\cos(n\theta))}
+\end{align*}
+
+main question: how to find codfficients a,b,c,d?
+
+lab observations: we have frequencies $\frac{k_{nm}c}{2\pi}$ associated with spatial functions $U_{n,m}(r,\theta)=J_{n}(k_{nm}r)\cos(n(\theta-\theta_0))$
+
+refer to page 237 for pictures.
+
+$m$ refers to which zero of the bessel function
+\begin{align*}
+  n&=0&U_{0,m}&=J_{0}(k_{0,m}r)\cdot1\\
+  m&=1&U_{0,1}&=J_0(k_{0,1}r)
+\end{align*}
+so for this, the drumhead going up and down in center, no nodal lines, sand just falls off.
+\begin{align*}
+  n&=0&U_{0,m}&=J_{0}(k_{0,m}r)\cdot1\\
+  m&=2&U_{0,2}&=J_0(k_{0,2}r)
+\end{align*}
+going in and out on center in opposite time to edge,nodal line at $r=\frac{k_{01}}{k_{02}}$
+\begin{align*}
+  n&=0&U_{0,m}&=J_{0}(k_{0,m}r)\cdot1\\
+  m&=3&U_{0,3}&=J_0(k_{0,3}r)
+\end{align*}
+going in and out on center in opposite time to edge,nodal lines at $r=\frac{k_{01}}{k_{03}}$ and $r=\frac{k_{02}}{k_{03}}$
+
+etc.
+
+\begin{align*}
+  n&=3&U_{3,m}&=J_{3}(k_{3,m}r)\cos(3(\theta-\theta_0))\\
+  m&=1&U_{3,1}&=J_3(k_{3,1}r)\cos(3(\theta-\theta_0))
+\end{align*}
+three radial nodal lines separated by $\frac{2\pi}{3}$ from the cosine term. First bessel zero at outer edge from the bessel term.
+\begin{align*}
+  n&=3&U_{3,m}&=J_{3}(k_{3,m}r)\cos(3(\theta-\theta_0))\\
+  m&=2&U_{3,2}&=J_3(k_{3,2}r)\cos(3(\theta-\theta_0))
+\end{align*}
+still three radial nodal lines, and now one circular nodal line.
+
+back to the general solution. we want to find coefficients. orthoganality relation on p 239.
+
+\begin{align*}
+  \int_0^1{rJ_0(k_{0i}r)J_0(k_{0j}r)\,\mathrm{d}r}&=\begin{cases}0&i\ne j\\\frac{1}{2}{J_1}^2(k_{oi})&i=j\end{cases}
+\end{align*}
+we are deriving orthogonality for helmholtz equation
+\begin{align*}
+  \nabla^2U+\lambda^2U&=0\text{ on }R\\
+  U&=0\text{ on }\partial R
+\end{align*}
+have 2 solutions fo $\lambda$ ($U_\lambda$) and $\mu$ ($U_\mu$).
+\subsubsection*{claim} if $\lambda\ne\mu$, then $\int\int_R{U_\lambda U_\mu\,\mathrm{d}a}=0$
+\subsubsection*{proof}
+start with  $\lambda^2\int\int{U_\lambda U_{gm}\,\mathrm{d}a}=-\int\int_R{\nabla^2U_\lambda U_\mu\,\mathrm{d}a}$. Note that $\nabla\cdot(\nabla U_\lambda\cdot U_\mu)=(\nabla^2U_\lambda)U_\mu+\nabla U_\lambda\cdot \nabla U_\mu$ where nablaUlambda is vector and Umu is function
+\begin{align*}
+  &=\int\int_R{\left[-\nabla\cdot\left((\nabla U_\lambda\right)U_\mu+\nabla U_\lambda\cdot\nabla U_\mu\right]\,\mathrm{d}a}\\
+  &=-\int_{\partial R}{U_\mu \nabla U_\lambda\,\mathrm{d}a}+\int\int_R{\nabla U_\lambda\cdot\nabla U_\mu\,\mathrm{d}a}\\
+\end{align*}
+\end{document}
