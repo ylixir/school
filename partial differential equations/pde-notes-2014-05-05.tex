@@ -1,0 +1,97 @@
+%shell-escape
+\documentclass{article}
+\usepackage{fullpage}
+\usepackage{nopageno}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumerate}
+\usepackage{gnuplottex}
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+
+\begin{document}
+\title{Notes}
+\date{May 5, 2014}
+\maketitle
+\begin{align*}
+  \intertext{pde}
+  u_{tt}&=c^2\nabla^2u\text{ on }0\le x\le,0<\theta<2\pi,0<t<\infty\\
+  \intertext{bc}
+  u(1,\theta,t)&=0\\
+  \intertext{ic}
+  u(r,\theta,0)&=f(r,\theta)\\
+  u_t(r,\theta,0)&=g(r,\theta)\\
+  \intertext{sep of var}
+  u&=T(t)U(t,\theta)\\
+  \intertext{helmholtz}
+  \nabla^2U+\lambda^2U&=0\text{ has solutions}&&\nabla^2U_{n,m}+{\lambda_{n,m}}^2U_{n,m}=0\\
+  &&&\text{where }\lambda_{n,m}=k_{n,m}=m^{\text{th}}\text{ positive zero of }J_n(x)\\
+  &&&U_{n,m}(t,\theta)=J_n(k_{nm}r)\cos(n\theta),J_n(k_{nm}r)\sin(n\theta\\
+  u_{tt}&=c^2\nabla^2u\text{ wave eqnfor 2d and 3d}\\
+  &&&\begin{cases}
+  2d&\nabla^2u=u_{xx}+u_{yy}=u_{rr}+\frac{1}{r}u_r+\frac{1}{r^2}u_{\theta\theta}\\
+  3d&\nabla^2u=u_{xx}+u_{yy}+u_{zz}=u_{rr}+\frac{1}{r}u_r+\frac{1}{r^2}u_{\theta\theta}+u_{zz}
+  \end{cases}
+\end{align*}
+bessel functions called zylinderfunktionen in german because of usefullness in cylinders (and he's german), measured distance to a star, funktionen introduced by dirichlet in 1829.
+
+\subsubsection*{fact}
+for $(n_1,m_1)\ne(n_2,m_2)$, $k_{n_1,m_1}\ne k_{n_2,m_2}$ (a bit deep)
+
+\subsubsection*{fact}
+for $(n_1,m_1)\ne(n_2,m_2)$, $\int\int_{x^2+y^2+z^2}{U_{n_1,m_1}(r,\theta)U_{n_2,m_2}(r,\theta)r\,\mathrm{d}r\mathrm{d}\theta}=0$
+
+eigenfunction for $k_{n_1,m_1}\ne k_{n_2,m_2}$are orthogonal
+
+consequence of divergence theorem
+
+\subsubsection*{general solution}
+
+\[u(r,\theta,t)=\sum\limits_{n\ge0,m\ge1}{J_n(k_{nm}r)\left[\cos(k_{nm}ct)(a_{nm}\cos(n\theta)+b_{nm}\sin(n\theta))+\sin(k_{nm}ct)(c_{nm}\cos(n\theta)+d_{nm}\sin(n\theta))\right]}\]
+satisfies pde and bc. how to satisfy ic?
+
+at $t=0$ $u(t,\theta,0)=f(r,\theta)=\sum\limits_{n\ge0,m\ge1}{J_n(k_{nm}r)(a_{nm}\cos(n\theta)+b_{nm}\sin(n\theta))}$ and $u_r(t,\theta,0)=g(r,\theta)$ is similar for $d_{nm}$ and $c_{nm}$
+
+\begin{align*}
+\intertext{to find $a_{NM}$}
+  \int_{\theta=0}^{2\pi}\int_{r=0}^{1}{f(r,\theta)\cdot J_N(k_{NM}r)\cos(N\theta)r\,\mathrm{d}r\mathrm{d}\theta}&=a_{NM}\int_{\theta=0}^{2\pi}\int_{r=0}^{1}{J_N(k_{NM})^2\cos(N\theta)^2r\,\mathrm{d}r\mathrm{d}\theta}\\
+  &=\int_0^{2\pi}{\cos(N\theta)^2\,\mathrm{d}\theta}\int_0^1{J_N(k_{NM}r)^2r\,\mathrm{d}r}
+\intertext{to find $b_{NM}$}
+  \int_{\theta=0}^{2\pi}\int_{r=0}^{1}{f(r,\theta)\cdot J_N(k_{NM}r)\sin(N\theta)r\,\mathrm{d}r\mathrm{d}\theta}&=a_{NM}\int_{\theta=0}^{2\pi}\int_{r=0}^{1}{J_N(k_{NM})^2\sin(N\theta)^2r\,\mathrm{d}r\mathrm{d}\theta}\\
+  &=\int_0^{2\pi}{\sin(N\theta)^2\,\mathrm{d}\theta}\int_0^1{J_N(k_{NM}r)^2r\,\mathrm{d}r}
+  \intertext{note}
+  \int_0^{2\pi}{\cos(N\theta)^2\,\mathrm{d}\theta}&=\int_0^{2\pi}{\cos(N\theta)^2\,\mathrm{d}\theta}=\pi\text{ where }n=1,2,3,\dots\\
+  \int_0^{2\pi}{\cos(N\theta)^2\,\mathrm{d}\theta}&=\int_0^{2\pi}{\cos(N\theta)^2\,\mathrm{d}\theta}=0\text{ where }n=0\\
+\end{align*}
+page 239
+\begin{align*}
+  \int_0^1{J_0(k_{0i}r)J_0(k_{0j}r)r\,\mathrm{d}r}=
+  \begin{cases}
+  0&\text{for }i\ne j\\
+  \frac{1}{2}J_{1j}(k_{0i})^2&\text{for }i= j
+  \end{cases}
+\end{align*}
+
+will obtain ageneralformula for
+\begin{align*}
+  \int_0^1{J_N(k_{NM}r)^2r\,\mathrm{d}r}\text{ text gives $N=0$}
+\end{align*}
+$J_v(z)$ satisfies $z^2\frac{\mathrm{d}^2w}{\mathrm{d}z^2}+z\frac{\mathrm{d}w}{\mathrm{d}z}+(z^2-v^2)w=0$. antiderivative for $\int{J_v(ar)J_v(br)r\,\mathrm{d}r}$ for $a\ne b\;(a,b>0)$
+
+write $y_a(r)=J_v(ar)$ then $y_z(r)$ satisfies $r^2\frac{\mathrm{d}^2y_a}{\mathrm{d}r^2}+r\frac{\mathrm{d}y_a}{\mathrm{d}r}+(a^2r^2-v^2)y_a=0$. note $z=ar$. want
+\begin{align*}
+  I&=\int{y_a(r)y_b(r)r\,\mathrm{d}r}\\
+  b^2I&=\int{y_a(r)(b^2ry_b(r))\,\mathrm{d}r}\\
+  &=\int{y_a(r)\left[\frac{v^2}{r}y_b(r)-(ry_b')'\right]i\,\mathrm{d}r}\\
+  \intertext{note}
+  \int{y_a(ry_b')'\mathrm{d}r}&=y_ary_b'-\int{(y_a'r)y_b'\mathrm{d}r}\\
+  &=y_ary_b'-y_a'ry_b+\int{y_b(ry_a')'\mathrm{d}r}\\
+  b^2I&=\int{\left[y_a\frac{v^2}{r}y_b-y_b(ry_a')'\right]\mathrm{d}r}+r(y_a'y_b-y_ay_b')\\
+  y_b(\frac{v^2}{r}y_a-(ry_a')')&=a^2ry_a\\
+  \intertext{note}
+  r(ry_b')'-v^2y_b+b^2r^2y_b&=0\\
+  b^2\int{y_ay_br\,\mathrm{d}r}&=a^2\int{y_ay_br\,\mathrm{d}r}+r(y_a'y_b-y_ay_b')\leftarrow\frac{\mathrm{d}y_a}{\mathrm{d}r}
+
+\end{align*}
+\end{document}
