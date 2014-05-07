@@ -1,0 +1,38 @@
+%shell-escape
+\documentclass{article}
+\usepackage{fullpage}
+\usepackage{nopageno}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumerate}
+\usepackage{gnuplottex}
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+
+\begin{document}
+\title{Notes}
+\date{May 7, 2014}
+\maketitle
+\section*{final}
+turn in to mel, math dept secretary by noon on thursday.
+\section*{last time}
+finding the $n^\text{th}$ derivative of $J_v(x)$. $J_v(x)$ is bessel function 1st kind, order $v$. Satisfies $z^2w''(z)+zw'(z)+(z^2-v^2)w(z)=0$. showed
+\begin{enumerate}
+\item
+  $(b^2-a^2)\int{J_v(ar)J_v(br)r\,\mathrm{d}r}=r\left(a{J_v}'(ar)J_v(br)b-J_v(ar){J_v}'(br)\right)$
+\item
+$\int{(J_v(ar))^2r\,\mathrm{d}r}$
+\end{enumerate}
+\begin{align*}
+  \int{J_v(ar)J_v(br)r\,\mathrm{d}r}&=\frac{r}{b+a}\frac{1}{b-a}\left(a{J_v}'(ar)J_v(br)-bJ_v(ar){J_v}'(br)\right)\\
+  \int{J_v(ar)^2r\,\mathrm{d}r}&=\frac{r}{2a}\frac{\mathrm{d}}{\mathrm{d}b}\left(\text{ above }\right)\\
+  &=\frac{r}{2a}\left[a{J_v}'(ar)r{J_v}'(ar)-J_v(ar){J_\nu}'(ar)-aJ_\nu(ar){J_\nu}''(ar)r\right]\\
+  &=\frac{r}{2a}\left[ar({J_\nu}'(ar))^2-J_\nu(ar)\left(ar{J_\nu}''(ar)+{J_\nu}'(ar)\right)\right]\\
+  &=\frac{r}{2a}\left[ar({J_\nu}'(ar))^2-(J_\nu(ar)^2(\frac{\nu^2-(ar)^2}{ar}\right]\\
+  \intertext{book page 239}
+  \int_0^1{J_0(k_{oi}r)^2r\,\mathrm{d}r}&=\frac{1}{2}{J_1}^2(k_{oi})\\
+  \int_0^1{J_n(k_{nm}r)r\,\mathrm{d}r}&=\frac{1}{2}\left[({J_n}'(k_{nm})^2+(J_n(k_{nm}))^2\right]-\frac{n^2}{2{k_{nm}}^2}(J_{n}(k_{nm}))^2=\frac{1}{2}(J_n'(k_{nm}))^2\\
+  \int_0^1{J_0(k_{0m}r)^2r\,\mathrm{d}r}&=\frac{1}{2}J_0'(k_{om})^2
+\end{align*}
+\end{document}
