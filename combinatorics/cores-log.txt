@@ -1,1 +1,7 @@
 added reverse map description and example and sage example from bounded partition.
+
+added affine permutation bijection.
+
+added information on strong and weak covers
+
+added strong covers statistic
