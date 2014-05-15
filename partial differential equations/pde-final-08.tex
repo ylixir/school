@@ -1,0 +1,59 @@
+\documentclass{article}
+%\usepackage{fullpage}
+\usepackage{nopageno}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage{tabu}
+\usepackage{longtable}
+\usepackage{mathrsfs}
+\usepackage{enumerate}
+\usepackage[margin=1in]{geometry}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\lhead{Final 08}
+\rhead{Jon Allen}
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+\newcommand{\degree}{\ensuremath{^\circ}}
+
+\begin{document}
+  \[\int_0^\pi{\int_0^1{E_{n,m}(r,\theta)E_{q,p}(r,\theta)r\mathrm{d}r\mathrm{d}\theta}}\]
+let $n\ne q$
+\begin{align*}
+   \int_0^\pi{\int_0^1{E_{n,m}(r,\theta)E_{q,p}(r,\theta)r\mathrm{d}r\mathrm{d}\theta}}&=
+   \int_0^\pi{\sin(n\theta)\sin(q\theta)\left[\int_0^1{J_n(k_{n,m}r)J_q(k_{q,pr)r\,\mathrm{d}r}}\right]\,\mathrm{d}\theta}\\
+   &=\left[\int_0^1{J_n(k_{n,m}r)J_q(k_{q,pr)r\,\mathrm{d}r}}\right]\int_0^\pi{\sin(n\theta)\sin(q\theta)\,\mathrm{d}\theta}\\
+   &=\left[\int_0^1{J_n(k_{n,m}r)J_q(k_{q,pr)r\,\mathrm{d}r}}\right]\left(-\frac{(q-n)\sin(q\pi+n\pi)+(-q-n)\sin(q\pi-n\pi)}{2q^2-2n^2}\right)\\
+   &=\left[\int_0^1{J_n(k_{n,m}r)J_q(k_{q,pr)r\,\mathrm{d}r}}\right]\cdot 0\\
+   &=0
+\end{align*}
+now let $(n,m)=(q,p)$
+\begin{align*}
+   \int_0^\pi{\int_0^1{E_{n,m}(r,\theta)E_{q,p}(r,\theta)r\mathrm{d}r\mathrm{d}\theta}}&=
+   \left[\int_0^1{J_n(k_{n,m}r)J_q(k_{q,pr)r\,\mathrm{d}r}}\right]\int_0^\pi{\sin(n\theta)\sin(q\theta)\,\mathrm{d}\theta}\\
+   &=\left[\int_0^1{J_n(k_{n,m}r)^2r\,\mathrm{d}r}\right]\int_0^\pi{\sin(n\theta)^2\,\mathrm{d}\theta}\\
+   &=-\frac{\sin(2\pi n)-2\pi n}{4n}\left[\int_0^1{J_n(k_{n,m}r)^2r\,\mathrm{d}r}\right]\\
+   &=\frac{\pi}{2}\left[\int_0^1{J_n(k_{n,m}r)^2r\,\mathrm{d}r}\right]\\
+   &=\frac{\pi}{2}\left[\frac{1}{2}(J'_n(k_{n,m}))^2\right]=
+   \frac{\pi}{4}J'_n(k_{n,m})^2 \quad\text{formula from class}
+\end{align*}
+let $n=q$ and $m\ne p$
+\begin{align*}
+   \int_0^\pi{\int_0^1{E_{n,m}(r,\theta)E_{q,p}(r,\theta)r\mathrm{d}r\mathrm{d}\theta}}&=
+   \left[\int_0^1{J_n(k_{n,m}r)J_q(k_{q,pr)r\,\mathrm{d}r}}\right]\int_0^\pi{\sin(n\theta)^2\,\mathrm{d}\theta}\\
+   &=\frac{\pi}{2}\left[\int_0^1{J_n(k_{n,m}r)J_q(k_{q,pr)r\,\mathrm{d}r}}\right]\\
+   \intertext{we take as given that $k_{n,m}\ne k_{q,p}$ and use the formula from my notes}
+   a&=k_{n,m}\\
+   b&=k_{q,p}\\
+   \int_0^\pi{\int_0^1{E_{n,m}(r,\theta)E_{q,p}(r,\theta)r\mathrm{d}r\mathrm{d}\theta}}&=
+   \frac{\pi}{2}\left[\int_0^1{J_n(ar)J_n(br)r\,\mathrm{d}r}\right]\\
+   &=\frac{\pi}{2}\left[\frac{r}{b+a}\frac{1}{b-a}(aJ'_n(ar)J_n(br)-bJ_n(ar)J'_n(br))\right]_0^1\\
+   &=\frac{\pi}{2}\left[\frac{1}{b+a}\frac{1}{b-a}(aJ'_n(a)J_n(b)-bJ_n(a)J'_n(b))\right.\\
+   &\qquad\left.-\frac{0}{b+a}\frac{1}{b-a}(aJ'_n(ar)J_n(br)-bJ_n(ar)J'_n(br))\right]\\
+  J_n(a)&=J_n(b)=0\\
+   \int_0^\pi{\int_0^1{E_{n,m}(r,\theta)E_{q,p}(r,\theta)r\mathrm{d}r\mathrm{d}\theta}}&=0
+\end{align*}
+\end{document}

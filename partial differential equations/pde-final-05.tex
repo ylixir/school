@@ -1,0 +1,45 @@
+\documentclass{article}
+%\usepackage{fullpage}
+\usepackage{nopageno}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage{tabu}
+\usepackage{longtable}
+\usepackage{mathrsfs}
+\usepackage{enumerate}
+\usepackage[margin=1in]{geometry}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\lhead{Final 05}
+\rhead{Jon Allen}
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+\newcommand{\degree}{\ensuremath{^\circ}}
+
+\begin{document}
+\subsubsection*{PDE D.1}
+\begin{align*}
+  \text{PDE.}&&\frac{\partial w}{\partial t}&=\frac{\partial^2w}{\partial x^2}&&\text{for}&0&<x<\infty,&0&<t<\infty\\
+  \text{BC.}&&w(0,t)&=1&&\text{for}&&&0&<t<\infty\\
+  \text{IC.}&&w(x,0)&=0&&\text{for}&0&<x<\infty
+\end{align*}
+
+Solve PDE D.1 by Laplace transforming with respect to $t$. In particular, show that the Laplace transform of the solution $w(x,t)$ is $W(x,s)=\frac{1}{s}e^{-x\sqrt{s}}$ and then obtain the solution $w(x,t)$ (use tables).
+
+\begin{align*}
+  sW(x)-0&=\frac{\mathrm{d}^2W}{\mathrm{d}x^2}\\
+  W(0)&=\mathcal{L}\{1\}=\frac{1}{s}\\
+  0&=\frac{\mathrm{d}^2W}{\mathrm{d}x^2}-sW(x)\\
+  0&=r^2+0r-s\\
+  r&=\frac{\pm\sqrt{4s}}{2}=\pm\sqrt{s}\\
+  W(x)&=c_1e^{x\sqrt{s}}+c_2e^{-x\sqrt{s}}\\
+  W(0)&=c_1+c_2=\frac{1}{s}\\
+  c_1=0&\quad c_2=\frac{1}{s}\\
+  W(x)&=\frac{1}{s}e^{-x\sqrt{s}}\\
+  \intertext{from handout}
+  w(x,t)&=\text{erfc}\left(\frac{x}{2\sqrt{t}}\right)
+\end{align*}
+\end{document}

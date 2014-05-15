@@ -5,3 +5,5 @@ added affine permutation bijection.
 added information on strong and weak covers
 
 added strong covers statistic
+
+edited strong covers statistic as per requested when approved

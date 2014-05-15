@@ -30,17 +30,23 @@
 Solve PDE C completely by a Laplace transform with respect to $t$. Use the BC as stated -- do not transform to homogeneous BC. (The necessary inverse Laplace transform is not in the textbook table but is on the handout list of transforms.)
 
 \begin{align*}
-  sU(x)-0&=\frac{\mathrm{d}U}{\mathrm{d}x^2}(x)\\
+  sU(x)-0&=\frac{\mathrm{d}^2U}{\mathrm{d}x^2}(x)\\
   \frac{\mathrm{d}U}{\mathrm{d}x}(0)&=U(0)-\mathcal{L}\left\{\frac{1}{\sqrt{\pi t}}\right\}\\
   &=U(0)-\frac{1}{\sqrt{s}}\qquad\text{used computer}\\
-  0&=\frac{\mathrm{d}U}{\mathrm{d}x^2}(x)-sU(x)\\
-  e^{-sx}U(x)&=c_1\\
-  U(x)&=c_1e^{sx}\\
-  \frac{\mathrm{d}U}{\mathrm{d}x}(x)&=c_1xe^{sx}\\
-  \frac{\mathrm{d}U}{\mathrm{d}x}(0)&=c_10e^{s0}=0\\
-  U(0)-\frac{1}{\sqrt{s}}&=0=c_1-\frac{1}{\sqrt{s}}\\
-  U(x)&=\frac{1}{\sqrt{s}}e^{sx}\\
-  \intertext{with computer, $\theta$ is heavyside step funtion}
-  u(x,t)&=\frac{\theta(t+x)}{\sqrt{\pi}\sqrt{t+x}}
+  0&=\frac{\mathrm{d}^2U}{\mathrm{d}x^2}(x)-sU(x)\\
+  0&=r^2+0r-s\\
+  r&=\frac{\pm\sqrt{4s}}{2}=\pm\sqrt{s}\\
+  U(x)&=c_1e^{x\sqrt{s}}+c_2e^{-x\sqrt{s}}\\
+  U'(x)&=c_1\sqrt{s}e^{x\sqrt{s}}-c_2\sqrt{s}e^{-x\sqrt{s}}\\
+  U'(0)&=c_1\sqrt{s}-c_2\sqrt{s}=c_1+c_2-\frac{1}{\sqrt{s}}\\
+  c_1\sqrt{s}-c_1&=c_2+c_2\sqrt{s}-\frac{1}{\sqrt{s}}\\
+  \intertext{used computer to help find convenient values}
+  c_1(\sqrt{s}-1)&=\frac{1}{s+\sqrt{s}}+\frac{\sqrt{s}}{s+\sqrt{s}}-\frac{1}{\sqrt{s}}\\
+  c_1(\sqrt{s}-1)&=\frac{\sqrt{s}+s}{\sqrt{s}(s+\sqrt{s})}-\frac{s+\sqrt{s}}{\sqrt{s}(s+\sqrt{s})}\\
+  c_1=0\\
+  c_2&=\frac{1}{s+\sqrt{s}}\\
+  U(x)&=\frac{1}{s+\sqrt{s}}e^{-x\sqrt{s}}\\
+  \intertext{from handout}
+  u(x,t)&=e^{x+t}\text{erfc}\left(\sqrt{t}+\frac{x}{2\sqrt{t}}\right)
 \end{align*}
 \end{document}

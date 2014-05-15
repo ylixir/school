@@ -1,0 +1,53 @@
+\documentclass{article}
+%\usepackage{fullpage}
+\usepackage{nopageno}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage{tabu}
+\usepackage{longtable}
+\usepackage{mathrsfs}
+\usepackage{enumerate}
+\usepackage[margin=1in]{geometry}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\lhead{Final 06}
+\rhead{Jon Allen}
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+\newcommand{\degree}{\ensuremath{^\circ}}
+
+\begin{document}
+\subsubsection*{PDE D.2}
+\begin{align*}
+  \text{PDE.}&&\frac{\partial u}{\partial t}&=\frac{\partial^2u}{\partial x^2}&&\text{for}&0&<x<\infty,&0&<t<\infty\\
+  \text{BC.}&&u(0,t)&=f(t)&&\text{for}&&&0&<t<\infty\\
+  \text{IC.}&&u(x,0)&=0&&\text{for}&0&<x<\infty
+\end{align*}
+
+Apply the Laplace transform with respect to $t$ to PDE D.2 to obtain the relation $U(x,s)=sF(s)W(x,s)$, where $U(x,s)$ is the Laplace transform of the solution $u(x,t), F(s)$ is the transform of $f(t)$ and $W(x,s)$ is the transform of problem 5. Show that the result leads to the formula
+
+\[u(x,t)=f(0)\text{erfc}\left(\frac{x}{2\sqrt{t}}\right)+t\int_0^1{\text{erfc}\left(\frac{x}{2\sqrt{t}}(1-u)^{-1/2}\right)f'(tu)\mathrm{d}u}\]
+
+\begin{align*}
+  sU(x)-0&=\frac{\mathrm{d}^2U}{\mathrm{d}^2x}\\
+  U(0)&=F(s)\\
+  0&=\frac{\mathrm{d}^2U}{\mathrm{d}^2x}-sU(x)\\
+  U(x)&=c_1e^{x\sqrt{s}}+c_2e^{-x\sqrt{s}}\\
+  U(0)&=F(s)=c_1+c_2\\
+  c_1=0&\quad c_2=F(s)\\
+  U(x)&=F(s)e^{-x\sqrt{s}}=\frac{s}{s}F(s)e^{-x\sqrt{s}}\\
+  W(s)&=\frac{1}{s}e^{-x\sqrt{s}}\\
+  U(x)&=sF(s)W(x)
+\end{align*}
+And now we do the reverse transform
+\begin{align*}
+  U(x)&=(sF(s)-f(0)+f(0))W(x)\\
+  &=(sF(s)-f(0))W(x)+f(0)W(x)\\
+  u(x,t)&=f(0)\text{erfc}\left(\frac{x}{2\sqrt{t}}\right)+\int_0^t{f'(u)\,\text{erfc}\left(\frac{x}{2\sqrt{(t-u)}}\right)\,\mathrm{d}u}\\
+  &=f(0)\text{erfc}\left(\frac{x}{2\sqrt{t}}\right)+t\int_0^1{f'(tu)\,\text{erfc}\left(\frac{x}{2\sqrt{(t-tu)}}\right)\,\mathrm{d}u}\\
+  &=f(0)\text{erfc}\left(\frac{x}{2\sqrt{t}}\right)+t\int_0^1{f'(tu)\,\text{erfc}\left(\frac{x}{2\sqrt{t}\sqrt{1-u}}\right)\,\mathrm{d}u}\\
+\end{align*}
+\end{document}
