@@ -1,0 +1,72 @@
+\documentclass{article}
+%\usepackage{fullpage}
+\usepackage{nopageno}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage{tabu}
+\usepackage{longtable}
+\usepackage{mathrsfs}
+\usepackage{enumerate}
+\usepackage[margin=1in]{geometry}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\lhead{Final 03}
+\rhead{Jon Allen}
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+\newcommand{\degree}{\ensuremath{^\circ}}
+
+\begin{document}
+\subsubsection*{PDE B.}
+\begin{align*}
+  \text{PDE.}&&\frac{\partial u}{\partial t}&=\frac{\partial^2u}{\partial x^2}+\cos(\pi x)^2&&\text{for}&0&<x<1,&0&<t<\infty\\
+  \text{BC.}&&u_x(0,t)&=0=u_x(1,t)&&\text{for}&&&0&<t<\infty\\
+  \text{IC.}&&u(x,0)&=0&&\text{for}&0&<x<1
+\end{align*}
+
+Solve PDE B completely. You may make use of your results from Problems 01 and 02.
+\begin{align*}
+  \cos(\pi x)^2&=\sum\limits_{n=0}^\infty{f_n(t)X_n(x)}=\sum\limits_{n=0}^\infty{f_n(t)\cos(n\pi x)}\\
+  \int_{0}^1{\cos(m\pi x)\cos(\pi x)^2\,\mathrm{d}x}&=\int_{0}^1{\sum\limits_{n=0}^\infty{f_n(t)\cos(m\pi x)\cos(n\pi x)}\,\mathrm{d}x}\\
+  f_0(t)&=\int_0^1{\cos(\pi x)^2\,\mathrm{d}x}=\frac{1}{2}\quad \text{used computer here}\\
+  f_m(t)&=2\int_{0}^1{\cos(\pi x)^2\cos(m\pi x)\,\mathrm{d}x}\quad m=1,2,3,\dots\\
+  \intertext{and with a computer}
+  f_m(t)&=\frac{2(m^2-2)\sin(\pi m)}{\pi m^3-4\pi m}\\
+  \intertext{simplifying because $m\in\mathbb{Z}$}
+  f_m(t)&=0\\
+  \intertext{well almost, check out the discontinuity at $m=2$}
+  f_2(t)&=2\int_0^1{\cos(\pi x)^2\cos(2\pi x)\,\mathrm{d}x}\\
+  f_2(t)&=\frac{1}{2}
+  \intertext{substituting into original pde}
+  \sum\limits_{n=0}^\infty{T'_n(t)\cos(n\pi x)}&=\frac{1}{2}+\frac{1}{2}\cos(2\pi x)-\sum\limits_{n=0}^\infty{(n\pi)^2T_n(t)\cos(n\pi x)}\\
+  -\sum\limits_{n=0}^\infty{n\pi T_n(t)\sin(n\pi 0)}&=0=-\sum\limits_{n=0}^\infty{n\pi T_n(t)\sin(n\pi 1)}\\
+  -\sum\limits_{n=0}^\infty{n\pi T_n(t)0}&=0=-\sum\limits_{n=0}^\infty{n\pi T_n(t)0}\\
+  \sum\limits_{n=0}^\infty{T_n(0)\cos(n\pi x)}&=0\\
+  \int_{0}^1{T_0(0)\cos(0)^2\,\mathrm{d}x}&=\int_{0}^1{0\cos(0)\,\mathrm{d}x}\\
+  T_0(0)&=0\\
+  \int_{0}^1{T_m(0)\cos(m\pi x)^2\,\mathrm{d}x}&=0=\frac{1}{2}T_m(0)\quad \text{where }m=1,2,3,\dots\\
+  \frac{1}{2}+\frac{1}{2}\cos(2\pi x)&=\sum\limits_{n=0}^\infty{\left[T'_n(t)+(n\pi)^2T_n(t)\right]\cos(n\pi x)}\\
+  \int_{0}^1{\cos(0)\left[\frac{1}{2}+\frac{1}{2}\cos(2\pi x)\right]\,\mathrm{d}x}&=T'_0(t)+(0\pi)^2T_0(t)\\
+  \frac{1}{2}&=T'_0(t)\\
+  c_1&=\int{T'_0(t)-\frac{1}{2}\,\mathrm{d}t}=T_0(t)-\frac{1}{2}t\\
+  c_1&=T_0(0)-\frac{1}{2}(0)=0\\
+  T_0(t)&=\frac{1}{2}t\\
+  \frac{1}{2}+\frac{1}{2}\cos(2\pi x)&=\sum\limits_{n=0}^\infty{\left[T'_n(t)+(n\pi)^2T_n(t)\right]\cos(n\pi x)}\\
+  \int_{0}^1{\cos(m\pi x)\left[\frac{1}{2}+\frac{1}{2}\cos(2\pi x)\right]\,\mathrm{d}x}&=T'_m(t)+(m\pi)^2T_m(t)\\
+  \frac{(m^2-2)\sin(\pi m)}{\pi m^3-4\pi m}&=0=T'_m(t)+(m\pi)^2T_m(t)\\
+  \mu(t)&=e^{\int(m\pi)^2\,\mathrm{d}t}\\
+  e^{m^2\pi^2t}T_m(t)&=\int{e^{m^2\pi^2t}0\,\mathrm{d}t}=c_1\\
+  T_m(0)&=c_1e^{-m^2\pi^20}=c_1=0\\
+  T_m(t)&=0\quad \text{for }m=1,3,4,5,\dots\\
+  \int_0^1{\cos(2\pi x)\left[\frac{1}{2}+\frac{1}{2}\cos(2\pi x)\right]\,\mathrm{d}x}&=T'_2(t)+(2\pi)^2T_2(t)\\
+  \frac{1}{4}&=T'_2(t)+4\pi^2T_2(t)\\
+  e^{4\pi^2t}T_2(t)&=\frac{1}{4}\int{e^{4\pi^2t}\,\mathrm{d}t}=\frac{e^{4\pi^2t}}{16\pi^2}+c_1\\
+  T_2(t)&=c_1e^{-4\pi^2t}+\frac{1}{16\pi^2}\\
+  T_2(0)&=0=c_1e^{-4\pi^20}+\frac{1}{16\pi^2}\\
+  T_2(t)&=\frac{1}{16\pi^2}\left(1-e^{-4\pi t}\right)\\
+  u(x,t)&=\frac{1}{2}t\cos(0)+\frac{1}{16\pi^2}(1-e^{-4\pi^2t})\cos(2\pi x)=\frac{1}{2}t+\frac{1}{16\pi^2}(1-e^{-4\pi^2t})\cos(2\pi x)
+\end{align*}
+\end{document}

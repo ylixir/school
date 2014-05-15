@@ -1,0 +1,60 @@
+\documentclass{article}
+%\usepackage{fullpage}
+\usepackage{nopageno}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage{tabu}
+\usepackage{longtable}
+\usepackage{mathrsfs}
+\usepackage{enumerate}
+\usepackage[margin=1in]{geometry}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\lhead{Final 02}
+\rhead{Jon Allen}
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+\newcommand{\degree}{\ensuremath{^\circ}}
+
+\begin{document}
+\subsubsection*{PDE A.}
+\begin{align*}
+  \text{PDE.}&&\frac{\partial u}{\partial t}&=\frac{\partial^2u}{\partial x^2}&&\text{for}&0&<x<1,&0&<t<\infty\\
+  \text{BC.}&&u_x(0,t)&=0=u_x(1,t)&&\text{for}&&&0&<t<\infty\\
+  \text{IC.}&&u(x,0)&=f(x)&&\text{for}&0&<x<1
+\end{align*}
+
+For PDE A, determine the full solution for the general initial condition $f(x)$. State how orthogonality is used and how coefficients in the series expansion are determined using $f(x)$
+\begin{align*}
+  u_0(x,t)&=c_0\\
+  u_n(x,t)&=c_ne^{-n^2\pi^2t}\cos(n\pi x)&n=1,2,3,\dots\\
+  u(x,t)&=c_0+\sum\limits_{n=1}^\infty{c_ne^{-n\pi^2t}\cos(n\pi x)}\\
+  u(x,t)&=\sum\limits_{n=0}^\infty{c_ne^{-n\pi^2t}\cos(n\pi x)}\\
+  f(x)&=u(x,0)=\sum\limits_{n=0}^\infty{c_n\cos(n\pi x)}&\text{let }m\in\mathbb{Z}\\
+  \int_{0}^1{f(x)\cos(m\pi x)\,\mathrm{d}x}&=\int_{0}^1{\cos(m\pi x)\sum\limits_{n=0}^\infty{c_n\cos(n\pi x)}\,\mathrm{d}x}\\
+  \text{let }n&=m=0\\
+  \int_{0}^1{c_0\cos(0)^2\,\mathrm{d}x}&=c_0\\
+  \text{let }n&=m\ne 0\\
+  \int_{0}^1{c_m\cos(m\pi x)^2\,\mathrm{d}x}&=\frac{1}{2}c_m\int_0^1{2\cos(m\pi x)^2\,\mathrm{d}x}\\
+  &=\frac{1}{2}c_m\int_0^1{1+\cos(2m\pi x)\,\mathrm{d}x}\\
+  &=\frac{1}{2}c_m\left\lvert x+\frac{1}{2m\pi}\sin(2m\pi x)\right\rvert_0^1\\
+  &=\frac{1}{2}c_m+\frac{1}{2}c_m\frac{\sin(2m\pi)}{2m\pi}=\frac{1}{2}c_m&m\in\mathbb{Z}\to\sin(2m\pi)=0
+  \intertext{and to establish orthogonality let $n\ne m$}
+  \int_{0}^1{c_m\cos(n\pi x)\cos(m\pi x)\,\mathrm{d}x}&=\frac{1}{2}c_m\int_0^1{2\cos(n\pi x)\cos(m\pi x)\,\mathrm{d}x}\\
+  &=\frac{1}{2}c_m\int_0^1{\cos(n\pi x-m\pi x)+\cos(n\pi x+m\pi x)\,\mathrm{d}x}\\
+  &=\frac{1}{2}c_m\left[\frac{1}{(n-m)\pi x}\sin((n-m)\pi x)\right.\\
+  &\qquad\quad\left.+\frac{1}{(n+m)\pi x}\sin((n+m)\pi x)\right]_0^1\\
+  &=\frac{1}{2}c_m\left[\frac{1}{(n-m)\pi}\sin((n-m)\pi)\right.\\
+  &\qquad\quad\left.+\frac{1}{(n+m)\pi}\sin((n+m)\pi)\right]&n-m,n+m\in\mathbb{Z}\\
+  &=\frac{1}{2}c_m\cdot 0=0&\sin((m\pm n)\pi)=0\\
+\end{align*}
+And now we have everything we need to determine the full solution. Since we can find the coefficient to the $m$th term by multiplying $\cos(m\pi x)$ and then integrating, letting orthogonality kill off all the extra terms.
+\begin{align*}
+  u(x,t)&=\sum\limits_{n=0}^\infty{c_ne^{-n\pi^2t}\cos(n\pi x)}\\
+  c_0&=\int_0^1{f(x)\,\mathrm{d}x}\\
+  c_m&=2\int_{0}^1{f(x)\cos(m\pi x)\,\mathrm{d}x}&\text{where }m&=1,2,3,\dots
+\end{align*}
+\end{document}

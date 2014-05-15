@@ -1,0 +1,97 @@
+\documentclass{article}
+%\usepackage{fullpage}
+\usepackage{nopageno}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage{tabu}
+\usepackage{longtable}
+\usepackage{mathrsfs}
+\usepackage{enumerate}
+\usepackage[margin=1in]{geometry}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\lhead{Final 01}
+\rhead{Jon Allen}
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+\newcommand{\degree}{\ensuremath{^\circ}}
+
+\begin{document}
+\subsubsection*{PDE A.}
+\begin{align*}
+  \text{PDE.}&&\frac{\partial u}{\partial t}&=\frac{\partial^2u}{\partial x^2}&&\text{for}&0&<x<1,&0&<t<\infty\\
+  \text{BC.}&&u_x(0,t)&=0=u_x(1,t)&&\text{for}&&&0&<t<\infty\\
+  \text{IC.}&&u(x,0)&=f(x)&&\text{for}&0&<x<1
+\end{align*}
+
+For PDE A, apply separation of variables and, for separated solutions $u=T(t)X(x)$, analyze the associateed eigenvalue problem $X''(x)=\lambda X(x)$ and determine the eigenfunctions (or their nonexistence) for the cases:
+\begin{align*}
+  u&=T(t)X(x)\\
+  \frac{\partial u}{\partial t}&=T'(t)X(x)\\
+  \frac{\partial u}{\partial x}&=X'(x)T(t)\\
+  \frac{\partial^2 u}{\partial x^2}&=X''(x)T(t)\\
+  T'(t)X(x)&=X''(x)T(t)\\
+  \intertext{$t$, and $x$ are independant of eachother, therefore:}
+  \frac{T'(t)}{T(t)}&=\frac{X''(x)}{X(x)}=\lambda\\
+  T'(t)-\lambda T(t)&=0\\
+  \omega(t)&=e^{\int{-\lambda\,\mathrm{d}t}}\\
+  \omega(t)T(t)&=\int{0\,\mathrm{d}t}=c_3\\
+  T(t)&=c_3e^{\lambda t}\\
+  X''(x)-\lambda X(x)&=0\\
+  X''-\lambda X=0\\
+  r^2+0r-\lambda&=0\\
+  r&=\frac{{-0}\pm\sqrt{0^2-4(-\lambda)}}{2}\\\
+  &=\pm\sqrt{\lambda}
+\end{align*}
+\begin{enumerate}[(a)]
+\item
+$\lambda=+\mu^2>0$
+\begin{align*}
+  r&=\pm\mu\\
+  X(x)&=c_1e^{\mu x}+c_2e^{-\mu x}\\
+  u_x&=X'(x)T(t)=\left(c_1\mu e^{\mu x}-c_2\mu e^{-\mu x}\right)T(t)\\
+  u_x(0,t)&=0=u_x(1,t)\\
+  \left(c_1\mu-c_2\mu\right)T(t)&=0=\left(c_1\mu e^\mu-c_2\mu e^{-\mu}\right)T(t)
+  \intertext{note that if $T(t)=0$ then we are dealing with the trivial case $u(x,t)=0$ which is not what we are looking for, so we say that $T(t)\ne0$}
+  c_1\mu-c_2\mu&=0=c_1\mu e^{\mu}-c_2\mu e^{-\mu}&\mu\ne0\\
+  c_1-c_2&=0&c_1=c_2\\
+  c_1e^{\mu}-c_1e^{-\mu}&=0\\
+  e^\mu&=e^{-\mu}\\
+  e^{2\mu}&=1\\
+  \ln(e^{2\mu})&=\ln(1)=2\mu=0\\
+  \mu&=0
+\end{align*}
+But we have defined $\mu^2>0$ so we have no solutions.
+\item
+$\lambda=0$
+\begin{align*}
+  r&=\pm\sqrt{0}=0\\
+  X(x)&=(c_1+c_2x)e^{0x}=c_1+c_2x\\
+  u_x(0,t)&=0=u_x(1,t)\\
+  c_2T(t)&=0=c_2T(t)\\
+  \intertext{Again we take $T(t)\ne0$}
+  c_2&=0\\
+  X(x)&=c_1&T(t)&=c_3e^{0t}=c_3\\
+  u(x,t)&=c_1\cdot c_3=c_4
+\end{align*}
+So we have one eigenfunction, $u(x,t)=c_0$
+\item
+$\lambda=-\mu^2<0$
+\begin{align*}
+  r&=\pm\sqrt{-\mu^2}=\pm\mu i\\
+  X(x)&=c_1\cos(\mu x)+c_2\sin(\mu x)\\
+  X'(x)&=-c_1\mu\sin(\mu x)+c_2\mu\cos(\mu x)\\
+  u_x(0,t)&=0=u_x(1,t)\\
+  [c_2\mu\cos(0)-c_1\mu\sin(0)]T(t)&=0=[c_2\mu\cos(\mu)-c_1\mu\sin(\mu)]T(t)\\
+  \intertext{Taking $T(t)\ne0$}
+  c_2\mu&=0=c_2\mu\cos(\mu)-c_1\mu\sin(\mu)&\mu>0&\to c_2=0\\
+  -c_1\mu\sin(\mu)&=0\\
+  \intertext{Avoiding the trivial solution requires $\sin(\mu)=0$}
+  \mu&=n\pi&n&=1,2,3,\dots\\
+  T(t)&=c_3e^{-\mu^2t}=c_3e^{-n^2\pi^2t}\\
+  u_n(x,t)&=c_ne^{-n^2\pi^2t}\cos(n\pi x)
+\end{align*}
+\end{enumerate}
+\end{document}
