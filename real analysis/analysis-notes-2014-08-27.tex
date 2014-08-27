@@ -1,0 +1,115 @@
+\documentclass[letterpaper]{article}
+
+\usepackage{fullpage}
+\usepackage{nopageno}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+
+\begin{document}
+\title{Notes}
+\date{August 27, 2014}
+\maketitle
+\section*{real numbers}
+we define a real number as $\sum\limits_{i=0}^{\inf}{a_i\cdot 10^{-i}}=a_0.a_1a_2a_3a_4, 0\le a_i\le 9, a_i\in \mathbb{Z}$
+\subsection*{2.2e}
+\begin{align*}
+  x&=2.1357
+\end{align*}
+\subsection*{example}
+$0.99999...=\sum\limits_{i=0}^{\inf}{9\cdot 10^{-i}}=9\left(\sum\limits_{i=1}^{\inf}{10^{-1}}\right)=9\left(\frac{\frac{1}{10}}{1-\frac{1}{10}}\right)=\frac{9}{9}=1$
+\section*{not in book}
+\subsection*{the real line axiomatic definition}
+the real numbers are the set $\mathbb{R}$ with two operations $+,\cdot$ multiplication and addition that are closed in $\mathbb{R}$. if $a,b\in \mathbb{R}$ then $a+b\in \mathbb{R}$ and $a+b\in \mathbb{R}$
+
+and verify the following axioms:
+\begin{enumerate}
+\item
+for all a,b in R, a+b=b+a and a*b=b*a
+\item
+for all a,b,c in R, (a+b)+c=a+(b+c) and a(bc)=(ab)c
+\item
+for all a,b,c in R, a(b+c)=a*b+a*c
+\item
+give a,b in R, there exists c in R such that a+c=b (each c is denoted by (b-a)
+
+in particular the real number a-a is independent of a and is denoted by 0 and the real number 0-a is denoted by -a and called the negative of a
+\item
+\begin{enumerate}
+\item
+there is a non-zero element in R
+\item
+given x,y in R, x not 0 then there exists z in R such that xz=y. such z is denoted by y/x
+
+in particular, x/x is independant of x in R, x not 0 and denoted by 1, and 1/x is called the reciprocal of x ($x^{-1}$.
+\end{enumerate}
+\end{enumerate}
+actually these are properties of fields, not just reals. \emph{field axioms}. this includes rationals.
+
+now for the things that differentiate from rationals
+\subsection*{order axioms}
+no order in complex numbers, unlike reals and rationals
+\begin{enumerate}
+\item
+for all x,y in R, exactly one of these hold:
+\[x<y, x=y, x>y\]
+\item
+if $x<y$ then for all z in R $x+z<y+z$
+\item
+if $x>0$ and $y>0$ then $xy>0$
+\item
+if $x>y$ and $y>z$ then $x>z$
+\end{enumerate}
+now we have an ordered field defined, both reals and rationals (Q) are ordered fields
+\subsection*{completeness axiom}
+every non-empty set $S\subset R$ (not proper subset) that is bounded above has a least upper bound
+\section*{moving on}
+prove that if $x<y$ and $z<0$ then $xz<yz$
+\subsection*{lemma}
+if $z<0$ then $-z>0$
+
+assume that $z<0$. by 6 we know that $-z$ and 0 we get that exactly one of these happen:
+
+\[-z<0, -z=0,-z>0\]
+we know that $z<0$ and $z+(-z)=0$. use 7. $z<0$ so $z+(-z)<0+(-z)$ and $0<-z$
+\subsection*{case 1, x is positive}
+then by transitivity property (9) y is also positive and by 8 $x(-z)<y(-z)$.
+by 7 $x(-z)+xz<y(-z)+xz$ and $0<y(-z)+xz$ and similarly $yz<xz$
+
+\section*{2.3.1 definition}
+a set S contained by R is bounded above if there exists M in R such that $x\le M$ for all $x\in S$. M is called an upper bound for S.
+
+A set S contained by R is bounded below if there exists m in R such that x is greater than or equal to m for all x in S. m is called a lower bound for S
+
+a set S contained by R is bounded if it is bounded above and below
+
+Let S be a bounded subset of R
+
+L is the supremum or least upper bound of S if 1) L is an upper bound of S and 2) if M is another upper bound of S then L is less than or equal to M
+
+l is the infimum or greatest lower bound of S if 1) l is a lower bound of S and 2) if m is another lower bound of 
+\subsection*{examples}
+\begin{align*}
+  S&=(1,5]\\
+  sup(S)&=5\\
+  inf(S)&=1\\
+\end{align*}
+6 is an upper bound and 0 or -4324 are lower bounds for s.
+
+the sup and inf need not necessarily be elements of s
+
+
+let s be contained in R and bounded. if sup(s) is in s then we call it the maximum of s. if inf(s) is in s then we call it the minimum of s.
+\subsection*{examples}
+find sup, inf, max and min(if they  exist)
+
+if S=\{2/n,n in N, $n\ge 1$\} then sup(S)=2=max S and inf(S)=0
+
+if S=\{$\frac{(-1)^nn}{n+1}$,$n\in N$\} then sup(S)=1, inf(S)=-1, no max or min
+
+if S=\{$x\in Q:x^2<2$\} then sup(S)=$\sqrt{2}$
+
+if we view s as a subset only of q and forget about R, s has no supremum. any q in Q, q squared greater than 2 is an upper bound for s but there is not a smallest such q in Q
+\end{document}
