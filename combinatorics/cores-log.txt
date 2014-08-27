@@ -1,9 +1,15 @@
-added reverse map description and example and sage example from bounded partition.
+Paragraph 1. What did you learn from completing the project? 
 
-added affine permutation bijection.
+Obviously I learned a great deal about cores. But I learned a ton of other stuff really. Got a little head start on advanced algebra by learning about cosets and affine groups. Learned a little about Grassmannians (although I still don't completely understand what they are). Learned about affine permutations. Learned about skew partitions, hooks, etc. Touched on the whole world of research going on with hooks, but that wasn't what I was focussing on so didn't get much into that. I read several papers and almost everything in every one of them was new to me.
 
-added information on strong and weak covers
+Paragraph 2. What did you learn from the presentation of another group? 
 
-added strong covers statistic
+I was surprised at how many objects mapped to Dyck paths. I had also never encountered Gelfand-Tsetlin patterns or parking functions. Those two along with cores are the things I had never heard of before.
 
-edited strong covers statistic as per requested when approved
+Paragraph 3. What, specifically, did you contribute to the project? Evaluate the quality and quantity of your contributions to the project.
+
+In the wiki, I put in the reverse map from bounded partitions, along with the bijection to and from the permutations. Although I'm still not completely sure what conditions are imposed on the permutation to make it a bijection (I know it has to be affine and grassmannian and/or part of Ã_n). Did all the stuff on strong and weak covers. Contributed the strong cover statistic, although that was pretty trivial. Helped come up with the algorithm to generate the skew  length of (a,b) cores. I also did quite a bit of work with the conversion of permutations to window notation and to path's, going directly from window notation to paths, etc. Although that was all for the presentation, not the wiki. I didn't put it in the wiki since I already had the permutation bijection, and it didn't seem useful to muddy the wiki with different ways to write a permutation, or a different way to map from a permutation to a core. Also added like one line of sage to the wiki. Although later I do want to go back and put sage examples in every section, near where it is relevant, instead of at the end by itself. I also went back and touched up the strong cover statistic, adding sources for definitions and clarifying definitions, but when I just looked at it, it's not there, so I must not have hit save, so I'm doing that now, heh. I would say I did a good amount of work for the overall project.
+
+Paragraph 4. What, generally, did each other group member contribute to the project? Evaluate the quality and quantity of their contributions.
+Both Loren and Pat also did a good amount of work. Pat I think was kind of the bones, he put up the first draft of the wiki, containing all the basics that we had figured out, and did most of the work with the statistics. He helped me figure figure out way more stuff I didn't get than I helped him figure out I think. He also actually implemented the skew  length statistic that Loren came up with, and helped Loren get his stuff on the wiki. He also acted as the kind of glue for the group, keeping me and Loren updated with eachother when we weren't I or Loren wasn't available to meet with the other two. Loren did all the work on the (a,b) stuff basically. I would say Pat was the core/leader of the group, did all the gruntwork and basics, while me and Loren filled it out with the more complicated parts. They both worked hard and contributed a lot.
+
