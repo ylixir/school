@@ -1,0 +1,116 @@
+\documentclass[letterpaper]{article}
+
+\usepackage{fullpage}
+\usepackage{nopageno}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+
+\begin{document}
+\title{Notes}
+\date{August 29, 2014}
+\maketitle
+
+given a set S contained in R bounded abouve, the supremum of S or least upper bound is a real number L such that
+\begin{enumerate}
+\item
+for all x in S, $x\le L$
+\item
+if there is a number M such that $x\le M$ for all $x\in S$ then $L\le M$
+\end{enumerate}
+
+\section*{approximation property of the supremum theorem}
+let S be a subset of R, $S\ne 0$ bounded above, Let $b=\text{sup}(S)$ then for all $a<b,\exists x\in S$ such that $a<x\le b$
+\subsection*{proof}
+if there is no x in S such that $a<x\le b$ then a is an upper bound for S contradicting that b is the least upper bound$\Box$
+\section*{2.3.3 Least upper bound principle}
+tenth axiom from yesterday
+
+every non-empty set of real numbers that is bounded above has a supremum
+\subsection*{proof}
+required because book defines real numbers as decimal expansions, not axiomatic definition
+
+\begin{enumerate}
+\item
+observation: this is equivalent to proving that any non-empty set of reals that is bbounded below has an infimum. Why? homework: let S be a set of Reals, let -S=$\{-x:x\in S\}$. Then you will have to prove that sup(-S)=-(inf S)
+
+so we will prove infimum statement
+\end{enumerate}
+
+S is bounded below. let $m$ be a lower bound. $m=m_0.m_1m_2m_3m_4m_5m_5...$ wher $m_0\in\mathbb{Z}, m_0>0$ without loss of generality and $m_i, i>0$ is 0-9 digit. clearly $m_0$ is also a lower bound for S.
+
+Consider all integers that are lower bounds for S, (there is at least $m_0$). Take the biggest of such integers ($n_0)$.
+
+$n_0$ is a lower bound for S, but $n_0+1$ is not. we build the infimum with $n_0.\_\_\_\_$. Now pick the gretest ineger $n_1$ such that $n_0+\frac{n_1}{10}$ is a lower bound for S. Since $n_0$ is a lower bound, $0\le n_1$.  Since $n_0+1$ is not a lower bound, $n_1<10$
+
+Now pick the reatest integer $n_2$ such that $n_0+\frac{n_1}{10}+\frac{n_2}{100}$ is still a lower bound for S. Claim $n_0.n_1n_2n_3n_4...$ is inf(S)$\Box$
+
+\section*{properties of the supremum}
+let $A,B$ be subset of $\mathbb{R}$, nonempty, let $C=\{a+b:a\in A, b\in B\}$ if $A,B$ have a supremum, then so does $A+B$ and sup($A+B$)=sup$A$+sup$B$
+\subsubsection*{proof}
+let $z\in C$, then $z=a+b$, where $a\in A$, $b\in B$
+
+let $L_1=\text{sup}A, L_2=\text{sup}B$ then $a\le L_1, b\le L_2$ and then $z\le L_1+L_2$ for all $z\in C$. This shows that $L_1+L_2$ is an upper bound for $C$. choose $\epsilon>0$ and $x\in A, y\in B$ such that $L_1-\epsilon<x, L_2-\epsilon$  by important property  of sup.
+
+$L_1+L_2-2\epsilon<x+x\le L_1+L_2$, $x+y\in C$, since for all tilde $\epsilon>0$ there exists $z\in C$ such that $L_1+L_2-\epsilon<z\le L_1+L_2$ so $L_1+L_2$ is the supremum of C
+\subsection*{2}
+Let $S,T$ be subsets of R, nonempty, bounded above. if for all s in S and t in T, s is less than or equal to t then supremum of S is less than or equal to supremum of T (exercise)
+
+\subsubsection*{proposition}
+$\mathbb{Z}^+$ is unbounded above.
+\subsubsection*{proof}
+$\mathbb{Z}^+$ is a subset of R nonempty, if Z+ were bounded above it would have a supremum m. by the important property of supremum there exists som x in Z+ such that m-1 is less than x is less than or equal to m, but then m is less than x+1 which  is in Z+ so we have a contradiction
+\subsubsection*{corollary}
+for all x in R there exists an n in Z+ such  that x is less than or equal to n.
+\subsubsection*{proposition}
+archimedean property of R. page 12
+
+for all x greater than 0, y in R there exists some n in Z+ such that nx is greater than y.
+\subsubsection*{proof}
+apply previous corollary, with x replaced by $\frac{y}{x}\Box$
+\subsection*{defintion of absolut value}
+also on page 12
+$\abs{x}=\{x,x\ge0, -x,x<0$
+\subsubsection*{properties}
+\begin{enumerate}
+\item
+if $a\ge0, \abs{x}\le a$ iff $-a\le x\le a$
+\item
+for all $x,y\in \mathbb{R}, \abs{x+y}\le\abs{x}+\abs{y}$ (triangle inequality)
+\item
+same as above but with more than two numbers
+\item
+reverse triangle $\abs{\abs{a}-\abs{b}}\le \abs{a-b}$
+\item
+$\abs{xy}=\abs{x}\abs{y}$, $\abs{x^{-1}}=\abs{x}^{-1}$
+\end{enumerate}
+\subsubsection*{proof 1}
+assume $\left\lvert x\right\rvert\le a$
+
+cases
+\begin{enumerate}
+\item
+$x\ge 0$ then $\abs{x}=x$ so $0\le x\le a$ since $x\ge 0$ and $-a<0, -a\le x$ so $-a\le x\le a$
+\item
+$x<0$ then $\left\lvert x\right\rvert=-x\le a$ so $x\ge -a$ since $x<0$ and $a>0$ $x\le a$ so $-a\le x\le a$$\Box$
+\end{enumerate}
+on the way back
+
+assume $-a\le x\le a$ if $x\ge 0$ $x=\left\lvert x\right\rvert$ hence $-a\le\abs{x}\le a$ then in particular $\abs{x}\le a$
+
+if $x<0$
+
+\section*{cauchy-schwartz inequality}
+for every $a_k,b_k\in\mathbb{R}$
+\begin{align*}
+  \left(\sum\limits_{k=1}^n{a_kb_k}\right)^2\le\left(\sum\limits_{k=1}^n{{a_k}^2}\right)^{\frac{1}{2}}\left(\sum\limits_{k=1}^n{{b_k}^2}\right)^{\frac{1}{2}}
+\end{align*}
+with equality iff $\exists x \in \mathbb{R}$ such that $a_kx+b_k=0$ for all $k=1,...,n$
+\subsubsection*{proof}
+\begin{align*}
+  \sum\limits_{k=1}^n{\left(a_kx+b_k\right)^2}\ge 0, \forall x \in \mathbb{R}
+\end{align*}
+$Ax^2+Bx+C\ge0$, $A=\sum\limits_{k=1}^n{a_k^2}$
+\end{document}

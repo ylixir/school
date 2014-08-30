@@ -1,0 +1,98 @@
+\documentclass[letterpaper]{article}
+
+\usepackage{fullpage}
+\usepackage{nopageno}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+
+\begin{document}
+\title{Homework}
+\date{August 29, 2014}
+\maketitle
+Read Theorems 1.1.4, 1.1.6  and their proofs from Section 1.1
+
+Exercises: 2(d), 7, 8, 16, 17.
+
+\begin{enumerate}
+\setcounter{enumi}{1}
+\item
+Find the quotient and remainder when $a$ is divided by $b$
+  \begin{enumerate}
+  \setcounter{enumii}{3}
+  \item
+  $a=-1017, b=99$
+
+  \begin{align*}
+    \text{gcd}(-1017,99)&=\text{gcd}(1017,99)\\
+    1017&=99*10+27\\
+    \text{gcd}(-1017,99)&=\text{gcd}(99,27)\\
+    99=27*3+18\\
+    \text{gcd}(-1017,99)&=\text{gcd}(27,18)\\
+    27=18*1+9\\
+    \text{gcd}(-1017,99)&=\text{gcd}(18,9)\\
+    9\vert18&\rightarrow\text{gcd}(-1017,99)=9
+  \end{align*}
+  \end{enumerate}
+\setcounter{enumi}{6}
+\item
+Let $a,b,c\in\mathbb{Z}$. Prove these facts about divisors:
+  \begin{enumerate}
+  \item if $b\vert a$, then $b\vert ac$
+
+  if $b\vert a$ then $\exists q\in\mathbb{Z}$ such that $a=bq$. Then $ac=bqc$ and so $b$ divides $ac$ $\Box$
+  \item if $b\vert a$ and $c\vert b$, then $c\vert a$
+
+  if $b\vert a$ then $\exists q_1\in\mathbb{Z}$ such that $a=bq_1$. If $c\vert b$ then $\exists q_2\in\mathbb{Z}$ such that $b=cq_2$. We see then that $a=bq_1=(cq_2)q_1=c(q_1q_2)$ and therefore $c\vert a$ $\Box$
+  \item if $c\vert a$, and $c\vert b$, then $c\vert (ma+nb)$ for any integers $m,n$
+
+  if $c\vert a$ and $c\vert b$ then $\exists q_1,q_2\in\mathbb{Z}$ such that $a=cq_1$ and $b=cq_2$. So we see that $(ma+nb)=(mcq_1+ncq_2)=c(mq_1+nq_2)$ and $c\vert (ma+nb)$
+  \end{enumerate}
+\item
+Let $a,b,c$ be integers such that $a+b+c=0$. Show that if $n$ is an integer which is a divisor of two of the three integers, then it is also a divisor of the third.
+
+Because $a+b+c=0$ we can say that $a+b=(-1)c$. Now let us say that $n\vert a$ and $n\vert b$. Then there exists $q_1, q_2\in\mathbb{Z}$ such that $a+b=n(q_1+q_2)=(-1)c$.
+\setcounter{enumi}{15}
+\item
+Let $a,b,c\in\mathbb{Z}$ with $b>0,c>0,$ and let $q$ be the quotient and $r$ the remainder when $a$ is divided by $b$.
+  \begin{enumerate}
+  \item Show that $q$ is the qotient and $rc$ is the remainder when $ac$ is divided by $bc$
+  \item Show that if $q'$ is the quotient when $q$ is divided by $c$, then $q'$ is the quotient when $a$ is divided by $bc$. (Do not assume that the remainders are 0.)
+  \end{enumerate}
+\item
+Let $a,b,n$ be integers with $n>1$. Suppose that $a=nq_1+r_1$ with $0\le r_1<n$ and $b=nq_2+r_2$ with $0\le r_2<n$. Prove that $n\vert (a-b)$ if and only if $r_1=r_2$
+
+\begin{align*}
+  a-b&=nq_1+r_1-(nq_2+r_2)\\
+  &=n(q_1-q_2)+(r_1-r_2)
+\end{align*}
+$0\le r_1<n$ and $0\le r_2<n$ therefore $\left\lvert r1-r2\right\rvert<n$. So by the division algorithm $n|(a-b)$ iff $r_1-r_2=0$
+
+class proof
+
+\begin{align*}
+  a&=nq_1+r_1,0\le r_1< n\\
+  b&=nq_2+r_2,0\le r_2<n\\
+  a-b&=nq\\
+  \intertext{q=some integer}
+  nq_1+r_1-(nq_2+r_2)&=nq\\
+  n(q_1-q_2)+(r_1-r_2)&=nq\\
+  r_1-r_2&=nq-n(q_1-q_2)\\
+  n\vert (r_1-r_2)\\
+  \left\lvert r_1-r_2\right\rvert<n
+\end{align*}
+since $r_i<n, r_1-r_2=0$
+
+
+other direction
+if $r_1=r_2=r_0$ $a=nq_1+r_1$ and $b=nq_2+r_2$
+\begin{align*}
+  a-nq_1=r_0=r-nq_2\\
+  a-b=nq_1-nq_2\\
+  a-b=n(q_1-q_2)\\
+  n\vert(a-b)
+\end{align*}
+\end{enumerate}
+\end{document}
