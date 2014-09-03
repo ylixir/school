@@ -1,0 +1,98 @@
+\documentclass[letterpaper]{article}
+
+\usepackage{fullpage}
+\usepackage{nopageno}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+
+\begin{document}
+\title{Notes}
+\date{September 3, 2014}
+\maketitle
+\section*{$\epsilon \Delta$ definition of limit}
+let $\{a_n\}_{n=1}^{\infty}$ be a sequence of real numbers. We say that L is the limit of the sequence $\{a_n\}_{n=1}^{\infty}$ if $\forall\epsilon>0$ $\exists N\in\mathbb{N}$ such that $\left\lvert a_n-L\right\rvert < \epsilon \forall n\ge N$
+\subsection*{example 1}
+$a_n=\frac{1}{n},n\in\mathbb{N}$
+
+prove that
+\[\lim_{n\to\infty}\frac{1}{n}=0\]
+by the definition
+fix $\epsilon>0$. we need to find $N$ such that $\left\lvert \frac{1}{n}-0\right\rvert<\epsilon$  if $n\ge N$. find $N$ such that $1\le\epsilon n,\forall n\ge N$.
+
+\subsubsection*{archimedean property}
+given $x>0, y\in\mathbb{R}, \exists N\in\mathbb{N},N>0$ such that $Nx>y$.
+
+apply this to $x=\epsilon, y=1$, $\exists N$ such that $N\epsilon>1$ if $n\ge N, n\epsilon\ge N\epsilon>1$ so the archimediean property gives us the $N$ for the given $\epsilon$
+
+\subsection*{example 2}
+find
+\begin{align*}
+\lim_{n\to\infty}\left(\sqrt{n+1}-\sqrt{n}\right)&=
+\lim_{n\to\infty}\left(\frac{\sqrt{n+1}-\sqrt{n}}{\sqrt{n+1}+\sqrt{n}}\sqrt{n+1}+\sqrt{n}\right)\\
+&=\lim_{n\to\infty}\left(\frac{(n+1)-(n)}{\sqrt{n+1}+\sqrt{n}}\right)\\
+&=\lim_{n\to\infty}\left(\frac{1}{\sqrt{n+1}+\sqrt{n}}\right)\\
+&=0
+\end{align*}
+given $\epsilon>0$ we need to find $N$ such that $\left\lvert (\sqrt{n+1}-\sqrt{n}-0\right\rvert<\epsilon\forall n\ge N\rightarrow\frac{1}{\sqrt{n+1}+\sqrt{n}}<\epsilon\forall n\ge N$.
+
+enough to find N such that $\frac{1}{2\sqrt{n}}<\epsilon\forall n\ge N$
+
+given $\epsilon$ and $\frac{1}{2}$$\exists N\in\mathbb{N}$ such that $\frac{1}{2}<N\epsilon$. for any $n\in N$ such that $\sqrt{n}>N$ (or $n>N^2$). $\frac{1}{2}<\sqrt{n}\epsilon\rightarrow\frac{1}{2\sqrt{n}}<\epsilon\forall n>N^2$
+
+\subsection*{example 3}
+not convergent
+let $a_n=2^n$.
+\subsubsection*{proof}
+assum $\exists L\in \mathbb{N}$ such that $\forall \epsilon>0\exists N\in\mathbb{N}$ such that $\left\lvert 2^n-L\right\rvert<\epsilon\forall n\ge N$. Take any $n>m>1, n,m\in\mathbb{N}$
+\begin{align*}
+  \left\lvert2^n-2^m\right\rvert&=2^m\left(2^{n-m}-1\right)>1\text{ or }2
+\end{align*}
+consider $\left\lvert a_n-L\right\rvert+\left\lvert a_m-L\right\rvert\ge\left\lvert(a_n-L)+(L-a_m)\right\rvert$ (triangle inequality) leads to $\left\lvert a_n-a_m\right\rvert>1$. so either $\left\lvert a_n-L\right\rvert>\frac{1}{2}$ or $\left\lvert a_m-L\right\rvert>\frac{1}{2}$ (pigeonhole). take $\epsilon>\frac{1}{2}$. Since $n,m$ are arbitrary natural numbers, we cannot find $N$ such that $\left\lvert a_n-L\right\rvert<\epsilon\forall n\ge N,$ and hence the sequence does not converge.
+
+can use this argument with $\left\lvert a_n-a_m\right\rvert>\alpha, \alpha>0$
+
+\section*{squeeze theorem (2.4.6)}
+let $\{a_n\}_{n=1}^\infty,\{b_n\}_{n=1}^\infty,\{c_n\}_{n=1}^\infty$ be sequences of reals such that $a_n\le b_n\le c_n$ for each $n\in\mathbb{N}$. Assume
+\[\lim_{n\to\infty}a_n=L=\lim_{n\to\infty}c_n\]
+Then 
+\[\lim_{n\to\infty}b_n=L\]
+\subsection*{proof}
+Given $\epsilon>0$ we need to find $N\mathbb{N}$ such that $\left\lvert b_n-L\right\rvert<\epsilon\forall n\ge N$
+
+have: an $\epsilon>0$. hopothesis: $\lim a_n=L, \lim c_n=L$
+
+since we have $\epsilon>0$ and $\lim a_n=L$, aby definition of limit $\exists N_1$ such that $\forall n\ge N_1$, $\left\lvert L-a_n\right\rvert<\epsilon$ for the same $\epsilon>0, \exists N_2$ such that $\forall n\ge N_2$ $\left\lvert L-c_n\right\rvert<\epsilon$
+\begin{align*}
+  L-\epsilon&< a_n<L+\epsilon\\
+  L-\epsilon&< c_n<L+\epsilon\\
+  L-\epsilon&< a_n\le b_n\le c_n<L+\epsilon\\
+\end{align*}
+
+if $n\ge\max\{N_1,N_2\}$. hence if $n\ge\tilde N=\max{N_1,N_2}, \left\lvert b_n-L\right\rvert<\epsilon$
+
+\subsection*{example 2.4.7}
+variation of squeeze theorem. read it please
+
+\section*{properties of limits}
+assume $\lim_{n\to\infty}a_n,\lim_{n\to\infty}b_n$ exist
+\begin{enumerate}
+\item
+\begin{align*}
+  \lim_{n\to\infty}(a_n+b_n)=\lim a_n+\lim b_n\\
+  \lim ra_n=r\lim a_n\forall r\in\mathbb{R}\\
+  \lim a_nb_n=\lim a_n \lim b_n
+  \lim \frac{a_n}{b_n}=\frac{\lim a_n}{\lim a_n}
+\end{align*}
+
+\end{enumerate}
+let A be limit of $a_n$ B be limit of $b_n$ given $\epsilon>0$ we need to find $N\in \mathbb{N}$ such that $\forall n\ge N$ $\left\lvert a_nb_n-AB\right\rvert<\epsilon$. for this given $\epsilon$
+
+$\exists N_1$ such that $\left\lvert a_n-A\right\rvert<\epsilon$ if $n\ge N$
+
+$\exists N_2$ such that $\left\lvert b_n-B\right\rvert<\epsilon$ if $n\ge N$
+
+$\left\lvert a_nb_n-AB\right\rvert=\left\lvert a_nb_n-a_nB+a_nB-AB\right\rvert\le|a_n||b_n-B|+|a_n-A||B|<\epsilon\{\max\{|A+1|,|A-1|\}+|B|\}$ provided $n\ge\max\{N_1,N_2,M\}$
+\end{document}
