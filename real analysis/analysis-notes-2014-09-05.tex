@@ -1,0 +1,32 @@
+\documentclass[letterpaper]{article}
+
+\usepackage{fullpage}
+\usepackage{nopageno}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+
+\begin{document}
+\title{Notes}
+\date{September 5, 2014}
+\maketitle
+\section*{proposition 2.5.1}
+last time we got to $|a_nb_n-AB|\le ...\le |a_n||b_n-B|+|a_n-A||B|$, where $|b_n-B|=|a_n-A|=\epsilon$. $L-1\le a_n\le L+1$.
+
+let $\{a_n\}_{n=1}^\infty$ be a convergent sequence of real numbers, them $\{a_n:n\in\mathbb{N}\}$ is bounded above and below.
+
+\subsection*{proof}
+let $L=\lim_{n\to\infty}a_n$. set $\epsilon=1$ then there is a $N_1\in\mathbb{N}$ such that $|a_n-L|<1$ if $n\ge N_1$. Hence for $n=N_1,N_{1}+1,N_1+2,...$ etc $L-1\le a_n\le L+1$. $N_1$ is a fixed natural set. $B=\{a_z,a_2,...,a_{N_1-1}\}$. let $M=\max B, m=\min B$. $\forall n\ge1, \min\{L-1,m\}\le a_n\le\max\{L+1,M\}$.
+
+\subsection*{example 2.4Ac}
+\begin{align*}
+  0\le\lim_{n\to\infty}\frac{3^n}{n!}&=\lim_{n\to\infty}\frac{3\cdot3\cdot3\cdot...\cdot3\cdot3\cdot3}{n(n-1)(n-2)...4\cdot3\cdot2\cdot1}\\
+  &=\lim_{n\to\infty}\frac{3\cdot3\cdot3\cdot...\cdot3\cdot3\cdot3\cdot27}{n(n-1)(n-2)...4\cdot(3\cdot2\cdot1)}\\
+  &\le \lim_{n\to\infty}\frac{3}{n}\cdot1\cdot...\cdot1\cdot\frac{9}{2}
+\end{align*}
+so by squeeze it's zero
+\section*{excercise}
+if $a_n\le b_n\forall n$ then $\lim_{n\to\infty}a_n\le\lim_{n\to\infty}b_n$
+\end{document}
