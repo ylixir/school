@@ -1,0 +1,103 @@
+\documentclass[letterpaper]{article}
+
+\usepackage{fullpage}
+\usepackage{nopageno}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+
+\begin{document}
+\title{Notes}
+\date{September 8, 2014}
+\maketitle
+\section*{excercise}
+if $a_n\le b_n\forall n$ then $\lim_{n\to\infty}a_n\le\lim_{n\to\infty}b_n$
+\begin{align*}
+  a_n&\le b_n\\
+  0&\le b_n-a_n\\
+  \lim_{n\to\infty}0&\le\lim_{n\to\infty}(b_n-a_n)\\
+  0&\le \lim_{n\to\infty}b_n-\lim_{n\to\infty}a_n\\
+  \lim_{n\to\infty}a_n&\le\lim_{n\to\infty}b_n
+\end{align*}
+
+\section*{monotone sequences}
+definition:
+
+a sequence is increasing iff $a_{n+1}\ge a_n$ for every $n\in\mathbb{N}$ strictly increasing ...decreasing if $a_{n+1}\ge a_n$ for every $n\in\mathbb{N}$, strictly decreasing.... monotone if is it any of these types
+
+\section*{theorem 2.6.1}
+an increasing sequence that is bounded above is convergent. a decreasing sequence that is bounded below is convergent.
+\subsection*{proof}
+we are given $\{a_n\}_{n=1}^\infty$, increasing $a_n\le a_n+1\forall n\in\mathbb{N}$ and bounded above. since it is bdd above it has a supremum $L$. we prove that $\lim_{n\to\infty}a_n=L$.
+\begin{align*}
+  L&=\sup\{a_n:n\in\mathbb{N}\}
+\end{align*}
+$L$ is the least upper bound. if $M<L$ M cannot be an upper bound.
+
+Need: $\lim_{n\to\infty}a_n=L$ ie $\forall\epsilon>0,\exists N\in\mathbb{N}$ such that $|a_n-L|<\epsilon\forall n\ge N$.
+
+$\forall a_n,a_n\le L$
+
+$\forall \epsilon>0\exists N$
+$L-\epsilon<a_N\le L\Rightarrow|a_N-L|<\epsilon$. If $n\ge N, L\ge a_n\ge a_N>L-\epsilon$ because $\{a_n\}$ is increasing. hence $a_n-L|<\epsilon, \forall n\ge N\to\lim_{n\to\infty}=L\Box$
+\section*{example}
+let $0<x_1<1$ and define sequence $x_n$ recursively by $x_{n+1}=1-\sqrt{1-x_n}$. prove that $\{x_n\}$ has a limit and find its value
+
+need to show it's monotone and bounded
+
+if $0<x_n<1$ then $0<1-\sqrt{1-x_n}<1$
+
+\begin{align*}
+  \sqrt{1-x_n}&=1-x_{n+1}\\
+  1-x_n&=(1-x_{n+1})^2\\
+  1-x_n&=(1-x_{n+1})^2\le 1-x_{n+1}\\
+  x_{n+1}&\le x_n\\
+\end{align*}
+
+sequence is bounded and decreasing so it has a limit
+
+\begin{align*}
+  x_{n+1}=1-\sqrt{-x_{n}}\\
+  n\to\infty\\
+  L=1-\sqrt{1-L}\\
+  \sqrt{1-L}=1-L\\
+  1-L=1-2L+L^2\\
+  L^2-L=0\\
+  L=0\text{ or }1
+\end{align*}
+Limit is 0 since sequence is decreasing
+
+\section*{example}
+let $7x_{n+1}=x_n^3+6,n\ge1$. study whether the limit eists and find it's value if it doest for $x_1=\frac{1}{2},\frac{3}{2},\frac{5}{2}$
+
+\begin{align*}
+  x_{n+1}=\frac{x_n^3}{7}+\frac{6}{7}
+\end{align*}
+if $0<x_n^3\le1$ then $0<x_{n+1}\le1$
+\begin{align*}
+  \frac{x_n^3+6}{7}\le\ge x_n\\
+  x_n^3-7x_n+6=0=(x_n-1)(x_n^2+x_n-6)=(x_n-1)(x_n-2)(x_n-3)
+\end{align*}
+look at graph, between -3 and 1 equation is positive so $\frac{x_n^3+6}{7}\ge x_n$. between 1 and 2 $\frac{x_n^3+6}{7}\le x_n$ and above 2 $\frac{x_n^3+6}{7}\ge x_n$
+
+for $x_1=1/2$ the sequence is increasing and bounded above by 1, for $x_1=3/2$ the sequence is decreasing. for $x_1=5/2$ the sequence is increaasing
+\begin{align*}
+  x_1=1/2\\
+  7L=L^3+6\\
+  0=L^3+7L+6\\
+  L=-3,1,2\\
+  L=1\text{ because it is bounded above by 1 and is increasing}
+\end{align*}
+
+for $x_1=3/2$. possibilities are 1,2,-3, it's between 1 and 2 so it will be 1. assume $1<x_n<2$
+\begin{align*}
+  1<x_n^3<8\\
+  7<x_n^3+6<14\\
+  1<\frac{x_n^3+6}{7}<2
+\end{align*}
+so it's bounded therefore the limit exists and is one
+
+for $x_1=5/2$ it is increasing and greater than 3 possible limits
+\end{document}
