@@ -13,11 +13,6 @@
 \date{September 10, 2014}
 \author{Jon Allen}
 \maketitle
-Section 1.1: \# 14, 16, 21
-Section 1.2: \# 12, 23.
-Math 620 students: in addition to the above problems, turn in
-
-Section 1.2: \# 21, 25.
 \renewcommand{\labelenumi}{1.\arabic{enumi}}
 \renewcommand{\labelenumii}{\arabic{enumii}.}
 \renewcommand{\labelenumiii}{(\alph{enumiii})}
@@ -70,7 +65,15 @@ Note that this works with all $a\in\mathbb{Z}$, it does not require $a\in\mathbb
 \item
 Let $a,b,c$ be nonzero integers. Show that $\gcd(a,b)=1$ and $\gcd(a,c)=1$ if and only if $\gcd(a,\text{lcm[b,c])}=1$
 \subsubsection*{proof}
-Let $a,b,$ and $c$ be represented by their prime factorizations $a=p_1^{\alpha_1}p_2^{\alpha_2}\dots p_n^{\alpha_n}$, $b=p_1^{\beta_1}p_2^{\beta_2}\dot a p_n^{\beta_n}$, and $c=p_1$
+I could prove this using the $a=p_1^{\alpha_1}p_2^{\alpha_2}\dots p_n^{\alpha_n}$ representation of prime factorizations used in the book, but I think it will be easier to see if we think of prime factorizations as sets instead. If we have some integer $a=p_1^{\alpha_1}p_2^{\alpha_2}\dots p_n^{\alpha_n}$ where $p_i$ is prime and $\alpha_i$ is the number of times that factor occurs in the prime factorization, then we can imagine some set $F(a)=\{p_{ij}:1\le i\le n, 1\le j\le \alpha_i\}$. For example $F(8)=\{2_1,2_2,2_3\}, F(12)=\{2_1,2_2,3_1\}$. Now we reformulate Proposition 1.2.10 to say that $\gcd(a,b)$ is the intersection of the sets of prime factors for $a$ and $b$. We see this as $\min\{\alpha_i,\beta_i\}$ will only include elements that are in both $F(a)$ and $F(b)$. That is to say $\gcd(a,b)=F(a)\cap F(b)$. Similarly $\text{lcm}[a,b]$ is the union of $F(a)$ and $F(b)$. This is also true as $\max\{\alpha_i,\beta_i\}$ will include all elements in $F(a)$ and $F(b)$. Note that if $F(a)\cap F(b)=\emptyset$ then there are no prime factors and $\gcd(a,b)=1$. The result falls very naturally out of this reformulation:
+\begin{align*}
+  \gcd(a,b)&=F(a)\cap F(b)=\emptyset\\
+  \gcd(a,c)&=F(a)\cap F(c)=\emptyset\\
+  \gcd(a,\text{lcm}[b,c])&=F(a)\cap\left(F(b)\cup F(c)\right)\\
+  &=\left(F(a)\cap F(b)\right)\cup\left(F(a)\cap F(c)\right)\\
+  &=\emptyset\cup\emptyset
+\end{align*}
+Since the set of prime factors is empty, we see that $\gcd(a,\text{lcm}[b,c])=1$. $\Box$
 \setcounter{enumii}{22}
 \item
 Show that if $n$ is a positive integer such that $2^n+1$ is prime, then $n$ is a power of 2.

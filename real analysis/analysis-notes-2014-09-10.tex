@@ -1,0 +1,39 @@
+\documentclass[letterpaper]{article}
+
+\usepackage{fullpage}
+\usepackage{nopageno}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+
+\begin{document}
+\title{Notes}
+\date{September 10, 2014}
+\maketitle
+\section*{2.6.3 the nested intervals lemma}
+$I_n$'s need to be closed:
+\begin{align*}
+  I_n=(0,\frac{1}{n})\\
+\end{align*}
+this is not closed
+\subsection*{2.6.I}
+Let $\{a_n\}_{n=1}^\infty$ be a bounded sequence. we define $b_n=\sup_{k\ge n}\{a_k\}$. $b_1=\sup_{i\ge 1}\{a_i\},b_2=\sup_{i\ge 2}\{a_i\},\dots$. Let $X,Y$ be sets, $X\subseteq Y$. $\sup X\le \sup Y$, $\inf X\ge \inf Y$. Because $\{a_n\}_{n=1}^\infty$ is bounded, $\{b_n\}_{n=1}^\infty$ is bounded. $b_n$ is a decreasing sequence. $\lim_{n\to\infty}b_n=\inf b_n$.
+
+definition: the limsup of a bounded sequence $\{a_n\}$ is $\inf_{n\in\mathbb{N}}\left(\sup_{k\ge n}\{a_k\}\right)=\lim_{n\to\infty\left(\sup_{k\ge n}\{a_k\}\right)}$ and it always exists.
+
+\subsubsection*{example}
+let $a_n=(-1)^n$. $b_n=1\forall n$ and $\lim_{n\to\infty}b_n=1$. $\limsup_{n\to\infty}(-1)^n=1$
+
+definition: the $\liminf_{n\to\infty}a_n=\sup_{n\in\mathbb{N}}\left(\inf_{k\ge n}a_n\right)$ always exists.
+
+we can extend this concept to unbounded sequences and allow the values $\pm\infty$ for $\limsup$ and $\liminf$ 
+
+increasing sequence of supremum negative infinity: all negative infinity
+
+\subsubsection*{proposition}
+let $\{a_n\}_{n=1}^\infty$ be a sequence. then $\lim_{n\to\infty}a_n$ exists $\Leftrightarrow\liminf_{n\to\infty}a_n$
+
+we are assuming that $\lim_{n\to\infty}a_n=L\in\mathbb{R}, |a_n-L|<\epsilon\forall\epsilon>0$. for $\epsilon>0\exists N, a_n\in(L-\epsilon,L+\epsilon)$ if $n\ge N$
+\end{document}
