@@ -1,0 +1,159 @@
+\documentclass[letterpaper]{article}
+
+\usepackage{fullpage}
+\usepackage{nopageno}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+
+\begin{document}
+\title{Homework 1}
+\date{September 12, 2014}
+\author{Jon Allen}
+\maketitle
+2.4 a(d), b, d, f, g*
+
+2.5 c,d,i*
+\renewcommand{\labelenumi}{2.\arabic{enumi}}
+\renewcommand{\labelenumii}{\Alph{enumii}.}
+\renewcommand{\labelenumiii}{(\alph{enumiii})}
+\begin{enumerate}
+\setcounter{enumi}{3}
+\item
+  \begin{enumerate}
+  %2.4A
+  \item
+  In each of the following, compute the limit. Then, using $\varepsilon=10^{-6}$, find an integer $N$ that satisfies the limit definition.
+    \begin{enumerate}
+    \setcounter{enumiii}{3}
+    \item
+    $\displaystyle \lim_{n\to\infty}\frac{n^2+2n+1}{2n^2-n+2}$
+
+
+    \begin{align*}
+      \lim_{n\to\infty}\frac{n^2+2n+1}{2n^2-n+2}&=\lim_{n\to\infty}\frac{1}{2}\cdot\frac{n^2+2n+1}{n^2-\frac{1}{2}n+1}\\
+      \frac{1}{2}\cdot\frac{n^2+2n+1}{n^2-\frac{1}{2}n+1+\frac{5}{2}n}&\le
+      \frac{1}{2}\cdot\frac{n^2+2n+1}{n^2-\frac{1}{2}n+1}\le
+      \frac{1}{2}\cdot\frac{n^2+2n+1}{n^2-\frac{1}{2}n+1-\frac{3}{2}n}\\
+      \frac{1}{2}\cdot\frac{n^2+2n+1}{n^2+2n+1}&\le
+      \frac{1}{2}\cdot\frac{n^2+2n+1}{n^2-\frac{1}{2}n+1}\le
+      \frac{1}{2}\cdot\frac{n^2+2n+1}{n^2-2n+1}\\
+      \frac{1}{2}&\le
+      \frac{n^2+2n+1}{2n^2-n+2}\le
+      \frac{1}{2}\cdot\frac{(n+1)^2}{(n-1)^2}\\
+      \left\lvert\frac{1}{2}\cdot\frac{(n+1)^2}{(n-1)^2}-\frac{1}{2}\right\rvert&=\frac{1}{2}\cdot\frac{(n+1)^2-(n-1)^2}{(n-1)^2}\\
+      \left\lvert\frac{1}{2}\cdot\frac{(n+1)^2}{(n-1)^2}-\frac{1}{2}\right\rvert&=\frac{1}{2}\cdot\frac{(n+1)^2-(n-1)^2}{(n-1)^2}\\
+      &=\frac{1}{2}\cdot\frac{n^2+2n+1-(n^2-2n+1)}{(n-1)^2}\\
+      &=\frac{1}{2}\cdot\frac{4n}{(n-1)^2}=\frac{1}{2}\cdot\frac{4n}{n^2-2n+1}\\
+      &=\frac{1}{2}\cdot\frac{1}{\frac{n}{4}-\frac{1}{2}+\frac{1}{4n}}=\frac{1}{\frac{n}{2}-1+\frac{1}{2n}}\\
+      1&<\frac{n}{2}-1+\frac{1}{2n}\quad\forall n\ge 4\\
+      \frac{N}{2}-1+\frac{1}{2N}&>\frac{1}{2}\cdot10^k\\
+      N-2+\frac{1}{N}&>10^k\\
+      (10^k+2)-2+\frac{1}{10^k+2}&>10^k\\
+      \intertext{We choose $N=10^k+2$ and $\varepsilon=2\cdot10^-k$}
+      \left\lvert\frac{1}{2}\cdot\frac{(n+1)^2}{(n-1)^2}-\frac{1}{2}\right\rvert&\le\frac{1}{\frac{10^k+2}{2}-1+\frac{1}{2(10^k+2)}}<2\cdot10^-k\\
+      \lim_{n\to\infty}\frac{(n+1)^2}{2(n-1)^2}&=\frac{1}{2}
+    \end{align*}
+    Using the squeeze theorem we can conclude that $\displaystyle \lim_{n\to\infty}\frac{n^2+2n+1}{2n^2-n+2}=\frac{1}{2}$
+
+    Now we find an appropriate value of $N$ for $\varepsilon=10^{-6}$
+    \begin{align*}
+      \left\lvert\frac{n^2+2n+1}{2n^2-n+2}-\frac{1}{2}\right\rvert&=
+      \left\lvert\frac{n^2+2n+1}{2(n^2-\frac{1}{2}n+1)}-\frac{n^2-\frac{1}{2}n+1}{2(n^2-\frac{1}{2}n+1)}\right\rvert\\
+      &=\left\lvert\frac{\frac{3}{2}n}{2(n^2-\frac{1}{2}n+1)}\right\rvert=\frac{3n}{4[n(n-\frac{1}{2})+1]}\\
+      \frac{3}{4}\cdot\frac{1}{n-\frac{1}{2}+\frac{1}{n}}&<\frac{1}{10^6}\\
+      n-\frac{1}{2}+\frac{1}{n}>\frac{3}{4}10^6\\
+      (\frac{3}{4}10^6+1)-\frac{1}{2}+\frac{1}{\frac{3}{4}10^6+1}>\frac{3}{4}10^6
+    \end{align*}
+    Looks like a good value for $N$ is $\frac{3}{4}10^6+1$ or 750001.
+    \end{enumerate}
+  %2.4B
+  \item
+  Show that $\displaystyle \lim_{n\to\infty}\sin\frac{n\pi}{2}$ does not exist using the definition of limit.
+
+  Note:
+  \begin{gather*}
+    \sin\frac{(n+4)\pi}{2}=\sin\left(\frac{n\pi}{2}+2\pi\right)=\sin\frac{n\pi}{2}\cos 2\pi+\cos\frac{n\pi}{2}\sin 2\pi=\sin\frac{n\pi}{2}\\
+    \sin\frac{(4k+a)\pi}{2}=\sin\left(2\pi k+\frac{a\pi}{2}\right)=\sin(2\pi k)\cos\frac{a\pi}{2}+\cos(2\pi k)\sin\frac{a\pi}{2}=\sin\frac{a\pi}{2}
+  \end{gather*}
+  We only need to look at four cases: $n=0, n=1, n=2, n=3$. I forget whether we defined $\mathbb{N}$ to include zero on that first day, but lets just include it here today. So the four values that $\left\lvert\sin\frac{n\pi}{2}-\sin\frac{(n+1)\pi}{2}\right\rvert$ can be are:
+  \begin{align*}
+    n=0&\to
+    \left\lvert\sin 0-\sin\frac{\pi}{2}\right\rvert=1\\
+    n=1&\to
+    \left\lvert\sin\frac{\pi}{2}-\sin \pi\right\rvert=1\\
+    n=2&\to
+    \left\lvert\sin\pi-\sin\frac{3\pi}{2}\right\rvert=1\\
+    n=3&\to
+    \left\lvert\sin\frac{3\pi}{2}-\sin2\pi\right\rvert=1\\
+  \end{align*}
+  Now we notice that 
+  \[\left\lvert a_n-L\right\rvert+\left\lvert a_{n+1}-L\right\rvert\ge \left\lvert(a_n-L)-(a_{n+1}-L)\right\rvert=\left\lvert a_n-a_{n+1}\right\rvert=1\]
+
+  Lets choose $\varepsilon=\frac{1}{2}$. Then $|a_n-L|<\frac{1}{2}$
+  \begin{align*}
+    \left\lvert a_n-L\right\rvert+\left\lvert a_{n+1}-L\right\rvert&<\frac{1}{2}+\left\lvert a_{n+1}-L\right\rvert\\
+    \left\lvert a_n-a_{n+1}\right\rvert&<\frac{1}{2}+\left\lvert a_{n+1}-L\right\rvert\\
+    1&<\frac{1}{2}+\left\lvert a_{n+1}-L\right\rvert\\
+    \frac{1}{2}&<\left\lvert a_{n+1}-L\right\rvert\\
+  \end{align*}
+  Which is a problem because if $|a_n-L|<\frac{1}{2}$ then since $n+1>n\ge N$ we should have $|a_{n+1}-L|<\frac{1}{2}$ not the other way around. We must not have a limit. $\Box$
+  \setcounter{enumii}{3}
+  %2.4D
+  \item
+  Prove that if $\displaystyle L=\lim_{n\to\infty}a_n$, then $\displaystyle L=\lim_{n\to\infty}a_{2n}$ and $\displaystyle L=\lim_{n\to\infty}a_{n^2}$.
+  \begin{align*}
+    \left\lvert a_n-L\right\rvert&<\varepsilon\quad\forall n\ge N
+  \end{align*}
+    because $2n\ge n\quad\forall n\in\mathbb{N}$ we have $2n\ge n\ge N$ and therefore $\left\lvert a_{2n}-L\right\rvert<\varepsilon$. The argument is exactly the same for $n^2$ because $n^2\ge n\ge N$
+  \setcounter{enumii}{5}
+  %2.4F
+  \item
+  Define a sequence $\left(a_n\right)_{n=1}^\infty$ such that $\displaystyle \lim_{n\to\infty}a_{n^2}$ exists but $\displaystyle \lim_{n\to\infty}a_n$ does not exist.
+
+  \[a_n=\left\lfloor\frac{\lfloor\sqrt{n}\rfloor}{\sqrt{n}}\right\rfloor\]
+  %2.4G
+  \item
+  Suppose that $\displaystyle \lim_{n\to\infty}a_n=L$ and $L\ne0$. Prove there is some $N$ such that $a_n\ne0$ for all $n\ge N$.
+  \subsubsection*{proof}
+    We know that there is some $N$ such that $|a_n-L|<\varepsilon$ for all $0<\varepsilon, n\ge N$. This is equivalent to $L-\varepsilon<a_n<L+\varepsilon$.
+  We have two cases. $L>0$ and $L<0$. If $L>0$ then we choose $\varepsilon=L$ and $0=L-L<a_n<L+L$. Because $0<a_n$ it is safe to say $a_n\ne0$ I think. If $L<0$ then we choos $\varepsilon=-L$ which leads to $L+L<a_n<L-L=0$. Now again, because $a_n<0$ we can say $a_n\ne0$. $\Box$ 
+  \end{enumerate}
+\item
+  \begin{enumerate}
+  \setcounter{enumii}{2}
+  %2.5C
+  \item
+  If $\displaystyle \lim_{n\to\infty}a_n=L>0$, prove that $\displaystyle \lim_{n\to\infty}\sqrt{a_n}=\sqrt{L}$. Be sure to discuss the issue of when $\sqrt{a_n}$ makes sense. HINT: Express $|\sqrt{a_n}-\sqrt{L}|$ in terms of $|a_n-L|$
+  \subsubsection*{proof}
+  We must specify that $a_n\ge0$. This is after all \emph{real} analysis.
+  \begin{align*}
+    \left\lvert a_n-L\right\rvert&<\varepsilon\\
+    \left\lvert\sqrt{a_n}^2-\sqrt{L}^2\right\rvert&<\varepsilon\\
+    \left\lvert(\sqrt{a_n}+\sqrt{L})(\sqrt{a_n}-\sqrt{L)}\right\rvert&<\varepsilon\\
+    \sqrt{a_n}+\sqrt{L}>\sqrt{L}&>0\\
+    (\sqrt{L})\left\lvert(\sqrt{a_n}-\sqrt{L)}\right\rvert<(\sqrt{a_n}+\sqrt{L})\left\lvert(\sqrt{a_n}-\sqrt{L)}\right\rvert&<\varepsilon\\
+    \left\lvert(\sqrt{a_n}-\sqrt{L)}\right\rvert&<\frac{\varepsilon}{\sqrt{L}}\\
+  \end{align*}
+  Now we can write an arbitrary $\gamma>0,\gamma\in\mathbb{R}$ as $\frac{\varepsilon}{\sqrt{L}}$ where $\epsilon>0,\epsilon\in\mathbb{R}$ and so we have the inequality $\left\lvert(\sqrt{a_n}-\sqrt{L)}\right\rvert<\gamma$ which fits the definition of a limit and proves that $\displaystyle \lim_{n\to\infty}\sqrt{a_n}=\sqrt{L}$. $\Box$
+  %2.5D
+  \item
+  Let $(a_n)_{n=1}^\infty$ and $(b_n)_{n=1}^\infty$ be two sequences of real numbers such that $|a_n-b_n|<\frac{1}{n}$. Suppose that $\displaystyle L=\lim_{n\to\infty}a_n$ exists. Show that $(b_n)_{n=1}^\infty$ converges to $L$ also.
+  \begin{align*}
+    b_n-\frac{1}{n}&<a_n<b_n+\frac{1}{n}\\
+    -\frac{1}{n}-a_n&<-b_n<\frac{1}{n}-a_n\\
+    \frac{1}{n}+a_n&>b_n>a_n-\frac{1}{n}\\
+    \lim_{n\to\infty}\left(\frac{1}{n}+a_n\right)&=0+L\\
+    \lim_{n\to\infty}\left(a_n-\frac{1}{n}\right)&=L-0\\
+    \lim_{n\to\infty}b_n&=L
+  \end{align*}
+  Using theorem 2.5.2 and the squeeze theorem. $\Box$
+  \setcounter{enumii}{8}
+  %2.5I
+  \item
+  Suppose that $\displaystyle \lim_{n\to\infty} a_n=L$. Show that $\displaystyle \lim_{n\to\infty}\frac{a_1+a_2+\dots+a_n}{n}=L$.
+  \end{enumerate}
+\end{enumerate}
+\end{document}
