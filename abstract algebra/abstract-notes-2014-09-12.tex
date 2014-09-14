@@ -1,0 +1,78 @@
+\documentclass[letterpaper]{article}
+
+\usepackage{fullpage}
+\usepackage{nopageno}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+
+\begin{document}
+\title{Notes}
+\date{September 12, 2014}
+\maketitle
+\section*{assignment}
+\subsection*{1.4 \#16}
+$[a]\in\mathbb{Z}_n$. $[a]$ is nilpotent if $[a]^k=0$ for some $k\ge 1$. zero is always nilpotent. show that $\mathbb{Z}_n$ has no nonzero nilpotents iff n has no factor that is a square. if n has no square factors then the prime factorization consists of distinct primes to the power of one only.
+\subsubsection*{proof}
+$\Rightarrow$
+
+Assume that $\mathbb{Z}_n$ has no nonzero nilpotents. by contradiction assume that there exists some prime p such that $p^2|n$. write $n=p_1^{\alpha_1}p_2^{\alpha_2}\dots p_t^{\alpha_t}$ at least one $\alpha_i\ge1$. choose $a=p_1p_2\dots p_t$. then $[a]^{\max\alpha}=[0]$. and $[a]\ne0$, contradiction because $n|a$ so n is square free.
+
+$\Leftarrow$
+assume $n=p_1p_2\dots p_t$ $\forall p_i$ are distinct.
+take $[a]\in\mathbb{Z}_n$ andd assume $[a]^k=[0]$.
+then $n|a^k$ and $p_1p_2\dots p_t|a^k$. $\forall p_i, p_i|a^k$.
+For every $i$ $p_i|a$ therefore $p_1p_2\dots p_t|a$ and $n|a$ so $[a]=[0]$.
+\section*{last time}
+$[a]_n$ is invertible iff $(a,n)=1$
+a non-zero element of $\mathbb{Z}_n$ is either invertible or a zero-divisor
+
+\subsubsection*{proof}
+let $[a]_n\in\mathbb{Z}_n, n\not\vert a$. if $(n,a)=1$ thne $[a]_n$ is invertible. if $(n,a)=d>1$ then $[a]_n[\frac{n}{d}]=[0]_n$ because $a\frac{n}{d}=\frac{a}{d}n$ so $a\frac{n}{d}$ is a multiple of n. $d>1\to d\ne0$.
+\subsection*{consequence}
+the following are equivalent:
+\begin{enumerate}
+\item
+n  is prime
+\item
+$[0]$ is the only zero divisor of $\mathbb{Z}_n$.
+\item
+every  nonzero element of $\mathbb{Z}_n$ is invertible.
+\end{enumerate}
+\subsubsection*{proof}
+if $n$ prime, $(n,a)=1$ for $0<a<n$
+\section*{euler function}
+if $n\in\mathbb{Z}^+$ $\mathcal{P}(n)=$ the number of positive integers in $\{1,2,\dots,n\}$ that are relatively prime to $n$.
+\subsection*{example}
+$\mathcal{P}(6)=2$ (because 1 and 5).
+
+observe $\mathcal{P}(n)$ is the number of invertible elements in $\mathbb{Z}_n$.
+\subsubsection*{notation}
+$\mathbb{Z}_n^*=\{[a]_n:[a]_n\text{ is invertible}\}$. so $\mathcal{P}(n)=|\mathbb{Z}_n^*|$
+\subsection*{proposition}
+$\mathbb{Z}_n^*$ is closed under multiplication.
+\subsubsection*{proof}
+let $[a]_n,[b]_n\in\mathbb{Z}_n^*$ then $[a]_n[a']_n=[1]$ and similarly $[b]_n[b']_n=[1]$
+
+then $[a]_n[b]_n[a']_n[b']_n=[1]_n\quad\Box$
+\section*{exercise}
+if $n=p_1^{\alpha1}\dots p_t^{\alpha t},\alpha i\ge1$ distinct primes
+
+\section*{eulers thm}
+if $(a,n)=1$ then $a^{\mathcal{P}(n)}\equiv 1\mod n$.
+\subsection*{proof}
+$\mathbb{Z}_n^*=\{[a_1],[a_2],\dots,[a_{\mathcal{P}(n)}\}$. now consider $\{[aa_1],[aa_2],\dots,[aa_{\mathcal{P}(n)}\}\in\mathbb{Z}_n^*$. These are distinct elements.
+\begin{align*}
+  [aa_i]&=[aa_j]\text{ multiply by the inverse of a}\\
+  [a]^{-1}[aa_i]&=[a]^{-1}[aa_j]\\
+  [a_i]&=[a_j]
+\end{align*}
+so $\{[aa_1],[aa_2],\dots,[aa_{\mathcal{P}(n)}\}=\mathbb{Z}_n^*$
+
+note that the two lists are permutations of eachother.
+
+then $[a_1][a_2]\dots[a_n]=[aa_1][aa_2]\dots[aa_{\mathcal{P}(n)}]$
+\end{document}
+
