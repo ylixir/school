@@ -1,0 +1,136 @@
+\documentclass[letterpaper]{article}
+
+\usepackage{fullpage}
+\usepackage{nopageno}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+
+\begin{document}
+\title{Notes}
+\date{September 15, 2014}
+\maketitle
+\section*{assignment}
+Section 1.4: \# 17, 19, 20, 23, 24, 27. 
+\renewcommand{\labelenumi}{1.\arabic{enumi}}
+\renewcommand{\labelenumii}{\arabic{enumii}.}
+\renewcommand{\labelenumiii}{(\alph{enumiii})}
+\begin{enumerate}
+\setcounter{enumi}{3}
+\item
+  \begin{enumerate}
+  \setcounter{enumii}{16}
+  \item
+  Using the formula for $\varphi(n)$, compute $\varphi(27),\varphi(81),$ and $\varphi(p^\alpha),$ where $p$ is a prime number. Give a proof that the formula for $\varphi(n)$ is valid when $n=p^{\alpha},$ where $p$ is a prime number.
+
+  \begin{align*}
+    \varphi(27)&=27(1-\frac{1}{3})=18\\
+    \varphi(81)&=81(1-\frac{1}{3})=54\\
+    \varphi(p^{\alpha})&=p^{\alpha}(1-\frac{1}{p})=p^{\alpha}\frac{p-1}{p}=p^{\alpha}-p^{\alpha-1}
+  \end{align*}
+  The result can be obtained by observing that the integers less than $p^{\alpha}$ that are not relatively prime to $p^{\alpha}$ are
+  \setcounter{enumii}{18}
+  \item
+  Find all integers $n>1$ such that $\varphi(n)=2$
+  \begin{align*}
+    \varphi(n)&=n(1-\frac{1}{p1})(1-\frac{1}{p_2})\dots(1-\frac{1}{p_k})\\
+    p1p2p3...pk\le n&\therefore2=(p1-1)(p2-l)\dots(pk-1)
+  \end{align*}
+  \setcounter{enumii}{19}
+  \item
+  \begin{align*}
+    \varphi(1)&=1\\
+    \varphi(p^n)&=p^n-p^{n-1}\text{ from 17}\\
+    \varphi(p^{n+1})&=p^{n+1}-p^{n}\\
+    p^{n+1}&=\varphi(p^{n+1})+p^n
+  \end{align*}
+  so by induction
+  \setcounter{enumii}{22}
+  \item
+  Show that if $n>1$ then the sum of all positive integers less than $n$ and relatively prime to $n$ is $n\varphi(n)/2$. that is $\sum\limits_{0<a<n,(a,n)=1}{a}=n\varphi(n)/2$
+
+  observation:$(a,n)=1\Leftrightarrow(n-a,n)=1$
+
+  $\sum\limits_{0<a<n,(a,n)=1}{a}=\sum\limits_{0<a<n,(a,n)=1}{n-a}$ just summed in opposite oreder, because $0<a<n$
+  $\sum\limits_{0<a<n,(a,n)=1}{a}=\frac{1}{2}\sum\limits_{0<a<n,(a,n)=1}{a+n-a}$. Now $\varphi(n)$ is defined as the number of a's such that $(a,n)=1, 0<a<n$. So $\sum\limits_{0<a<n,(a,n)=1}{a}=\frac{1}{2}\varphi(n)n$
+  \item
+
+  \setcounter{enumii}{26}
+  \item
+  \end{enumerate}
+\end{enumerate}
+\section*{2.3 permutations}
+a function that maps a set $S$ to $S$ is a permutation if the function is one to one and onto (bijective)
+
+$\text{Sym}(S)=\{\sigma:S\to S|\sigma\text{ bijective}\}$.
+
+special case: $S$ is finite with $n$ elements. $S=\{1,2,\dots,n\}$ for simplified notation.
+
+observations:
+\begin{enumerate}
+\item
+$\sigma,\gamma\in\text{Sym}(S)$ then $\sigma\circ\gamma\in\text{Sym(S)}$.
+\item
+$1_S:S\to S$, $1_S\in\text{Sym}(S)$
+\item
+$\sigma\in\text{Sym}(S)\Rightarrow\sigma^{-1}\in\text{Sym}(S)$ and $\sigma\sigma^{-1}=\sigma^{-1}\sigma=1_S$
+\end{enumerate}
+notation for the case $S=\{1,2,\dots,n\}$
+\begin{align*}
+\sigma=\left(
+  \begin{aligned}
+    1&&2&&\dots&&n-1&&n\\
+    \sigma(1)&&\sigma(2)&&\dots&&\sigma(n-1)&&\sigma(n)
+  \end{aligned}
+  \right)
+\end{align*}
+  Notation: $S_n=\text{Sym}(S)$ while $S$ has $n$ elements
+
+  observe $\left\lvert S_n\right\rvert=n!$
+  \begin{align*}
+    \sigma&=\left(\begin{aligned}
+      1,2,3,4\\
+      3,4,2,1
+    \end{aligned}\right)&
+    \tau&=\left(\begin{aligned}
+      1,2,3,4\\
+      2,1,3,1
+    \end{aligned}\right)
+    \sigma\tau&=\left(\begin{aligned}
+      1,2,3,4\\
+      4,3,2,1
+    \end{aligned}\right)
+    \sigma^{-1}&=\left(\begin{aligned}
+      1,2,3,4\\
+      4,3,1,2
+    \end{aligned}\right)
+  \end{align*}
+
+\subsection*{cycles}
+let $\sigma\in S_n$. $\sigma$ is called a cycle of length $k$ if there exist $a_1,a_2,\dots,a_k\in\{1,2,\dots,n\}$ such that $\sigma(a_1)=a_2,\sigma(a_2)=a_3,\dots\sigma(a_k)=a_1$ and $\sigma(x)=x$ for $x\ne\{a_1,a_2,\dots,a_k\}$
+\begin{align*}
+    \sigma&=\left(\begin{aligned}
+      1,2,3,4\\
+      2,4,3,1
+    \end{aligned}\right)=(1,2,4)\in S_4
+\end{align*}
+this is a cycle of length 3
+
+definition of disjoint cycles
+
+observe that for $\sigma\in S_n$ be a cycle of length $k$ then $\sigma^k=1_S$ (identity). In fact k is the smallest positive integer that has this property. 
+
+\subsection*{proposition}
+take two disjoint cycles $\sigma,\tau$. then $\sigma\tau=\tau\sigma$ (note that permutations are not in general commutative). 
+
+\subsubsection*{proof}
+take $x\in\{1,\dots,n\}$. if $x=a_i$ for some $i$. then $\sigma\tau(a_i)=a_{i+1}$ because 
+
+\section*{main theorem}
+every permutation $m$ in $S_n$ can be written as a product of disjoint cycles. moreover, the cycles of length at least two that appear are unique. note that cycles of length one are identity, multiply them all day, nothing changes.
+
+$\sigma=(2143)=(12)(34)$
+\end{document}
+
