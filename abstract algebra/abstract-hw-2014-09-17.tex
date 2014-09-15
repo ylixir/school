@@ -1,0 +1,113 @@
+\documentclass[letterpaper]{article}
+
+\usepackage{fullpage}
+\usepackage{nopageno}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+
+\begin{document}
+\title{Homework}
+\date{September 17, 2014}
+\author{Jon Allen}
+\maketitle
+Section 1.3: \#12, 20
+Section 2.1: \# 18, 8
+\renewcommand{\labelenumi}{1.\arabic{enumi}}
+\renewcommand{\labelenumii}{\arabic{enumii}.}
+\renewcommand{\labelenumiii}{(\alph{enumiii})}
+\begin{enumerate}
+\setcounter{enumi}{2}
+\item
+\begin{enumerate}
+\setcounter{enumii}{11}
+%1.2 12
+\item
+Show that $4\cdot(n^2+1)$ is never divisible by 11.
+\subsubsection*{proof}
+%We prove the result by assuming that 11 divides $4\cdot(n^2+1)$ and finding a contradiction.
+First we note that $\gcd(4,11)=1$ and 11 is prime, so then if $11|4\cdot(n^2+1)$ then by the fundamental theorem of arithmetic, $11|(n^2+1)$.
+In other words, there exists an integer $a$ such that $11a=n^2+1$.
+Note that 
+In other words $n^2+1\equiv0\mod11$.
+Tweaking a bit, we have $n^2\equiv10\mod11$.
+This tell us that 11 does not divide $n^2$ and then by the fundamental theorem of arithmetic, 11 must not divide $n$. So we can say that $n\equiv10b\mod11$. That is to say  $11|(n-10b)$. 
+And tweaking a little more, we have $n^2-9\equiv1\mod11$.
+%This means that there exists some $a$ such that $11a=n^2+1$, so then $n\cdot n-11a=1$ and then because we have a linear combination of $n$ and $11$ that equals one, $\gcd(11,n^2+1)=1$.
+%Remember that $11a=n^2+1$, and $\gcd(11,11a)\ge11$.
+%Of course $11\ne1$ so $4\cdot(n^2+1)$ is never divisible by 11.
+%We can go further, even and say that if $\gcd(11,b)=1$ then $b\cdot(n^2+1)$ is never divisible by 11.
+$\Box$
+\setcounter{enumii}{19}
+%1.2 20
+\item
+Solve the following system of congruences.
+\begin{align*}
+  2x&\equiv 5\mod 7&3x&\equiv4\mod 8
+\end{align*}
+\emph{Hint:} First reduce to the usual form.
+\begin{align*}
+  2x&\equiv 5\mod 7&3x&\equiv4\mod 8\\
+  \gcd(2,7)&=1&\gcd(3,8)&=1\\
+  \intertext{So both congruencies have one solution}
+  c\cdot2&\equiv1\mod 7&c\cdot3&\equiv1\mod8\\
+  4\cdot2&\equiv1\mod 7&3\cdot3&\equiv1\mod8\\
+  x&\equiv5\cdot4\mod7&x&\equiv3\cdot4\mod8\\
+  x&\equiv6\mod7&x&\equiv4\mod8\\
+\end{align*}
+Now because $\gcd(7,8)=1$ we can apply the Chinese Remainder Theorem.
+\begin{align*}
+  7a+8b&=1\\
+  7(-1)+8(1)&=1\\
+  4(7)(-1)+6(1)(8)&=48-28=20\text{ is a specific solution}\\
+  20+7\cdot8t&=20+56t\text{ is all solutions}
+\end{align*}
+\end{enumerate}
+\renewcommand{\labelenumi}{2.\arabic{enumi}}
+\setcounter{enumi}{0}
+\item
+\begin{enumerate}
+\setcounter{enumii}{7}
+%2.1 8
+\item
+Which of the following formulas define functions from the set of rational numbers into itself? (Assume in each case the $n,m$ are integersn and that $n$ is nonzero.)
+\begin{enumerate}
+\item
+$\displaystyle f\left(\frac{m}{n}\right)=\frac{m+1}{n+1}$
+
+Not a function from $\mathbb{Q}\to\mathbb{Q}$ because when $n=-1$ there is no image.
+\item
+$\displaystyle g\left(\frac{m}{n}\right)=\frac{2m}{3n}$
+
+This is a function because rational numbers are closed under multiplication so for any $q\in\mathbb{Q}$ we know that $\frac{2}{3}q\in\mathbb{Q}$
+\item
+$\displaystyle h\left(\frac{m}{n}\right)=\frac{m+n}{n^2}$
+
+This is not a function. Counterexample: $\frac{1}{2}=\frac{2}{4}$. $\frac{1+2}{2^2}=\frac{3}{4}\ne\frac{2+4}{4^2}=\frac{6}{16}=\frac{3}{8}$. $\frac{1}{2}$ has more than one image so the map is not well defined and not a function.
+\item
+$\displaystyle k\left(\frac{m}{n}\right)=\frac{(m-n)^2}{n^2}$
+
+$\displaystyle \frac{(m-n)^2}{n^2}=\frac{m^2-2mn+n^2}{n^2}=\left(\frac{m}{n}\right)^2-2\frac{m}{n}+1$. Looks like a good function. It will have the same result independent of representation of the rational number, and has an image for every element of $\mathbb{Q}$.
+\item
+$\displaystyle p\left(\frac{m}{n}\right)=\frac{4m^2}{7n^2}-\frac{m}{n}$
+
+Is a function of rationals. They are closed under multiplication and subtraction. all equivalent elements will have the same image, regardless if their representation in terms of $m,n$.
+\item
+$\displaystyle q\left(\frac{m}{n}\right)=\frac{m+1}{m}$
+
+Not a function. No representation of zero has an image. For example $\frac{0}{1}$ does not have an image as $\frac{1}{0}$ is undefined.
+\end{enumerate}
+\setcounter{enumii}{17}
+%2.1 18
+\item
+Let $A$ be a nonempty set, and let $f:A\to B$ be a function. Prove that $f$ is one-to-one if and only if there exists a function $g:B\to A$ such that $g\circ f=1_A$
+\subsubsection*{proof}
+Lets start by assuming that $f$ is a one to one function. Because $f$ is a function, we know that for every $x\in A$ there exists some $x'\in B$. Furthermore, because $f$ is one to one, we know that $x'$ is unique. Now we simply define $g:x'\to x$. If $B$ has more elements than $A$ then we can define those elements that aren't images of $A$ under $f$ to map to random $a\in A$. Now we see that $g(f(x))=g(x')=x$ and so we've found a function that satisfies our result.
+
+Now let us assume that the function $f$ is not one to one. Because $f$ is a function, we can't have any elements of $A$ map to more than one element in $B$. Therefore $\left\lvert f\right\rvert\le \left\lvert A\right\rvert$. Now because $f$ is not one to one, we know that there are two elements in $A$ that have the same image in $B$. This makes our cardinality inequality strict: $\left\lvert f\right\rvert<\left\lvert A\right\rvert$. This means that if we have a function $g:B\to A$ and feed it the images created by $f$ it will only be able to spit out at most $\left\lvert A\right\rvert-1$ images of it's own. So we have $\left\lvert g\circ f\right\rvert<\left\lvert A\right\rvert$. Because $\left\lvert g\circ f\right\rvert\ne\left\lvert A\right\rvert$ it is certain that $g\circ f\ne1_A$
+$\Box$
+\end{enumerate}
+\end{enumerate}
+\end{document}
