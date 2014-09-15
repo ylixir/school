@@ -29,17 +29,27 @@ Show that $4\cdot(n^2+1)$ is never divisible by 11.
 \subsubsection*{proof}
 %We prove the result by assuming that 11 divides $4\cdot(n^2+1)$ and finding a contradiction.
 First we note that $\gcd(4,11)=1$ and 11 is prime, so then if $11|4\cdot(n^2+1)$ then by the fundamental theorem of arithmetic, $11|(n^2+1)$.
-In other words, there exists an integer $a$ such that $11a=n^2+1$.
-Note that 
-In other words $n^2+1\equiv0\mod11$.
-
-Tweaking a bit, we have $n^2\equiv10\mod11$.
-This tell us that 11 does not divide $n^2$ and then by the fundamental theorem of arithmetic, 11 must not divide $n$. So we can say that $n\equiv10b\mod11$. That is to say  $11|(n-10b)$. 
-And tweaking a little more, we have $n^2-9\equiv1\mod11$.
-%This means that there exists some $a$ such that $11a=n^2+1$, so then $n\cdot n-11a=1$ and then because we have a linear combination of $n$ and $11$ that equals one, $\gcd(11,n^2+1)=1$.
-%Remember that $11a=n^2+1$, and $\gcd(11,11a)\ge11$.
-%Of course $11\ne1$ so $4\cdot(n^2+1)$ is never divisible by 11.
-%We can go further, even and say that if $\gcd(11,b)=1$ then $b\cdot(n^2+1)$ is never divisible by 11.
+That is to say
+\begin{align*}
+  n^2+1&\equiv0\mod11\\
+  n^2&\equiv-1\mod11\\
+  n^2&\equiv10\mod11\\
+\end{align*}
+This means that there exists some $[a]_{11}\in\mathbb{Z}_n$ such that $[a^2]_{11}=[10]_{11}$ So looking at all the elements of $\mathbb{Z}_{11}$:
+\begin{align*}
+  [0^2]&=0&
+  [1^2]&=1&
+  [2^2]&=4&
+  [3^2]&=9&
+  [4^2]&=5&
+  [5^2]&=3\\
+  [6^2]&=3&
+  [7^2]&=2&
+  [8^2]&=-2=9&
+  [9^2]&=4&
+  [10^2]&=1&
+\end{align*}
+We see by exhaustion that $[a]_{11}\not\in\mathbb{Z}_{11}$ such that $[a^2]_{11}=[10]_{11}$ and so $11$ does not devide $4\cdot(n^2+1)$.
 $\Box$
 \setcounter{enumii}{19}
 %1.2 20

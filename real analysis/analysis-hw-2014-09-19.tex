@@ -1,0 +1,42 @@
+\documentclass[letterpaper]{article}
+
+\usepackage{fullpage}
+\usepackage{nopageno}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+
+\begin{document}
+\title{Homework 1}
+\date{September 12, 2014}
+\author{Jon Allen}
+\maketitle
+\renewcommand{\labelenumi}{2.\arabic{enumi}}
+\renewcommand{\labelenumii}{\Alph{enumii}.}
+\renewcommand{\labelenumiii}{(\alph{enumiii})}
+\begin{enumerate}
+\setcounter{enumi}{5}
+\item
+  \begin{enumerate}
+  \setcounter{enumii}{5}
+  %2.6F
+  \item
+  Let $a,b$ be positive real numbers. Set $x_0=a$ and $x_{n+1}=({x_n}^{-1}+b)^{-1}$ for $n\ge0$.
+    \begin{enumerate}
+    \item
+    Prove that $x_n$ is monotone decreasing.
+    \item
+    Prove that the limit exists and find it.
+    \end{enumerate}
+  %2.6G
+  \item
+  Let $a_n=(\sum_{k=1}^n{1/k})-\log n$ for $n\ge 1$. {\bfseries Euler's constant} is defined as $\gamma=\lim\limits_{n\to\infty}a_n$. Show that $(a_n)_{n=1}^\infty$ is decreasing and bounded below by zero, and so this limit exists. \uppercase{Hint}: Prove that $1/(n+1)\le\log(n+1)-\log n\le1/n$
+  \setcounter{enumii}{12}
+  %2.6M
+  \item
+  Suppose that $(a_n)_{n=1}^\infty$ has $a_n>0$ for all $n$. Show that $\limsup {a_n}^{-1}=(\liminf a_n)^{-1}$.
+  \end{enumerate}
+\end{enumerate}
+\end{document}
