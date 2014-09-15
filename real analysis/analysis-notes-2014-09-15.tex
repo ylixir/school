@@ -1,0 +1,43 @@
+\documentclass[letterpaper]{article}
+
+\usepackage{fullpage}
+\usepackage{nopageno}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[utf8]{inputenc}
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+
+\begin{document}
+\title{Notes}
+\date{September 15, 2014}
+\maketitle
+\section*{2.7 subsequences}
+subsequences have infinite increasing sequence of index n.
+
+\subsection*{deciding convergence}
+\begin{enumerate}
+\item
+squeeze thm.
+\item
+monotone convergence thm: if a sequence is monotone increasing/decreasing and bounded above/below, then it converges.
+\item
+if it is the sum, product, square root, quotient, etc, of convergent sequences, then it is convergent.
+\item
+cesàro sums converge ``better'' than original sequence
+\end{enumerate}
+\subsection*{2.7.2 bolzano-weierstrass theorem}
+every  bounded sequence of real numbers has a convergent subsequence.
+
+think of it as a fixup of the monotone convergent sequence, when the sequence isn't monotone
+
+sequence $\{a_n\}$ is bounded by $B\in\mathbb{R}$ so $-B\le a_n\le B$.
+
+if $\{a_n\}$ only takes finitely many values, then nescessarily, one of them can be taken innfinitely many times. this is our constant subsequence, which is convergent.
+
+if $\{a_n\}$ takes infinitely many values, then split $[-B,B]$ into halves, $[-B,0],[0,B]$. One of these halves contains infinitely many values of the sequence.
+Call this half $I_1$. Split $I_1$ into halves, call the one with infinitely many values $I_2$ and so on. $\{I_n\}$ is a sequence of invervals and each $I_n$ contains infinitely many values of $a_n$. $I_{n+1}\subseteq I_n$. $\left\lvert I_n\right\rvert=\frac{B}{2^{n-1}}{\rightarrow}({n\to\infty})\to 0$
+
+by nestedintevals theorem $\cap_{n=1}^\infty I_n\ne\emptyset$, $[a,b]\subseteq\cap_{n=1}^\infty I_n$ Because $|I_n|\to0$ then $a=b$ and it convergences on this point. because each $I_n$ contains some $x_n\in\{a_n\}$ and we can choose them such that 
+\end{document}
