@@ -9,8 +9,8 @@
 \newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
 
 \begin{document}
-\title{Homework 1}
-\date{September 12, 2014}
+\title{Homework 3}
+\date{September 19, 2014}
 \author{Jon Allen}
 \maketitle
 \renewcommand{\labelenumi}{2.\arabic{enumi}}
@@ -27,8 +27,33 @@
     \begin{enumerate}
     \item
     Prove that $x_n$ is monotone decreasing.
+    \subsubsection*{proof}
+    If $x_n$ is monotone decreasing, then $x_n\ge x_{n+1}$ for all $n\ge0$.
+    \[
+      x_{n+1}=({x_n}^{-1}+b)^{-1}
+      =\frac{1}{\frac{1+bx_n}{x_n}}
+      =\frac{x_n}{1+bx_n}
+    \]
+    Note that if $x_n$ and $b$ are positive, then so is $x_{n+1}$.
+    Now we are told that $x_0$ and $b$ are positive, so we know that all $x_n$ are positive.
+    This means of course that $1+bx_n>1$ which in turn means that $x_n>\frac{x_n}{1+bx_n}=x_  n+1$. Indeed it appears that not only is $x_n$ monotone decreasing, it is strictly monotone decreasing.
+    $\Box$
     \item
     Prove that the limit exists and find it.
+    \subsubsection*{proof}
+    As we noted in the previous proof, $x_n$ is positive for all $n\ge0$. This implies that $x_n>0$ and is therefore bounded from below.
+    Because $x_n$ is monotone decreasing and bounded from below, it has a limit.
+    $\Box$
+    \subsubsection*{solution}
+    \[
+    L=\lim_{n\to\infty}x_{n+1}=\lim_{n\to\infty}\left({x_n}^{-1}+b\right)^{-1}=\left(\left({\lim_{n\to\infty}x_n}\right)^{-1}+b\right)^{-1}=\left(L^{-1}+b\right)^{-1}\\
+    \]
+    \begin{align*}
+      L&=\frac{1}{\frac{1}{L}+b}\\
+      1&=1+bL\\
+      0&=bL
+    \end{align*}
+    So then $\lim\limits_{n\to\infty}{x_n}=0$.
     \end{enumerate}
   %2.6G
   \item
