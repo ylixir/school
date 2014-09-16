@@ -57,11 +57,20 @@
     \end{enumerate}
   %2.6G
   \item
-  Let $a_n=(\sum_{k=1}^n{1/k})-\log n$ for $n\ge 1$. {\bfseries Euler's constant} is defined as $\gamma=\lim\limits_{n\to\infty}a_n$. Show that $(a_n)_{n=1}^\infty$ is decreasing and bounded below by zero, and so this limit exists. \uppercase{Hint}: Prove that $1/(n+1)\le\log(n+1)-\log n\le1/n$
+  Let $\displaystyle a_n=\left(\sum_{k=1}^n{1/k}\right)-\log n$ for $n\ge 1$. {\bfseries Euler's constant} is defined as $\gamma=\lim\limits_{n\to\infty}a_n$. Show that $(a_n)_{n=1}^\infty$ is decreasing and bounded below by zero, and so this limit exists. \uppercase{Hint}: Prove that $1/(n+1)\le\log(n+1)-\log n\le1/n$
+  \subsubsection*{proof}
+  \begin{align*}
+    a_{n+1}&=\left(\sum\limits_{k=1}^{n+1}{\frac{1}{k}}\right)-\log (n+1)\\
+    &=\frac{1}{n+1}+\left(\sum\limits_{k=1}^{n}{\frac{1}{k}}\right)-\log n-\log \left(1+\frac{1}{n}\right)
+  \end{align*}
   \setcounter{enumii}{12}
   %2.6M
   \item
   Suppose that $(a_n)_{n=1}^\infty$ has $a_n>0$ for all $n$. Show that $\limsup {a_n}^{-1}=(\liminf a_n)^{-1}$.
+  \subsubsection*{proof}
+  Lets take some $i,j$ such that $a_i\ge a_j$.
+  The fact that $a_n>0$ implies that if $a_i\ge a_j$ then $\frac{1}{a_j}\ge \frac{1}{a_i}$.
+
   \end{enumerate}
 \end{enumerate}
 \end{document}
