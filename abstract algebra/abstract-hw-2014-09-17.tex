@@ -35,21 +35,21 @@ That is to say
   n^2&\equiv-1\mod11\\
   n^2&\equiv10\mod11\\
 \end{align*}
-This means that there exists some $[a]_{11}\in\mathbb{Z}_n$ such that $[a^2]_{11}=[10]_{11}$ So looking at all the elements of $\mathbb{Z}_{11}$:
+Noting that $\mathbb{Z}_{11}$ partitions $\mathbb{Z}$ we see that there must exist some $[a]_{11}\in\mathbb{Z}_{11}$ such that $[a^2]_{11}=[10]_{11}$ So looking at all the elements of $\mathbb{Z}_{11}$:
 \begin{align*}
-  [0^2]&=0&
-  [1^2]&=1&
-  [2^2]&=4&
-  [3^2]&=9&
-  [4^2]&=5&
-  [5^2]&=3\\
-  [6^2]&=3&
-  [7^2]&=2&
-  [8^2]&=-2=9&
-  [9^2]&=4&
-  [10^2]&=1&
+  [0^2]&=[0]&
+  [1^2]&=[1]&
+  [2^2]&=[4]&
+  [3^2]&=[9]&
+  [4^2]&=[5]&
+  [5^2]&=[3]\\
+  [6^2]&=[3]&
+  [7^2]&=[2]&
+  [8^2]&=[-2]=[9]&
+  [9^2]&=[4]&
+  [10^2]&=[1]&
 \end{align*}
-We see by exhaustion that $[a]_{11}\not\in\mathbb{Z}_{11}$ such that $[a^2]_{11}=[10]_{11}$ and so $11$ does not devide $4\cdot(n^2+1)$.
+We see by exhaustion that $[a]_{11}\not\in\mathbb{Z}_{11}$ such that $[a^2]_{11}=[10]_{11}$ and so $11$ does not divide $4\cdot(n^2+1)$.
 $\Box$
 \setcounter{enumii}{19}
 %1.2 20
@@ -83,7 +83,7 @@ Now because $\gcd(7,8)=1$ we can apply the Chinese Remainder Theorem.
 \setcounter{enumii}{7}
 %2.1 8
 \item
-Which of the following formulas define functions from the set of rational numbers into itself? (Assume in each case the $n,m$ are integersn and that $n$ is nonzero.)
+Which of the following formulas define functions from the set of rational numbers into itself? (Assume in each case the $n,m$ are integers and that $n$ is nonzero.)
 \begin{enumerate}
 \item
 $\displaystyle f\left(\frac{m}{n}\right)=\frac{m+1}{n+1}$
@@ -115,7 +115,7 @@ Not a function. No representation of zero has an image. For example $\frac{0}{1}
 \item
 Let $A$ be a nonempty set, and let $f:A\to B$ be a function. Prove that $f$ is one-to-one if and only if there exists a function $g:B\to A$ such that $g\circ f=1_A$
 \subsubsection*{proof}
-Lets start by assuming that $f$ is a one to one function. Because $f$ is a function, we know that for every $x\in A$ there exists some $x'\in B$. Furthermore, because $f$ is one to one, we know that $x'$ is unique. Now we simply define $g:x'\to x$. If $B$ has more elements than $A$ then we can define those elements that aren't images of $A$ under $f$ to map to random $a\in A$. Now we see that $g(f(x))=g(x')=x$ and so we've found a function that satisfies our result.
+Lets start by assuming that $f$ is a one to one function. Because $f$ is a function, we know that for every $x\in A$ there exists some $x'\in B$. Furthermore, because $f$ is one to one, we know that $x'$ is unique. Now we simply define $g(x')=x$. If $B$ has more elements than $A$ then we can define those elements that aren't images of $A$ under $f$ to map to random $a\in A$. Now we see that $g(f(x))=g(x')=x$ and so we've found a function that satisfies our result.
 
 Now let us assume that the function $f$ is not one to one. Because $f$ is a function, we can't have any elements of $A$ map to more than one element in $B$. Therefore $\left\lvert f\right\rvert\le \left\lvert A\right\rvert$. Now because $f$ is not one to one, we know that there are two elements in $A$ that have the same image in $B$. This makes our cardinality inequality strict: $\left\lvert f\right\rvert<\left\lvert A\right\rvert$. This means that if we have a function $g:B\to A$ and feed it the images created by $f$ it will only be able to spit out at most $\left\lvert A\right\rvert-1$ images of it's own. So we have $\left\lvert g\circ f\right\rvert<\left\lvert A\right\rvert$. Because $\left\lvert g\circ f\right\rvert\ne\left\lvert A\right\rvert$ it is certain that $g\circ f\ne1_A$
 $\Box$

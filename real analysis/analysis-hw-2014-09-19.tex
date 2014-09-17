@@ -63,6 +63,17 @@
     a_{n+1}&=\left(\sum\limits_{k=1}^{n+1}{\frac{1}{k}}\right)-\log (n+1)\\
     &=\frac{1}{n+1}+\left(\sum\limits_{k=1}^{n}{\frac{1}{k}}\right)-\log n-\log \left(1+\frac{1}{n}\right)
   \end{align*}
+  Now lets just take a step back here and recall what Euler's number is.
+  \begin{align*}
+    e&=\lim_{n\to\infty}\left(1+\frac{1}{n}\right)^n\\
+    1&<1+\frac{1}{n}\quad\forall n>0\\
+    &\text{therefore}\\
+    \frac{1}{n+1}-\ln\left(1+\frac{1}{n}\right)\le 0\\
+    \frac{1}{n+1}\le\ln\left(1+\frac{1}{n}\right)\\
+    1\le\ln\left(1+\frac{1}{n}\right)^{n+1}\\
+    e\le\left(1+\frac{1}{n}\right)^{n+1}\\
+    \lim_{k\to\infty}\left(1+\frac{1}{n+k}\right)^n\cdot\left(1+\frac{1}{n+k}\right)^{n+k}
+  \end{align*}
   \setcounter{enumii}{12}
   %2.6M
   \item
