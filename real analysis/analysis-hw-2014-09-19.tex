@@ -1,9 +1,11 @@
+%shell-escape
 \documentclass[letterpaper]{article}
 
 \usepackage{fullpage}
 \usepackage{nopageno}
 \usepackage{amsmath}
 \usepackage{amssymb}
+\usepackage{gnuplottex}
 \allowdisplaybreaks
 
 \newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
@@ -58,30 +60,69 @@
   %2.6G
   \item
   Let $\displaystyle a_n=\left(\sum_{k=1}^n{1/k}\right)-\log n$ for $n\ge 1$. {\bfseries Euler's constant} is defined as $\gamma=\lim\limits_{n\to\infty}a_n$. Show that $(a_n)_{n=1}^\infty$ is decreasing and bounded below by zero, and so this limit exists. \uppercase{Hint}: Prove that $1/(n+1)\le\log(n+1)-\log n\le1/n$
-  \subsubsection*{proof}
+  \subsubsection*{argument}
+  Now the trick is to realize that $\displaystyle\int_b^a{\frac{1}{x}\mathrm{d}x}=\log a-\log b$.
+  In other words, the area under $\displaystyle\frac{1}{x}$ where $x$ goes from $b$ to $a$ is $\log a-\log b$
+  So then $\displaystyle\int_1^n{\frac{1}{x}\mathrm{d}x}=\log n$ and $\displaystyle\int_n^{n+1}{\frac{1}{x}\mathrm{d}x}=\log(n+1)-\log n$.
+
+  Now lets imagine a series of boxes with a base of width one, and height $\displaystyle\frac{1}{k}$ positioned such that the left edge of the base is at $k$ and the right edge is at $k+1$.
+  So each of these boxes will have the area of their height, namely $\frac{1}{k}$.
+  Further, the sum of the areas of these boxes will be $\displaystyle \sum\limits_{k=1}^n{\frac{1}{k}}$.
+  And our sequence then is the area of these boxes, with everything under the continuous line $1/x$ cut out.
+
+  \begin{gnuplot}
+    set xrange [0:10]
+    set yrange [0:1.1]
+    set xtics 1
+    f(x) = 1/x
+    set parametric
+    set trange [1:10]
+    set samples 91
+    plot 10*(t-1)+1/2., f(10*(t-1)) with boxes,t,f(t)
+  \end{gnuplot}
+
+  Now we see that when $n=1$ then we have a $1\times1$ box (area one).
+  For $n=2$ we add a box of size $\frac{1}{2}$ and cut out the curved section under $\frac{1}{x}$ from 1 to 2.
+  Note that this line starts at the top left corner of the box of height 1 and ends at the point where the $\frac{1}{2}$ height box touches the height 1 box.
+  Notice that we have cut out an area that is larger than $\frac{1}{2}$ but smaller than $1$.
+
+  Lets generalize this observation a little:
   \begin{align*}
     a_{n+1}&=\left(\sum\limits_{k=1}^{n+1}{\frac{1}{k}}\right)-\log (n+1)\\
-    &=\frac{1}{n+1}+\left(\sum\limits_{k=1}^{n}{\frac{1}{k}}\right)-\log n-\log \left(1+\frac{1}{n}\right)
+    &=\frac{1}{n+1}+\left(\sum\limits_{k=1}^{n}{\frac{1}{k}}\right)-\log n-\log \left(1+\frac{1}{n}\right)\\
+    &=\frac{1}{n+1}+a_n-(\log \left(n+1\right)-\log n)\\
+    &=a_n+\frac{1}{n+1}-\int_{n}^{n+1}{\frac{1}{x}\mathrm{d}x}
   \end{align*}
-  Now lets just take a step back here and recall what Euler's number is.
-  \begin{align*}
-    e&=\lim_{n\to\infty}\left(1+\frac{1}{n}\right)^n\\
-    1&<1+\frac{1}{n}\quad\forall n>0\\
-    &\text{therefore}\\
-    \frac{1}{n+1}-\ln\left(1+\frac{1}{n}\right)\le 0\\
-    \frac{1}{n+1}\le\ln\left(1+\frac{1}{n}\right)\\
-    1\le\ln\left(1+\frac{1}{n}\right)^{n+1}\\
-    e\le\left(1+\frac{1}{n}\right)^{n+1}\\
-    \lim_{k\to\infty}\left(1+\frac{1}{n+k}\right)^n\cdot\left(1+\frac{1}{n+k}\right)^{n+k}
-  \end{align*}
+  Visually, every time we increase $n$ we add a $\frac{1}{n+1}$ box, but carve out the the portion of the $\frac{1}{n}$ box that is under the line $1/x$.
+  Note that the line goes from the top left of the $\frac{1}{n}$ box to where the $\frac{1}{n}$ box touches $\frac{1}{n+1}$. This means that while we are adding $\frac{1}{n+1}$, we are subtracting a number that is bigger than $\frac{1}{n+1}$ (and less than $\frac{1}{n}$). And so we see that our sequence decreases.
+
+  Futhermore, because $\log(n+1)-\log n$ is less than $\frac{1}{n}$ we always subtract less in the $n+1$ element of the sequence than we added in the $n$ element of the sequence.
+  Therefore, every element of the sequence will be greater than zero.
+  Visually the boxes are always above the $\frac{1}{x}$ line so the area is always more than zero.
   \setcounter{enumii}{12}
   %2.6M
   \item
   Suppose that $(a_n)_{n=1}^\infty$ has $a_n>0$ for all $n$. Show that $\limsup {a_n}^{-1}=(\liminf a_n)^{-1}$.
   \subsubsection*{proof}
+  First we take a look at when $a_n$ is unbounded.
+  In this case we have defined $\liminf a_n=-\infty$.
+  Naturally in this case $(\liminf a_n)^{-1}$ really has no meaning.
+  We will then focus on the case where $a_n$ is bounded.
+  
   Lets take some $i,j$ such that $a_i\ge a_j$.
-  The fact that $a_n>0$ implies that if $a_i\ge a_j$ then $\frac{1}{a_j}\ge \frac{1}{a_i}$.
-
+  Then if $a_i\ge a_j$ we know $\frac{1}{a_j}\ge \frac{1}{a_i}$.
+  We define $b_n=\sup\{a_k:k\ge n\}$ for $n\ge 1$.
+  Now we know that $b_n\ge a_k\forall k\ge n$.
+  This implies that ${b_n}^{-1}\le {a_k}^{-1}\forall k\ge n$.
+  Another way of saying that is $\displaystyle{b_n}^{-1}=\inf\limits_{k\ge n}{{a_k}^{-1}}$.
+  So then
+  \begin{align*}
+    \lim\limits_{n\to\infty}{b_n}^{-1}&=\lim_{n\to\infty}\left(\inf_{k\ge n}{a_k}^{-1}\right)\\
+    \left(\lim\limits_{n\to\infty}{b_n}\right)^{-1}&=\liminf{a_n}^{-1}\\
+    \left(\lim\limits_{n\to\infty}{\sup_{k\ge n}a_k}\right)^{-1}&=\liminf{a_n}^{-1}\\
+    \left(\limsup a_k\right)^{-1}&=\liminf{a_n}^{-1}\\
+  \end{align*}
+  Boom. $\Box$
   \end{enumerate}
 \end{enumerate}
 \end{document}

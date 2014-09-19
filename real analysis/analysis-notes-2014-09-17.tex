@@ -1,0 +1,72 @@
+\documentclass[letterpaper]{article}
+
+\usepackage{fullpage}
+\usepackage{nopageno}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[utf8]{inputenc}
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+
+\begin{document}
+\title{Notes}
+\date{September 17, 2014}
+\maketitle
+\section*{2.7a}
+show that $(a_n)=\left(\frac{n\cos^n(n)}{\sqrt{n^2+2n}}\right)_{n=1}^\infty$ has a convergent sequence
+
+$n/\sqrt{n^2+2n}<1$ and $\left\lvert\cos^nn\right\rvert\le1$
+\section*{2.7b}
+\begin{align*}
+  n+\cos(n\pi)\sqrt{n^+1}
+\end{align*}
+bounded below because even terms are increasing, odd terms bounded by 0 and $1-\sqrt{2}$. odd subsequence is bounded, so there is a convergent subsequence
+
+\section*{2.8}
+if a sequence is convergent to $L$ then $\forall\varepsilon>0\exists N\in\mathbb{N}$ such that $\left\lvert a_n-L\right\rvert<\varepsilon$ if $n\ge N$
+
+where cauchy sequence is $\forall\varepsilon>0\exists N\in\mathbb{N}$ such that $\left\lvert a_n-a_m\right\rvert<\varepsilon\forall n,m\ge N$
+
+\subsection*{theorem}
+every convergent sequence is cauchy
+
+every cauchy sequence of reals converges to a real
+
+not every cauchy sequence of rationals converges to a rational, although it will converge to a real.
+
+definition:
+
+a subset $S$ is said to be complete if every Cauchy sequence $(a_n)$ in $S$ (that is $a_n\in S$) converges to a point in $S$
+
+reals are complete, rationals are not
+
+\section*{completeness theorem}
+every cauchy sequence of real numbers converges. so $\mathbb{R}$ is complete
+
+\subsubsection*{proof}
+let $(a_n)$ be cauchy. then $\forall\varepsilon>0\exists N$ such that if $n,m\ge N$ then $\left\lvert a_n-a_m\right\rvert<\varepsilon$.
+
+step 1
+
+$(a_n)$ is bounded.
+
+given $\varepsilon=1, \exists N_1$ succh that $\left\lvert a_n-a_m\right\rvert<1\forall n,m\ge  N_1$. in particulare $\left\lvert a_n-a_{N_1}\right\rvert<\forall n\ge N_1$ so $-1+a_{N_1}<a_n<1+a_{N_1}$ and $a_1,\dots a_{N_1}$ is finite so it is bounded.
+
+step 2
+
+BW saays there is a subsequence $(a_{n_k})$ converging to $L\in\mathbb{R}$.
+
+step 3
+
+the whole sequence onverges to some $L$
+
+$\left\lvert a_n-L\right\rvert=\left\lvert a_n-a_{n_k}+a_{n_k}-L\right\rvert\le\left\lvert a_n-a_{n_k}\right\rvert+\left\lvert a_{n_k}-L\right\rvert<2\varepsilon$
+
+\section*{example}
+contractive sequences $\left\lvert a_{n+1}-a_n\right\rvert\le\lambda\left\lvert a_n-a_{n-1}\right\rvert,\lambda\in(0,1)$
+
+limit of $\lambda^n$ as n aproaches infinity is 0.
+
+limit of $\left\lvert a_{n+1}-a_n\right\rvert=0$, telescoping $|a_n-a_n|=|a_n-a_{m-1}+a_{m-1-\dots-a_{n+1}a_{n+1}-a_n}\le$
+\end{document}

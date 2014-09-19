@@ -1,0 +1,57 @@
+\documentclass[letterpaper]{article}
+
+\usepackage{fullpage}
+\usepackage{nopageno}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+
+\begin{document}
+\title{Notes}
+\date{September 17, 2014}
+\maketitle
+\section*{assignment}
+Section 1.4: \# 17, 19, 20, 23, 24, 27. 
+\renewcommand{\labelenumi}{2.\arabic{enumi}}
+\renewcommand{\labelenumii}{\arabic{enumii}.}
+\renewcommand{\labelenumiii}{(\alph{enumiii})}
+\begin{enumerate}
+\setcounter{enumi}{2}
+\item
+  \begin{enumerate}
+  \setcounter{enumii}{4}
+  \item
+  
+  \item
+  (1),(12),(13),(14),(23),(24),(34),(123),(124),(134),(234),(132),(243),(142),(143),(1234)
+  \end{enumerate}
+\end{enumerate}
+
+\section*{2.3.5 theorem}
+sketch of a proof
+\begin{align*}
+  \tau&=\left(
+  \begin{aligned}
+    1&\quad2&\quad3&\quad\dots& n\\
+    \sigma(1)&\quad\sigma(2)&\quad\sigma(3)&\quad\dots&\sigma(n)
+  \end{aligned}
+  \right)
+\end{align*}
+\section*{example}
+\begin{align*}
+  \sigma&=\left(
+  \begin{aligned}
+    &1&&\quad2&&\quad3&&\quad4&&\quad5&&\quad6&&7\\
+    &7&&\quad2&&\quad6&&\quad3&&\quad1&&\quad5&&4\\
+  \end{aligned}
+  \right)=(1,7,4,3,6,5)
+\end{align*}
+definition: let $\sigma\in S$ the least positive integer $m$ such that $\sigma^m=(1)$ is called the order of $\sigma$
+\subsubsection*{example}
+$\sigma=(123)(45)\to(123)^3(45)^2=\sigma^6$
+\subsubsection*{observation for 2.3.8 proof}
+$(a1a2a3\dots ak)^i=(1)$ and $(b1b2b3\dots bk)^i=1$ because they are disjoint and applying the a permutions don't change the b elements and vice versa
+\end{document}
+
