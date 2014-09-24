@@ -1,0 +1,68 @@
+\documentclass[letterpaper]{article}
+
+\usepackage{fullpage}
+\usepackage{nopageno}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[utf8]{inputenc}
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+
+\begin{document}
+\title{Notes}
+\date{September 22, 2014}
+\maketitle
+\section*{cont'd example from last time}
+$a_{n+1}=1+\frac{1}{a_n}$ and is fibanocci sequence. terms are back and forth but converging. it is clear that $a_n>1\forall n$.
+\begin{align*}
+  \left\lvert a_{n+1}-a_n\right\rvert&=\left\lvert 1+\frac{1}{a_n}-\left(1+\frac{1}{a_{n-1}}\right)\right\rvert\\
+  &=\left\lvert\frac{1}{a_n}-\frac{1}{a_{n-1}}\right\rvert\\
+  &=\frac{\left\lvert a_n-a_{n-1}\right\rvert}{a_n\cdot a_{n-1}}\text{with $a_n>1$ so}\\
+  \left\lvert a_{n+1}-a_n\right\rvert&<\left\lvert a_{n}-a_{n-1}\right\rvert\\
+\end{align*}
+does this mean we have a limit?
+contractive sequence has the property
+$|a_{n+1}-a_n|<r|a_n-a_{n-1}|$ wher $r\in(0,1)$
+
+no, it is possible in principle that $\lim|a_{n+1}-a_n|=b>0$ and that would mean that $\{a_n\}$ is not convergent
+
+\begin{align*}
+  a_na_{n+1}&=a_n(1+\frac{1}{a_n}=a_n+1>2\\
+  \left\lvert a_{n+1}-a_n\right\rvert&<\frac{1}{2}\left\lvert a_{n}-a_{n-1}\right\rvert\\
+\end{align*}
+so it is convergent because $\frac{1}{2}\in(0,1)$
+
+\section*{2.8.D}
+pick a sequence of $\varepsilon$, $\varepsilon_n=\{\frac{1}{2^n}\}$. given $\varepsilon_1=\frac{1}{2}$ there exists $N+1\in\mathbb{N}$ such that $|a_m-a_n<\varepsilon_1$ if $m,n\ge N_1$, $\varepsilon_2=\frac{1}{4}, \exists N_2$ st $\left\lvert a_m-a_n\right\rvert<\varepsilon_2$ and so on.
+
+so $|a_{\mathbb{N}_{n+1}}-a_{N_{n}}|<\frac{1}{2^n}$ and so the sum is less than 1 and we win.
+\section*{convergent series}
+given $(a_n)$ we consider the series $\sum\limits_{n=1}^\infty{a_n}$ let $s_n=\sum\limits_{k=1}^n{a_k}$ be the $n$th partial sum of the series. if $\lim s_n$ exists, we say that the series $\sum\limits_{k=1}^\infty{a_k}$is convergent
+
+the following are equivalent
+\begin{itemize}
+\item
+$\sum a_n$ is convergent
+\item
+$\forall\varepsilon>0\exists N$ st if $n\ge N, \left\lvert\sum\limits_{k=n+1}^\infty{a_k}\right\rvert<\varepsilon$
+\item
+$\forall\varepsilon>0\exists N$ st if $m,n\ge N, \left\lvert\sum\limits_{k=n+1}^m{a_k}\right\rvert<\varepsilon$
+\end{itemize}
+proofs are in the book
+
+\section*{note}
+if $\sum a_k<\infty$ then $\lim a_k=0$ but the converse is false, as shown by the harmonic series.
+
+telescoping and geometric series are basically the only ones where we know how to find the sums
+
+\section*{3.1.c}
+if $\sum t_k$ is a convergent series of positive terms and $p>1$ show that $\sum t_k^p$ is convergent
+
+the necessary condition is that $\lim t_k=0$. by the necessary condition $\exists N$ st $0\le t_k\le1\forall k\ge N$. Therefore $\sum\limits_{k=N}^\infty{t_k^p}\le\sum\limits_{k=N}^\infty{t_k}<\infty$ 
+\section*{3.1.d}
+if $\lim |a_n|=0$ then there exists $\sum a_{n_k}<\infty$
+
+example argument: harmonic series
+\end{document}
+

@@ -1,0 +1,108 @@
+\documentclass[letterpaper]{article}
+
+\usepackage{fullpage}
+\usepackage{nopageno}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+
+\begin{document}
+\title{Notes}
+\date{September 22, 2014}
+\maketitle
+\section*{assignment}
+Section 3.1: \#2, 7, 9, 11, 20.
+\begin{enumerate}
+\setcounter{enumi}{1}
+\item
+\begin{enumerate}
+\item
+no, not all elements have inverses
+\item
+no, no identity
+\item
+not associative
+\item
+no identity
+\item
+yes
+\item
+yes
+\end{enumerate}
+\setcounter{enumi}{6}
+\item
+this only includes things that are relatively prime to the item we are making the table for. of course 7 is prime, 
+\setcounter{enumi}{8}
+\item
+identity is $e$
+\begin{align*}
+  e=a^x\\
+  \ln e=\ln a^x\\
+  x\ln a=1\\
+  x=\frac{1}{\ln a}
+\end{align*}
+\setcounter{enumi}{19}
+\item
+note that s is finite. we need to prove that an identity exists and every element is invertible.
+
+$S=\{a_1,\dots,a_n\}, a\in S$. $\alpha:S\to S$ where $\alpha(x)=a\star x$. Claim, $\alpha$ is injective.$\alpha(x)=\alpha(y)=a\star x=a\star y\to x=y$. Since $S$ is finite and $\alpha$ is injective then $\alpha$ must be bijective and then surjective.
+
+so $a\in S$ so there exists $e\in S$ st $\alpha(e)=a\star e=a$.
+
+now we need to show that $e$ works for all elements, not just the $a$ that we chose
+
+there exists $c\in S$ st $b=ca$. we have $\beta(x)=xa$ similar to above
+
+so $b*e=(c*a)*e=c*(a*e)=c*a=b$
+
+so there exists $b*e=b$ for all $b$ and similarly $e'*b=b$ for all $b$ in $S$.
+
+claim $e=e'$. shown by $e'*e=e'$ and $e'*e=e$
+
+so we have our identity.
+
+and so on
+
+proof doesn't work if $S$ is infinite because surjectivity isn't implied from injectivity
+
+counterexample would be $(\mathbb{Z}^*,\cdot)$
+
+note that this is proved more generally in 3.1.8
+\end{enumerate}
+
+\section*{3.2 subgroups}
+let $(G,*)$ be a group and $H\subseteq G$ not equal to $\emptyset$. we say that $H$ is a subgroup of $G$ if with respect to the same operation, $H$ is a group.
+
+\subsubsection*{example}
+$(\mathbb{R},+), \mathbb{Q}\subseteq\mathbb{R}$, $\mathbb{Q}$ is a subgroup of $R$
+
+checking associativity is a waste of time, it's given by super group. identity must also be in subgroup, inverse must exist for all elements of subgroup. and operation must be binary. eg it must be closed.
+
+\subsection*{proposition 3.2.2}
+\begin{itemize}
+\item
+$ab\in H$ for all $a,b\in H$
+\item
+$e\in H$
+\item
+$a^{-1}\in H$ for all $a\in H$
+\end{itemize}
+\subsubsection*{proof}
+the operation being closed is clear
+
+e being unique is done by observing $e'e'=e'$ where $e'$ is inverse in $H$. now in $G$ $e'e=e'$ and so $e'e'=e'e\to(e')^{-1}e'=(e')^{-1}e'e\to e'=e$
+
+so the inverse is unique
+
+then $e=ab$ but $e=a^{-1}$ so $ab=aa^{-1}\to a^{-1}ab=a^{-1}aa^{-1}$ so $b=a^{-1}$ if $b\in H$
+
+
+closure brings identity and inverse automatically if $G$ is finite
+
+trivial subgroups are the group itself and it's identity element
+\section*{examples}
+
+\end{document}
+
