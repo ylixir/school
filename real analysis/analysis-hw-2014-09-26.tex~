@@ -1,0 +1,57 @@
+%shell-escape
+\documentclass[letterpaper]{article}
+
+\usepackage{fullpage}
+\usepackage{nopageno}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{gnuplottex}
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+
+\begin{document}
+\title{Homework 4}
+\date{September 26, 2014}
+\author{Jon Allen}
+\maketitle
+Section 2.7: G, H, J*
+
+2.8: B, C, E*, H (for C, you can use what you know about series from Calculus 2).
+\renewcommand{\labelenumi}{2.\arabic{enumi}}
+\renewcommand{\labelenumii}{\Alph{enumii}.}
+\renewcommand{\labelenumiii}{(\alph{enumiii})}
+\begin{enumerate}
+\setcounter{enumi}{6}
+\item
+  \begin{enumerate}
+  \setcounter{enumii}{6}
+  %2.7G
+  \item
+  Let $(x_{n})_{n=1}^\infty$ be a sequence of real numbers.
+  Suppose that there is a real number $L$ such that $L=\lim\limits_{n\to\infty}{x_{3n-1}}=\lim\limits_{n\to\infty}{x_{3n}}$.
+  Show that $\lim\limits_{n\to\infty}{x_n}$ exists and equals $L$.
+  %2.7H
+  \item
+  Let $(x_{n})_{n=1}^\infty$ be a sequence in $\mathbb{R}$.
+  Suppose that there is a number $L$ such that every subsequence $\left(x_{n_k}\right)_{k=1}^\infty$ has a subsubsequence $\left(x_{n_{k(l)}}\right)_{l=1}^\infty$ with $\lim\limits_{n\to\infty}{x_{n_{k(l)}}=L}$. Show that the whole sequence converges to $L$. {\up H
+  \setcounter{enumii}{9}
+  %2.7I
+  \item
+  \end{enumerate}
+\item
+  \begin{enumerate}
+  \setcounter{enumii}{1}
+  %2.8B
+  \item
+  %2.8C
+  \item
+  \setcounter{enumii}{4}
+  %2.8E
+  \item
+  \setcounter{enumii}{7}
+  %2.8H
+  \item
+  \end{enumerate}
+\end{enumerate}
+\end{document}

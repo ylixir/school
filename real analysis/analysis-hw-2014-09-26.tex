@@ -1,0 +1,164 @@
+%shell-escape
+\documentclass[letterpaper]{article}
+
+\usepackage{fullpage}
+\usepackage{nopageno}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{gnuplottex}
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+
+\begin{document}
+\title{Homework 4}
+\date{September 26, 2014}
+\author{Jon Allen}
+\maketitle
+Section 2.7: G, H, J*
+
+2.8: B, C, E*, H (for C, you can use what you know about series from Calculus 2).
+\renewcommand{\labelenumi}{2.\arabic{enumi}}
+\renewcommand{\labelenumii}{\Alph{enumii}.}
+\renewcommand{\labelenumiii}{(\alph{enumiii})}
+\begin{enumerate}
+\setcounter{enumi}{6}
+\item
+  \begin{enumerate}
+  \setcounter{enumii}{6}
+  %2.7G
+  \item
+  Let $(x_{n})_{n=1}^\infty$ be a sequence of real numbers.
+  Suppose that there is a real number $L$ such that $L=\lim\limits_{n\to\infty}{x_{3n-1}}=\lim\limits_{n\to\infty}{x_{3n+1}}=\lim\limits_{n\to\infty}{x_{3n}}$.
+  Show that $\lim\limits_{n\to\infty}{x_n}$ exists and equals $L$.
+
+  Let us take any $\varepsilon>0$.
+  Now we find $N_1$ such that $\left\lvert x_{3n}-L\right\rvert<\varepsilon$ for all $n\ge N_1$.
+  And find $N_2$ such that $\left\lvert x_{3n+1}-L\right\rvert<\varepsilon$ for all $n\ge N_2$. 
+  Finally find $N_3$ such that $\left\lvert x_{3n-1}-L\right\rvert<\varepsilon$ for all $n\ge N_3$.
+  My brain hurts and I don't feel like working out the logic for an optimal $N$ so let's take $N=3\cdot\max\{N_1,N_2,N_3\}+1$. Then $\left\lvert x_n-L\right\rvert<\varepsilon$ for all $n\ge N$ and we have our result.
+  %2.7H
+  \item
+  Let $(x_{n})_{n=1}^\infty$ be a sequence in $\mathbb{R}$.
+  Suppose that there is a number $L$ such that every subsequence $\left(x_{n_k}\right)_{k=1}^\infty$ has a subsubsequence $\left(x_{n_{k(l)}}\right)_{l=1}^\infty$ with $\lim\limits_{n\to\infty}{x_{n_{k(l)}}=L}$. Show that the whole sequence converges to $L$. {\scshape  Hint:} If not, you could find a subsequence bounded away from $L$.
+
+  If $(x_n)$ does not converge to $L$ then there would be a subsequence that doesn't converge on $L$ and which does not contain a subsequence that converges to $L$. Because we can always find such a subsubsequence we know the whole thing must converge.
+  \setcounter{enumii}{9}
+  %2.7j
+  \item
+  Suppose $(x_n)_{n=1}^\infty$ is a sequence in $\mathbb{R}$, and that $L_k$ are real numbers with $\lim\limits_{k\to\infty}{L_k}=L$.
+  If for each $k\ge1$, there is a subsequence of $(x_n)_{n=1}^\infty$ converging to $L_k$, show that some subsequence converges to $L$. {\scshape Hint:} Find an increasing sequence $n_k$ such that $\left\lvert x_{n_k}-L\right\rvert<\frac{1}{k}$.
+
+  We choose $(x_{n_k})$ from $(x_n)$ such that as $k$ increases, $x_{n_k}$ comes from the subsequence of $(x_n)$ that approaches $L_k$ and is bigger than $x_{n_{k-1}}$. So then as $k$ increases, $L_k$ approaches $L$ and so will $x_{n_k}$.
+  \end{enumerate}
+\item
+  \begin{enumerate}
+  \setcounter{enumii}{1}
+  %2.8B
+  \item
+  Give a sequence $(a_n)$ such that $\lim\limits_{n\to\infty}\left\lvert a_n-a_{n+1}\right\rvert=0$, but the sequence does not converge.
+
+  $a_n=\log n$
+  %2.8C
+  \item
+  Let $(a_n)$ be a sequence such that $\lim\limits_{N\to\infty}{\sum_{n=1}^N{\left\lvert a_n-a_{n+1}\right\rvert}}<\infty$.
+  Show that $(a_n)$ is Cauchy.
+
+  First we note that $\lim\limits_{N\to\infty}{\sum_{n=1}^N{\left\lvert a_n-a_{n+1}\right\rvert}}\ge0$ because we are adding only nonnegative terms.
+  So our limit is in the reals (particularly it's not $-\infty)$.
+  Lets call it $L$.
+  \begin{align*}
+    \lim\limits_{N\to\infty}{\sum_{n=1}^N{\left\lvert a_n-a_{n+1}\right\rvert}}&=L
+  \end{align*}
+  So then for all $\varepsilon\in\mathbb{R}$ where $\varepsilon>0$ there exists some $N_1\in\mathbb{N}$ such that for all $N\ge N_1$ we have
+  \[\left\lvert{\sum_{n=1}^N{\left\lvert a_n-a_{n+1}\right\rvert}}-L\right\rvert<\varepsilon\]
+  And so then playing a bit when $N>N_1$ we come up with
+  \begin{align*}
+    \left\lvert\sum_{n=1}^{N_1}{\left\lvert a_n-a_{n+1}\right\rvert}+\sum_{n=N_1+1}^N{\left\lvert a_n-a_{n+1}\right\rvert}-L\right\rvert&<\varepsilon\\
+    \left\lvert\sum_{n=N_1+1}^{N}{\left\lvert a_n-a_{n+1}\right\rvert}-\left(L-\sum_{n=1}^{N_1}{\left\lvert a_n-a_{n+1}\right\rvert}\right)\right\rvert&<\varepsilon\\
+  \end{align*}
+  Note that because our series is weakly increasing, $L$ must be greater than our series for all $N$. This leads us to the following observations.
+  \begin{align*}
+    L-\sum_{n=1}^{N_1}{\left\lvert a_n-a_{n+1}\right\rvert}&<\varepsilon\\
+    \sum_{n=1}^{N_1}{\left\lvert a_n-a_{n+1}\right\rvert}+\sum_{n=N_1+1}^N{\left\lvert a_n-a_{n+1}\right\rvert}&<L\\
+    \sum_{n=N_1+1}^N{\left\lvert a_n-a_{n+1}\right\rvert}&<L-\sum_{n=1}^{N_1}{\left\lvert a_n-a_{n+1}\right\rvert}\\
+    \sum_{n=N_1+1}^N{\left\lvert a_n-a_{n+1}\right\rvert}&<L-\sum_{n=1}^{N_1}{\left\lvert a_n-a_{n+1}\right\rvert}<\varepsilon\\
+    \sum_{n=N_1+1}^N{\left\lvert a_n-a_{n+1}\right\rvert}&<\varepsilon\\
+    \left\lvert\sum_{n=N_1+1}^N{ a_n-a_{n+1}}\right\rvert<\sum_{n=N_1+1}^N{\left\lvert a_n-a_{n+1}\right\rvert}&<\varepsilon\\
+    \left\lvert(a_{N_1+1}-a_{N_1+2})+(a_{N_1+2}-a_{N_1+3})+\dots+(a_{N-1}-a_{N})\right.&\left.+(a_{N}-a_{N+1})\right\rvert<\varepsilon\\
+    \left\lvert a_{N_1+1}-a_{N+1}\right\rvert&<\varepsilon\\
+  \end{align*}
+  And so we see that for every $\varepsilon>0$ there is an integer $N$ such that $\left\lvert a_n-a_m\right\rvert<\epsilon$ for all $m,n\ge N$.
+  $\Box$
+  \setcounter{enumii}{4}
+  %2.8E
+  \item
+  Suppose that $(a_n)$ is a sequence such that $a_{2n}\le a_{2n+2}\le a_{2n+3}\le a_{2n+1}$ for all $n\ge0$. Show that this sequence is Cauchy if and only if $\lim\limits_{n\to\infty}\left\lvert a_n-a_{n+1}\right\rvert=0$
+
+  Lets partition our sequence into even and odd elements.
+  We notice that $a_{2n}\le a_{2N+1}$ for any $N\in \mathbb{N}$ and for all $n\ge N$.
+  Further we notice that $a_{2n+1}\ge a_{2N}$ for any $N\in\mathbb{N}$ and for all $n\ge N$.
+  We also observe that the evens are monotone increasing ($a_{2n}\le a_{2n+2}$) while the odds are monotone decreasing ($a_{2n+1}\ge a_{2n+3}$).
+
+  Now because the evens are bounded above by $a_{1}$ and the odds are bounded below by $a_0$ we know that each of our sequences has a limit.
+  Lets say $\lim\limits_{n\to\infty}a_{2n}=L_2$ and $\lim\limits_{n\to\infty}a_{2n+1}=L_1$.
+  By definition then for all $\frac{\varepsilon}{2}>0$ there exists $N\in \mathbb{N}$ such that for all $n\ge N$
+  \begin{align*}
+    \left\lvert a_{2n}-L_2\right\rvert&<\frac{\varepsilon}{2}\\
+    \left\lvert a_{2n+1}-L_1\right\rvert&<\frac{\varepsilon}{2}\\
+    \left\lvert a_{2n}-L_2\right\rvert+\left\lvert a_{2n+1}-L_1\right\rvert&<\varepsilon\\
+    \left\lvert a_{2n}-L_2\right\rvert+\left\lvert L_1-a_{2n+1}\right\rvert&<\varepsilon\\
+    \left\lvert a_{2n}-L_2+L_1-a_{2n+1}\right\rvert\le\left\lvert a_{2n}-L_2\right\rvert+\left\lvert L_1-a_{2n+1}\right\rvert&<\varepsilon\\
+    \left\lvert (a_{2n}-a_{2n+1})-(L_2-L_1)\right\rvert&<\varepsilon\\
+    \left\lvert \left\lvert a_{2n}-a_{2n+1}\right\rvert -\left\lvert L_2-L_1\right\rvert \right\rvert\le\left\lvert (a_{2n}-a_{2n+1})-(L_2-L_1)\right\rvert&<\varepsilon\\
+    \left\lvert \left\lvert a_{2n}-a_{2n+1}\right\rvert -\left\lvert L_2-L_1\right\rvert \right\rvert&<\varepsilon\\
+  \end{align*}
+  So then $\lim\limits_{n\to\infty}\left\lvert a_{2n}-a_{2n+1}\right\rvert=\left\lvert L_2-L_1\right\rvert$.
+  Similarly we can show $\lim\limits_{n\to\infty}\left\lvert a_{2n+1}-a_{2n+2}\right\rvert=\left\lvert L_2-L_1\right\rvert$.
+  And so we have that $\lim\limits_{n\to\infty}\left\lvert a_n-a_{n+1}\right\rvert=\left\lvert L_2-L_1\right\rvert$.
+
+  Let us assume that $\lim\limits_{n\to\infty}\left\lvert a_n-a_{n+1}\right\rvert=0$. Then $L_1=L_2=L$. Now because the odds provide an upper bound for the evens, and the evens provide a lower bound for the odds, we know from the squeeze theorem that $\lim\limits_{n\to\infty}a_n=L$. So our sequence is convergent and is therefore Cauchy.
+
+  Now let's assume that our sequence is Cauchy. Then for every $\varepsilon>0$ there is an integer $N$ such that $\left\lvert a_n-a_m\right\rvert<\varepsilon$ for all $m,n\ge N$. In particular
+  \begin{align*}
+    \left\lvert a_n-a_{n+1}\right\rvert&<\varepsilon\\
+    \left\lvert |a_n-a_{n+1}|-0\right\rvert\le\left\lvert a_n-a_{n+1}\right\rvert&<\varepsilon
+  \end{align*}
+  And so $\lim\left\lvert a_n-a_{n+1}\right\rvert=0$.
+  $\Box$
+  \setcounter{enumii}{7}
+  %2.8H
+  \item
+  Let $a_0=0$ and set $a_{n+1}=\cos(a_{n})$ for $n\ge0$. Try this on your calculator (use radian mode!).
+    \begin{enumerate}
+    \item
+    Show that $a_{2n}\le a_{2n+2}\le a_{2n+3}\le a_{2n+1}$ for all $n\ge 0$.
+
+    We know that $a_{n+1}=\cos a_n$. First we note that $a_n$ is bounded by $[0,1]$. We know this because $\cos 0$ gives us a $1$ back, which is the maximum value $\cos a_n$ can give us. Furthermore, $0\le\cos x\le1$ for all $0\le x\le \pi/2$. So $a_n$ can never escape the $[0,1]$ bounds. Lets assume that $a_n<L$ where $0=L-\cos L$. Then $\cos a_n>L$. Similarly, if $a_n>L$ then $\cos a_n<L$. So if $a_n<L$ then $a_{n+1}=\cos a_n>L$ and $a_{n+2}=\cos \cos a_n<L$. Because $a_0=0$ we know that $a_0<L$ and by extension $a_{2n}<L$ while $a_{2n+1}>L$ for all $n$.
+
+    Now we assume that $a_2n<a_{2n+2}$. So $a_{2n}<\cos \cos a_{2n}$ and $\cos a_{2n}>\cos \cos \cos a_{2n}$ because in our domain, as the angle gets smaller, the cosine gets larger. Thus $a_{2n+1}>\cos \cos a_{2n+1}=a_{2n+3}$ and $a_{2n+2}<a_{2n+4}$.
+    Notice that $\cos 0=1$ and $\cos 1>\cos \pi/2=0$. So then $a_0<a_2$. Good enough for a basis.
+    And induction then gives us our result for all elements in the sequence.
+    \item
+    Use the Mean Value Theorem to find an explicit number $r<1$ such that $\left\lvert a_{n+2}-a_{n+1}\right\rvert\le r\left\lvert a_n-a_{n+1}\right\rvert$ for all $n\ge0$. Hence show that this sequence is Cauchy.
+
+    \begin{align*}
+      \frac{\left\lvert a_{n+2}-a_{n+1}\right\rvert}{\left\lvert a_n-a_{n+1}\right\rvert}&=
+      \left\lvert \frac{\cos \cos a_{n}-\cos a_{n}}{\cos a_n-a_n}\right\rvert\\
+      1&\ge\left\lvert \frac{(\sin x +1)\cos(\cos(x))+\sin(x)(\cos x -x)\sin(\cos x)-\cos x-x\sin x}{(x-\cos x)^2}\right\rvert\\
+    \end{align*}
+    And solve for $x$
+
+    I'd like to note that the result in part (a) combined with the squeeze theorem actually already shows that it has a limit and is Cauchy. It even tells us what the limit is, as shown in the next part.
+    \item
+    Describe the limit geometriclly as the intersection point of two curves.
+
+    It is the intersection of $\cos x$ and $x$
+
+    \begin{gnuplot}
+      plot [0:1] x, cos(x)
+    \end{gnuplot}
+    \end{enumerate}
+  \end{enumerate}
+\end{enumerate}
+\end{document}

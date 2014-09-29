@@ -1,0 +1,69 @@
+\documentclass[letterpaper]{article}
+
+\usepackage{fullpage}
+\usepackage{nopageno}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+
+\begin{document}
+\title{Notes}
+\date{September 26, 2014}
+\maketitle
+\section*{assignment}
+Read Section 3.2 (up to Theorem 3.2.10)
+Section 3.2: \# 14, 16, 18, 19, 21.
+
+\section*{last time}
+group $G$ and subgroup $H$ where $x\sim y\Leftrightarrow xy^{-1}\in H$, for $a\in G$ the
+\begin{align*}
+  [a]&=\{x\in G|x\sim a\}\\
+  &=\{x\in G|xa^{-1}\in H\}\\
+  &=\{x\in G|x\in Ha\}\\
+  &=Ha
+\end{align*}
+Note that $[e]=H$.
+
+\subsubsection*{claim}
+there is a one to one correspondence $H\xrightarrow{\varphi}Ha$ and $h\to ha$.
+\section*{lagrange's theorem}
+let $G$ be a finite group and $H$ a subgroup of $G$. Then $|H|$ is a divisor of $|G|$.
+
+\subsection*{proof}
+consider on $G$ the previous equivalence relation. recall that equivalence classes partition $G$.
+
+let $t$ be the number of distinct equivalence classes. note that we also proved that any two equivalence classes have the same cardinality. then $t\cdot |H|=|G|$. so $|H|$ divides $|G|$
+
+\subsection*{corollary}
+let $G$ be finite and $a\in G$ then the order of $a$ divides $|G|$. Take the smallest subgroup that contains $a$: $<a>=\{e,a,a^2,\dots,a^{ord(a)-1}\}$. Then $|H|=ord(a)$ and divides $|G|$.
+
+\subsection*{corollary}
+say that $G$ is finite, and the number of elements in $G$ is prime, then $G$ is cyclic.
+
+choose $a\in G, a\ne e$, then $|<a>|p$ and so $|<a>|=p$. Because $<a>\subseteq G$ and so $G=<a>$. 
+
+\section*{example}
+$\mathbb{Z}_n^*=\{[a]|(a,n)=1\}$ and $|\mathbb{Z}_n^*|=\varphi(n)$
+
+take $\mathbb{Z}_8^*=\{[1],[3],[5],[7]\}=\{e,a,b,ab\}=\{a^ib^j|a^2=b^2=e,ab=ba\}$. Note that $x^2=[1]$ for all $x\in \mathbb{Z}_8^*$. so then every element has order 2 except identity which always has order 1.
+
+also note that this is not cyclic as there is no element of order $4$.
+
+\section*{example}
+$S_3=\{(1),(12),(23),(31),(123),(132)\}$
+
+let $(12)=a, (123)=b$ then $(123)^2=(132), ab=(123)(12)=(13), a^2b=(23)$ and $S_3=\{e,a,a^2,ab,a^2b,b\}$
+
+$S_3=\{a^ib^j|a^3=e,b^2=e,ba=a^2b\}$
+
+\section*{proposition}
+let $G$ be a group and $\{H_i\}_{i\in I}$ be a family of subgroups of $G$ then $\cap_{i\in I}H_i$ is a subgroup
+
+\subsection*{proof}
+exercise, write it down.
+
+unions are different, take $S_3, H=\{(1),(12)\}, K=\{(1),(123),(132)\}$ then the union is not a subgroup. Note that $|H\cup G|=4$ and $6=|G|$ but $4|6$ is not true
+\end{document}
+

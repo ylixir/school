@@ -1,0 +1,165 @@
+\documentclass[letterpaper]{article}
+
+\usepackage{fullpage}
+\usepackage{nopageno}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+
+\begin{document}
+\title{Homework}
+\date{September 24, 2014}
+\author{Jon Allen}
+\maketitle
+Section 2.3: 12.
+Section 3.1: 2, 9.
+Section 3.2: 6.    
+\renewcommand{\labelenumi}{2.\arabic{enumi}}
+\renewcommand{\labelenumii}{\arabic{enumii}.}
+\renewcommand{\labelenumiii}{(\alph{enumiii})}
+\begin{enumerate}
+\setcounter{enumi}{2}
+\item
+  \begin{enumerate}
+  \setcounter{enumii}{11}
+  %2.3 12
+  \item
+    Prove that $(a,b)$ cannot bewritten as a product of two cycles of length three.
+
+    $(a,b)$ is a product of an odd number of transpositions. A cycle of length three is a product of an even numbe of transpositions. We know from theorem 2.3.11 that if a permutation is written with a certain number of transpositions, then writing it in another way will have the same parity as our first. This means that we can never write a transposition as a product of any number of cycles of length three as this will always wind up being the product of an even number of transpositions, not the odd number required.
+  \end{enumerate}
+\renewcommand{\labelenumi}{3.\arabic{enumi}}
+\setcounter{enumi}{0}
+\item
+  \begin{enumerate}  
+  \setcounter{enumii}{1}
+  %3.1 2
+  \item
+    For each binary operation $*$ defined on a set below, determine whether or not $*$ gives a group structure on the set. If it is not a group, say which axioms fail to hold.
+    \begin{enumerate}
+    \item
+      Define $*$ on $\mathbb{Z}$ by $a*b=ab$.
+
+      There is only one identity element, which we know is $1$. There are no solutions to $0\cdot x=1$ so the element $0$ has no inverse, thus multiplication and the integers do not make a group.
+    \item
+      Define $*$ on $\mathbb{Z}$ by $a*b=\max\{a,b\}$.
+
+      Let $e$ be the identity element. Then $\max(e,e-1)$ gives us $e$ not $e-1$. So by contradicttion, there is no identity element, and so the $\max$ operation doesn't make a group with the integers.
+    \item
+      Define $*$ on $\mathbb{Z}$ by $a*b=a-b$.
+
+      Associativity fails, for example $(1-2)-3=-4$ but $1-(2-3)=0$. So subtraction does not form a group with the integers.
+    \item
+      Define $*$ on $\mathbb{Z}$ by $a*b=|ab|$.
+
+      There is no indentity element, because there is no identity element for negative numbers. For example, there is no solution to the equation $|-2\cdot e|=-2$. So taking the absolute value of the product of two numbers does not form a group with the integers.
+    \item
+      Define $*$ on $\mathbb{R}^+$ by $a*b=ab$.
+
+      Any positive real number multiplied by any positive real number will be positive, and so multiplication is a binary operation on $\mathbb{R}^+$. Multiplication is also associative under $\mathbb{R}^+$. The identity element--one--is in $\mathbb{R}^+$. And finally, if $a\in \mathbb{R}^+$ then $\frac{1}{a}\in \mathbb{R}^+$ and $a\cdot\frac{1}{a}=1$. So $\mathbb{R}+$ forms a group with multiplication.
+    \item
+      Define $*$ on $\mathbb{Q}$ by $a*b=ab$.
+
+      There is no multiplicative inverse for 0 in the rationals. This fails in the exact same way as part (a) fails.
+    \end{enumerate}
+  %3.1 9
+  \setcounter{enumii}{8}
+  \item
+    Let $G=\{x\in \mathbb{R}|x>0\text{ and }x\ne 1\}$. Define the operation $*$ on $G$ by $a*b=a^{\ln b}$, for all $a,b\in G$. Prove that $G$ is an abelian group under the operation $*$.
+
+    \subsubsection*{proof}
+    If we take any $b\in\mathbb{R}$ such that $b>0$ then $\ln b\in  \mathbb{R}$.
+    Furthermore, if we take any $a,b\in \mathbb{R}$ such that $a>0$ then $a^b\in \mathbb{R}$ and $a^b>0$.
+    Note that $1\not\in G$ and $a^0=1\forall a\in G$. But $0=\ln 1$ and $1\not\in G$.
+    So then $G$ is closed under our operation.
+
+    Proving associativity is pretty straighforward, using the usual exponent and logarithm rules.
+    \[a*(b*c)=a*b^{\ln c}=
+      a^{\ln b^{\ln c}}=
+      a^{(\ln b)\cdot(\ln c)}=
+      (a^{\ln b})^{\ln c}=(a*b)^{\ln c}=
+      (a*b)*c
+    \]
+    The identity is actually Euler's number. We often use $e$ to represent a generic identity. Here we are using the letter $e$ to represent our particular identity--Euler's number.
+    \[e*a=e^{\ln a}=a=a^1=a^{\ln e}=a*e\]
+    Now we are just left to ensure we can always find an inverse $a^{-1}\in G$ for any $a\in G$.
+    \begin{align*}
+      a*a^{-1}&=e= a^{\ln a^{-1}}&
+      \ln a^{\ln a^{-1}}&=\ln e&
+      \ln a\cdot\ln a^{-1}&=1\\
+      \ln a^{-1}&=\frac{1}{\ln a}&
+      e^{\ln a^{-1}}&=e^\frac{1}{\ln a}&
+      a^{-1}&=e^\frac{1}{\ln a}\\
+    \end{align*}
+    We can take $e$ to any power and we will get a positive real back. We can not get $e^0=1$ because there is not number divided by zero which will give us 0. We also do not have toworry about $e^{\frac{1}{0}}$ because $0=\ln a$, has only $1$ as a solution and $1\not\in G$.
+
+    \begin{align*}
+      a*a^{-1}=a^{\ln e^{\frac{1}{\ln a}}}=a^{\frac{\ln e}{\ln a}}=a^{\log_a e}=e\\
+      a^{-1}*a=(e^{\frac{1}{\ln a}})^{\ln a}=e^{\frac{\ln a}{\ln a}}=e^1=e
+    \end{align*}
+    Well we definitely have a group. Is it commutative?
+    \begin{align*}
+      a*b=a^{\ln b}=e*a^{\ln b}=e^{\ln a^{\ln b}}=e^{(\ln b)(\ln a)}=e^{\ln b^{\ln a}}=e*b^{\ln a}=b^{\ln a}=b*a
+    \end{align*}
+    Yep, it is commutative and therefore abelian.
+    %\[(a*b)*c=(a^{\ln b})*c
+    %  =(a^{\ln b})^{\ln c}
+    %  =a^{{\ln b}\cdot{\ln c}}
+    %  =a^{\ln b^{\ln c}}
+    %  =a^{\ln (b*c)}
+    %  =a*(b*c)
+    %\]
+  \end{enumerate}
+\item
+  \begin{enumerate}
+  \setcounter{enumii}{5}
+  \item
+    Let $G=GL_2(\mathbb{R})$.
+    \begin{enumerate}
+    \item
+      Show that $T=\left\{\left.\left[\begin{array}{cc}a&b\\0&d\end{array}\right]\right\rvert ad\ne0\right\}$ is a subgroup of $G$.
+
+      First we choose an arbitrary element of $T$, call it $T_1$ and find it's inverse.
+      \begin{align*}
+        \left[\begin{array}{cc|cc}a_1&b_1&1&0\\0&d_1&0&1\end{array}\right]&&
+        \left[\begin{array}{cc|cc}a_1&b_1&1&0\\0&1&0&\frac{1}{d_1}\end{array}\right]&&
+        \left[\begin{array}{cc|cc}a_1&0&1&-\frac{b_1}{d_1}\\0&1&0&\frac{1}{d_1}\end{array}\right]&&
+        \left[\begin{array}{cc|cc}1&0&\frac{1}{a_1}&-\frac{b_1}{a_1d_1}\\0&1&0&\frac{1}{d_1}\end{array}\right]
+      \end{align*}
+      We note that two implications of $ad\ne 0$ are that $a_1\ne 0$ and $d_1\ne 0$. This is all we need to say that ${T_1}^{-1}$ is in $T$ (although we needn't demonstrate that for this proof).
+      \begin{align*}
+        {T_1}^{-1}T_1&=
+        \left[\begin{array}{cc}\frac{1}{a_1}&-\frac{b_1}{a_1d_1}\\0&\frac{1}{d_1}\end{array}\right]
+        \left[\begin{array}{cc}a_1&b_1\\0&d_1\end{array}\right]&
+        T_1{T_1}^{-1}&=
+        \left[\begin{array}{cc}a_1&b_1\\0&d_1\end{array}\right]
+        \left[\begin{array}{cc}\frac{1}{a_1}&-\frac{b_1}{a_1d_1}\\0&\frac{1}{d_1}\end{array}\right]\\
+        &=\left[\begin{array}{cc}\frac{a_1}{a_1}&\frac{b_1}{a_1}-\frac{d_1b_1}{a_1d_1}\\0&\frac{d_1}{d_1}\end{array}\right]&
+        &=\left[\begin{array}{cc}\frac{a_1}{a_1}&-\frac{a_1b_1}{a_1d_1}+\frac{b_1}{d_1}\\0&\frac{d_1}{d_1}\end{array}\right]\\
+        &=\left[\begin{array}{cc}1&0\\0&1\end{array}\right]&
+        &=\left[\begin{array}{cc}1&0\\0&1\end{array}\right]
+      \end{align*}
+      Now we take another arbitrary element of $T$, say $T_2$ and check to make sure $T_2{T_1}^{-1}$ is in $T$.
+      \begin{align*}
+        T_2&=\left[\begin{array}{cc}a_2&b_2\\0&d_2\end{array}\right]\\
+        T_2{T_1}^{-1}&=\left[\begin{array}{cc}a_2&b_2\\0&d_2\end{array}\right]\left[\begin{array}{cc}\frac{1}{a_1}&-\frac{b_1}{a_1d_1}\\0&\frac{1}{d_1}\end{array}\right]\\
+        &=\left[\begin{array}{cc}\frac{a_2}{a_1}&-\frac{a_2b_1}{a_1d_1}+\frac{b_2}{d_1}\\0&\frac{d_2}{d_1}\end{array}\right]
+      \end{align*}
+      Similarly to our previous observation, we note that $a_1\ne 0$, $d_1\ne 0$, $a_2\ne 0$, and $d_2\ne 0$. And this is enough to show that $T_2{T_1}^{-1}\in T$. And so by 3.2.3 in the textbook, $T$ is a subgroup of $GL_2(\mathbb{R})$
+    \item
+      Show that $D=\left\{\left.\left[\begin{array}{cc}a&0\\0&d\end{array}\right]\right\rvert ad\ne0\right\}$ is a subgroup of $G$.
+
+      Let us take $T_1$ from the part (a) and set $b_1=0$. Lets call this $D_1$. So then ${D_1}^{-1}=\left[\begin{array}{cc}\frac{1}{a_1}&0\\0&\frac{1}{d_1}\end{array}\right]$. We note that both $D_1$ and ${D_1}^{-1}$ are in $D$. And taking another arbitrary element from $D$, say $D_2$:
+      \begin{align*}
+        D_2&=\left[\begin{array}{cc}a_2&0\\0&d_2\end{array}\right]\\
+        D_2{D_1}^{-1}&=\left[\begin{array}{cc}a_2&0\\0&d_2\end{array}\right]
+        \left[\begin{array}{cc}\frac{1}{a_1}&0\\0&\frac{1}{d_1}\end{array}\right]\\
+        &=\left[\begin{array}{cc}\frac{a_2}{a_1}&0\\0&\frac{d_2}{d_1}\end{array}\right]
+      \end{align*}
+      And similarly to part (a) we notice that $a_1\ne 0$, $d_1\ne 0$, $a_2\ne 0$, and $d_2\ne 0$ and so $D_2{D_1}^{-1}\in D$ and $D$ is a subgroup of $GL_2\left(\mathbb{R}\right)$
+    \end{enumerate}
+  \end{enumerate}
+\end{enumerate}
+\end{document}
