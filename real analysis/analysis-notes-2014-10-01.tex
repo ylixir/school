@@ -1,0 +1,83 @@
+\documentclass[letterpaper]{article}
+
+\usepackage{fullpage}
+\usepackage{nopageno}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[utf8]{inputenc}
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+
+\begin{document}
+\title{Notes}
+\date{October 1, 2014}
+\maketitle
+if $\liminf x_n=L$ then there exists $\{x_{n_k}\}$ such that $\lim x_{n_k}=L$
+
+$l=\liminf x_n=\lim(inf\{\underbrace{x_{n_1},x_{n_2},x_{n_3},\dots}_{c_n}\}$
+
+why not just let $c_n$ be the subseuence? because $c_n$ may not be equal to any of the $x_k$ in the sequence
+
+$c_n=\inf\{x_{n_1},x_{n_2},\dots\}$ give $\varepsilon=2^{-n}$ there exists $x_{n_k}\in\{x_{n_1},x_{n+1},x_{n+2},\dots\}$ such that $\left\lvert c_n-x_{n_k}\right\rvert<2^{-n}$ by def of infinum
+
+we has a sequence $\{c_n\}$ given $\varepsilon>0$ there exists $N$ such that $\left\lvert c_n-L\right\rvert<\varepsilon$ if $n\ge N$. we approximate each $c_n$ by some $x_{n_k}$ from the oricinal sequence sutch that ....
+
+\section*{convergence test for series}
+first we talk about series with positive terms $\sum\limits_{k=1}^\infty{a_k}$, $s_n=\sum\limits_{k=1}^n{a_k}$. So if $s_n$ is bounded about then the series is convergent. and if not, it is divergent.
+
+geometric series $\sum\limits_{n=0}^\infty{r^n}$ is convergent if $\left\lvert r\right\rvert<1$. $s_n=\sum\limits_{k=0}n{r^k}=1+r+r^2+\dots+r^n, rs_n=r+r^2+r^3+\dots, sn-rSn=1-r^{n+1}$
+
+$s_n=\frac{1-r^{n+1}}{1-r}\to\frac{1}{1-r}$
+
+
+\section*{comparison test}
+if $\forall n, |a_n|\le b_n$
+\begin{itemize}
+\item
+  if $\sum\limits_{n=1}^\infty{b_n}$ is convergent then $\sum\limits_{n=1}^\infty{a_n}$ is convergent,
+  \item
+  if $\sum\limits{a_n}$ is divergent, so is $\sum\limits{b_n}$.
+\end{itemize}
+\section*{3.2.b}
+show that if $\left(|a_n|\right)_{n=1}^\infty$ is summable then so is $\left(a_n\right)_{n=1}^\infty$.
+\begin{align*}
+  \sum\limits_{k=n+1}^m{|a_k|}&<\varepsilon\text{ for all }N\le n\le m \text{ because is is summable}\\
+  \left\lvert\sum\limits_{k=n+1}^m{a_k}\right\rvert&\le\sum\limits_{k=n+1}^m{|a_k|}<\varepsilon
+\end{align*}
+so then $\sum\limits{a_k}$ is also cauchy and summable
+
+\section*{cauchy-schwartz inequality}
+$\sum\limits_{k=1}^n{a_kb_k}\le \left(\sum\limits_{k=1}^n{a_k^2}\right)^{1/2}\left(\sum\limits_{k=1}^n{b_k^2}\right)^{1/2}$
+
+\section*{3.2.f}
+
+\section*{leibniz test for alternating series}
+if $\{a_n\}$ is a monotone decreasing sequence of positive terms with the $\lim a_n=0$ then $\sum\limits_{n=1}^\infty{(-1)^na_n}$ is convergent
+
+\section*{note!} a sequence my have the property $\lim |a_n-a_{n+!}|=0$ but not be cauchy
+\section*{3.2.h}
+Show that if $\sum\limits_{n=1}^\infty{a_n}$ and $\sum\limits_{n=1}^\infty{b_n}$ are series with $b_n\ge 0$ such that $\limsup\limits_{n\to\infty}<\infty$ and $\sum\limits_{n=1}^\infty{b_n}<\infty$, then the series $\sum\limits_{n=1}^\infty{a_n}$ converges.
+
+\begin{align*}
+  \left\lvert\left(\sup\limits_{k\ge n}\frac{|a_k|}{b_k}\right)-L\right\rvert<\varepsilon\\
+  \left(\sup\limits_{k\ge n}\frac{|a_k|}{b_k}\right)<L+\varepsilon\\
+  \frac{|a_k|}{b_k}<L\varepsilon\\
+  |a_k|<(L+\varepsilon) b_k\\
+\end{align*}
+\section*{3.2.j}
+$\liminf\frac{a_n+1}{a_n}\le\liminf{a_n^{\frac{1}{n}}}\le\limsup a_n^{\frac{1}{n}}\le \limsup\frac{a_n+1}{a_n}$.
+\subsection*{step 1}
+if $x\ge r$ for all $r>b$ then $x$ is a lower bound for the set $\{r\in \mathbb{R}:r>b\}$, $x\le\inf\{r\in\mathbb{R}:r>b\}=b$
+
+we will show that if $\limsup \frac{a_n}{b_n}<r$ then $\limsup a_n^{\frac{1}{n}}\le r$ and then apply step one.
+
+let $r>\limsup \frac{a_{n+1}}{a_n}$ then $\exists N$ such that $r>\frac{a_{n+!}}{a_n}\forall n\ge N$
+\begin{align*}
+  a_{N+1}<ra_N\\
+  a_{N+2}<ra_{N+1}\le r^2a_{N}\\
+  a_{N+K}<r^{k}a_N\\
+  a_{N+k}^{\frac{1}{N+k}}<(r^ka_N)^{\frac{1}{N+k}}
+\end{align*}
+\end{document}
+
