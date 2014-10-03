@@ -10,7 +10,7 @@
 
 \begin{document}
 \title{Notes}
-\date{September 26, 2014}
+\date{October 1, 2014}
 \maketitle
 if $G$ is a group, and $A\subseteq G$ and $B\subseteq G$ then $AB=\{ab|a\in A, b\in B\}\subseteq G$.
 
@@ -33,5 +33,76 @@ claim: $a\mathbb{Z}+b\mathbb{Z}=d\mathbb{Z}$. clearly $a\mathbb{Z}\subseteq d\ma
 $a\mathbb{Z}+b\mathbb{Z}$ is the smallest subgroup that contains both $a\mathbb{Z}$ and $b\mathbb{Z}$. so $a\mathbb{Z}+b\mathbb{Z}\subseteq d\mathbb{Z}$.
 
 $d=\gcd(a,b)$ so we can write $d=ma+nb$. let $\alpha\in d\mathbb{Z}$ and write $\alpha=dt, t\in \mathbb{Z}$ then $\alpha=dt=mat+nbt\in a\mathbb{Z}+b\mathbb{Z}$. so $d\mathbb{Z}\subseteq a\mathbb{Z}+b\mathbb{Z}$ 
+\section*{thm subgroup gen by a subset}
+$G$ is a group, if $a\in G$ $<a>=\{a^i|i\in \mathbb{Z}\}$ is the smallest subgroupthat contains $a$.
+
+\subsubsection*{proof}
+let $S\subseteq G$, let $<S>=\{\underbrace{a_1a_2\dots a_k}_{\text{word}}|a_i\in S\text{ or }{a_i}^{-1}\in S, k\in \mathbb{N}\}$ then $<S>$ is a subgroup, $<S>=\cap \forall H$ where $S\subseteq H\subseteq G$, and $H$ is a subgroup of $G$, $<S>$ is the smallest subgroup of $G$that contains $S$.
+
+so it is closed under multiplication, identity is in it, and the inverse of all words are in it.
+
+show containment both ways, one is clear because we have words of length 1 that span $S$ and so $S$ is one of the elements of our $H$ intersection.
+
+\section*{example}
+$a,b\in G, S=\{a,b\}\subseteq G, <S>=\{a_1a_2\dots a_k|a_i\in\{a,a^{-1},b,b^{-1}\}\}$
+
+if $ab=ba$ then $<S>=\{a^{i}b^{j}|i\in \mathbb{Z}, j\in \mathbb{Z}\}$
+
+
+\section*{maps}
+studied groups, subgroups. now we are going to talk about maps
+
+if we have groups $G_1,G_2$ and $\varphi:G_1\to G_2$ is a group homomorphism provided $x\to\varphi(x), y\to\varphi$ means that $\varphi(x*y)=\varphi(x)*\varphi(y)$ for all $x,y\in G_1$.
+\section*{examples}
+identity: $x\to x$
+
+$(\mathbb{R},+)=G_1, (\mathbb{R}^+,\cdot)=G_2$. $\varphi(x)=e^x$. ie $\varphi(x+y)=e^{x+y}=e^xe^y=\varphi(x)\varphi(y)$.
+
+\section*{notation}
+let $\varphi:G_1\to G_2$ be a group homomorphism, then $\ker\varphi=\{x\in G_1|\varphi(x)=e\}$
+
+homomorphism always takes the identity in $G_1$ to $G_2$.
+
+$\varphi(e_1)\varphi(e_1)^{-1}=\varphi(e_1e_1)\varphi(e_1)^{-1}=\varphi(e_1)\varphi(e_1)\varphi(e_1)^{-1}=e_2=\varphi(e_1)$
+
+prove that $\ker \varphi$ is a subgroup
+
+now we say that $\varphi$ is an isomorphism if $\varphi$ is a group homomorphism and $\varphi$ is bijective.
+
+both of the previous examples are isomorphisms.
+
+so from an algebraic point of view, there is no difference between addition on the reals and multiplication on the positive reals.
+
+\section*{proposition}
+let $\varphi$ be an isomorphism. the following are true
+\begin{enumerate}
+\item
+$\varphi^{-1}$ which is the map from $G_2$ to $G_1$ is also an isomorphism.
+\item
+if $G_1$ is abelian, then $G_2$ is abelian.
+\item
+if $G_1$ is cyclic then so is $G_2$
+\item
+if $a\in G_1$ then $\text{ord}(a)=\text{ord}(\varphi(a))$
+\end{enumerate}
+
+\begin{enumerate}
+\item
+need to prove $\varphi^{-1}(\alpha\beta)=\varphi^{-1}(\alpha)\varphi^{-1}(\beta)$ for all $\beta\in G_2$, but $\varphi$ is injective so it is enough to prove that $\varphi(\varphi^{-1}(\alpha\beta))=\varphi(\varphi^{-1}(\alpha)\varphi^{-1}(\beta)=\varphi(\varphi^{-1}(\alpha))\varphi(\varphi^{-1}(\beta))=\alpha\beta$
+\item
+assume $G_1$ is abelian
+\begin{align*}
+  \alpha\beta=\varphi(\varphi^{-1}\left(\alpha\right)\varphi^{-1}(\beta))
+\end{align*}
+\item
+hint: assume that $G_1=<a>$ for some $a\in G_1$ and then prove that $G_2=<\varphi(a)$
+\item
+no hint
+\end{enumerate}
+\section*{example}
+\begin{align*}
+  \mathbb{Z}_4\not\equiv\mathbb{Z}_2\times\mathbb{Z}_2
+\end{align*}
+by contradiction, assume that there exists an isomorphism $\varphi$ from z4 to z2+z2. $[1]\in \mathbb{Z}_4$ and $\text{ord}[1]=4$ so then $\text{ord}\varphi([1])=4$. But all elements of $\mathbb{Z}_2\times\mathbb{Z}_2$ has no elements of order 4, so there is no isomorphisms. however, if $\gcd(m,n)=1$ then $\mathbb{Z}_{mn}\equiv\mathbb{Z}_m\times\mathbb{Z}_n$
 \end{document}
 
