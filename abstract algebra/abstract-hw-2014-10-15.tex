@@ -23,24 +23,149 @@
   \begin{enumerate}
   \setcounter{enumii}{18}
   \item
+    Let $G$ be a group, and let $a\in G$. The set $C(a)=\{x\in G|xa=ax\}$ of all elements of $G$ that commute with $a$ is called the {\bfseries centralizer} of $a$.
+    \begin{enumerate}
+    \item
+      Show that $C(a)$ is a subgroup of $G$.
+
+      $C(a)$ contains the identity $e$ because $ea=a=ae$. If we take any two $x_1,x_2\in C(a)$ then $x_1x_2a=x_1ax_2=ax_1x_2$ so $x_1x_2\in C(a)$ and then $C(a)$ is closed. And finally, lets see if the inverse of some $x\in C(a)$ is in $C(a)$:
+      \begin{align*}
+        xa&=ax\\
+        xax^{-1}&=axx^{-1}=a\\
+        x^{-1}xax^{-1}&=x^{-1}a\\
+        ax^{-1}&=x^{-1}a
+      \end{align*}
+    So it looks like $C(a)$ is a subgroup of $G$.
+    \item
+      Show that $\langle a\rangle\subseteq C(a)$.
+
+      Note that $aa=aa$ so $a\in C(a)$ and we have just established that $C(a)$ is a group, so closure tells us that $a^n\in C(a)\forall n\in\mathbb{N}$. Also $a^0=e\in C(a)$ and for all integers $n<0$ then $a^n=(a^{-n})^{-1}$. Because $a^{-n}$ is in the group, then it's inverse, $a^{n}$ must also be. So $\langle a\rangle\subseteq C(a)$
+    \item
+      Compute $C(a)$ if $G=S_3$ and $a=(1,2,3)$.
+
+      We already know that $(1),(1,2,3)\in C(a)$ from parts (a) and (b).
+      \begin{align*}
+        (1,2)(1,2,3)&=(1,3)&(1,2,3)(1,2)&=(2,3)\\
+        (1,3)(1,2,3)&=(2,3)&(1,2,3)(1,3)&=(1,2)\\
+        (2,3)(1,2,3)&=(1,2)&(1,2,3)(2,3)&=(1,3)\\
+        (1,3,2)(1,2,3)&=(1)&(1,2,3)(1,3,2)&=(1)
+      \end{align*}
+      And so $C(a)=\{(1),(1,2,3),(1,3,2)\}$
+    \item
+      Compute $C(a)$ if $G=S_3$ and $a=(1,2)$
+
+      We already know that $(1),(1,2)\in C(a)$ and $(1,2,3)\not\in C(a)$.
+      \begin{align*}
+        (1,3)(1,2)&=(1,3,2)&(1,2)(1,3)&=(1,2,3)\\
+        (2,3)(1,2)&=(1,2,3)&(1,2)(2,3)&=(1,3,2)\\
+        (1,3,2)(1,2)&=(1,3)&(1,2)(1,3,2)&=(2,3)
+      \end{align*}
+      So $C(a)=\{(1),(1,2)\}$
+    \end{enumerate}
   \setcounter{enumii}{20}
   \item
+    Let $G$ be a group. The set $Z(G)=\{x\in G|xg=gx \quad \forall g\in G \}$ of all elements that commute with every other element of $G$ is called the {\bfseries center} of $G$.
+    \begin{enumerate}
+    \item
+      Show that $Z(G)$ is a subgroup of $G$.
+
+      Showing that $Z(G)$ is a subgroup of $G$ is nearly the same as showing that $C(a)$ is a subgroup of $G$. It is easy to see that for the identity $e$ we have $eg=g=ge$ for all $g\in G$ and for any $x_1,x_2\in Z(G)$ we can see that $x_1x_2g=x_1gx_2=gx_1x_2$ and finally for some $x\in Z(G)$:
+      \begin{align*}
+        xg&=gx\\
+        xgx^{-1}&=gxx^{-1}\\
+        x^{-1}xgx^{-1}&=x^{-1}g\\
+        gx^{-1}&=x^{-1}g
+      \end{align*}
+    \item
+      Show that $Z(G)=\bigcap_{a\in G}{C(a)}$.
+
+      Because any $x\in Z(G)$ commutes with all $g\in G$ we know that $xa=ax$ for any $a\in G$ and so $x\in C(a)$ for all $a\in G$ and so $Z(G)\subseteq \bigcap_{a\in G}C(a)$. Now looking at it the other way, if we take some $x\in C(a_1)$, if there exists some $a_2$ such that $xa_2\ne a_2x$ then $x\not\in C(a_2)$ and therefore not in $\bigcap_{a\in G}C(a)$. Because this $x$ has an element in $G$ that it doesn't commute with it is also not in $Z(G)$. Now because if an element is not in $\bigcap_{a\in G}$ then it is not in $Z(G)$, we know that $\bigcap_{a\in G}C(a)\subseteq Z(G)$.
+    \item
+      Compute the center of $S_3$.
+
+      $C((1,2))\cap C((1,2,3))=\{(1)\}$ from number 19, and $(1)\in Z(S_3)$ from part (a), so $Z(S_3)=\{(1)\}$
+    \end{enumerate}
   \end{enumerate}
 \item
   \begin{enumerate}
-  \setcounter{enumii}{8}
-  \item
-  \subsubsection*{*}
+%  \setcounter{enumii}{8}
+%  \item
+%    *
+%    This exercise concerns subgroups of $\mathbb{Z}\times\mathbb{Z}$.
+%    \begin{enumerate}
+%    \item
+%      Let $C_1=\{(a,b)\in \mathbb{Z}\times\mathbb{Z}|a=b\}$. Show that $C_1$ is a subgroup of $\mathbb{Z}\times \mathbb{Z}$
+%    \item
+%      For each positive integer $n\ge 2$, let $C_n=\{(a,b)\in \mathbb{Z}\times\mathbb{Z}|a\equiv b\mod n \}$. Show that $C_n$ is a subgroup of $\mathbb{Z}\times \mathbb{Z}$.
+%    \item
+%      Show that every subgroup of $\mathbb{Z}\times\mathbb{Z}$ that contains $C_1$ has the form $C_n$, for some positive integer $n$.
+%    \end{enumerate}
   \setcounter{enumii}{10}
   \item
+    Let $G_1$ and $G_2$ be groups, and let $G$ be the direct product $G_1\times G_2$.
+
+    Let $H=\{(x_1,x_2)\in G_1\times G_2|x_2=e\}$ and let $K=\{(x_1,x_2)\in G_1\times G_2|x_1=e\}$
+    \begin{enumerate}
+    \item
+      Show that $H$ and $K$ are subgroups of $G$.
+
+      We assume that $x_2=e$ means that $x_2$ is the identity for the group $G_2$, say $e_2$.
+      Similarly we assume that $x_1=e$ means that $x_1$ is the identity for the group $G_1$, say $e_1$
+      Now of course $e_1\in G_1$ and $e_2\in G_2$.
+      This means that $(e_1,e_2)\in H$ and $(e_1,e_2)\in K$.
+      Further, because $(e_1,e_2)$ is the identity for $G$ it will be an identity for any subset of $G$.
+      Which means that both $H$ and $K$ contain an identity because they are subsets of $G$.
+      Now lets take some $x_1,y_1\in G_1$ and $x_2,y_2\in G_2$.
+      Because $x_1y_1\in G_1$ then $(x_1,e_1)(y_1,e_1)=(x_1y_1,e_2)\in H$ and therefore $H$ is closed.
+      Similarly $(e_1,x_2)(e_1,y_2)=(e_1,x_2y_2)\in K$ and $K$ is closed.
+      Now lets pick any $x_1\in G_1$ and $x_2\in G_2$.
+      We know there exists some ${x_1}^{-1}\in G_1$ and some ${x_2}^{-1}\in G_2$. 
+      By extension then $(x_1,e_2)$ and $({x_1}^{-1},e_2)$ are both in $H$.
+      Similarly: $(e_1,x_2)$ and $(e_1,{x_2}^{-1})$ are both in $K$.
+      Obviously, $(x_1,e_2)({x_1}^{-1},e_2)=(e_1,e_2)\in H$.
+      And also similarly, $(e_1,x_2)(e_1,{x_2}^{-1})=(e_1,e_2)\in K$.
+    \item
+      Show that $H K=K H=G$.
+
+      Lets take any $(x_1,e_2)\in H$ and any $(e_1,x_2)\in K$.
+      Then for any $(x_1,e_2)(e_1,x_2)\in HK$ we see that $(x_1,e_2)(e_1,x_2)=(x_1e_1,e_2x_2)=(e_1x_1,x_2e_2)=(e_1,x_2)(x_1,e_2)\in KH$.
+      And for any  $(e_1,x_2)(x_1,e_2)\in KH$ we have $(e_1,x_2)(x_1,e_2)=(e_1x_1,x_2e_2)=(x_1,x_2)\in G$.
+      And so $HK\subseteq KH\subseteq G$.
+
+      Now we take any $(x_1,x_2)\in G$.
+      Then $(x_1,x_2)=(e_1x_1,x_2e_2)=(e_1,x_2)(x_1,e_2)\in KH$.
+      And obviously for any $(e_1,x_2)(x_1,e_2)\in KH$ we have $(e_1,x_2)(x_1,e_2)=(e_1x_1,x_2e_2)=(x_1e_1,e_2x_2)=(x_1,e_2)(e_1,x_2)\in HK$.
+      And so $G\subseteq KH\subseteq HK$.
+    \item
+      Show that $H\cap K=\{(e,e)\}$.
+
+      If $(x_1,x_2)\in H$ then $x_2=e_2$ and if $(x_1,x_2)\in K$ then $x_1=e_1$ and so if $(x_1,x_2)\in H$ and $(x_1,x_2)\in  K$ then $(x_1,x_2)=(e_1,e_2)$ and so $H\cap K=\{(e_1,e_2)\}$
+    \end{enumerate}
   \end{enumerate}
 \item
   \begin{enumerate}
-  \setcounter{enumii}{20}
-  \item
-  \subsubsection*{*}
+%  \setcounter{enumii}{20}
+%  \item
+%    *
+%    Prove that if $m,n$ are positive integers such that $\gcd(m,n)=1$, then $\mathbb{Z}_{mn}^\times$ is isomorphic to $\mathbb{Z}_m^\times\times\mathbb{Z}_n^\times$
   \setcounter{enumii}{26}
   \item
+    Using the definition of a group homomorphism given in Exercise 26, let $\phi:G_1\to G_2$ be a group homomorphism. We define the {\bfseries kernel} of $\phi$ to be
+    \begin{align*}
+      \ker(\phi)=\{x\in G_1|\phi(x)=e\}
+    \end{align*}
+    Prove that $\ker(\phi)$ is a subgroup of $G_1$.
+
+    First we establish that the identity is an element of $\ker(\phi)$.
+    \begin{align*}
+      \phi(e)&=\phi(ee)\\
+      \phi(e)e&=\phi(ee)\\
+      \phi(e)e&=\phi(e)\phi(e)\\
+      e&=\phi(e)\\
+    \end{align*}
+    So $e\in \ker(\phi)$.
+    Now lets take some $x\in \ker(\phi)$.
+    Then $e=\phi(e)=\phi(xx^{-1})=\phi(x)\phi(x^{-1})=e\phi(x^{-1})=\phi(x^{-1})$ and so $x^{-1}\in \ker(\phi)$ for all $x\in \ker(\phi)$. And finally if we have some $x,y\in \ker(\phi)$ then $\phi(xy)=\phi(x)\phi(y)=ee=e$ and so $xy\in \ker(\phi)$ and we have closure which is the last requirement for a group.
   \end{enumerate}
 \end{enumerate}
 \end{document}
