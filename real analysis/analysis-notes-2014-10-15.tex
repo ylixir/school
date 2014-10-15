@@ -1,0 +1,236 @@
+\documentclass[letterpaper]{article}
+
+\usepackage{fullpage}
+\usepackage{nopageno}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[utf8]{inputenc}
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+
+\begin{document}
+\title{Notes}
+\date{October 15, 2014}
+\maketitle
+if $\liminf x_n=L$ then there exists $\{x_{n_k}\}$ such that $\lim x_{n_k}=L$
+
+$l=\liminf x_n=\lim(inf\{\underbrace{x_{n_1},x_{n_2},x_{n_3},\dots}_{c_n}\}$
+
+why not just let $c_n$ be the subseuence? because $c_n$ may not be equal to any of the $x_k$ in the sequence
+
+$c_n=\inf\{x_{n_1},x_{n_2},\dots\}$ give $\varepsilon=2^{-n}$ there exists $x_{n_k}\in\{x_{n_1},x_{n+1},x_{n+2},\dots\}$ such that $\left\lvert c_n-x_{n_k}\right\rvert<2^{-n}$ by def of infinum
+
+we has a sequence $\{c_n\}$ given $\varepsilon>0$ there exists $N$ such that $\left\lvert c_n-L\right\rvert<\varepsilon$ if $n\ge N$. we approximate each $c_n$ by some $x_{n_k}$ from the oricinal sequence sutch that ....
+
+\section*{convergence test for series}
+first we talk about series with positive terms $\sum\limits_{k=1}^\infty{a_k}$, $s_n=\sum\limits_{k=1}^n{a_k}$. So if $s_n$ is bounded about then the series is convergent. and if not, it is divergent.
+
+geometric series $\sum\limits_{n=0}^\infty{r^n}$ is convergent if $\left\lvert r\right\rvert<1$. $s_n=\sum\limits_{k=0}n{r^k}=1+r+r^2+\dots+r^n, rs_n=r+r^2+r^3+\dots, sn-rSn=1-r^{n+1}$
+
+$s_n=\frac{1-r^{n+1}}{1-r}\to\frac{1}{1-r}$
+
+
+\section*{comparison test}
+if $\forall n, |a_n|\le b_n$
+\begin{itemize}
+\item
+  if $\sum\limits_{n=1}^\infty{b_n}$ is convergent then $\sum\limits_{n=1}^\infty{a_n}$ is convergent,
+  \item
+  if $\sum\limits{a_n}$ is divergent, so is $\sum\limits{b_n}$.
+\end{itemize}
+\section*{3.2.b}
+show that if $\left(|a_n|\right)_{n=1}^\infty$ is summable then so is $\left(a_n\right)_{n=1}^\infty$.
+\begin{align*}
+  \sum\limits_{k=n+1}^m{|a_k|}&<\varepsilon\text{ for all }N\le n\le m \text{ because is is summable}\\
+  \left\lvert\sum\limits_{k=n+1}^m{a_k}\right\rvert&\le\sum\limits_{k=n+1}^m{|a_k|}<\varepsilon
+\end{align*}
+so then $\sum\limits{a_k}$ is also cauchy and summable
+
+\section*{cauchy-schwartz inequality}
+$\sum\limits_{k=1}^n{a_kb_k}\le \left(\sum\limits_{k=1}^n{a_k^2}\right)^{1/2}\left(\sum\limits_{k=1}^n{b_k^2}\right)^{1/2}$
+
+\section*{3.2.f}
+
+\section*{leibniz test for alternating series}
+if $\{a_n\}$ is a monotone decreasing sequence of positive terms with the $\lim a_n=0$ then $\sum\limits_{n=1}^\infty{(-1)^na_n}$ is convergent
+
+\section*{note!} a sequence my have the property $\lim |a_n-a_{n+!}|=0$ but not be cauchy
+\section*{3.2.h}
+Show that if $\sum\limits_{n=1}^\infty{a_n}$ and $\sum\limits_{n=1}^\infty{b_n}$ are series with $b_n\ge 0$ such that $\limsup\limits_{n\to\infty}<\infty$ and $\sum\limits_{n=1}^\infty{b_n}<\infty$, then the series $\sum\limits_{n=1}^\infty{a_n}$ converges.
+
+\begin{align*}
+  \left\lvert\left(\sup\limits_{k\ge n}\frac{|a_k|}{b_k}\right)-L\right\rvert<\varepsilon\\
+  \left(\sup\limits_{k\ge n}\frac{|a_k|}{b_k}\right)<L+\varepsilon\\
+  \frac{|a_k|}{b_k}<L\varepsilon\\
+  |a_k|<(L+\varepsilon) b_k\\
+\end{align*}
+\section*{3.2.j}
+$\liminf\frac{a_n+1}{a_n}\le\liminf{a_n^{\frac{1}{n}}}\le\limsup a_n^{\frac{1}{n}}\le \limsup\frac{a_n+1}{a_n}$.
+\subsection*{step 1}
+if $x\ge r$ for all $r>b$ then $x$ is a lower bound for the set $\{r\in \mathbb{R}:r>b\}$, $x\le\inf\{r\in\mathbb{R}:r>b\}=b$
+
+we will show that if $\limsup \frac{a_n}{b_n}<r$ then $\limsup a_n^{\frac{1}{n}}\le r$ and then apply step one.
+
+let $r>\limsup \frac{a_{n+1}}{a_n}$ then $\exists N$ such that $r>\frac{a_{n+!}}{a_n}\forall n\ge N$
+\begin{align*}
+  a_{N+1}<ra_N\\
+  a_{N+2}<ra_{N+1}\le r^2a_{N}\\
+  a_{N+K}<r^{k}a_N\\
+  a_{N+k}^{\frac{1}{N+k}}<(r^ka_N)^{\frac{1}{N+k}}
+\end{align*}
+\section*{quiz from 10/1/2014}
+$L_k\to L$ then $\{x_n\}$ such that $\forall k, \exists$ a subsequence of $\{x_n\}$ converging to $L_k$. prove that $\{x_n\}$ has a subsequence converging to $L$.
+
+given $\varepsilon>0\exists N_0$ such that $\left\lvert L_k-L\right\rvert<\varepsilon$ if $k\ge N_0$
+
+$\left\lvert x_{N_k}-L\right\rvert\le\left\lvert x_{N_k}-L_k\right\rvert+\left\lvert L_k-L\right\rvert<2\varepsilon$
+
+\section*{example}
+let $A,B\subseteq \mathbb{R}$, prove that $\sup A\le\inf B$, if $\forall a\in A, b\in B, a\le b$
+
+\section*{3.3.5}
+any rearrangement of an absolutely convergent series converges tothe same limit
+\subsubsection*{proof}
+let $\sum\limits{a_n}=L<\infty$. We know $\sum\limits{|a_n|}$ is convergent (not necessarily to $L$). by th cauchy riterion for series $\forall\varepsilon>0\exists N$ such that $\left(\sum\limits_{n=N+1}^\infty{|a_n|}\right)<\varepsilon$
+
+$\pi:\mathbb{N}\to\mathbb{N}$ is bijective, the rearranged series is $\sum\limits_{n=1}^{\infty}{a_{\pi(n)}}$ and $\{a_1\dots a_N\}\subseteq\{a_{\pi(1)1}\dots a_{\pi(M)}\}$
+
+\section*{3.3.7 rearrangement theorem}
+let $\sum\limits{a_n}=L<\infty$ and define $b_n=(a_n\ge 0)?a_n:0$ and $c_n=(a_n<0)?a_n:0$
+
+consider the series $\sum\limits{b_n}$ and $\sum\limits{|c_n|}$
+\subsection*{case 1}
+both convergent
+
+$\sum\limits{|a_n|}=\sum\limits{b_n}+\sum\limits{|c_n|}$ which is convergent, which contradicts the fact that $a_n$ is conditionally convergent
+\subsection*{case 2}
+one convergent, one divergent
+
+assume $\sum\limits{|c_n|}=A<\infty$ and $\sum\limits{b_n}$ is divergent to $+\infty$
+
+given any $R\in\mathbb{N}$ big, $\exists N$ such that $\sum\limits_{n=1}^N{b_n}>R+A$, then we pick $M$ big enough so that $\{b_1,\dots,b_N\}\subseteq\{a_1,a_2,\dots,a_M\}$ and $\sum\limits_{n=1}^M{a_n}\ge\sum\limits_{n=1}^N{b_n}-\sum\limits{|c_n|}>R$ so $\sum\limits{a_n}$ is divergent, which  is a contradiction.
+\subsection*{case 3}
+both divergent
+
+\section*{chapter 4}
+$\mathbb{R}^n=\{(x_1,x_2,\dots,x_n),x_i\in\mathbb{R}\}$, vector space (or point in $n$-space).
+
+with the coordinate wise sum and the product by real numbers (scalars).
+\begin{align*}
+  (x_1,\dots x_n)+(y_1,\dots,y_n)&=(x_1+y_1,\dots,x_n+y_n)\\
+  \lambda(x_1,\dots,x_n)&=(\lambda x_1,\dots,\lambda x_n)\\
+  x^{\to}&=(x_1,\dots,x_n)=x
+  \intertext{euclidean norm}
+  ||x||=\sqrt{x_1^2+\dots+ x_n^2}\\
+  \intertext{distance from x to y}
+  ||x-y||
+\end{align*}
+\subsection*{cauchy-schwarz}
+$\left\lvert\sum\limits_{i=1}^n{a_jb_j}\right\rvert\le\left(\sum\limits_{i=1}^n{a_j^2}\right)^{1/2}\left(\sum\limits_{i=1}^n{b_j^2}\right)^{1/2}$
+
+$|a\cdot b|\le||a||||b||$
+\subsubsection*{dot product}
+$a\cdot b=\sum\limits{a_ib_i}$
+\subsection*{triangle inequality}
+\begin{align*}
+  ||x+y||\le||x|||+||y||
+\end{align*}
+\subsubsection*{proof}
+\begin{align*}
+  ||x+y||^2&=\sum\limits{(x_i+y_i)^2}\\
+  &=(x+y)\cdot(x+y)\\
+  &=x\cdot x+2x\cdot y+y\cdot y\\
+  &=||x||^2+2x\cdot y+||y||^2\\
+  &\le ||x||^2+2||x||||y||+||y||^2\\
+  =(||x||+||y||)^2
+\end{align*}
+
+\subsection*{standard orthogonal base of $\mathbb{R}^n$}
+\begin{align*}
+  e_1&=<1,0,\dots,0>\\
+  e_2&=<0,1,\dots,0>\\
+  &\vdots\\
+  e_n&=<0.0,\dots,1>
+\end{align*}
+
+\section*{4.2 convergence in $\mathbb{R}^n$}
+definition:
+a sequence $\{x^i\}$ of parts in $\mathbb{R}^n$ converge to $c\in \mathbb{R}^n$ if $\forall\varepsilon>0 \exists N=N(\varepsilon)\in\mathbb{N}$, such that $||x^i-c||<\epsilon$ if $i\ge N$ we say $\lim x^i=c$.
+
+\subsection*{4.2.2 lemma}
+$\lim  x^i=a$ if and only if $\lim ||x^i-a||=0$.
+
+\subsection*{4.2.3 lemma}
+$\lim x^i=a$ if and only if $\forall j=1,\dots,n, \lim x_j^i=a_j$ 
+\section*{october 15}
+\section*{lemma 4.2.3****know this}
+a sequence $\{x^i\}$ of points $\mathbb{R}^n$ converges to $a\in \mathbb{R}^n$ if and only if for each coordinate $\lim x_j^i=a_j$
+
+\section*{thm 4.2.5}
+every cauchy sequence of points in $\mathbb{R}^n$ converges to a point in $\mathbb{R}^n$.
+\subsection*{def}
+a sequence $\{x^i\}$ of points in $\mathbb{R}^n$ is cauchy if $\forall\varepsilon>0\exists N\in \mathbb{N}$ such that $||x^i-x^j||<\varepsilon$ for all $i,j\ge N$
+\subsubsection*{proof}
+we have a cauchy sequence. given $\varepsilon>0, \exists N$, $||x^i-x^j||<\varepsilon$ if $i,j\ge N$
+
+$|x_k^i-x_k^j|\le||x^i-x^j||=\sqrt{(x_1^i-x_1^j)^2+(x_2^i-x_2^j)^2+\dots+(x_n^i-x_n^j)^2}$
+
+so each of the coordinates for the sequence is cauchy ($\{x_k^i\}$ is cauchy). So it converges to some $a_k\in\mathbb{R}$ and $a=(a_1,a_2,\dots,a_n)$ and so b lemma 4.2.3 $||x^i-a||\to 0$
+
+\section*{4.2.6}
+read, useful for next weeks hw
+
+\section*{4.3 open, closed sets in $\mathbb{R}^n$}
+def: let $A\subseteq\mathbb{R}^n$. we say that $x$ is a limit point of $A$ if there exists  a sequence $\{a_k\}$ with $a^{k}\in A$ such that the limit of the sequence is $x$.
+
+def: a set $A\subseteq\mathbb{R}^n$ is closed if it contains all of it's limit points.
+
+\subsubsection*{example}
+is $[0,1]$ closed? and is $(0,1]$ not closed?
+
+0 is a limit point because $0=\lim \frac{1}{n}$ an $\frac{1}{n}\in(0,1]$.
+
+consider $[a,b]$. $\{x_n\}\subseteq[a,b]$. $a\le x_n\le b, \forall n=1,2,3,\dots$
+
+assume $\lim x_n$ exists, call it $x$. we will show $a\le x\le b$.  then assume not and show wlog $x>b$.
+
+take $\varepsilon=\frac{x-b}{2}$. then $\exists N$ such that $|x_N-x|<\epsilon$. $x-x_N<\frac{x-b}{2}$ and $b<\frac{x}{2}+\frac{b}{2}<x_n$ and so we have a contradiction
+
+
+\subsection*{special cases}
+$\emptyset$ is closed. $[a,+\infty)$ and $(-\infty,a]$ are closed.
+
+finite sets of $\mathbb{R}^n$ are closed.
+\subsubsection*{proof}
+let $A=\{a_1,\dots,a_M\}$. considera sequence $\{x_j\}$ such that $x_j\in A,\forall j\in \mathbb{N}$. at least one of the points appears $\infty$ many times. if $\lim x_j$ exists then at some point the sequence is a single repeating point, which is the limit, which is in $A$.
+
+\section*{proposition 4.3.3}
+the finite union of closed sets is closed, arbitrary  intersections of closed sets are closed.
+
+\subsubsection*{proof}
+let $A,B$ be closed, we need to check that $A\cup B$ is closed, then by induction, if $A_1,\dots,A_N$ is closed then $\bigcup_{i=1}^NA_i$ is closed.
+
+pick a sequence $\{x_j\}$ of points in $A\cup B$. converging to some $x\in \mathbb{R}^n$. We need to show that $x\in A\cup B$
+
+$x_j\in A\cup B\Rightarrow x_j\in A$ or $x_j\in B$. We have infinitely many points and so either $A$ or $B$ contains infinitely many of the points. but since the sequence has a limit $\exists N$ such that $x_j\in A\forall j\ge N$
+
+infinitely many of the points are in one of the sets, but since the sequence has a limit, passing to a subsequence oif necessary, we get that all points in the sequence are eventually in one of the seats, hence the limit is in that set because the set is closed $\Rightarrow x\in A\cup B$
+
+and for the second part:
+let $\{A_i\}$ be a collection of closed sets. let $\{x_n\}$ be a sequence such that $x_n\in\bigcap_{i\in I}A_i$ and $\lim x_n=x$. we need to show $x\in \cap A_i$ since $x_n\in A_i\forall i$ and $A_i$ is closed $\lim x_n=x\in A_i\forall i$
+
+
+\subsubsection*{example}
+a countable union of closed sets may not be closed. $A_n=[\frac{1}{n},1]\quad \bigcup_{n=1}^\infty[\frac{1}{n},1]=(0,1]$
+
+\subsubsection*{def}
+let $A\subseteq\mathbb{R}^n$. The closure of $A$, $\bar{A}$ is the set containing all the limit points of $A$. $\bar{A}$ is the smallest closed set that contains $A$.
+
+\subsubsection*{def}
+a set $U\subseteq \mathbb{R}^n$ is open if $\forall x\in U\exists B(x,\varepsilon)\subset U$. $B(x,\varepsilon)=\{y\in \mathbb{R}^2:||y-x||<\varepsilon\}$
+
+\subsubsection*{proposition}
+a set is open iff $A^C$ is closed.
+\end{document}
+
