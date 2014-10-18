@@ -1,0 +1,137 @@
+%shell-escape
+\documentclass[letterpaper]{article}
+
+\usepackage{fullpage}
+\usepackage{nopageno}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{gnuplottex}
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+
+\begin{document}
+\title{Homework 5}
+\date{October 17, 2014}
+\author{Jon Allen}
+\maketitle
+3.2 D, E, L, M*, P(e)-(n), 3.3.A
+\renewcommand{\labelenumi}{3.\arabic{enumi}}
+\renewcommand{\labelenumii}{\Alph{enumii}.}
+\renewcommand{\labelenumiii}{(\alph{enumiii})}
+\begin{enumerate}
+\setcounter{enumi}{1}
+\item
+  \begin{enumerate}
+  \setcounter{enumii}{3}
+  \item
+    \begin{align*}
+      \limsup \sqrt[k]{2^ka_{2^k}}=\limsup 2\sqrt[k]{a_{2^k}}\\
+      \forall n:a_n>0\text{ and }a_n\ge a_{n+1}\therefore\\
+      \limsup 2\sqrt[k]{a_{2^k}}=2\lim \sqrt[k]{a_{2^k}}
+    \end{align*}
+    We know the limit exists because the series is monotonic and bounded.
+
+    Now if we assume that $\sum\limits{a_n}$ converges, then $\lim a_n=0$ and so $0\le\lim 2\sqrt[k]{a_{2^k}}=2\lim\sqrt[k]{a_n}\le2\lim a_n=0$. And so then $\sum\limits{2^ka_{2^k}}$ converges by the root test.
+
+    Now if we assume that $\sum a_n$ diverges then by the root test $\lim \sqrt[n]{a_n}\ge 1$. It then follows that $\limsup \sqrt[k]{2^ka_{2^k}}=2\lim\sqrt[k]{a_{2^k}}=2\lim\sqrt[k]{a_k}\ge2$ and so then $\sum 2^ka_{2^k}$ is divergent by the root test.
+%    Note that $\sum\limits_{k=1}^\infty{2^ka_{2^k}}=\sum\limits_{n=1}^\infty{b_n}$ where $b_n=\{a_2,a_2,a_4,a_4,a_4,a_4,a_8,a_8,a_8,a_8,a_8,a_8,a_8,a_8\dots\}$.
+%    Now if $\sum\limits_{i=1}^k{2^k}<2k$
+%    Now because $a_n$ is monotone decreasing we know that $a_n\ge b_n$ for all $n\ge 2$.
+%    Let us assume that $\sum\limits_{n=1}^\infty{a_n}$ converges.
+%    Then for all $\varepsilon>0$ there exists some $N$ such that $\left\lvert a_n-0\right\rvert<\varepsilon$ where $n\ge N$.
+%    Note that $a_n$ is monotone decreasing, bounded by zero, so then $b_m$ must also be. Furthermore, for every $a_n$ there exists some $b_m=a_{2^n}\le a_n$. And so we can say that for all $\varepsilon>0$ then there exists some $M$ such that $|b_m-0|<\varepsilon$ where $m\ge M$ and so then $\sum\limits_{k=1}^\infty{2^ka_{2^k}}$ must be summable if $\sum\limits_{n=1}^\infty{a_n}$ is summable.
+  \item
+    $\sum\limits_{k=1}^\infty{2^k\frac{1}{(2^{k})^p}}=\sum\limits_{k=1}^\infty{2^{k(1-P)}}$. Now $\limsup\sqrt[n]{2^{n(1-P)}}=\lim\limits_{n\to \infty}\sup\limits_{k\ge n}2^{1-P}=2^{1-P}$. If $1-P<0$ then $2^{1-P}<1$ and so the series will converge. So $1<P$ is the condition that guarantees cconvergence
+  \setcounter{enumii}{11}
+  \item
+    \begin{enumerate}
+    \item
+      $\sum\limits_{n=1}^\infty{\frac{1}{n^{2}}}$ is convergent by the p-series test. Because $\frac{1}{n^2}$ is monotonic decreasing, $\limsup\limits_{n\to\infty}\sqrt[n]{\frac{1}{n^2}}=\lim\limits_{n\to\infty}\sqrt[n]{\frac{1}{n^2}}=1$
+    \item
+      $\sum\limits_{n=1}^\infty{1}$ is divergent, but $\limsup\limits_{n\to\infty}\sqrt[n]{1}=\limsup\limits_{n\to\infty}1=1$
+    \end{enumerate}
+  \item
+  \setcounter{enumii}{15}
+    Let's assume $\sum\limits_{n=1}^\infty{a_n}$ converges. Note that $a_n\ge 0$ and so $1\le a_n+1$. Then $\frac{a_n}{1+a_n}=\left\lvert \frac{a_n}{1+a_n}\right\rvert\le a_n$ (it's equal if $a_n=0$). By the comparison test then, $\sum\limits_{n=1}^\infty{\frac{a_n}{1+a_n}}$ converges.
+
+  \item
+  \begin{enumerate}
+  \setcounter{enumiii}{4}
+  \item
+    $\limsup\sqrt[n]{e^{-n^2}}=\limsup e^{-n}$ it is strictly decreasing so $\limsup e^{-n}=\lim e^{-n}=0$ and so it converges by the root test.
+  \item
+    $\lim\limits_{n\to\infty}{\sin(n\pi/4)}$ does not converge, so the sum cannot converge
+  \item
+    $\sum\limits{(-1)^n\sin(1/n)}$
+
+    The limit of $\sin(1/n)$ is 0 and the sequence $\sin(1/n)$ is monotone decreasing, so the series is summable by the Leibniz  alternating series test.
+  \item
+    $\sum\limits{\frac{1}{\sqrt{n^3+4}}}$.
+
+    $\frac{1}{\sqrt{n^3+4}}=\left\lvert\frac{1}{\sqrt{n^3+4}}\right\rvert<\frac{1}{\sqrt{n^3}}=\frac{1}{n^{3/2}}$ which converges by the p-series test and so the original series converges by the comparison test.
+  \item
+    $\sum\limits{(\sqrt[n]{n}-1)^n}$
+
+    $\lim \sqrt[n]{n}=1$ and so $\lim \sqrt[n]{n}-1=0$ and then by the root test, the series converges
+  \item
+    $\sum\limits{\frac{\sqrt{n+1}-\sqrt{n}}{n}}=\sum\limits{\frac{1}{n(\sqrt{n+1}+\sqrt{n})}}=\left\lvert\sum\limits{\frac{1}{n(\sqrt{n+1}+\sqrt{n})}}\right\rvert<\sum\limits{\frac{1}{2n\sqrt{n}}}=\frac{1}{2}\sum\limits{\frac{1}{n^\frac{3}{2}}}$ which is convergent by the p-series test, and so the original series is convergent by the comparison test.
+  \item
+  $\sum\limits{\frac{(-1)^n}{\sqrt{n}\log n}}$ because $\sqrt{n}$ and $\log n$ both increase without bound, then $\sqrt{n}\log n$ increases without bound and $\frac{1}{\sqrt{n}\log n}$ strictly decreases  and converges to zero. So by the leibniz alternating series test, our series converges.
+  \item
+    because $\lim \sqrt[n]{n}=1$ then $\lim \frac{1}{\sqrt[n]{n}}=1$ and $\lim \frac{(-1)^n}{\sqrt[n]{n}}$ will not converge so then the series will not converge.
+  \item
+    $\sum\limits{\frac{1}{(\log n)^k}}$. If $k\le0$ then the series obviously diverges because $\log n$ increases without bound, and so any non-negative power of $\log n$ will be at least 1. 
+
+    If now notice that $\frac{\log n}{\log (n+1)}<1$ and therefore $\left(\frac{\log n}{\log (n+1)}\right)^k<1$ if $k>0$. So in this case our series converges by the ratio test.
+  \item
+    $\sum\limits{\frac{n!}{n^n}}$
+
+    \begin{align*}
+      \frac{(n+1)!}{(n+1)^{n+1}}&=\frac{n!}{(n+1)^n}\\
+      \frac{n!}{(n+1)^n}\cdot\frac{n^n}{n!}&=\frac{n^n}{(n+1)^n}<1
+    \end{align*}
+    and so our series converges by the ratio test
+  \end{enumerate}
+
+  \end{enumerate}
+\item
+\begin{enumerate}
+\item
+  find the series in 3.2p that converge conditionally but not absolutely
+  c,f,g,k,l,o,p,q,r,u are the ones that don't get ruled out instantly because they have terms that aren't non-negative. f,l don't converge, so we have c,g,k,o,p,q,r,u. We were previously assigned only through n. I'm going to assume that if it was desired for us to worry about any others, they would have been assigned above, so we will worry only about c, g, and k.
+  \begin{enumerate}
+  \setcounter{enumiii}{2}
+  \item
+  \begin{align*}
+    \frac{\mathrm{d}}{\mathrm{d}x}\frac{\log n}{n}=\frac{1-\log n}{n^2}<0 \quad\forall n>e\\
+    \lim_{a\to\infty}\int_1^a{\frac{\log x}{x}\,\mathrm{d}x}=\lim_{a\to\infty}\left[\frac{1}{2}\log^2a-\frac{1}{2}\log^2 1\right]
+  \end{align*}
+  this diverges, so it is conditionally and not absolutely convergent
+  \setcounter{enumiii}{6}
+  \item
+  \begin{align*}
+    \sin(0)=\frac{2\cdot0}{\pi}\\
+    \sin(\frac{\pi}{2})=\frac{2\cdot\pi}{\pi\cdot 2}\\
+    \frac{\mathrm{d}^2}{\mathrm{d}x^2}\sin x =-\sin x\\
+    0\le x\le \pi\Rightarrow-\sin(x)<0\therefore\\
+    \forall x\text{ such that }0\le x\le \frac{\pi}{2}\\
+    \frac{2x}{\pi}\le\sin x\\
+    \frac{2}{\pi n}\le\sin\frac{1}{n}
+  \end{align*}
+  Because $\frac{1}{n}$ diverges then $\sin\frac{1}{n}$ diverges by the comparison test. so this one is conditionally and not absolutely convergent.
+  \setcounter{enumiii}{10}
+  \item
+    \begin{align*}
+      \sum\limits{\frac{1}{\sqrt{n}\log n}}\\
+      n<e^{\sqrt{n}}\\
+      \log n<\sqrt{n}\\
+      \sqrt{n}\log n<n\\
+      \frac{1}{\sqrt{n}\log n}>\frac{1}{n}
+    \end{align*}
+    so by the comparison test, the series is divergent
+  \end{enumerate}
+  And it looks like all three of the series we examined are conditionally divergent, but not absolutely divergent
+\end{enumerate}
+\end{enumerate}
+\end{document}
