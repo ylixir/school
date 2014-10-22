@@ -54,10 +54,11 @@ Section 3.6: \#7, 20.
   \item
     Which of the multiplicative groups $\mathbb{Z}_7^\times,\mathbb{Z}_{10}^\times,\mathbb{Z}_{12}^\times,\mathbb{Z}_{14}^\times$ are isomorphic?
 
+    The multiplicative groups consist of powers of the elements of the original group that are relatively prime to $n$. The elements that aren't relatively prime can be represented as multiples of powers of relatively prime numbers and so are redundant.
     \begin{align*}
-      \mathbb{Z}_7^\times&=\{[2^{\alpha_1}3^{\alpha_2}5^{\alpha_3}]_7:\alpha_1,\alpha_2,\alpha_3\in\mathbb{Z}\}\\
+      \mathbb{Z}_7^\times&=\{[2^{\alpha_1}3^{\alpha_2}4^{\alpha_3}5^{\alpha_5}6^{\alpha_5}]_7:\alpha_1,\alpha_2,\alpha_3,\alpha_4,\alpha_5\in\mathbb{Z}\}\\
       5^6&=25\cdot5^4=4\cdot5^4=20\cdot5^3=6\cdot5^3=30\cdot5^2=2\cdot5^2=10\cdot5=3\cdot 5=15=1\\
-      \mathbb{Z}_7^\times&=\{[\left(5^4\right)^{\alpha_1}\left(5^5\right)^{\alpha_2}5^{\alpha_3}]_7:\alpha_1,\alpha_2,\alpha_3\in\mathbb{Z}\}=\langle5\rangle\cong\mathbb{Z}_6\\
+      \mathbb{Z}_7^\times&=\{[\left(5^4\right)^{\alpha_1}\left(5^5\right)^{\alpha_2}\left(5^2\right)^{\alpha_3}5^{\alpha_4}\left(5^3\right)^{\alpha_5}]_7:\alpha_1,\alpha_2,\alpha_3,\alpha_4,\alpha_5\in\mathbb{Z}\}=\langle5\rangle\cong\mathbb{Z}_6\\
       \mathbb{Z}_{10}^\times&=\left\{\left[3^{\alpha_1}7^{\alpha_2}9^{\alpha_3}\right]_{10}:\alpha_1,\alpha_2,\alpha_3\in\mathbb{Z}\right\}\\
       3^4&=9\cdot3^2=27\cdot3=7\cdot3=21=1\\
       \mathbb{Z}_{10}^\times&=\{[3^{\alpha_1}\left(3^3\right)^{\alpha_2}\left(3^2\right)^{\alpha_3}]_7:\alpha_1,\alpha_2,\alpha_3\in\mathbb{Z}\}=\langle3\rangle\cong\mathbb{Z}_4\\
@@ -69,7 +70,7 @@ Section 3.6: \#7, 20.
       7\cdot11=77=5\quad\quad
       5\cdot11=55=7\\
       Z_{12}^\times&=\{1,5\}\times\{1,7\}\cong\mathbb{Z}_2\times\mathbb{Z}_2\\
-      Z_{14}^\times&=\{[3^{\alpha_1}5^{\alpha_2}9^{\alpha_3}11^{\alpha_4}13^{\alpha_5}\}\\
+      Z_{14}^\times&=\{[3^{\alpha_1}5^{\alpha_2}9^{\alpha_3}11^{\alpha_4}13^{\alpha_5}]:\alpha_1,\alpha_2,\alpha_3,\alpha_4,\alpha_5\in\mathbb{Z}\}\\
       3^6&=9\cdot3^4=27\cdot3^3=13\cdot3^3=39\cdot3^2=11\cdot3^2=33\cdot3=5\cdot3=15=1\\
       Z_{14}^\times&=\{[3^{\alpha_1}\left(3^5\right)^{\alpha_2}\left(3^2\right)^{\alpha_3}\left(3^4\right)^{\alpha_4}\left(3^3\right)^{\alpha_5}]:\alpha_1,\alpha_2,\alpha_3,\alpha_4,\alpha_5\in\mathbb{Z}\}=\langle3\rangle\cong\mathbb{Z}_6
     \end{align*}
@@ -77,17 +78,59 @@ Section 3.6: \#7, 20.
   \setcounter{enumii}{14}
   %3.5 #15
   \item
-    Prove that any finite cyclic group with more than two elements has at least two diffferent generators.
+    Prove that any finite cyclic group with more than two elements has at least two different generators.
+
+    Lets call our group $G$ with generator $a$. So $G=\langle a\rangle$. Furthermore the order of $\langle a\rangle$ is finite, and more than two, and so $\text{ord}(\langle a\rangle)=\text{ord}(a)=n$ where $2<n\in \mathbb{N}$. That is to say $G=\{e,a,a^2,\dots,a^{n-1}\}$.
+
+    Now because $n>2$ we know that $1\ne n-1$ and because the order of $a$ is $n$ we know that $a\ne a^{n-1}\ne e$. So lets see what happens if we apply the group operation $n-1$ times to the element $a^{n-1}$.
+    \[\left(a^{n-1}\right)^{n-1}=
+      a^{(n-1)^2}=a^{n^2-2n+1}=
+      \left(a^n\right)^n\left(a^n\right)^{-2}a^1=e^ne^{-2}a=a
+    \]
+    And so $a^{n-1}$ generates $a$ and $a$ generates $G$. The immediate consequence of this fact is that $a^{n-1}$ generates $G$.
+
+    {\em Note:} I had some problems with this because all I have shown is that if $a$ generates a group, then so does it's inverse, which seems kind of too obvious and maybe even the same statement. But then I considered the smallest group which fits the definition: $G=\{e,a,a^2\}$. Now $a^{-1}=a^2$ and obviously $e$ can not generate $G$, so the only other possible element to generate $G$ is $a^{-1}$. So that's what I went with in my proof.
+
+%    Let's assume $n$ is odd, then there is some $k\in \mathbb{N}$ such that $n=2k+1$ by definition. Now, because there are more than two elements in $G$ we know that $G$ contains at least $e,a$ and crucially $a^2$. Lets take this element and apply our group operation to it $k+1$ times.
+%  \[(a^2)^{k+1}=a^{2k+2}=a^{(2k+1)+1}=a^{2k+1}a=a^na=a\]
+%  Of course we can generate all the elements in $G$ by taking $a$ to the powers $0$ through $n-1$ and because $(a^2)^{k+1}=a$ it follows that we can generate $G$ from powers of $a^2$ also.
+
+%  Now lets assume $n$ is even, then there is some $k\in \mathbb{N}$ such that $n=2k$ by definition. Well we know that $e,a$ and $a^2$ are in $G$. But that is an odd number of elements so then $a^3\in G$ for sure. Now $n>2$ and so $a^{n-2}$ is also in our group and $a^{n-2}\ne e$. And closure tells us that if we perform our group operation on these elements, then the result is also in our group.
   \end{enumerate}
 \item
   \begin{enumerate}
   \setcounter{enumii}{6}
-  %3.5 #7
+  %3.6 #7
   \item
     Find the order of each element of $D_6$.
+
+    \begin{align*}
+      e&=e&
+      (a^1)^6&=e&
+      (a^2)^3&=e\\
+      (a^3)^2&=e&
+      (a^4)^3&=e&
+      (a^5)^6&=e\\
+      b^2&=e&
+      (ba)^2&=(baa^{-1}b)=e\\
+      \intertext{by assumption}ba^n&=a^{-n}b\\
+      \intertext{by induction}a^{-1}ba^n&=a^{-1}a^{-n}b&
+      baa^n&=ba^{n+1}=a^{-(n+1)}b\\
+      \intertext{and then}(ba^n)^2&=ba^na^{-n}b=e
+    \end{align*}
+    And so we have $\text{ord}(e)=1$ (duh), $\text{ord}(a)=\text{ord}(a^5)=6, \text{ord}(a^2)=\text{ord}(a^4)=3$ and $\text{ord}(ba^k)=2\quad\forall 0\le k\le 5\in\mathbb{Z}$
   \setcounter{enumii}{19}
-  %3.5 #20
+  %3.6 #20
   \item
+    Let the dihedral group $D_n$ be given by elements $a$ of order $n$ and $b$ of order 2, where $ba=a^{-1}b$. Find the smallest subgroup of $D_n$ that contains $a^2$ and $b$.
+
+    {\em Hint: }Consider two cases, depending on whether $n$ is odd or even.
+
+    The group specified is $\langle a^2\rangle\times\langle b\rangle$. We know that $\text{ord}(a)=n$ and so if $k<n$ then $a^k\ne e$.
+
+    Assume $n$ is even. Then $(a^2)^{\frac{n}{2}}=e$ and $\forall0<k<\frac{n}{2}$ we know that $(a^2)^{k}\ne e$ and so the subgroup we are looking for consists of $\{a^{2j}b^k:0\le j\le\frac{n}{2},0\le k\le1\text{ and }j,k\in\mathbb{Z}\}$
+
+    Now lets assume $n$ is odd. Then $n=2k+1$ and for all $0<j\le k$ we know that $a^{2j}\ne e$. And further $a^{2(k+1)}=a^{2k+1}a=a$. That is to say $\langle a^2\rangle=\langle a\rangle$. And so it follows that the subgroup we are looking for is $\langle a\rangle\times\langle b\rangle$ which is the original group $D_n$.
   \end{enumerate}
 \end{enumerate}
 \end{document}

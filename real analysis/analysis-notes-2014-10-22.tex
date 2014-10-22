@@ -279,48 +279,5 @@ assume $(a,b)\subseteq\mathcal{C}$ then $(a,b)\subseteq C_n$. Every interval has
 
 \subsection*{defintions}
 def: a set $A\subseteq\mathbb{R}^n$ is compact if every sequence $\{a^k\}$ of elements of $A$ has a convergent subsequence $\{a^{k_n}\}$ and $\lim a^k=a\in A$ any closed and bounded set in $\mathbb{R}^n$ is compact by bolzano-weierstrass
-
-\section*{october 22}
-\subsubsection*{definition}
-a set $A\subseteq\mathbb{R}^n$ is (sequentially) compact if every sequence $\{a_k\}$ such that $a_k\in A\forall k$ has a convergent subsequence $\{a_{k_l}\}$ and $\lim\limits_{l\to\infty}a_{k_l}=a\in A$.
-\subsubsection*{observation}
-a closed bounded set $B\subseteq\mathbb{R}$ is compact by bolzno-weierstrass
-\subsubsection*{goal}
-a set $A\subseteq \mathbb{R}^n$ is compat $\Leftrightarrow$ it is losed and bounded. In other topological spaces a closed and bouned set need not be compact.
-\subsubsection*{definition}
-a set $A\subseteq\mathbb{R}^n$ is bounded if $\exists M>0$ st $A\subseteq B(o,M)$
-\subsection*{lemma 4.4.3}
-if $A$ is ompact, then $A$ is closed and bounded
-\subsubsection*{proof}
-to prove that $A$ is closed pick a sequenct $\{a_k\}$, $a_k\in A$ st $\lim a_k=x\in\mathbb{R}^n$. we have to show that $x\in A$. since $A$ is compact and $a_k\in A\forall k$ the sequence $\{a_k\}$ has a convergent subsequence $\{a_{k_l}\}$ st $\lim a_{k_l}\in A$. but a subsequence of a convergent sequence has the same limit as the original sequence, so $x\in A$ as we wanted, so A is closed.
-
-to prove that $A$ is bounded, we assume that $A$ is not bounded.
-
-$\forall M\in\mathbb{N}\exists a_N\in A$ with $||a_N||\ge N$. consider $\{a_N\}$. any susequence of this subsequence is unbounded also and cannot be convergent. this contradicts compactness, and so $A$ must be bounded
-
-\subsection*{lemma 4.4.4}
-if $K\in \mathbb{R}^n$ is compact and $C\in K$ and $C$ is closed then $C $ is compact.
-\subsubsection*{proof}
-To prove the $C$ is compact, we pick any sequence $\{a_k\}\in C$ and we need to show that $\{a_k\}$  has a subsequence convergent to a point in $C$. $\{a_k\}$ is also a sequence in $K$ and $K$ is compact. hence $\exists\{a_{k_l}\}$ st $\lim a_{k_l}=x\in K$. $\{a_{k_l}\}$ is a sequence in $C$ which is closed. hence $\lim a_{k_l}=x\in C$
-
-\subsection*{lemma 4.4.5}
-the cube $[-M,M]^n$ is compact in $\mathbb{R}^n$. (cartesian product notation)
-
-\subsubsection*{proof}
-pick a sequence $\{a^k\}$ contained in our cube. $\forall k,j=1,\dots,n, |a_j^k|\ge M$. $\{a_1^k\}\in \mathbb{R}^1$ sequence of first coords. by BW $\exists\{a^{k_l}_1\}$ which is convergent. Then $\{a^{k_{l_m}}_2\}$ is a subsequence of the sequence of second coords, byt BW $\exists$ a subsequence $\{a_2^{k_{l_m}}\}$ convergent. keep going to $n$ then we get $\{a_n^{k_j}\}$, a convergent subsequence of the nth coords. since each coordinate has a limit, then the original vector sequence has a limit which is in $[-M,M]^n$
-
-\subsection*{finish proof interrupted by lemmas}
-if $A\in \mathbb{R}^n$ is closed and bounded then $A$ is compact. Since $A$ is bounded, $\exists M>0$ st $A\in B(0,M)\in [-M,M]^n$ which is compact and so $A$ is compact.
-
-\subsection*{the cantor intersection theorem}
-let $\{A_n\}$ be a decreasing sequence of nonempty compact set in $\mathbb{R}^n$. $A_1\supseteq A_2\supseteq A_3\supseteq\dots$. then $\bigcap_{j=1}^\infty A_j$ nonempty.
-\subsubsection*{proof}
-pick $a_k\in A_k$. $\{a_k\}$ is a sequence of points in $A_1$ and $A_1$ is compact. $\exists\{a_{k_l}\}$ convergent to some $x\in A_1$. for each $l, a_{k_l}\in \bigcap_{i=1}^{k_l}A_i$ for fixed $l$ $a_{k_n}\in \bigcap_{i=1}^{k_l}A_i\forall n\ge l$. then $x\in \bigcap_{i=1}^{k_l}A_i\forall l$ so the same is true to $\infty$
-
-$\mathcal{C}$ is closed, has empty interior, length 0 and contains uncountably many points, and is compact.
-
-$\mathcal{C}$ has no isolated points.
-$\forall r>0$ the inverval $(x-r,x+r)$ contains all the left, right endpoints of intervals in $\mathcal{C}_n$ for all $n\ge N$ and all these endpoints are in $\mathcal{C}$
-so each $x\in \mathcal{C}$ is a cluster point of $\mathcal{C}$ because $x=\lim x_n,x_n\in \mathcal{C},x_n\ne x$.
 \end{document}
 
