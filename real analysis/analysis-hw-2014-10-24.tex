@@ -15,12 +15,7 @@
 \date{October 24, 2014}
 \author{Jon Allen}
 \maketitle
-4.2 B,C (for C, look back at exercise 28 D, which i did in class)
-
-4.3 B,D,J*,K*
-
-Graduate: 4.3 N
-\renewcommand{\labelenumi}{3.\arabic{enumi}}
+\renewcommand{\labelenumi}{4.\arabic{enumi}}
 \renewcommand{\labelenumii}{\Alph{enumii}.}
 \renewcommand{\labelenumiii}{(\alph{enumiii})}
 \begin{enumerate}
@@ -28,7 +23,117 @@ Graduate: 4.3 N
 \item
   \begin{enumerate}
   \setcounter{enumii}{1}
+  %4.2B
   \item
+    If a sequence $(\boldsymbol{x}_n)_{n=1}^\infty$ in $\mathbb{R}^n$ satisfies $\sum_{n\ge1}{\left\lvert\left\lvert\boldsymbol{x}_n-\boldsymbol{x}_{n+1}\right\rvert\right\rvert}<\infty$, show that it is a Cauchy sequence.
+
+    Let's say $\sum_{n\ge1}||\boldsymbol{x}_n-\boldsymbol{x}_{n+1}||=L$.
+    Then for every $\varepsilon>0$ there exists some $N$ such that
+    $\sum\limits_{n=1}^{N-1}{||\boldsymbol{x}_n-\boldsymbol{x}_{n+1}||}>L-\varepsilon$
+    and by extension $\varepsilon>\sum\limits_{n=N}^\infty{||\boldsymbol{x}_n-\boldsymbol{x}_{n+1}||}
+    >\sum\limits_{k=n}^{m-1}{||\boldsymbol{x}_k-\boldsymbol{x}_{k+1}||}$ for all $m>n\ge N$.
+    And with the triangle inequality and the observation that our series is telescoping we quickly see that
+    \[\varepsilon>\sum\limits_{k=n}^{m-1}{||\boldsymbol{x}_k-\boldsymbol{x}_{k+1}||}\ge \left\lvert\left\lvert\sum\limits_{k=n}^{m-1}{\boldsymbol{x}_k-\boldsymbol{x}_{k+1}}\right\rvert\right\rvert=||\boldsymbol{x}_n-\boldsymbol{x}_{m}||\]
+    Which is the very definition of a Cauchy sequence.
+    Well almost, I guess to be complete I should point out that $||\boldsymbol{x}_n-\boldsymbol{x}_n||=0<\varepsilon$ and $||\boldsymbol{x}_n-\boldsymbol{x}_m||=||\boldsymbol{x}_m-\boldsymbol{x}_n||<\varepsilon$.
+    So our inequality holds for all $m,n\ge N$, not just $m>n\ge N$
+
+  %4.2C
+  \item
+    \begin{enumerate}
+    %4.2Ca
+    \item
+      Give an example of a Cauchy sequence for which the condition of Exercise B fails.
+      \[a_n=\frac{(-1)^n}{n}\]
+      \begin{align*}
+        \sum\limits_{n\ge 1}{\left\lvert\frac{(-1)^n}{n}-\frac{(-1)^{n+1}}{n+1}\right\rvert}
+        &=\sum\limits_{n\ge 1}{\left\lvert(-1)^n\left(\frac{1}{n}-\frac{-1}{n+1}\right)\right\rvert}\\
+        &=\sum\limits_{n\ge 1}{\left\lvert\frac{1}{n}+\frac{1}{n+1}\right\rvert}\\
+        &>\sum\limits_{n\ge 1}{\frac{1}{n}}=\infty
+      \end{align*}
+    %4.2Cb
+    \item
+      However, show that every Cauchy sequence $(\boldsymbol{x}_n)_{n=1}^\infty$ has a subsequence $(\boldsymbol{x}_{n_i})_{i=1}^\infty$ such that $\sum_{i\ge1}\left\lvert\left\lvert \boldsymbol{x}_{n_i}-\boldsymbol{x}_{n_{i+1}}\right\rvert\right\rvert<\infty$
+
+      First we choose $\boldsymbol{x}_{N_1}$ such that $||\boldsymbol{x}_m-\boldsymbol{x}_n||<\frac{1}{2}$ for all $m,n\ge N_1$.
+      We then proceed, choosing $\boldsymbol{x}_{N_i}$ such that $||\boldsymbol{x}_m-\boldsymbol{x}_n||<\frac{1}{2^i}$ for all $m,n\ge N_i$.
+      Now then $\sum_{i\ge1}||\boldsymbol{x}_{N_i}-\boldsymbol{x}_{N_i}||<\sum_{i\ge1}\frac{1}{2^i}=-1+\sum_{i\ge0}\frac{1}{2^i}=-1+\frac{1}{1-\frac{1}{2}}=1<\infty$ as required.
+    \end{enumerate}
+  \end{enumerate}
+\item
+  \begin{enumerate}
+  \setcounter{enumii}{1}
+  %4.3B
+  \item
+    Let $(\boldsymbol{a}_n)_{n=1}^\infty$ be a sequence in $\mathbb{R}^k$ with $\lim\limits_{n\to\infty}\boldsymbol{a}_n=\boldsymbol{a}$. Show that $\{\boldsymbol{a}_n:n\ge 1\}\cup\{\boldsymbol{a}\}$ is closed.
+
+    Let's say $A=\{\boldsymbol{a}_n:n\ge1\}\cup\{\boldsymbol{a}\}$.
+    If $A$ is not closed, then we can form a sequence from the elements of $A$ that converge on some point $\boldsymbol{b}\in\mathbb{R}^k$ where $\boldsymbol{b}\not\in A$.
+
+    Now lets assume that there is no element in $A$ that is closest to $\boldsymbol{b}$.
+    Then for every $\varepsilon>0$ then we could find some $L$ such that $||\boldsymbol{a}_{n_l}-\boldsymbol{b}||<\varepsilon$ where $n_l\ge L$ and $\boldsymbol{a}_{n_l}$ is a subsequence of $\boldsymbol{a}_n$.
+    Of course this is the definition of a limit.
+    Unfortunately we know that all subsequences of $\boldsymbol{a}_n$ must converge to $\boldsymbol{a}$.
+    Of course $\boldsymbol{b}\not\in A$ so $\boldsymbol{b}\ne \boldsymbol{a}$.
+    This contradiction means that we can find some $\boldsymbol{a}_m\in A$ that is closest to $\boldsymbol{b}$.
+
+    Great, now lets say the sequence that converges on $\boldsymbol{b}$ is $a_j$.
+    Now we know that the distance from any element in $A$ to $\boldsymbol{b}$ is at least $||\boldsymbol{a}_m-\boldsymbol{b}||$.
+    Lets pick $\varepsilon=\frac{||\boldsymbol{a}_m-\boldsymbol{b}||}{2}$.
+    Then for all $\boldsymbol{a_j}$ we have $||\boldsymbol{a}_j-\boldsymbol{b}||>\varepsilon$ and so $\boldsymbol{b}$ can not be a limit.
+    And so we have closure by contradiction.
+  \setcounter{enumii}{3}
+  %4.3D
+  \item
+    If $A$ is a bounded subset of $\mathbb{R}$, show that $\sup A$ and $\inf A$ belong to $\overline{A}$.
+
+    Well $\sup A\ge \inf A$ and so $\inf A\le \sup A-\frac{1}{n}\inf A\le \sup A$ for all $n\in \mathbb{N}\setminus\{0\}$.
+    Lets just define $a_n=\sup A-\frac{1}{n}\inf A$ and notice that every $a_n\in A$ and $\lim\limits_{n\to\infty}a_n=\sup A$.
+    Similarly $\inf A\le \inf A+\frac{1}{n}\sup A\le \sup A$.
+    If we define $b_n=\inf A+\frac{1}{n}\sup A$ then every $b_n\in A$ and $\lim\limits_{n\to\infty}b_n=\inf A$.
+    And so because $\overline{A}$ contains all the limit points of $A$ then the supremum and infimum are in the closure.
+  \setcounter{enumii}{9}
+  %4.3J
+  \item
+    Show that if $U$ is open and $A$ is closed, the $U\setminus A=\{\boldsymbol{x}\in U:\boldsymbol{x}\not\in A\}$ is open.
+    What can be said about $A\setminus U$?
+
+    If $U$ is open, then $U'$ is closed.
+    And since $U'$ is closed and $A$ is closed, then $U'\cup A$ is closed.
+    And the complement of $U'\cup A$ is open.
+    But notice that the complement of $U'\cup A$ is $U\setminus A$.
+    And so $U\setminus A$ is open as required.
+
+    $A\setminus U$ is equal to the complement of $A'\cup U$ which is the union of two open sets.
+    But we don't know anything about the closure of the union of open sets in general.
+    If $A\cap U=\emptyset$ then $A\setminus U=A$ which is closed.
+    But if $A=[0,2]$ and $U=[1,2)$ then $A\setminus U=[0,1)\cup\{2\}$ which is open.
+  %4.3k
+  \item
+    Suppose that $A$ and $B$ are closed subsets of $\mathbb{R}$
+    \begin{enumerate}
+    \item
+      Show that the product set $A\times B=\{(x,y)\in \mathbb{R}^2:x\in A\text{ and }y\in B\}$ is closed.
+
+      Lets suppose that $A\times B$ is open.
+      Then there exists some sequence $(\boldsymbol{x}_n)_{n=1}^\infty$ such that every $\boldsymbol{x}_n\in A\times B$ and $\lim\limits_{n\to\infty}\boldsymbol{x}_n=\boldsymbol{x}$ where $\boldsymbol{x}\not\in A\times B$.
+      We know that $\boldsymbol{x}_n$ only converges to a point if each of it's coefficients converge.
+      So if $\boldsymbol{x}=(x_1,x_2)$ then $\lim\limits_{n\to\infty}x_{k,1}=x_1$.
+      Because $A$ is closed we know that $x_1\in A$.
+      Similarly $\lim\limits_{n\to\infty}x_{k,2}=x_2$.
+      And again, because $B$ is closed we know that $x_2\in B$.
+      Well, if $x_1\in A$ and $x_2\in B$ then $\boldsymbol{x}=(x_1,x_2)\in A\times B$.
+      Whoops, that contradicts our assumption.
+      I guess $A\times B$ is closed after all.
+    \item
+      Likewise show that if both $A$ and $B$ are open, then $A\times B$ is open.
+
+      If $A$ is open, then there exists some sequence $a_n$ where $a_n\in A$ for all $n$ but $\lim\limits_{n\to\infty}a_n=a\not\in A$.
+      Similarly, if $B$ is open, then there exists some sequence $b_n$ where $b_n\in B$ for all $n$ but $\lim\limits_{n\to\infty}b_n=b\not\in B$.
+      Now we define a sequence $\boldsymbol{x}_n=(a_n,b_n)$ in $A\times B$.
+      We know that $\lim\limits_{n\to\infty}\boldsymbol{x}_n=\boldsymbol{x}=(a,b)\not\in A\times B$.
+      And so we have found a sequence in $A\times B$ with a limit outside of $A\times B$ and then by definition $A\times B$ is open.
+    \end{enumerate}
   \end{enumerate}
 \end{enumerate}
 \end{document}
