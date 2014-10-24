@@ -87,9 +87,9 @@
   \item
     If $A$ is a bounded subset of $\mathbb{R}$, show that $\sup A$ and $\inf A$ belong to $\overline{A}$.
 
-    Well $\sup A\ge \inf A$ and so $\inf A\le a_n=\sup A-\frac{1}{n}(\sup A-\inf A)\le \sup A$ for all $n\in \mathbb{N}\setminus\{0\}$.
+    Well $\sup A\ge \inf A$ and so $\inf A\le a_n=\sup A-\frac{1}{n+1}(\sup A-\inf A)\le \sup A$ for all $n\in \mathbb{N}\setminus\{0\}$.
     Notice that $a_n\in A$ for all $n$ and $\lim\limits_{n\to\infty}a_n=\sup A$.
-    Similarly $\inf A\le b_n=\inf A+\frac{1}{n}(\sup A-\inf A)\le \sup A$.
+    Similarly $\inf A\le b_n=\inf A+\frac{1}{n+1}(\sup A-\inf A)\le \sup A$.
     We see that $b_n\in A$ for every $n$ and $\lim\limits_{n\to\infty}b_n=\inf A$.
     And so because $\overline{A}$ contains all the limit points of $A$ then the supremum and infimum are in the closure.
   \setcounter{enumii}{9}
