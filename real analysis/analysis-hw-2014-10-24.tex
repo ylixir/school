@@ -77,20 +77,20 @@
     Of course $\boldsymbol{b}\not\in A$ so $\boldsymbol{b}\ne \boldsymbol{a}$.
     This contradiction means that we can find some $\boldsymbol{a}_m\in A$ that is closest to $\boldsymbol{b}$.
 
-    Great, now lets say the sequence that converges on $\boldsymbol{b}$ is $a_j$.
+    Great, now lets say the sequence that converges on $\boldsymbol{b}$ is $\boldsymbol{a}_j$.
     Now we know that the distance from any element in $A$ to $\boldsymbol{b}$ is at least $||\boldsymbol{a}_m-\boldsymbol{b}||$.
     Lets pick $\varepsilon=\frac{||\boldsymbol{a}_m-\boldsymbol{b}||}{2}$.
-    Then for all $\boldsymbol{a_j}$ we have $||\boldsymbol{a}_j-\boldsymbol{b}||>\varepsilon$ and so $\boldsymbol{b}$ can not be a limit.
+    Then for all $\boldsymbol{a}_j$ we have $||\boldsymbol{a}_j-\boldsymbol{b}||>\varepsilon$ and so $\boldsymbol{b}$ can not be a limit.
     And so we have closure by contradiction.
   \setcounter{enumii}{3}
   %4.3D
   \item
     If $A$ is a bounded subset of $\mathbb{R}$, show that $\sup A$ and $\inf A$ belong to $\overline{A}$.
 
-    Well $\sup A\ge \inf A$ and so $\inf A\le \sup A-\frac{1}{n}\inf A\le \sup A$ for all $n\in \mathbb{N}\setminus\{0\}$.
-    Lets just define $a_n=\sup A-\frac{1}{n}\inf A$ and notice that every $a_n\in A$ and $\lim\limits_{n\to\infty}a_n=\sup A$.
-    Similarly $\inf A\le \inf A+\frac{1}{n}\sup A\le \sup A$.
-    If we define $b_n=\inf A+\frac{1}{n}\sup A$ then every $b_n\in A$ and $\lim\limits_{n\to\infty}b_n=\inf A$.
+    Well $\sup A\ge \inf A$ and so $\inf A\le a_n=\sup A-\frac{1}{n}(\sup A-\inf A)\le \sup A$ for all $n\in \mathbb{N}\setminus\{0\}$.
+    Notice that $a_n\in A$ for all $n$ and $\lim\limits_{n\to\infty}a_n=\sup A$.
+    Similarly $\inf A\le b_n=\inf A+\frac{1}{n}(\sup A-\inf A)\le \sup A$.
+    We see that $b_n\in A$ for every $n$ and $\lim\limits_{n\to\infty}b_n=\inf A$.
     And so because $\overline{A}$ contains all the limit points of $A$ then the supremum and infimum are in the closure.
   \setcounter{enumii}{9}
   %4.3J
