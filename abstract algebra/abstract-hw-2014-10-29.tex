@@ -1,0 +1,161 @@
+\documentclass[letterpaper]{article}
+
+\usepackage{fullpage}
+\usepackage{nopageno}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+
+\begin{document}
+\title{Homework}
+\date{October 29, 2014}
+\author{Jon Allen}
+\maketitle
+Section 3.6: 10, 21
+
+Section 3.7:  16, 1 (a)--you may want to read carefully examples 3.7.6 and 3.7.7 first
+\renewcommand{\labelenumi}{3.\arabic{enumi}}
+\renewcommand{\labelenumii}{\arabic{enumii}.}
+\renewcommand{\labelenumiii}{(\alph{enumiii})}
+\begin{enumerate}
+\setcounter{enumi}{5}
+\item
+  \begin{enumerate}
+  \setcounter{enumii}{9}
+  %3.6 10
+  \item
+    Show that the following matrices form a subgroup of $GL_2(\mathbb{C})$ isomorphic to $D_4$:
+    \[
+      \pm\left[\begin{array}{cc}1&0\\0&1\end{array}\right],\qquad
+      \pm\left[\begin{array}{cc}i&0\\0&-i\end{array}\right],\qquad
+      \pm\left[\begin{array}{cc}0&1\\1&0\end{array}\right],\qquad
+      \pm\left[\begin{array}{cc}0&i\\-i&0\end{array}\right].\qquad\qquad
+    \]
+    Because $D_n$ has two generators: $a$ of order $n$ and $b$ of order $2$ then $D_n\cong \mathbb{Z}_2\times\mathbb{Z}_n$. So $D_4\cong \mathbb{Z}_2\times\mathbb{Z}_4$.
+    \begin{align*}
+      \left[\begin{array}{cc}i&0\\0&-i\end{array}\right]^4&=
+      \left[\begin{array}{cc}-1&0\\0&-1\end{array}\right]\left[\begin{array}{cc}i&0\\0&-i\end{array}\right]^2=
+      \left[\begin{array}{cc}-i&0\\0&i\end{array}\right]\left[\begin{array}{cc}i&0\\0&-i\end{array}\right]=
+      \left[\begin{array}{cc}1&0\\0&1\end{array}\right]\\
+      \left[\begin{array}{cc}0&1\\1&0\end{array}\right]^2&=\left[\begin{array}{cc}1&0\\0&1\end{array}\right]\\
+      \left[\begin{array}{cc}0&1\\1&0\end{array}\right]\left[\begin{array}{cc}a&0\\0&b\end{array}\right]&=\left[\begin{array}{cc}0&b\\a&0\end{array}\right]\\
+    \end{align*}
+    So our subgroup has two generators, $\left[\begin{array}{cc}i&0\\0&-i\end{array}\right]$ of order $4$ and $\left[\begin{array}{cc}0&1\\1&0\end{array}\right]$ of order $2$ and so is isomorphic to $\mathbb{Z}_2\times\mathbb{Z}_4$ which is isomorphic to $D_4$ and so this subgroup is also isomorphic to $D_4$
+  \setcounter{enumii}{20}
+  %3.6 21
+  \item
+    Find the center of the dihedral group $D_n$.
+
+    {\em Hint}: Consider two cases, depending on whether $n$ is odd or even.
+
+    First, we notice that every element of $D_n$ is of the form $a^k$ or $ba^k$.
+    Second, we notice that $\langle b\rangle$ and $\langle a\rangle$ are abelian.
+    Lets take it in four cases.
+    First, notice that $a^za^g=a^ga^z$ and so if both elements have the form $a^k$ we have no restrictions.
+    Now lets take $a^z\cdot ba^g$.
+    Recall that $ba^k=a^{-k}b=a^{n-k}b$.
+    And so
+    \[a^zba^g=a^za^{-g}b=a^{-g}a^zb=a^{-g}ba^{-z}=ba^{g}a^{-z}\]
+    Then $a^{-z}=a^z$ is a restriction on our center.
+
+    Now we look at elements of the form $ba^za^g$
+    \begin{align*}
+      ba^za^g&=a^{g}ba^z\\
+      ba^za^g=ba^ga^=a^{-g}ba^z&=a^{g}ba^z\\
+      a^{-g}&=a^{g}
+    \end{align*}
+    This equality depends on $a^g$ and so we will never find an element of the form $ba^z$ that will commute with every element of the form $a^g$.
+
+    Lets take the last case.
+    Note that the above already eliminated this case, but we will examine it for completeness.
+    \begin{align*}
+      ba^zba^g&=ba^gba^z\\
+      a^{-z}bba^g&=a^{-g}bba^z\\
+      a^{-z}a^g&=a^{-g}a^z\\
+      e&=a^{-2g}a^{2z}\\
+      e&=a^{-g}a^{z}\\
+      a^{g}&=a^{z}\\
+    \end{align*}
+    So in this case our choice of $a^z$ depends on $a^g$ and so we can not find some $ba^z$ that commutes with every $ba^g$.
+
+    This means that $Z(D_n)=\{a^k\in D_n:a^k=a^{-k}\}$.
+    \begin{align*}
+      a^k&=a^{-k}\\
+      a^{2k}&=e=a^n\\
+      2k&\equiv 0\mod n\\
+      2k+nm&=0\\
+      k&=\frac{-nm}{2}
+    \end{align*}
+    Now lets assume $n$ is even.
+    \begin{align*}
+      k=-\frac{2jm}{2}=-jm=-\frac{n}{2}m
+    \end{align*}
+    Of course $a^{-\frac{n}{2}m}=(a^{n-\frac{n}{2}})^m={a^{\frac{n}{2}}}^m$.
+    Now $(a^{\frac{n}{2}})^2=a^n=e$.
+    This means $a^{\frac{n}{2}}$ has order 2 (which we already know, as it is it's own inverse).
+    So if $n$ is even then the center of our group is $\{e,a^{\frac{n}{2}}\}$.
+    Now lets assume $n$ is odd.
+    \begin{align*}
+      k=-\frac{(2j+1)m}{2}=-jm-\frac{m}{2}
+    \end{align*}
+    Now $k$ is an integer so $-jm-\frac{m}{2}$ must be an integer, so $2|m$.
+    Say $2l=m$.
+    \begin{align*}
+      k=-2jl-\frac{2l}{2}=-2\frac{n-1}{2}l-l=-l(n-1+1)=-ln
+    \end{align*}
+    Now notice that $a^k=a^{-ln}=(a^n)^{-l}=e^{-l}=e$.
+    And so if $n$ is odd then the center is $\{e\}$.
+  \end{enumerate}
+\item
+  \begin{enumerate}
+  \item
+    \begin{enumerate}
+    %3.7 1a
+    \item
+      Write down the formulas for all homomorphisms from $\mathbb{Z}_6$ into $\mathbb{Z}_9$.
+      All homomorphisms will be completely determined by $\phi([x]_6)=[mx]_9$ when $9|6m$ according to example 3.7.7.
+      \begin{align*}
+      9&|0&
+      9&{\not|} 6&
+      9&{\not|} 12\\
+      9&| 18&
+      9&{\not|} 24&
+      9&{\not|} 30\\
+      9&| 36&
+      9&{\not|} 42&
+      9&{\not|} 48\\
+      \end{align*}
+    \end{enumerate}
+    So $\phi([x]_6)=[0]_9, \phi([x]_6)=[3x]_9,$ or $\phi([x]_6)=[6x]_9$ are all the formulas that produce a homomorphism from $\mathbb{Z}_6$ into $\mathbb{Z}_9$
+  \setcounter{enumii}{15}
+  %3.7 16
+  \item
+    Let $G$ be a finite group of even order, with $n$ elements, and let $H$ be a subgroup with $n/2$ elements. Prove that $H$ must be normal.
+
+    {\em Hint}: Define $\phi:G\to\mathbb{R}^\times$ by $\phi(x)=1$ if $x\in H$ and $\phi(x)=-1$ if $x\not\in H$ and show that $\phi$ is a homomorphism with kernel $H$. To show that $\phi$ preserves products, show that if $g\not\in H$ then $\{x:gx\in H\}=G-H$.
+
+    As the hint suggests, we define $\phi(x)=\begin{cases}1&\text{if }x\in H\\-1&\text{if }x\not\in H\end{cases}$.
+
+    Now if $x_1,x_2\in H$ then $x_1x_2\in H$ and $\phi(x_1x_2)=1=1\cdot1=\phi(x_1)\cdot\phi(x_2)$.
+    
+    Now if $g\not\in H$ and $gx\in H$ then note that $gxx^{-1}=g\not\in H$.
+    Similarly, if $g\not\in H$ and $xg\in H$ then $x^{-1}xg=g\not\in H$.
+    And so $x^{-1}\not\in H$ because if it were then closure says that $g\in H$ and we would have a contradiction.
+    And because if $x\in H$ then $x^{-1}\in H$ we know that if $x^{-1}\not\in H$ then $x\not\in H$.
+    So if an element is not in $H$ and it's product with another element is in $H$ then the other element is not in $H$.
+    This leads us to $\phi(gx)=1=-1\cdot-1=\phi(g)\phi(x)$ and $\phi(xg)=1=-1\cdot-1=\phi(x)\phi(g)$.
+
+    And the contrapositive says that if an element is in $H$ then it's product with another element is not in $H$ or the other element is in $H$.
+
+    So for $x\in H, g\not\in H$ we know that $gx\not\in H$ and $xg\not\in H$.
+    This leads us to $\phi(gx)=\phi(xg)=-1=-1\cdot1=\phi(g)\phi(x)=1\cdot-1=\phi(x)\phi(g)$.
+    And so we have established that $\phi$ preserves products and is therefore a homomorphism.
+    Notice that $\ker\phi=H$.
+    By proposition 3.7.4 we know that $ghg^{-1}\in H$ for all $h\in H$ and $g\in G$.
+    This is actually the definition of a normal subgroup, so we are done.
+
+  \end{enumerate}
+\end{enumerate}
+\end{document}
