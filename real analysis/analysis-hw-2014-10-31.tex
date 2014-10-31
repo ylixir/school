@@ -35,28 +35,95 @@ Section 4.4  A, B, E*, I*
     \item
       $\{\boldsymbol{x}\in\mathbb{R}^n:2\le||\boldsymbol{x}||\le4\}$
 
-      This set is basically  a donut around the origin. It is bounded by $B_4(0)$. Lets look at $\boldsymbol{a}_n=(2-\frac{1}{n},0)$. Note that this sequence lies in the complement of our set, but has a limit of $(2,0)$ which is outside of the complement of our set. So  then the complement of our set is open, and so our set is closed. Being closed and bounded, it is compact.
+      This set is obviously bounded by $B_4(0)$. It is actually a donut. Or a spherenut. Or n-dimensional perfectly round thing with a perfectly round hole in the middle. Unless it's one dimension, then it's not round. I'm gonna go with donut and move on.
+
+      So lets take some point outside of our set.
+      Call this point $\boldsymbol{y}$.
+      This point is either in the donut hole, or outside completely outside of the donut.
+      In case it is in the hole then $||\boldsymbol{y}||<2$.
+      There exists some $n>0\in \mathbb{R}$ such that $||y||+n=2$.
+      Now we can take a ball, centered at $\boldsymbol{y}$ with a width of $\frac{n}{2}$.
+      Notice that the distance from the edge of this ball to the perimeter of our set is at least $\frac{n}{2}$, giving us plenty of room for our ball to not intersect our set.
+      Similarly a point $\boldsymbol{y}$ outside the donuts respects the following inequality: $||y||>4$.
+      And of course that means that there exists some $n>0\in \mathbb{R}$ such that $||y||-n=4$.
+      Again can make a ball $B_{\frac{n}{2}}(\boldsymbol{y})$ that does not intersect with our donut at all.
+      So we can put a ball around any point outside of our set that is also outside of our set.
+      Our set is closed.
+      This, combined with the fact that our set is bounded means that it must also be compact.
     \item
       $\{(e^{-x}\cos x,e^{-x}\sin x):x\ge 0\}\cup\{(x,0):0\le x\le 1\}$
+
+      Notice that for any $\boldsymbol{a}\in \{(e^{-x}\cos x,e^{-x}\sin x):x\ge 0\}$ we have $||\boldsymbol{a}||=\sqrt{\left(e^{-x}\cos x\right)^2+\left(e^{-x}\sin x\right)^2}=e^{-x}$.
+      Now observe that for some $q\in \mathbb{N}$ and $0\le \theta<2\pi$ we can write $x$ as $x=2\pi q+\theta$.
+
+      Lets take a point from the complement of $\{(e^{-x}\cos x,e^{-x}\sin x):x\ge 0\}\cup\{(x,0):0\le x\le 1\}$.
+      Lets call this point $\boldsymbol{y}=(r\cos\theta,r\sin\theta)$.
+      The crucial thing to notice here is that $r\ne 0$, else $\boldsymbol{y}=(0,0)\in \{(x,0):0\le x\le 1\}$
+      If we can't take the zero point in our complement then no matter which point we pick we have some finite distance to the spiral curve that is our set.
+      If we look at our point in polar coordinates $(r,\theta)$ then it is $r$ from the origin, and we can find some greatest $e^{-x}$ where $e^{-x}<r$ and $x=2\pi q+\theta$.
+      If $q>0$ then we can go out further and find some $e^{-(x-2\pi)}>r$ and our point is in the spiral and we just have to make a ball that is small enough to not touch the sides of the spiral or the other set at $\{(x,0):0\le x\le 1\}$.
+      Otherwise we are outside of the spiral and it's even easier to make a ball.
+      We just have to make it smaller than $r-e^{-x}$ and small enough that if $\theta$ is near $2\pi$ or $0$ then we don't include any of $\{(x,0):0\le x\le 1\}$.
+      Note also that $2\pi\ne\theta\ne 0$ if $r\le 1$ because if it were then $(r,\theta)\in \{(x,0):0\le x\le 1\}$
+      Making a ball around this point that is smaller than the distance to our spiral satisfies openness of the complement and therefore closure of the original set.
+      Of course if we did have $(0,0)$ in our complement set then no matter how small we made our ball, the set would spiral into it, ruining everything.
     \item
       $\{(e^{-x}\cos \theta,e^{-x}\sin \theta):x\ge0,0\le\theta\le2\pi\}$
 
-      If we fix $x=0$ and vary $\theta$ we see that this set is just the cube $[-1,1]^2$. Cubes are compact subsets of $\mathbb{R}^n$.
+      If we fix $x=0$ and vary $\theta$ we see that this set is just the cube $[-1,1]^2$ (square?).
+      Cubes are compact subsets of $\mathbb{R}^n$.
     \end{enumerate}
   %4.4B
   \item
     Give an example to show that Cantor's Intersection Theorem would not be true if compact sets were replaced by closed sets.
+
+    So basically the only difference between closed and compact sets is whether it is bounded.
+    The natural example of a closed and unbounded set is $[0,\infty)$.
+    Tweaking it a little we easily come up with a counter example if the theorem was for closed sets, not compact sets.
+    \[\bigcap_{n\in \mathbb{N}}[n,\infty)\]
+    Each set contains all the elements of the next set, and one more besides, so it is a proper superset of the next set.
+    I guess that means it is decreasing.
+    Lets pick any $x\in \mathbb{R}$.
+    Now let $n=\max\{1,\lceil x\rceil\}$.
+    Obviously $x\not\in [n,\infty)$.
+    Because this is true for any $x$ then $\bigcap_{n\in \mathbb{N}}[n,\infty)=\emptyset$ and we have our counterexample.
 
   \setcounter{enumii}{4}
   %4.4E
   \item
     \begin{enumerate}
     \item
-      Show that the sum of a closed subset and a compact subset of $\mathbb{R}^n$ is closed. Recall that $A+B=\{\boldsymbol{a}+\boldsymbol{b}:\boldsymbol{a}\in A\text{ and }\boldsymbol{b}\in B\}$.
+      Show that the sum of a closed subset and a compact subset of $\mathbb{R}^n$ is closed.
+      Recall that $A+B=\{\boldsymbol{a}+\boldsymbol{b}:\boldsymbol{a}\in A\text{ and }\boldsymbol{b}\in B\}$.
+
+      Either $A+B$ contains a convergent sequence or it doesn't.
+      If it contains no convergent sequences, then the set of limit points of $A+B$ is $\emptyset$.
+      Obviously $\emptyset\subseteq A+B$ and $A+B$ is closed.
+
+      Lets now assume $A+B$ contains at least one convergent subsequence.
+      Take any convergent sequence in $A+B$.
+      Call the sequence $(\boldsymbol{c}_n)_{n=1}^\infty$ and say $\lim\limits_{n\to\infty}\boldsymbol{c}_n=\boldsymbol{c}$.
+      Of course each element $\boldsymbol{c}_n=\boldsymbol{a}_n+\boldsymbol{b}_n$ where $\boldsymbol{a}_n\in A$ and $\boldsymbol{b}_n\in B$.
+      Let's say without loss of generality that $A$ is our compact set.
+      Then we can find some subsequence of $\boldsymbol{a}_n$ that is convergent.
+      Say $\lim\limits_{i\to\infty}\boldsymbol{a}_{n_i}=\boldsymbol{a}$.
+      So then $\boldsymbol{b}_{n_i}=\boldsymbol{c}_{n_i}-\boldsymbol{a}_{n_i}$.
+      Because $\boldsymbol{c}_n$ converges to $\boldsymbol{c}$ we know that $\boldsymbol{c}_{n_i}$ also converges to $\boldsymbol{c}$.
+      And so $\boldsymbol{c}_{n_i}-\boldsymbol{a}_{n_i}$ converges to $\boldsymbol{c}-\boldsymbol{a}$.
+      In other words $\boldsymbol{b}_{n_i}$ converges to $\boldsymbol{c}-\boldsymbol{a}$.
+      We know that $B$ is closed, so then $\boldsymbol{c}-\boldsymbol{a}\in B$ and $\boldsymbol{c}=\boldsymbol{a}+(\boldsymbol{c}-\boldsymbol{a})\in A+B$ as required.
     \item
       Is this true for the sum of two compact sets and a closed set?
+
+      Of course.
+      If we add the compact set and the closed set, then we have a closed set.
+      Adding the second compact set will still leave us with a closed set.
     \item
       Is this true for the sum of two closed sets?
+
+      No, this is not true for the sum of any two closed sets.
+      Take $\{(x,e^x):x\in\mathbb{R}\}+\{(x,0):x\in \mathbb{R}\}=\{(x,y):y>0\}$.
+      If we let $\boldsymbol{a}_n=(0,\frac{1}{n})$ then all $\boldsymbol{a}_n\in \{(x,y):y>0\}$ but $\boldsymbol{a}_n$ converges to $(0,0)\not\in\{(x,y):y> 0\}$.
     \end{enumerate}
   \setcounter{enumii}{8}
   %4.4I
@@ -66,10 +133,36 @@ Section 4.4  A, B, E*, I*
     \begin{enumerate}
     \item
       If $A=\{\boldsymbol{a}\}$ is a singleton, show that $d(A,B)>0$.
+
+      First we notice that $||\boldsymbol{a}-\boldsymbol{b}||\ge 0$ and so $d(A,B)\ge 0$.
+      That means that if $d(A,B)\not>0$ then $d(A,B)=0$.
+      So then for any $\varepsilon>0$ we should be able to find some $\boldsymbol{b}\in B$ such that $||\boldsymbol{a}-\boldsymbol{b}||<\varepsilon$.
+      Now lets make $\varepsilon=10^{-n}$ and say that $||\boldsymbol{a}-\boldsymbol{b}_n||<\varepsilon$.
+      Then we have just constructed a sequence $\boldsymbol{b}_n$ in $B$ that converges to $\boldsymbol{a}$.
+      Now remember that $B$ is closed, so $\boldsymbol{a}$ must be in $B$.
+      But $\boldsymbol{a}\in A$ and $A\cap B=\emptyset$.
     \item
       If $A$ is compact, show that $d(A,B)>0$.
+
+      Lets just assume that $d(A,B)=0$.
+      We just figured out that for any $\boldsymbol{a}\in A$ that $d(\{\boldsymbol{a}\},B)>0$.
+      So for any $\varepsilon>0$ we should be able so find some $d(\{\boldsymbol{a}\},B)<\varepsilon$.
+      Lets say $\varepsilon=10^{-n}$ and $d(\{\boldsymbol{a}_n\},B)<\varepsilon$.
+      Because $A$ is compact, we can find some convergent subsequence $\boldsymbol{a}_{n_i}$ of $\boldsymbol{a}_n$.
+      Say $\lim\limits_{i\to\infty}\boldsymbol{a}_{n_i}=\boldsymbol{a}$.
+      Further, $d(\{a\},B)<\varepsilon$ for all $\varepsilon>0$.
+      Note that $A$ is closed, so $\boldsymbol{a}\in A$.
+      Now lets assume that $\boldsymbol{a}$ is in the open complement to $B$.
+      Then we can find some $\varepsilon>0$ such that $B_\varepsilon(\boldsymbol{a})\subseteq B^C$.
+      But we just decided that for all $\varepsilon>0$ we can find some $\boldsymbol{b}$ where $||\boldsymbol{a}-\boldsymbol{b}||<\varepsilon$.
+      So then we have a $\boldsymbol{b}\in B_\varepsilon(\boldsymbol{a})$ which is also in $B$.
+      Clearly then, because $B^C$ is open, and we can't make a ball around $\boldsymbol{a}$ that doesn't contain some element of $B$, then $\boldsymbol{a}\in B$.
+      Oh snap, $\boldsymbol{a}\in A\cap B=\emptyset$.
+      I guess $\boldsymbol{a}$ just doesn't exist.
     \item
       Find an example of two disjoint closed sets in $\mathbb{R}^2$ with $d(A,B)=0$
+
+      Cribbing my example from above, $A=\{(x,e^x:x\in \mathbb{R}\}$ and $B=\{x,-e^{x}:x\in \mathbb{R}\}$
     \end{enumerate}
   \end{enumerate}
 \end{enumerate}

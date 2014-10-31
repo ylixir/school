@@ -1,0 +1,56 @@
+\documentclass[letterpaper]{article}
+
+\usepackage{fullpage}
+\usepackage{nopageno}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+
+\begin{document}
+\title{Notes}
+\date{October 29, 2014}
+\maketitle
+\section*{3.8 \#10}
+$N\le G$ and $m=[G:N]=|G/N|$
+
+if $x\in G/N$ then $\text{order}(x)|m$. then $\forall a\in G, aN\in G/N$. let $x\in aN$ and then $\text{order}(aN)|m$ and $(aN)^m=N$.
+
+$a^mN=N\leftrightarrow a^m\in N$
+
+\section*{simple group}
+$G$ is simple iff `normal' subgroups.
+
+\section*{3.8 \#6}
+two subgroups intersecting is a subgroup.  $x\in H\cap N$ means $x\in H\cap N$ so for all $a\in H$we have $axa^{-1}\in N$ and $axa^{-1}\in H$ (from closure of $H$).
+
+\section*{chapter 4}
+\subsection*{polynomials with coefficients in fields}
+\subsubsection*{field definition}
+a set with two operations on it. $(K,+,\cdot)$ is a field if $+,\cdot$ are binary operations on $K$ such that $(K,+)$ is an abelian group and $K^*=K\setminus\{0\}$ and $(K*,\cdot)$ is an abelian group and $(a+b)\cdot c=ac+bc$ and $a(b+c)=ab+ac$.
+
+\subsubsection*{examples}
+$(\mathbb{R},+,\cdot)$ is a field. $(\mathbb{Q},+,\cdot)$ is a field, and so is $\mathbb{C}$.  $(\mathbb{Z},+,\cdot)$ is not a field because $(\mathbb{Z}^*,\cdot)$ is not a group. $\{a+b\sqrt{2}:a,b\in\mathbb{Q}\}$ is a field with respect to usual mult and addition.
+
+\subsubsection*{polynomial definition}
+let $K$ be a field, $f(x)=a_mx^m+a_{m-1}x^{m-1}+\dots+a_1x+a_0$ where $x$ is indeterminate and $a_i\in K$. we say that $f(x)$ is a polynomial with coefficients in $K$. if $a_m\ne 0$ then we define deg $f=m$. conventional problem with degree of zero. defined to be $-\infty$.
+
+$K[x]=$ the set of all polynomials with coefficients in $K$. on $K[x]$ we define two operations. if $f(x)$ is deg $m$ and $g(x)$ is degree $n$ then $f(x)+g(x)=$ as usual and $f(x)g(x)=$ as usual.
+
+\subsubsection*{obeservation}
+given a polynomial $f(x)\in K[x]$, the polynomial function associated with $f(x)$ is the function defined from $K\to K$ that takes $c\to f(c)$.
+
+there is a difference between a polynomial and a polynomial function. they are different objects. lets take $K=\mathbb{Z}_p$. where $p$ is prime. This is a field.
+
+let $f(x)=x^{p}-x\in K[x]$. $\text{def} f=p$. polynomial function assosiated with $f(x)$ is $[a]\to[a]^p-[a]=[a^p-a]$ but for $a\in \mathbb{Z}$ we have $a^p\equiv a\mod p$ and so the function is zero.
+
+finite fields make confusing the polynomial and the function dangerous.
+
+\subsubsection*{observation}
+$f(x),g(x)\in K[x]$, if $f(x)\ne 0$ and $g(x)\ne 0$ then the product is not zero and the degree of the product is the sum of the degrees of $f(x)$ and $g(x)$
+
+claim $a,b\ne0$ then $ab\ne 0$. assume $ab=0$ then $a^{-1}ab=a^{-1}0$ because $a\ne 0$ and so $b=0$ because $a^{-1}0=a^{-1}(0+0)$ minus $a^{-1}0$ from both sides.
+\end{document}
+
+
