@@ -1,0 +1,77 @@
+\documentclass[letterpaper]{article}
+
+\usepackage{fullpage}
+\usepackage{nopageno}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[utf8]{inputenc}
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+
+\begin{document}
+\title{Notes}
+\date{November 3, 2014}
+\maketitle
+\section*{5.3 properties of continuous functions}
+let $f:S\to \mathbb{R}^m$ be a function. the following are equivalent
+\begin{enumerate}
+\item
+  f is continuous on S
+\item
+  if $\{a_k\}$ is a sequence of elements in S such that $\lim a_k=v\in S$ then $\lim f(a_k)=f(v)$
+\item
+  if $U\subseteq \mathbb{R}^m$ is open them $f^{-1}(U)$ is an open set in $S$
+\end{enumerate}
+
+a set $V$ is open in $S$ if $V=U\cap S$ where $U$ is open in $\mathbb{R}^n$ 
+
+\subsection*{examples}
+let $S=[0,1]$
+then $[0,\frac{1}{2})$ is open in $S$ because $[0,\frac{1}{2})=(-\frac{1}{2},\frac{1}{2})\cap S$.
+
+$(0,\frac{1}{2})=(0,\frac{1}{2})\cap S$.
+
+\subsubsection*{proof of above thrm}
+by definition of limit, given any small $\delta>0$ there exists $N$ such that $|a_k-V|<\delta$ if $k\ge N$. We want to study $|f(a_k)-f(v)|$. Because $f$ is continuous $|f(a_k-f(v)|<\varepsilon$ if $|a_k-v|<r$ there exists $r(\varepsilon,v)>0$. pick $r=\delta$. then $|a_k-v|<r$ for all $k\ge N$ implies $|f(a_k)-f(v)|< \varepsilon$ and so $\lim f(a_k)=f(v)$
+
+for $2\to1$ assume that $f$ is not continuous. we will prove that $2$ fails.
+
+if $f$ is not continuous, then there exists some pint $p\in S$ and $\varepsilon>0$ such that $\forall r>0$ then $|x-p|<r$ and $|f(x)-f(p)|\ge \varepsilon$. consider $a_k\in S$ such that $\lim a_k=p$. by hypothesis $\lim f(a_k)=f(p)$. but then we have $|a_k-p|<r$ and $|f(a_k)-f(p)|<\varepsilon$
+
+for $1\to3$. we want to show that given and open set $U\subseteq \mathbb{R}^m, f^{-1}(U)$ is open  in $S$. pick $x\in f^{-1}(U)$. we need to find a ball $B(x,r)\subseteq f^{-1}(U)$.
+
+$f(x)\in U$. $U$ is open, so there exists some $\epsilon>0$ such that $B(f(x),\varepsilon)\subseteq U$. hence $f^{-1}(B(f(x),\varepsilon))\subseteq f^{-1}(U)$.
+
+given $\varepsilon>0$ there exists $r>0$ such that if $||x-y||<r\to ||f(x)-f(y)||<\varepsilon$. continuity gives us a radius $r$ such that if $y\in B(x,r)$ then $||f(x)-f(y)||<\varepsilon$ and so $f(y)\in B(f(x),\varepsilon)$. So we have found $B(x,r)\subseteq f^{-1}(B(f(x),\varepsilon)\subseteq f^{-1}(U)$
+
+\subsubsection*{moral of the story}
+continuity can be seen in terms of finding balls.
+
+\subsubsection*{example}
+$f(x)=x^2$
+
+$f^{-1}(c,d)=(\sqrt{c},\sqrt{d})\cup (-\sqrt{c},-\sqrt{d})$
+
+$f^{-1}(-1,1)=(-1,1)$
+
+$f^{-1}(-2,-1)=\emptyset$
+
+$f$ is continuous iff $f^{-1(U)}$ is open if $U$ is open, but if $U$ is open then $f(U)$ is not necessarily open.
+
+$f(-1,1)=[0,1)$ which is not open in $\mathbb{R}$
+
+\subsection*{prop5.3.5}
+let $f:\mathbb{R}^n\to\mathbb{R}^m, g:\mathbb{R}^m\to\mathbb{R}^p$ assume $f,g$ are continuous. then $g\circ f$ is continouos.
+
+assume that $U\in \mathbb{R}^p$ is open. we need to show that $(g\circ f)^{-1}(U)$ is open. $(g\circ f)^{-1}(U)=f^{-1}(g^{-1}(U))$. because g is continuous, $g^{-1}(U)$ is open. beccause $f$ is continuous, $f^{-1}(g^{-1}(U)$ is open.
+
+\subsection*{prop 5.3.2}
+
+if in addition, $f$ and $g$ are continous at $a$ then so are $f\pm g, f\cdot g, \alpha f,\frac{f}{g}$.
+
+corollary, we know that $f(x)=x$ is continous $f:\mathbb{R}^n\t\mathbb{R}^n$ then $f(x)=x^{m}$ is continuous a $m\in \mathbb{N}$. and any  polynomial is continous. and any rational function  is continous a $f(x)/g(x)$ such that $g(x)\ne 0$.
+\end{document}
+
+
+
