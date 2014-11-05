@@ -1,0 +1,67 @@
+%shell-escape
+\documentclass[letterpaper]{article}
+
+\usepackage{fullpage}
+\usepackage{nopageno}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{gnuplottex}
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+
+\begin{document}
+\title{Homework 8}
+\date{November 7, 2014}
+\author{Jon Allen}
+\maketitle
+5.1. G, H, M
+
+5.2. G*, H*
+
+\renewcommand{\labelenumi}{5.\arabic{enumi}}
+\renewcommand{\labelenumii}{\Alph{enumii}.}
+\renewcommand{\labelenumiii}{(\alph{enumiii})}
+\begin{enumerate}
+\item
+  \begin{enumerate}
+  \setcounter{enumii}{6}
+  %5.1G
+  \item
+    Suppost the $f:\mathbb{R}^n\to\mathbb{R}$ is continuous. If there are $\boldsymbol{x}\in \mathbb{R}^n$ and $C\in \mathbb{R}$ such that $f(\boldsymbol{x})<C$, then prove that there is $r>0$ such that for all $\boldsymbol{y}\in \boldsymbol{B}_r(\boldsymbol{x}),f(\boldsymbol{y})<C$
+  %5.1H
+  \item
+    Suppose that functions $f,g,h$ mapping $S\subset \mathbb{R}^n$ into $\mathbb{R}$ satisfy $f(\boldsymbol{x})\le g(\boldsymbol{x})\le h(\boldsymbol{x})$ for $\boldsymbol{x}\in S$. Suppose that $c$ is a limit point of $S$ and $\lim_{\boldsymbol{x}\to\boldsymbol{c}}h(\boldsymbol{x})=L$. Show that $\lim_{\boldsymbol{x}\to\boldsymbol{c}}g(\boldsymbol{x})=L$.
+  \setcounter{enumii}{12}
+  %5.1M
+  \item
+    Consider the linear transformation $A$ on $\mathbb{R}^4$ given by the matrix
+    $A=\frac{1}{2}
+    \left[
+    \begin{array}{rrrr}
+    1&1&1&1\\
+    1&-1&1&-1\\
+    1&1&-1&-1\\
+    1&-1&-1&1\\
+    \end{array}
+    \right]$
+    \begin{enumerate}
+    \item
+      Compute the Lipschits constant obtained in corollary 5.1.7.
+    \item
+      Show that $||A\boldsymbol{x}||=||x||$ for all $\boldsymbol{x}\in \mathbb{R}^4$. Deduce that the optimal Lipschitz constant is 1.
+      {\scshape Hint:} The columns of $A$ form and orthonormal basis for $\mathbb{R}^4$
+    \end{enumerate}
+  \end{enumerate}
+\item
+  \begin{enumerate}
+  \setcounter{enumii}{6}
+  %5.2G
+  \item
+    (A monotone convergence test for functions.) Suppose that $f$ is an increasing function on $(a,b)$ that is bounded above. Prove that the one-sided limit $\lim\limits_{x\to b-}f(x)$ exists.
+  %5.2H
+  \item
+    Define $f$ on $\mathbb{R}$ by $f(x)=x\chi_\mathbb{Q}(x)$. Show that $f$ is continuous at 0 and that this is the {\em only} point where $f$ is continuous.
+  \end{enumerate}
+\end{enumerate}
+\end{document}

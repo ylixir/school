@@ -1,0 +1,74 @@
+\documentclass[letterpaper]{article}
+
+\usepackage{fullpage}
+\usepackage{nopageno}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[utf8]{inputenc}
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+
+\begin{document}
+\title{Notes}
+\date{November 5, 2014}
+\maketitle
+\section*{5.4 compactness and extreme values}
+$y=x^2$ has min but no max and no supremum
+
+$y=e^{-||\vec{x}||^2}$ has max at $x=0$, no minimum, infimum at 0
+
+when the domain $D\subseteq \mathbb{R}^n$ is unbounded a function need not attain it's max or min
+
+$y=\frac{1}{x}$, $x\in(0,1]$. domain is bounded, but not closed.
+
+we like compact sets for domains, because this is when functions are guaranteed to obtain max and min (if they are continuous).
+
+$f(x)=\begin{cases}x&x\in[0,1)\\0&x=1\end{cases}$
+\subsection*{thm 5.4.4}
+let $C\subseteq \mathbb{R}^n$ be compact and let $f:C\to\mathbb{R}$ be continuous. then $\exists \vec{a},\vec{b}\in C$ such  that $\forall \vec{x}\in C$ $f(\vec{a})\le f(\vec{x}\le f(\vec{b})$. ie f attains its min at $\vec{a}$ and it's max at $\vec{b}$.
+
+we need something to prove this
+\subsubsection*{5.4.3}
+Let $C$ be a compact subset of $\mathbb{R}^n$ and let $f$ be a continuous function from $C$ into $\mathbb{R}^m$. then the image set $f(C)$ is compact.
+
+a conintous function sends compact sets to compact sets.
+
+pick a sequence $\{z_k\}$ such that $z_k\in f(C)$ for each $k$. we need to prove that this sequence has a convergent subsequence.
+
+$z_k\in f(C)\Leftrightarrow z_k=f(c_k)$ for some $c_k\in C$ now $\{c_k\}$ has a convergent subsequence $\{c_{k_n}\}$ because $C$ is compact. let $\lim c_{k_n}=x$, note that $x\in C$. since $f$ is continuous, $\lim f(c_{k_n}=\lim z_{k_n}=f(x)$. so $\{z_{k_n}\}$ converges to $f(x)\in f(C)$ and so $f(C)$ is compact.
+
+now to prove 5.4.4
+
+\subsubsection*{proof 5.4.4}
+so $f(C)\subseteq\mathbb{R}$ is closed and bounded by $5.4.3$. beccause it it bounded, then it has a supremum and an infimum. let $M=\sup f(C)\in \mathbb{R}, m=\inf f(C)\in \mathbb{R}$. given $\varepsilon=\frac{1}{n}\exists a_n\in f(C)$ such that $|a_n-M|<\varepsilon=\frac{1}{n}$. $\{a_n\}$ is a sequence of poins in $f(C)$ that converges to $M$. but $f(C)$ is closed so $M\in f(C)$ so $\exists b\in C$ such that $f(b)=M$. same proof for infimum.
+
+\subsection*{5.5.9}
+let $f:C\to\mathbb{R}^m$ where $C\subseteq\mathbb{R}^n$ is compact. then $f$ is uniformally continuous.
+
+$f$ is uniformly continuous if $\forall\varepsilon>0\exists r>0$ such that $||f(x)-f(y)||<\varepsilon$ whenever $||x-y||<r$ for any $x,y\in$ domain of $f$.
+
+\subsubsection*{proof}
+assume that $f$ is not uniformly continuous then $\exists \varepsilon>0$ such that $\forall r>0$, we have some points $x,y$ with $||x-y||<r$ but $||f(x)-f(y)||\ge \varepsilon$. in particular, let $r=\frac{1}{n}$, for each $n\in \mathbb{N}$. for each $r=\frac{1}{n}\exists x_n,y_n\in C$ such that $||x_n-y_n||<\frac{1}{n}$ but $||f(x_n)-f(y_n)||>\varepsilon$. $\{x_n\}$ is a sequence in $C$. there is a convergent subsequence $x_{n_k}$ of $\{x_n\}$. let $a=\lim x_{n_k}$ then $||y_{n_k}-a||\le||y_{n_k}-x_{n_k}||+||x_{n_k}-a||$. so $\{y_{n_k}\}$ also converges to $a$. so $f(x_n)$ and $f(y_n)$ converge to $f(a)$ and so $||f(x_n)-f(y_n)||$ converges to $||f(a)-f(a)||=0$ and so it is not possible for $x_{n_k}-y_{n_k}||<\frac{1}{n_k}$ and $||f(x_{n_k}-f(y_{n_k}||\ge \varepsilon$ for a fixed $\varepsilon$.
+
+\section*{exercises}
+\subsection*{5.3.I}
+let $f$ be a continuous real function defined on an open subset $U$ of $\mathbb{R}^n$. show that $\{(\boldsymbol{x},y):\boldsymbol{x}\in U,y>f(\boldsymbol{x})\}$ is an open subset of $\mathbb{R}^{n+1}$.
+
+two ways, prove that ball $B(x,r)$ exists for each $x\in A$ where $B(x,r)\subseteq A$
+
+we could also prove that $A^C$ is closed
+
+let $(\vec{x},y)\in A$. we know that $\vec{x}\in U$ and $U$ is open. so $\exists r_1>0$ such that $B(\vec{x},r_1)\subseteq U$. and $y\in (f(\vec{x}),\infty+)\in \mathbb{R}$. so $\exists r_2$ such that $(y-r_2,y+r_2)\in (f(\vec{x}),\infty+)$ and so $B(\vec{x},r_1)\times(y-r_2,y+r_2)\supseteq U\times ($
+
+\subsection*{know this for friday}
+$f$ is continuous $\leftrightarrow$ $\forall U$ open in $\mathbb{R}^m$ $f:S\to\mathbb{R}^{m}$, $f^{-1}(U)$ is open in $S$ prove that this is equivalent to $\forall K$ closed in$\mathbb{R}^n$ $f^{-1}(K)$ is closed in $S$
+
+\subsection*{5.4.G}
+fix $M\in\mathbb{N}$
+
+$f(\overline{B(0,M)})$ then $f$ is restricted to $\overline{B(0,M}$ 
+\end{document}
+
+
+
