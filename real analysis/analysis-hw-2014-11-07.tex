@@ -29,9 +29,28 @@
   %5.1G
   \item
     Suppost the $f:\mathbb{R}^n\to\mathbb{R}$ is continuous. If there are $\boldsymbol{x}\in \mathbb{R}^n$ and $C\in \mathbb{R}$ such that $f(\boldsymbol{x})<C$, then prove that there is $r>0$ such that for all $\boldsymbol{y}\in \boldsymbol{B}_r(\boldsymbol{x}),f(\boldsymbol{y})<C$
+
+    We know that for every $\varepsilon>0$ there exists an $r>0$ such that for all $\boldsymbol{x},\boldsymbol{y}$ with $||\boldsymbol{x}-\boldsymbol{y}||<r$ we have $|f(\boldsymbol{x})-f(\boldsymbol{y})|<\varepsilon$. Now if we say $f(\boldsymbol{x})+\varepsilon=C$. That is $f\left(\boldsymbol{x}\right)=C-\varepsilon$. Then $|C-\varepsilon-f\left(\boldsymbol{y}\right)|<\varepsilon$ or $C-\varepsilon-\varepsilon<f(\boldsymbol{y})<C-\varepsilon+\varepsilon$. And so for this $\varepsilon$ we have $f(\boldsymbol{y})<C$. Because the function is continuous we can find our $r$ as required.
   %5.1H
   \item
-    Suppose that functions $f,g,h$ mapping $S\subset \mathbb{R}^n$ into $\mathbb{R}$ satisfy $f(\boldsymbol{x})\le g(\boldsymbol{x})\le h(\boldsymbol{x})$ for $\boldsymbol{x}\in S$. Suppose that $c$ is a limit point of $S$ and $\lim_{\boldsymbol{x}\to\boldsymbol{c}}h(\boldsymbol{x})=L$. Show that $\lim_{\boldsymbol{x}\to\boldsymbol{c}}g(\boldsymbol{x})=L$.
+    Suppose that functions $f,g,h$ mapping $S\subset \mathbb{R}^n$ into $\mathbb{R}$ satisfy $f(\boldsymbol{x})\le g(\boldsymbol{x})\le h(\boldsymbol{x})$ for $\boldsymbol{x}\in S$. Suppose that $c$ is a limit point of $S$ and $\lim_{\boldsymbol{x}\to\boldsymbol{c}}f(\boldsymbol{x})=\lim_{\boldsymbol{x}\to\boldsymbol{c}}h(\boldsymbol{x})=L$. Show that $\lim_{\boldsymbol{x}\to\boldsymbol{c}}g(\boldsymbol{x})=L$.
+
+    For any $\varepsilon$ we can find $r_1,r_2$ such that
+    \begin{align*}
+      |h(\boldsymbol{x})-L|&<\varepsilon&&\text{whenever}&0<||\boldsymbol{x}-\boldsymbol{c}||<r_1\\
+      |f(\boldsymbol{x})-L|&<\varepsilon&&\text{whenever}&0<||\boldsymbol{x}-\boldsymbol{c}||<r_2\\
+    \end{align*}
+    \begin{align*}
+      -\varepsilon&<h(\boldsymbol{x})-L<\varepsilon\\
+      -\varepsilon&<f(\boldsymbol{x})-L<\varepsilon\\
+      f(\boldsymbol{x})&\le g(\boldsymbol{x})\le h(\boldsymbol{x})\\
+      f(\boldsymbol{x})-L&\le g(\boldsymbol{x})-L\le h(\boldsymbol{x})-L\\
+      \intertext{and so when}
+      0&<||\boldsymbol{x}-\boldsymbol{c}||<\min\{r_1,r_2\}
+      \intertext{then}
+      -\varepsilon&<f(\boldsymbol{x}-L\le g(\boldsymbol{x})-L\le h(\boldsymbol{x})-L<\varepsilon\\
+      -\varepsilon&<g(\boldsymbol{x})-L<\varepsilon\\
+    \end{align*}
   \setcounter{enumii}{12}
   %5.1M
   \item
@@ -48,9 +67,31 @@
     \begin{enumerate}
     \item
       Compute the Lipschits constant obtained in corollary 5.1.7.
+
+      \begin{align*}
+        C&=\left(\sum\limits_{i=1}^4{\sum\limits_{j=1}^4{|a_{ij}|^2}}\right)^{1/2}\\
+        &=\left(\sum\limits_{i=1}^4{\sum\limits_{j=1}^4{\frac{1}{4}}}\right)^{1/2}\\
+        &=\left(\sum\limits_{i=1}^4{1}\right)^{1/2}\\
+        C&=2
+      \end{align*}
     \item
       Show that $||A\boldsymbol{x}||=||x||$ for all $\boldsymbol{x}\in \mathbb{R}^4$. Deduce that the optimal Lipschitz constant is 1.
       {\scshape Hint:} The columns of $A$ form and orthonormal basis for $\mathbb{R}^4$
+
+      \begin{align*}
+        (x_1+x_2+x_3+x_4)^2=&x_1^2+x_1x_2+x_1x_3+x_1x_4+x_2x_1+x_2^2+x_2x_3+x_2x_4\\
+        &\quad+x_3x_1+x_3x_2+x_3^2+x_3x_4+x_4x_1+x_4x_2+x_4x_3+x_4^2\\
+        &={x_1}^2+{x_2}^2+{x_3}^2+{x_4}^2+{x_1x_2}^2+{x_1x_3}^2+{x_1x_4}^2+{x_2x_3}^2+{x_2x_4}^2+{x_3x_4}^2\\
+        (x_1-x_2+x_3-x_4)^2=&{x_1}^2+{x_2}^2+{x_3}^2+{x_4}^2-{x_1x_2}^2+{x_1x_3}^2-{x_1x_4}^2-{x_2x_3}^2+{x_2x_4}^2-{x_3x_4}^2\\
+        (x_1+x_2-x_3-x_4)^2=&{x_1}^2+{x_2}^2+{x_3}^2+{x_4}^2+{x_1x_2}^2-{x_1x_3}^2-{x_1x_4}^2-{x_2x_3}^2-{x_2x_4}^2+{x_3x_4}^2\\
+        (x_1-x_2-x_3+x_4)^2=&{x_1}^2+{x_2}^2+{x_3}^2+{x_4}^2-{x_1x_2}^2-{x_1x_3}^2+{x_1x_4}^2+{x_2x_3}^2-{x_2x_4}^2-{x_3x_4}^2\\
+        (x_1+x_2+x_3+x_4)^2+\qquad\quad\\
+        (x_1-x_2+x_3-x_4)^2+\qquad\quad\\
+        (x_1+x_2-x_3-x_4)^2+\qquad\quad\\
+        (x_1-x_2-x_3+x_4)^2=2\cdot(&{x_1}^2+{x_2}^2+{x_3}^2+{x_4}^2)\\
+        ||A\boldsymbol{x}||&=\sqrt{\frac{1}{2}\cdot2\cdot({x_1}^2+{x_2}^2+{x_3}^2+{x_4}^2)}=||\boldsymbol{x}||
+      \end{align*}
+      Of course then $||A\boldsymbol{x}-A\boldsymbol{y}||=||A(\boldsymbol{x}-\boldsymbol{y})||=||\boldsymbol{x}-\boldsymbol{y}||\le1\cdot||\boldsymbol{x}-\boldsymbol{y}||$ and so the optimal Lipschitz constant is $1$.
     \end{enumerate}
   \end{enumerate}
 \item
@@ -59,9 +100,25 @@
   %5.2G
   \item
     (A monotone convergence test for functions.) Suppose that $f$ is an increasing function on $(a,b)$ that is bounded above. Prove that the one-sided limit $\lim\limits_{x\to b-}f(x)$ exists.
+
+  Lets say the least upper bound of $f(x)$ on $(a,b)$ is $L$. We seek to show that $\lim\limits_{x\to b^-}{x}=L$. This means that for every $\varepsilon>0$ there exists an $r>0$ such that $|f(x)-L|<\varepsilon$ for every $b-r<x<b$.
+  Why don't we assume instead that for any $r\in(a,b)$ such that $x\le b-r$ or $x\ge b$ we can find some $\varepsilon>0$ such that $|f(x)-L|\ge \varepsilon$.
+  Naturally we can throw out $x\ge b$ condition.
+  Now observe that for any $c\in (a,b)$ if $x\le c$ then $f(x)\le f(c)$ because $f(x)$ is increasing. This means that $f(x)\le f(b-r)$ and so $|f(x)-L|=L-f(x)\ge L-f(b-r)=\varepsilon$. And so we have found our $\varepsilon$ as required.
+  %Now we know that $f(x)$ is increasing and so $L-f(x)<\varepsilon$ and $f(b-r)\le f(x)\le f(b)\therefore L-f(b-r)\ge L-f(x)\ge L-f(b)$.
   %5.2H
   \item
     Define $f$ on $\mathbb{R}$ by $f(x)=x\chi_\mathbb{Q}(x)$. Show that $f$ is continuous at 0 and that this is the {\em only} point where $f$ is continuous.
+
+    First note that $f(0)=0$. And so we seek to show that for every $\varepsilon>0$ there is a $r>0$ such that for all $x\in \mathbb{R}$ with $|x|<r$ we have $|f(x)|<\varepsilon$. Lets just make $r=\varepsilon$. Now if $x\in \mathbb{Q}$ then $f(x)=x$ and if $|x|<\varepsilon$ then $|f(x)|<\varepsilon$. But if $x\in \mathbb{R}\setminus\mathbb{Q}$ then $f(x)=0$ and $0\le|x|<\varepsilon$ and so we are still good.
+
+    Now lets assume $a\ne 0$. Let's fix $\varepsilon=|\frac{a}{2}|$ and assume we can find some $r$ such that for all $x\in \mathbb{R}$ with $|x-a|<r$ we will have $|f(x)-f(a)|<\varepsilon$.
+
+    Lets assume that $a>\varepsilon$ is rational. Then for any $r$ we can find some $x=a+\frac{r}{\sqrt{2}}$ where $a+\frac{r}{\sqrt{2}}-a=\frac{r}{\sqrt{2}}<r$ but $f(x)=0$ and $f(a)=a$ and so $|f(x)-f(a)|=f(a)=a>\varepsilon$. Similarly if $a<-\varepsilon$ is rational then $x=a-\frac{r}{\sqrt{2}}$ will give us $|f(x)-f(a)|>\varepsilon$.
+
+    Now we assume that $a>\varepsilon$ is irrational. Now we can find a rational number between any two real numbers. Lets say $a<x<a+r$ where $x\in \mathbb{Q}$. Then $|x-a|<r$ but
+    \[|f(x)-f(a)|=f(x)=x>a>\frac{a}{2}=\varepsilon\]
+    Similarly if $a<-1$ and irrational then for $a-r<x<a$ and $x\in \mathbb{Q}$ we have $|x-a|<r$ and $|f(x)-f(a)|>\frac{a}{2}$. And so for all $a\ne 0$ we know that $f$ is not continuous
   \end{enumerate}
 \end{enumerate}
 \end{document}

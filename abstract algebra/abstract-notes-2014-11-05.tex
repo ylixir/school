@@ -1,0 +1,105 @@
+\documentclass[letterpaper]{article}
+
+\usepackage{fullpage}
+\usepackage{nopageno}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+
+\begin{document}
+\title{Notes}
+\date{November 5, 2014}
+\maketitle
+\section*{4.2 2a,8,9}
+\subsection*{9}
+show that the remainder when $f(x)$ is divided by $(x-a)^2$ is $f'(a)(x-a)+f(a)$
+
+$f(x)=(x-a)^2q(x)+r(x)$ and $\deg r<2$ $r(x)=\alpha x+\beta$.
+$f(a)=r(a)=\alpha a+\beta$.
+$f'(x)=2(x-a)q(x)+(x-a)^2q'(x)+\alpha$
+$f'(a)=\alpha$
+
+$f(a)=f'(a)a+\beta\to\beta=f(a)-af'(a)$.o
+
+$r(x)=f'(a)x+f(a)-af'(a)=f'(a)(x-a)+f(a)$
+\section*{proposition}
+let$I\subseteq K[x]$ such that
+\begin{enumerate}
+\item
+$I$ contains a non-zero polynomial
+\item
+$f(x),g(x)\in I\Rightarrow f(x)+g(x)\in I$
+\item
+$f(x)\in I, g(x)\in K[x]\Rightarrow f(x)g(x)\in I$
+\end{enumerate}
+this is the ideal of $K[x]$
+let $d(x)\in I$ of minimal degree. then $I=\{a(x)f(x):f(x)\in K[x]\}$
+
+\subsubsection*{proof}
+let $h(x)\in I$ write $h(x)=d(x)q(x)+r(x)$ with $r(x)=0$ or $\deg r>\deg d$
+
+then $r(x)=h(x)+d(x)[-q(x)]\in I$ by 2 above. by choice of $d(x)$ we have $r(x)=0$ and so $h(x)\in I$
+
+
+\section*{def}
+$f(x),g(x)\in K[x]$ where $K$ is a field. a monic polynomial $a(x)\in K[x]$ is called gcd of $f(x),g(x)$ if
+\begin{enumerate}
+\item
+$a(x)|f(x)$ and $a(x)|g(x)$
+\item
+if $t(x)|f(x)$ and $t(x)|g(x)$ then $t(x)|a(x)$
+\end{enumerate}
+
+monic means that the leading coefficient is 1
+
+
+\section*{thm}
+if we have $f(x),g(x)$ non-zero, then $\exists\gcd(f(x),g(x))$ and $\gcd(f(x),g(x))$ can be expressed in the form $\alpha(x)f(x)+\beta(x)g(x)$.
+\subsubsection*{proof}
+
+let ideal $I=\{\alpha(x)f(x)+\beta(x)g(x)\}$. Check that $I$ satisfies all conditions of earlier proposition.
+
+let $d(x)\in I$ of minimal degree and without loss of generality assume $d(x)$ is monic. we can do this because multiplying by a constant is multiplying by a polynomial, so it's still in $I$.
+
+claim $d(x)$ is a $\gcd$ of $f(x),g(x)$
+
+$I=\{d(x)h(x):h(x)\in K[x]\}$ in particular $d(x)f(x)$ and $d(x)g(x)$ are both in $I$. now if $t(x)|f(x)$ and $t(x)|g(x)$. $\exists\alpha(x),\beta(x)$ such that $d(x)=\alpha(x)f(x)+\beta(x)g(x)$. then $t(x)|d(x)$. 
+
+\section*{thm}
+the gcd is unique. lets assume that $d_1(x)$ and $d_2(x)$ are gcd of $f(x)$ and $g(x)$. $d_2(x)|f(x)$ and $d_2(x)|g(x)$. $d_1$ is gcd so $d_1|d_2$ and $d_1(x)|f(x)$ and $d_1(x)|g(x)$ so because $d_2$ is gcd then $d_2|d_1$. we said our gcd was monic.
+
+$d_1(x)=d_2(x)\alpha_1(x)$ and $d_2(x)=d_1(x)\alpha_2(x)$. now $d_1(x)\alpha_1(x)\alpha_2(x)\to d_2=d_1(x)\alpha_1(x)\alpha_2(x)$
+
+\section*{thm}
+if $p(x)|f(x)g(x)$ and $\gcd(p(x),f(x))=1$ then $p(x)|g(x)$.
+
+\section*{def}
+$f(x)\in K[x]$. we say that $f(x)$ is irreducible over the field $K$ if $f(x)$ cannot be factored into a product of two polynomials of degree lower than $\deg f(x)$.
+\subsection*{example}
+$x^2+1$ is irreducible over $\mathbb{R}$
+\subsection*{example}
+$x^2+1\in \mathbb{C}[x]$ is reducible (not irreducible) over $\mathbb{C}$
+
+\section*{prop}
+$f(x)\in K[x]$, $\deg f(x)$ is $2$ or $3$ and $f(x)$ has no roots in $K$. then $f(x)$ is irreducible.
+
+\subsubsection*{proof}
+we choose $\deg 2,3$ because at least one of the factors is $\deg 1$
+
+we assume the factors exist. then $f(x)=(\alpha x+\beta)h(x)$ and $f(-\beta\alpha^{-1})=0$ and it has a root.
+
+\section*{thm}
+every non-zero polynomial in  $K[x]$ can be written uniquely as a product of irreducible polynomials.
+
+proof is inductive argument
+
+\section*{def}
+$f(x)\in K[x], c\in K$ we say that $c$ is a root of multiplicity $m$ of $f(x)$ if $(x-c)^m$ divides $f(x)$ and $(x-c)^{m+1}\not| f(x)$
+
+\section*{prop}
+$f(x)\in \mathbb{R}[x]$, $\deg f(x)\ge 1$ then $f(x)$ has no repeatable factors iff the $gcd$ of $f(x)$ and $f'(x)$ is one
+\end{document}
+
+

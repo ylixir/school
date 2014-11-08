@@ -1,0 +1,49 @@
+\documentclass[letterpaper]{article}
+
+\usepackage{fullpage}
+\usepackage{nopageno}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[utf8]{inputenc}
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+
+\begin{document}
+\title{Notes}
+\date{November 7, 2014}
+\maketitle
+\section*{5.3.J}
+Let $m(x,y)=\max\{x,y\}$. prove that $m$ is continuous and then show that $h(x)=\max\{f(x),g(x)\}$ is continuous if $f(x)$ and $g(x)$ are continuous.
+
+case 1, $m(x,y)=x,m(x_1,y_1)=x_1$ then $|m(x,y)-m(x_1,y_1)|=|x-x_1|$. take $r=\varepsilon$ and then $||(x,y)-(x_1,y_1)||<r$ then $|m(x,y)-m(x_1,y_1)|<\varepsilon$. similar with $m(x,y)=x$ and $m(x_1,y_1)=y_1$ is similar
+
+now if $m(x,y)=x$ and $m(x_1,y_1)=y_1$ then $-\varepsilon<x-y_1<\varepsilon$.
+\begin{align*}
+  -r<x-x_1<r\\
+  -r<y-y_1<r\\
+  x>y\\
+  y_1>x_1\\
+  -y_1<-x_1\\
+  (x-y_1)<(x-x_1)\\
+\end{align*}
+So if $x-x_1<\varepsilon$ then $(x-y_1)<\varepsilon$. 
+\begin{align*}
+  y-y1<x-y1\\
+  \text{if }y-y1>-\varepsilon\\
+  \text{then }x-y1>-\varepsilon\\
+\end{align*}
+so $r=\varepsilon$ will give us $|x-y1|<\varepsilon$
+
+now let $\varepsilon\circ f(x)=\varepsilon_1(f(x)=(f(x),0)$ and $\varepsilon_2\circ g(x)=\varepsilon_2(g(x)=(0,g(x))$. and $h(x)=m\circ(\varepsilon\circ f(x)+\varepsilon\circ g(x))$
+
+because sum and composition of continuous functions are continuous, then h is continuous. induction gives us continuity for $\max\{f_1(x),\dots,f_m(x)\}$
+
+\section*{5.4H,I\& 5.5F}
+let $f:\mathbb{R}\to\mathbb{R}$ be periodic and continuous, ie $\exists d>0$ such that $\forall x\in \mathbb{R}, f(x+d)=f(x)$.
+
+\subsection*{show it attains max min}
+look at $y\in[x,x+d]$ then $\exists a,b\in [x,x+d]$ such that $f(a)\le f(y)\le f(b)$. periodicity gives us same properties on all of $\mathbb{R}$
+\subsection*{show that it is bounded and uniformally continuous}
+\subsection*{find a function $f:\mathbb{R}^2\to \mathbb{R}$ such that $f(x+1,y)=f(x,y)\forall(x,y)$ but $f$ is not bounded or does not attain it's max}
+\end{document}

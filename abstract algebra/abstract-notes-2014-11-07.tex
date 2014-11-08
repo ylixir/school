@@ -1,0 +1,66 @@
+\documentclass[letterpaper]{article}
+
+\usepackage{fullpage}
+\usepackage{nopageno}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+
+\begin{document}
+\title{Notes}
+\date{November 7, 2014}
+\maketitle
+\section*{4.2 5a,6}
+\subsection*{5a}
+$\gcd(f(x),f'(x))=d(x)\ne 1$
+assume $f(x)$ does not have repeatable factors
+
+consider $p(x)$ to be an irreduceable factor of $d(x)$.
+
+then we can say $f(x)=a(x)p(x), f'(x)=b(x)p(x)$ where $g(x),b(x)\in F[x]$.
+
+$f'(x)=a'(x)p(x)+a(x)p'(x)$ and the following holds. $a(x)p'(x)=b(x)p(x)-a'(x)p(x)$
+
+$p(x)|a(x)p'(x)\to p(x)|a(x) $ because $p(x)|h_1(x)h_2(x)\to p(x)|h_1(x)$ or $p(x)|h_2(x)$
+
+$\exists cc(x)\in F[x]$ where $a(x)=c(x)p(x)$ and $f(x)=a(x)p(x)=c(x)p(x)p(x)=c(x)p(x)^2$ which is a contradiction
+
+note that $p(x)|p'(x)$ is possible. $p(x)\in \mathbb{Z}_p[x], p(x)=x^{p^2}-x^{p}-1$ and $p'(x)=0$.
+
+\section*{4.3 existence of roots}
+$p(x)\in K[x]\setminus\{0\}$.
+
+construction $m$ $K[x]$. for $f(x),g(x)\in K[x]$ $f\equiv g(x)\mod p(x)\Leftrightarrow p(x)|[f(x)-g(x)]$. this is an equivalence relation on $K[x].$
+
+now we examine the equivalence class of $f(x)$. It consists of all polynomials in $K[x]$ such that $[f(x)]=\{g(x)|g(x)\in K[x], f(x)\equiv g(x)\mod p(x)\}$. we write $f(x)=p(x)q(x)+r(x)$ where $r(x)=0$ or $\deg r<\deg p$. and then $[f(x)]=[r(x)]$. the set of equivalence classes is denoted $K[x]/\langle p(x)\rangle$
+
+\subsection*{properties}
+\begin{enumerate}
+\item
+$f(x)\equiv g(x)\mod p(x)$ and $h(x)\equiv l(x)\mod p(x)$ then $f(x)+h(x)\equiv g(x)+l(x)\mod p(x)$ and $f(x)h(x)\equiv g(x)l(x)\mod p(x)$
+\item
+$f(x)h(x)\equiv g(x)h(x)\mod p(x)$ and $\gcd(p(x),h(x))=1$ then $f(x)\equiv g(x)\mod p(x)$.
+\end{enumerate}
+\subsubsection*{on $K[x]/\langle p(x)\rangle$}
+define
+\begin{enumerate}
+\item
+$[f(a)]+[g(x)]=[f(a)+g(a)]$
+\item
+$[f(x)]\cdot [g(x)]=[f(x)\cdot g(x)]$
+\end{enumerate}
+these are well defined operations, check all details
+
+$[f(x)+g(x)]=[f'(x)+g'(x)]$?
+
+\subsubsection*{example}
+$K=\mathbb{R}, p(x)=x^2+1\in \mathbb{R}[x]$.
+
+$\mathbb{R}[x]/\langle p\rangle =\mathbb{R}[x]/\langle x^2+1\rangle$
+
+$[x]^2=-[1]$.
+\end{document}
+
+
