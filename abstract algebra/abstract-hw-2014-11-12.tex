@@ -1,0 +1,172 @@
+\documentclass[letterpaper]{article}
+
+\usepackage{fullpage}
+\usepackage{nopageno}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+
+\begin{document}
+\title{Homework}
+\date{November 5, 2014}
+\author{Jon Allen}
+\maketitle
+Section 4.1: \#4, 13
+
+Section 4.2: \# 2(a), 8, 11.
+\renewcommand{\labelenumi}{4.\arabic{enumi}}
+\renewcommand{\labelenumii}{\arabic{enumii}.}
+\renewcommand{\labelenumiii}{(\alph{enumiii})}
+\begin{enumerate}
+\item
+  \begin{enumerate}
+  \setcounter{enumii}{3}
+  %4.1 4
+  \item
+    For $f(x)=x^3+3x^2-10x+5$, use the method of Theorem 4.1.9 to write $f(x)=q(x)(x-2)+f(2)$.
+
+    \begin{align*}
+      f(x)-f(2)&=x^3+3x^2-10x+5-(2^3+3\cdot 2^2-10\cdot 2+5)\\
+      &=(x^3-2^3)+3(x^2-2^2)-10(x-2)\\
+      &=(x-2)[(x^2+2x+2^2)+3(x+2)-10]\\
+      &=(x-2)(x^2+5x)\\
+      f(x)&=(x^2+5x)(x-2)-f(2)\\
+      f(x)&=(x^2+5x)(x-2)-(8+12-20+5)\\
+      f(x)&=(x^2+5x)(x-2)-5\\
+    \end{align*}
+  \setcounter{enumii}{12}
+  %4.1 13
+  \item
+    Show that the set of matrices of the form $\left[\begin{array}{rr}a&b\\-b&a\end{array}\right]$, where $a,b\in \mathbb{R}$, is a field under the operations of matrix addition and multiplication.
+
+    We know and are told that $\mathbb{R}$ is a field. This means that all the individual elements of the matrix are elements of a field and the properties of the field will apply to the operations we perform on these elements. We will just take this for granted, as pointing this out at every step will become tedious.
+
+    Basically all the lower case letters represent elements of $\mathbb{R}$
+
+    \renewcommand{\labelenumiii}{(\roman{enumiii})}
+    \begin{enumerate}
+    \item
+      Closure
+      \begin{align*}
+        \left[\begin{array}{rr}a&b\\-b&a\end{array}\right]
+        +\left[\begin{array}{rr}c&d\\-d&c\end{array}\right]
+        &=\left[\begin{array}{rr}(a+c)&(b+d)\\-(b+d)&(a+c)\end{array}\right]\\
+        \left[\begin{array}{rr}a&b\\-b&a\end{array}\right]
+        \times \left[\begin{array}{rr}c&d\\-d&c\end{array}\right]
+        &=\left[\begin{array}{rr}(ac-bd)&(ad+bc)\\-(bc+ad)&(ac-bd)\end{array}\right]\\
+      \end{align*}
+    \item
+      Associativity
+      \begin{align*}
+        \left(\left[\begin{array}{rr}a&b\\-b&a\end{array}\right]
+        +\left[\begin{array}{rr}c&d\\-d&c\end{array}\right]\right)
+        +\left[\begin{array}{rr}e&f\\-f&e\end{array}\right]
+        &=\left[\begin{array}{rr}(a+c+e)&(b+d+f)\\-(b+d+f)&(a+c+e)\end{array}\right]\\
+        \left[\begin{array}{rr}a&b\\-b&a\end{array}\right]
+        +\left(\left[\begin{array}{rr}c&d\\-d&c\end{array}\right]
+        +\left[\begin{array}{rr}e&f\\-f&e\end{array}\right]\right)
+        &=\left[\begin{array}{rr}(a+c+e)&(b+d+f)\\-(b+d+f)&(a+c+e)\end{array}\right]\\
+        \left(\left[\begin{array}{rr}a&b\\-b&a\end{array}\right]
+        \times \left[\begin{array}{rr}c&d\\-d&c\end{array}\right]\right)
+        \times \left[\begin{array}{rr}e&f\\-f&e\end{array}\right]
+        &=\left[\begin{array}{rr}(ac-bd)&(ad+bc)\\-(bc+ad)&(ac-bd)\end{array}\right]
+        \times \left[\begin{array}{rr}e&f\\-f&e\end{array}\right]\\
+      \end{align*}
+      \begin{align*}
+        &=\left[\begin{array}{rr}(ace-bde)-(adf+bcf)&(acf-bdf)+(ade+bce)\\-(bce+ade)-(acf-bdf)&-(bcf+adf)+(ace-bde)\end{array}\right]\\
+        &=\left[\begin{array}{rr}(ace-adf)-(bde+bcf)&(acf+ade)+(bce-bdf)\\-(bce-bdf)-(acf+ade)&-(bcf+bde)+(ace-adf)\end{array}\right]\\
+        &=\left[\begin{array}{rr}a(ce-df)-b(de+cf)&a(cf+de)+b(ce-df)\\-b(ce-df)-a(cf+de)&-b(cf+de)+a(ce-df)\end{array}\right]\\
+        &=\left[\begin{array}{rr}a&b\\-b&a\end{array}\right]
+        \times\left[\begin{array}{rr}(ce-df)&(cf+de)\\-(de+cf)&(cd-df)\end{array}\right]\\
+        &=\left[\begin{array}{rr}a&b\\-b&a\end{array}\right]
+        \times\left(\left[\begin{array}{rr}c&d\\-d&c\end{array}\right]
+        \times\left[\begin{array}{rr}e&f\\-f&e\end{array}\right]\right)
+      \end{align*}
+    \end{enumerate}
+    \renewcommand{\labelenumiii}{(\alph{enumiii})}
+  \end{enumerate}
+\item
+  \begin{enumerate}
+  \setcounter{enumii}{1}
+  \item
+    Use the division algorithm to find the quotient and remainder when $f(x)$ is divided by $g(x)$, over the indicated field.
+    \begin{enumerate}
+    %4.2 2a
+    \item
+      $f(x)=x^4+1\qquad g(x)=x+1\qquad$ over $\qquad\mathbb{Z}_2$
+
+      \[
+      \begin{array}{rrrrrrr}
+      &&&x^3&+x^2&+x&+1\\
+      \hline
+      x+1&|&x^4&+0x^3&+0x^2&+0x&+1\\
+      &&-(x^4&+x^3)\\
+      \hline
+      &&&x^3&+0x^2\\
+      &&&-(x^3&+x^2)\\
+      \hline
+      &&&&x^2&+0x\\
+      &&&&-(x^2&+x)\\
+      \hline
+      &&&&&x&+1
+      \end{array}
+      \]
+      Looks like our quotient is $x^3+x^2+x+1$ and we have a remainder of zero.
+    \end{enumerate}
+  \setcounter{enumii}{7}
+  %4.2 8
+  \item
+    Let $F$ be a field, let $f(x),g_1(x),g_2(x)$ be nonzero polynomials in $F[x]$. Let $q_1(x)$ and $r_1(x)$ be the quotient and remainder when $f(x)$ is divided by $g_1(x)$, and let $q_2(x)$ and $r_2(x)$ be the quotient and remainder when $q_1(x)$ is divided by $g_2(x)$. Show that the quotient when $f(x)$ is divided by the product $g_1(x)g_2(x)$ is $q_2(x)$. What is the remainder?
+
+    \begin{align*}
+      f(x)&=g_1(x)q_1(x)+r_1(x)\\
+      q_1(x)&=g_2(x)q_2(x)+r_2(x)\\
+      f(x)&=g_1(x)\left[g_2(x)q_2(x)+r_2(x)\right]+r_1(x)\\
+      f(x)&=\left[g_1(x)g_2(x)\right]q_2(x)+g_1(x)r_2(x)+r_1(x)
+    \end{align*}
+    Note that the remainder is defined to be zero or a polynomial of a smaller degree than the divisor. then In this case our divisor is $g_1(x)g_2(x)$. Assuming neither $r_1$ or $r_2$ is zero:
+    \begin{align*}
+      \deg g_1&>\deg r_1\\
+      \deg g_2&>\deg r_2\\
+      \deg g_1g_2&=\deg g_1+\deg g_2
+      >\deg g_1+\deg r_2=\deg g_1r_2\ge \deg g_1>\deg r_1
+    \end{align*}
+    Also $\deg (g_1r_2+r_1)$ is $\deg g_1r_2$ because $\deg g_1r_2>\deg g_1>\deg r_1$. And so $(g_1(x)r_2(x)+r_1(x)$ is our remainder.
+    Now if $r_2(x)$ is zero but $r_1(x)$ is not then then we have $\deg r_1<\deg g_1<\deg g_1g_2$ and so $r_1(x)$ is our remainder. If we have $r_1(x)$ as zero but $r_2(x)$ not zero then we have $\deg g_1r_2<\deg g_1g_2$ and so $g_1(x)r_2(x)$ is our remainder. If $g_1(x)r_2(x)+r_1(x)=0$ then we have a zero remainder.
+
+    In all cases, $g_1(x)r_2(x)+r_1(x)$ fits the division  algorithms definition for a remainder. Which means $q_2(x)$ is our quotient.
+  \setcounter{enumii}{10}
+  %4.2 11
+  \item
+    Find the irreducible factors of $x^6-1$ over $\mathbb{R}$.
+
+    The factoring I can easily do in my head is as follows
+    \begin{align*}
+      x^6-1&=(x^3)^2-1\\
+      &=(x^3-1)(x^3+1)\\
+      &=(x-1)(x^2+x+1)(x^3+1)\\
+      0&=x^3+1\\
+      -1&=x^3=x\\
+    \end{align*}
+    Using synthetic division (which works the same way as polynomial division, just easier to write) to find the quotient of $(x+1)$ which we know is a factor because $x=-1$ is a root.
+    \[\begin{array}{rrrrrrr}
+      &(&x^3&+0x^2&+0x&&+1)\\
+      -1&|&1&0&0&|&1\\
+      &|&&-1&1&|&-1\\
+    \hline
+    &|&1&-1&1&|&0\\
+    (x+1)&\cdot&(x^2&-x&+1&)&+0
+    \end{array}\]
+    And with the quadratic equation, (which is fine since we are working in $\mathbb{R}$) we see that the quadratic polynomials we have left over are irreducible over $\mathbb{R}$ (but not $\mathbb{C}$).
+    \begin{align*}
+      0&=x^2+x+1&
+      x&=\frac{-1\pm \sqrt{1-4}}{2}\not\in \mathbb{R}\\
+      0&=x^2-x+1&
+      x&=\frac{1\pm\sqrt{1-4}}{2}\not\in \mathbb{R}
+    \end{align*}
+    And so the irreducible factors of $x^6-1$ are $(x-1)(x+1)(x^2+x+1)(x^2-x+1)$
+  \end{enumerate}
+\end{enumerate}
+\end{document}
