@@ -1,0 +1,61 @@
+\documentclass[letterpaper]{article}
+
+\usepackage{fullpage}
+\usepackage{nopageno}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+
+\begin{document}
+\title{Notes}
+\date{November 10, 2014}
+\maketitle
+\section*{4.3 \#21a,c}
+Find multiplicative inverses of the given elements in the given fields
+\subsection*{a}
+$[a+bx]$ in $\mathbb{R}[x]/\langle x^2+1\rangle$
+
+\begin{align*}
+  [a+bx][c+dx]&\equiv 1\mod (x^2+1)\\
+  (a+bx)(c+dx)-1&=x^2+1\\
+  x^2+1&=q(a+bx)+r\\
+  x^2+1&=(bx+a)(\frac{1}{b}x-\frac{a}{b^2})+1+\frac{a^2}{b^2}
+\end{align*}
+\subsection*{c}
+$[x^2-2x+1]$ in $\mathbb{R}[x]/\langle x^3-2\rangle$
+
+$x^3-2=(x^2-2x+1)(x+2)+3x-4$
+
+$x^2-2x+1=(\frac{1}{3}x-\frac{2}{9})(3x-4)+\frac{1}{9}$
+
+$1=9(x^2-2x+1)-9(\frac{1}{3}x-\frac{2}{9})(3x-4)$
+
+$1=(x^2-2x+1)(9+(3x-2)(x+2))-(x^3-2)(3x-2)$
+
+$[1]=[x^2-2x+1][3x^2+4x+5]-[x^3-2][3x-2]$
+
+$[0]=[x^3-2]$
+
+$[x^2-2x+1]^{-1}=[3x^2+4x+5]$
+
+\section*{htrm}
+f has no repeated factors iff $\gcd(f(x),f^{-1}(x))=1$
+\subsection*{example}
+$K=Z_{p}(T)=\{\frac{f(t)}{g(t)}:f(t),g(t)\in \mathbb{Z}_p[T],g(t)\ne 0\}$ check that $K$ is a field
+
+let $f(x)=x^p-T\in K[x]$. claim that $f(x)$ is irreducible.
+
+\section*{proposition}
+let $p(x)in K[x]\setminus \{0\}$ be irreducible with $\deg p\ge 1$. then $K[x]/\langle p(x)\rangle$ is a field.
+\section*{proof}
+sind $p(x)$ is irreducible then $\gcd(f(x),p(x))=1$ and so $[f(x)]$ has mult inverse.
+
+\section*{thm}
+take $f(x)\in K[x]$ with $\deg f\ge 1$ then there exists an extension of $K$ called $L$ such that $f(x)$ has a root in $L$
+\subsection*{proof}
+let $p(x)$ be an irreducible factor of $f(x)$. now let $L=K[x]/\langle p(x)\rangle$. now $K\to \{[a]:a\in K\}\subseteq L$ with $x\to[x]$ is an isomorphism. let $u=[x]=L$ and $f(u)=p(u)g(u)=p([x])g(u)=0g(u)=0$
+\end{document}
+
+

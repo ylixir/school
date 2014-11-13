@@ -10,7 +10,7 @@
 
 \begin{document}
 \title{Homework}
-\date{November 5, 2014}
+\date{November 12, 2014}
 \author{Jon Allen}
 \maketitle
 Section 4.1: \#4, 13
@@ -84,6 +84,60 @@ Section 4.2: \# 2(a), 8, 11.
         \times\left(\left[\begin{array}{rr}c&d\\-d&c\end{array}\right]
         \times\left[\begin{array}{rr}e&f\\-f&e\end{array}\right]\right)
       \end{align*}
+    \item
+      Commutativity
+      \begin{align*}
+        \left[\begin{array}{rr}a&b\\-b&a\end{array}\right]
+        +\left[\begin{array}{rr}c&d\\-d&c\end{array}\right]
+        &=\left[\begin{array}{rr}a+c&b+d\\-(b+d)&a+c\end{array}\right]\\
+        &=\left[\begin{array}{rr}c&d\\-d&c\end{array}\right]
+        +\left[\begin{array}{rr}a&b\\-b&a\end{array}\right]\\
+        \left[\begin{array}{rr}a&b\\-b&a\end{array}\right]
+        \times\left[\begin{array}{rr}c&d\\-d&c\end{array}\right]
+        &=\left[\begin{array}{rr}ac-bd&ad+bc\\-(bc+ad)&ac-bd\end{array}\right]\\
+        \left[\begin{array}{rr}c&d\\-d&c\end{array}\right]
+        \times\left[\begin{array}{rr}a&b\\-b&a\end{array}\right]
+        &=\left[\begin{array}{rr}ca-db&cb+da\\-(da+cb)&ca-db\end{array}\right]
+      \end{align*}
+    \item
+      Distributivity
+      \begin{align*}
+        \left[\begin{array}{rr}a&b\\-b&a\end{array}\right]
+        \times\left(\left[\begin{array}{rr}c&d\\-d&c\end{array}\right]
+        +\left[\begin{array}{rr}e&f\\-f&e\end{array}\right]\right)
+        &=\left[\begin{array}{rr}a&b\\-b&a\end{array}\right]
+        \times\left[\begin{array}{rr}c+e&d+f\\-(d+f)&c+e\end{array}\right]\\
+        &=\left[\begin{array}{rr}ac+ae-(bd+bf)&ad+af+bc+be\\-bc-be-(ad+af)&-bd-bf+ac+ae\end{array}\right]\\
+        &=\left[\begin{array}{rr}ac-bd&ad+bc\\-(bc+ad)&-bd+ac\end{array}\right]+
+        \left[\begin{array}{rr}ae-bf&af+be\\-(be+af)&-bf+ae\end{array}\right]\\
+        &=\left[\begin{array}{rr}a&b\\-b&a\end{array}\right]
+        \times\left[\begin{array}{rr}c&d\\-d&c\end{array}\right]
+        +\left[\begin{array}{rr}a&b\\-b&a\end{array}\right]
+        \times\left[\begin{array}{rr}e&f\\-f&e\end{array}\right]
+      \end{align*}
+      We get $(B+C)\times A=BA+CA$ for free as a consequence of commutativity, which we have already shown.
+    \item
+      Identity elements
+      \begin{align*}
+        \left[\begin{array}{rr}a&b\\-b&a\end{array}\right]
+        +\left[\begin{array}{rr}0&0\\0&0\end{array}\right]
+        &=\left[\begin{array}{rr}a&b\\-b&a\end{array}\right]\\
+        \left[\begin{array}{rr}a&b\\-b&a\end{array}\right]
+        \times\left[\begin{array}{rr}1&0\\0&1\end{array}\right]
+        &=\left[\begin{array}{rr}a&b\\-b&a\end{array}\right]
+      \end{align*}
+    \item
+      Inverse elements
+      \begin{align*}
+        \left[\begin{array}{rr}a&b\\-b&a\end{array}\right]
+        +\left[\begin{array}{rr}-a&-b\\b&-a\end{array}\right]
+        &=\left[\begin{array}{rr}0&0\\0&0\end{array}\right]\\
+        \left[\begin{array}{rr}a&b\\-b&a\end{array}\right]
+        \times\left[\begin{array}{rr}\frac{a}{a^2+b^2}&-\frac{b}{a^2+b^2}\\\frac{b}{a^2+b^2}&\frac{a}{a^2+b^2}\end{array}\right]
+        &=\left[\begin{array}{rr}\frac{a^2+b^2}{a^2+b^2}&\frac{ab-ba}{a^2+b^2}\\\frac{ab-ba}{a^2+b^2}&\frac{a^2+b^2}{a^2+b^2}\end{array}\right]\\
+        &=\left[\begin{array}{rr}1&0\\0&1\end{array}\right]
+      \end{align*}
+      Of course the multiplicative inverse only works if $a^2+b^2\ne 0$ but then that is the same as saying that $a$ and $b$ can't both be zero, so we don't have an inverse for the $0$ element. Which is fine.
     \end{enumerate}
     \renewcommand{\labelenumiii}{(\alph{enumiii})}
   \end{enumerate}

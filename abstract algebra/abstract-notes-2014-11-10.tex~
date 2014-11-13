@@ -1,0 +1,35 @@
+\documentclass[letterpaper]{article}
+
+\usepackage{fullpage}
+\usepackage{nopageno}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+
+\begin{document}
+\title{Notes}
+\date{November 10, 2014}
+\maketitle
+\section*{4.3 \#21a,c}
+Find multiplicative inverses of the given elements in the given fields
+\subsection*{a}
+$[a+bx]$ in $\mathbb{R}[x]/\langle x^2+1\rangle$
+
+\begin{align*}
+  [a+bx][c+dx]&\equiv 1\mod (x^2+1)\\
+  (a+bx)(c+dx)-1&=x^2+1\\
+  ac+adx+bcx+bdx^2-1&=x^2+1\\
+  bd&=1\\
+  ac-1&=1\\
+  (ad+bc)&=0\\
+  d&=\frac{1}{b}\\
+  c&=\frac{2}{a}\\
+  
+\end{align*}
+\subsection*{c}
+$[x^2-2x+1]$ in $\mathbb{R}[x]/\langle x^2+1\rangle$
+\end{document}
+
+
