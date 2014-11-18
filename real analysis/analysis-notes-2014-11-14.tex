@@ -1,0 +1,40 @@
+\documentclass[letterpaper]{article}
+
+\usepackage{fullpage}
+\usepackage{nopageno}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[utf8]{inputenc}
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+
+\begin{document}
+\title{Notes}
+\date{November 14, 2014}
+\maketitle
+\section*{5.7 monotone functions}
+a function $f:\mathbb{R}\to\mathbb{R}$ is monotonic (strictly) increasing (decreasing) if $\forall x<y, f(x)\le f(y)$ changing $f(x)$ and $f(y)$ relation as necessary
+
+note $\mathbb{R}^n$ has no natural order, so this is only defined in $\mathbb{R}$ 
+
+\subsection*{proposition 5.7.2}
+if $f:(a,b)\to \mathbb{R}$ is increasing then $\alpha=\lim_{x\to a^+}f(x)$ and $\lim_{x\to b^-}f(x)$ exists and $\forall x\in (a,b)$ we have $\alpha\le f(x)\le \beta$. and every element in $(a,b)$ has a left and right limit
+\subsubsection*{proof}
+let $c\in(a,b)$. let $F:\{f(x):x\in(a,c)\}$. because $f$ is increasing and $x<c$, then $f(x)\le f(c)\forall x\in(a,c)$. therefore $f(c)$ is an upper bound  for $F$. so $F$ has a supremum $L$. also $L\le f(c)$ because $f(c)$ is an upper bound and $L$ is the least upper bound. since $L-\varepsilon$ is not an upper bound for $F$ then $\exists y\in(a,c)$ such that $L-\varepsilon\le f(y)\le L$. take $\varepsilon=\frac{1}{n}$, for each $\varepsilon=\frac{1}{n}$, a corresponding $y_n\in(a,c)$. $L-\frac{1}{n}<f(y_n)\le L\to |f(y_n)-L|<\frac{1}{n}$ and so the limit exists.
+\subsection*{corollary}
+monotonic functions have only jump disccontinuities. and the number of these continuities is countable
+\subsubsection*{proof}
+ by 5.7.2 if $f$ has a discontinuity at a point $c\in(a,b)$ since $\lim_{x\to c^+}f(x)$ and $\lim_{x\to c^-}f(x)$ exists, they must be different. thus the discontinuity is a jump discontinuity. (if the limits were equal, then it would be continuous at that point)
+
+let $c$ be a point where $f$ has a discontinuity. then wlog $f(x)$ is increasing. $\gamma_1\lim_{x\to c^-}f(x)<\lim_{x\to c^+}=\gamma_2$. to the discontinuity point $c$ we can associate the interval $(\gamma_1,\gamma_2)$ which  is not in the image of $f$. if $d\ne c$ is another point of discontinuity, it's corresponding interval $(\sigma_1,\sigma_2)$ can not intersect $(\gamma_1,\gamma_2)$. if wlog $c\le d$ then $\gamma_2=\lim_{x\to c^+}\le\lim_{x\to d^-}f(x)=\sigma_1$ and so $\gamma_2<\sigma_1$ and they don't intersect.
+
+
+let $F:\{\text{discontinuities}\}\to\mathbb{Q}$. then $c\to c'\in(\gamma_1,\gamma_2)$. $F$ is injective because the intervals are disjoint, $|F|\le|\mathbb{Q}|$
+
+\section*{example 5.7.8 cantor function}
+
+in general the limit of a sequence of continous functions is not continuous. $f_n(x)=\begin{cases}0&x\le0\\x^n&x\in[0,1]\\1&x\ge 1\end{cases}$
+
+in the limt if $x\in[0,1)$ then $f_n(x)=x^n\rightarrow0$ but $f_n(1)=1$.
+\end{document}
