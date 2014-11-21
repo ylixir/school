@@ -1,0 +1,83 @@
+\documentclass[letterpaper]{article}
+
+\usepackage{fullpage}
+\usepackage{nopageno}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+
+\begin{document}
+\title{Notes}
+\date{November 21, 2014}
+\maketitle
+\section*{\#8}
+find irreducible factors of $x^4-5x^2+6$ over $\mathbb{Q}, \mathbb{Q}(\sqrt{2}),\mathbb{R}$
+
+$\mathbb{Q}(\sqrt{2})$ is $(x-\sqrt{2})(x+\sqrt{2})(x^2-3)$
+\section*{\#14}
+if $m|n$ then $mk=n$ and $x^m\equiv 1\mod x^m-1$ and $x^{mk}\equiv 1\mod x^m-1$ and $x^n-1\equiv 0\mod x^m-1$
+
+can pull out factors too
+
+assume that $x^m-1|x^n-1$ then $x^n-1\equiv 0\mod x^m-1$ and $x^n=0\mod x^m-1$ and $n=mq+r$ and $x^n\equiv x^r\mod x^m-1$ and so $(x^r-1)|(x^m-1)$ but $r<m$ and so $r=0$
+
+\section*{commutative rings}
+what is a ring? a set (often denoted with $R$) with two {\bf binary} operations (indicating closure) similar to fields. ``addition'' operation is abelian group, and ``multiplication'' is associative (and commutative when the ring is commutative) and has an identity. distribution holds. every field is a ring. rings don't require inverse for ``multiplication''.
+
+\subsection*{examples of commutative rings}
+$\mathbb{Z},\mathbb{Z}_n,$ if $K$ is a field then $K[x]$ is a commutative ring.
+
+if $R$ is a commutative ring, then $R[x]$ is a commutative ring.
+
+\subsection*{definition}
+if $R$ is a comm ring, then we say that $S\subseteq R$ is a subring if $S$ is a comm ring on the same operations as $R$ and has the same identity element.
+
+\subsubsection*{example}
+$R\subseteq R[x]$
+\section*{proposition}
+if $S\subseteq R$ then $S$ is a subring iff
+\begin{enumerate}
+\item
+$S$ is closed under it's operations
+\item
+if $a\in S$ then $-a\in S$
+\item
+$1_R\in S$ (identity in $R$ is in $S$)
+\end{enumerate}
+
+\subsubsection*{examples}
+complex integers: $\mathbb{Z}[i]=\{a+bi:a,b\in\mathbb{Z}\}\subseteq \mathbb{C}$
+
+\subsection*{definition}
+we say the $a\in R$ is invertible if $b\in R$ such that $ab=1_R$. another term for this is saying $a$ is a unit, but some books call the identity a unit, so just call it invertible.
+
+\subsubsection*{example}
+if $R=\{0\}$ then $1_R=0$.
+
+$\pm 1\in \mathbb{Z}$ are only invertible elements in $\mathbb{Z}$
+
+\subsection*{notation}
+$R^{\times}=\{x:x\in R,x \text{ is invertible}\}$
+
+$R=\mathbb{Z}_n\to R^\times=\{[k]:\gcd(k,n)=1\}$
+
+\subsection*{proposition}
+if $R$ is a commutative ring, then $(R^\times,\cdot)$ is an abelian group.
+
+\subsection*{definition}
+an element $a$ is called a zero divisor if there exists some $ab=0$ where $b\ne 0$.
+
+in $\mathbb{Z}_4$ $[2][2]=[0]$.
+
+\subsection*{definition}
+given $R$ a commutative ring, then we say that $R$ is an integral domain (emphasis on integrity and domain) if $1_R\ne 0_R$ and $ab=0$ only when $a=0$ or $b=0$ (that is $0_R$ is the only zero divisor).
+
+\subsubsection*{example}
+every field is an integral domain. not that if $ab=0$  then $a^{-1}\in F$ and $ab=a^{-1}ab=a^{-1}0=b=0$ and so we have a contraction if we assume $b\ne 0$.
+
+$\mathbb{R}[x]/\langle x^2-1\rangle$ is not a field because $x^-1$ is reducible but it is a commutative ring.
+\end{document}
+
+
