@@ -1,0 +1,40 @@
+\documentclass[letterpaper]{article}
+
+\usepackage{fullpage}
+\usepackage{nopageno}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[utf8]{inputenc}
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+
+\begin{document}
+\title{Notes}
+\date{November 26, 2014}
+\maketitle
+\section*{section 6.2.4}
+let $f:[a,b]\to\mathbb{R}$ be differentiable, then
+\begin{enumerate}
+\item
+if $f'$ is (strictly) positive, $f$ is (strictly) increasing
+\item
+same for negative
+\item
+if $f'(x)=0$ then $\forall x\in[a,b]$, $f$ is constant
+\end{enumerate}
+\subsubsection*{proof}
+suppose $f'$ is strictly positive, let $x,y\in[a,b]$ such that $x<y$. then by mean value theorem $\exists c\in(x,y)$ such that $f'(c)=\frac{f(y)-f(x)}{y-x}$ and so $(y-x)f'(c)=f(y)-f(x)$ and so $y-x>0$ and $f'(c)\ge 0 (>0)$ so $f(y)-f(x)\ge0$ an $f(y)\ge f(x)$
+
+\subsection*{exercise 6.2.L}
+a function is convex (lies below that line segment (x,f(x) to (y,f(y))) if $f(tx+(1-t)y)\le tf(x) +(1-t)f(y)$ for all $x,y$ in $[a,b]$ and all $t\in[0,1]$
+\subsection*{a)} if $f$ is differentiable and $f'$ is increasing then $f$ is convex.
+
+define $z=tx+(1-t)y$
+
+note that $x\le z\le y$. and there exists $c_1\in(x,z),c_2\in(z,y)$ and $f'(c_1)=\frac{f(z)-f(x)}{z-x}$ and $f'(c_2)=\frac{f(y)-f(z)}{y-z}$ and $c_1< c_2$ and so $f'(c_1)\le f'(c_2)$ and $\frac{f(z)-f(x)}{z-x}\le \frac{f(y)-f(z)}{y-z}$ and on through until $f(z)(y-z)+f(z)(z-x)\le f(y)(z-x)+f(x)(y-z)$ and sub t back in for
+\begin{align*}
+  f(z)(y-x)&\le f(y)[tx+(1-t)y-x]+f(x)[y-tx-(1-t)y]\\
+\end{align*}
+and algebra to get definition
+\end{document}

@@ -1,0 +1,111 @@
+%shell-escape
+\documentclass[letterpaper]{article}
+
+\usepackage{fullpage}
+\usepackage{nopageno}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{gnuplottex}
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+
+\begin{document}
+\title{Homework 9}
+\date{November 26, 2014}
+\author{Jon Allen}
+\maketitle
+Section 6.1 \# E, F, N, O*, S*
+
+\renewcommand{\labelenumi}{6.\arabic{enumi}}
+\renewcommand{\labelenumii}{\Alph{enumii}.}
+\renewcommand{\labelenumiii}{(\alph{enumiii})}
+\begin{enumerate}
+\item
+  \begin{enumerate}
+  \setcounter{enumii}{4}
+  \item
+  Show that the derivative of an even function is odd, and the derivative of an odd function is even. Recall that a function $f$ is {\bfseries even} if $f(-x)=f(x)$ and is {\bfseries odd} if $f(-x)=-f(x)$.
+
+  We first note that $f(-x)=f\circ g$ where $g(x)=-x$. Now if we wish to find the derivative of $f\circ g$ then we simply apply the chain rules and we find that the derivative of $f\circ g$ is $(f'\circ g)g'$. We  know that $g'$ is $-1$ but lets just do it for the practice and completeness.
+  \begin{align*}
+    g'(x)=\lim_{x\to x_0}g(x)=\lim_{x\to x_0}\frac{-x+x_0}{x-x_0}=\lim_{x\to x_0}-\frac{x-x_0}{x-x_0}=-1
+  \end{align*}
+  And so $\frac{\mathrm{d}}{\mathrm{d}x}f(-x)=-f'(-x)$ Now reversing the composition, we see that the derivative of $-f(x)=g\circ f$ is $(g'\circ f)f'$ and so $\frac{\mathrm{d}}{\mathrm{d}x}{-f(x)}=-f'(x)$. I don't think we need to do any work to show that $\frac{\mathrm{d}}{\mathrm{d}x}f(x)=f'(x)$. Now putting it all together we see that if $f(-x)=f(x)$ then $-f'(-x)=f'(x)$ or $f'(-x)=-f'(x)$ and so the derivative of an even function is odd. And if $f(-x)=-f(x)$ then $-f'(-x)=-f'(x)$ or $f'(-x)=f'(x)$ and we have that the derivative of an odd function is even.
+  \item
+  Prove that the product rule for functions $f$ and $g$ on $[a,b]$ that are differentiable at $x_0$. {\scshape Hint}: $f(x_0+h)g(x_0+h)-f(x_0)g(x_0)=(f(x_0+h)-f(x_0))g(x_0+h)+f(x_0)(g(x_0+h)-g(x_0))$
+  
+  First, because $f$ and $g$ are both differentiable at $x_0$, then we can rewrite them as follows:
+  \begin{align*}
+    f(x_0+h)&=f(x_0)+f'(x_0+h)h\\
+    g(x_0+h)&=g(x_0)+g'(x_0+h)h\\
+    (fg)'(x)&=\lim_{h\to 0}\frac{f(x_0+h)g(x_0+h)-f(x_0)g(x_0)}{h}\\
+    &=\lim_{h\to0}\frac{(f(x_0+h)-f(x_0))g(x_0+h)+f(x_0)(g(x_0+h)-g(x_0))}{h}\\
+    &=\lim_{h\to0}\frac{(f(x_0)+f'(x_0+h)h-f(x_0))(g(x_0)+g'(x_0+h)h)+f(x_0)((g(x_0)+g'(x_0+h)h)-g(x_0))}{h}\\
+    &=\lim_{h\to0}\frac{f'(x_0+h)h(g(x_0)+g'(x_0+h)h)+f(x_0)g'(x_0+h)h)}{h}\\
+    &=\lim_{h\to0}f'(x_0+h)g(x_0)+f'(x_0+h)g'(x_0+h)h+f(x_0)g'(x_0+h))\\
+    &=f'(x_0)g(x_0)+f(x_0)g'(x_0)
+  \end{align*}
+  \setcounter{enumii}{13}
+  \item
+  If $f$ is periodic with period $T$, show that $f'$ is also $T$-periodic.
+
+  We can rewrite this as $f(x)=f(x+\alpha T)$ where $\alpha\in\mathbb{Z}$. Lets define $g(x)=x+\alpha T$. And now we see that $f(x)=(f\circ g)(x)$ and so $f'=(f'\circ g)g'$.
+  \begin{align*}
+    g'(x)&=\lim\limits_{h\to0}\frac{g(x_0+h)-g(x_0)}{h}\\
+    &=\lim\limits_{h\to0}\frac{x_0+h+\alpha T-x_0-\alpha  T}{h}\\
+    &=1
+  \end{align*}
+  And so $f'(x)=f'\circ g=f'(x +\alpha T)$, which means that the derivative is also  periodic.
+  \item
+  A function $f(x)$ is asymptotic to a curve $c(x)$ as $x\to+\infty$ if $\lim\limits_{x\to+\infty}|f(x)-c(x)|=0$.
+    \begin{enumerate}
+    \item
+    Show that if $f(x)$ is asymptotic to a line $L(x)=ax+b$ as $x\to+\infty$ then $a=\lim\limits_{x\to+\infty}\frac{f(x)}{x}$ and $b=\lim\limits_{x\to+\infty}f(x)-ax$. (As usual, this includes showing that the limits exist.)
+
+    We are given that $\lim\limits_{x\to+\infty}|f(x)-L(x)|=\lim\limits_{x\to+\infty}|f(x)-ax-b|=0$. That is to say that as for every $\varepsilon>0$ we can find some $M$ such that for all $x>M$ we have $||f(x)-ax-b|-0|=|f(x)-ax-b|<\varepsilon$. And so by the definition of limit we see that $\lim\limits_{x\to+\infty}f(x)-ax=b$. This is just a restatement of what we are given, and so I think it is fair to say that this limit exists.
+    Now we need to solve for $a$.
+    \begin{align*}
+      \lim_{x\to+\infty}f(x)-ax&=b\\
+      \lim_{x\to+\infty}\frac{1}{x}\cdot\lim_{x\to+\infty}f(x)-ax&=b\cdot\lim_{x\to+\infty}\frac{1}{x}\\
+      \lim_{x\to+\infty}\frac{f(x)}{x}-a&=\lim_{x\to+\infty}\frac{b}{x}\\
+      \lim_{x\to+\infty}\frac{f(x)}{x}&=a\\
+    \end{align*}
+%    Now we need to check and make sure we can find some $M$ such that for every $\varepsilon>0$ when $x>M$ then $\left\lvert\frac{f(x)}{x}-a\right\rvert<\varepsilon$
+%    We know that we can find such an $M$ to satisfy $|f(x)-ax-b|<\varepsilon$ and . Furthermore we can say that this $M$ must be greater than 1. Now then if $x>M>1$ then $\left\lvert\frac{1}{x}(f(x)-ax-b)\right\rvert\varepsilon$
+    We know that if we put $\varepsilon=\frac{1}{M}$ then if $x>M$ we have $|\frac{1}{x}|<\frac{1}{M}<\varepsilon$ and so $\lim_{x\to+\infty}\frac{1}{x}$ exists and so the product of these limits exists and so we have our result.
+    \item
+    Find all of the asymptotes (including horizontal and vertical ones) for $f(x)=\frac{(x-2)^3}{(x+1)^2}$
+
+    \begin{align*}
+      a&=\lim_{x\to+\infty}\frac{x^3-6x^2+12x+8}{x^3+2x^2+x}\\
+      &=\frac{x^3\left(1-\frac{6}{x}+\frac{12}{x^2}+\frac{8}{x^3}\right)}{x^3\left(1+\frac{2}{x}+\frac{1}{x^2}\right)}\\
+      &=1\\
+      b&=\lim_{x\to+\infty}\frac{x^3-6x^2+12x+8}{x^2+2x+1}-x\\
+      &=\lim_{x\to+\infty}\frac{x^3-6x^2+12x+8-x^3-2x^2-x}{x^2+2x+1}\\
+      &=\lim_{x\to+\infty}\frac{-8x^2+11x+8}{x^2+2x+1}\\
+      &=-8
+    \end{align*}
+    Note also that the limit as x approaches -1 is negative infinity.
+    So we have a vertical asymptote at $x=-1$ and another asymptote at $y=x-8$
+    \end{enumerate}
+  \setcounter{enumii}{18}
+  \item
+    \begin{enumerate}
+    \item
+    Suppose that $g$ is continuous at $x=0$. Prove that $f(x)=xg(x)$ is differentiable at $x=0$.
+
+
+    We know that $\lim\limits_{x\to0}g(x)=g(0)$. Now lets check for differentiability
+    \begin{align*}
+      \lim_{h\to0}\frac{(0+h)g(0+h)-0g(0)}{h}=\lim_{h\to0}g(0+h)=\lim_{(x-0)\to0}g(0+x-0)=\lim_{x\to0}g(x)
+    \end{align*}
+    Now we know that this limit exists because $g(x)$ is continuous at $x=0$ and so the function is differentiable at $x=0$
+    \item
+    Conversely, suppose that $f(0)=0$ and $f$ is differentiable at $x=0$. Prove that there is a function $g$ that is continuos at $x=0$ and satisfies $f(x)=xg(x)$.
+
+    We know from corollary 6.1.4 that there exists a function $g(x)$ which is continuous as $0$ such that $f(x)=f(0)+g(x)(x-0)=xg(x)$
+    \end{enumerate}
+  \end{enumerate}
+\end{enumerate}
+\end{document}

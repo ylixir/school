@@ -1,0 +1,42 @@
+\documentclass[letterpaper]{article}
+
+\usepackage{fullpage}
+\usepackage{nopageno}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+
+\begin{document}
+\title{Notes}
+\date{November 26, 2014}
+\maketitle
+\section*{fundamental theorem of ring homomorphism}
+
+\subsection*{observation}
+let $\varphi:R\to S$ be a given ring homomorphism (R,S are commutative rings)
+
+we want to define $\varepsilon:R[x]\to S$ ring homomorphism such that $\begin{cases}\varphi(r)=\varepsilon(r)&\forall r\in R\\\varepsilon(x)=s&s\text{ fixed }\in S\end{cases}$
+
+then $\varepsilon(a_0+a_1x+\dots+a_nx^n)=\varphi(a_0)+\phi(a_1)s+\dots+\varphi(a_n)s^n$
+
+\subsection*{construction}
+we define $R_1+R_2+\dots+R_n=\{(a_1,a_2,\dots,a_n):a_i\in R_i\}$ with component wise operations. this is a ring.
+
+\subsection*{definition}
+given $R$ a commutative ring, we define the characteristic of$R$ to be $\text{char } R$ to be the smallest $n$ such that $1_1+1_2+...+1_n=0$. If it doesn't exists we say $\text{char } R$ is zero.
+
+\subsection*{prop}
+the characteristic of an integral domain is either $0$ or prime.
+
+\subsubsection*{proof}
+if 0 then done, lets, assume that it's not prime.
+
+then $\text{char } R=n=\alpha\beta$ and $0=1_1+1_2+\dots+1_n=1_1+1_2+\dots+1_\alpha+1_1+\dots+1_\beta=\alpha\beta$. Because we are in an integral domain then $\alpha=0$ or $\beta=0$ and so we have a contradiction because $\alpha<n$ and the same for $\beta$ and so we have a contradiction because $n$ is the smallest to be 0 and so $n$ is prime.
+
+\subsection*{corollary}
+if $K$ is a field then characteristic is 0 or prime
+\end{document}
+
+
