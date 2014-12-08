@@ -1,0 +1,56 @@
+\documentclass[letterpaper]{article}
+
+\usepackage{fullpage}
+\usepackage{nopageno}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[utf8]{inputenc}
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+
+\begin{document}
+\title{Notes}
+\date{December 1, 2014}
+\maketitle
+\section*{note on homework}
+differentiable with bounded $f'$ means lipschitz and differentiable
+
+lipschitz mean continuous and differentiable means continuous
+
+continuous means continuous at $x_0$ and differentiable at $x_0$ means continous at $x_0$
+
+analytic($c^\omega$)$\to c^\infty\to\dots\to c^{m+1}\to c^m\to\dots\to c^2\to c^1\to$ differentiable
+
+\section*{riemann integrable}
+$f:[a,b]\to\mathbb{R}$ bounded. then $f$ is Riemann integrable if $\sup L(f,p)=\inf U(f,p)=\int_a^b{f(x)\;\mathrm{d}x}$
+
+\subsection*{reimann condition}
+if $f$ is riemann integrable $\Leftrightarrow\forall \varepsilon>0\exists P_\varepsilon$ such that $U(f,P_{\varepsilon}-L(f,P_\varepsilon)<\varepsilon$.
+
+\subsection*{6.3.6 theorem}
+not covered, just variations on the riemann condition
+
+\section*{examples}
+which are integrable, which are not?
+
+$f(x)=\chi_{\mathbb{Q}_n[0,1]}=\begin{cases}1&x\in\mathbb{Q}_{n[0,1]}\\0&\text{otherwise}\end{cases}$
+
+because any interval contains a rational then inf is 1 and since any interval has an irrational then sup is 0.
+
+there are other ways to do integrals such at riemann-stieltjes, lebesque, denjoy,feynmann
+
+\section*{thm 6.3.7}
+if $f$ is monotone on $[a,b]$ then $f$ is integrable on $[a,b]$
+\section*{thm 6.3.8}
+any continous function on $[a,b]$ is riemann integrable on $[a,b]$
+
+\subsubsection*{proof}
+function is compact, and so uniformally continuous. definition of unif cont.
+
+choose a partition $p_\varepsilon$ such that $\delta_i<r$ ($r=$radius of continuity ball) $\forall i=0,\dots,n-1$ then on each $[x_i,x_{i+1}]$ we have $\max f(x)-\min f(x)<\varepsilon$ and so back to book proof
+
+
+\section*{fundamental thm of calculus}
+if $f$ is riemann integrable on$[a,b]$ then $F(x)=\int_a^x{f(x)\;\mathrm{d}x}$ is continuous. when $f$ is continuous at $x_0$ then $F$ is differentiable at $x_0$ and $F'(x_0)=f(x_0)$
+\end{document}

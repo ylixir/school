@@ -1,0 +1,89 @@
+\documentclass[letterpaper]{article}
+
+\usepackage{fullpage}
+\usepackage{nopageno}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+
+\begin{document}
+\title{Notes}
+\date{December 8, 2014}
+\maketitle
+\section*{14b}
+$m\mathbb{Z}\cdot n\mathbb{Z}=(mn)\mathbb{Z}$
+
+$\subseteq$
+
+let $x\in (n\mathbb{Z})(m\mathbb{Z})$ so $x=\sum\limits_{i=1}^k{a_ib_i}$ and $n|a_i$ and $m|b_i$ and so $nm|a_ib_i$ and so $nm|x$ and so $n\mathbb{Z}m\mathbb{Z}\subseteq nm\mathbb{Z}$
+
+$\supseteq$
+
+let $y\in mn\mathbb{Z}$ and so $y=mnz_0=(n\cdot 1)(m\cdot  z_0)\in n\mathbb{Z}m\mathbb{Z}$
+
+\section*{20}
+gaussian integers are ``complex'' integers
+
+$\mathbb{Z}[i]/\langle p\rangle=\{[a+bi]|a,b\in\mathbb{Z}\}=\{[a]+[b][i]\}$
+
+$[a]+[b]i=[a']+[b']i\to(a+bi)-(a'+bi)\in\langle p\rangle=p(c+di)\to a-a'=pc\text{ and }b-b'=pd\to a-a'\in \langle p\rangle\to [a]=[a']$ and similarly with b.
+
+\section*{define}
+$R$ comm ring and $I$ ideal where $I\ne R$ then $I$ prime ideal means that $ab\in I\to a\in I$or $b\in I$
+
+\subsection*{example}
+$R=\mathbb{Z}$, $p\in \mathbb{Z}$ then $p\mathbb{Z}$ is a prime ideal because if $ab\in I$ then wlog $p|ab\to p|b\to b\in I$.
+
+\subsection*{example}
+claim
+$n\mathbb{Z}$ prime ideal then $n$ is prime
+
+assume $n$ not prime and $n\ne 0$. $n=\alpha\beta$ where $1<\alpha<n, 1<\beta<n, \alpha,\beta\in \mathbb{Z}$. then $\alpha\beta\in n\mathbb{Z}$ but $\alpha\not\in n\mathbb{Z}$ and $\beta\not\in n\mathbb{Z}$. notice that $n\ne 0$ is key here.
+
+\subsection*{example}
+claim $\langle0\rangle$ is a prime ideal. $ab=0\to a=0$ or $b=0$ because $R$ is an integral domain
+
+observation: $R$ commutative ring theen $R$is an integral domain iff $\langle0\rangle$is a prime ideal.
+
+\subsection*{$\mathbb{Z}$}
+$n\mathbb{Z}\subseteq m\mathbb{Z}\Leftrightarrow m|n$
+
+take$n=p$ prime nmber. $p\mathbb{Z}\subseteq m\mathbb{Z}\Leftrightarrow m|p\Leftrightarrow m\pm 1$ or $m=\pm p$ and so $m\mathbb{Z}=\mathbb{Z}$ or $m\mathbb{Z}=p\mathbb{Z}$
+
+
+\section*{definition}
+if $J$ is an ideal of $R$ and $J\ne R$we say that $J$ is a maximal ideal of $R$ if for every ideal $I$ of $R$ $j\subseteq I\subseteq R\to I=J$ or $I=R$.
+
+\subsection*{$J=p\mathbb{Z}$}
+note that $\langle0\rangle$ is not a maximal ideal. 
+
+\section*{claim}
+every maximal ideal is a prime ideal
+
+\section*{proposition}
+let $I$ be a proper ideal ofa commutative ring $R$ (proper means different from ring itself). then $I$ is maximum ideal iff $R/I$ is a field. also $I$ is a prime ideal iff $R/I$ is an integral domain. finally $I$ maximal implies $I$ is a prime ideal.
+
+\subsection*{proof 1}
+$R/I$ field iff $R/I$ has only the two trivial ideals (can you prove this?)
+
+and this is true iff $I$ is maximal.
+
+\subsection*{proof 2}
+assume $I$ is a prime ideal. then $[x][y]\in R/I$ then $[xy]=[0]$  in $R/I$ and so $xy\in I$ means that $x\in I$ or $y\in I$ and so $[x]=0$ or $[y]=0$ so $R/I$ is an integral domain.
+
+\subsection*{proof 3}
+$R/I$ integral domain
+
+then $[xy]=[0]$ in $R/I$ $[x][y]=[0]$ in $R/I$ so $[x]=0$ or$[y]=[0]$ then $x\in I$ or $y\in I$ hence $I$ is a prime ideal.
+
+\section*{thrm}
+if $R$ is a principle ideal domain and $P$ is a prime ideal different from zero. then $P$ is maximal.
+
+\subsection*{proof}
+$P\subseteq I\subseteq R$ write $P=aR$, $I=bR$. $P$ is non-zero and so $a\ne 0$ and $P\in I\to aR\in bR$. then $a\in bR$ we write $a=br, r\in R$ then $a=br\in P$ and so  $b\in P$ or $r\in P$ because $P$ is prime ideal. if $b\in P$ then $a|b$ and so $I\subseteq P$ but $P\subseteq I$ and so $I=P$. if $r\in P$ then $r\in aR$ and $r=as, s\in R$ and then $a=br=b(as)$ and so $a(1-bs)=0$ but $a\ne 0$ and because we are in an integral domain then $1-bs=0$. and so $1=bs\in I$ and $1\in I$ and so $I=R$.
+\end{document}
+
+
+

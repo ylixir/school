@@ -1,0 +1,130 @@
+%shell-escape
+\documentclass[letterpaper]{article}
+
+\usepackage{fullpage}
+\usepackage{nopageno}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{gnuplottex}
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+
+\begin{document}
+\title{Homework 9}
+\date{December 5, 2014}
+\author{Jon Allen}
+\maketitle
+6.1. \# G (read Example 6.1.9 first)
+
+6.2  \# B*, D*
+
+6.3 \# B, C*, D, H*
+\renewcommand{\labelenumi}{6.\arabic{enumi}}
+\renewcommand{\labelenumii}{\Alph{enumii}.}
+\renewcommand{\labelenumiii}{(\alph{enumiii})}
+\begin{enumerate}
+\item
+  \begin{enumerate}
+  \setcounter{enumii}{6}
+  \item
+    $f(x)=\begin{cases}x^{n+1}&x\ge0\\0&x<0\end{cases}$
+  \end{enumerate}
+\item
+  \begin{enumerate}
+  \setcounter{enumii}{1}
+  \item
+  Suppose  the $f:(a,b)\to\mathbb{R}$ has a continuous derivative on $(a,b)$. If $f'(x_0)\ne0$, prove that there is an interval $(c,d)\ni x_0$ such that $f$ is one-to-one on $(c,d)$.
+
+  First we notice that the derivative is continuous, and so if $f'(x_0)$ is not zero, we can find an interval $(c,d)$ such that $f'(x)>0$ or $f'(x)<0$ for all $x\in(c,d)$. Now by corollary $6.2.4$ we know that in this interval $f(x)$ is either strictly increasing, or strictly decreasing. Which is a stronger condition than is needed to establish that $f(x)$ is one to one.
+  \setcounter{enumii}{3}
+  \item
+  Suppoer that $f$ is $C^3$ on $(a,b)$ and $f$ has four zeros in $(a,b)$. Show that $f^{(3)}$ has a zero.
+
+  By Rolle's Theorem $f'$ must have one or infinite zero's in between each of it's four zeros. That's at least 3 zeros in $f'$. Similarly $f''$ must have at least 2 and then $f^{(3)}$ has at least one. Rolle's Theorem only works on continuous and differentiable functions, but our function is $C^3$ so we are good to go.
+  \end{enumerate}
+\item
+  \begin{enumerate}
+  \setcounter{enumii}{1}
+  \item
+    \begin{enumerate}
+    \item
+    Compute the upper Riemann sum for $f(x)=x^2$ on $[a,b]$ using the uniform partition $P_n=\{x_j=a+j(b-a)/n:0\le j\le n\}$. {\scshape Hint}: $\sum_{j=1}^n{j^2}=n(n+1)(2n+1)/6$
+
+    We have three cases $a\le b\le 0$ or $a\le0\le b$ or $0\le a\le b$. First $0\le a\le b$
+    \begin{align*}
+      \sum\limits_{j=1}^n{\left(a+\frac{j(b-a)}{n}\right)^2\frac{b-a}{n}}
+      &=\frac{b-a}{n}\sum\limits_{j=1}^n{a^2+2a\frac{j(b-a)}{n}+\frac{j^2(b-a)^2}{n^2}}\\
+      &=a^2(b-a)+2a\left(\frac{b-a}{n}\right)^2\frac{1}{2}n(n+1)+\frac{(b-a)^3}{n^3}\frac{1}{6}n(n+1)(2n+1)\\
+      &=a^2(b-a)+a\frac{(b-a)^2}{n}(n+1)+\frac{(b-a)^3}{n^2}\frac{1}{6}(n+1)(2n+1)\\
+      &=a^2(b-a)+a(b-a)^2+a\frac{(b-a)^2}{n}+\frac{(b-a)^3}{n^2}\frac{1}{6}(2n^2+3n+1)\\
+      &=a^2(b-a)+a(b-a)^2+a\frac{(b-a)^2}{n}+\frac{1}{3}(b-a)^3+\frac{1}{2}\frac{(b-a)^3}{n}+\frac{1}{6}\frac{(b-a)^3}{n^2}
+    \end{align*}
+    Now I'm just going to forget about the $n$'s for a bit. they won't matter anyhow as when we do the limit, they will just die off
+    \begin{align*}
+      \sum
+      &=a^2(b-a)+a(b-a)^2+\frac{1}{3}(b-a)^3\\
+      &=a^2b-a^3+ab^2-2a^2b+a^3+\frac{1}{3}(b^3-3ab^2+3a^2b-a^3)\\
+      &=a^2b-a^3+ab^2-2a^2b+a^3+\frac{1}{3}b^3-ab^2+a^2b-\frac{1}{3}a^3\\
+      &=\frac{1}{3}b^3-\frac{1}{3}a^3
+    \end{align*}
+    And adding back in the $n$ terms we have
+    \begin{align*}
+      \sum&=a\frac{(b-a)^2}{n}+\frac{1}{2}\frac{(b-a)^3}{n}+\frac{1}{6}\frac{(b-a)^3}{n^2}+\frac{1}{3}b^3-\frac{1}{3}a^3
+    \end{align*}
+    Now I could do the other two cases, but because of the Riemann condition and the fact that $x^2$ is continuous, it seems like a lot of unnecessary work, so I'm going to stop here.
+    \item
+    Hence evaluate the integral $\int_a^b{x^2\;\mathrm{d}x}$
+
+    And when we take the limit of the above sum as $n$ goes to infinity then we wind up with $\frac{1}{3}b^3-\frac{1}{3}a^3$
+    \end{enumerate}
+  \item
+  Show that if a function $f:[a,b]\to \mathbb{R}$ is Lipschitz with constant $C$ then for any patition $P$ of $[a,b]$, we have $U(f,P)-L(f,P)\le C(b-a)\text{mesh}(P)$
+
+  Well the Lipschitz function gives us $|f(x)-f(y)|\le C|x-y|$. Take some $x_j\in P$ where $1\le j\le n$. Lets make $x_k\in [x_{j-1},x_j]$ be any value that gives us $\min\{f(x),x\in[x_{j-1},x_j]\}$ and $x_l\in [x_{j-1},x_j]$ be any value that gives us $\max\{f(x),x\in[x_{j-1},x_j]\}$. Then $|x_k-x_l|\le |x_{j-1}-x_j|$ and so $M_j(f,P)-m_j(f,P)=|f(x_k)-f(x_l)|\le C|x_k-x_l|\le C|x_{j-1}-x_j|$. Furthermore $\text{mesh}(P)\ge \Delta_j$
+  \begin{align*}
+    U(f,P)-L(f,P)&=\sum\limits_{j=1}^n{M_j(f,P)\Delta_j-m_j(f,P)\Delta_j}\\
+    &\le\sum\limits_{j=1}^n{M_j(f,P)\text{mesh}(P)-m_j(f,P)\text{mesh}(P)}\\
+    &\le\sum\limits_{j=1}^n{C|x_{j-1}-x_j|\text{mesh}(P)}\\
+    &=C\text{mesh}(P)\sum\limits_{j=1}^n{|x_{j-1}-x_j|}\\
+    &=C(b-a)\text{mesh}(P)
+  \end{align*}
+  \item
+  Show that if $f$ and $g$ are Riemann integrable on $[a,b]$ then so is $\alpha f+\beta g$; and
+  \[\int_a^b{\alpha f(x)+\beta g(x)\;\mathrm{d}x}=\alpha\int_a^b{f(x)\;\mathrm{d}x}+\beta\int_a^b{g(x)\;\mathrm{d}x}\]
+
+  \begin{align*}
+    {\sup}_p L(\alpha f+\beta g,P)&={\inf}_p U(\alpha f+\beta g,P)\\
+    {\sup}_p \sum\limits_{j=1}^n{m_j(\alpha f+\beta g,P)\Delta_j}&={\inf}_p \sum\limits_{j=1}^n{M_j(\alpha f+\beta g,P)\Delta_j}\\
+    {\sup}_p \sum\limits_{j=1}^n{\inf\{\alpha f(x)+\beta g(x):x\in[x_{j-1},x_j]\}\Delta_j}&={\inf}_p \sum\limits_{j=1}^n{\sup\{\alpha f(x)+\beta g(x):x\in[x_{j-1},x_j]\}\Delta_j}\\
+    {\sup}_p \sum\limits_{j=1}^n{\alpha\inf\{ f(x)\}\Delta_j+\beta\inf\{ g(x)\}\Delta_j}&={\inf}_p \sum\limits_{j=1}^n{\alpha\sup\{ f(x)\}\Delta_j+\beta \sup\{ g(x)\}\Delta_j}\\
+    \alpha{\sup}_p \sum\limits_{j=1}^n{\inf\{ f(x)\}\Delta_j}+\beta{\sup}_p\sum\limits_{j=1}^n{\inf\{ g(x)\}\Delta_j}&=\alpha{\inf}_p \sum\limits_{j=1}^n{\sup\{ f(x)\}\Delta_j}+\beta{\inf}_p \sum\limits_{j=1}^n{ \sup\{ g(x)\}\Delta_j}\\
+    \alpha{\sup}_p L(f,P)+\beta{\sup}_pL(g,P)&=\alpha{\inf}_p U(f,P)+\beta{\inf}_p U(g,P)\\
+  \end{align*}
+  Because we didn't do anything to change the value of either side of our equation we see that
+  \[\int_a^b{\alpha f(x)+\beta g(x)\;\mathrm{d}x}=\alpha\int_a^b{f(x)\;\mathrm{d}x}+\beta\int_a^b{g(x)\;\mathrm{d}x}\]
+  \setcounter{enumii}{7}
+  \item
+    \begin{enumerate}
+    \item
+    Show that if $f\ge 0$ is Riemann integrable on $[a,b]$ then $\int_a^b{f(x)\;\mathrm{d}x}\ge 0$
+
+    If $f\ge 0$ then all partitions of $f$ will have a supremum and infimum both greater than zero and so the sum of the product of the partition widths and the supremums or the infimums in the partitions will also be greater or equal to zero. And so the Riemann integral will be greater or equal to zero.
+    \item
+    If $f$ and $g$ are integrable on $[a,b]$ and $f(x)\le g(x)$, prove that $\int_a^b{f(x)\;\mathrm{d}x}\le\int_a^b{g(x)\;\mathrm{d}x}$
+
+    If $f\le g$ then for any partition of $[a,b]$ the supremum of $f$ will be less than or equal to the supremum of  $g$ and likewise the infimum of $f$ will be less than or equal to the infimum of $g$ and so the sum of products of the partition widths and the supremums or infimums of $f$ will be less than or equal to the equivalent sum over $g$ and thus the integral for $f$ will be less than the integral for $g$
+    \item
+    Show that $\left\lvert\int_a^b{f(x)\;\mathrm{d}x}\right\rvert\le \int_a^b{\left\lvert f(x)\right\rvert\;\mathrm{d}x}$
+    \begin{align*}
+      \left\lvert\int_a^b{f(x)\;\mathrm{d}x}\right\rvert&=\left\lvert{\inf}_p\sum\limits_{j=1}^n{\sup\{f(x):x\in[x_{j-1},x_j]\}\Delta_j}\right\rvert\\
+      &={\inf}_p\left\lvert\sum\limits_{j=1}^n{\sup\{f(x):x\in[x_{j-1},x_j]\}\Delta_j}\right\rvert\\
+      &\le{\inf}_p\sum\limits_{j=1}^n{\left\lvert\sup\{f(x):x\in[x_{j-1},x_j]\}\right\rvert\Delta_j}\\
+      &\le{\inf}_p\sum\limits_{j=1}^n{\sup\{\left\lvert f(x)\right\rvert:x\in[x_{j-1},x_j]\}\Delta_j}\\
+      &=\int_a^b{|f(x)|\;\mathrm{d}x}
+    \end{align*}
+    
+    \end{enumerate}
+  \end{enumerate}
+\end{enumerate}
+\end{document}

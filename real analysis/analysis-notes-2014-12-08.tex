@@ -1,0 +1,54 @@
+\documentclass[letterpaper]{article}
+
+\usepackage{fullpage}
+\usepackage{nopageno}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[utf8]{inputenc}
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+
+\begin{document}
+\title{Notes}
+\date{December 8, 2014}
+\maketitle
+$f_n$ converges pointwise to $f$ if $\lim f_n(x)=f(x)$ for all $x$ in the domain of $f_n$
+
+the $L^\infty$-norm is $||f||_\infty=\sup_{x\in\text{dom} f}|f(x)|$
+
+\subsubsection*{lebesque}
+$f_n$ converges to $f$ uniformally if $\lim||f_n-f||$
+
+\section*{maybe in exam}
+if $f_n:[a,b]\to\mathbb{R}$ is continuous and $f_n\to f$ uniformally then $f$ is continuous. counterexample is $f_n(x)=x^n$ if $x\in[0,1]$ does not converge uniformally
+
+\section*{Lebesque}
+
+\section*{uniform convergence and integrals}
+\subsection*{thrm 8.3.1}
+if$f_n\to f$ is uniform and $f_n$ are Riemann integrablethen $f$ is Riemann and $\lim\int_a^b{f_n}=\int_a^b{fkk}$
+
+\section*{corollary 8.2.2}
+$C(K)=\{f:K\to  \mathbb{R}\text{ that are continuous}\}$. $C(K)$ is a complete space with the uniform norm,ie every cauchy sequence $f_n$ of functions in $C(K)$ converges to a function in $C(K)$. 
+
+\section*{example}
+let $f_n(x)=f(x)+\frac{1}{n}\sin(\frac{x}{n}\in[a,b]$ where $a\ne 0$ error gets smaller and smaller but sin function wildly varies. so $f_n\to f$ is uniform all are continuous. but the$f_n'$ goes nuts. if we want $f_n\to f$ to converge and to preserve derivitives then we need to explicitly require $f_n'\to f'$ be uniform
+
+
+\section*{8.4 series}
+we say a series of functions converges pointwise (or uniformally) ifthe partial sums converge pointwise (or uniformly)
+
+\subsection*{power series}
+a special type of series is the power series. $\sum\limits_{n=0}^\infty{a_nx^n}$. these are easy to study because the ratio test works for them.
+
+$\lim_{n\to\infty}\frac{|a_{n+1}x^{n+1}|}{|a_nx^n|}=\lim_{n\to\infty}\left\lvert\frac{a_{n+1}}{a_n}\right\rvert|x|$ and so it converges if $|x|<\frac{1}{\lim_{n\to \infty}\frac{a_{n+1}}{a_n}}$. check $\frac{x^n}{n!}$
+
+\section*{weierstrass-m}
+
+\section*{power series}
+\subsection*{hadamard's thrm}
+given a power series $\sum{a_nx^n}$ there is $R$ in $[,+\infty)\cup{+\infty}$ so that the series converges for all $x$ with $|x|<R$ and diverges for all $x$ with $|x|>R$. moreover the series converges uniformally oneach closedinterval $[a,b]\subset(-R,R)$
+
+$R=\frac{1}{\lim_{n\to\infty}\sqrt[n]{|a_n|}}$ root test?
+\end{document}
