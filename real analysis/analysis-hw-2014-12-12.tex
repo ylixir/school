@@ -1,0 +1,93 @@
+%shell-escape
+\documentclass[letterpaper]{article}
+
+\usepackage{fullpage}
+\usepackage{nopageno}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{gnuplottex}
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+
+\begin{document}
+\title{Homework 11}
+\date{December 12, 2014}
+\author{Jon Allen}
+\maketitle
+8.1 D
+
+8.2 D,F,H
+\renewcommand{\labelenumi}{8.\arabic{enumi}}
+\renewcommand{\labelenumii}{\Alph{enumii}.}
+\renewcommand{\labelenumiii}{(\alph{enumiii})}
+\begin{enumerate}
+\item
+  \begin{enumerate}
+  \setcounter{enumii}{3}
+  \item
+  Does the sequence $\displaystyle f_n(x)=\frac{x}{1+nx^2}$ converge uniformly  on $\mathbb{R}$?
+
+  It's pretty obvious that $f_n(x)$ is continuous and $f_n(x)$ approaches $0$ as $x$ gets really large and really close to $0$ and gets close to $0$ as $n$ gets large.
+
+  \begin{align*}
+    \frac{\mathrm{d}y}{\mathrm{d}x}\left(f_n(x)\right)&=\frac{1}{1+nx^2}-\frac{x}{(1+nx^2)^2}(2xn)\\
+    &=\frac{1+nx^2-2nx^2}{(1+nx^2)^2}\\
+    0&=\frac{1-nx^2}{(1+nx^2)^2}\\
+    &=1-nx^2\\
+    x^2&=\frac{1}{n}\\
+    x&=\pm \frac{1}{\sqrt{n}}
+  \end{align*}
+  Because $f_n$ is continuous and approaches 0 at 0 and infinity then $\pm \frac{1}{\sqrt{n}}$ must be minimum/maximum points and then
+  \begin{align*}
+    \lim_{n\to\infty}||f_n-f||_{\infty}&=\lim_{n\to\infty}||f_n-0||_{\infty}\\
+    &=\lim_{n\to\infty}\left(\frac{\frac{1}{\sqrt{n}}}{1+n\frac{1}{\sqrt{n}^2}}\right)\\
+    &=\lim_{n\to\infty}\left(\frac{1}{2\sqrt{n}}\right)\\
+    &=0
+  \end{align*}
+  Looks like it converges uniformly.
+  \end{enumerate}
+\item
+  \begin{enumerate}
+  \setcounter{enumii}{3}
+  \item
+  Let $(f_n)$ and $(g_n)$ be sequences of continuous functions on $[a,b]$. Suppose that $(f_n)$ converges uniformly to $f$ and $(g_n)$ converges uniformly to $g$ on $[a,b]$. Prove that $f_ng_n$ converges uniformly to $fg$ on $[a,b]$.
+
+  First we note that from the extreme value theorem, $f_n$ and $g$ both have attain a max and min in $[a,b]$ which means said critical points are finites and so we know that if we multiply $||f_n||_\infty$ or $||g||_\infty$ by zero  we will get zero.
+  \begin{align*}
+    ||f_ng_n-fg||_\infty&=||f_ng_n-f_ng+f_ng-fg||_\infty\\
+    &\le||f_ng_n-f_ng||_\infty+||f_ng-fg||_\infty\\
+    &=|||f_n||_\infty||g_n-g||_\infty+||g||_\infty||f_n-f||_\infty\\
+    &=0
+  \end{align*}
+  And so $f_ng_n$ converges uniformly.
+  \setcounter{enumii}{5}
+  \item
+  Let $f_n(x)=\arctan(nx)/\sqrt{n}$.
+    \begin{enumerate}
+    \item
+    Find $f(x)=\lim\limits_{n\to\infty}f_n(x)$, and show that $(f_n)$ converges uniformly to $f$ on $R$
+
+    We know that $\tan(x)$ has vertical asymptotes at $\displaystyle\pm \frac{\pi}{2}$ and so $\arctan(nx)/\sqrt{n}$ must have horizontal asymptotes at $\displaystyle\pm \frac{\pi}{2\sqrt{n}}$ (the $n$ next to the $x$ is just a horizontal contraction, not important). And so the limit of $f_n$ as $n\to\infty$ is $0$ from the $\sqrt{n}$ term on the bottom of the asymptote.
+
+    Now $\lim_{n\to\infty}||f_n-f||_\infty=\lim_{n\to\infty}||f_n||_\infty=\lim_{n\to\infty}\frac{\pi}{2\sqrt{n}}=0$ and because $f_n$ is bounded then it is uniformly convergent.
+    \item
+    Compute $\lim\limits_{n\to\infty}f_n'(x)$, and compare this with $f'(x)$
+
+    $\displaystyle \lim f_n'(x)=\lim \frac{n}{\sqrt{n}((nx)^2+1)}=\lim\frac{\sqrt{n}}{n^2x^2+1}=\lim\frac{1}{n^{(3/2)}(x^2+1/n^2)}=0$ if $x\ne 0$. Obviously $f'$ is also zero.
+
+    \item
+    Where is the convergence of $f_n'$ uniform? Prove your answer.
+
+    For uniform convergence, we need the derivative to be bounded. If $x^2\ge 1$ then the derivative is less than one for all $n$, and therefore bounded and fits the condition for theorem $8.1.4$. So it is uniformally continuous on $[1,\infty)$ and $(-\infty,-1]$.
+    \end{enumerate}
+  \setcounter{enumii}{7}
+  \item
+  Suppose that $f_n$ in $C[0,1]$ all have Lipschitz constant $L$. Show that if $(f_n)$ converges pointwise to $f$, then the convergence is uniform and $f$ is Lischitz with constant $L$.
+
+  First off we know that $|f_n(x)-f_n(y)|\le L|x-y|$.
+  We also know that $\lim_{k\to\infty}f_k(x)=f(x)$
+  Note that because the function is Lipschitz then 
+  \end{enumerate}
+\end{enumerate}
+\end{document}
