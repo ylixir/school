@@ -1,0 +1,96 @@
+\documentclass[letterpaper]{article}
+
+%\usepackage{fullpage}
+%\usepackage{nopageno}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+
+\begin{document}
+\title{Notes}
+\date{January 14, 2015}
+\maketitle
+\section*{graph theory birthday}
+leibniz and the geometry of postion (maybe called topology now)
+
+200 years before algebraists, at this time it's all analysis
+
+he says maybe you only care about relations, not distance
+
+\subsection*{next}
+mid 18th century, bridges of königsberg.
+
+königsberg has river around it, with bridges throughout. check drawing online
+
+game is to cross every bridge exactly once and return to starting place, enter euler
+
+``very  little relationship to mathematics'' but changes his mind later. then solves every bridge problem ever. 21 paragraphs.
+
+he also solved the optimal number of sails to have on a sailing vessel.
+
+anachronistic to say that he invented graph theory. however the bridges problem is considered the original graph theory problem.
+
+in modern theory/notation each land bit is a point and each bridge is an edge.
+
+\subsection*{definition}
+a graph is written $G=G(V,E)$ where $V, E$ are a pair of sets such that $E$ is a subset of $V\times V$ where $E$ can have repetitions.
+
+\subsection*{abstract examples}
+$V=\{v_1,v_2,v_3,v_4\}$, $E=\{(v_1,v_2),(v_1,v_2), (v_1,v_1), \dots\}$
+
+\section*{definitions}
+\subsection*{simple graph}
+a graph is simple if $E$ has no repetitions and excludes $(v_i,v_i)$
+\subsection*{multigraph}
+a graph that is not simple is called a multigraph
+
+königsberg is an example of this
+\subsection*{incident/adjacent}
+two vertices $v_i$ and $v_j$ are called incident or adjacent if $(v_i,v_j)$ is in $E$
+\subsection*{neighborhood of $v_i$}
+if $v_i\in V$ then $N_G(v_i)=\{(v_i,v_j)\in E\}$
+\subsection*{order}
+$|V(G)|$ is the order of G
+\subsection*{size}
+$|E(G)|$ is the size of G
+\subsection*{path}
+a path is a graph like $.\_.\_.\_.$ (a line with discrete points on it. this one is order 4, size 3)
+
+a path on $n$ vertices is denoted $P_n$ but instructor will often call $P_{n-1}=P_n$ because $P_n$ had $P_{n-1}$ edges
+
+\subsection*{trivial graph}
+if $|V(G)|$ (order) is one and $|E(G)|$ (size) is zero then we have a trivial graph
+
+this is opposed to not having any vertices or having multiple vertices and no edges
+
+\subsection*{empty}
+if $|E(G)|$ size is zero then we have an empty  graph
+\subsection*{complete graph}
+$E(G)=\{V\times V-(v_i,v_i)\}$ then $G$ is a complete graph
+\subsubsection*{example}
+$V=\{(v_1,v_2,v_3\}$ with a triangle graph.
+
+the trivial graph is a complete graph
+
+\subsubsection*{notation}
+$K_n$ is complete graph  on $n$ vertices. 
+$K_1$ is a point, $K_2$ is a line, $K_3$ is a triangle, $K_4$ is a square with an x
+
+\subsection*{order of neighborhood}
+$|N_G(v_i)|$ is the degree of a vertex (valence)
+
+\section*{theorem}
+if $G$ is finite and simple, then 
+\[\sum\limits_{v_i\in V}{|N_G(v_i)|}=2|E|\]
+\subsection*{proof}
+adding each degree counts one end of each edge
+
+each two vertices to each edge
+
+\section*{homework}
+define: path, cycle, isomorphism, subgraph, regular graph, bipartate graph, complement
+
+numbers: 2,3,4,11,13,18
+\end{document}
