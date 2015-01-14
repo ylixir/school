@@ -1,0 +1,82 @@
+\documentclass[letterpaper]{article}
+
+%\usepackage{fullpage}
+%\usepackage{nopageno}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+
+\begin{document}
+\title{Notes}
+\date{January 14, 2015}
+\maketitle
+\section*{homework:}
+no scruffy edges
+
+name: top right
+
+state the problem
+
+solution, grammar, words, not just notation
+
+repeat
+
+finally: list resources, exclude book and this instructor. include other instructors, classmates, internet, etc.
+
+\section*{course outline}
+chapter 8, 10, 11, 16, not exhaustively
+
+skipped things will be a good source for projects
+
+first couple weeks will not be in the book, we cover real life integration in the small, then start chapter 8.
+
+measure theory  is how to do integrals, they are done by approximating functions
+
+then polynomial approximation. these are standard analysis
+
+last bit is fun stuff of his choice
+
+\section*{review integration}
+$f:[a,b]\to \mathbb{R}$ we partition etc, randomly choose a point in the partition, sum rectangles
+
+integrable if we can always find a partition and get arbitrarily close
+
+\subsection*{lebesgue metaphor}
+take a pile of money, coins of different values. to calculate money, you add each coin up. think of each coin as one of the riemann rectangles.
+
+now for the lebesgue integral you sort the change, add the things of the same size together first, then add these sums.
+
+\subsection*{riemann to lebesgue}
+reimann is chopping up  domain and measuring the height,
+lebesgue is chopping up range and, complication is that ``rectangles'' are a little weirder, the function goes in and out of the rectangle. or multiple riemann rectangles for each rectangle height. to make this work, we need to be able to measure the size of a set
+
+\section*{measure theory}
+\subsection*{measure the size of a set}
+\begin{enumerate}
+\item
+what properties do we want? disjoint etc?
+\item
+what measures? not going here, start with the classic type of measure
+\end{enumerate}
+\subsection*{Lindelöf's theorem}
+if $E\in \mathbb{R}$ there is a countable collection of intervals $\{(a_i,b_i)\}_{i=1}^\infty$ such thhat $E\in \bigcup_{i=1}^\infty(a_i,b_i)$
+
+this is obvious because of $\mathbb{R}\subseteq\mathbb{R}$ check subcovers, etc
+
+these sets
+\begin{enumerate}
+\item
+not unique
+\item
+may overlap
+\end{enumerate}
+
+\subsubsection*{example}
+$[0,1]\subseteq\bigcap_{n=1}^\infty(-\frac{1}{n},1+\frac{1}{n})$
+
+$[0,1]\subseteq\bigcap_{n=1}^\infty(-n,n)$
+
+$[0,1]\subseteq(\frac{1}{2},\frac{3}{2})\cup(\frac{1}{4},\frac{3}{4})\cup(\frac{1}{8},\frac{3}{8})\cup\dots(-\frac{1}{2},\frac{1}{2})\cup$
+\end{document}
