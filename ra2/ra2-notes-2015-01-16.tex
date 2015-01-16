@@ -1,0 +1,105 @@
+\documentclass[letterpaper]{article}
+
+%\usepackage{fullpage}
+%\usepackage{nopageno}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+
+\begin{document}
+\title{Notes}
+\date{January 16, 2015}
+\maketitle
+irrationals $\subseteq\bigcup_{i=1}^\infty(-i,i)=\mathbb{R}$
+
+$\{0\}\subseteq$
+
+\section*{outer measure of a sum}
+$E\subseteq\mathbb{R}$ then $m*(E)=\inf\{\sum\limits_{i=1}^\infty{b_i=a_i}:E\subseteq\bigcup_{i=1}^{\infty}(a_i,b_i)\}$
+
+\subsection*{example}
+$m*(\{x\})=0$
+
+$\{x\}\subseteq(x-\epsilon,x+\varepsilon$ for any $\varepsilon>0$, $m*(t)\le 2\varepsilon$ for any $\epsilon>0\to 0$
+
+\begin{enumerate}
+\item
+note that $m*(E)\subseteq[0,\infty]$, no negative 
+\item
+the empty set has measure zero
+
+$m*(\emptyset)=0$
+
+$\emptyset\subseteq\bigcup_{i=1}^\infty(a_i,b_i)$
+
+\item
+$A\subseteq B\Rightarrow m*(A)\le m*(B)$
+\subsubsection*{proof}
+if $B\subseteq\bigcup_{i=1}^\infty(a_i,b_i)$ then $A\subseteq\bigcup_{i=1}^\infty(a_i,b_i)$
+
+$\inf\{\sum b_i-a_i | A\subseteq\bigcup(a_i,b_i\}\le \inf\{\sum c_i-d_i |B\subseteq \bigcup(c_i,d_i\}$
+
+cant do this with contradiction, that's the ``actual way''
+\subsubsection*{example}
+$m*([a,b])=b-a$?
+
+$\inf\{\sum(b_i-a_i):[a,b]\subseteq\bigcup(a_i,b_i\}$
+
+{\bfseries proof}
+
+\begin{align*}
+  [a,b]&\subseteq(a-\epsilon,b+\epsilon)\text{ for all }\epsilon>0\\
+  m*([a,b])&\subseteq(b+\epsilon)-(a-\epsilon)\text{ for all }\epsilon>0\\
+  &\subseteq(b-a)+2\epsilon
+\end{align*}
+
+so $m*([a,b])\subseteq b-a$
+
+heine-borel theorem (HBT) compact set is closed and bounded
+
+compact:every open cover has finite subcovers? check this
+
+if $[a,b]\subseteq\bigcup(a_i,b_i)$
+
+wlog $[a,b]\subseteq\bigcup^n(a_i,b_i)$
+
+\begin{align*}
+  a_1&<a\\
+  a_2&<b_1\\
+  a_3&<b_2\\
+  a_4&<b_3\\
+  &\vdots
+  a_n&<b_{n-1}\\
+  b&<b_n\\
+\end{align*}
+these are overlapping covers, they make a sequence, it is important that they overlap
+
+sum to infinity is bigger than sum to $n$. 
+$\sum(b_1-a_i)+(b_2-a_2)+\dots+(b_n-a_n)\ge(a_2-a_1)+(a_3-a_2)\dots(a_n-a_n-1)+(b_n-a_n)=b_n-a_1\ge b-a$
+
+and so $m*([a,b])\ge b-a$ and we already have less than so it's equal
+\subsubsection*{example 2}
+$m*((a,b))=b-a$ second part of limhof? thm, uniqueness
+
+notice that the different sets are the same size
+\subsubsection*{example 3}
+$m*([a,\infty))=\infty$ notice that the measure of any subset is greater than or equal and so $[a,a+k]\subseteq[a,\infty)$ for all $k$ and so $k=m*[a,a+k]\le m*[a,\infty)\forall k$
+
+\subsubsection*{example 4,5}
+$m*\mathbb{Q},m*\mathbb{C}-\mathbb{R}$
+\item
+$m*(\bigcup_{i=1}^\infty A_i)\le\sum\limits_{i=1}^\infty{m*(A_i)}$
+
+{\bfseries proof}
+
+let $\epsilon>0$ then for all $i$ there is $\{(a_i^j,b_i^j\}_{i=1}^\infty$ such that $m*A_i\le\sum\limits{b_i^j-a_i^j}\le m*A_j+\frac{\epsilon}{2^j}$
+
+notice that $\{\{a_i^j,b_i^j\}_{i=1}^\infty\}_{j=1}^\infty$ is countable collection of intervals with $\bigcup A_j\subseteq \bigcup_{j=1}(\bigcup_{i=1}(a_i^j,b_i^j))$
+$m* A_j\le \sum_{j=1}(\sum_{i=1}(a_i^j,b_i^j))$
+
+this is called countable subadditivity
+\end{enumerate}
+
+\end{document}
