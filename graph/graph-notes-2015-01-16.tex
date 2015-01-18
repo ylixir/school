@@ -5,6 +5,10 @@
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{tikz}
+
+\usetikzlibrary{graphs,graphdrawing}
+\usegdlibrary{trees}
+
 \allowdisplaybreaks
 
 \newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
@@ -101,4 +105,12 @@ question, if two degree sequences are the same, are the graphs isomorphic? no!
 
 \subsection*{homework 1.2}
 6a,b,7,10,15
+
+\tikz\path [graphs/.cd, nodes={shape=circle, draw, text=black,inner sep=1pt,outer sep=0pt}]
+  graph [tree layout] { 1 -- 2; 2 -- 3; 3 -- 4 --2 }
+  [shift=(0:1)];
+  %graph { 1 -- 2; 3 -- 4; 1 -- 4;  2 -- 3 };
+\tikz\path [graphs/.cd, nodes={shape=circle, fill=blue!40, draw=none, outer sep=0pt}]
+  graph [tree layout] { 1 -- {2 -- 3} -- 1 }
+  [shift=(0:1)];
 \end{document}
