@@ -1,0 +1,86 @@
+\documentclass[letterpaper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{fullpage}
+\usepackage{nopageno}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+
+\begin{document}
+\title{Notes}
+\date{January 21, 2015}
+\maketitle
+$m*(A\cup B)\le m*A+m*B$
+
+\subsubsection*{we want}
+if $A_i\cap A_j=\emptyset$
+
+$m*(\bigcup_{i=1}^\infty A_i)=\sum\limits_{i=1}^\infty{m*(A_i)}$
+
+we don't always get this (sum of parts bigger than the whole)
+
+this is a huge problem
+
+\subsubsection*{measureable}
+a set $E$ is measurable if for any  set $A$ $m*(A)=m*A\cap E)+m*(A\cap E^C)$
+
+if we can chop $A$ in half and the size of the pieces together is the same as the size of the pieces apart then $E$ is measurable. this gives us what we want above.
+
+\subsection*{two facts}
+\begin{enumerate}
+\item
+if $E$ is measurable, then so is $E^C$ -- definition is symmetric with respect to complements
+\item
+$E$ is measurable if and only if $m*A\ge m*(A\cap E)+m*(A\cap E^C)$ for any $A$
+\subsubsection*{proof}
+$A=(A\cap E)\cup(A\cap E^C)\to m*(A)\le m*(A\cap E)+m*(A\cap E^C)$ (less than comes free, only need to show the greater than part)
+\end{enumerate}
+
+$E$ measurable means that $m*A=m*(A\cap E)+m*(A\cap E^C)$ for any $A$
+
+\begin{enumerate}
+\item
+if $m*(E)=0$ then $E$ is measurable ($\emptyset$, singletons, cantor set)
+\subsubsection*{proof}
+let $A$ be a set. $A\cap E\subseteq E\to m*(A\cap E)\le m*E=0 $ and $A\cap E^C\subset A\to m*(A\cap E^C\le m*(A)$ and so $m*(A\cap E)+m*(A\cap E^C)\le 0+m*(A)$
+\end{enumerate}
+
+\section*{intersections and unions}
+\subsection*{proposition}
+if $E_1,E_2$ are measurable, then so is $E_1\cup E_2$.
+\subsubsection*{proof}
+$m*A=m*A\cap  E_1+m*A\cap E_1^C$
+
+$m*A=m*A\cap  E_2+m*A\cap E_2^C$
+
+we want
+$m*A\ge m*A\cap  (E_1\cup E_2)+m*A\cap (E_1\cup E_2)^C$
+
+\begin{align*}
+  A&\cap(E_1\cup E_2)\\
+  (A&\cap E_1)\cup (A\cap (E_2\cap E_1^C))\\
+  A&\cap(E_1\cup E_2)^C\\
+  A&\cap(E_1^C\cup E_2^C)\\
+  m*(A\cap E_1^C)&=m*((A\cap E_1^C)\cap E_2)+m*((A\cap E_1^C)\cap E_2^C)\\
+  m*(A\cap(E_1\cup E_2))&\le m*(A\cap E_1)+m*(A\cap E_2\cap E_1^2\\
+  m*(A\cap E_1^C)&-m*((A\cap E_1^C)\cap E_2)=m*((A\cap E_1^C)\cap E_2^C)\\
+  m*(A\cap(E_1\cup E_2))+m*((A\cap E_1^C)\cap E_2)&\le m*(A\cap E_1)+m*(A\cap E_1^C)=m*(A)\\
+\end{align*}
+
+\subsection*{proposition}
+if $E_1, E_2$ are measurable, so is $E_1\cap E_2$.
+
+$E_1\cap E_2=(E_1^C)^C\cap(E_2^C)^C$
+demorgans law says $(E_1)^C\cup E_2^C)^C$ and so $(E_1^C\cup E_2^C)$ is measurable and so on
+
+\subsection*{propostion}
+if $A$ is a set and $E_1, E_2$ are measureable and $E_1\cap E_2=\emptyset$ then $m*(A\cap(E_1\cup E_2))=m*(A\cap E_1)+m*(A\cap E_2)$
+
+\subsubsection*{proof}
+$m*A=m*A\cap E_1+m*A\cap E_1^C$
+
+$m*A\cap(E_1\cup E_2)=m*A\cap(E_1\cup E_2)\cap E_1+m*A\cap(E_1\cup E_2)\cap E_1^C=m*A\cap E_1+m*A\cap E_2$
+\end{document}

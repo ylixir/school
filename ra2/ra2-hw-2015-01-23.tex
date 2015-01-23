@@ -1,0 +1,41 @@
+%shell-escape
+\documentclass[letterpaper]{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{gnuplottex}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\lhead{January 23, 2015}
+\chead{Real Analysis II Homework}
+\rhead{Jon Allen}
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+
+\begin{document}
+\begin{enumerate}
+\item
+Prove that if $A\subseteq \mathbb{R}$ and for $A\in \mathbb{R}$ we have $A+\lambda=\{a+\lambda:a\in A\}$ then $m*(A)=m*(A+\lambda)$
+\subsubsection*{proof}
+First we notice that because
+$A\subseteq \mathbb{R}$
+and $\lambda\in \mathbb{R}$
+then $A+\lambda\in \mathbb{R}$.
+Now using the definition of the outer measure we have
+\[m*(A+\lambda)=\inf\left\{\sum\limits_{i=1}^\infty{b_i-a_i:A+\lambda\subseteq\bigcap\limits_{i=1}^\infty(a_i,b_i)}\right\}\]
+Now we can rewrite this a little bit based on the definition of $A+\lambda$ to get
+\[m*(A+\lambda)=\inf\left\{\sum\limits_{i=1}^\infty{(b_i+\lambda)-(a_i+\lambda):A\subseteq\bigcap\limits_{i=1}^\infty(a_i,b_i)}\right\}\]
+Our lambdas cancel, so we are just left with
+\[m*(A+\lambda)=\inf\left\{\sum\limits_{i=1}^\infty{b_i-a_i:A\subseteq\bigcap\limits_{i=1}^\infty(a_i,b_i)}\right\}\]
+But $m*(A)$ is defined to be 
+\[m*(A)=\inf\left\{\sum\limits_{i=1}^\infty{b_i-a_i:A\subseteq\bigcap\limits_{i=1}^\infty(a_i,b_i)}\right\}\]
+And so we have $m*(A)=m*(A+\lambda)$ as desired.
+$\Box$
+\item
+Prove that if $m*(A)=0$ then $m*(A\cup B)=m*(B)$ for any set $B\subseteq\mathbb{R}$
+\subsubsection*{proof}
+In class we showed that $m*\left(\bigcup\limits_{i=1}^\infty A_i\right)\le  \sum\limits_{i=1}^\infty{m*(A_i)}$ which means that $m*(A\cup B)\le m*(A)+m*(B)=0+m*(B)=m*(B)$.
+Obviously $B\subseteq A\cup B$ and so we know from lecture that $m*(B)\le m*(A\cup B)$. Put them together and we have $m*(B)\le m*(A\cup B)\le m*(B)$ which means $m*(B)=m*(A\cup B)\Box$
+\end{enumerate}
+\end{document}
