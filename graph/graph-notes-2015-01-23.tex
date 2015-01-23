@@ -1,0 +1,158 @@
+\documentclass[letterpaper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{fullpage}
+\usepackage{nopageno}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{tikz}
+
+\usetikzlibrary{graphs,graphdrawing}
+\usegdlibrary{trees}
+
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+
+\begin{document}
+\title{Notes}
+\date{January 23, 2015}
+\maketitle
+skipping 1.4
+
+a graph is connected if for all $u,v$ in $E(G)$ there is a $u-v$ path
+
+how can you tell if a graph is connected with the adjacency matrix? raise it to powers until it hits a nonzero entry. but you have to raise to infinity to prove non connectedness. this is inefficient at best.
+
+there is a very easy way to do this
+
+what happens when graph is disconnected?
+\tikz\path [graphs/.cd, nodes={shape=circle, draw, text=black,inner sep=1pt,outer sep=0pt}]
+  graph [tree layout] { 1 -- {2 -- 3} -- 1; 4--5 }
+  [shift=(0:1)];
+
+
+\[A(G)=\left[\begin{array}{ccccc}
+0&1&1&0&0\\
+1&0&1&0&0\\
+1&1&0&0&0\\
+0&0&0&0&1\\
+0&0&0&1&0\\
+\end{array}\right]\]
+
+notice blocks of zeros on upper right and lower left
+
+this depends on vertex labelling, note homework problem on isomorphic graphs and adjacency matrices
+
+reduced row echelon form? determine negates when you switch columns or rows? same eigenvalues (?unsure). spectrum of graph
+
+\section*{definition}
+$k(G)$ is the number of components of a graph
+
+\subsection*{example}
+from above, $k(G)$ is 2
+
+if $G$ is connected $k(G)=1$
+
+\begin{description}
+\item[cut vertex]
+vertex $v$ such that $k(G)<k(G-v)$
+\subsubsection*{example}
+\tikz\path [graphs/.cd, nodes={shape=circle, draw, text=black,inner sep=1pt,outer sep=0pt}]
+  graph [tree layout] { {1 -- 9}--8--7--6--5;1--{8--2}--1;8--3--6;{7--3};6--{4--5} }
+  [shift=(0:1)];
+
+8 and 6 are cut vertices
+\item[nonseparable]
+a connected graph with no cut vertices
+\end{description}
+\section*{theorem}
+if $G$ is nonseparable and is simple and $|G|\ge 3$ then every pair of vertices lies on a cycle.
+
+another way of thinking of this is that there are two paths between any two vertices.
+
+\subsubsection*{proof}
+picture:
+
+\tikz\path [graphs/.cd, nodes={shape=circle, draw, text=black,inner sep=1pt,outer sep=0pt}]
+  graph [tree layout] {  }
+  [shift=(0:1)];
+\begin{tikzpicture}[main_node/.style={circle,draw,text=black,inner sep=1pt,outer sep=0pt]}]
+
+  \node[main_node] (1) at (-1,-1) {u};
+  \node[main_node] (2) at (1,-1) {v};
+  \draw (1) to[out=45,in=135] (2);
+  \draw (1) to[out=90,in=215] (2);
+  \draw (1) to[out=-45,in=90] (2);
+\end{tikzpicture}
+
+$G$ has no cut vertices and $|G|\ge 3$ since $G$ is connected, there is a $u-v$ path $P$. Let $\mathcal{P}=\{p_1,\dots,p_r\}$ be all the $u-v$ paths different from $P$. why is $\mathcal{P}\ne \emptyset$? nonseperability
+
+\begin{tikzpicture}[main_node/.style={circle,draw,text=black,inner sep=1pt,outer sep=0pt]}]
+
+  \node[main_node] (1) at (-1,-1) {u};
+  \node[main_node] (2) at (1,-1) {w};
+  \node[main_node] (3) at (3,-1) {v};
+  \draw (1) to[out=45,in=135] (2);
+  \draw (1) to[out=90,in=90] (2);
+  \draw (1) to[out=0,in=180] (2);
+  \draw (1) to[out=-90,in=-90] (2);
+  \draw (1) to[out=-45,in=-135] (2);
+  \draw (2) to[out=45,in=135] (3);
+  \draw (2) to[out=90,in=90] (3);
+  \draw (2) to[out=0,in=180] (3);
+  \draw (2) to[out=-90,in=-90] (3);
+  \draw (2) to[out=-45,in=-135] (3);
+\end{tikzpicture}
+
+if $P_i\cap P=\{u,v\}$ for some $i$, then we are done. if $P_i\cap P\ni w\forall i,$ then $w$ is a cut vertex. so
+$\not\exists w\in P_i\cap P\forall i$.
+let $v_i\in P_i\cap P\not\ni v_j\in P_j\cap P\not\ni v_i$ 
+
+$\qquad
+\quad
+P_1
+\qquad
+\qquad
+\qquad
+\qquad
+\qquad
+P_2$
+
+\begin{tikzpicture}[main_node/.style={circle,draw,text=black,inner sep=1pt,outer sep=0pt]}]
+  \node[main_node] (1) at (-1,-1) {u};
+  \node[main_node] (2) at (1,-1) {$v_i$};
+  \node[main_node] (3) at (3,-1) {$v_j$};
+  \node[main_node] (4) at (5,-1) {v};
+  \draw (1) to[out=45,in=135] (2);
+  \draw (2) to[out=-45,in=215] (4);
+  \draw (1) to[out=-45,in=215] (3);
+  \draw (3) to[out=45,in=135] (4);
+\end{tikzpicture}
+
+{\bfseries claim:} we can choose $v_i,v_j$ such that $\{v_i,v_j\}\le N_G(u)$
+{\bfseries proof:} by nonsep $\deg(u)\ge 2$. if every $u-v$ path used edge $uw$ then w is a cut verte, therefore there are at least two $u-v$ paths starting from $u$ going through  distinct neighbors.
+
+fromthe claim, let $v_i,v_j$ be as before. then we have
+\tikz\path [graphs/.cd, nodes={shape=circle, draw, text=black,inner sep=1pt,outer sep=0pt}]
+  graph [tree layout] { 1 -- {2 -- 3} -- 4 -- 1; 5 }
+  [shift=(0:1)];
+
+$vi=1, v_j=3, u=2, v=3$
+
+repeat for $v_i, v_j$ to find two disjoint $u-v$paths making a cycle
+
+\section*{corollary 1}
+a connected graph $G$ of order 3 or more is nonsep  iff every pair of vertices has two internally disjoint paths between them
+
+\section*{corollary 2}
+let $u,v$be two distinct vertices in a nonseparable graph $G$. if $H$ is obtained by  adding a vertex to $G$ and connecting it to $u$ and $v$ $G$ then $H$ is nonsep
+
+\section*{corollary 3}
+if $G$ is nonsep and order 4 or more and $u,v\subseteq V(G)$ with $|U|=|V|=2$ and $U\cap V=\emptyset$ then $G$ contains two internally disjoint paths from vertices in $U$ to vertices in $V$.
+
+\subsection*{internally disjoint:}
+two$u-v$ paths $P_1$ and $P_2$ are internally disjoint if $P_1\cap P_2=\{u,v\}$
+\end{document}
+
+

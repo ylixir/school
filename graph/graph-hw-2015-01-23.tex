@@ -82,14 +82,30 @@ A complement of a graph $G$ is the graph $\overline{G}$ which has the same verte
   %1.1 #4
   \item
   A graph of $G$ has order $n=3k+3$ for some positive integer $k$. Every vertex of $G$ has degree $k+1, k+2$ or $k+3$. Prove that $G$ has at least $k+3$ vertices of degree $k+1$ or at least $k+1$ vertices of degree $k+2$ or at least $k+2$ vertices of degree $k+3$.
+  Hint: you can (probably should) use Corollary 1.5 to reach a contradiction in a few separate cases.  The primary cases are for k even, and k odd.
   \setcounter{enumii}{10}
   %1.1 #11
   \item
   Prove for every graph $G$ and every integer $r\ge\Delta(G)$ that there exists an $r$-regular graph containing $G$ as an induced subgraph.
+
+  Hint: For number 11, the problem CAN be solved using simple graphs, but it can also be solved with multigraphs.  The simple graph case is harder, but doable.
+
+
   \setcounter{enumii}{12}
   %1.1 #13
   \item
   Determine all bipartite graphs $G$ such that $\overline{G}$ is bipartite
+
+  Hint: For the bipartite graph question, first examine what happens if you have three vertices in one of your partites.
+
+  If $n<3$ then $\overline{G}$ is bipartite. If $n=3$ and $G$ is not empty or complete then $\overline{G}$ is bipartite.
+
+  Now we assume $n>3$
+
+  \begin{align*}
+    |G|&\le \left\lfloor\frac{n^2}{4}\right\rfloor\\
+    |\overline{G}
+  \end{align*}
   \setcounter{enumii}{17}
   %1.1 #18
   \item
