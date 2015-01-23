@@ -1,0 +1,142 @@
+\documentclass[letterpaper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{fullpage}
+\usepackage{nopageno}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+
+\begin{document}
+\title{Notes}
+\date{January 23, 2015}
+\maketitle
+$E$ is measurable if $\dots$
+
+irrational numbers have a measure because rationals have measure 0 and the complement of a measurable set is 0
+
+\section*{today}
+explain why any open interval is measurable
+
+if $E_1$ and $E_2$ are disjoint and measurable then $m*(A\cap(E_1\cup E_2)=m*(A\cap E_1)+m*(A\cap E_2)$ for any $A$
+
+$E_1,E_2,E_3,\dots,E_n$ disjoint and measurable then $m*(A\cap(\bigcup\limits_{i=1}^nE_i))=\sum\limits_{i=1}^n{m*(A\cap E_i)}$
+
+\subsection*{theorem}
+if $\{E_i\}_{i=1}^\infty$ are measurable, countable then
+\begin{enumerate}
+\item
+$\bigcup\limits_{i=1}^\infty$ measurable
+\item
+$\bigcap\limits_{i=1}^\infty$ measurable
+\item
+$m*(\bigcup\limits_{i=1}^\infty E_i)\le\sum\limits_{i=1}^\infty{m*(E_i)}$
+\item
+if $E_i\cap E_j=\emptyset$ for all $i,j$
+
+$m*(\bigcup\limits_{i=1}^\infty E_i)=\sum\limits_{i=1}^\infty{m*(E_i)}$
+\end{enumerate}
+\subsubsection*{proof}
+{\bfseries case 1}
+
+$E_i\cap E_j=\emptyset, i\ne j$
+
+$F_n=\bigcup\limits_{i=1}^n E_i$
+
+we know that $F_n$ is measurable so $m*(A\cap F_n)=\sum\limits_{i=1}^n{m*(A\cap E_i)}$
+
+$m*(A)=m*(A\cap F_n)+m*(A\cap F_n^C)$
+
+
+for all $n$
+\begin{align*}
+  m*(A)&=m*(A\cap F_n)+m*(A\cap F_n^C)\\
+  &\ge m*(A\cap F_n)+m*(A\cap(\bigcup_{i=1}^\infty E_i)^C)\\
+\intertext{$m*(A\cap F_n^C)$ contains $m*(A\cap(\bigcup_{i=1}^\infty E_i)^C)$}
+  &= \sum\limits_{i=1}^n{m*(A\cap E_i)}+m*(A\cap(\bigcup_{i=1}^\infty E_i)^C)\\
+  m*(A)&\ge \sum\limits_{i=1}^n{m*(A\cap E_i)}+m*(A\cap(\bigcup_{i=1}^\infty E_i)^C)\\
+  &\ge m*(A\cap \bigcup_{i=1}^\infty E_i)+m*(A\cap(\bigcup_{i=1}^\infty E_i)^C)
+\end{align*}
+
+{\bfseries case 2} not disjoint
+
+$E_1=\Omega_1$ and $E_2\setminus\Omega_1=\Omega_2$ and $E_3\setminus(\Omega_1\cup\Omega_2)=\Omega_3$
+
+$\{E_i\}_{i=1}^\infty\to \{\Omega_i\}_{i=1}^\infty$ and $\Omega_i\cap\Omega_j=\emptyset\forall i\ne j$
+\begin{enumerate}
+\item
+$\bigcup\limits_{i=1}^\infty E_i=\bigcup\limits_{i=1}^\infty \Omega_i$
+\item
+$\Omega_i$ is measurable ($A\setminus B=A\cap B^C$)
+\item
+use case one to get 
+$\bigcup\limits_{i=1}^\infty \Omega_i$ is measurable and imply that
+$\bigcup\limits_{i=1}^\infty E_i$ is measurable
+\end{enumerate}
+
+
+\begin{enumerate}
+\item
+union of countable measurable sets is measurable
+\item
+$\{E_i\}_{i=1}^\infty$ with $E_i$ measurable
+
+$\bigcap_{i=1}^\infty E_i=\left(\bigcup\limits_{i=1}^\infty(E_i)^C\right)^C$
+\item
+we already knew that $m*(\bigcup\limits_{i=1}^\infty E_i\le \sum\limits_{i=1}^\infty{m*(E_i)}$
+\item
+$\{E_i\}_{i=1}^\infty$ disjoint and measurable
+
+$m*(\bigcup_{i=1}\infty E_i$
+
+\begin{enumerate}
+\item
+$m*(\bigcup\limits_{i=1}^\infty E_i\le \sum\limits_{i=1}^\infty{m*(E_i)}$
+
+$m*(\bigcup\limits_{i=1}^n E_i= \sum\limits_{i=1}^n{m*(E_i)}$
+
+$m*(\bigcup_{i=1}^\infty E_i)\ge m*(\bigcup\limits_{i=1}^n E_i= \sum\limits_{i=1}^n{m*(E_i)}$
+
+and then
+
+$m*(\bigcup_{i=1}^\infty E_i)\ge = \sum\limits_{i=1}^\infty{m*(E_i)}$
+
+\end{enumerate}
+\end{enumerate}
+
+\subsection*{theorem}
+any open set is measurable
+\subsubsection*{proof}
+based on homework we know that $(a,\infty)$ is measurable
+
+\begin{enumerate}
+\item
+need to show that $[b,\infty)$ is measurable for any $b$
+
+$[b,\infty)=\bigcap_{n=1}^\infty(b-\frac{1}{n},\infty)$
+\item
+$(-\infty,c)$ is measurable because it's the complement of $[c,\infty)$
+\item
+$(a,d)$ is measurable for any $a<d$
+
+$(a,d)=(a,\infty)\cap(-\infty,d)$
+\item
+any open interval $\mathbb{O}$ is measurable
+
+$\mathbb{O}=\bigcup_{i=1}^\infty(a_i,b_i)$
+Lindlöfs theorem
+
+or any closed set is measurable
+\end{enumerate}
+
+cantor set is the intersection of a countable number of closed sets
+
+\subsection*{proposition}
+if $E_i\supseteq E_{i+1}$ in $\{E_i\}_{i=1}^\infty$ and $m*(E_1)$ is finite then $m*(\bigcap_{i=1}^\infty E_i)=\lim_{n\to\infty}m*(E_n)$ 
+
+$\{n,n+1)\}_{n=1}^\infty$ will not work, why?
+
+$\bigcap_{i=i}^\infty E_i\subseteq E_n$ for all $n$. $m*(\bigcap_{i=1}^\infty E_i\le m*(E_n)$ for all $n$
+\end{document}
