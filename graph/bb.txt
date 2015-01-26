@@ -1,0 +1,8 @@
+For the record, the homework that is due today (1/23/15) is section 1.1, 2, 3, 4, 11, 13, 18, and section 1.2 6a, 6b, 7, 10, 15.
+
+
+For section 1.1, numbers 4, 11 and 18 are the three hardest, with 4 probably being the hardest (IMO).  I consider these to be 'challenge' problems, meaning that I don't necessarily expect perfection on them; it is okay to not have them complete.  Likewise for number 15 of section 1.2.
+
+
+For next week, the homework for section 1.3 is 1,2,3,9,13, and for section 2.1 (we are omitting 1.4), 1,2,3,6,11.  In section 1.3, the hardest problem is a tie between 1 and 13, but they are not conceptually difficult per se, it is more that the proofs would be challenging.  Try to keep 'rambling' in check when writing those proofs.  A challenging 'bonus' question for section 1.3 would be to prove the inequality I put on the board at the end of class concerning the girth of a graph.  For section 2.1, the challenge problem is 6.  For number 11, the definition of antipodal is on page 37.
+

@@ -83,6 +83,21 @@ A complement of a graph $G$ is the graph $\overline{G}$ which has the same verte
   \item
   A graph of $G$ has order $n=3k+3$ for some positive integer $k$. Every vertex of $G$ has degree $k+1, k+2$ or $k+3$. Prove that $G$ has at least $k+3$ vertices of degree $k+1$ or at least $k+1$ vertices of degree $k+2$ or at least $k+2$ vertices of degree $k+3$.
   Hint: you can (probably should) use Corollary 1.5 to reach a contradiction in a few separate cases.  The primary cases are for k even, and k odd.
+
+  Let the number of vertices of degree $k+1$ be $a$. The number of vertices of degree $k+2$ is $b$. And $c$ is the number of vertices whose degree is $k+3$. Note that $a+b+c=3k+3$.
+
+  Now we assume that $b\le k$ and $c\le k+1$ then $b+c\le 2k+1$. But $a+b+c=3k+3$ and so $a+b+c-(b+c)\ge 3k+3-(2k+1)$ or $a\ge k+2$.
+
+  And assuming that $a\le k+2$ and $b\le k$ then $a+b\le 2k+2$ and $c\ge k+1$. Finally assuming that $a\le k+2$ and $c\le k+1$ then $a+c\le 2k+3$ and $b\ge k$.
+  \begin{align*}
+  \sum\limits_{v\in V(G)}{\deg v}&=a(k+1)+b(k+2)+c(k+3)\\
+  &=k(a+b+c)+a+2b+3c\\
+  &=(k+1)(a+b+c)+b+2c\\
+  &=(k+1)(3k+3)+b+2c
+  \end{align*}
+  Note that $(k+1)(3k+3)+b+2c$ is even. Now assume that $k$ is even. Then $(k+1)(3k+3)+2c$ is odd and so $b$ must be odd. Because $b\ge k$ and $k$ is even, then $b\ge k+1$. So in the case that $k$ is even then we have at least $k+1$ vertices of degree $k+2$ as required.
+
+  Now let us assume that $k$ is odd. Then $(k+1)(3k+3)+2c$ is even and so $b$ must be even. Further, $3k+3$ is even and so because $a+b+c=3k+3$ then $a$ or $c$ must both be odd or both be even. If $a$ is even and $a=k+2$ then $c$ must be even and because $c\ge k+1$ then $c\ge k+2$. On the other hand, if $c$ is odd and $c=k+1$ then $a$ is odd. Because $a\ge k+2$ we know that $a\ge k+3$. So if $k$ is odd, then either at least $k+2$ vertices are of degree $k+3$ or $k+3$ vertices are of degree $k+1$. $\Box$
   \setcounter{enumii}{10}
   %1.1 #11
   \item
@@ -90,26 +105,248 @@ A complement of a graph $G$ is the graph $\overline{G}$ which has the same verte
 
   Hint: For number 11, the problem CAN be solved using simple graphs, but it can also be solved with multigraphs.  The simple graph case is harder, but doable.
 
+  In the simplest case then $G$ is $r$-regular and we are done.
 
+  If $G$ is not $r$-regular, then $G$ contains one or more vertices whose degree is less than $r$. In this case we describe an algorithm  for the construction of an $r$-regular graph which can induce $G$.
+  \begin{enumerate}
+  \item
+  Let $G=G'$.
+  \item
+  Now we copy $G'$, creating an identical graph $G''$. We name the vertices in such a way that for  each $v_i'\in V(G')$ there is a $v_i''\in G''$ where $\deg(v_i')=\deg(v_i'')$
+  \item
+  For each $\deg(v_i') < r$ we make a new edge $v_i'v_i''$ creating a new graph $G^{(3)}$ from $G'$ and $G''$
+  \item
+  We redefine $G'$ such that $G'=G^{(3)}$
+  \item
+  If $G'$ contains any vertices whose degree is less than $r$ then go to step (b). Otherwise we stop.
+  \end{enumerate}
+
+  Now we have only added one degree at a time to the vertices, and this algorithm will end after at most $r$ repetitions, we know that $G'$ is an $r$-regular graph which is created with a finite number of repetitions of our algorithm. Furthermore it is made of copies of $G$, and all of the edges we created are between the copies of $G$, not between the vertices of any of the copies. This means we can always induce $G$ simply by choosing the vertices from one copy and deleting all the others.
   \setcounter{enumii}{12}
   %1.1 #13
   \item
   Determine all bipartite graphs $G$ such that $\overline{G}$ is bipartite
 
-  Hint: For the bipartite graph question, first examine what happens if you have three vertices in one of your partites.
+  {\scshape Hint:} For the bipartite graph question, first examine what happens if you have three vertices in one of your partites.
 
-  If $n<3$ then $\overline{G}$ is bipartite. If $n=3$ and $G$ is not empty or complete then $\overline{G}$ is bipartite.
+  {\scshape Proof:}
+  By definition, neither partite set has edges between any of it's vertices.
+  Which means that the complement will have edges between every one of these vertices.
+  Now if either of these partites contains 3 or more vertices, then the complement will contain a triangle.
+  We know that graphs containing triangles can not be bipartite.
 
-  Now we assume $n>3$
-
+  Now take the graphs $G,\overline{G}$ both bipartite where $U,W\subseteq V(G)$ are the partites of $G$ and $|V(G)|\ge 5$.
+  Now we have established without loss of generality that $|U|\le 2$ (else $\overline{G}$ would contain a triangle).
+  Because $U$ and $W$ partition $V(G)$ then we have the following:
   \begin{align*}
-    |G|&\le \left\lfloor\frac{n^2}{4}\right\rfloor\\
-    |\overline{G}
+    |W|+|U|&=|V(G)|&
+    |V(G)|&\ge 5\\
+    |W|+|U|&\ge 5&
+    |U|&\le 2\\
+    |W|+|U|-|U|&\ge 5-2&
+    |W|&\ge 3
   \end{align*}
+  But now we have a problem because if $|W|\ge 3$ then $\overline{G}$ is not bipartite, so clearly $|V(G)|\le 4$.
+
+  Now we also observe that an empty graph is bipartite as every edge of $G$ joins a vertex in $|V(G)|$ and a vertex in $\emptyset$ which partition $|V(G)|$.
+
+  Now the trivial graph is self complementary and empty and so it meets our requirements. Likewise if $|V(G)|=2$ then $G$ is empty and $|E(\overline{G})|=1$ or $|E(G)|=1$ and $\overline{G}$ is empty. If $|E(G)|=1$ then $G$ is bipartite with $|U|=|W|=1$ and $\overline{G}$ is empty. Similarly if $G$ is empty then $\overline{G}$ is bipartite. And so if $|V(G)|\le 2$ then $G$ and $\overline{G}$ are bipartite.
+
+  We generalize the above idea and notice that the empty graph and the complete graph are complements. Now let $G$ be complete and $|V(G)|\ge 3$. We partition $|V(G)|$ into any two sets $U,W$. Now $|U|\ge 2$ or $|W|\ge 2$. Because $G$ is complete then at least one of $U$ or $W$ contains both vertices of an edge of $G$ and so $G$ is not bipartite. This means that and so if $|V(G)|\ge 3$ then $G$ is not empty or complete.
+
+  Now if $|V(G)|=3$ with $V(G)=\{u,v,w\}$ then all possible edges of $G$ are in the set $\{uv,vw,uw\}$. Now obviously the graphs with one edge are all isomorphic. Furthermore the set of complements of these graphs is the set of graphs with $|E(G)|=2$. This means that all graphs of size 3 and order 2 are also isomorphic. So we take the graph with $E(G)=\{uv\}$ and it's complement $E(\overline{G})=\{uw,vw\}$. Now see that $U=\{u,w\}$ and $W=\{v\}$ are partites of $G$. Furthermore $U'=\{u,v\}$ and $W'=\{w\}$ are partites or $\overline{G}$. And so we see that if $V(G)=3$ and  $1\le E(G)\le 2$ then $G$ and $\overline{G}$ are both bipartite.
+
+  Now if $V(G)=4$ then it partites $U,W$ must be such that $|U|=|W|=2$. Lets say $U=\{u,v\}$ and $W=\{w,x\}$. Then $u$ can be adjacent to nothing, or $w$ or $x$. Likewise for $v$. Lets assume without loss of generality that $u$ is not adjacent to anything. Then we can reshuffle our partitions to $\{v\}$ and $\{u,v,w\}$ which is not allowed as our complement will have a triangle. Thus both $u$ and $v$ must be adjacent to at least one other vertex. This gives us three possible combinations of edges for each of $u$ and $v$. So we have $3\cdot3=9$ possibilites so far.
+
+  \begin{tikzpicture}[main_node/.style={circle,draw,text=black,inner sep=1pt,outer sep=0pt]}]
+    \node[main_node] (1) at (0,1) {u};
+    \node[main_node] (2) at (0,0) {v};
+    \node[main_node] (3) at (1,1) {w};
+    \node[main_node] (4) at (1,0) {x};
+    \draw (1) -- (3); \draw (2) -- (4);
+  \end{tikzpicture}
+  \begin{tikzpicture}[main_node/.style={circle,draw,text=black,inner sep=1pt,outer sep=0pt]}]
+    \node[main_node] (1) at (0,1) {u};
+    \node[main_node] (2) at (0,0) {v};
+    \node[main_node] (3) at (1,1) {w};
+    \node[main_node] (4) at (1,0) {x};
+    \draw (1) -- (4); \draw (2) -- (4);
+  \end{tikzpicture}
+  \begin{tikzpicture}[main_node/.style={circle,draw,text=black,inner sep=1pt,outer sep=0pt]}]
+    \node[main_node] (1) at (0,1) {u};
+    \node[main_node] (2) at (0,0) {v};
+    \node[main_node] (3) at (1,1) {w};
+    \node[main_node] (4) at (1,0) {x};
+    \draw (1) -- (3); \draw (2) -- (3);
+  \end{tikzpicture}
+  \begin{tikzpicture}[main_node/.style={circle,draw,text=black,inner sep=1pt,outer sep=0pt]}]
+    \node[main_node] (1) at (0,1) {u};
+    \node[main_node] (2) at (0,0) {v};
+    \node[main_node] (3) at (1,1) {w};
+    \node[main_node] (4) at (1,0) {x};
+    \draw (1) -- (4); \draw (2) -- (3);
+  \end{tikzpicture}
+  \begin{tikzpicture}[main_node/.style={circle,draw,text=black,inner sep=1pt,outer sep=0pt]}]
+    \node[main_node] (1) at (0,1) {u};
+    \node[main_node] (2) at (0,0) {v};
+    \node[main_node] (3) at (1,1) {w};
+    \node[main_node] (4) at (1,0) {x};
+    \draw (1) -- (3); \draw (1) -- (4);
+    \draw (2) -- (4);
+  \end{tikzpicture}
+  \begin{tikzpicture}[main_node/.style={circle,draw,text=black,inner sep=1pt,outer sep=0pt]}]
+    \node[main_node] (1) at (0,1) {u};
+    \node[main_node] (2) at (0,0) {v};
+    \node[main_node] (3) at (1,1) {w};
+    \node[main_node] (4) at (1,0) {x};
+    \draw (1) -- (3); \draw (1) -- (4);
+    \draw (2) -- (3);
+  \end{tikzpicture}
+  \begin{tikzpicture}[main_node/.style={circle,draw,text=black,inner sep=1pt,outer sep=0pt]}]
+    \node[main_node] (1) at (0,1) {u};
+    \node[main_node] (2) at (0,0) {v};
+    \node[main_node] (3) at (1,1) {w};
+    \node[main_node] (4) at (1,0) {x};
+    \draw (1) -- (3); \draw (2) -- (3);
+    \draw (2) -- (4);
+  \end{tikzpicture}
+  \begin{tikzpicture}[main_node/.style={circle,draw,text=black,inner sep=1pt,outer sep=0pt]}]
+    \node[main_node] (1) at (0,1) {u};
+    \node[main_node] (2) at (0,0) {v};
+    \node[main_node] (3) at (1,1) {w};
+    \node[main_node] (4) at (1,0) {x};
+    \draw (1) -- (4); \draw (2) -- (4);
+    \draw (2) -- (3);
+  \end{tikzpicture}
+  \begin{tikzpicture}[main_node/.style={circle,draw,text=black,inner sep=1pt,outer sep=0pt]}]
+    \node[main_node] (1) at (0,1) {u};
+    \node[main_node] (2) at (0,0) {v};
+    \node[main_node] (3) at (1,1) {w};
+    \node[main_node] (4) at (1,0) {x};
+    \draw (1) -- (4); \draw (2) -- (4);
+    \draw (2) -- (3); \draw (1) -- (3);
+  \end{tikzpicture}
+
+  Now the graphs that have $\deg(w)=0$ or $\deg(x)=0$ can be repartitioned into partites of which one is greater than two. We have established that this is not allowed. Furthermore, the first and fourth graphs are obvious isomorphisms, as are 5,7 and 6,8. Removing these we are left with:
+
+  \begin{tikzpicture}[main_node/.style={circle,draw,text=black,inner sep=1pt,outer sep=0pt]}]
+    \node[main_node] (1) at (0,1) {u};
+    \node[main_node] (2) at (0,0) {v};
+    \node[main_node] (3) at (1,1) {w};
+    \node[main_node] (4) at (1,0) {x};
+    \draw (1) -- (3); \draw (2) -- (4);
+  \end{tikzpicture}
+  \begin{tikzpicture}[main_node/.style={circle,draw,text=black,inner sep=1pt,outer sep=0pt]}]
+    \node[main_node] (1) at (0,1) {u};
+    \node[main_node] (2) at (0,0) {v};
+    \node[main_node] (3) at (1,1) {w};
+    \node[main_node] (4) at (1,0) {x};
+    \draw (1) -- (3); \draw (1) -- (4);
+    \draw (2) -- (4);
+  \end{tikzpicture}
+    \begin{tikzpicture}[main_node/.style={circle,draw,text=black,inner sep=1pt,outer sep=0pt]}]
+    \node[main_node] (1) at (0,1) {u};
+    \node[main_node] (2) at (0,0) {v};
+    \node[main_node] (3) at (1,1) {w};
+    \node[main_node] (4) at (1,0) {x};
+    \draw (1) -- (3); \draw (1) -- (4);
+    \draw (2) -- (3);
+  \end{tikzpicture}
+\begin{tikzpicture}[main_node/.style={circle,draw,text=black,inner sep=1pt,outer sep=0pt]}]
+    \node[main_node] (1) at (0,1) {u};
+    \node[main_node] (2) at (0,0) {v};
+    \node[main_node] (3) at (1,1) {w};
+    \node[main_node] (4) at (1,0) {x};
+    \draw (1) -- (4); \draw (2) -- (4);
+    \draw (2) -- (3); \draw (1) -- (3);
+  \end{tikzpicture}
+
+  And redrawing the third graph we see that it is isomorphic to the second graph and that it is self complementary:
+
+  \begin{tikzpicture}[main_node/.style={circle,draw,text=black,inner sep=1pt,outer sep=0pt]}]
+    \node[main_node] (1) at (0,0) {u};
+    \node[main_node] (2) at (0,1) {v};
+    \node[main_node] (3) at (1,1) {w};
+    \node[main_node] (4) at (1,0) {x};
+    \draw (1) -- (3); \draw (1) -- (4);
+    \draw (2) -- (3);
+  \end{tikzpicture}
+
+  Furthermore, notice that the first and last graphs are complementary to eachother.
+
+  And that exhausts all the possibilities for bipartites graphs $G$ whose complements are bipartite. To summarize:
+
+  \begin{tikzpicture}[main_node/.style={circle,draw,text=black,inner sep=1pt,outer sep=0pt]}]
+    \node[main_node] (1) at (0,0) {};
+    \draw (1);
+  \end{tikzpicture}
+  ,
+  \begin{tikzpicture}[main_node/.style={circle,draw,text=black,inner sep=1pt,outer sep=0pt]}]
+    \node[main_node] (1) at (0,0) {};
+    \node[main_node] (2) at (0,1) {};
+    \draw (1); \draw (2);
+  \end{tikzpicture}
+  ,
+  \begin{tikzpicture}[main_node/.style={circle,draw,text=black,inner sep=1pt,outer sep=0pt]}]
+    \node[main_node] (1) at (0,0) {};
+    \node[main_node] (2) at (0,1) {};
+    \draw (1)--(2);
+  \end{tikzpicture}
+  ,
+  \begin{tikzpicture}[main_node/.style={circle,draw,text=black,inner sep=1pt,outer sep=0pt]}]
+    \node[main_node] (1) at (0,0) {};
+    \node[main_node] (2) at (0,1) {};
+    \node[main_node] (3) at (1,0) {};
+    \draw (1)--(2);
+  \end{tikzpicture}
+  ,
+  \begin{tikzpicture}[main_node/.style={circle,draw,text=black,inner sep=1pt,outer sep=0pt]}]
+    \node[main_node] (1) at (0,0) {};
+    \node[main_node] (2) at (0,1) {};
+    \node[main_node] (3) at (1,0) {};
+    \draw (1)--(3);
+    \draw (3)--(2);
+  \end{tikzpicture}
+  ,
+  \begin{tikzpicture}[main_node/.style={circle,draw,text=black,inner sep=1pt,outer sep=0pt]}]
+    \node[main_node] (1) at (0,0) {};
+    \node[main_node] (2) at (0,1) {};
+    \node[main_node] (3) at (1,0) {};
+    \node[main_node] (4) at (1,1) {};
+    \draw (1)--(3);
+    \draw (2)--(4);
+  \end{tikzpicture}
+  ,
+  \begin{tikzpicture}[main_node/.style={circle,draw,text=black,inner sep=1pt,outer sep=0pt]}]
+    \node[main_node] (1) at (0,0) {};
+    \node[main_node] (2) at (0,1) {};
+    \node[main_node] (3) at (1,0) {};
+    \node[main_node] (4) at (1,1) {};
+    \draw (1)--(3);
+    \draw (2)--(4);
+    \draw (1)--(4);
+  \end{tikzpicture}
+  ,
+  \begin{tikzpicture}[main_node/.style={circle,draw,text=black,inner sep=1pt,outer sep=0pt]}]
+    \node[main_node] (1) at (0,0) {};
+    \node[main_node] (2) at (0,1) {};
+    \node[main_node] (3) at (1,0) {};
+    \node[main_node] (4) at (1,1) {};
+    \draw (1)--(3);
+    \draw (2)--(4);
+    \draw (1)--(4);
+    \draw (2)--(3);
+  \end{tikzpicture}
   \setcounter{enumii}{17}
   %1.1 #18
   \item
   Let $G$ be a self-complementary graph of order $n$, where $n\equiv 1\mod 4$. Prove that $G$ contains an odd number of vertices of degree $(n-1)/2$.
+
+  First we notice that the size of $K_n$ is $\frac{n(n-1)}{2}$ and that $|E(G)|+|E(\overline{G}|=|E(K_n)|$.
+  Further, because $G\cong \overline{G}$ we know that $|E(G)|=|E(\overline{G})|=\frac{1}{2}|E(K_n)|=\frac{n(n-1)}{4}$.
+  Further, because $n\equiv 1\mod 4$ we can write $n=4k+1$ where $k\in\mathbb{N}$.
+  Now every vertex $v_i$ of $G$ has an image $\overline{v_i}$ in $\overline{G}$.
+  Now $\deg\overline{v_i}=(n-1)-\deg v_i$. But $G\cong \overline{G}$ and so $G$ must contain some $v_j$ where $\deg v_j=(n-1)-\deg v_i$ for every $v_i$. Of course if $\deg v_i=\frac{n-1}{2}$ then $\deg v_j=(n-1)-\frac{n-1}{2}=\frac{n-1}{2}$. In this case it is possible that $i=j$. Otherwise $i\ne j$ and either $\deg v_i< \frac{n-1}{2}<\deg v_j$ or $\deg v_j< \frac{n-1}{2}<\deg v_i$. If we let $a$ be the number of vertices in $G$ with $\deg v_i< \frac{n-1}{2}$ then we also have $a$ vertices where $\deg v_i>\frac{n-1}{2}$. Lets say that $b$ is the number of vertices where $\deg v_i=\frac{n-1}{2}$. Then $b+a+a=b+2a=n=4k+1$. Now $4k+1$ is odd while $2a$ is even. This means that $b$ must be odd. $\Box$
   \end{enumerate}
 \item
   \begin{enumerate}
@@ -164,33 +401,236 @@ A complement of a graph $G$ is the graph $\overline{G}$ which has the same verte
     %1.2 #6a
     \item
     Show that the graph $G_2$of figure 1.33 is obtained from $G_1$ by an edge rotation.
+
+    And taking ``show'' literally:
+
+    \begin{tikzpicture}[main_node/.style={circle,draw,text=black,inner sep=1pt,outer sep=0pt]}]
+      \node[main_node] (1) at (1,0) {a};
+      \node[main_node] (2) at (0,1) {b};
+      \node[main_node] (3) at (0,2) {c};
+      \node[main_node] (4) at (1,3) {d};
+      \node[main_node] (5) at (2,3) {e};
+      \node[main_node] (6) at (3,2) {f};
+      \node[main_node] (7) at (3,1) {g};
+      \node[main_node] (8) at (2,0) {h};
+      \draw (1) -- (2) -- (3) -- (4) -- (5) -- (6) -- (7) -- (8);
+      \draw (1) -- (7);
+      \draw (2) -- (7);
+      \draw (2) -- (6);
+      \draw (2) -- (5);
+    \end{tikzpicture}
+    \begin{tikzpicture}[main_node/.style={circle,draw,text=black,inner sep=1pt,outer sep=0pt]}]
+      \node[main_node] (1) at (0,1) {a};
+      \node[main_node] (2) at (0,2) {b};
+      \node[main_node] (3) at (1,3) {c};
+      \node[main_node] (4) at (2,3) {d};
+      \node[main_node] (5) at (3,2) {e};
+      \node[main_node] (6) at (3,1) {f};
+      \node[main_node] (7) at (2,0) {g};
+      \node[main_node] (8) at (1,0) {h};
+      \draw (1) -- (2) -- (3) -- (4) -- (5) -- (6) -- (7) -- (8);
+      \draw (1) -- (7);
+      \draw (2) -- (7);
+      \draw (2) -- (6);
+      \draw (2) -- (5);
+    \end{tikzpicture}
+    \begin{tikzpicture}[main_node/.style={circle,draw,text=black,inner sep=1pt,outer sep=0pt]}]
+      \node[main_node] (1) at (0,1) {a};
+      \node[main_node] (2) at (0,2) {b};
+      \node[main_node] (3) at (0,3) {c};
+      \node[main_node] (4) at (1,3) {d};
+      \node[main_node] (5) at (1,2) {e};
+      \node[main_node] (6) at (1,1) {f};
+      \node[main_node] (7) at (1,0) {g};
+      \node[main_node] (8) at (0,0) {h};
+      \draw (1) -- (2) -- (3) -- (4) -- (5) -- (6) -- (7) -- (8);
+      \draw (1) -- (7);
+      \draw (2) -- (7);
+      \draw (2) -- (6);
+      \draw (2) -- (5);
+    \end{tikzpicture}
+    \begin{tikzpicture}[main_node/.style={circle,draw,text=black,inner sep=1pt,outer sep=0pt]}]
+      \node[main_node] (1) at (1,1) {a};
+      \node[main_node] (2) at (1,2) {b};
+      \node[main_node] (3) at (1,3) {c};
+      \node[main_node] (4) at (0,3) {d};
+      \node[main_node] (5) at (0,2) {e};
+      \node[main_node] (6) at (0,1) {f};
+      \node[main_node] (7) at (0,0) {g};
+      \node[main_node] (8) at (1,0) {h};
+      \draw (1) -- (2) -- (3) -- (4) -- (5) -- (6) -- (7) -- (8);
+      \draw (1) -- (7);
+      \draw (2) -- (7);
+      \draw (2) -- (6);
+      \draw (2) -- (5);
+    \end{tikzpicture}
+    \begin{tikzpicture}[main_node/.style={circle,draw,text=black,inner sep=1pt,outer sep=0pt]}]
+      \node[main_node] (1) at (1,1) {a};
+      \node[main_node] (2) at (1,2) {b};
+      \node[main_node] (3) at (1,3) {c};
+      \node[main_node] (4) at (0,3) {d};
+      \node[main_node] (5) at (0,2) {e};
+      \node[main_node] (6) at (0,1) {f};
+      \node[main_node] (7) at (0,0) {g};
+      \node[main_node] (8) at (1,0) {h};
+      \draw (1) -- (2) -- (3) -- (4) -- (5) -- (6) -- (7) -- (8);
+      \draw (1) -- (8);
+      \draw (2) -- (7);
+      \draw (2) -- (6);
+      \draw (2) -- (5);
+    \end{tikzpicture}
+
     %1.2 #6b
     \item
     Show that $G_3$ of figure 1.33 cannot be obtained from $G_1$ by an edge rotation.
+    
+    The degree sequence of $G_1$ is $5,4,3,3,2,2,2,1$. The degree sequence of $G_3$ is $4,3,3,3,3,2,2,2$. Now another way of thinking of an edge rotation is that it decrements the degree of one vertex by one and increments the degree of another by one. As you can see the degree sequences of $G_1$ and $G_3$ have $4,3,3,2,2,2$ in common, leaving $5,1$ and $3,3$ different. Obviously $5$ and $1$ differ from $3$ by 2, not one. Thus one edge rotation can not get us from $G_1$ to $G_3$ and vice versa.
     \end{enumerate}
   %1.2 #7
   \item
   Determine whether the following sequences are graphical. If so, construct a graph with the appropriate degree sequence.
   \begin{enumerate}
   \item
-  4,4,3,2,1
+  $4,4,3,2,1\to 3,2,1,0$ which is not graphical because the node of degree three only has two nodes it can connect to.
   \item
-  3,3,2,2,2,2,1,1
+  $3,3,2,2,2,2,1,1\to 2,1,1,2,2,1,1\to 1,1,1,1,1,1$ which is graphical
+
+  \tikz\path [graphs/.cd, nodes={shape=circle, draw, text=black,inner sep=1pt,outer sep=0pt}]
+    graph [tree layout] { 1 -- 2; 3-- 4;5 -- 6 }
+    [shift=(0:4)]
+    graph [tree layout] { 1 -- 2; 3-- 4;5 -- 6 --7--5}
+    [shift=(0:5)]
+    graph [tree layout] { 1 -- 2; 3-- 4;8--3--4--8--5--6--7--5};
   \item
-  7,7,6,5,4,4,3,2
+  $7,7,6,5,4,4,3,2\to 6,5,4,3,3,2,1\to 4,3,2,2,1,0\to2,1,1,0,0$ which is graphical
+
+  \begin{tikzpicture}[main_node/.style={circle,draw,text=black,inner sep=1pt,outer sep=0pt]}]
+    \node[main_node] (1) at (0,1) {1};
+    \node[main_node] (2) at (0,0) {2};
+    \node[main_node] (3) at (1,0) {3};
+    \node[main_node] (4) at (2,1) {4};
+    \node[main_node] (5) at (3,1) {5};
+    \draw (1) -- (2) -- (3);
+  \end{tikzpicture}
+  $\quad$
+  \begin{tikzpicture}[main_node/.style={circle,draw,text=black,inner sep=1pt,outer sep=0pt]}]
+    \node[main_node] (1) at (0,1) {1};
+    \node[main_node] (2) at (0,0) {2};
+    \node[main_node] (3) at (1,0) {3};
+    \node[main_node] (6) at (1,1) {6};
+    \node[main_node] (4) at (2,1) {4};
+    \node[main_node] (5) at (3,1) {5};
+    \draw (1) -- (2) -- (3);
+    \draw (1) -- (6) -- (3);
+    \draw (6) -- (4);
+    \draw (6) -- (2);
+  \end{tikzpicture}
+  $\quad$
+  \begin{tikzpicture}[main_node/.style={circle,draw,text=black,inner sep=1pt,outer sep=0pt]}]
+    \node[main_node] (1) at (0,1) {1};
+    \node[main_node] (2) at (0,1/4) {2};
+    \node[main_node] (3) at (1,0) {3};
+    \node[main_node] (6) at (1,1) {6};
+    \node[main_node] (4) at (2,1) {4};
+    \node[main_node] (5) at (3,1/2) {5};
+    \node[main_node] (7) at (3/2,1/2) {7};
+    \draw (1) -- (2) -- (3);
+    \draw (1) -- (6) -- (3);
+    \draw (6) -- (4);
+    \draw (6) -- (2);
+    \draw (1)--(7)--(2);
+    \draw (3)--(7)--(4);
+    \draw (5)--(7)--(6);
+  \end{tikzpicture}
+  $\quad$
+  \begin{tikzpicture}[main_node/.style={circle,draw,text=black,inner sep=1pt,outer sep=0pt]}]
+    \node[main_node] (1) at (0,1) {1};
+    \node[main_node] (2) at (0,1/4) {2};
+    \node[main_node] (3) at (0,-1) {3};
+    \node[main_node] (6) at (1,1) {6};
+    \node[main_node] (4) at (2,1) {4};
+    \node[main_node] (5) at (3,1) {5};
+    \node[main_node] (7) at (3,0) {7};
+    \node[main_node] (8) at (1,-1) {8};
+    \draw (1) -- (2) -- (3);
+    \draw (1) -- (6) -- (3);
+    \draw (6) -- (4);
+    \draw (6) -- (2);
+    \draw (1)--(7)--(2);
+    \draw (3)--(7)--(4);
+    \draw (5)--(7)--(6);
+    \draw (1)--(8)--(2);
+    \draw (3)--(8)--(4);
+    \draw (5)--(8)--(6);
+    \draw (7)--(8);
+  \end{tikzpicture}
   \item
-  7,6,6,5,4,3,2,1
+  $7,6,6,5,4,3,2,1\to 5,5,4,3,2,1,0\to4,3,2,1,0,0$ which is not graphical because the vertex of degree 4 only has 3 vertices it can connect to.
   \item
-  7,4,3,3,2,2,2,1,1,1
+  $7,4,3,3,2,2,2,1,1,1\to 3,2,2,1,1,1,0,1,1\to1,1,0,1,1,1,1,0$ which is graphical.
+
+  \begin{tikzpicture}[main_node/.style={circle,draw,text=black,inner sep=1pt,outer sep=0pt]}]
+    \node[main_node] (1) at (0,1) {1};
+    \node[main_node] (2) at (0,0) {2};
+    \node[main_node] (3) at (1,1) {3};
+    \node[main_node] (4) at (1,0) {4};
+    \node[main_node] (5) at (2,1) {5};
+    \node[main_node] (6) at (2,0) {6};
+    \node[main_node] (7) at (3,1) {7};
+    \node[main_node] (8) at (3,0) {8};
+    \draw (1) -- (2);\draw (3) -- (4);\draw (5) -- (6);
+  \end{tikzpicture}
+  $\quad$
+  \begin{tikzpicture}[main_node/.style={circle,draw,text=black,inner sep=1pt,outer sep=0pt]}]
+    \node[main_node] (1) at (0,1) {1};
+    \node[main_node] (2) at (0,0) {2};
+    \node[main_node] (3) at (1,1) {3};
+    \node[main_node] (4) at (1,0) {4};
+    \node[main_node] (5) at (2,1) {5};
+    \node[main_node] (6) at (2,0) {6};
+    \node[main_node] (7) at (4,1) {7};
+    \node[main_node] (8) at (4,0) {8};
+    \node[main_node] (9) at (3,1) {9};
+    \draw (1) -- (2);\draw (3) -- (4);
+    \draw (7) -- (9) -- (5) -- (6) -- (9);
+  \end{tikzpicture}
+  $\quad$
+  \begin{tikzpicture}[main_node/.style={circle,draw,text=black,inner sep=1pt,outer sep=0pt]}]
+    \node[main_node] (1) at (0,1) {1};
+    \node[main_node] (2) at (0,1/3) {2};
+    \node[main_node] (3) at (1,1) {3};
+    \node[main_node] (4) at (1,0) {4};
+    \node[main_node] (5) at (3,1) {5};
+    \node[main_node] (6) at (3,0) {6};
+    \node[main_node] (7) at (5,1) {7};
+    \node[main_node] (8) at (2,-1/3) {8};
+    \node[main_node] (9) at (4,1/2) {9};
+    \node[main_node] (10) at (2,1/2) {10};
+    \draw (1) -- (2);\draw (3) -- (4);
+    \draw (7) -- (9) -- (5) -- (6) -- (9);
+    \draw (5) -- (10) -- (6);\draw (9)--(10);
+    \draw (3) -- (10) -- (4);\draw (2)--(10)--(8);
+  \end{tikzpicture}
   \end{enumerate}
   \setcounter{enumii}{9}
   %1.2 #10
   \item
-  For which integers $x (0\le x\le 7)$, if any, is the sequence $7,6,4,3,2,1,x$ graphical?
+  For which integers $x (0\le x\le 7)$, if any, is the sequence $7,6,5,4,3,2,1,x$ graphical?
+
+  First we observe that we have four vertices with an odd degree. This means that $x$ must have an even degree, else it wouldn't be graphical. Now notice that if $x=0$ then the vertex of degree 7 only has six vertices it could be adjacent too. This means that $x>0$. 
+
+  Now we apply Havel-Hakimi and get $7,6,5,4,3,2,1,x\to5,4,3,2,0,x-1$. Notice that the vertex of degree 5 has only 4 vertices it could be adjacent to. This sequence is not graphical.
   \setcounter{enumii}{14}
   %1.2 #15
   \item
   Two finite sequences $s_1$ and $s_2$ of nonnegative integers are called {\bfseries bigraphical} if there exists a bipartite graph $G$ with partite sets $V_1$ and $V_2$ such that $s_i$ lists the degrees of the vertices of $G$ in $V_i$ for $i=1,2$. Prove that the sequences $s_1:a_1,a_2,\dots,a_r$ and $s_2:b_1,b_2,\dots,b_t$ of nonnegative integers with $r\ge 2, a_1\ge a_2\ge\dots\ge a_r, b_1\ge b_2\ge\dots\ge b_t, 0<a_1\le t$ and $0<b_1\le r$ are bigraphical if and only if the sequences $s_1':a_2,a_3,\dots,a_r$ and $s_2':b_1-1,b_2-1,\dots,b_{a_1}-1,b_{a_1+1},\dots,b_t$ are bigraphical
+
+  \subsubsection*{proof}
+  First looking at the converse, we take the sequences $s_1'$ and $s_2'$. We add a vertex to set $V_1$ and make it adjacent to the first $a_1$ vertexes in $V_2$ by order of highest degree. Now we have the sequences $s_1$ and $s_2$ and they are bigraphical.
+
+Now for the forward direction, let us take $H$ a bipartite graph with partites $V_1=\{u_1,\dots,u_r\}$ and $V_2=\{w_1,\dots,w_t\}$ such that $\deg u_i=a_i$ and $\deg w_i=b_i$. We remove $u_1$ from the graph to form $H'$. Now $V_1'=\{u_2,\dots,u_r\}$ and $\sum\limits_{i=1}^t{\deg w_i}=a_1+\sum\limits_{i=1}^t{\deg w_i'}$. Notice also that $\sum\limits_{i\in s_2' }{i}=\sum\limits_{i=1}^t{\deg w_i'}$. This means that we can do a series of simple edge rotations to construct $s_2'$. We start with the vertex $w_t$ and if $\deg w_t < b_t$ then we rotate edges attached to any vertex with index less than $t$ to connect to $w_t$. When $\deg w_t=b_t$ we continue on with $w_{t-1}$ and so on until we get to $w_{a_1+1}$. From $w_{a_1}$ to $w_1$ we rotate edges to make $\deg w_i=b_i-1$. And now we have constructed $s_1'$ and $s_2'$ from an arbitrary graph. $\Box$
+
+
   \end{enumerate}
 \end{enumerate}
 \end{document}
