@@ -1,0 +1,74 @@
+\documentclass[letterpaper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{fullpage}
+\usepackage{nopageno}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{tikz}
+
+\usetikzlibrary{graphs,graphdrawing}
+\usegdlibrary{trees}
+
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+
+\begin{document}
+\title{Notes}
+\date{January 26, 2015}
+\maketitle
+\section*{2.2 trees}
+\subsection*{task:}
+create a graph with two adjacent cut vertices (connected simple)
+
+\tikz\path [graphs/.cd, nodes={shape=circle, draw, text=black,inner sep=1pt,outer sep=0pt}]
+  graph [tree layout] { 1 -- {2 -- 3} -- 1--4--5--6--4 }
+  [shift=(0:3)]
+  graph [tree layout] { 3 -- 1 --2 --3 --4 -- 6 --7 --4--5--3 };
+
+notice that removing a cut vertex on the second graph leaves a cut vertex, but not on the first graph.
+
+if two cut vertices in a graph $G$ are adjacent and the edge between them is the only trail between them, then that edge is a {\bfseries cut edge}
+
+that is to say, every path from cut vertex one to cut vertex 2 contains the edge between them.
+
+a {\bfseries bridge} is a cut edge.
+
+an edge $e$ in $G$ is a bridge if $k(G)<k(G-e)$.
+
+\subsection*{example}
+\begin{enumerate}
+\item
+\tikz\path [graphs/.cd, nodes={shape=circle, draw, text=black,inner sep=1pt,outer sep=0pt}]
+  graph [tree layout] { 1 -- 2 }
+  [shift=(0:1)];
+\item
+\tikz\path [graphs/.cd, nodes={shape=circle, draw, text=black,inner sep=1pt,outer sep=0pt}]
+  graph [tree layout] { 1 -- {2 -- 3} -- 4 -- 1}
+  [shift=(0:1)];
+\item
+\tikz\path [graphs/.cd, nodes={shape=circle, draw, text=black,inner sep=1pt,outer sep=0pt}]
+  graph [tree layout] { 3--1--2--3--4--5--3 }
+  [shift=(0:1)];
+\item
+\tikz\path [graphs/.cd, nodes={shape=circle, draw, text=black,inner sep=1pt,outer sep=0pt}]
+  graph [tree layout] { 3--1--2--3--4--5--6--4 }
+  [shift=(0:1)];
+\end{enumerate}
+
+1 and 4 contain cut edges.
+
+\subsection*{task}
+in row $i$ create a graph with a cut vertex $v$ such that $k(G-v)=i+1$ 
+
+\tikz\path [graphs/.cd, nodes={shape=circle, draw, text=black,inner sep=1pt,outer sep=0pt}]
+  graph [tree layout] { 1 -- {2 -- 3} -- 1--4--5--1 }
+  [shift=(0:3)];
+  graph [tree layout] { 1 -- 2--3--1--4--5--1--6--7--1 }
+
+
+notice radial symmetry
+\end{document}
+
+

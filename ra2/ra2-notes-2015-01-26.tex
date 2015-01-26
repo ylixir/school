@@ -1,0 +1,116 @@
+\documentclass[letterpaper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{fullpage}
+\usepackage{nopageno}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+
+\begin{document}
+\title{Notes}
+\date{January 26, 2015}
+\maketitle
+\section*{non measurable set example}
+$x,y\in [0,1)$
+
+$x\oplus y:\begin{cases}x+y&\text{if }x+y<1\\x+y-1&\text{if }x+y\ge 1\end{cases}$
+
+\subsection*{facts}
+\begin{enumerate}
+\item
+$x\oplus y=y\oplus x$
+\item
+$(x\oplus y)\oplus z=x\oplus(y\oplus z)$
+\end{enumerate}
+
+if $E\subseteq[0,1)$ and $x\in [0,1)$ then define $E\oplus x:\{z:y\oplus x=z \text{ with }y\in E\}$
+
+\subsection*{lemma}
+if $E\subseteq[0,1)$ is measurable and $x\in[0,1)$ then $E\oplus x$ is measurable and $m*(E\oplus x)=m*(E)$
+\subsubsection*{proof}
+$E_1=E\cap[0,1-x), E_2=E\cap[1-x,1)$ where $E_1$ is regular addition, and $E_2$ is overflow.
+
+notice $E_1$ and $E_2$ are measurable. Now $E_1\cup E_2=E$ and because they are disjoint and measurable then $m*(E_1)+m*(E_2)=m*(E)$
+
+$E_1\oplus x=E_1+ x$. Now $m*(E_1\oplus x)=m*(E_1+x)=m*(E_1)$ (from homework)
+
+on the other hand $E_2\oplus x=E_2+x-1$ and so $m*(E_2\oplus x)=m*(E_2+x-1)=m*(E_2)$.
+
+\begin{align*}
+  m*(E)=m*(E_1)+m*(E_2)&=m*(E_1\oplus x)+m*(E_2\oplus x)\\
+  &=m*((E_1\oplus x)\cup(E_2\oplus x))\\
+  y&\in E_1\oplus x\\
+  y&\in E_2\oplus x\\
+  y&=x+z_1, z_1\in [0,1-x)\\
+  y&=x+z_2-1, z_2\in [1-x,1)\\
+  z_1&=z_2-1\\
+  (E_1\oplus x)\cap (E_2\oplus x)&=\emptyset
+  &=m*(E\oplus x)
+\end{align*}
+
+take $x,y\in [0,1)$ where $x\sim y$ if $x=y+q$ where $q$ is rational. claim is that this is equivalence relation.
+\begin{enumerate}
+\item
+symmetry
+
+$x=y+q\to y=x+(-q)$
+\item
+reflexivity
+
+$x=x+0$ and $0\in \mathbb{Q}$
+\item
+transitivity
+
+$x=y+q_1, y=z+q_2\to x=(z+q_2)+q_1=z+(q_1+q_2)$
+\end{enumerate}
+
+$[0,1)/\sim=$ equivalence classes (space modulo equivalence classes)
+
+$[0,1)=\cup[x]_\sim\leftarrow$ disjoint
+
+\section*{axiom of choice}
+if you have a collection of sets, then you can choose something from each set.
+
+now for each equivalence class, choose one element. the collection of these choices is $P$
+
+every rational number is equivalent to every other rational and so $P$ contains one and only one rational number.
+
+one can show that for example $\pi/4$ will create it's own equivalence class. and $e/3$ will also have it's own class. It is difficult to show that $e$ and $\pi$ are in their own equivalence classes. $P$ has at least 3 elements. Actually it has an uncountable number of elements.
+
+$\{r_i\}_{i=0}^\infty$ is an enumeration of $\mathbb{Q}\cap[0,1)$ with $r_0=0$.This list is the rationals in any order, but $0$ is at the beginning
+
+let $P_i=P\oplus r_i$
+\begin{enumerate}
+\item
+$m*(P_i)=m*(P)$
+\item
+$P_0=P$
+\item
+$P_i\cap P_j=\emptyset$ if $i\ne j$.
+
+if $x\in P_i\cap P_j$ then $x=x_1\oplus r_i=x_2\oplus r_j$ where $x_1,x_2\in P$.
+
+$x_1+r_1=x_2+r_2\to x_1=x_2 +(r_2-r_1)$
+
+$x_1+r_1-1=x_2+r_2\to x_1=x_2+(r_2-r_1+1)$
+
+$x_1+r_1=x_2+r_2-1\to x_1=x_2+(r_2-1-r_1)$
+
+$x_1+r_1-1=x_2+r_2-1\to x_1=x_2+(r_2-r_1)$
+
+and so $x_1\sim x_2$ and so $x$ is not in both and we have a contradiction
+\item
+$\bigcap_{i=1}^\infty P_i=[0,1)$
+
+$x\in [0,1)$ and $x\sim y$ with $y\in P$ and $x=y+q$ with $q\in \mathbb{Q}$
+
+$q\in \mathbb{Q}$ implies $q=r_j$ for some $j$ so $x\in P_j$.
+\end{enumerate}
+
+if $P$ is measurable then so is $P_i$ for all $i$ and so $1=m*([0,1))=m*(\bigcup_{i=1}^infty P_i=\sum\limits_{i=1}^\infty{m*(P_i)}=\sum\limits_{i=1}^\infty{m*(P)}$. Now either the sum is 0 and we can't get to one, or it's not 0 and we can get bigger than one. contradiction
+
+
+\end{document}
