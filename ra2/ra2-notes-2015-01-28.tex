@@ -1,0 +1,96 @@
+\documentclass[letterpaper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{fullpage}
+\usepackage{nopageno}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+
+\begin{document}
+\title{Notes}
+\date{January 28, 2015}
+\maketitle
+last quiz answers:
+?
+
+\section*{on board}
+$f$ bounded on $[a,b]$
+
+$D_f=\{x:f\text{ is not continuous at } x\}$
+
+\subsection*{theorem}
+$f$ is Riemann integrable iff $m*(D_f)=0$
+
+\subsection*{definition}
+if $T\subseteq [a,b]$ oscillation of $f$ on $T$
+
+\[\Omega_f(T)=\sup\{f(x)-f(y):x,y\in T\}\]
+
+\subsubsection*{for example}
+$f(x)=x^2, T=[0,5]$ then oscillation is $\Omega_f=25$
+
+$f(x)=x^2, T=\mathbb{Q}^C\cap [0,5]$ then oscillation is $25$ but this time $5\not\in T$ and $0\not\in T$ and so we need the supremum
+
+we are interested in how much the oscillation happens as we approach $x$
+
+\subsection*{def}
+$\omega_f(x)=\lim\limits_{h\to0^+}\Omega_f(B(x,h)\cap[a,b])$
+
+\subsection*{facts}
+\begin{enumerate}
+\item
+$\omega_f(x)=0$ iff $f$ is continuous at $x$
+
+\subsection*{theorem}
+let $\varepsilon>0$ be given. if $\omega_f(x)<\varepsilon$ for all $x\in [a,b]$ then $\exists\delta>0$ so that when $\Omega_f(T)<\varepsilon$ for any closed interval $T\subseteq[a,b]$ with $m*(T)<\delta$
+
+\end{enumerate}
+
+for every $x\in[a,b]$ there is $B(x,\delta_x)$ such that $\Omega_f(B(x,\delta_x)\cap[a,b])<\varepsilon$. $\{B(x,\delta_x)\}_{x\in[a,b]}$ is an open cover for $[a,b]$ there is $x_1,\dots,x_n\in [a,b]$ with $[a,b]\subseteq\bigcup_{i=1}^nB(x_i,\frac{\delta_{x_i}}{2})$. $\delta=\min\{\frac{\delta_{x_i}}{2}\}$
+
+if $m*(T)<\delta$ then any two points are are within $\delta$ of $x_i$. $T\cap B(x_i,\frac{\delta_{x_i}}{2})\ne \emptyset$ so $T\subseteq B(x_i,\delta_{x_i})$ and so $\Omega_f(T)<\varepsilon$
+
+\subsubsection*{lemma}
+let $J_{\varepsilon}=\{x\in[a,b]:\omega_f(x)\ge \varepsilon\}$ then
+$J_\varepsilon$ is closed and $D_f=\bigcap\limits_{n=1}^\infty J_{\frac{1}{n}}$
+
+second part is just lemma? continuous=measure 0
+
+first part $y\in J_{\varepsilon}^C$ then $\omega_f(y)<\varepsilon$ there is $\delta$ such that $\Omega_f(B(y,\delta)\cap[a,b]<\varepsilon$, $B(y,\delta)\subseteq J_{\varepsilon}^C$
+
+if $z\in B(y,\delta)$ consider $bB(z,\delta)$ where $\delta'$ is chosen so that $B(z,\delta')\subseteq B(y,\delta)$. notice that $\omega_f(z)\ge \Omega_f(B(z,\delta')\cap[a,b])\le\Omega_f(B(y,\delta)\cap[a,b]<\varepsilon$ so $z\not\in J_{\varepsilon}$.
+
+\subsubsection*{now for proof of thrm}
+we want to show that $f$ is reimann integrable iff $m*(D_f)=0$.
+
+assume $m*(D_f)>0$. $D=\bigcup_{r=1}^\infty J_{\frac{1}{r}}$ with $J_{\frac{1}{r}}=\{x:\omega_f(x)\ge\frac{1}{r}\}$
+
+these are closed sets, closed sets are measurable, and this is countable union so the whole thing (D) is measurable. and since $m*(D_f)>0$ there is $N>0$ such that $m*(J_{\frac{1}{n}})>0$
+
+if $J_N\subseteq\bigcup_{i=1}^\infty(a_i,b_i)$ then $\sum\limits{b_i-a_i}> \varepsilon$ for some $\varepsilon>0$. 
+
+now let $P$ be a partition.
+
+$U(P,f)-L(P,f)$ (upper-lower) $=\sum\limits_{k=1}^n{M_k-m_k}\delta_k$
+check page 114ish
+
+$=\left[\sum\limits_{s_1}{(M_k-m_k)\\delta_k}\right]+\left[\sum\limits_{s_2}{M_k-m_k\\delta_k}\right]$
+
+$s_1=J_{1/N}\cap(x_{k-1},x_k)\ne\emptyset$
+
+$s_2=J_{1/N}\cap(x_{k-1}$
+
+\begin{enumerate}
+\item
+$D\subseteq \bigcup_{k\in S_1}(x_{k-1},x_k)$
+
+$M_k(f)-m_k(f)\ge \frac{1}{N}$ for all $k\in S$
+
+$\sum\limits_{k\in S_1}{\delta_k}>\varepsilon$
+
+$U(f_iP)-L(f,P)\ge \sum\limits_{s_1}{M_k-m_k)\delta_k}\ge \frac{1}{N}\sum\limits_{s_1}{\delta_k}=\frac{1}{N}\varepsilon$ so f not integrable
+\end{enumerate}
+\end{document}
