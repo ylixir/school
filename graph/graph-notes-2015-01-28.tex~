@@ -1,0 +1,161 @@
+\documentclass[letterpaper]{article}
+
+\usepackage{fullpage}
+\usepackage{nopageno}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{tikz}
+\usepackage[utf8]{inputenc}
+\usepackage{aeguill}
+\usepackage{setspace}
+
+\usetikzlibrary{graphs,graphdrawing}
+\usegdlibrary{trees}
+
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+
+\begin{document}
+\title{Notes}
+\date{January 28, 2015}
+\maketitle
+\section*{continuing with trees, 2.3}
+recall that a tree is a graph such that
+\begin{enumerate}
+\item
+every edge is a bridge
+\item
+there are no cycles
+\item
+order $n$ and size $n-1$
+\end{enumerate}
+
+a natural question is to say ``how many non isomorphic trees of over $n$ are there?''
+
+early application of graph theory is chemistry. molecules are trees
+
+first few
+\begin{enumerate}
+\item
+$n=1$ then we have $1$ tree
+\item
+$n=2$ then we have $1$ tree
+\item
+$n=3$ then we have $1$ non-isomorphic tree
+\item
+$n=4$ then we have 
+
+\tikz\path [graphs/.cd, nodes={shape=circle, draw, text=black,inner sep=1pt,outer sep=0pt}]
+  graph [tree layout] { 1 -- 2; 1-- 3; 1--4 }
+  [shift=(0:2)]
+  graph [tree layout] { 1 -- {2 -- 3} -- 4 };
+\end{enumerate}
+
+for any $n$ the number of non-isomorphic trees on $n$-vertices is \emph{a complete mystery}
+
+\subsection*{simpler question}
+how many non-isomorphic {\bfseries labelled} trees exists on $n$-vertices?
+
+a {\bfseries labelled graph} is a graph where each vertex is distinguished by a label.
+
+\subsubsection*{example}
+\tikz\path [graphs/.cd, nodes={shape=circle, draw, text=black,inner sep=1pt,outer sep=0pt}]
+  graph [tree layout] { 1 -- 2;1 -- 3};
+$\ne$
+\tikz\path [graphs/.cd, nodes={shape=circle, draw, text=black,inner sep=1pt,outer sep=0pt}]
+  graph [tree layout] { 2 -- 1; 2-- 3; };
+
+two labeled graphs are different if their edge sets are different
+
+\subsubsection*{example}
+\tikz\path [graphs/.cd, nodes={shape=circle, draw, text=black,inner sep=1pt,outer sep=0pt}]
+  graph [tree layout] { 1--5--4--3;5--6--2;6--4 }
+  [shift=(0:2)]
+  graph [tree layout] { 3--4--6--2;4--5--1;5--6 }
+  [shift=(0:2)]
+    graph [tree layout] { 2--5--4--1;5--6--3;4--6 }
+  [shift=(0:1)];
+
+1 and 2 are the same, 3 is different
+
+the solution is given neatly by Prüfer codes
+
+\subsubsection*{example}
+\tikz\path [graphs/.cd, nodes={shape=circle, draw, text=black,inner sep=1pt,outer sep=0pt}]
+  graph [tree layout] { 3--2--1;2--5;2--4--6 }
+  [shift=(0:1)];
+\begin{enumerate}
+\item
+record the neighbor of the leaf of least valued label
+\item
+erase leaf and repeat
+\item
+last node is not in the code
+2
+\tikz\path [graphs/.cd, nodes={shape=circle, draw, text=black,inner sep=1pt,outer sep=0pt}]
+  graph [tree layout] { 3--2;2--5;2--4--6 }
+  [shift=(0:1)];
+
+22
+\tikz\path [graphs/.cd, nodes={shape=circle, draw, text=black,inner sep=1pt,outer sep=0pt}]
+  graph [tree layout] { 2--5;2--4--6 }
+  [shift=(0:1)];
+
+222
+\tikz\path [graphs/.cd, nodes={shape=circle, draw, text=black,inner sep=1pt,outer sep=0pt}]
+  graph [tree layout] { 2--4--6 }
+  [shift=(0:1)];
+
+2224
+\tikz\path [graphs/.cd, nodes={shape=circle, draw, text=black,inner sep=1pt,outer sep=0pt}]
+  graph [tree layout] { 4--6 }
+  [shift=(0:1)];
+
+2224
+
+this process is reversible, but it's harder
+\end{enumerate}
+
+\tikz\path [graphs/.cd, nodes={shape=circle, draw, text=black,inner sep=1pt,outer sep=0pt}]
+  graph [tree layout] {6--1--5--2--7;3--1;5--8--4}
+  [shift=(0:1)];
+prüfer code is $(1,8,1,5,2,5)$
+\section*{spanning tree}
+\subsection*{properties of prüfer codes}
+\begin{enumerate}
+\item
+length is $n-2$
+\item
+$i$ appears at most $\deg(v_i)-1$ times
+\item
+at most $n-2$ \emph{different} entries
+\end{enumerate}
+
+{\bfseries Prüfer code} is a sequence of $n-2$ integers from $[n]$ where $[n]=\{1,\dots,n\}$
+
+and so we have $n-2$ spaces with $n$ choices and so $n^{n-2}$ codes
+
+\subsection*{Cayley's Tree theorem}
+Labelled trees are in bijection with Prüfer codes. ie there are $n^{n-2}$ labeled trees on $n$ vertices (non-isomorphic)
+
+\section*{now finally spanning trees}
+{\bfseries spanning graph} of $G$ is a subgraph $H$ such that $V(G)=V(H)$.
+
+{\bfseries weighted graph} a graph with numerical labels on the edges
+
+question? how can we find a spanning tree of a weighted graph with least total weight?
+
+\subsubsection*{greedy algorithm}
+called Kruskal's algorithm
+
+\begin{enumerate}
+\item
+choose any edge of least weight
+\item
+choose any remaining edge of next least weight  that doesn't make a cycle
+\item
+repeat
+\end{enumerate}
+\end{document}
+

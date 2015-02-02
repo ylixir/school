@@ -1,0 +1,87 @@
+\documentclass[letterpaper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{fullpage}
+\usepackage{nopageno}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+
+\begin{document}
+\title{Notes}
+\date{January 30, 2015}
+\maketitle
+$f$ is Riemann integrable if and only if $m*(D_f)=0$ (we did this with contrapositive last time).
+
+\section*{proof of converse}
+$D_r=\{x:\omega_f(x)\ge \frac{1}{n}\}$
+
+$D_f=\bigcup_{n\in \mathbb{N}}J_\frac{1}{n}$
+because $m*(D_f)=0$ we know that $m*(J_{\frac{1}{n}})=0$
+
+Let $P$ be a partition with $\#(P)<S$ (mesh $P$ is max $\Delta_i$).
+
+if $\epsilon>0$ with $w_f(x)<\epsilon$ for all $x\in[a,b]$ there exists $S>0$ such that $\Omega_f(T)<\epsilon$. If $T$ is any closed interval with $m*(T)<S$.
+
+?So if $m*(T)<S$ then $\Omega_f(T)<\frac{1}{n}$
+
+\subsubsection*{break}
+$U(P,f)-L(P,f)=\sum\limits_{S_1}{(M_i-m_i)\Delta_i}+\sum\limits_{S_2}{(M_i-m_i)\Delta_i}$
+
+$S_1=\{[x_i,x_{i+1}]:J_{1/n}\cap(x_i,x_{i+1})\ne \emptyset\}$
+$S_2=\{[x_i,x_{i+1}]:J_{1/n}\cap(x_i,x_{i+1})= \emptyset\}$
+
+oscillation on $S_1$ is small, maybe big on $S_2$
+
+on $S_2$ we have $M_i-m_i<\frac{1}{n}$. and $\sum\limits_{S_2}{(M_i-m_i)\Delta_i}< \frac{1}{n}\sum\limits_{i=1}^n{\Delta_i}\le \frac{1}{n}(b-a)$
+
+function is bounded and so $M_i\le M$ where $M$ is upper bound for $f$ and $m_i>m$ is lower bound 
+
+so on $S_1$ we havve $\sum\limits_{S_1}{(M_i-m_i)\Delta_i}\le (M-m)\sum\limits_{S_1}{\Delta_i}\le (M-m)\frac{1}{n}$
+
+these intervals cover $J_{1/n}$. $m*(J_{1/n})\le\sum\limits_{S_1}{(x_i-x_{i-1})}$.
+
+Any cover $U(a_i,b_i)\subseteq J_{1/n}$ with $|b_i-a_i|\subset S\to m*(J_{1/n})\le \sum\limits{b_i-a_i}\le m*(J_{1/n}))+\frac{1}{n}$
+
+we choose a partition so that the subpartition reflects above. and then go through calculations and ge
+
+$U(Pf)-L(P,f)\le \frac{(M-m)+(b-a)}{n}$
+
+\section*{facts}
+\begin{enumerate}
+\item
+if $f$ is piecewise continuous on $[a,b]$ then $f$ is Riemann integrable
+\item
+$\chi_s(x)=\begin{cases}1&x\in S\\0&x\not\in S\end{cases}$
+
+where $\chi_s$ is discontinuous for any point on $\partial S$ and continuous everywhere else
+
+$\partial S=\overline{S}/S^\circ$
+
+$\chi_C=\overline{C}=C\setminus\emptyset$
+
+$\partial (\chi_C)=C$
+
+and now $\chi_{\mathbb{Q}}$ and so boundary of rationals $\partial \mathbb{Q}=\mathbb{R}$
+
+note that $\int{\chi_s\mathrm{d}m}=m*(S)$
+\end{enumerate}
+
+
+$f$ is simple if
+\begin{enumerate}
+\item
+range of $f=\{\alpha_1,\alpha_2,\dots,\alpha_k\}$ is finite
+\item
+$E_k=\{x:\varphi(x)=\alpha_k\}$ is measurable.
+
+\end{enumerate}
+
+notice that $\varphi(x)=\sum\limits_{i=1}^k{\alpha_k\chi_{E_i}(x)}$
+
+this is the canonical representation of $\varphi$ and is unique.
+
+$\sum\limits_{i=1}^3{\frac{1}{i}\chi_{E_i}}$ with $E_1=[0,\frac{1}{3}]$ $E_2$ and $E_3$ are other two thirds. no zeros in function, pairwise disjoint sets means canonical
+\end{document}

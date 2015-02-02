@@ -1,0 +1,56 @@
+%shell-escape
+\documentclass[letterpaper]{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{gnuplottex}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\lhead{January 30, 2015}
+\chead{Real Analysis II Homework}
+\rhead{Jon Allen}
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+
+\begin{document}
+\begin{enumerate}
+%\item
+%Prove that $f$ is continuous at $c$ if and only if $\omega_f(c)=0$
+
+%We assume that $f$ is continuous at $c$. Then for every $\varepsilon>0$ there exists some $h$ such that for all $x\in [a,b]$ with $||x-c||<h$ we have $||f(x)-f(c)||<\varepsilon$. 
+
+%We assume that $\omega_f(c)=0$. Then $\lim\limits_{h\to0^+}\Omega_f(B(c,h)\cap[a,b])=0$. Which is to say $\lim\limits_{h\to0^+}\sup\{f(x)-f(y):x,y\in B(c,h)\cap[a,b]\}=0$. And so for every $\varepsilon>0$ there exists some $\delta>0$ such that $sup\{f(x)-f(y):x,y\in B(c,h)\cap[a,b]\}<\varepsilon$ when $h<\delta$
+\item
+Prove that any countable set is measurable.
+\subsubsection*{proof}
+Saying that a set is countable implies that we can index the elements of the set. And so we say that our countable set $E=\{e_1,e_2,\dots\}$. This is equivalent to saying $E=\bigcup\limits_{i=1}^n\{e_i\}$ with $n\in \mathbb{N}$ or $E=\bigcup\limits_{i=1}^\infty\{e_i\}$. We know that the measure of a singleton is 0 and we know that the union of some sets has a measure no larger than the sum of the measures of those sets. And so $m*(\bigcup\limits_{i=1}^\infty\{e_i\})\le \sum\limits_{i=1}^\infty{m*(\{e_i\})}=\sum\limits_{i=1}^\infty{0}=0$. And because we touched on countable but non-infinite sets, for completeness sake, $m*(\bigcup\limits_{i=1}^n\{e_i\})\le \sum\limits_{i=1}^n{m*(\{e_i\})} \sum\limits_{i=1}^n{0}=0$. Now we have proved not only that any countable set is measurable, but that any countable set has measure 0. $\Box$
+\item
+Prove that the Cantor set has measure $0$.
+\subsubsection*{proof}
+We'll call the Cantor set $C$ and observe that $C\subset [0,1]$. I'll also say $C'=C^C\cap[0,1]$. That is, all the elements in $[0,1]$ that aren't in the Cantor set are in $C'$. Obviously these two sets span $[0,1]$ and are disjoint. That is to say $C\cup C'=[0,1]$ and $C\cap C'=\emptyset$. We also know that $m*([0,1])=1$. So Cantor showed us that if we spend too long thinking about his set, then we will go mad. Lets try to avoid this.
+\begin{align*}
+  m*([0,1])&=1\\
+  m*([0,1])&=m*(C\cup C')\\
+  m*([C\cup C'])&=m*(C)+m*(C')\text{ because they are disjoint}\\
+  m*(C)+m*(C')&=1\\
+  m*(C)&=1-m*(C')\\
+\end{align*}
+Yes, we can ignore $C$(razy). 
+Now I know that $(\frac{1}{3},\frac{2}{3})\subset C'$ and that $(\frac{1}{9},\frac{2}{9})\cup(\frac{7}{9},\frac{8}{9})\subset C'$ and so on. Now notice that all the parts we cut out of $[0,1]$ to make the Cantor set are disjoint. And so the measure of their unions is the same as the sum of their measures. Now every time we take a chunk out, we leave behind two chunks that are a third of the original chunk. And so
+\begin{align*}
+  m*(C')
+  &=\sum\limits_{i=1}^\infty{2^{i-1}m*\left(\left(\frac{1}{3^i},\frac{2}{3^{i}}\right)\right)}\\
+  &=\frac{1}{2}\sum\limits_{i=1}^\infty{2^{i}\left(\frac{2}{3^i}-\frac{1}{3^i}\right)}\\
+  &=\frac{1}{2}\sum\limits_{i=1}^\infty{\left(\frac{2}{3}\right)^i}\\
+  \intertext{using the formula for geometric series we get}
+  m*(C')&=\frac{1}{2}\cdot\frac{\frac{2}{3}}{1-\frac{2}{3}}
+  =\frac{1}{2}\cdot\frac{2}{3}\cdot\frac{3}{1}
+  =1
+\end{align*}
+Well that is way better than going the way of Cantor. Just to be clear $m*(C)=1-m*(C')=1-1=0$. $\Box$
+\end{enumerate}
+\subsubsection*{References}
+https://theoremoftheweek.wordpress.com/2010/09/30/theorem-36-the-cantor-set-is-an-uncountable-set-with-zero-measure/
+
+\end{document}

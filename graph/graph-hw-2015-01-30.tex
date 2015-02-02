@@ -1,0 +1,303 @@
+%shell-escape
+\documentclass[letterpaper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{fullpage}
+\usepackage{nopageno}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{gnuplottex}
+\usepackage{tikz}
+
+\usetikzlibrary{graphs,graphdrawing}
+\usegdlibrary{trees}
+
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+
+\begin{document}
+\title{Graph Theory Homework}
+\date{January 30, 2015}
+\author{Jon Allen}
+\maketitle
+1.3 1,2,3,9,13
+
+2.1 is 1,2,3,6,11
+\renewcommand{\labelenumi}{1.\arabic{enumi}}
+\renewcommand{\labelenumii}{\arabic{enumii}.}
+%\renewcommand{\labelenumii}{\Alph{enumii}.}
+\renewcommand{\labelenumiii}{(\alph{enumiii})}
+\begin{enumerate}
+\setcounter{enumi}{2}
+\item
+  \begin{enumerate}
+  %1.3 #1
+  \item
+  Show that for every two vertices $u$ and $v$ in a connected graph $G$, there exists a $u-v$ walk containing all vertices of $G$.
+
+  For convenience we label the vertices of $G$ such that $V(G)=\{u=w_1,\dots,w_n=v\}$ where $n$ is the order of $G$. Now by the definition of connected, we know that for all $1<i< n$ there exists a $w_1-w_i$ path in $G$ and there exists a $w_1-w_n$ path. So we simply string together every $w_1-w_i-w_1$ and then add in the $w_1-w_n$ path at the end and we have our walk: $w_1-w_2-w_1-w_3-w_1-\dots-w_1-w_n$
+  %1.3 #2
+  \item
+  Give an example of a cubic graph of order 10 containing a $k$-cycle for each $k$ with $3\le k\le 10$
+  \newdimen\R
+  \R=2cm
+  \begin{tikzpicture}[main_node/.style={circle,draw,text=black,inner sep=1pt,outer sep=0pt]}]
+    \draw (0:\R) circle (2pt) \foreach \x in {1,2,3,4,5,6,7,8,9,10} { -- (\x*36:\R) circle (2pt) node[above] {\x}};
+    \draw (0:\R) -- (72:\R);
+    \draw (36:\R) -- (108:\R);
+    \draw (144:\R) -- (252:\R);
+    \draw (180:\R) -- (324:\R);
+    \draw (216:\R) -- (288:\R);
+  \end{tikzpicture}
+
+  some cycles are:
+  $\{1,2,3\}$,
+  $\{1,3,2,10\}$,
+  $\{5,6,7,8,9\}$,
+  $\{5,9,10,2,3,4\}$,
+  $\{5,9,10,1,2,3,4\}$,
+  $\{4,7,8,9,10,1,2,3\}$,
+  $\{6,8,9,10,1,2,3,4,5\}$,
+  $\{1,2,3,4,5,6,7,8,9,10\}$
+  %1.3 #3
+  \item
+  Let $G_1, G_2$ and $G_3$ be three graphs of order $n$ and size $m$ having adjacency matrices $A_1, A_2$ and $A_3$ respectively.
+    \begin{enumerate}
+    \item
+    Prove or disprove: If $A_1=A_2$, then $G_1\cong G_2$
+
+    First we carefully label our vertices. We will label the vertices $V(G_1)=\{v_1,\dots,v_n\}$ in such a way so that $a_{i,j}\in A_1$ is $1$ if and only if $v_i$ and $v_j$ are adjacent to each other. Similarly if $b_{i,j}\in A_2$ and $V(G_2)=\{u_1,\dots, u_n\}$. Then $b_{i,j}=1$ if and only if $u_i$ and $u_j$ are adjacent.
+    Now lets define our isomorphism $\phi(v_i)=u_i$. Good, now we choose any $v_i, v_j$ from $V(G_1)$. Now if $a_{i,j}=1$ then $v_i, v_j$ are adjacent. And furthermore, because $A_1=A_2$ we know that $b_{i,j}=1$ and so $u_i$ and $u_j$ are adjacent. This of course means that $\phi(v_i)$ and $\phi(v_j)$ are adjacent.
+
+    Now on the other hand if $a_{i,j}\ne 1$ then $v_j$ and $v_i$ are not adjacent. Further, we know that $a_{i,j}=b_{i,j}\ne 1$ and so $u_j$ and $u_i$ are not adjacent and so $\phi(v_i)$ and $\phi(v_j)$ are not adjacent.
+
+    The argument for $\phi:V(G_2)\to V(G_1)$ is exactly the same. $\Box$
+    \item
+    Prove or disprove: If $A_2\ne A_3$, then $G_2\not\cong G_3$
+
+    Counterexample:
+
+    \begin{tikzpicture}[main_node/.style={circle,draw,text=black,inner sep=1pt,outer sep=0pt]}]
+      \node[main_node] (1) at (0,0) {1};
+      \node[main_node] (2) at (1,0) {2};
+      \node[main_node] (3) at (1/2,1) {3};
+      \draw (1) -- (2) -- (3);
+      \node[draw=white] at (3/2,1/2) {$\cong$};
+      \node[main_node] (4) at (2,0) {1};
+      \node[main_node] (5) at (3,0) {2};
+      \node[main_node] (6) at (5/2,1) {3};
+      \draw (5) -- (6) -- (4);
+    \end{tikzpicture}
+    $\displaystyle
+    A_1=
+    \left[
+      \begin{array}{ccc}
+      0&1&0\\
+      1&0&1\\
+      0&1&0
+      \end{array}
+    \right]
+    \ne
+    A_2=
+    \left[
+      \begin{array}{ccc}
+      0&0&1\\
+      0&0&1\\
+      1&1&0
+      \end{array}
+    \right]
+    $
+    \end{enumerate}
+  \setcounter{enumii}{8}
+  %1.3 #9
+  \item
+  Prove that ``is connected to'' is an equivalence relation on the vertex set of a graph.
+
+  Equivalence requires reflexivity, symmetry and transitivity. We will denote $u$ is connected to $v$ as $u\sim v$.
+  \begin{description}
+  \item[$u\sim u$:]
+  This is a walk with only one vertex. Obviously no vertexes are repeated and so it is a path. Since any vertex has the trivial path to itself, every vertex is connected to itself
+  \item[$u\sim v\implies v\sim u$:]
+  There is a path from $u$ to $v$. If we take that path backwards, then we have a path from $v$ to $u$
+  \item[$u\sim v, v\sim w\implies u\sim w$:]
+  There is a path from $u$ to $v$ and a path from $v$ to $w$. Concatenating those paths gives us a walk from $u$ to $w$. We know from theorem 1.16 that if there is a walk from $u$ to $w$ then there is a $u-w$ path.
+  \end{description}
+  \setcounter{enumii}{12}
+  %1.3 #13
+  \item
+  Prove that if $G$ is a graph with $\delta(G)\ge 2$, then $G$ contains a cycle.
+  \subsubsection*{proof}
+  We take it for granted that $G$ has finitely many vertices.
+  Say $G$ is order $n$.
+  Now we pick any vertex in $G$, call it $v_1$.
+  Now because $\delta(G)\ge 2$ we know that $v_1$ is incident to two edges.
+  We pick one edge (call it $e_1$) and follow it to the other vertex that it is incident to.
+  Call this vertex $v_2$. Of course $v_2$ is incident to $e_1$ and some other edge not the same as $e_1$. Call this edge $e_2$
+  This forms our basis.
+
+  Now as we traverse our graph we observe that we reach any vertex $v_k$ from an edge $e_{k-1}$. Now $v_k$ is incident to at least two edges and so there exists some edge $e_k$ different from $e_{k-1}$. This edge must be incident to some vertex $v_{k+1}$.
+
+  As $n$ is finite, we can continue until we have traversed $n$ edges.
+  This means that we have visited $v_{n+1}$ vertexes. But there are only $n$ vertexes in $G$ so at least two of these vertexes must be the same. Call this vertex $v_i$. Choose the first two times we traverse this vertex and we have found a walk with at least one edge from $v_i$ to $v_i$.
+  Now if this walk is not a path, then it contains some vertex $v_j\ne v_i$ more than once. We simply replace this nontrivial $v_j-v_j$ subwalk with the trivial $v_j-v_j$ walk. That is, just short circuit the walk from $v_j$ to $v_j$. This lowers the number of times $v_j$ occurs in our walk by one. We repeat this a finite number of times until we have no repeated vertices. Now we have found a cycle in an arbitrary graph with minimum degree 2 and so all such graphs must have a cycle.
+  \end{enumerate}
+\renewcommand{\labelenumi}{2.\arabic{enumi}}
+\setcounter{enumi}{0}
+\item
+  \begin{enumerate}
+  %2.1 #1
+  \item
+  Prove Corollary 2.4: {\it A connected graph  $G$ of order $3$ or more is nonseparable if and only if for every two distinct vertices $u$ and $v$ in $G$, there are two internally disjoint $u-v$ paths.}
+  \subsubsection*{proof}
+
+  First we establish the converse of Theorem 2.3. Assume every two different vertices of $G$ lie on a common cycle of $G$. We'll call these vertices $v_i$ and $v_j$ where the cycle consists of the vertices $v_1,v_2,\dots,v_n$. Note that $v_i\ne v_j$. We assume without loss of generality that $v_i<v_j$. Then there are two paths from $v_i$ to $v_j$. The first consists of the edges $v_kv_{k+1}$ where $k\le i<k$. The second consists of the edges $v_kv_{k+1}$ and $v_1v_n$ where $k<i$ or $k\ge j$. Notice that these two sets of edges are disjoint. Indeed the only vertices these paths have in common are $v_i$ and $v_j$. And so if we remove any vertices from either path, then we still have a path from $v_i$ to $v_j$. Now if $G$ contains a cut vertex, then if we remove this vertex we will leave two components of $G$ that have no paths between them. But each of these components has at least one point. And each of these points would have a path to a point in the other component that doesn't go through our cut vertex. This means that $G$ is nonseparable.
+
+  Now we prove our corollary:
+
+  If $G$ is non separable, then every two vertices lie on a common cycle of $G$. As we have established above, this means that there are two paths between $u$ and $v$ whose only vertices in common are $u$ and $v$ and who have no edges in common. This is what internally disjoint paths are. 
+
+  Now if there are two internally disjoint $u-v$ paths, then for convenience we label the vertexes on the first path $u=u_0,u_1,\dots,u_n=v$ such that $u_iu_{i+1}$ with $0\le i<n$ are the edges of the path. And similarly $v=v_0,v_1,\dots,v_m=u$ are the vertices of the second path whose edges are $v_jv_{j+1}$ where $0\le j<m$. Now if we take $w_0=u_0,w_1=u_1,\dots w_n=u_n,w_{n+1}=v_1,w_{n+2}=v_2,\dots w_{n+m-1}=v_{m-1}$ then we have edges $w_iw_{i+1}$ for all $0\le i<n+m-1$ and $w_{n+m-1}w_0$. We note that because the paths are disjoint then if $i\ne j$ then $w_i\ne w_j$. And so our $w$s make a cycle. And so because any vertices $u$ and $v$ lie on a common cycle of $G$, then $G$ must be nonseparable.
+  %2.1 #2
+  \item
+  Prove Corollary 2.5: {\it Let $u$ and $w$ be two distinct vertices in a nonseparable graph of $G$. If $H$ is obtained from $G$ by adding a new vertex $v$ and joining $v$ to $u$ and $w$, then $H$ is nonseparable.}
+
+First we observe that removing any point that $H$ inherited from $G$ will leave all the remaining points from $G$ connected. So we need only ensure that these points will remain connected to $v$. Because $H$ has edges $uv$ and $wv$ then $w$ has internally disjoint paths to $u$ and $v$. Lets take any fourth point in $G$, say $z$. Now there are internally disjoint $u-z$ paths. At least one of these does not contain $w$. Similarly there is a $w-z$ path that does not contain $u$. Now if we remove $v$ from $H$ then we just have $G$ which is one component. Removing $u$ will leave a path from $v$ to any other point, and so will removing $w$. Removing any other point still leaves a path from $v$ through $u$ and a path from $v$ through $w$ to any of the remaining points in $H$ because $G$ is nonseparable.
+  %2.1 #3
+  \item
+  Prove Corollary 2.6: {\it If $U$ and $W$ are disjoint sets of vertices in a nonseparable graph $G$ of order $4$ or more with $|U|=|W|=2$, then $G$ contains two disjoint paths connecting the vertices of $U$ and the vertices of $W$.}
+
+  Let $U=\{u_1,u_2\}$ and $W=\{w_1,w_2\}$. Now add two vertexes to $G$, call them $u$ and $w$. Make $u$ adjacent to $u_1$ and $u_2$ and $w$ adjacent to $w_1$ and $w_2$. Now as we just saw, this new graph is nonseparable, and so there are two disjoint $u-w$ paths. Because $u$ is only adjacent to $u_1$ and $u_2$ these paths must each contain one or the other. Similarly $w_1$ and $w_2$ must also lie on separate paths. And so there are at least two disjoint paths in $G$ that connect a vertex from $U$ to a vertex from $W$.
+  \setcounter{enumii}{5}
+  %2.1 #6
+  \item
+  Let $u$ and $v$ be distinct vertices of a nonseparable graph $G$ of order $n\ge 3$. If $P$ is a given $u-v$ path of $G$, does there always exist a $u-v$ path $Q$ such that $P$ and $Q$ are internally disjoint $u-v$ paths?
+
+  No, there doesn't always exist such a path. In our counter example below, $u-x-w-v$ is a $u-v$ path that contains every vertex in the graph. Any other $u-v$ path must contain either $x$ or $w$ or both and so would not be internally disjoint with $u-x-w-v$
+
+  \begin{tikzpicture}[main_node/.style={circle,draw,text=black,inner sep=1pt,outer sep=0pt]}]
+    \node[main_node] (1) at (0,0) {$u$};
+    \node[main_node] (2) at (1,-1) {$w$};
+    \node[main_node] (3) at (1,1) {$x$};
+    \node[main_node] (4) at (2,0) {$v$};
+    \draw (1) -- (2) -- (3) -- (4);
+    \draw (1)--(3);
+    \draw (4)--(2);
+  \end{tikzpicture}
+  \setcounter{enumii}{10}
+  %2.1 #11
+  \item
+  Prove or disprove: If $B$ is a block of order $3$ or more in a connected graph $G$, then there is a cycle in $B$ that contains all the vertices of $B$.
+
+  The claim is false which I disprove by counterexample.
+
+  \begin{tikzpicture}[main_node/.style={circle,draw,text=black,inner sep=1pt,outer sep=0pt]}]
+    \node[main_node] (1) at (0,0) {1};
+    \node[main_node] (2) at (1,-1) {2};
+    \node[main_node] (3) at (2,0) {3};
+    \node[main_node] (4) at (1,1) {4};
+    \node[main_node] (5) at (3,0) {5};
+    \node[main_node] (6) at (4,-1) {6};
+    \node[main_node] (7) at (5,0) {7};
+    \node[main_node] (8) at (4,1) {8};
+    \node[main_node] (9) at (6,0) {a};
+    \node[main_node] (10) at (7,1) {b};
+    \node[main_node] (11) at (7,-1) {c};
+    \draw (1) -- (2) -- (3) -- (4) -- (1);
+    \draw (5) -- (6) -- (7) -- (8) -- (5);
+    \draw (4) -- (8);
+    \draw (2) -- (6);
+    \draw (7) -- (9) -- (10) -- (11) -- (9);
+  \end{tikzpicture}
+
+  There is our graph $G$. Our counterexample is the subgraph of $G$ induced by the numbered (as opposed to lettered) vertices. This subgraph fits the definition of a block so we will call it $B$.
+
+  Now we search for our cycle. We notice that this graph is very symmetrical. For our purposes, we will without loss of generality pick one vertex or path. So we can say that there is no difference between starting from $1, 3, 7$ or $5$ and so we will ignore $3, 7$ $5$. Similarly, a path from $1-2$ is the same as a path from $1-4$ so the latter will be ignored.
+
+  Our only two options for a starting vertex are $1$ and $2$. We start with $1$ and are forced into the edge $1-2$. Now we can go to $3$ or $6$. We choose $1-2-3-4$. But now we are stuck, if we choose $8$ then we can not get back to $1$, or if we choose $1$ then we can not get to the vertices $\{5,\dots,8\}$.
+
+  So we try $1-2-6$. Now we assume we can hit $\{5,\dots,8\}$ and get back to $4$ (which we can't). But here again, we are stuck. If we choose three next then we can't get back to $1$, but if we choose $1$ then we have missed $3$.
+
+  So starting with  $2$ our two choices are $2-1-4$ or $2-6-7-8$. Examining $2-1-4$ first, our choice is between $3$ and $8$. Obviously $3$ is out as that will force a cycle to complete without including vertices $\{5,\dots,8\}$. And so we must choose $8$. Notice that the $2-1-4-8$ path is symmetrical to the $2-6-7-8$ path so we can consider this our last case.
+
+  Now no matter what we do next, the only way to get back to $3$ is on the $6-2$ edge. But we started at $2$ and so traversing that edge will complete the cycle, leaving $3$ out.
+
+  So we have exhausted all possibilities, and we are stuck, therefore finding a counterexample. $\Box$
+  
+  \begin{tikzpicture}[main_node/.style={circle,draw,text=black,inner sep=1pt,outer sep=0pt]}]
+    \node[draw=white] at (5/2,3/2) {$1-2-3-4$};
+    \node[main_node] (1) at (0,0) {1};
+    \node[main_node] (2) at (1,-1) {2};
+    \node[main_node] (3) at (2,0) {3};
+    \node[main_node] (4) at (1,1) {4};
+    \node[main_node] (5) at (3,0) {5};
+    \node[main_node] (6) at (4,-1) {6};
+    \node[main_node] (7) at (5,0) {7};
+    \node[main_node] (8) at (4,1) {8};
+    \draw (1) -- (2) -- (3) -- (4);
+    \draw [dashed] (4) -- (1);
+    \draw [dashed] (5) -- (6) -- (7) -- (8) -- (5);
+    \draw [dashed] (4) -- (8);
+    \draw [dashed] (2) -- (6);
+  \end{tikzpicture}
+  \begin{tikzpicture}[main_node/.style={circle,draw,text=black,inner sep=1pt,outer sep=0pt]}]
+    \node[draw=white] at (5/2,3/2) {$1-2-6-\dots-4$};
+    \node[main_node] (1) at (0,0) {1};
+    \node[main_node] (2) at (1,-1) {2};
+    \node[main_node] (3) at (2,0) {3};
+    \node[main_node] (4) at (1,1) {4};
+    \node[main_node] (5) at (3,0) {5};
+    \node[main_node] (6) at (4,-1) {6};
+    \node[main_node] (7) at (5,0) {7};
+    \node[main_node] (8) at (4,1) {8};
+    \draw (1) -- (2);
+    \draw [dashed] (2) -- (3) -- (4) -- (1);
+    \draw (5) -- (6) -- (7) -- (8) -- (5);
+    \draw (4) -- (8);
+    \draw (2) -- (6);
+  \end{tikzpicture}
+  \begin{tikzpicture}[main_node/.style={circle,draw,text=black,inner sep=1pt,outer sep=0pt]}]
+    \node[draw=white] at (5/2,3/2) {$2-1-4-3$};
+    \node[main_node] (1) at (0,0) {1};
+    \node[main_node] (2) at (1,-1) {2};
+    \node[main_node] (3) at (2,0) {3};
+    \node[main_node] (4) at (1,1) {4};
+    \node[main_node] (5) at (3,0) {5};
+    \node[main_node] (6) at (4,-1) {6};
+    \node[main_node] (7) at (5,0) {7};
+    \node[main_node] (8) at (4,1) {8};
+    \draw (2) -- (1) -- (4) -- (3);
+    \draw [dashed] (2) -- (3);
+    \draw [dashed] (5) -- (6) -- (7) -- (8) -- (5);
+    \draw [dashed] (4) -- (8);
+    \draw [dashed] (2) -- (6);
+  \end{tikzpicture}
+  \begin{tikzpicture}[main_node/.style={circle,draw,text=black,inner sep=1pt,outer sep=0pt]}]
+    \node[draw=white] at (5/2,3/2) {$2-1-4-8$ and $2-6-5-8$};
+    \node[main_node] (1) at (0,0) {1};
+    \node[main_node] (2) at (1,-1) {2};
+    \node[main_node] (3) at (2,0) {3};
+    \node[main_node] (4) at (1,1) {4};
+    \node[main_node] (5) at (3,0) {5};
+    \node[main_node] (6) at (4,-1) {6};
+    \node[main_node] (7) at (5,0) {7};
+    \node[main_node] (8) at (4,1) {8};
+    \draw (2) -- (1) -- (4) -- (8);
+    \draw [dashed] (2) -- (6) -- (7) -- (8);
+  \end{tikzpicture}
+  \begin{tikzpicture}[main_node/.style={circle,draw,text=black,inner sep=1pt,outer sep=0pt]}]
+    \node[draw=white] at (5/2,3/2) {$2-1-4-8-\dots-?$};
+    \node[main_node] (1) at (0,0) {1};
+    \node[main_node] (2) at (1,-1) {2};
+    \node[main_node] (3) at (2,0) {3};
+    \node[main_node] (4) at (1,1) {4};
+    \node[main_node] (5) at (3,0) {5};
+    \node[main_node] (6) at (4,-1) {6};
+    \node[main_node] (7) at (5,0) {7};
+    \node[main_node] (8) at (4,1) {8};
+    \draw (2) -- (1) -- (4) -- (8) -- (7) -- (6) -- (5) -- (8);
+    \draw [dashed] (6) -- (2) -- (3) -- (4);
+  \end{tikzpicture}
+   \end{enumerate}
+\end{enumerate}
+\end{document}
