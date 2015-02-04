@@ -1,0 +1,95 @@
+\documentclass[letterpaper]{article}
+
+\usepackage{fullpage}
+\usepackage{nopageno}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{tikz}
+\usepackage[utf8]{inputenc}
+\usepackage{aeguill}
+\usepackage{setspace}
+
+\usetikzlibrary{graphs,graphdrawing}
+\usegdlibrary{trees}
+
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+
+\begin{document}
+\title{Notes}
+\date{2 fevrier, 2015}
+\maketitle
+\section*{from the grader}
+\begin{enumerate}
+\item
+no frillies
+\item
+no paperclips
+\item
+no folding corners
+\item
+staple
+\end{enumerate}
+
+\subsection*{grading scheme}
+10 available points, 5 for completeness, 5 for 1 or 2 graded problems. 80\% is an A
+
+\section*{2.5 Menger's Theorem}
+a $u-v$ {\bfseries separating set} is a set $S\subseteq V(G)$ such that $S$ separates $G$ with  $u$ and $v$ in different components.
+
+\subsubsection*{exmple}
+\begin{tikzpicture}[main_node/.style={circle,draw,text=black,inner sep=1pt,outer sep=0pt]}]
+  \node[main_node] (1) at (0,-1) {c};
+  \node[main_node] (2) at (-1,0) {u};
+  \node[main_node] (3) at (1,0) {d};
+  \node[main_node] (4) at (-1,1) {a};
+  \node[main_node] (5) at (1,1) {v};
+  \node[main_node] (6) at (0,2) {b};
+  \draw (1) -- (2) -- (4) -- (6) --(5)--(1)--(3)--(4);
+\end{tikzpicture}
+example $S$ are $\{a,c\}, \{b,c\}, \{a,b,c\}$.
+
+\begin{tikzpicture}[main_node/.style={circle,draw,text=black,inner sep=1pt,outer sep=0pt]}]
+  \node[main_node] (1) at (-1,-1) {};
+  \node[main_node] (2) at (-1,1) {u};
+  \node[main_node] (3) at (0,-1) {b};
+  \node[main_node] (4) at (0,1) {a};
+  \node[main_node] (5) at (1,0) {c};
+  \node[main_node] (6) at (2,-1) {};
+  \node[main_node] (7) at (2,1) {v};
+  \draw (1) -- (2) -- (4) -- (3) --(1);
+  \draw (4) -- (5) -- (6) -- (7) --(5)--(3);
+\end{tikzpicture}
+$\{a,b\}$ minimally separates $u$ and $v$ in the sense that no subset of $\{a,b\}$ separates $u$ and $v$ but $\{c\}$ is a minimum $u-v$ separating set
+
+\subsubsection*{theorem}
+let $u$ and $v$ be non-adjacent vertices in $G$. the size of a minimum $u-v$ separating set is equal to the number of internally disjoint $u-v$ paths.
+
+\subsubsection*{thm/corollary (whitney)}
+a non-trivial graph is $k$-connected $k\ge 2$ if and only if every pair of vertices has at least $k$ internally disjoint paths between them.
+
+{\scshape note:} adjacency isn't in the second theorem.
+
+{\scshape proof:} forward direction:
+
+let $k\ge 2$ and let $S$ be a minimal vertex cut. Take any two different points $u,v$. any $u-v$ separating has at least size $k$ (it is $S$). By menger, there are at least $k$ internally disjoint paths from $u$ to $v$. but menger's theorem doesn't apply if $u,v$ are adjacent. if $u$ and $v$ are adjacent, remove $uv$ (the edge). this reduces connectivity by up to $1$. {\bfseries (check this for homework)}. now repeat the argument on $G-\{uv\}$
+
+this results in at least $k-1$ internally disjoint paths by menger. of course add in the edge we removed and we have $k$ internally disjoint paths.
+
+reverse direction:
+any two vertices $u,v$ have $k$ internally  disjoint paths between them. let $S$ be a minimal vertex cut. them $G-S=G_1\cup G_2$ where $G_1\cap G_2=\emptyset$. union with dot is disjoint union.
+
+pick $u\in G_1$ and $v\in G_2$. There are at least $k$ internally disjoint $u-v$ paths. so $S$ must contain at least one element of eachpath,hence $G$ is at least $|S|$-connected. $S$ is minimal, so $|S|=k$
+
+issue: check complete graph. if $G$ were complete then our proof fails. $|V(G)|\ge k+1$ {\bfseries why? second part of homework}. so $\kappa(G)\ge k+1-1=k$ because $k(k_n)=n-1$ 
+
+$\Box$
+
+aside:
+mengers theorem is often referred to as the max-flow min-cut theorem outside of graph theory.
+
+\section*{homework}
+prove check this and why, also 2.5 \#1-5
+\end{document}
+

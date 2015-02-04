@@ -1,0 +1,60 @@
+\documentclass[letterpaper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{fullpage}
+\usepackage{nopageno}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+
+\begin{document}
+\title{Notes}
+\date{4 fevrier, 2015}
+\maketitle
+\section*{reading}
+before friday, read 8.1 (quiz may be on this)
+
+\section*{quiz}
+\subsection*{1}
+a function $f$ is measurable if $\{x:f(x)\ge a\}$ is measurable $\forall a\in \mathbb{R}$. that is $f^{-1}((a,\infty))$ is measurable for all $a$
+
+$N$ non measurable. $\chi_{n}^{-1}((\frac{1}{2},\infty))=N$ is the standard non measurable example. notice that $\chi_{N}^{-1}(\alpha,\infty)=\emptyset, \alpha\ge 1$ but $\chi_{N}^{-1}(\alpha,\infty)=\mathbb{R}, \alpha<0$
+\subsection*{2}
+$\pi \chi_{E_1}+e \chi_{E_2}+1.1 \chi_{E_3}$ with $E_1=\mathbb{Q}\cap[0,1], E_2=(1,3], E_3=(0,1)$ and so integral is $\pi\cdot 0+2e+1.1$
+
+\section*{proposition}
+$f$ is bounded on measurable $E$ with $m*(E)<\infty$ then $f$ is measurable if and only if $\inf \int_{E}\psi;\mathrm{d}m=\sup\int_E\varphi;\mathrm{d}m$.
+
+the first is $\{f\le \psi\text{ with }\psi \text{ simple}\}$ and second is $\{\varphi\le f\text{ with }\varphi\text{ simple}\}$
+
+\subsubsection*{proof}
+backwards direction is a technical mess. four lemmas etc, not doing it
+
+forwards:
+
+let $f$ be bounded by $[-M,M]$. let $E_k=\{x:\frac{kM}{n}\ge f(x)>\frac{(k-1)M}{n}\}$ with $-n\le k\le n$. So we are chopping our range up into $2n$ pieces, and throwing the slices into disjoint $E$ sets. but just when $f(x)$ is in thee slice, not when it's above the slice
+
+note that $E_k\cap E_j=\emptyset$ if $k\ne j$. also note that $E=\bigcup\limits_{k=-n}^n E_k$
+
+and so $m*\bigcup\limits_{k=-n}^n E_k=\sum\limits_{k=-n}^n m*E_k$
+
+\begin{enumerate}
+\item
+$\psi_n(x)=\frac{M}{n}\sum\limits_{k=-n}^n{k\chi_{E_k}}$
+\item
+$\varphi_n(x)=\frac{M}{n}\sum\limits_{k=-n}^n{(k-1)\chi_{E_k}}$
+\end{enumerate}
+Notice that $\psi_n$ and $\varphi_n$ are simple.
+
+$\psi$ is making riemann like blocks above $f(x)$ and $\varphi$ is doing so under the curve.
+
+notice that $\varphi_n\le f\le \psi_n$ for any $n$
+
+and so $\inf\int_E{\psi;\mathrm{d}m}\le \int_E{\psi_n;\mathrm{d}m}=\frac{M}{n}\sum\limits_{k=-n}^n{km*E_k}\forall n$
+
+$\{\psi:\psi\ge f, \psi\text{ simple}\}$
+
+$\sup\int_E{\varphi;\mathrm{d}m}\ge \int_{E}{\varphi_n;\mathrm{d}m}=\frac{M}{n}\sum\limits_{k=-n}^n{(k-1)m*E_k}$ so $0\le \inf-\sup\le \int_E{\psi_n}-\int_E\varphi_n=\frac{M}{n}\sum\limits_{k=-n}^n{km*E_k-(k-1)m*E(k)}=\frac{M}{n}\sum\limits_{k=-n}^n{m*E_k}=\frac{M}{n}m*(E)$ as $n\to\infty$ this goes to zero.
+\end{document}
