@@ -1,0 +1,82 @@
+\documentclass[letterpaper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{fullpage}
+\usepackage{nopageno}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+
+\begin{document}
+\title{Notes}
+\date{6 fevrier, 2015}
+\maketitle
+\section*{quiz}
+\begin{enumerate}
+\item
+$\int_{[a,b]}{f\;\mathrm{d}m}=\inf\limits_{\psi\ge f\text{ and simple}}\psi\;\mathrm{d}m$
+\item
+$\{f_n\}\to F$ pointwise if $f_n(x)=f(x)$ for all $x$
+\end{enumerate}
+\section*{thm}
+if $f$ is bounded and riemann integrable on $[a,b]$ then $\int_{[a,b]}f\;\mathrm{d}m$ exists and $\int_{[a,b]}{f\;\mathrm{d}m}=\int_{a}^b{f(x)\;\mathrm{d}x}$
+\subsubsection*{proof}
+let $\varepsilon>0$. there is a partition $P=\{x_0,\dots,x_n\}$ such that $U(P,f)-L(P,f)<\varepsilon$. let
+\begin{align*}
+  \psi(x)&=\sum\limits_{k=1}^n{M_k\chi_{[x_{k-1},x_k]}}\\
+  \varphi&=\sum\limits_{k=1}^n{m_k\chi_{[x_{k-1},x_k]}}\\
+\end{align*}
+and $\varphi(x)\le f(x)\le \psi(x)$ for all $x$.
+\begin{align*}
+  \int_{[a,b]}{\psi(x)\;\mathrm{d}m}&=\sum\limits_{k=1}^n{M_km*([x_{k-1},x_k}=\sum\limits_{k=1}^n{M_k\Delta_k}=U(P,f)\\
+  \int_{[a,b]}{\varphi(x)\;\mathrm{d}m}&=\sum\limits_{k=1}^n{m_km*([x_{k-1},x_k}=\sum\limits_{k=1}^n{m_k\Delta_k}=L(P,f)\\
+\end{align*}
+and $\inf\int{\theta\;\mathrm{d}m}\le\int_{[a,b]}{\psi\;\mathrm{d}m}=U(P,f)$
+and $\sup\int{\tau\;\mathrm{d}m}\ge\int_{[a,b]}{\varphi\;\mathrm{d}m}=U(P,f)$
+
+then $0\le \inf\int\theta-\sup\int\tau\le U(P,f)-L(P,f)<\varepsilon$
+
+let $\varepsilon\to 0$ we let $0\le \inf\int\theta-\sup\int\tau\le 0$ so $\inf=\sup$. and they are all equal to $\int_{a}^b{f(x)\;\mathrm{d}x}$
+
+we note that continuous implies measurable.
+
+\section*{sequences of functions}
+motivation: we would love for all functions to be polynomials. not all are though. lets approximate. approximations are not created equally. sometimes can approximate by other ``nice'' functions like trig functions.
+
+$\{f_n\}_{n=1}^\infty$ we say that $f_n\to f$ pointwise if for every $x$ $\{f_n(x)\}_{n=1}^\infty\to f(x)$. (sequence convergence).
+
+\subsection*{examples}
+\begin{enumerate}
+\item
+$f_n:[0,1]\to[0,1]$ and $f_n(x)=x^n$. $\lim\limits_{n\to\infty}x^n=f(x)=\begin{cases}0&x<1\\1&x=1\end{cases}$.
+
+note that $f_n$ is continuous, but $f$ is not.
+\item
+$f_n(x)=\frac{1}{n}\sin nx$ and $f_n\to0$ but $f_n'=\cos nx$ which diverges for all $x$.
+\item
+$n\chi_{(0,\frac{1}{n}]}\to 0$. but $\int{n\chi_{(0,\frac{1}{n}]}}=1$
+
+\end{enumerate}
+\subsection*{to fix this}
+$||f-g||_\infty=\sup\limits_{k\in S}\{|f(x)-g(x)|\}$ which is the furthest apart $f$ and $g$ are.
+
+define {\bfseries uniform convergence} as $\lim_{n\to\infty}||f_n-f||_\infty=0$
+
+$x^n\not\to\lim x^n$ uniformally
+
+\subsection*{fact}
+$f_n\to f$ uniformally on $S$ implies $f_n\to f$ pointwise on $S$.
+\subsubsection*{proof}
+we fix $x\in S$. $|f_n(x)-f(x)|\le \sup\{|f_n(x)-f(x)|\}=||f_n-f||_\infty\to 0$ and so pointwise convergence by  squeeze theorem
+
+\section*{dini's theorem}
+$\{f_n\}, f:[a,b]\to\mathbb{R}$ (it's compact) with $f_n\le f_{n+1}$ for all $n$ and $f_n\to f$ pointwise, then $f_n\to f$ uniformally.
+\subsubsection*{proof}
+$g_n=f-f_n$ and then $g_n\le g_{n+1}$ and $0\le g_n\le g_1$ for all $n$. and $g_n\to0$ pointwise. if $g_n$ converges to 0 uniformally then $f_n$ converges to $f$ uniformally.
+
+$||g_n-0||_\infty=||f-f_n||\infty$
+
+to be continued
+\end{document}
