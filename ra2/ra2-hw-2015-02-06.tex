@@ -1,0 +1,66 @@
+%shell-escape
+\documentclass[letterpaper]{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{gnuplottex}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\lhead{February, 2015}
+\chead{Real Analysis II Homework}
+\rhead{Jon Allen}
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+
+\begin{document}
+\begin{enumerate}
+\item
+Let $g_n=n\chi_{[0,\frac{1}{n}]}$. Prove that for every $x$ and $\epsilon>0$ there is an $N\ge 0$ such that $|g_n(x)|<\varepsilon$ for all $n\ge N$. Prove that
+\[\int_{[0,1]}{g_n\;\mathrm{d}m}=1\]
+for all $n$.
+
+First we look at what happens when $N=n=0$. Then we have $g_0=0\chi_{[0,\frac{1}{0}]}$. We could just define $g_0=0$ which is fine I guess, but then observe that $g_1=1$ and so we never really want to set $N=0$ and so we will just say $N>0$. Notice that $g_n(0)=n$ for all $n>0$. So clearly, no matter our choice of $\varepsilon$ we can find some $n\ge N>\varepsilon$. Let us just be clear and define $x>0$. So, now that I've changed the problem to what I want it to be, lets restate:
+
+Let $g_n(x)=n\chi_{[0,\frac{1}{n}]}(x)$.
+\begin{enumerate}
+\item
+Prove that for every $x>0$ and $\varepsilon>0$ there is an $N> 0$ such that $|g_n(x)|<\varepsilon$ for all $n\ge N$.
+\subsubsection*{proof}
+First we observe that for any $x>0$ we can find $N>0$ such that $\frac{1}{N}<x$. Of course then for any $n\ge N$ we have $\frac{1}{n}\le \frac{1}{N}<x$. And because $\frac{1}{n}<x$ then $x\not\in [0,\frac{1}{n}]$ and so $g_n(x)=0<\varepsilon$ and we are done. $\Box$
+\item
+Prove that
+\[\int_{[0,1]}{g_n\;\mathrm{d}m}=1\]
+for all $n$.
+\subsubsection*{proof}
+By definition we have that
+\begin{align*}
+\int_{[0,1]}{g_n\;\mathrm{d}m}&=n\cdot m*\left[0,\frac{1}{n}\right]+0\cdot m*\left(\frac{1}{n},1\right]\\
+&=n\cdot \frac{1}{n}+0\cdot\left(1-\frac{1}{n}\right)\\
+&=1
+\end{align*}
+A little light on words but not so heavy on math either, so maybe it's okay. $\Box$
+\end{enumerate}
+\item
+Prove that $\psi$ is simple if and only if $a\psi$ is simple for every $a\in \mathbb{R}$
+\subsubsection*{proof}
+Let's assume that $\psi$ is simple. Then by definition
+$\psi=\{\alpha_1,\dots,\alpha_n\}$.
+We say that $E_i=\psi^{-1}(\{a_i\})$
+and then $\psi=\sum\limits_{i=1}^n{\alpha_i\chi_{E_i}}$.
+We note that all our $E_i$'s are disjoint ($E_i\cap E_j=\emptyset\forall i\ne j$). 
+
+Now then $a\psi=a\sum\limits_{i=1}^n{\alpha_i\chi_{E_i}}=\sum\limits_{i=1}^n{a\alpha_i\chi_{E_i}}$.
+
+Furthermore, because our $E_i$'s are disjoint, then $a\psi(E_i)=a\alpha_i$. And so $a\psi=\{a\alpha_1,\dots,a\alpha_n\}$. Which is the definition of simple.
+
+Now if we assume that $a\psi$ is simple, then we have a nearly identical argument.
+Let $a\psi=\{\alpha_1,\dots,\alpha_n\}$
+and for $E_i=(a\psi)^{-1}(\{a_i\})$
+then $a\psi=\sum\limits_{i=1}^n{\alpha_i\chi_{E_i}}$.
+Now $\psi=\frac{1}{a}a\psi=\frac{1}{a}\sum\limits_{i=1}^n{\alpha_i\chi_{E_i}}=\sum\limits_{i=1}^n{\frac{1}{a}\alpha_i\chi_{E_i}}$.
+Again we note that our $E_i$'s are disjoint and so $\psi=\{\frac{1}{a}\alpha_1,\dots,a\alpha_n\}$. Then $\psi$ fits the definition of simple, and we are done. $\Box$
+\end{enumerate}
+\subsubsection*{References}
+None
+\end{document}

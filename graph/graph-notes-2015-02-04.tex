@@ -1,0 +1,97 @@
+\documentclass[letterpaper]{article}
+
+\usepackage{fullpage}
+\usepackage{nopageno}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{tikz}
+\usepackage[utf8]{inputenc}
+\usepackage{aeguill}
+\usepackage{setspace}
+
+\usetikzlibrary{graphs,graphdrawing}
+\usegdlibrary{trees}
+
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+
+\begin{document}
+\title{Notes}
+\date{4 fevrier, 2015}
+\maketitle
+\section*{3.1 eulerian paths}
+if $G$ is a non-trivial graph containing a path that visits every edge then we call the path Eulerian. If the trail is closed, (a cycle) then we call the graph Eulerian.
+
+can you draw it without picking up pencil?
+\subsection*{example}
+eulerian path:
+\begin{tikzpicture}[main_node/.style={circle,draw,text=black,inner sep=1pt,outer sep=0pt]}]
+  \node[main_node] (1) at (-1,-1) {};
+  \node[main_node] (2) at (1,-1) {};
+  \node[main_node] (3) at (-1,0) {};
+  \node[main_node] (4) at (1,0) {};
+  \node[main_node] (5) at (0,1) {};
+  \draw (1) -- (2) -- (4) -- (3)--(5)--(4)--(2);
+  \draw (1)--(4);
+  \draw (1)--(3);
+  \draw (2)--(3);
+\end{tikzpicture}
+eulerian graph
+\begin{tikzpicture}[main_node/.style={circle,draw,text=black,inner sep=1pt,outer sep=0pt]}]
+  \node[main_node] (1) at (-1,-1) {};
+  \node[main_node] (2) at (-1,1) {};
+  \node[main_node] (3) at (1,-1) {};
+  \node[main_node] (4) at (1,1) {};
+  \node[main_node] (5) at (0,0) {};
+  \node[main_node] (6) at (2,0) {};
+  \draw (1) -- (2) -- (4) -- (3)--(5)--(4)--(6)--(3)--(1);
+\end{tikzpicture}
+\section*{theorem}
+let $G$ be a connected (not necessarily simple graph). $G$ is Eulerian if and only if $d(v)$ degree of $v$ is even $\forall v\in V(G)$
+
+\subsubsection*{proof}
+forward direction:
+
+let $C$ be an eulerian cycle. $C$ visits every edge which means each time it enters a vertex, it also exits. except first and last? the degree increases by $2$ for each visit. increase of one when we start, increase of 1 when finishing for the starting/endpoint. so the source vertex has even degree also. 
+
+reverse direction:
+
+we are given that every vertex is even degree. let $P$ be a $u-v$ path for some $u,v\in V(G)$.
+However, since $\deg(v)=2k$ we have an exit available. choose an available neighbor $v'$ and extend $P$ to include $v'$. Now $P$ is a $u-v'$ path. but $\deg(v')=2k'$ and so we have an exit. repeat and eventually we will hit $u$ again ($|V(G)|<\infty$) creating a cycle. Call this cycle $C$ and assume it is not eulerian, else done. let $H=G-C$. remove edges in $C$ and the hanging vertices. let $x\in V(C)$ that is adjacent to and edge not in $C$. then this point is in $H$ and exists because $C$ is not eulerian. let $H'$ be a component of $H$ such that $x\in V(H')$. the degrees of all vertices in $H'$ are necessarily even because $C$ removed an even number of edges from each vertex. Repeating, we can create an $x-x$ path in $H'$. If the $x-x$ cycle is not eulerian in $H'$, recurse (graph is finite).  the cycle is: start on $C$ when we get to another cycle, traverse it, and then continue on with $C$.
+
+\subsection*{
+bridges of königsburg:
+}
+old
+\begin{tikzpicture}[main_node/.style={circle,draw,text=black,inner sep=1pt,outer sep=0pt]}]
+  \node[main_node] (1) at (-1,-1) {a};
+  \node[main_node] (2) at (1,-1) {b};
+  \node[main_node] (3) at (1,1) {c};
+  \node[main_node] (4) at (-1,1) {d};
+  \draw (2) -- (1) -- (3) -- (4)--(2) to[out=135,in=45] (1) to[out=45,in=-45] (3);
+\end{tikzpicture}
+new
+\begin{tikzpicture}[main_node/.style={circle,draw,text=black,inner sep=1pt,outer sep=0pt]}]
+  \node[main_node] (1) at (-1,-1) {a};
+  \node[main_node] (2) at (1,-1) {b};
+  \node[main_node] (3) at (1,1) {c};
+  \node[main_node] (4) at (-1,1) {d};
+  \draw (2) -- (1) -- (3) -- (4)--(2);
+  \draw (2) -- (3);
+  \draw (2) to[out=45,in=45] (3);
+  \draw (3) to[out=45,in=45] (4);
+\end{tikzpicture}
+
+\section*{corollary}
+let $G$ be a connected graph, $G$ has an eulerian trail if and only if $G$ has two or fewer odd vertices.
+\subsubsection*{proof}
+$\Leftarrow$
+if $0$ odd vertices we are done. if $G$ has two odd vertices, add an edge between them, create the E.C. and delete the edge.
+
+$\Rightarrow$
+``go in, go out'' argument.
+
+\section*{homework}
+3,4,6,7
+\end{document}

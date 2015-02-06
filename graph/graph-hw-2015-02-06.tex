@@ -1,0 +1,68 @@
+%shell-escape
+\documentclass[letterpaper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{fullpage}
+\usepackage{nopageno}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{gnuplottex}
+\usepackage{tikz}
+
+\usetikzlibrary{graphs,graphdrawing}
+\usegdlibrary{trees}
+
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+
+\begin{document}
+\title{Graph Theory Homework}
+\date{February 6, 2015}
+\author{Jon Allen}
+\maketitle
+The homework for 2/6 is from sections 2.2, 2.3 and 2.4, and the problems are 1,2,3,10,14,17; 1,2,15,17,19; and 1,2,9,13,14, respectively.
+\renewcommand{\labelenumi}{2.\arabic{enumi}}
+\renewcommand{\labelenumii}{\arabic{enumii}.}
+%\renewcommand{\labelenumii}{\Alph{enumii}.}
+\renewcommand{\labelenumiii}{(\alph{enumiii})}
+\begin{enumerate}
+\setcounter{enumi}{1}
+%2.2
+\item
+  \begin{enumerate}
+  %2.2 #1
+  \item
+  %2.2 #2
+  \item
+    For number 2, assume G is connected.
+  %2.2 #3
+  \item
+  \setcounter{enumii}{9}
+  %2.2 #10
+  \item
+    The forward direction of 10 is probably the hardest part from this section.
+  \setcounter{enumii}{13}
+  %2.2 #14
+  \item
+    For number 14, use an edge counting argument to limit your possibilities.
+  \setcounter{enumii}{16}
+  %2.2 #17
+  \item
+    For number 17, remove one of the vertices, and ask yourself what happens to the order and size.  Then repeat it for the other vertex.
+  \end{enumerate}
+%2.3
+\item
+
+The reverse direction of number 15 is probably the hardest part of this section.
+
+For number 17, the number of edges of a complete graph is n(n-1)/2.
+
+%2.4
+\item
+
+For number 1, a k-partite graph is like a bipartite graph, but with k different partitions.  It is complete when all vertices of each partition are adjacent to all other vertices outside its own partition.
+
+Number 9 is tricky, but the hint in the book is a good one.
+\end{enumerate}
+\end{document}
