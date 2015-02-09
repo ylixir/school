@@ -1,13 +1,13 @@
 %shell-escape
 \documentclass[letterpaper]{article}
 
-\usepackage[utf8]{inputenc}
 \usepackage{fullpage}
 \usepackage{nopageno}
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{gnuplottex}
 \usepackage{tikz}
+\usepackage[utf8]{luainputenc}
 
 \usetikzlibrary{graphs,graphdrawing}
 \usegdlibrary{trees}
@@ -33,36 +33,199 @@ The homework for 2/6 is from sections 2.2, 2.3 and 2.4, and the problems are 1,2
   \begin{enumerate}
   %2.2 #1
   \item
+  Let $G$ be a connected graph of order $3$ or more. Prove that if $e=uv$ is a bridge of $G$, then  at least one of $u$ and $v$ is a cut-vertex of $G$.
+
+  If both $u$ and $v$ have degree $1$ then they are only adjacent to one another and so $G$ is not connected. So then at least one of $u$ or $v$ must have a degree greater than $1$. We assume without loss of generality that $\deg(u)>1$.
+
+  Let us start by removing $u$ from $G$. Since the bridge $e$ is formed from $u$ and $v$ then $e\not\in E(G-u)$, and so we have separated our graph. Note that this works because we know that $u$ was adjacent to $v$ and at least one other vertex. And so by removing $u$ we have at least two components left. This isn't necessarily the case with $v$ as we don't know that it is adjacent to anything but $u$. Thus $u$ is a cut vertex. $\Box$
   %2.2 #2
   \item
-    For number 2, assume G is connected.
+  A graph $G$ of order $8$ has the degree sequence $s:3,3,3,1,1,1,1,1$. Prove or disprove: $G$ is a tree. Assume G is connected.
+
+  Since $G$ is a tree if and only if it's size is one less than it's order and it's size is is half the sum of it's degrees, then we just add the degrees together and check to make sure that they are $2(8-1)=14$. So $3+3+3+1+1+1+1+1=9+5=14$. Looks like a tree.
   %2.2 #3
   \item
+  \begin{enumerate}
+    %2.2 #3a
+    \item
+    Give an example of a tree of order $8$ containing six vertices of degree $1$ and two vertices of degree $4$.
+
+    \tikz\path [graphs/.cd, nodes={shape=circle, draw, text=black,inner sep=1pt,outer sep=0pt}, empty nodes]
+      graph [tree layout] { 1--2;1--3;1--4;1--5;2--6;2--7;2--8 }
+      [shift=(0:1)];
+    %2.2 #3b
+    \item
+    Find all trees $T$ where $75\%$ of the vertices of $T$ have degree $1$ and the remaining $25\%$ of the vertices have another degree (a fixed degree).
+
+    Say that $n=|V(T)|$. The problem implies that $4|n$ or $n=4k$. Note that $n>0$ and so $k>0$. Now because $T$ is a tree, we know that $|E(T)|=n-1$. And because $T$ is a graph\dots we know that $2\cdot|E(T)|=\sum\limits_{i=1}^n{d_i}$ where $d_i$ is the degree of the vertices. In fact we are told that $3k$ of the vertices have degree 1, and $k$ vertices have the same degree $p$. Note that $p>0$ or our graph would not be connected and therefore not a tree. And so $\sum\limits_{i=1}^n{d_i}=3k+pk$. Now lets put it all together and let the math do the talking.
+    \begin{align*}
+      2|E(T)|&=2(n-1)\\
+      \sum\limits_{i=1}^n{d_i}&=2(4k-1)\\
+      3k+pk&=8k-2\\
+      (8-3-p)k&=2=(5-p)k\\
+    \end{align*}
+    Now because $k>0$ and $2>0$ then $5-p>0$. Now $2$ is prime while $k, p$ and $5$ are all integers. Thus $5-p$ is $1$ or $2$ while $k$ is the other. And so if $k=1$ then $p=3$ and if $k=2$ then $p=4$.
+    All of the vertices which have degree one are leaves, and so when $k=1$ then all but one vertex are leaves so this graph must be a start. When $k=2$ then all but two vertices are leaves. These vertices must be connected adjacent to one another as they are the only two that aren't leaves. And so the two possible $T$'s are:
+
+    \tikz\path [graphs/.cd, nodes={shape=circle, draw, text=black,inner sep=1pt,outer sep=0pt}, empty nodes]
+      graph [tree layout] { 1 -- 2;1--3;1--4 }
+      [shift=(0:3)]
+      graph [tree layout] {{1--5},1--{2,3,4},5--{6,7,8}};
+  \end{enumerate}
   \setcounter{enumii}{9}
   %2.2 #10
   \item
-    The forward direction of 10 is probably the hardest part from this section.
+    Prove that a 3-regular graph $G$ has a cut-vertex if and only if $G$ has a bridge. The forward direction is probably the hardest part from this section.
+
+    Obviously (see problem 1) if $G$ has a bridge, then it has a cut vertex, regardless of whether it is 3-regular or not.
+
+    Let us assume that our graph is 3-regular and it has a cut vertex which we will call $u$.
+    This vertex is attached to three other vertices, call them $a,b,c$.
+    Remove $u$.
+    If $a, b$ and $c$ are all in the same component then we haven't separated our graph at all and $u$ wasn't a cut vertex.
+    Because there are less than 4 vertices adjacent to $u$, at least one of them must be in a component all by itself.
+    And so we assume without loss of generality that $a$ is in a separate component from $b$ and $c$.
+    We call this component $A$.
+    Now because the only vertex in $A$ that was adjacent to $u$ is $a$ we see that any paths from any vertex in $A$ to any  vertex in $G-A$ must go through the $au$ edge.
+    And so if we remove this edge then we remove any paths between $A$ and $G-A$, separating our graph.
+    Thus $au$ is a bridge. $\Box$
   \setcounter{enumii}{13}
   %2.2 #14
   \item
-    For number 14, use an edge counting argument to limit your possibilities.
+    Determine all trees $T$ such that $\overline{T}$ is also a tree.  Use an edge counting argument to limit your possibilities.
+
+    Lets say $T$ and $\overline{T}$ have order $n$. Then the size of $T$ and it's complement are both $n-1$. Also the sum of the sizes of $T$ and $\overline{T}$ is equal to the size of the complete graph of order $n$ which is $n(n-1)/2$. And so we do some basic algebra:
+    \begin{align*}
+      2(n-1)&=\frac{n(n-1)}{2}\\
+      4n-4&=n^2-n\\
+      0&=n^2-5n+4\\
+      n&=\frac{5\pm\sqrt{25-4^2}}{2}\\
+      n&=\frac{5\pm3}{2}=1\text{ or }4
+    \end{align*}
+    So obviously the trivial graph, and a tree of order $4$. Now the star $K_{1,3}$ has a complement which is not connected and therefore it is out. We know that if $T$ is order 4, then it has at least two leaves. Actually because $T\ne K_{1,3}$ we know that it has exactly 2 leaves. And so the only other possible tree of order four is the path. So $T$ is one of:
+
+    \tikz\path [graphs/.cd, nodes={shape=circle, draw, text=black,inner sep=1pt,outer sep=0pt}, empty nodes]
+      graph [tree layout] { 1 }
+      [shift=(0:1)]
+      graph [tree layout,grow=right] {1--2--3--4};
   \setcounter{enumii}{16}
   %2.2 #17
   \item
-    For number 17, remove one of the vertices, and ask yourself what happens to the order and size.  Then repeat it for the other vertex.
+  Let $G$ be a connected graph that is not a tree containing two distinct vertices $u$ and $v$ such that $G-u$ and $G-v$ are both trees. Show that $\deg u=\deg v$. Remove one of the vertices, and ask yourself what happens to the order and size.  Then repeat it for the other vertex.
+
+  Let the order of $G$ be $n+1$. Then the order of $G-v$ and $G-u$ are both $n$ and so they have size of $n-1$ and the degrees of their vertices sums to $2(n-1)$. And so if the sum of the degrees of the vertices of $G$ is $\sum\limits_{i=1}^{n+1}{d_i}$ then we take away the degree of $u$ or $v$ and then 1 from the degree of each of the vertices adjacent to $u$ or $v$ to get the sum of the degrees of $G-u$ or $G-v$.
+  \begin{align*}
+    \sum\limits_{i=1}^{n+1}{d_i}-2\deg(u)&=2(n-1)\\
+    \sum\limits_{i=1}^{n+1}{d_i}-2\deg(v)&=2(n-1)\\
+    \sum\limits_{i=1}^{n+1}{d_i}-2\deg(u)&=\sum\limits_{i=1}^{n+1}{d_i}-2\deg(v)\\
+    \deg(u)=\deg(v)
+  \end{align*}
   \end{enumerate}
 %2.3
 \item
+\begin{enumerate}
+  %2.3 #1
+  \item
+  Determine the Prüfer codes of the trees in Figure 2.11.
 
-The reverse direction of number 15 is probably the hardest part of this section.
+  Reading from left to right, the codes are:
+  \begin{align*}
+    (1)&&(2)&&(3)\\
+    (1,1)&&(2,2)&&(4,4)&&(3,3)\\
+    (3,4)&&(1,3)&&(1,2)&&(2,4)\\
+    (2,3)&&(3,2)&&(1,4)&&(4,1)\\
+    (4,3)&&(3,1)&&(2,1)&&(4,2)\\
+  \end{align*}
+  %2.3 #2
+  \item
+  \begin{enumerate}
+    \item
+    Which trees have constant Prüfer codes?
 
-For number 17, the number of edges of a complete graph is n(n-1)/2.
+    Stars have constant Prüfer codes.
+    \item
+    Which trees have Prüfer codes each term of which is one of two numbers?
 
+    Two stars joined by a bridge.
+    \item
+    Which trees have Prüfer codes with distinct terms?
+
+    Paths.
+  \end{enumerate}
+  \setcounter{enumii}{14}
+  %2.3 #15
+  \item
+  Prove that an edge $e$ of a connected graph is a bridge if and only if $e$ belongs to every spanning tree of $G$.
+  The reverse direction of number 15 is probably the hardest part of this section.
+
+  If $e$ is a bridge, then every connected spanning subgraph of $G$ must contain $e$, else it would not be connected. Every spanning tree of $G$ is connected by definition, therefore every spanning tree of $G$ must contain $e$.
+
+  Now let us assume that $e$ is not a bridge.
+  Then $e$ is on a cycle.
+  We remove $e$ from $G$ and are left with a connected spanning subgraph of $G$. Now if we continue removing edges from cycles until we no longer have any cycles, then we have constructed a spanning tree of $G$ that does not contain $e$. $\Box$
+  \setcounter{enumii}{16}
+  %2.3 #17
+  \item
+  What is the maximum number of spanning trees, no two of which have an edge in common, that a complete graph of order $n\ge 4$ can have?
+  For number 17, the number of edges of a complete graph is n(n-1)/2.
+
+  Note that the order of $K_n$ is $\frac{n(n-1)}{2}$ and the order of each spanning subtree is $(n-1)$ and so we can not do better than $\frac{n}{2}$.
+
+  Now we label our vertices $v_1,\dots,v_n$. We choose the path $v_1\dots v_n$ and remove it from the graph. Note that this is a tree. Now we remove the path $v_2v_4\dots v_nv_1\dots v_{n-1}$ if $n$ is even or $v_2\dots v_{n-1}v_1\dots v_n$ if $n$ is odd. Continuing in this fashion, removing edges between vertices of increasing index difference, we can remove up to $\lfloor n/2\rfloor$ paths from $K_n$ before we wind up with less than $n-1$ edges. And so we can do at least as well as $\lfloor n/2\rfloor$.
+  %We choose any spanning tree of $K_n$. The order of this tree is $n-1$. We remove these edges from $K_n$ and we are left with $K_n'$ whose order is $\frac{n}{2}(n-1)-(n-1)$. Removing a spanning tree from $K_n'$ gives us $K_n''$ of order $\frac{n}{2}(n-1)-2(n-1)$. We must repeat this procedure $\frac{n}{2}$ times to remove all the edges from $K_n$. Thus we have $\frac{n}{2}$ possible spanning trees of $K_n$
+  \setcounter{enumii}{18}
+  %2.3 #19
+  \item
+  Show that there is only one positive integer $k$ such that no graph contains exactly $k$ spanning trees.
+
+  Let us start with a tree. If we remove any edges of this graph then we separate it. Therefore any tree contains only one spanning tree (itself). Now then if a graph has more than one subgraph, then it has a cycle. The smallest cycle is of size $3$. Let us take a graph that is a cycle of size $k$. Removing any of the $k$ edges gives us a spanning tree. And just in case positive is defined to include zero, any graph that is not connected has no spanning trees. Now then we can construct a graph with $0, 1$ or $3$ or more spanning trees, but because a graph with more than one spanning tree contains at least $3$ spanning trees, we can not construct a graph with $2$ spanning trees. To be clear $k\ne 2$.
+\end{enumerate}
 %2.4
 \item
+\begin{enumerate}
+  %2.4 #1
+  \item
+  Determine the connectivity and edge-connectivity of each complete $k$-partite graph.
+  For number 1, a k-partite graph is like a bipartite graph, but with k different partitions.  It is complete when all vertices of each partition are adjacent to all other vertices outside its own partition.
 
-For number 1, a k-partite graph is like a bipartite graph, but with k different partitions.  It is complete when all vertices of each partition are adjacent to all other vertices outside its own partition.
+  Lets take a look at the special cases where we have a trivial graph and where we have only one partite. In the case of a trivial graph we can only have one partition. If we only have one partition then our graph is not connected, edge connectivity and connectivity are both zero. This happens to be the difference between the order of our partition and the order of the graph.
 
-Number 9 is tricky, but the hint in the book is a good one.
+  Now lets examine what happens when $k\ge 2$. We note that every vertex is adjacent to every vertex outside it's own partite set. If we pick any two vertices in the same partite set, they will not be adjacent. However, if we pick a third vertice outside of that set, then that vertex will be adjacent to the first two. Therefore the diameter of our graph is $2$. We observe that the degree of vertices in some partite $W$ is the order of our graph, say $n$, minus the order of our partite, say $n_W$. That is, every vertex in $W$ has degree $n-n_W$. The largest partite then will have vertices with the smallest degree. Let's call that partite $U$ and say that it's vertices have degree $n-n_U$. Then the edge-connectedness of the graph is $n-n_U$.
+
+  Now lets remove $n-n_{U}-1$ vertices from the graph. Now we have at least two vertices left in our graph. One of these vertices was connected to at least $n-n_{U}$ vertices. Let us call this vertice $a$. Now we only removed $n-n_{U}-1$ vertices, so $a$ must be connected to some vertex $b$. And so we have two vertices in two separate partitions. Now $b$ is connected to any remaining vertices not in it's own partition as $a$ is connected to any remaining vertices not in it's partition. Since $a$ and $b$ are connected, then the graph is still connected. Thus our connectivity is $n-n_{U}$
+  %2.4 #2
+  \item
+  Let $v_1,v_2,\dots,v_k$ be $k$ distinct vertices of a $k$-connected graph $G$. Let $H$ be the graph formed from $G$ by adding a new vertex $w$ of degree $k$ that is adjacent to each of $v_1,v_2,\dots,v_k$. Show that $\kappa(H)=k$.
+
+  Let us remove $k-1$ vertices from $H$. Now because $G$ is $k$ connected, we know that there is still a path from any vertex in $G$ to any other. Furthermore, because $w$ has degree $k$, there is still at least one vertex adjacent to it. And we know there is a path from this vertex to any other in $G$. Therefore $H$ is still connected. Now let us remove $v_1,\dots,v_k$. We have separated $w$ and so $\kappa(H)=k$.
+  \setcounter{enumii}{8}
+  %2.4 #9
+  \item
+  Let $a,b$ and $c$ be positive integers with $a\le b\le c$. Prove that there exists a graph $G$ with $\kappa(G)=a, \lambda(G)=b$ and $\delta(G)=c$.
+  Number 9 is tricky, but the hint in the book is a good one.
+
+  First we observe that $K_{c+1}$ covers the case where $a=b=c\ge 1$. The case where $a=b=0$ is covered by two disjoint copies of $K_{c+1}$. Let us continue on with these two copies of $K_{c+1}$ for $a\le b<c$. Call the first one $K$ and the second $K'$. Now we label the first $a+b$ vertices of $K$ as $v_1,\dots,v_a,v_{a+1},\dots,v_b$. Similarly we have vertices of $K'$ labelled $v_1',\dots,v_a',v_{a+1}',\dots,v_b'$. Now adding all the $v_iv_i'$ edges where $1\le i\le a$ gives us a graph with $\kappa(G)=a$. Finally we add $v_1v_j'$ edges where $a+1\le j\le b$. This gives us a graph with $\lambda(G)=\kappa(G)+b-(a+1)+1=a+b-(a+1)+1=b$. Now because $a\le b<c$ then we have at least one vertex in each of $K$ and $K'$ that has degree $c$.
+  \setcounter{enumii}{12}
+  %2.4 #13
+  \item
+  For an even integer $k\ge 2$, show that the minimum size of a $k$-connected graph of order $n$ is $kn/2$.
+
+  We have a graph $G$ of order $n$ and size $m\ge n-1$, then $\kappa(G)\le \left\lfloor\frac{2m}{n}\right\rfloor$. Now if we know that our graph is $k$-connected then:
+  \begin{align*}
+    k&\le\kappa(G)\le \left\lfloor\frac{2m}{n}\right\rfloor\\
+    kn&\le2m\\
+    kn/2&\le m
+  \end{align*}
+  %2.4 #14
+  \item
+  Prove or disprove: Let $G$ be a nontrivial graph. For every vertex $v$ of $G$, $\kappa(G-v)=\kappa(G)$ or $\kappa(G-v)=\kappa(G)-1$.
+
+  \tikz\path [graphs/.cd, nodes={shape=circle, draw, text=black,inner sep=1pt,outer sep=0pt}]
+    graph [tree layout, grow=right] { 1--2--3--4 }
+    [shift=(0:1)];
+
+    Obviously this graph has connectivity 1. Now removing $1$ or $4$ will leave a graph with connectivity 1. And so we simply need to show that removing a vertex will not reduce the connectivity by more than 1. But that is simply the definition of connectivity. Let us say we need to remove $k$ vertices to separate a graph or reduce to the trivial graph. We now remove $1$ vertice from the graph. Now either we have not affected connectivity, or we have. If we have then we have done so by removing one of the $k$ vertices needed to separate the graph or reduce it to triviality. This leaves $k-1$ vertices holding the graph together. $\Box$
+\end{enumerate}
+
 \end{enumerate}
 \end{document}

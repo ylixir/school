@@ -1,0 +1,94 @@
+\documentclass[letterpaper]{article}
+
+\usepackage{fullpage}
+\usepackage{nopageno}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{tikz}
+\usepackage[utf8]{inputenc}
+\usepackage{aeguill}
+\usepackage{setspace}
+
+\usetikzlibrary{graphs,graphdrawing}
+\usegdlibrary{trees}
+
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+
+\begin{document}
+\title{Notes}
+\date{6 février, 2015}
+\maketitle
+wednesday was eulerian graphs (bridges of königsberg).
+
+cycles are not circuits and trails are not paths
+
+\section*{3.2 hamiltonian paths}
+Euler is E, edges is E. Hamiltonian graphs is H, vertices is...not
+
+a {\bfseries Hamiltonian path} or {\bfseries cycle} is a path or cycle that meets every vertex of $G$ exactly once.
+
+a graph with hamiltonian cycle is called {\bfseries hamiltonian}
+\subsection*{example}
+\begin{enumerate}
+\item
+Hamiltonian:
+
+\begin{tikzpicture}[main_node/.style={circle,draw,text=black,inner sep=1pt,outer sep=0pt]}]
+  \node[main_node] (1) at (-1,-1) {};
+  \node[main_node] (2) at (1,-1) {};
+  \node[main_node] (3) at (1,1) {};
+  \node[main_node] (4) at (-1,1) {};
+  \draw (1) -- (2) -- (3) -- (4)--(1);
+\end{tikzpicture}
+\item
+Not hamiltonian
+
+\tikz\path [graphs/.cd, nodes={shape=circle, draw, text=black,inner sep=1pt,outer sep=0pt}]
+  graph [tree layout] { 1 -- {2 -- 3};2--4 }
+  [shift=(0:1)];
+\item
+is hamiltonian
+\tikz\path [graphs/.cd, nodes={shape=circle, draw, text=black,inner sep=1pt,outer sep=0pt}]
+  graph [tree layout] { 1 -- 2;1--3;1--4;1--5;1--6;2--3--4--5--6 }
+  [shift=(0:1)];
+\end{enumerate}
+
+\subsection*{theorem (Ore)}
+if $G$ is a graph of order $n\ge 3$ and $\forall u,v$ vertices $\deg(u)+\deg(v)\ge n$ then $G$ is hamiltonian
+
+{\scshape note:} completely nonconstructive proof
+
+\subsubsection*{proof}
+assume for a contradiction that for all $u,v\in V(G)$, $\deg(u)+\deg(v)\ge n$ but $G$ is not hamiltonian.
+
+without loss of generality, we can assume that $G$ is ``maximal'' with this property. why?
+
+$G$ is finite therefore $G$ is a subgraph  of some complete graph $G\le K_n$. But $K_n$ is hamiltonian. Since $G$ is not hamiltonian and $K_n$ is then. somewhere added enough edges to $G$ to make it hamiltonian.
+
+Add edge $xy$ to $G$. The $G\cup \{xy\}$ is hamiltonian, so there is an $x-y$ path in $G$. We have to use the $xy$ edge in the hamiltonian cycle, else the graph would already be hamiltonian. In fact the $x-y$ path is hamiltonian.
+
+let the $x-y$ path be $x=v_1,\dots,v_n=y$. If $x$ is adjacent to $v_i$ then $y$ cannot be adjacent to $v_{i-1}$. why? because then you would have a hamiltonian cycle. $v_1v_i\dots v_nv_{i-1}v_1$
+
+Therefore, for every neighbor of $x$ we can eliminate a possible neighbor of $y$. This means that $\deg(y)\le(n-1)-\deg(x)$. because $n-1$ is max possible deg and $\deg(x)$ are the things that can't be adjacent to $y$. Now $\deg(y)+\deg(x)\le n-1$ which is a contradiction because $\deg(y)+\deg(x)\ge n$
+
+\subsection*{corollary}
+if $G$ of order $n\ge 3$ has the property that for all $v\in V(G)$ then $\deg(v)\ge \frac{n}{2}$, then $G$ is hamiltonian.
+\subsubsection*{proof}
+$\forall u,v\in V(G)$ then $\deg(u)+\deg(v)\ge n$
+
+\section*{independent sets}
+a subset of $V(G)$ is called {\bfseries independent} if no vertices are adjacent to one another.
+
+the maximal cardinality of independent sets is called the {\bfseries independent number}. it is denoted $\alpha(G)$
+
+what is $\alpha(K_n)$? 1
+
+
+\section*{theorem chvátal-erdös}
+let $G$ be a graph of order $n\ge 3$. if connectedness$\kappa(G)\ge \alpha(G)$, then $G$ is Hamiltonian.
+
+\section*{homework}
+1,7,14
+\end{document}
