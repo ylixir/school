@@ -1,0 +1,93 @@
+\documentclass[letterpaper]{article}
+
+\usepackage[utf8]{luainputenc}
+\usepackage{fullpage}
+\usepackage{nopageno}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+
+\begin{document}
+\title{Notes}
+\date{9 février, 2015}
+\maketitle
+\section*{quiz}
+completeness theorem in 8.2 is super important in functional analysis, but less important here.
+
+gist of proof is that if you have a sequence $f_n$ that is cauchy in $||\cdot||_{\infty}$ then \dots
+
+
+\section*{reminder}
+$f_n,f$ are continuous. $\{f_n\}:[a,b]\to\mathbb{R}$ where $f_n\le f_{n+1}$ and $f_n\to f$ pointwise then $f_n\to f$ uniformly
+\subsection*{proof}
+$g_n=f-f_n$ and $g_n\to 0$ pointwise then $g_{n+1}\le g_n$.
+
+for every $x_0$ there is $N_0$ and $r_{x_0}$ such that $g_{N_0}(x)\le \varepsilon$ on $(x_0-r_{x_0},x_0+r_{x_0})$
+
+and so $g_{N_0}< \varepsilon$ so we find $r_0$ such that $|g_{N_0}(x)-g_{N_0}(y)|<\varepsilon$ for all $y$ with $|x-y|<r_0$.
+
+we get this from continuity.
+
+notice $\subseteq \bigcup_{x\in[a,b[}(x-r_x,x+r_x)$
+by compactness there $x_1,\dots,x_n$ with $[a,b]\subseteq\bigcup\limits_{i=1}^n(x_i-r_{x_i},x_i+r_{x_i})$
+
+if $n=\max\{N_{x_i}:1\le i\le n\}$
+
+$g_N(x)\le g_{N_{x_i}}(x)\le \varepsilon$ on $(x_i-r_{x_i}, x_i+r_{x_i})$
+
+$g_N()\le \varepsilon$ for all $x\in [a,b]$ so $||g_n-0||_{\infty<\varepsilon}$ for all $n>N$. thus $g_n\to0$ uniformally.
+
+important arguments are compactness which allowed us to switch from infinite to finite and something else i missed
+
+\section*{theorem}
+$f_n:S\to \mathbb{R}^m$ with $f_n\to f$ uniformally on $S$ if $f_n$ continuous for all $n$ then $f$ continuous 
+
+\subsubsection*{proof}
+fix $x$, given $\epsilon>0$ find $\delta$ such that $||f(x)-f(y)||<\epsilon$ wwhen $||x-y||<\delta$
+
+using definition of uniform continuity:
+
+give $\epsilon>0$ there is $N$ such that $||f_j-f||_\infty<\varepsilon/3$ when $j\ge N$. 
+
+using definition of continuity of $f_N$:
+
+given $\epsilon>0$ there is $\delta_1>0$ such that $||f_N(x)-f_N(y)||<\epsilon/3$ when $||x-y||<\delta_1$
+
+if $||x-y||<\delta_1$
+\begin{align*}
+  ||f(x)-f(y)||&=||f(x)-f_N(x)+f_N(x)-f_N(y)+f_N(y)-f(y)||\\
+  &\le ||f(x)-f_N(x)||+||f(y)-f_N(y)||+||f_N(y)-f_N(x)||\\
+  &\le ||f-f_n||_\infty+||f_N(x)-f_N(y)||+|f-f_N||_\infty\\
+  &\le \epsilon/3+\epsilon/3+\epsilon/3=\epsilon
+\end{align*}
+
+\subsection*{corrolary}
+if $f_n$ converges to $f$ uniformally on $S$ and $f_n$ is uniformally continuous, then so is $f$.
+
+the above is the standard proof for uniform convergence.
+
+general idea: want property $P$ for $f$ and we know that $f_n$ had $P$. then we say $||f-f_N||_{\infty}$ (close). $f=f-f_{N}+f_N$ so as long as property is preserved by smallness, we are solid.
+
+\subsection*{proposition}
+if $f_n\to f$ uniformally on $S$ and $f_n$ bounded for all $n$ then so is $f$. 
+\subsubsection*{proof}
+let $\epsilon=1$. find $N$ such that $||f-f_n||_\infty<1$ for all $n\ge N$. now $||f(x)||=||f(x)-f_N(x)+f_N(x)||\le ||f(x)-f_N(x)||+||f_N(x)||\le ||f-f_n||\infty+||f_N(x)||<1+M_N$ and so bounded
+
+\subsection*{example}
+if $f_n\to f$ uniformly on $S$ $g_n\to g$ uniformly on $S$ then $f_n+g_n\to f+g$ uniformly on $S$.
+\subsubsection*{proof}
+given $\epsilon>0$ find $N$ such that $||(f_n+g_n)-(f+g)||<\epsilon$ when $n\ge N$. 
+
+
+homework subtlety: $||f_n+g_n-(f+g)||\le ||f_n(x)-f(x)||+||g_n(x)-g(x)||<||f_n-f||_{\infty}+||g_n-g||_\infty$ independent of $x$ and $N$.
+
+there is an $N$ such that $||f-f_N||_\infty<\epsilon/2$ and $||g-g_N||_\infty<\epsilon/2$
+
+for any  $x$ then $||(f_n(x)+g_n(x))-(f(x)+g(x))||_\infty<||f_n-f||_\infty+||g_n-g||_\infty$
+
+
+
+
+\end{document}

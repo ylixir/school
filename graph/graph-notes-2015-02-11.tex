@@ -1,0 +1,91 @@
+\documentclass[letterpaper]{article}
+
+\usepackage{fullpage}
+\usepackage{nopageno}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{tikz}
+\usepackage[utf8]{luainputenc}
+\usepackage{aeguill}
+\usepackage{setspace}
+
+\tikzstyle{edge} = [fill,opacity=.5,fill opacity=.5,line cap=round, line join=round, line width=50pt]
+\usetikzlibrary{graphs,graphdrawing}
+\usegdlibrary{trees}
+
+\pgfdeclarelayer{background}
+\pgfsetlayers{background,main}
+
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+
+\begin{document}
+\title{Notes}
+\date{11 février, 2015}
+\maketitle
+\section*{3.3 line graphs}
+a {\bfseries line graph} is the result of an operation on another graph
+
+if $G$ is a simple grpah, the line graph $L(G)$ is such that $V(L(G))=E(G)$. Edges in $L(G)$ occur between vertices that represent edges in $G$
+
+edges that share a vertice in $G$ are vertices that share an edge in $L(G)$
+\begin{tikzpicture}[main_node/.style={circle,draw,text=black,inner sep=1pt,outer sep=0pt]}]
+  \node[main_node] (5) at (0,0) {5};
+  \node[main_node] (4) at (1,0) {4};
+  \node[main_node] (3) at (2,0) {3};
+  \node[main_node] (1) at (1/2,1) {1};
+  \node[main_node] (2) at (3/2,1) {2};
+  \draw (5)--(4)--(3)--(2)--(1)--(5);
+  \draw (1)--(4)--(2);
+\end{tikzpicture}
+
+if $S_n$ is the star graph, what is the line graph of $S_n$? $K_n$.
+small case:
+\begin{tikzpicture}[main_node/.style={circle,draw,text=black,inner sep=1pt,outer sep=0pt]}]
+  \node[main_node] (1) at (0,0) {1};
+  \node[main_node] (2) at (0,1) {2};
+  \node[main_node] (3) at (1,0) {3};
+  \node[main_node] (4) at (0,-1) {4};
+  \node[main_node] (5) at (-1,0) {5};
+  \draw (2)--(1)--(3);
+  \draw (4)--(1)--(5);
+\end{tikzpicture}
+
+if $|G|=n$ and $|E(G)|=m$ then $|L(G)|=m$ and $|E(L(G))|=?$
+
+each edge in $L(G)$ corresponds to a choice of two edges from $G$, in particular, these two edges must be adjacent (share a vertex). let that vertex be $v_i$ and have degree $d_i$. then we have $\binom{d_i}{2}$ edges corresponding to $v_i$. $|E(L(G))|=\sum\limits_{i=1}^n{\binom{d_i}{2}}$
+
+every two edges coming of the original vertice make an edge in the new vertice. so we can choose two edges $\binom{d_i}{2}$ different ways
+
+\section*{converting line graphs}
+can we obtain $G$ from $L(G)$? given a graph $L$ can we say $L=L(G)$ for some $G$?
+
+assume $L$ is connected and non-trivial
+
+\subsection*{theorem}
+if $G_1$ and $G_2$ are connected simple graphs with $L(G_1)\cong L(G_2)$ then $G_1\cong G_2$ so long as $G_1\not\cong K_3$ or $G_1\not\cong K_1,3=S_3$
+
+there is a huge theorem called {\bfseries kuratowskis} theorem that we will cover later. it's so popular that it has spawned a whole class of theorems called kuratowski type theorems. this one is one of them
+\subsection*{theorem}
+a graph is a line graph of some other graph iff it is not an induced subgraph of $9$ specific graphs. see page $142$
+
+a kuratowski theorem is a generalized structure theorem.  something is true as long as it's not true about a finite number of graphs.
+
+theory of excluded minors (boring).
+
+a generalization of hamiltonicity is a watchmans tour. don't have to visit every ``hallway'', you just have to be able to see down every hallway. a watchman's tour is a tree so that every edge in $G$ is in the tree or adjacent to the tree.
+
+definition in book:
+{\bfseries dominating circuit} is a circuit $C$ of $G$ such that every edge of $G$ is in $C$ or adjacent to $C$.
+
+\subsubsection*{example}
+peterson graph. not hamiltonian. does have dominating circuit, not hamiltonian
+
+\subsubsection*{theorem}
+let $G$ be a connected graph, then $L(G)$ is hamiltonian iff $G$ has a diminating circuit.
+
+\section*{homework}
+10,11,12
+\end{document}
+ 

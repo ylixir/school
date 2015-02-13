@@ -1,0 +1,75 @@
+%shell-escape
+\documentclass[letterpaper]{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{gnuplottex}
+\usepackage[utf8]{luainputenc}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\lhead{February 13, 2015}
+\chead{Real Analysis II Homework}
+\rhead{Jon Allen}
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+
+\begin{document}
+\begin{enumerate}
+  \item
+  If $f_n$ and $g_n$ are sequences of continuous functions converging uniformly to $f$ and $g$ respectively, prove that $f_ng_n$ converges uniformly  to $fg$. 
+
+  First we note that functions like $f_n(x)=g_n(x)=x+\frac{1}{n}$ are problematic. I only have ``continuous'' added to the homework problem, but I am going to assume that these functions have a bounded domain $S$.
+
+  We know that there exists some $M$ such that $\sup f\le M-1$ and $\sup g\le M-1$. Now lets choose some $\varepsilon>0$. Then we can find some $N\in \mathbb{N}$ such that $||f_n-f||_\infty<\frac{\varepsilon}{2M}$ and $||g_n-g||_\infty<\frac{\varepsilon}{2M}$ and $\sup ||f_n||\le M$ and $\sup ||g_n||\le M$.
+
+  Now then we make the following calculations for all $n\ge N$:
+  \begin{align*}
+    ||f_ng_n-fg||_\infty&=||f_ng_n-fg_n-fg+fg_n||_\infty\\
+    &=||g_n(f_n-f)+f(g_n-g)||_\infty\\
+    &\le ||g_n||_\infty||f_n-f||_\infty+||f||_\infty||g_n-g||_\infty\\
+    &< M\frac{\varepsilon}{2M}+M\frac{\varepsilon}{2M}=\varepsilon
+  \end{align*}
+  Well it looks like $\lim\limits_{n\to\infty}||f_ng_n-fg||_\infty=0$ and so the product is uniformly convergent.
+  \item
+  For which values of $x\ge 1$ does the expression $x^{x^{x^{x^{\cdot^{\cdot^{\cdot}}}}}}$ make sense?
+
+  {\scshape Hint:} Define $f_1(x)=x$ and $f_{n+1}(x)=x^{f_n(x)}$ for $n\ge 1$. Then
+  \begin{enumerate}
+  \item
+    Show that $f_{n+1}(x)\ge f_n(x)$ for all $n\ge 1$.
+
+    First we note that $x\ge 1$ and so $x^x\ge x$. In other words $f_2\ge f_1$. Next we assume that $x^{f_n}\ge f_n\ge f_1\ge 1$. It follows then that $x^{x^{f_n}}\ge x^{f_n}$. And so $f_{n+1}(x)\ge f_n(x)$
+  \item
+    When $L(x)=\lim\limits_{n\to\infty}f_n(x)$ exists, find optimal upper bounds for $x$ and $L$.
+
+    If the limit exists, then raising $x$ to the limit will give us the limit again. That is $L=x^{L}$. Now we are looking for optimal values, so lets solve and find the derivative:
+    \begin{align*}
+      L&=x^L\\
+      x&=L^{1/L}\\
+      \ln x&=\ln L^{1/L}\\
+      \frac{\mathrm{d}x}{\mathrm{d}L}\frac{1}{x}&=\frac{1}{L^2}+\left(-\frac{1}{L^2}\right)\ln L\\
+      \frac{\mathrm{d}x}{\mathrm{d}L}&=x\frac{1}{L^2}(1-\ln L)\\
+      &=\frac{L^{1/L}}{L^2}(1-\ln L)\\
+      0&=L^{1/L-2}(1-\ln L)\\
+    \end{align*}
+    Now because $L\ge f_n\ge f_1\ge 1$ we know $L^{1/L-2}>0$ and so $1-\ln L=0$ or $L=e$ and $x=e^{1/e}$.
+  \item
+    For these values of $x$, show by induction that $f_n(x)$ is bounded above by $e$ for all $n\ge 1$.
+
+    So obviously $e^{1/e}< e$ and so if $x\le e^{1/e}$ then $f_1< e$. Now then if we assume that $f_n< e$ and $x\le e^{1/e}$ then $f_{n+1}=x^{f_n}< \left(e^{1/e}\right)^e=e$
+  \item
+    What happens for larger $x$?
+
+    We found that $\frac{\mathrm{d}x}{\mathrm{d}L}=0$ when $x=e^{1/e}$. This means that $L(x)$ goes vertical at this point (it's inverse goes horizontal). And so when $x>e^{1/e}$ then $L(x)$ is not finite and $f_n$ diverges.
+  \end{enumerate}
+\end{enumerate}
+\subsubsection*{References}
+\begin{enumerate}
+\item
+http://en.wikipedia.org/wiki/Tetration
+\item
+https://www.khanacademy.org/math/differential-calculus/taking-derivatives/derivatives-inverse-functions/v/calculus-derivative-of-x-x-x
+\end{enumerate}
+
+\end{document}

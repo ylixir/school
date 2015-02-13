@@ -1,0 +1,130 @@
+\documentclass[letterpaper]{article}
+
+\usepackage{fullpage}
+\usepackage{nopageno}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{tikz}
+\usepackage[utf8]{luainputenc}
+\usepackage{aeguill}
+\usepackage{setspace}
+
+\tikzstyle{edge} = [fill,opacity=.5,fill opacity=.5,line cap=round, line join=round, line width=50pt]
+\usetikzlibrary{graphs,graphdrawing}
+\usegdlibrary{trees}
+
+\pgfdeclarelayer{background}
+\pgfsetlayers{background,main}
+
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+
+\begin{document}
+\title{Notes}
+\date{9 février, 2015}
+\maketitle
+{\bfseries hypergraph} $H$ is a set $V$ called the vertex set together with nonempty subsets of $V$ called edges.
+\subsubsection*{example}
+\begin{enumerate}
+\item
+every  graph is a hypergraph. in a graph all edges are size $2$. 
+\item
+$H: V=\{1,2,3,4\}, E=\{\{1,2,4\},\{2,3,4\},\{3,4,5\}\}$
+\item
+\begin{tikzpicture}[main_node/.style={circle,draw,text=black,inner sep=1pt,outer sep=0pt]}]
+\node[main_node] (1) at (-1,-1) {};
+\node[main_node] (2) at (0,-1) {};
+\node[main_node] (3) at (1,-1) {};
+\node[main_node] (4) at (0,1) {};
+\node[main_node] (5) at (1,1) {};
+\begin{pgfonlayer}{background}
+\draw[edge,color=yellow] (1) -- (2) -- (3);
+\begin{scope}[transparency group,opacity=.5]
+\draw[edge,opacity=1,color=green] (2) -- (3) -- (5);
+%\fill[edge,opacity=1,color=green] (v3.center) -- (v5.center) -- (v6.center) -- (v3.center);
+\end{scope}
+\draw[edge,color=red,line width=40pt] (4) -- (5);
+\end{pgfonlayer}
+\end{tikzpicture}
+\end{enumerate}
+if each edge has the same size then they are called {\bfseries $k$-uniform}. degree still makes sense,as does multi vs simple
+
+we can associate a bipartite graph to any hypergraph
+
+
+the bipartite graph of $H$ has partites $V$ and $E$. it has edges from $v_i$ to $e_j$ if $v_i\in e_j$
+\begin{tikzpicture}[main_node/.style={circle,draw,text=black,inner sep=1pt,outer sep=0pt]}]
+\node[main_node] (5) at (-1,-1) {5};
+\node[main_node] (6) at (0.5,1) {a};
+\node[main_node] (4) at (0,-1) {4};
+\node[main_node] (3) at (1,-1) {3};
+\node[main_node] (1) at (0,1) {1};
+\node[main_node] (2) at (1,1) {2};
+\node[main_node] (7) at (-1.5,-1) {d};
+\node[main_node] (8) at (0.5,-1) {c};
+\node[main_node] (9) at (.5,0) {b};
+\begin{pgfonlayer}{background}
+\draw[edge,color=yellow] (5) -- (4) -- (3);
+\begin{scope}[transparency group,opacity=.5]
+\draw[edge,opacity=1,color=green] (2) -- (3) -- (4);
+%\fill[edge,opacity=1,color=green] (v3.center) -- (v5.center) -- (v6.center) -- (v3.center);
+\end{scope}
+\draw[edge,color=red,line width=40pt] (1) -- (2);
+\draw[edge,color=purple,line width=40pt] (5)--(5);
+\end{pgfonlayer}
+\end{tikzpicture}
+\tikz\path [graphs/.cd, nodes={shape=circle, draw, text=black,inner sep=1pt,outer sep=0pt}]
+%  graph [tree layout] { 1 -- a,a--2,2--b,b--3,3--c,b---4,4--c,5--d,c--5 }
+  graph [tree layout] {1--a--2--b--3--c--5--d, b--4--c}
+  [shift=(0:1)];
+\subsubsection*{question}
+can we construct a hypergraph out of a bipartite graph? no in general.
+
+restriction: cannot have an isolated vertex on the edge side of hypergraph.
+
+$\{\text{hpergraphs}\}\leftrightarrow\{\text{hypergraphs w/ no isolated right side vertices}\}$
+
+\section*{adjacency matrices}
+they still exist
+
+a hypergraph $H=(V,E)$ is an $|V|\times|E|$ matrix $A(H)$ such that $a_{ij}=1$ if $v_i\in e_j$ or else $a_{ij}=0$
+
+example:
+\begin{tikzpicture}[main_node/.style={circle,draw,text=black,inner sep=1pt,outer sep=0pt]}]
+\node[main_node] (5) at (-2,-2) {5};
+\node[main_node] (6) at (1,2.3) {b};
+\node[main_node] (4) at (0,-2) {4};
+\node[main_node] (3) at (2,-2) {3};
+\node[main_node] (3) at (2.5,-2) {e};
+\node[main_node] (1) at (0,2) {1};
+\node[main_node] (2) at (2,2) {2};
+\node[main_node] (7) at (-1,0) {c};
+\node[main_node] (8) at (1,-2) {d};
+\node[main_node] (9) at (1.3,-.) {a};
+\begin{pgfonlayer}{background}
+\draw[edge,color=yellow] (5) -- (4) -- (3);
+\begin{scope}[transparency group,opacity=.5]
+\draw[edge,opacity=1,color=green] (2) -- (5) -- (4);
+%\fill[edge,opacity=1,color=green] (v3.center) -- (v5.center) -- (v6.center) -- (v3.center);
+\end{scope}
+\draw[edge,color=red,line width=40pt] (1) -- (2);
+\draw[edge,color=purple,line width=40pt] (1)--(3);
+\draw[edge,color=blue,line width=40pt] (3)--(3);
+\end{pgfonlayer}
+\end{tikzpicture}
+
+the transpose of $A(h)$ has another hypergraph associated to it called the dual of $H$. Denoted $H^*$. note $H^{**}=H$.
+
+\subsection*{question:} how do hypergraph adjacency matrices compare to ``regular'' adjacency matrices?
+
+hypergraph:
+no symmetry, $A^T(H)\ne A(H)$
+and $H^*\ne H$
+
+graph:
+$A^T(G)=A(G)$, $G^*=G$
+
+it turns out that the matrices are \emph{very}  different. 
+\end{document}
+ 

@@ -1,0 +1,105 @@
+\documentclass[letterpaper]{article}
+
+\usepackage[utf8]{luainputenc}
+\usepackage{fullpage}
+\usepackage{nopageno}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+
+\begin{document}
+\title{Notes}
+\date{11 février, 2015}
+\maketitle
+\section*{quiz}
+\begin{enumerate}
+\item
+boundedness, continuity, integrable
+\item
+0
+\end{enumerate}
+
+\section*{theorem}
+if $f_n\to f$ uniformly on $[a,b]$ and $f_n$ is integrable (riemann, although it's true for lebesgue also) then so is $f$ and $F_n=\int_x^x{f_n(x)\;\mathrm{d}x}\to\int_a^x{f(x)\;\mathrm{d}x}=F(x)$
+
+\subsubsection*{proof}
+$|F_n(x)-F(x)|=
+\int_a^x{(f_n-f)\;\mathrm{d}t}
+\le \int_a^x{|f_n-f|\;\mathrm{d}t}
+\le \int_a^x{||f_n-f||_\infty\;\mathrm{d}t}
+=||f_n-f||_\infty\int_a^x{\;\mathrm{d}t}
+=||f_n-f||_{\infty}(x-a)\le||f_n-f||_{\infty}(b-a)$.
+given $\epsilon>0$ find $N$ such that
+$||f_n-f||_{\infty}<\epsilon/(b-a)\forall n\ge N$ then
+$|F_n(x)-F(x)|\le \epsilon/(b-a)\cdot (b-a)=\epsilon$
+so $||F_n-F||_{\infty}\le\epsilon\forall n\ge N$
+
+
+\subsection*{corollary}
+if $f_n\to f$ uniformaly on $[a,b]$ then $\lim\limits_{n\to\infty}\int_a^b{f_n(t)\mathrm{d}t}=\int_a^b{f(t)\mathrm{d}t}$
+\subsection*{corollary}
+if $\{f_n\}$ are continuously differentiable on $[a,b]$, $f_n'\to g$ uniformly  on $[a,b]$ ant there is $c\in [a,b]$ such that $f_n(c)=\gamma$ for some $\gamma$ then $f_n\to f$ uniformly with $f$ diff func s.t. $f'=g$ and $f(c)=\gamma$
+
+\subsubsection*{proof}
+notice $f_n(x)=f_n(0)+\int_c^x{f_n'(t)\mathrm{d}t}\to\gamma+\int_c^x{g(t)\mathrm{d}t}=f(x)$. $f$ is differentiable by the fundamental theorem of calculus on $\int_c^x{g(t)\;\mathrm{d}t}$. $f_n\to f$ uniformly because $\int_c^x{f_n'}\to\int_c^x{g}$ uniformally. $f'=g(f'(x)=0+g(x))$ by FTC. and $f(c)=\gamma+\int_c^c{g(t)\mathrm{d}t}=\gamma$
+
+\subsection*{example}
+$f_n(x)=\frac{e^{-n^2x^2}}{n}$
+\begin{enumerate}
+\item
+$f_n\to0$ uniformly
+\begin{align*}
+  |\frac{e^{-n^2x^2}}{n}-0|\\
+  &=|\frac{e^{-n^2x^2}}{n}|\\
+  &=|\frac{1}{e^{n^2x^2}}\frac{1}{n}|\\
+  &\le \frac{1}{n}\to 0\\
+\end{align*}
+\item
+\begin{align*}
+  f_n'&=\frac{-2n^2xe^{-n^2x^2}}{n}=-2nxe^{-n^2x^2}
+\end{align*}
+which is continuously differentiable
+\item
+$\lim\limits_{n\to\infty}-2nxe^{-n^2x^2}
+=\lim\limits_{n\to\infty}\frac{-2nx}{e^{n^2x^2}}$
+and with  l'hopitals rule
+
+$\lim_{n\to\infty}\frac{-2n}{2xn^2e^{n^2x^2}}=\frac{-1}{xne^{n^2x^2}}=0$
+\item
+$f_n'\not\to 0$ uniformly on any neighborhood of $0$. 
+\begin{align*}
+  ||-2nxe^{-n^2x^2-0}
+  &=||-2nxe^{-n^2x^2}\\
+  &=2nx||e^{-n^2x^2}\\
+  &<\epsilon\\
+  ||x||||e^{-n^2x^2}||<\frac{\epsilon}{2n}\\
+  \intertext{x close enough to zero}
+  ||e^{-n^2x^2}||&\ge \frac{1}{2}\\
+  |||x||\frac{1}{2}\le ||x||||e^{-n^2x^2}||<\frac{\epsilon}{2n}\\
+  ||x||<\frac{\epsilon}{n}
+\end{align*}
+when $x$ is close to zero.
+
+point is that it does depend on $x$ and so not uniform.
+\end{enumerate}
+does this break our theorem?
+$f_n(0)\to0=f(0)$, $f'=0=\lim_{n\to\infty}f_n'$. so we don't need all the hypotheses all the time.
+
+\section*{commentary}
+the whole point is:
+
+derivatives and integrals are limits. integral is a limit of closer and closer approximations. uniform convergence means you can interchange limits. that is pull limits into integrals and derivates. this is what uinformity gives us. switching limits in various contexts.
+\subsection*{lebesgue integral}
+lebesgue integral and limits of functions:
+\section*{thrm}
+if $f_n\to f$ uniformally on $E$ then $\int_E{f_n\;\mathrm{d}m}\to \int_E{f\;\mathrm{d}m}$
+
+\section*{thrm}
+dominated convergence thm
+
+if $f_n\to f$ pointwise and there is a $g$ with $\int_E{g\;\mathrm{d}m}>\infty$ with $|f_n(x)|<g(x)$ for all $x$ then $\lim_{n\to\infty}\int_E{f_n\;\mathrm{d}m}=\int_E{f\;\mathrm{d}m}$
+
+if we have one function that bounds $f_n$ then you can get away with pointwise limits
+\end{document}
