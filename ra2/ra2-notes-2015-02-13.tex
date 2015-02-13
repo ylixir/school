@@ -1,0 +1,38 @@
+\documentclass[letterpaper]{article}
+
+\usepackage[utf8]{luainputenc}
+\usepackage{fullpage}
+\usepackage{nopageno}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+
+\begin{document}
+\title{Notes}
+\date{13 février, 2015}
+\maketitle
+\section*{weierstrass m-test}
+if $f_{k}:S\to \mathbb{R}^n$ and for all $k$ there is $M_k$ with $||f_k||_\infty\le M_k$ then if $\sum\limits{M_k}$ converges then the series $\sum\limits{f_n}$ converges uniformly.
+
+that is to say, if we can bound $f_n$ by  $M_n$ and the series of $M_n$ converges, then $f_n$ converges.
+\subsection*{example}
+if $\sum\limits_{n=1}^\infty{|a_n|}<\infty$ then $\sum\limits_{n=1}^\infty{a_n\cos(nx)}$ converges uniformly on $\mathbb{R}$.
+
+$|a_n\cos(nx)|\le |a_n|$ for any  $x$. $a_n=M_n$\dots$\Box$
+
+note that $\sum a_n\cos(nx)$ is continuous because $a_n\cos(nx)$ is continuous and $\sum a_n\cos(nx)$ converges uniformly.
+
+\section*{theorem}
+if $f_n(x)$ is continuous and $\sum\limits_{n=1}^\infty{f_n(x)}$ converges uniformly to $F(x)$ then $F(x)$ is continuous (the sums are continuous if $f_n$ is continuous)
+
+\subsection*{example}
+$\sum\limits_{n=1}^\infty{x^ne^{-nx}}$ converges uniformly  on $[0,A]$ for any $A>0$.
+
+$|x^ne^{-nx}|\le |x^n|\le A^n$. $f'(x)=(nx^{n-1}e^{-nx})-nx^ne^{-nx}=ne^{-nx}x^{n-1}(1-x)=0$ so critical points are $0,1,A$.
+
+$f''$ shows us that $1$ is concave down so it is a max. and so $x^ne^{-nx}\le e^{-n}$ on $[0,\infty)$.
+
+so $\sum\limits{e^{-n}}=\sum\limits{\left(\frac{1}{e}\right)^n}$ which is geometric and so it converges to $\left(\frac{1}{1-\frac{1}{e}}\right)-1$ by m-test we converge uniformly on $[0,\infty)$
+\end{document}
