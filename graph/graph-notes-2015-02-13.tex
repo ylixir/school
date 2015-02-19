@@ -1,0 +1,66 @@
+\documentclass[letterpaper]{article}
+
+\usepackage{fullpage}
+\usepackage{nopageno}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{tikz}
+\usepackage[utf8]{luainputenc}
+\usepackage{aeguill}
+\usepackage{setspace}
+
+\tikzstyle{edge} = [fill,opacity=.5,fill opacity=.5,line cap=round, line join=round, line width=50pt]
+\usetikzlibrary{graphs,graphdrawing}
+\usegdlibrary{trees}
+
+\pgfdeclarelayer{background}
+\pgfsetlayers{background,main}
+
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+
+\begin{document}
+\title{Notes}
+\date{13 février, 2015}
+\maketitle
+\section*{1.4 directed graphs}
+{\bfseries digraphs} are graphs with orientations (arrows) on the edges
+
+every term from graphs has a directed version for digraphs.
+
+one notable lexicographical difference: edges are called {\bfseries arcs}.
+
+\subsection*{examples}
+\tikz\path [graphs/.cd, nodes={shape=circle, draw, text=black,inner sep=1pt,outer sep=0pt}]
+  graph [tree layout] { 1<-2, 1->3, 1<-4->5,2->3,{2,3}<-5}
+  [shift=(0:1)];
+
+a digraph is {\bfseries weakly connected} if the underlying graph is connected.
+
+a digraph is {\bfseries strongly connected} if for every $u,v\in V(G)$, there exists a directed $u-v$ path and a directed $v-u$ path.
+
+\subsection*{thrm}
+a digraph is strongly connected iff it contains a closed spanning directed walk.
+
+\subsection*{notes}
+in proving things about digraphs, the degree of a vertex is nuanced. eg arcs in and arcs out might be different numbers. so we say: let $D$ be a digraph and $v\in V(D)$ and we say {\bfseries id$(v)$} is the number of incoming arcs to $v$ and {\bfseries od$(v)$} is the number of outgoing arcs
+
+\section*{4.1 directed graphs}
+if $D$ is a simple digraph of size $m$ then $\sum\limits{\text{od}(v)}=\sum\limits{\text{id}(v)}=m$
+
+\section*{eulerian digraphs}
+eulerian circuit that is directed
+\subsection*{thm}
+a digraph $D$ has an eulerian circuit iff od$(v)=$id$(v)$ for all $v\in V(D)$
+\subsubsection*{proof}
+basically identical to undirected case
+
+need everything to be even so we can go in and out, now we need to be able to go in and out similarly
+
+\subsection*{thm}
+a digraph $D$ has an eulerian path iff id$(v)=$od$(v)$ for all vertices but two called $u,v$ and od$(u)=$id$(u)+1$ and id$(v)=$od$(v)+1$
+\section*{Homework}
+2,7
+\end{document}
+ 
