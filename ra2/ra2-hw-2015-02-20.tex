@@ -1,0 +1,78 @@
+%shell-escape
+\documentclass[letterpaper]{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{gnuplottex}
+\usepackage[utf8]{luainputenc}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\lhead{February 20, 2015}
+\chead{Real Analysis II Homework}
+\rhead{Jon Allen}
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+
+\begin{document}
+\begin{enumerate}
+  \item
+  Let $f_n(x)=\frac{x^2}{(1+x^2)^n}$ for all $x\in \mathbb{R}$. For what intervals $[a,b]$ does the series $\sum\limits_{n=0}^\infty{f_n(x)}$ converge uniformly?
+
+  First we note that $1\le (1+x^2)^n$ for all $x$ and $n\ge 0$ so $\frac{1}{1+x^2}<1$ for all $x$.
+  And so
+  \begin{align*}
+  \sum\limits_{n=0}^k{\frac{x^2}{(1+x^2)^n}}
+  &=x^2\left(\frac{1-(\frac{1}{1+x^2})^n}{1-\frac{1}{1+x^2}}\right)\\
+  &=x^2\left(\frac{\frac{(1+x^2)^n-1}{(1+x^2)^n}}{\frac{1+x^2-1}{1+x^2}}\right)\\
+  &=\frac{((1+x^2)^n-1)(1+x^2)}{(1+x^2)^n}\\
+  &=1+x^2-\frac{1}{(1+x^2)^{n-1}}\\
+  \sum\limits_{n=0}^\infty{\frac{x^2}{(1+x^2)^n}}
+  &=x^2\left(\frac{1}{1-\frac{1}{1+x^2}}\right)\\
+  &=x^2\left(\frac{1}{\frac{1+x^2-1}{1+x^2}}\right)\\
+  &=1+x^2\\
+  \end{align*}
+  Now to determine uniform convergence, we look at $\lim\limits_{k\to\infty}\left|\left|f_k-f\right|\right|_\infty$
+  \begin{align*}
+   \lim\limits_{k\to\infty}\left|\left|f_k-f\right|\right|_\infty
+   &=\lim\limits_{k\to\infty}\left|\left|1+x^2-\frac{1}{(1+x^2)^{k-1}}-(1+x^2)\right|\right|_\infty\\
+   &=\lim\limits_{k\to\infty}\left|\left|\frac{1}{(1+x^2)^k}\right|\right|_\infty\\
+   1&>\frac{1}{(1+x^2)^n}\\
+   &\therefore \lim\limits_{k\to\infty}\left|\left|f_k-f\right|\right|_\infty
+   =0
+  \end{align*}
+
+  Notice that we obtained this result without restricting the domain of $x$ at all. And so $f_n$ converges uniformly on any $[a,b]\subseteq (-\infty,\infty)$
+\item
+  For $x\ne -1$ evaluate the sum $\sum\limits_{n=0}^\infty{\left(\frac{x-7}{x+1}\right)^n}$
+
+  We first note that as $x$ gets close to $-1$ then $x+1$ gets close to zero and $x-7$ gets close to $-8$ and so as we approach from the right, $x+1$ is positive and our term gets very largely negative. Similarly as we approach from the left our term gets very largely positive. Furthermore, as $x$ gets very large or very largely negative, then $\frac{x-7}{x+1}$ gets close to one. So we have identified two asymptotes, one vertical at $x=-1$ and one horizontal at $\frac{x-7}{x+1}=1$. We have a geometric series if $\left\lvert\frac{x-7}{x+1}\right\rvert<1$. Okay, now let us assume that $x+1<0$. That is $x<-1$. Well actually we just figured out what that graph of this term looks like, and if $x<-1$ then our term is always above it's asymptote at 1 and so there are no solutions in this case. Assuming $x+1>0$ we have
+  \begin{align*}
+    -1&<\frac{x-7}{x+1}<1\\
+    -x-1&<x-7<x+1\\
+    \intertext{we drop the last term because derpaderp}
+    -x-1&<x-7\\
+    -2x&<-6\\
+    x&>3
+  \end{align*}
+  And so our term converges in the interval $(3,\infty)$.
+
+  Now what about $(-1,3]$? Well referring to what we figured out about how this graph looks, we know that $\frac{x-7}{x+1}\le -1$ on this interval. And so we have an alternating series with $\sum{(-1)^n\left(\frac{x-7}{x-1}\right)^n}$. Of course $\frac{x-7}{x-1}\ge1$ and so $\left(\frac{x-7}{x-1}\right)^{n+1}\ge \left(\frac{x-7}{x-1}\right)^n$ which means our alternating series diverges.
+
+  Now going back to geometric convergence, we find
+  \begin{align*}
+    \sum\limits_{n=0}^\infty{\left(\frac{x-7}{x+1}\right)^n}
+    &=\frac{1}{1-\frac{x-7}{x+1}}\\
+    &=\frac{1}{\frac{8}{x+1}}\\
+    &=\frac{x+1}{8}\\
+  \end{align*}
+  And so we have $\sum\limits_{n=0}^\infty{\left(\frac{x-7}{x+1}\right)^n}=\frac{x+1}{8}$ when $x\in (3,\infty)$ and it is divergent when $x\in (-\infty,-1)\cup(-1,3)$
+\end{enumerate}
+\subsubsection*{References}
+\begin{enumerate}
+\item
+The convergence tests may be in the book, and in my notes from last semester, and I should know them, but I googled them, because that was easiest.
+
+https://www.math.hmc.edu/calculus/tutorials/convergence/
+\end{enumerate}
+\end{document}

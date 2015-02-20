@@ -1,0 +1,100 @@
+%shell-escape
+\documentclass[letterpaper]{article}
+
+\usepackage{fullpage}
+\usepackage{nopageno}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{gnuplottex}
+\usepackage{tikz}
+\usepackage[utf8]{luainputenc}
+
+\usetikzlibrary{graphs,graphdrawing}
+\usegdlibrary{trees}
+
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+
+\begin{document}
+\title{Graph Theory Homework}
+\date{February 13, 2015}
+\author{Jon Allen}
+\maketitle
+
+Additionally, I asked you to prove two parts of Whitney's theorem that I omitted in class.  They were 'labeled' as (check this!) and (why?) during class.
+
+
+
+
+\renewcommand{\labelenumi}{2.\arabic{enumi}}
+\renewcommand{\labelenumii}{\arabic{enumii}.}
+%\renewcommand{\labelenumii}{\Alph{enumii}.}
+\renewcommand{\labelenumiii}{(\alph{enumiii})}
+\begin{enumerate}
+\setcounter{enumi}{4}
+\item
+  \begin{enumerate}
+  \item
+  %2.5 #1
+  Show that the converse of Theorem $2.41$ is not true in general.
+
+  Lets take a graph $C_n$ that is a cycle of order $n\ge 3$. Then $C_n$ is two connected. Now for any $n\ge k\ge 3$ we can take $k$ vertices from $C_n$ and they will lie on the same cycle. Thus we have found any number of graphs who have every $k$ vertices on a common cycle, but whose connectivity is less than $k$. For example, $C_4$:
+
+  \begin{tikzpicture}[main_node/.style={circle,draw,text=black,inner sep=1pt,outer sep=0pt]}]
+    \node[main_node] (1) at (0,0) {};
+    \node[main_node] (2) at (1,0) {};
+    \node[main_node] (3) at (1,1) {};
+    \node[main_node] (4) at (0,1) {};
+    \draw (1)--(2)--(3)--(4)--(1);
+  \end{tikzpicture}
+  \renewcommand{\labelenumii}{or \arabic{enumii}.}
+  \item
+  %2.5 #2
+  Prove that a graph $G$ of order $n\ge k+1\ge 3$ is $k$-connected if and only if for each set $S$ of $k$ distinct vertices of $G$ and for each two-vertex subset $T$ of $S$, there is a cycle of $G$ that contains both vertices of $T$ but no vertices of $S-T$.
+  \renewcommand{\labelenumii}{\arabic{enumii}.}
+  \item
+  %2.5 #3
+  Prove Corollary 2.38: {\itshape Let $G$ be a $k$-connected graph, $k\ge 1$, and let $S$ be any set of $k$ vertices of $G$. If a graph $H$ is obtained from $G$ by adding a new vertex $w$ and joining $w$ to the vertices of $S$, then $H$ is also $k$-connected}
+  \renewcommand{\labelenumii}{or \arabic{enumii}.}
+  \item
+  %2.5 #4
+  Prove Corollary 2.39: {\itshape If $G$ is a $k$-connected graph, $k\ge 2$, and $u,v_1,v_2,\dots,v_t$ are $t+1$ distinct vertices of $G$ where $2\le t\le k$, then $G$ contains a $u-v_i$ path for each $i$ ($1\le i\le t$), every two paths of which have only $u$ in common.}
+  \renewcommand{\labelenumii}{not \arabic{enumii}.}
+  \item
+  %2.5 #5
+  Prove Corollary 2.40: {\itshape A graph $G$ of order $n\ge 2k$ is $k$-connected if and only if for every two disjoint sets $V_1$ and $V_2$ of $k$ distinct vertices each, there exist $k$ pairwise disjoint paths connecting $V_1$ and $V_2$.}
+  \end{enumerate}
+\renewcommand{\labelenumi}{3.\arabic{enumi}}
+\setcounter{enumi}{0}
+\item
+  %3.1
+  \begin{enumerate}
+  \setcounter{enumii}{2}
+  \item
+  %3.1 #3
+  \item
+  %3.1 #4
+  \setcounter{enumii}{5}
+  \item
+  %3.1 #6
+  \item
+  %3.1 #7
+  For that problem, note that it doesn't work for complete graphs, and then let $|G|=n=r+k$ where G is r-regular, and k is some number.
+  \end{enumerate}
+\item
+In the final section, you will need to use the Peterson graph.  It is super famous, and is a common example of a graph that "keeps us honest". Number 14 needs Corollary 3.9, and the technique we saw in the proof of the Theorem 2.30.
+  \begin{enumerate}
+  \item
+  \setcounter{enumii}{6}
+  \item
+  \setcounter{enumii}{13}
+  \item
+I now have a much more truthy proof of number 14.  My new hint still uses Corollary 3.9, but uses it correctly.  The idea is to consider any two adjacent vertices of T.  In the complement, the vertices will no longer be adjacent, so we can use 3.9.  Since T is a tree, the sum of the degrees of u and v has an upper bound.  If the bound is reached, the corollary doesn't actually apply, but in that single case, a Hamiltonian path in the complement can be easily found.  If the bound is not reached, then the corollary holds.
+
+It's still a hard problem, though.
+
+
+  \end{enumerate}
+\end{enumerate}
+\end{document}
