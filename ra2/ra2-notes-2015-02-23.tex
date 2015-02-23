@@ -1,0 +1,40 @@
+\documentclass[letterpaper]{article}
+
+\usepackage[utf8]{luainputenc}
+\usepackage{fullpage}
+\usepackage{nopageno}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+
+\begin{document}
+\title{Notes}
+\date{23 février, 2015}
+\maketitle
+Theorem: if $f(x)=\sum\limits{a_nx^n}$ has radius of convergence $R$ then so does $\sum\limits{na_nx^{n-1}}$ and further $f'(x)=\sum\limits{na_nx^{n-1}}$ and $\int_0^x{f(t)\;\mathrm{d}t}=\sum\limits{\frac{a_n}{n+1}x^{n+1}}$
+
+\subsection*{examples}
+$\sum\limits_{n=1}^\infty{\frac{2^n}{n5^n}}=\sum\limits_{n=1}^u{\left(\frac{2}{5}\right)^n\frac{1}{n}}$
+
+$\sum\limits_{n=1}^\infty{\frac{x^n}{n}}=\int_{0}^x{\sum\limits_{n=0}{t^n}}=\int{\frac{x^{n+1}}{n+1}}=\int_0^x{\frac{1}{1-t}}=-\ln(1-t)|_0^x=-\ln(1-x)=-\ln(1-\frac{2}{5})=\ln 5-\ln 3$
+
+$\sum\limits_{n=0}{(n+1)x^n}=\sum\limits_{n=1}{nx^n}$
+antiderivative is $\sum\limits_{n=0}{x^n}=\frac{1}{1-x}$ and our answer is $\frac{1}{(1-x)^2}$
+
+$\sum\limits{\frac{n+1}{2^n}}=\frac{1}{1-\frac{1}{2}}^2=\frac{1}{\frac{1}{2^2}}=4$
+
+\subsubsection*{approximate pi}
+$\tan^{-1} x=\int_0^x{\frac{1}{1+t^2}\;\mathrm{d}t}$
+
+$\sum\limits{(-t^2)^n}=\frac{1}{1+t^2}=\frac{1}{1-(-t^2)}$ as long as $-1<-t^2<1\Leftrightarrow-1<t<1$
+
+and so $\tan^{-1} x=\int_0^x{\sum\limits_{n=0}^\infty{(-1)^nt^2n}\;\mathrm{d}t}$
+
+we can choose $\pi/4$ or $\pi/6$. now $\frac{\pi}{4}=\tan^{-1}1$ but $-1<x<1$
+
+and so $\pi/6=\tan^{-1}\frac{\sqrt{3}}{3}=\sum\limits_{n=0}^\infty{(-1)^n\dots}$
+
+
+\end{document}
