@@ -36,6 +36,10 @@
 \begin{enumerate}
 \item
 Create a 3-regular, 3-uniform hypergraph. Is it possible to create an $k$-regular, $k$-uniform (simple) hypergraph? Prove or disprove.
+
+For the k=3 case, let the vertex set be $V=\{v_1,\dots,v_9\}$ and the edge set be $E=\{e_1=\{v_1,v_2,v_3\},e_2=\{v_4,v_5,v_6\},e_3=\{v_7,v_8,v_9\}\}$
+
+For the more general case, let $V=\{v_1,\dots,v_{k^2}\}$ and let $E=\{e_1,\dots,e_k|e_i=\{v_{k(i-1)+1},\dots,v_{k(i-1)+k}\}\}$. This works as long as $0<k<\infty$, but I think that's implicit anyhow.
 \item
 Let $H$ be the pictured hypergraph.
 
@@ -77,24 +81,134 @@ Let $H$ be the pictured hypergraph.
   I've labelled the edges, so $e_1=\{A,U\}$, $e_2=\{A,B\}$, $e_3=\{B,D,C\}$ and so on.
 
   \begin{tikzpicture}[main_node/.style={circle,draw,text=black,inner sep=1pt,outer sep=0pt]}]
-    \node[main_node] (1) at (0,0) {A};
-    \node[main_node] (2) at (1,0) {B};
-    \node[main_node] (3) at (2,0) {C};
-    \node[main_node] (4) at (3,0) {D};
-    \node[main_node] (5) at (4,0) {E};
-    \node[main_node] (6) at (5,0) {F};
-    \node[main_node] (7) at (6,0) {T};
-    \node[main_node] (8) at (7,0) {S};
-    \node[main_node] (9) at (8,0) {U};
-    \draw (1);
+    \node[main_node] (1) at (0,1) {A};
+    \node[main_node] (2) at (1,1) {B};
+    \node[main_node] (3) at (2,1) {C};
+    \node[main_node] (4) at (3,1) {D};
+    \node[main_node] (5) at (4,1) {E};
+    \node[main_node] (6) at (5,1) {F};
+    \node[main_node] (7) at (6,1) {T};
+    \node[main_node] (8) at (7,1) {S};
+    \node[main_node] (9) at (8,1) {U};
+    \node[main_node] (11) at (1,0) {$e_1$};
+    \node[main_node] (12) at (2,0) {$e_2$};
+    \node[main_node] (13) at (3,0) {$e_3$};
+    \node[main_node] (14) at (4,0) {$e_4$};
+    \node[main_node] (15) at (5,0) {$e_5$};
+    \node[main_node] (16) at (6,0) {$e_6$};
+    \node[main_node] (17) at (7,0) {$e_7$};
+    \draw (1)--(11)--(1)--(12);
+    \draw (2)--(12)--(2)--(13);
+    \draw (3)--(13)--(3)--(15);
+    \draw (4)--(14)--(4)--(13);
+    \draw (5)--(15)--(5)--(16);
+    \draw (6)--(16);
+    \draw (7)--(16)--(7)--(17);
+    \draw (8)--(16)--(8)--(17);
+    \draw (9)--(16)--(9)--(17)--(9)--(11);
   \end{tikzpicture}
   \item
   What is the adjacency matrix of $H$?
+
+  \[
+  \left[
+  \begin{array}{ccccccc}
+  1&1&0&0&0&0&0\\
+  0&1&1&0&0&0&0\\
+  0&0&1&0&1&0&0\\
+  0&0&1&1&0&0&0\\
+  0&0&0&0&1&1&0\\
+  0&0&0&0&0&1&0\\
+  0&0&0&0&0&1&1\\
+  0&0&0&0&0&1&1\\
+  1&0&0&0&0&1&1\\
+  \end{array}
+  \right]
+  \]
+
   \item
   What is $H*$?
+
+\begin{tikzpicture}[main_node/.style={circle,draw,text=black,inner sep=1pt,outer sep=0pt]}]
+  %nodes here
+  \node[main_node] (1) at (-.5,6) {A};
+  \node[main_node] (2) at (6,6.5) {B};
+  \node[main_node] (3) at (8,3) {C};
+  \node[main_node] (4) at (7,4.5) {D};
+  \node[main_node] (5) at (0,-1) {E};
+  \node[main_node] (6) at (2,1) {F};
+  \node[main_node] (7) at (-3,4) {T};
+  \node[main_node] (8) at (-3,2) {S};
+  \node[main_node] (9) at (2.5,3) {U};
+  \node[main_node] (11) at (.5,4.75) {$e_1$};
+  \node[main_node] (12) at (3.25,6.25) {$e_2$};
+  \node[main_node] (13) at (9,4) {$e_3$};
+  \node[main_node] (14) at (5.5,4) {$e_4$};
+  \node[main_node] (15) at (3,-1) {$e_5$};
+  \node[main_node] (16) at (1,1) {$e_6$};
+  \node[main_node] (17) at (0,3) {$e_7$};
+  \begin{pgfonlayer}{background}
+    \begin{scope}[transparency group,opacity=.5]
+      %draws here
+      %\draw[edge,color=red] (1)--(2);
+      \draw[edge,color=red] (11)--(1)--(12);
+      \draw[edge,color=blue] (12)--(2)--(13);
+      \draw[edge,color=red] (13)--(3)--(15);
+      \draw[edge,color=yellow] (14)--(4)--(13);
+      \draw[edge,color=yellow] (15)--(5)--(16);
+      \draw[edge,color=black] (16)--(6);
+      \draw[edge,color=green] (16)--(7)--(17);
+      \draw[edge,color=red] (16)--(8)--(17);
+      \draw[edge,color=blue] (16)--(9)--(17)--(9)--(11);
+      %\draw[edge,color=blue] (2)--(4)--(3)--(13)--(2);
+      %\draw[edge,color=red] (4)--(14);
+      %\draw[edge,color=red] (3)--(5);
+      %\draw[edge,color=red] (7)--(8)--(9);
+      %\draw[edge,color=yellow] (5)--(7)--(5)--(8)--(5)--(9)--(6)--(7)--(6)--(8);
+      %\draw[edge,color=blue] (1)--(9);
+    \end{scope}
+  \end{pgfonlayer}
+\end{tikzpicture}
   \end{enumerate}
 \end{enumerate}
-\item[3.3]
-\item[4.1]
+\renewcommand{\labelenumi}{\arabic{enumi}.}
+\item[3.3]$\quad$
+\begin{enumerate}
+\setcounter{enumi}{9}
+\item
+Prove that if $v$ is any vertex of a connected graph $G$ of order at least 4, then $G^3-v$ is Hamiltonian.
+
+We have three possibilities for $v$. Either it is a leaf, it is a cut vertex, or it is neither. If it a leaf or it is not a cut vertex then removing $v$ from $G$ leaves a connected graph $G-v$. Now $(G-v)^3$ is a Hamiltonian subgraph of $G^3-v$ where $V((G-v)^3)=V(G^3-v)$ so in either of these cases we are done.
+
+Now we assume that $v$ is a cut vertex. Then $G-v$ consists of $k$ components. We will call them $G_i\forall 1\le i\le k$. We know that all the $G_i^3$'s are Hamiltonian-connected. In particular there exists some $u_i\in V(G_i)$ which is adjacent to $v$ in $G$ for every $G_i$. Now there exists some $w_i\in V(G_i)$ which is adjacent to $u_i$ or else $|V(G_i)|=1$ and we shall say $u_i=w_i$. Because $G_i^3$ is Hamiltonian-connected there exists a Hamiltonian path $P_i$ from $u_i$ to $w_i$ in $G_i^3$.
+
+Furthermore, Because $d_G(u_i,w_{i+1})=d_G(u_k,w_1)\le 3$ when $i<k$ then $u_iw_{i+1}, u_kw_1\in E(G^3-v)$. Now taking $P_i$ and $u_iw_{i+1}$ together, along with $P_k$ and $u_kw_1$ we can form a Hamiltonian cycle in $G^3-v$. And so $G^3-v$ is Hamiltonian.
+
+\item
+Determine a formula for the number of triangles in the line graph $L(G)$ in terms of quantities in $G$.
+
+The hint is relatively helpful, but one has to think about exactly how to count the triangles from G and the $K_{1,3}$ subgraphs of G.  
+
+First we notice that triangles are formed from other triangles or claw graphs. The number of claws in a graph can be computed for every vertex $v$ in $G$ with a degree of at least 3. If we choose any three adjacent vertices of $v$ then we have found a claw. The number of ways we can choose a claw is the number of ways we can choose three adjacent vertices to $v$. The formula for the number of claws in this vertex is $\binom{\deg(v)}{3}$. So if $W=\{v:v\in V(G)\text{ and }\deg v\ge 3\}$ then the number of $K_{1,3}$ in $G$ is $\sum\limits_{v_i\in W}{\binom{\deg(v_i)}{3}}$. Add in the number of triangles in $G$ and you have the number of triangles in $L(G)$
+\item
+Prove that $L(G)$ is Eulerian if $G$ is Eulerian.
+
+A graph is Eulerian if and only if all of it's vertices have an even degree. Let us choose any vertex $w\in V(L(G))$. Then $w$ comes from some edge in $G$. Lets say this edge is incident to the vertices $u,v\in V(G)$. Now the degree of $w$ is equal to the number of edges incident to $u$ minus the $uv$ edge and the number of edges incident to $v$ minus the $uv$ edge. That is to say $\deg w=\deg u+\deg v-2$. Now if $G$ is Eulerian, then $\deg u$ and $\deg v$ are both even. That is to say there exists some $k,l\in \mathbb{N}$ such that $\deg u=2k$ and $\deg v=2l$. Now we see that $\deg w=2k+2l+2=2(k+l+1)$ which is even. Because our choice of $w$ was arbitrary we see that all the vertices of $L(G)$ have even degree, and therefore $L(G)$ is Eulerian.
+\end{enumerate}
+\item[4.1]$\quad$
+\begin{enumerate}
+\setcounter{enumi}{1}
+\item
+Show that a digraph $D$ is strong if and only if it's converse $\overrightarrow{D}$ is strong
+
+Let $W=(u_1,\dots,u_k,u_1)$ be a closed spanning walk in $D$, then $u_iu_{i+1}$ is an arc in $D$ and $u_{i+1}u_i$ is and arc in $\overrightarrow D$ when $i\le 1<k$. Also $u_ku_1$ is an arc in $D$ and $u_1u_k$ is an arc in $\overrightarrow D$. Obviously then we have a closed spanning walk in $\overrightarrow D$ in the form of $W'=(u_1,u_k,u_{k-1},\dots,u_1)$. 
+\setcounter{enumi}{6}
+\item
+Prove theorem $4.4$: {\itshape Let $D$ be a nontrivial connected digraph. This $D$ is Eulerian if and only if $\text{od } v=\text{id } v$ for every vertex $v$ of $D$.}
+
+Let us assume that $D$ is Eulerian. Then it contains an Eulerian circuit $C$. Let $v$ be a vertex of $D$. If $v$ is the initial vertex of $C$ then it is also the terminal vertex of $C$. The initial and terminal arcs of $C$ contribute $1$ or $0$ to both the incoming and outgoing degrees of $v$ depending on if we think of $v$ as the initial vertex. Now if we have an incoming arc on $v$ that is not the terminal arc, then we must also have an outgoing arc incident to $v$. Conversely, if we have an outgoing arc incident to $v$ that is not the initial arc, then there must be a correlating incoming arc. This holds for each incoming and outgoing arc that is incident to $v$. Thus $\text{id }v=\text{od }v$.
+
+Now we assume that $\text{id }v=\text{od }v$ for all $v\in D$. We choose an arbitrary $v$. We construct a trail $T$ beginning at $v$ that contains a maximal number of arcs of $D$. Suppose that $T$ is a $v-u$ trail with $u\ne v$. Then because $u$ terminates the trail and $u$ has the same number of incoming and outgoing arc, then there must be an outgoing arc from $u$ to match the terminal arc in $T$. But then if we add this arc to $T$ to get a new trail $T'$ then we have constructed a trail with more arcs that $T$ which is a contradiction. Thus $T$ must be a circuit. If $T$ is Eulerian, then we are done. If not then there is a vertex $x$ in $T$ which is incident to an incoming (and therefore outgoing arc) in $D$ not in $T$. Let us say $F=D-E(T)$. Where $E(T)$ are the arcs in $T$. Since every vertex in $T$ is incident to the same number of incoming and outgoing arcs, then the vertices of $F$ must also be. Let $F'$ be the component of $F$ which contains $x$. As in the above argument, $F'$ contains some circuit $T'$ with initial and terminal vertex $x$. By inserting $F'$ as some occurrence of $x$ in $C$, a $v-v$ circuit $T''$ in $D$ is produced, having more edges than $T$. Again a contradiction. And so $T$ is Eulerian and by extension, so is $D$.
+\end{enumerate}
 \end{description}
 \end{document}
