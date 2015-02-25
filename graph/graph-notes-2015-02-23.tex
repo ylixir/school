@@ -1,0 +1,82 @@
+\documentclass[letterpaper]{article}
+
+\usepackage{fullpage}
+\usepackage{nopageno}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{tikz}
+\usepackage[utf8]{luainputenc}
+\usepackage{aeguill}
+\usepackage{setspace}
+
+\tikzstyle{edge} = [fill,opacity=.5,fill opacity=.5,line cap=round, line join=round, line width=50pt]
+\usetikzlibrary{graphs,graphdrawing}
+\usegdlibrary{trees}
+
+\pgfdeclarelayer{background}
+\pgfsetlayers{background,main}
+
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+
+\begin{document}
+\title{Notes}
+\date{23 février, 2015}
+\maketitle
+no class 3/4, 3/6
+\section*{6.1 planarity}
+if a graph can be drawn on a plane without any crossings, it is called {\bfseries planar}
+
+note that if it is planar, you can draw it without crossings with all straight lines.
+\subsection*{examples}
+$K_3$, $K_4$
+
+\subsubsection*{drawing:}
+geogebra.org
+
+\subsection*{more}
+we often think of planar graphs as collections of polygons (remember we can draw all planar graphs in straight lines)
+
+picture on board is pentagon glued to one side of a square, and a triangle glued to another
+when we have polygons glued together, then we can count things. things like
+\begin{enumerate}
+\item
+faces, eg the polygons
+
+for faces we have several bounded, and one unbounded
+
+4
+\item
+edges
+
+10
+\item
+vertices
+
+8
+\end{enumerate}
+
+note that $V-E+F=2$
+
+this generalizes off the plane, but the idea of ``faces'' kind of breaks down and we have to looks at cycles and such.
+
+\section*{theorem}
+
+if a graph is planar then $v-e+f=2$
+
+\subsubsection*{proof}
+by induction on edges. if you add an edge, then you are adding a vertex or a face
+
+if $E=0$ and $G$ is connected then $G\cong K_1$. $1-0+1=2$ and so check. assume this is true for $e=k$. suppose $G$ is a tree with $e=k+1$. Now remove an edge that is part of a cycle and we have $e=k$ and number of faces is reduced by 1. Now $v-(e-1)+(f-1)=2$ by inductive hypothesis. adding the edge back in and we have $v-e+f=2$. Removing an edge not in a cycle reduced the number of vertices and $v-e+f=2$ similar to above.
+
+\section*{theorem}
+if $G$ is planar and $|G|\ge  4$ then $E\le 3V-6$. Proof crux: every face has at least 3 edges on it's boundary
+
+contrapositive:
+if $E>3V-6$ and $|G|\ge 4$ then $G$ is not planar.
+
+\section*{homework}
+6.1 numbers 1,2,5
+\end{document}
+ 
