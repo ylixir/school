@@ -1,0 +1,131 @@
+\documentclass[letterpaper]{article}
+
+\usepackage{fullpage}
+\usepackage{nopageno}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{tikz}
+\usepackage[utf8]{luainputenc}
+\usepackage{aeguill}
+\usepackage{setspace}
+
+\tikzstyle{edge} = [fill,opacity=.5,fill opacity=.5,line cap=round, line join=round, line width=50pt]
+\usetikzlibrary{graphs,graphdrawing}
+\usegdlibrary{trees}
+
+\pgfdeclarelayer{background}
+\pgfsetlayers{background,main}
+
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+
+\begin{document}
+\title{Notes}
+\date{25 février, 2015}
+\maketitle
+\section*{6.2 planarity vs nonplanarity}
+
+how to tell if a graph is planar without drawing it in a plane?
+
+on monday we saw some options for finding non-planarity.
+\begin{enumerate}
+\item
+$e> 3v-6$
+\item
+can't have $K_{3,3}$ or $K_5$ as a subgraph
+\item
+didn't get to this last time, but all vertices have degree 6 or more (this follows from one of the above)
+\end{enumerate}
+
+if $G$ is a graph then $H$ is a {\bfseries subdivision} of $G$ if $H$ is obtained from $G$ by adding a vertex on any edge of $G$.
+
+The process can be iterated.
+
+\subsubsection*{example}
+\begin{tikzpicture}[main_node/.style={circle,draw,text=black,inner sep=1pt,outer sep=0pt]}]
+  \node[main_node] (1) at (0,0) {};
+  \node[main_node] (2) at (0,1) {};
+  \node[main_node] (3) at (1,1) {};
+  \node[main_node] (4) at (1,0) {};
+  \draw (1)--(2)--(3)--(4)--(1);
+\end{tikzpicture}
+\begin{tikzpicture}[main_node/.style={circle,draw,text=black,inner sep=1pt,outer sep=0pt]}]
+  \node[main_node] (1) at (0,0) {};
+  \node[main_node] (2) at (0,1) {};
+  \node[main_node] (3) at (1,1) {};
+  \node[main_node] (4) at (1,0) {};
+  \node[main_node] (5) at (0.5,0) {};
+  \draw (1)--(2)--(3)--(4)--(5)--(1);
+\end{tikzpicture}
+
+\begin{enumerate}
+\item
+$H$ is a subdivision of $G$ implies that $H$ and $G$ have the same number of cycles (faces if planar)
+\item
+$H$ is a subdivision of $G$ implies that $|G|=m$ and $|E(G)|=m$ implies that $|H|=n+c$ and $|E(H)|=m+c$.
+\end{enumerate}
+
+\subsection*{kuratowski's theorem}
+a graph $G$ is planar if and only if $G$ contains no subdivisions of $K_{3,3}$ or $K_5$ as subgraphs.
+
+\subsubsection*{remark}
+there is an inverse operation to subdivision called {\bfseries edge contraction}
+
+an {\bfseries edge contraction} of $uv\in E(G)$ is when $uv$ is replaced by vertex $w$. The neighbors of $w$ are the neighbors of $u$ and $v$ with duplicates deleted. Then $u$ and $v$ are removed.
+
+\subsubsection*{example}
+\begin{tikzpicture}[main_node/.style={circle,draw,text=black,inner sep=1pt,outer sep=0pt]}]
+  \node[main_node] (1) at (0,0) {};
+  \node[main_node] (2) at (0,1) {};
+  \node[main_node] (3) at (1,1) {u};
+  \node[main_node] (4) at (1,0) {v};
+  \draw (1)--(2)--(3)--(4)--(1)--(3);
+\end{tikzpicture}
+\begin{tikzpicture}[main_node/.style={circle,draw,text=black,inner sep=1pt,outer sep=0pt]}]
+  \node[main_node] (1) at (0,0) {};
+  \node[main_node] (2) at (0,1) {};
+  \node[main_node] (3) at (1,1) {w};
+  \draw (1)--(2)--(3)--(1);
+\end{tikzpicture}
+
+\begin{tikzpicture}[main_node/.style={circle,draw,text=black,inner sep=1pt,outer sep=0pt]}]
+  \node[main_node] (1) at (0,1) {a};
+  \node[main_node] (2) at (1,0) {b};
+  \node[main_node] (3) at (2,0) {c};
+  \node[main_node] (4) at (3,1) {z};
+  \node[main_node] (5) at (1,2) {x};
+  \node[main_node] (6) at (2,2) {y};
+  \draw (1)--(2)--(3)--(4)--(6)--(5)--(1);
+  \draw (2)--(5)--(3)--(6);
+\end{tikzpicture}
+contract $bc$
+\begin{tikzpicture}[main_node/.style={circle,draw,text=black,inner sep=1pt,outer sep=0pt]}]
+  \node[main_node] (1) at (0,1) {a};
+  \node[main_node] (3) at (2,0) {bc};
+  \node[main_node] (4) at (3,1) {z};
+  \node[main_node] (5) at (1,2) {x};
+  \node[main_node] (6) at (2,2) {y};
+  \draw (1)--(3)--(4)--(6)--(5)--(1);
+  \draw (6)--(3)--(5);
+\end{tikzpicture}
+
+a {\bfseries minor} of a graph is any graph obtained from edge contraction, edge deletion or vertex deletion
+
+all subgraphs are minors. add in edge contraction to subgraphs and you get a minor.
+
+no connection to minor of a matrix
+
+\section*{wagner/kuratowski thrm}
+a graph is planar if and only if it contains no minors isomorphic to $K_{3,3}$ or $K_5$.
+
+\section*{overarching thrm}
+if property $P$ is maintained under taking minors then there exists a finite list of excluded/impossible minors.
+
+ie for planarity, the list is $K_{3,3}, K_5$.
+
+what are some minor closed properties? planarity, forest (excluded minor is $K_3$)
+
+\section*{homework}
+2,3,7,10
+\end{document}
