@@ -1,0 +1,228 @@
+%shell-escape
+\documentclass[letterpaper]{article}
+
+\usepackage{fullpage}
+\usepackage{nopageno}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{gnuplottex}
+\usepackage{tikz}
+\usepackage[utf8]{luainputenc}
+
+\tikzstyle{edge} = [fill,opacity=.5,fill opacity=.5,line cap=round, line join=round, line width=50pt]
+\usetikzlibrary{graphs,graphdrawing}
+\usegdlibrary{trees}
+\usegdlibrary{layered}
+
+\pgfdeclarelayer{background}
+\pgfsetlayers{background,main}
+\newlength{\arrowsize}  
+\pgfarrowsdeclare{biggertip}{biggertip}{  
+  \setlength{\arrowsize}{0.4pt}  
+  \addtolength{\arrowsize}{.5\pgflinewidth}  
+  \pgfarrowsrightextend{0}  
+  \pgfarrowsleftextend{-5\arrowsize}  
+}{  
+  \setlength{\arrowsize}{0.6pt}  
+  \addtolength{\arrowsize}{.5\pgflinewidth}  
+  \pgfpathmoveto{\pgfpoint{-5\arrowsize}{4\arrowsize}}  
+  \pgfpathlineto{\pgfpointorigin}  
+  \pgfpathlineto{\pgfpoint{-5\arrowsize}{-4\arrowsize}}  
+  \pgfusepathqstroke  
+}
+
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+
+\begin{document}
+\title{Graph Theory Homework}
+\date{February 27, 2015}
+\author{Jon Allen}
+\maketitle
+\renewcommand{\labelenumi}{4.\arabic{enumi}}
+\renewcommand{\labelenumii}{\arabic{enumii}.}
+%\renewcommand{\labelenumii}{\Alph{enumii}.}
+\renewcommand{\labelenumiii}{(\alph{enumiii})}
+\renewcommand\thefigure{4.\arabic{figure}}
+The assignment this week is 4.2 1,7 and 4.3 1, 3, 7.
+
+The only theoretical problem is 4.3 7a.  The hardest part of that problem will be succinct writing, as it is possible to ramble easily.  Just be sure to label things, and that will make the proof flow (ha!).  
+
+For the drawing questions, don't worry so much about prettiness; building tournaments from score sequences can be an ugly affair.  Just do your best.
+
+\begin{enumerate}
+\setcounter{enumi}{1}
+\item
+\begin{enumerate}
+  \item
+  %4.2 #1
+  Give an example of two non-isomorphic strong tournaments of order 5.
+
+  \begin{tikzpicture}[main_node/.style={node distance=2cm,circle,draw,text=black,inner sep=2,outer sep=5]}]
+    \node[main_node] (2) {};
+    \node[main_node] (1) [below left of=2] {};
+    \node[main_node] (3) [below right of=2] {};
+    \node[main_node] (4) [below of=3,left=5] {};
+    \node[main_node] (5) [below of=1,right=5] {};
+    \draw[-biggertip] (1)--(2);\draw[-biggertip] (2)--(3);
+    \draw[-biggertip] (3)--(4);\draw[-biggertip] (4)--(5);
+    \draw[-biggertip] (5)--(1);\draw[-biggertip] (1)--(3);
+    \draw[-biggertip] (3)--(5);\draw[-biggertip] (5)--(2);
+    \draw[-biggertip] (2)--(4);\draw[-biggertip] (4)--(1);
+  \end{tikzpicture}
+  \begin{tikzpicture}[main_node/.style={node distance=2cm,circle,draw,text=black,inner sep=2,outer sep=5]}]
+    \node[main_node] (2) {};
+    \node[main_node] (1) [below left of=2] {};
+    \node[main_node] (3) [below right of=2] {};
+    \node[main_node] (4) [below of=3,left=5] {};
+    \node[main_node] (5) [below of=1,right=5] {};
+    \draw[-biggertip] (1)--(2);\draw[-biggertip] (2)--(3);
+    \draw[-biggertip] (3)--(4);\draw[-biggertip] (4)--(5);
+    \draw[-biggertip] (5)--(1);\draw[-biggertip] (3)--(1);
+    \draw[-biggertip] (3)--(5);\draw[-biggertip] (5)--(2);
+    \draw[-biggertip] (2)--(4);\draw[-biggertip] (4)--(1);
+  \end{tikzpicture}
+  \setcounter{enumii}{6}
+  \item
+  %4.2 #7
+  Which of the following sequences are score sequences of tournaments? For each sequence that is a score sequence, construct a tournament having the given sequence as a score sequence.
+  \begin{enumerate}
+    \item
+    %4.2 #7a
+    $0,1,1,4,4$
+
+    The last two vertices have an outgoing degree of 4. Since there are only 5vertices, then they each must have an outgoing edge to every other vertex, including one another. This violates the definition of a tournament.
+    \item
+    %4.2 #7b
+    $1,1,1,4,4,4\to 1,1,1,4,3\to 1,1,1,3\to 1,1,1$
+    This is a tournament:
+
+  \begin{tikzpicture}[main_node/.style={node distance=2cm,circle,draw,text=black,inner sep=2,outer sep=5]}]
+    \node[main_node] (1) {};
+    \node[main_node] (2) [above right of=1] {};
+    \node[main_node] (3) [right of=2] {};
+    \node[main_node] (4) [below right of=3] {};
+    \node[main_node] (5) [below left of=4] {};
+    \node[main_node] (6) [left of=5] {};
+    \draw[-biggertip] (1)--(2); \draw[-biggertip] (1)--(3);
+    \draw[-biggertip] (1)--(4); \draw[-biggertip] (1)--(5);
+    \draw[-biggertip] (2)--(3); \draw[-biggertip] (2)--(4);
+    \draw[-biggertip] (2)--(5); \draw[-biggertip] (2)--(6);
+    \draw[-biggertip] (6)--(1); \draw[-biggertip] (6)--(5);
+    \draw[-biggertip] (6)--(3); \draw[-biggertip] (6)--(4);
+    \draw[-biggertip] (3)--(4); \draw[-biggertip] (4)--(5);
+    \draw[-biggertip] (5)--(3);
+  \end{tikzpicture}
+    \item
+    %4.2 #7c
+    $1,3,3,3,3,3,5\to 1,3,3,3,3,2\to 1,2,3,2,2\to 1,2,2,1\to 1,1,1$
+
+    So it is a tournament
+    \item
+    %4.2 #7d
+    $2,3,3,4,4,4,4,5$
+  \end{enumerate}
+\end{enumerate}
+\item
+\begin{enumerate}
+  \item
+  %4.3 #1
+  Let $N$ be the network with source $u$ and sink $v$ shown in Figure \ref{fig:4.3.1}, where each arc is labeled with its capacity. A function $f$ is defined on the arcs of $N$ as follows:
+  \begin{align*}
+    f(u,s)&=3 & f(s,t)&=3 & f(t,v)&=4 & f(u,x)&=3\\
+    f(x,y)&=3 & f(y,v)&=1 & f(x,t)&=1 & f(w,u)&=0\\
+    f(y,w)&=2 & f(w,v)&=2.\\
+  \end{align*}
+  Is $f$ a flow?
+  \setcounter{figure}{23}
+  \begin{figure}[ht]
+  \begin{tikzpicture}[main_node/.style={node distance=2cm,circle,draw,text=black,inner sep=2pt,outer sep=0pt]}]
+    \node[main_node] (s) {};
+    \node[main_node] (t) [right of=s] {};
+    \node[main_node] (u) [below left of=s] {};
+    \node[main_node] (x) [below left of=t] {};
+    \node[main_node] (y) [right of=x] {};
+    \node[main_node] (v) [right of=y] {};
+    \node[main_node] (w) [below left of=y] {};
+    \draw (s) node [above=3] {$s$};
+    \draw (u) node [left=20] {$N$:};
+    \draw (t) node [above=3] {$t$};
+    \draw (u) node [left=3] {$u$};
+    \draw (x) node [above left] {$x$};
+    \draw (y) node [above=2] {$y$};
+    \draw (v) node [right=3] {$v$};
+    \draw (w) node [below=3] {$w$};
+    \draw (s) edge node {$>$} node [above] {2} (t);
+    \draw (t) edge node[rotate=-35] {$>$} node [above=13,left=2] {4} (v);
+    \draw (u) edge node[rotate=45] {$>$} node [above left] {3} (s);
+    \draw (x) edge node[rotate=45] {$>$} node [above left] {1} (t);
+    \draw (u) edge node {$>$} node [above] {4} (x);
+    \draw (x) edge node {$>$} node [above] {3} (y);
+    \draw (y) edge node {$>$} node [above] {1} (v);
+    \draw (w) edge node[rotate=150] {$>$} node [below=12,right=2] {3} (u);
+    \draw (w) edge node[rotate=-150] {$<$} node [below=12,left=2] {5} (v);
+    \draw (y) edge node[rotate=45] {$>$} node [left=2] {2} (w);
+  \end{tikzpicture}
+  \caption{The network $N$ in Exercise 1}\label{fig:4.3.1}
+  \end{figure}
+  \setcounter{enumii}{2}
+  \item
+  %4.3 #3
+  For the network $N$ shown in Figure \ref{fig:4.3.3} with source $u$ and sink $v$, each arc has unlimited capacity. A flow $f$ in the network is indicated by the labels on the arcs.
+
+  \setcounter{figure}{25}
+  \begin{figure}[ht]
+  \begin{tikzpicture}[main_node/.style={node distance=2cm,circle,draw,text=black,inner sep=1pt,outer sep=0pt]}]
+    \node[main_node] (u) {};
+    \node[main_node] (w) [right of=u] {};
+    \node[main_node] (x) [right of=w] {};
+    \node[main_node] (v) [right of=x] {};
+    \node[main_node] (s) [above of=w] {};
+    \node[main_node] (t) [above of=x] {};
+    \node[main_node] (y) [below of=w] {};
+    \node[main_node] (z) [below of=x] {};
+    \node [left of=u] {$N$:};
+    \draw (u) node[left] {$u$};
+    \draw (s) node[above] {$s$};
+    \draw (t) node[above] {$t$};
+    \draw (v) node[right] {$v$};
+    \draw (y) node[below] {$y$};
+    \draw (z) node[below] {$z$};
+    \draw (w) node[above right] {$w$};
+    \draw (x) node[above left] {$x$};
+    \draw (u) edge node[rotate=45] {$>$} node[left=3] {1} (s);
+    \draw (t) edge node {$<$} node[above] {1} (s);
+    \draw (t) edge node[rotate=-45] {$>$} node[above=3] {6} (v);
+    \draw (u) edge node {$<$} node[above] {$a$} (w);
+    \draw (w) edge node {$>$} node[above] {3} (x);
+    \draw (x) edge node {$<$} node[above] {$c$} (v);
+    \draw (u) edge node[rotate=-45] {$>$} node[left=3] {4} (y);
+    \draw (y) edge node {$>$} node[below] {2} (z);
+    \draw (z) edge node[rotate=45] {$<$} node[right] {1} (v);
+    \draw (s) edge node[rotate=90] {$<$} node[right] {2} (w);
+    \draw (y) edge node[rotate=90] {$>$} node[right] {b} (w);
+    \draw (t) edge node[rotate=90] {$>$} node[left] {7} (x);
+    \draw (z) edge node[rotate=90] {$>$} node[left] {3} (x);
+  \end{tikzpicture}
+    \caption{The network $N$ in Exercise 3}\label{fig:4.3.3}
+  \end{figure}
+  \begin{enumerate}
+    \item
+    Determine the missing flows $a, b$ and $c$.
+    \item
+    Determine $\text{val}(f)$
+  \end{enumerate}
+  \setcounter{enumii}{6}
+  \item
+  %4.3 #7
+  Let $u$ and $v$ be two vertices of a digraph $D$ and let $A$ be a set of arcs of $D$ such that every $u-v$ path in $D$ contains at least one arc of $A$.
+  \begin{enumerate}
+    \item
+    Show that there exists a set of arcs of the form $[X,\overline{X}]$ where $u\in X$ and $v\in \overline{X}$ and $[X,\overline{X}]\subseteq A$.
+    \item
+    Show that $[X,\overline{X}]$ may be a proper subset of $A$.
+  \end{enumerate}
+\end{enumerate}
+\end{enumerate}
+\end{document}
