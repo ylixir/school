@@ -1,0 +1,55 @@
+\documentclass[letterpaper]{article}
+
+\usepackage[utf8]{luainputenc}
+\usepackage{fullpage}
+\usepackage{nopageno}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+
+\begin{document}
+\title{Notes}
+\date{2 mars, 2015}
+\maketitle
+
+when does taylor series converge?
+
+better question is when is $f(x)=\sum\limits{f^{(n)}(a)/n!\cdot (x-a)^n}$
+
+
+\section*{taylor's thm}
+$f\in C^{\infty}[a,b]$ and $f^{(n+1)}$ is defined on $[A,B]$ with $|f^{(n+1)}(x)|\le M$ for $x\in [A,B]$ then $R_n(x)=f(x)-\sum{\frac{f^{k}}{k!}(x-a)^k}$ satisfies $|R_n(x)|\le M|x-a|^{n+1}/(n+1)!$
+\begin{enumerate}
+\item
+$f(x)=\lim\sum\frac{f^{(k)}}{k!}(x-a)^k$ if and only if $\lim R_n(x)=0$
+
+the basic issue is that $M$ needs to not get too big to fast
+\item
+if $f\in C^\infty[A,B]$ then these hypotheses happen automatically (it's infinitely differentiable), although there is no guarantee that the taylor series converges to $f$.
+\end{enumerate}
+
+we want to use induction (what are we inducting on?)
+
+we will show that $|R_n^{(n-k)}(x)|\le\frac{M|x-a|^{k+1}}{(k+1)!}$.
+
+base case is $k=0$. $R_n(x)=f(x)-\sum{\frac{f^{(k)}}{k!}(x-a)^k}=f^{(n)}-\frac{n!}{n!}f^{(n)}x$ and so $|R_n(x)|=|f^{(n)}(x)-f^{(n)}(a)|$. by MVT we know $M|x-a|\ge f^{(n+1)}(c)|x-a|=|R_n(x)$. So base case is done
+
+assume $|R_n^{(n-k)}(x)|\le M|x-a|^{k+1}/(k+1)!$. consider $|R_n^{(n-(k+1))}(x)|=|R_n^{(n-(k+1))}(a)-\int_a^x{R^{(n-k)}(t)\;\mathrm{d}t}|$
+
+\subsection*{example}
+$f(x)=\sin x$ and $a=\frac{\pi}{2}$.
+
+$P_n(x)=\sum\limits_{k=0}^n{\frac{f^{(k)}(\frac{\pi}{2}(x-\frac{\pi}{2})^k}{k!}}$ and then we have $P_n=\sum\limits_{k=0}^n{(-1)^k(x-\frac{\pi}{2})^{2k}}/(2k)!$. Now $M_n=1$ (it is bounded by 1). Now then $R_n(x)\le \frac{1\cdot |x-a|^{n+1}}{(n+1)!}$ and because factorials are bigger than powers,  the limit is $R=0$.
+
+and so the power series gives the same value as the function all the time.
+
+$f(x)=\log x$ (natural log). taylor series at 1. note that zero is a problem. one is nice because it's symmetric and easy to compute.
+
+$f'(x)=\frac{1}{x}, f''(x)=-\frac{1}{x^2}, f'''(x)=\frac{2}{x^3},\dots$
+
+$P_n=\sum\limits_{k=1}^n{(-1)^{k+1}\frac{(k-1)!}{k!}(x-1)^k}$ now use ratio test
+
+$\frac{\frac{(-1)^{k+2}}{k+1}}{\frac{(-1)^{k+1}}{k}}\to$ radius of convergent of 1, centered at zero, so interval is $(0,2)$
+\end{document}
