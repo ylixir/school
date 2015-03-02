@@ -119,9 +119,33 @@ For the drawing questions, don't worry so much about prettiness; building tourna
     $1,3,3,3,3,3,5\to 1,3,3,3,3,2\to 1,2,3,2,2\to 1,2,2,1\to 1,1,1$
 
     So it is a tournament
+
+  \begin{tikzpicture}[main_node/.style={node distance=2cm,circle,draw,text=black,inner sep=2,outer sep=5]}]
+    \node[main_node] (1) {};
+    \node[main_node] (2) [above right of=1] {};
+    \node[main_node] (3) [right of=2] {};
+    \node[main_node] (4) [below right of=3] {};
+    \node[main_node] (5) [below of=4] {};
+    \node[main_node] (6) [below left of=5,left=20] {};
+    \node[main_node] (7) [below of=1] {};
+    \draw[-biggertip] (1)--(2); \draw[-biggertip] (1)--(3);
+    \draw[-biggertip] (1)--(4); \draw[-biggertip] (1)--(5);
+    \draw[-biggertip] (1)--(6);
+    \draw[-biggertip] (2)--(3); \draw[-biggertip] (2)--(4);
+    \draw[-biggertip] (2)--(5);
+    \draw[-biggertip] (3)--(4); \draw[-biggertip] (3)--(5);
+    \draw[-biggertip] (3)--(6);
+    \draw[-biggertip] (4)--(5); \draw[-biggertip] (4)--(6);
+    \draw[-biggertip] (4)--(7);
+    \draw[-biggertip] (6)--(5); \draw[-biggertip] (6)--(7);
+    \draw[-biggertip] (6)--(2);
+    \draw[-biggertip] (7)--(1); \draw[-biggertip] (7)--(2);
+    \draw[-biggertip] (7)--(3);
+    \draw[-biggertip] (5)--(7);
+    \end{tikzpicture}
     \item
     %4.2 #7d
-    $2,3,3,4,4,4,4,5$
+    $2,3,3,4,4,4,4,5\to 2,3,3,4,4,3,3\to2,3,3,3,2,3\to2,2,3,2,2\to2,2,2,1\to1,2,1\to1,1$ which is not a tournament
   \end{enumerate}
 \end{enumerate}
 \item
@@ -135,6 +159,8 @@ For the drawing questions, don't worry so much about prettiness; building tourna
     f(y,w)&=2 & f(w,v)&=2.\\
   \end{align*}
   Is $f$ a flow?
+
+  No it is not, $N^+(s)=1$, namely the $st$ arc. And so $f(s,t)=2\ne 3$
   \setcounter{figure}{23}
   \begin{figure}[ht]
   \begin{tikzpicture}[main_node/.style={node distance=2cm,circle,draw,text=black,inner sep=2pt,outer sep=0pt]}]
@@ -210,8 +236,16 @@ For the drawing questions, don't worry so much about prettiness; building tourna
   \begin{enumerate}
     \item
     Determine the missing flows $a, b$ and $c$.
+
+    \begin{align*}
+      f^+(x)=7&=f^-(x)=3+3+c&&\therefore c=1\\
+      f^+(u)=4+1-a&=f^-(v)=6-1-1&&\therefore a=1\\
+      f^+(w)=1+3&=f^-(w)=2+b&&\therefore b=2
+    \end{align*}
     \item
     Determine $\text{val}(f)$
+
+    $\text{val}(f)=f^+(u)=f^-(v)=4$
   \end{enumerate}
   \setcounter{enumii}{6}
   \item
@@ -220,8 +254,30 @@ For the drawing questions, don't worry so much about prettiness; building tourna
   \begin{enumerate}
     \item
     Show that there exists a set of arcs of the form $[X,\overline{X}]$ where $u\in X$ and $v\in \overline{X}$ and $[X,\overline{X}]\subseteq A$.
+
+    Let $\mathcal{U}$ be the set of all maximal paths $P$ in $D$ whose initial vertex is $u$ and such that no arc of $P$ belongs to $A$. Consider the set $X=\bigcap_{P\in\mathcal{U}}V(P)$.
+    %Now we know that every $u-v$ path contains an arc in $A$.
+    %It follows than that $v\not\in X$ or $v\in \overline{X}$.
+   %If this were not the case, then we would have a $u-v$ path in $\mathcal{U}$.
+   %But this path has an arc in $A$ and so we have a contradiction.
+   Note that $\mathcal{U}$ are maximal paths, and so the subpath of any $u-v$ path in $\mathcal{U}$ will be in $X$ until precisely the moment it reaches an arc in $A$.
+   Because all $u-v$ paths contain an arc in $A$ we know that $v\not\in X$ or that $v\in \overline{X}$.
+   And because all paths in $\mathcal{U}$ are maximal the only arcs in $[X,\overline{X}]$ are also in $A$.
     \item
     Show that $[X,\overline{X}]$ may be a proper subset of $A$.
+
+    \begin{tikzpicture}[main_node/.style={node distance=1cm,circle,draw,text=black,inner sep=1pt,outer sep=0pt]}]
+      \node[main_node] (a) {};
+      \node[main_node] (b) [right of=a] {};
+      \node[main_node] (c) [right of=b] {};
+      \draw (a) node[left] {a};
+      \draw (b) node[above] {b};
+      \draw (c) node[right] {c};
+      \draw[-biggertip] (a) -- (b);
+      \draw[-biggertip] (b) -- (c);
+    \end{tikzpicture}
+
+    Let $X=\{a\}$ and $A=\{(a,b),(b,c)\}$. Then $[X,\overline{X}]=\{(a,b)\}\subset A$
   \end{enumerate}
 \end{enumerate}
 \end{enumerate}

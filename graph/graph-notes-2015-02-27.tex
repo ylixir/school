@@ -1,0 +1,82 @@
+\documentclass[letterpaper]{article}
+
+\usepackage{fullpage}
+\usepackage{nopageno}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{tikz}
+\usepackage[utf8]{luainputenc}
+\usepackage{aeguill}
+\usepackage{setspace}
+
+\tikzstyle{edge} = [fill,opacity=.5,fill opacity=.5,line cap=round, line join=round, line width=50pt]
+\usetikzlibrary{graphs,graphdrawing}
+\usegdlibrary{trees}
+
+\pgfdeclarelayer{background}
+\pgfsetlayers{background,main}
+
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+
+\begin{document}
+\title{Notes}
+\date{27 février, 2015}
+\maketitle
+\section*{6.3 how non-planar are you?}
+if we draw a nonplanar graph in a plane, what must occur? we have crossing edges.
+
+the number of such crossings indicates how nonplanar you are
+
+when drawing a graph, we will use 5 conventions.
+
+\begin{enumerate}
+\item
+no edge will cross itself
+\item
+at any crossing, only two edges are involved
+\item
+no edge goes through a vertex
+\item
+adjacent edges never cross
+\item
+edges cross at most once
+\end{enumerate}
+
+definition: using these conventions to draw a graph $G$, the minumal number of crossings is called {\bfseries the crossing number} and is denoted $\text{cr}(G)$
+
+minimizing the crossing number is challenging to find, but it exists.
+
+\subsection*{thm}
+if $G$ is a graph with $|V(G)|=n\ge 3$ and $|E(G)|=m$, then $\text{cr}(G)\ge m-3n+6$. 
+\subsubsection*{proof}
+Draw $G$ in the plane with minimal crossings.
+
+if $\text{cr}(G)>0$ then we have crossings. draw a vertex at each crossing. Call this graph $G'$ and note that it is planar.
+
+$|V(G')|=|V(G)|+\text{cr}(G)$ and $|E(G')|=|E(G)|+2\text{cr}(G)$. Now we know that $|E(G')|\le 3|V(G')|-6$ (thm 6.3) and $\text{cr}(G)\ge m-3n+6$
+
+for complete graphs, we have other bounds
+
+\subsection*{thm}
+$\text{cr}(K_n)\ge\frac{1}{5}\binom{n}{4}$ and $n\ge 5$
+
+\subsection*{thm}
+$\text{cr}(K_n)\le \frac{1}{4}\lfloor\frac{n}{2}\rfloor\lfloor\frac{n-1}{2}\rfloor\lfloor\frac{n-2}{2}\rfloor\lfloor\frac{n-3}{2}\rfloor$
+
+\subsection*{thm}
+previous theorem is equal (sharp) for $1\le n\le 12$
+
+\subsection*{sixth convention}
+all edges are straight (rectilineary embeddings)
+
+\subsubsection*{fact}
+most bounds are now shot with these rectilinear embeddings
+
+\subsection*{thm}
+for planar graphs, the crossing number of the rectilinear embedding is also $0$.
+
+\subsubsection*{notation}
+rectilinear crossing number is $\overline{\text{cr}}(G)$
+\end{document}
