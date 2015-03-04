@@ -1,0 +1,73 @@
+\documentclass[letterpaper]{article}
+
+\usepackage{fullpage}
+\usepackage{nopageno}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{tikz}
+\usepackage[utf8]{luainputenc}
+\usepackage{aeguill}
+\usepackage{setspace}
+
+\tikzstyle{edge} = [fill,opacity=.5,fill opacity=.5,line cap=round, line join=round, line width=50pt]
+\usetikzlibrary{graphs,graphdrawing}
+\usegdlibrary{trees}
+
+\pgfdeclarelayer{background}
+\pgfsetlayers{background,main}
+
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+
+\begin{document}
+\title{Notes}
+\date{2 mars, 2015}
+\maketitle
+\section*{edge ideals}
+consider $\mathbb{R}$ and polynomials in $X$ with coefficients in $\mathbb{R}$.
+
+\subsection*{example}
+\begin{align*}
+  x^2+1\\
+  x-2\\
+  \pi\\
+  3x^3-5x+7
+\end{align*}
+
+we denote the set of all of these as $\mathbb{R}[x]$.
+
+some polynomials ``do fun things''
+
+\begin{enumerate}
+\item
+factor
+\begin{align*}
+  x^2-1&=(x+1)(x-1)\\
+  x^2-2x+1&=(x-1)^2\\
+  x^3-x^2+4x-4\\
+  etc
+\end{align*}
+we say all plynomials in $\mathbb{R}[x]$ with  the property that $x-1$ divides it, this entire set is an ideal.
+
+this is denoted $\langle x-1\rangle\subseteq \mathbb{R}[x]$ 
+
+if we want all polynomials divisable by several things, then $\langle x-1,x^2+1,x^4-2\rangle$. This is ``or'' or union. the ``and'' or intersection would be formed by just multiplying the divisors.
+
+in general $\langle f_1,\dots,f_r\rangle=\{\sum\limits_{i=1}^r{p_if_i}|p_i\in \mathbb{R}[x]\}$
+
+we can do this in many variables like $\mathbb{R}[x,y,z]$ or $\mathbb{R}[x_1,\dots,x_n]$ or even $\mathbb{R}[x_1,\dots]$
+
+all ideals have many invariants, eg, dimesnion, projective dimension, injective dimension, height, resolutions, betti numbers, etc.
+
+\end{enumerate}
+
+let $G$ be a graph and label the vertices $x_1,\dots,x_n$. then create an ideal in $\mathbb{R}[x_1,\dots,x_n]$. $I=\langle x_ix_j|x_j$
+
+\subsubsection*{example}
+\begin{tikzpicture}[main_node/.style={node distance=1cm,circle,draw,text=black,inner sep=1pt,outer sep=0pt]}]
+  \node[main_node] (1)  {1};
+  \node[main_node] (2) [below left of=1] {1};
+\end{tikzpicture}
+these ideals create a dictionary between graph theory properties and algebraic properties
+\end{document}
