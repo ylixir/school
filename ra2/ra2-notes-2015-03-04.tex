@@ -1,0 +1,70 @@
+\documentclass[letterpaper]{article}
+
+\usepackage[utf8]{luainputenc}
+\usepackage{fullpage}
+\usepackage{nopageno}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+
+\begin{document}
+\title{Notes}
+\date{4 mars, 2015}
+\maketitle
+\begin{align*}
+  \log x\\
+  \sum\limits_{k=1}^\infty{\frac{(-1)^{k+1}(x-1)^k}{k}}
+\end{align*}
+radius of convergence is 1 and interval of convergence is $(0,2]$ from last time
+
+
+in general the $n$th derivative looks like $f^{(n)}=\frac{(-1)^{n+1}(n-1)!}{x^n}$. 
+
+we restrict our $[a,b]$ such that $0<a\le b$.
+
+now $|f^{(n_1)}(x)|=|f^{(n+1)}(a)|=\frac{(n)!}{a^n}$
+
+now with taylors thm
+$|R_n(x)|\le \frac{n!}{a^n}(\frac{|x-1|^n}{(n+1)!}$
+
+take the limit of n to inf and
+\begin{align*}
+  \lim |R_n|&=\lim \frac{|x-1|^n}{a^nn}\to 0
+\end{align*}
+
+and so $\log x=\sum\limits_{k=1}^\infty{\frac{(-1)^{k+1}}{k!}(x-1)^k}$
+
+\subsection*{example}
+$f(x)=\begin{cases}e^{1/x^2}&x\ne 0\\0&x=0\end{cases}$
+
+\begin{align*}
+  f^{(n)}(x)&=\frac{q_n(x)}{x^{3n}}e^{-1/x^2}&x&\ne 0
+\end{align*}
+with $q_n(x)$ a polynomial of degree less than or equal to 2n
+first derivative at zero is zero because $\lim_{x\to 0}\frac{f(x)-0}{x-0}=\frac{e^{-1/x^2}}{x}$ which is zero with l'hopitals rule. same with inductive step fr $n$th degree. but then the power series at 0 converges to $P_n(x)=0$!
+
+
+\section*{can we approximate a continuous function by a polynomial?}
+
+yes, but....
+
+not usually with power series.
+
+\section*{thm}
+if $f$ is continuous on $[a,b]$ then for any $\epsilon>0$ there is a polynomial $p_\epsilon$ such that $||f-p_\epsilon||_\infty<\epsilon$
+
+the book does three proofs of this. bernstein, chebychev, and a general proof. stone-weierstrass thm.
+
+\subsection*{corollary}
+if $f$ is continuous on $[0,1]$ and $\int_0^1f(x)x^n\;\mathrm{d}x$ for all $n$ theen $f(x)=0$.
+
+\subsubsection*{proof}
+$\int_0^1{|f(x)|^2\;\mathrm{d}x}=\lim\int_0^1f(x)p_n(x)\;\mathrm{d}x$ with $p_n(x)$ being the polynomial approximation from weierstrass approximation theorem.
+
+\begin{align*}
+  \lim a_n\int f(x)x^n+a_{n-1}\int\dots+a_0\int f(x)x^0\;\mathrm{d}x=0
+\end{align*}
+\end{document}
+
