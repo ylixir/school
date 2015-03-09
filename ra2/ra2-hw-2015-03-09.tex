@@ -1,0 +1,90 @@
+%shell-escape
+\documentclass[letterpaper]{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{gnuplottex}
+\usepackage[utf8]{luainputenc}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\lhead{March 9, 2015}
+\chead{Real Analysis II Homework}
+\rhead{Jon Allen}
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+
+\begin{document}
+\begin{enumerate}
+  \item
+  Suppose that $f,g\in C^n[a-\delta,a+\delta]$ and $f^{(k)}(a)=g^{(k)}=0$ for $0\le k<n$ and $g^{(n)}(a)\ne 0$ then use Taylor polynomials to prove that
+\[\lim_{x\to a}\frac{f(x)}{g(x)}=\frac{f^{(n)}(a)}{g^{(n)}(a)}\]
+
+Let $F_n(x)$ be the Taylor polynomial for $f$ and $G_n(x)$ be the Taylor polynomial for $g$. Further note that because $f,g,F_n,G_n$ are all continuous on $[a-\delta,a+\delta]$ and $f(a)=F_n(a)$ and $g(a)=G_n(a)$ then $\lim_{x\to a}\frac{f(x)}{g(x)}=\lim_{x\to a}\frac{F_n(x)}{G_n(x)}$.
+
+\begin{align*}
+  \lim_{x\to a}\frac{f(x)}{g(x)}&=\lim_{x\to a}\frac{F_n(x)}{G_n(x)}
+  =\lim_{x\to a}\frac{\sum\limits_{k=0}^n{\frac{f^{(k)}(a)}{k!}(x-a)^k}}{\sum\limits_{k=0}^n{\frac{g^{(k)}(a)}{k!}(x-a)^k}}\\
+  &=\lim_{x\to a}\frac{\frac{f^{(n)}(a)}{k!}(x-a)^n+\sum\limits_{k=0}^{n-1}{\frac{f^{(k)}(a)}{k!}(x-a)^k}}{\frac{g^{(n)}(a)}{k!}(x-a)^n+\sum\limits_{k=0}^{n-1}{\frac{g^{(k)}(a)}{k!}(x-a)^k}}\\
+  &=\lim_{x\to a}\frac{\frac{f^{(n)}(a)}{k!}(x-a)^n+\sum\limits_{k=0}^{n-1}{\frac{0}{k!}(x-a)^k}}{\frac{g^{(n)}(a)}{k!}(x-a)^n+\sum\limits_{k=0}^{n-1}{\frac{0}{k!}(x-a)^k}}\\
+  &=\lim_{x\to a}\frac{\frac{f^{(n)}(a)}{k!}(x-a)^n+0}{\frac{g^{(n)}(a)}{k!}(x-a)^n+0}
+  =\lim_{x\to a}\frac{f^{(n)}(a)}{g^{(n)}(a)}=\frac{f^{(n)}(a)}{g^{(n)}(a)}\\
+\end{align*}
+\item
+Find the Taylor polynomial of order 3 for each of the following functions at the given point $a$, and estimate the error at the point $b$
+  \begin{enumerate}
+  \item
+  $f(x)=\sqrt{1+x^2}$ about $a=0$ and $b=0.1$.
+
+  First we need the first three derivatives:
+  \begin{align*}
+    f(x)&=\sqrt{1+x^2}&f''(x)&=\frac{1}{(1+x^2)^{3/2}}\\
+    f'(x)&=\frac{x}{\sqrt{1+x^2}}&f'''(x)&=-\frac{3x}{(1+x^2)^{5/2}}\\
+  \end{align*}
+  And about $a$:
+  \begin{align*}
+    f(a)&=1&f'(a)&=0&f''(a)&=1&f'''(a)&=0
+  \end{align*}
+  And finally the polynomial:
+  \begin{align*}
+    P_3(x)&=1+\frac{1}{2}x^2
+  \end{align*}
+  Now we need to find the bounds of the fourth derivative, so we will need the fourth and fifth derivatives also.
+  \begin{align*}
+    f^{(4)}(x)&=\frac{3(4x^2-1)}{(1+x^2)^{7/2}}
+    &f^{(5)}(x)&=\frac{45x-60x^3}{(1+x^2)^{9/2}}=\frac{15x(-4x^2+3)}{(1+x^2)^{9/2}}\\
+  \end{align*}
+    And using the quadratic formula: $x=\frac{\pm\sqrt{16\cdot3}}{-8}=\sqrt{3}/2$.
+
+  So we are interested in the points 0 and $\sqrt{3}/2$.
+  Now $f^{(4)}(0)=-3$ and $f^{(4)}(\frac{\sqrt{3}}{2})=\frac{3(4\cdot 3/4-1)}{\text{something positive}}=\frac{6}{\text{something positive}}>-3$
+
+
+  Because $f^{(4)}$ is increasing in the interval $[0,\frac{\sqrt{3}}{2}]$ we can just focus on $[0,0.1]$. Now $4x^2-1=4(x^2-\frac{1}{4})=4(x+\frac{1}{2})(x-\frac{1}{2})$ and so $0>f^{(4)}(0.1)>-3$ and so $|f^{(4)}|\le 3=M$. Using Taylor's Theorem we know that the error of our $P_3$ estimate is at least as close to zero as $\frac{3|0.1|^4}{4!}=\frac{0.0003}{24}=0.125\cdot 0.0001=0.0000125$
+  \item
+  $g(x)=\tan x$ about $a=\frac{\pi}{4}$ and $b=0.75$.
+
+  Get the first several derivatives:
+  \begin{align*}
+    g(x)&=\frac{\sin x}{\cos x}
+    \quad\quad g'(x)=\frac{1}{(\cos x)^2}
+    \quad\quad g''(x)=\frac{2\sin x}{(\cos x)^3}\\
+    g'''(x)&=\frac{2}{\cos^2 x}+\frac{6\sin^2}{\cos^4 x}
+    \quad\quad g^{(4)}(x)=\frac{16\sin x}{\cos^3 x}+\frac{24\sin^3 x}{\cos^5 x}\\
+    g^{(5)}(x)&=8\left(\frac{2}{\cos^2 x}+\frac{6\sin^2 x}{\cos^4 x}\right)+24\left(\frac{3\sin^4 x}{\cos^4 x}+\frac{5\sin^4 x}{\cos^6 x}\right)
+  \end{align*}
+  And now the derivatives at $\frac{\pi}{4}$:
+  \begin{align*}
+    g(a)&=1&g'(a)&=2&g''(x)&=2g'(a)=4&g'''(a)&=4+12=16
+  \end{align*}
+  And so our $P_3(x)=1+2(x-\frac{\pi}{4})+2(x-\frac{\pi}{4})^2+\frac{8}{3}(x-\frac{\pi}{4})^3$
+
+  Now we are interested in the range $[0.75,\frac{pi}{4}]$. Looking at $g^{(5)}$ we see no zeros and critical points at $n\pi-\frac{\pi}{2}$. Further $g^{(4)}(0)=0$ and $g^{(4)}(\frac{\pi}{4})=16g'(a)+24g'(a)=80$ and so that is our bound. Now then with Taylor's Theorem we have an error of less than $\frac{80|\frac{\pi}{4}-\frac{3}{4}|^4}{4!}=\frac{5}{6}\frac{(\pi-3)^4}{4^3}\approx5\cdot 10^{-6}$
+  \end{enumerate}
+\end{enumerate}
+\subsubsection*{References}
+\begin{enumerate}
+\item
+I used www.wolphramalpha.com to do the derivatives in 1a and to calculate decimal approximation in 1b.
+\end{enumerate}
+\end{document}

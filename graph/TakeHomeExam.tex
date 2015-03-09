@@ -1,0 +1,530 @@
+\documentclass[reqno]{amsart}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb,enumerate}
+\usepackage{graphicx}
+\usepackage{amsfonts}
+\usepackage[all]{xy}
+\usepackage{amsmath}
+\usepackage[margin=1in]{geometry}
+\usepackage{centernot}
+\usepackage{tikz}
+\usepackage{multicol}
+\usepackage{polynom}
+\usetikzlibrary{arrows}
+\usetikzlibrary{graphs,graphdrawing}
+\usegdlibrary{trees}
+\usegdlibrary{layered}
+
+\theoremstyle{plain}
+\newtheorem{lem}{Lemma} %[section]
+\newtheorem{cor}[lem]{Corollary}
+\newtheorem{prop}[lem]{Proposition}
+\newtheorem{thm}[lem]{Theorem}
+\newtheorem{conj}[lem]{Conjecture}
+\newtheorem{intthm}{Theorem}
+\renewcommand{\theintthm}{\Alph{intthm}}
+
+\theoremstyle{definition}
+\newtheorem{defn}[lem]{Definition}
+\newtheorem{ex}[lem]{Example}
+\newtheorem{question}[lem]{Question}
+\newtheorem{problem}[lem]{Problem}
+\newtheorem{disc}[lem]{Remark}
+\newtheorem{construction}[lem]{Construction}
+\newtheorem{notn}[lem]{Notation}
+\newtheorem{fact}[lem]{Fact}
+\newtheorem{para}[lem]{}
+\newtheorem{exer}[lem]{Exercise}
+\newtheorem{remarkdefinition}[lem]{Remark/Definition}
+\newtheorem{notation}[lem]{Notation}
+\newtheorem{step}{Step}
+\newtheorem{convention}[lem]{Convention}
+
+%\numberwithin{equation}{lem}
+\newcommand{\bbt}{\mathbb{T}}
+\newcommand{\bbs}{\mathbb{S}}
+\newcommand{\bbk}{\mathbb{K}}
+\newcommand{\bbp}{\mathbb{P}}
+\newcommand{\bbz}{\mathbb{Z}}
+\newcommand{\bbr}{\mathbb{R}}
+\newcommand{\bbq}{\mathbb{Q}}
+\newcommand{\bbn}{\mathbb{N}}
+\newcommand{\bbc}{\mathbb{C}}
+\newcommand{\inc}{\nearrow}
+\newcommand{\Ra}{\Rightarrow}
+\newcommand{\La}{\Leftarrow}
+\newcommand{\nrm}{\trianglelefteq}
+\newcommand{\LA}{\left\langle}
+\newcommand{\RA}{\right\rangle}
+\newcommand{\op}{\oplus}
+\newcommand{\od}{\odot}
+\newcommand{\lcm}{\operatorname{lcm}}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\spn}{\operatorname{Span}}
+\newcommand{\cn}{\centernot}
+\newcommand{\gf}{\operatorname{GF}}
+\newcommand{\aut}{\operatorname{Aut}}
+\newcommand{\inn}{\operatorname{Inn}}
+\newcommand{\col}{\operatorname{Col}}
+\newcommand{\nul}{\operatorname{Nul}}
+\newcommand{\zz}{\bbz_2\times\bbz_2}
+\newcommand{\Ker}{\operatorname{Ker}}
+\newcommand{\isom}{\cong}
+\definecolor{uuuuuu}{rgb}{0.26,0.26,0.26}
+%\DeclareUnicodeCharacter{0177}{\^y}
+\begin{document}
+
+\Large
+\begin{flushright}
+Math 430/630\\
+Take Home Exam 1\\
+Spring 2015
+\end{flushright}
+\vspace{0.45cm}
+
+\begin{center}
+\fbox{\fbox{\parbox{1.0\linewidth}{\centering{\bf Instructions:} The majority of the credit you earn will be based on the neatness, clarity, and correctness of the work you show.  If you wish to be eligible for partial credit, show all of your work in a coherent and organized manner. All graphs are assumed to be simple, but not necessarily connected.  There are 110 possible points, but the grade will be out of 100. Work alone using only your head, notes and book. If you are unable to fully answer a question, giving examples and trains of thought is better than nothing.}}}
+\end{center}
+\vspace{0.5cm}
+%\begin{flushright}
+\noindent Name: Jon Allen%\hrulefill\\ 
+%\end{flushright}
+\vspace{1cm}
+
+
+
+
+\begin{enumerate}[1.)]
+%Numerical Limit
+  \item (14 points) 
+      Consider the weighted graph below.
+      \begin{enumerate}
+      \item What is the minimal weight of a spanning tree of $G$?
+
+Simply building a tree with Kruskal's Algorithm gives us a tree with weight 12.
+\begin{tikzpicture}[main_node/.style={node distance=2cm,circle,draw,text=black,inner sep=1pt,outer sep=0pt]}]
+  \node[main_node] (1) {};
+  \node[main_node] (2) [right of=1] {};
+  \node[main_node] (3) [right of=2] {};
+  \node[main_node] (4) [below of=1] {};
+  \node[main_node] (5) [below of=2] {};
+  \node[main_node] (6) [below of=3] {};
+  \node[main_node] (7) [right of=6] {};
+  \node[main_node] (8) [below of=5] {};
+  \node[main_node] (9) [below of=6] {};
+  \draw (1) node[above] {$v_1$}; \draw (2) node[above] {$v_2$};
+  \draw (3) node[above] {$v_3$}; \draw (4) node[below] {$v_4$};
+  \draw (5) node[above left] {$v_5$}; \draw (6) node[above left] {$v_6$};
+  \draw (7) node[above] {$v_7$};
+  \draw (8) node[below] {$v_8$};
+  \draw (9) node[below] {$v_9$};
+  \draw (1) edge node[left]  {1}  (4);
+  \draw (3) edge node[above] {1}  (7);
+  \draw (5) edge node[above] {1}  (6);
+  \draw (6) edge node[right] {1}  (9);
+  \draw (2) edge node[above] {2}  (4);
+  \draw (2) edge node[above] {2}  (3);
+%  \draw (3) edge node[above] {2}  (5);
+  \draw (3) edge node[right] {2}  (6);
+  \draw (5) edge node[left]  {2}  (8);
+%  \draw (1) edge node[above] {3}  (2);
+%  \draw (2) edge node[left]  {3}  (5);
+%  \draw (4) edge node[below] {3}  (8);
+%  \draw (5) edge node[below] {3}  (9);
+%  \draw (6) edge node[above] {3}  (7);
+%  \draw (7) edge node[right] {3}  (9);
+%  \draw (8) edge node[below] {3}  (9);
+\end{tikzpicture}
+\begin{tikzpicture}[main_node/.style={node distance=2cm,circle,draw,text=black,inner sep=1pt,outer sep=0pt]}]
+  \node[main_node] (1) {};
+  \node[main_node] (2) [right of=1] {};
+  \node[main_node] (3) [right of=2] {};
+  \node[main_node] (4) [below of=1] {};
+  \node[main_node] (5) [below of=2] {};
+  \node[main_node] (6) [below of=3] {};
+  \node[main_node] (7) [right of=6] {};
+  \node[main_node] (8) [below of=5] {};
+  \node[main_node] (9) [below of=6] {};
+  \draw (1) node[above] {$v_1$}; \draw (2) node[above] {$v_2$};
+  \draw (3) node[above] {$v_3$}; \draw (4) node[below] {$v_4$};
+  \draw (5) node[above left] {$v_5$}; \draw (6) node[above left] {$v_6$};
+  \draw (7) node[above] {$v_7$};
+  \draw (8) node[below] {$v_8$};
+  \draw (9) node[below] {$v_9$};
+  \draw (1) edge node[left]  {1}  (4);
+  \draw (3) edge node[above] {1}  (7);
+  \draw (5) edge node[above] {1}  (6);
+  \draw (6) edge node[right] {1}  (9);
+  \draw (2) edge node[above] {2}  (4);
+  \draw (2) edge node[above] {2}  (3);
+  \draw (3) edge node[above] {2}  (5);
+%  \draw (3) edge node[right] {2}  (6);
+  \draw (5) edge node[left]  {2}  (8);
+%  \draw (1) edge node[above] {3}  (2);
+%  \draw (2) edge node[left]  {3}  (5);
+%  \draw (4) edge node[below] {3}  (8);
+%  \draw (5) edge node[below] {3}  (9);
+%  \draw (6) edge node[above] {3}  (7);
+%  \draw (7) edge node[right] {3}  (9);
+%  \draw (8) edge node[below] {3}  (9);
+\end{tikzpicture}
+
+These graphs are both minimal spanning trees built with Kruskal's algorithm, and are actually the solution to the next part.
+
+      \item How many nonisomorphic (as labeled trees) spanning trees have this weight?
+
+      First we notice that our minimal tree uses all the edges of weight 1, and all but one of the edges of weight 2. Further, any spanning tree will have 8 edges, so we cannot change the number of edges.
+
+      Now, if we replace any edge in our tree with an edge of greater weight, then we must replace one or more of our other edges with an edge of lesser weight, else we won't have a total weight of 12.
+      But one is our lowest weight so we can't replace a one with something lesser. Also we have already used all of our ones, so we cannot replace any twos with something lesser.
+
+      This goes both ways, but just for completeness I will point out that we cannot replace any of our edges with lesser valued edges either, because of the summing issue, and because we have no lesser valued edges to use anyhow.
+
+      All that we can do then is replace edges with other edges of the same value. Again all our ones are used already, and so we can only swap out 2's. We only have one unused edge of weight two. Adding in the two that is missing from the first graph ($v_3v_5$) forces us to remove the $v_3v_6$ edge, giving us the second graph above.
+
+      These two graphs are the only possible choices for spanning trees of weight 12. Note that although the underlying graphs are isomorphic, the labels (and weights) cause them to be non-isomorphic as labeled.
+      \item What is the Pr\"{u}fer code of each of the minimal spanning trees?
+      
+      We will use the subscripts of our vertex labels as indices. That is the index of vertex $v_i$ is $i$.
+
+      $(4,2,3,3,6,5,6)$
+
+      $(4,2,3,3,5,5,6)$
+      \end{enumerate}
+      \begin{center}
+      \begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1.0cm,y=1.0cm]
+%\clip(-10.420000000000005,-5.920000000000003) rectangle (17.26000000000001,8.360000000000003);
+\draw (-3.0,2.0)-- (1.0,2.0);
+\draw (-3.0,2.0)-- (-3.0,0.0);
+\draw (-3.0,0.0)-- (-1.0,2.0);
+\draw (-1.0,2.0)-- (-1.0,-2.0);
+\draw (1.0,2.0)-- (1.0,-2.0);
+\draw (-1.0,0.0)-- (3.0,0.0);
+\draw (3.0,0.0)-- (1.0,2.0);
+\draw (3.0,0.0)-- (1.0,-2.0);
+\draw (1.0,-2.0)-- (-1.0,-2.0);
+\draw (1.0,-2.0)-- (-1.0,0.0);
+\draw (-1.0,0.0)-- (1.0,2.0);
+\draw (-3.0,0.0)-- (-1.0,-2.0);
+\draw (-2.220000000000001,2.4) node[anchor=north west] {$3$};
+\draw (-0.12000000000000006,2.4) node[anchor=north west] {$2$};
+\draw (2.,1.48) node[anchor=north west] {$1$};
+\draw (.96,1.22) node[anchor=north west] {$2$};
+\draw (1.65,0.45) node[anchor=north west] {$3$};
+\draw (.95,-0.65) node[anchor=north west] {$1$};
+\draw (2.12,-0.65) node[anchor=north west] {$3$};
+\draw (-.15,0.45) node[anchor=north west] {$1$};
+\draw (-0.2600000000000001,1.52) node[anchor=north west] {$2$};
+\draw (-0.13,-0.65) node[anchor=north west] {$3$};
+\draw (-0.18,-1.95) node[anchor=north west] {$3$};
+\draw (-2.240000000000001,1.52) node[anchor=north west] {$2$};
+\draw (-3.34,1.22) node[anchor=north west] {$1$};
+\draw (-2.56,-0.65) node[anchor=north west] {$3$};
+\draw (-1.36,-0.65) node[anchor=north west] {$2$};
+\draw (-1.34,1.22) node[anchor=north west] {$3$};
+\begin{scriptsize}
+\draw [fill=black] (-1.0,0.0) circle (1.5pt);
+\draw[color=black] (-1.2,0.24) node {$v_5$};
+\draw [fill=black] (-3.0,0.0) circle (1.5pt);
+\draw[color=black] (-2.92,-0.3) node {$v_4$};
+\draw [fill=black] (1.0,0.0) circle (1.5pt);
+\draw[color=black] (.8,0.24) node {$v_6$};
+\draw [fill=black] (3.0,0.0) circle (1.5pt);
+\draw[color=black] (3.08,0.24) node {$v_7$};
+\draw [fill=black] (-3.0,2.0) circle (1.5pt);
+\draw[color=black] (-2.92,2.14) node {$v_1$};
+\draw [fill=black] (-1.0,2.0) circle (1.5pt);
+\draw[color=black] (-0.92,2.14) node {$v_2$};
+\draw [fill=black] (-1.0,-2.0) circle (1.5pt);
+\draw[color=black] (-0.92,-2.2) node {$v_8$};
+\draw [fill=black] (1.0,2.0) circle (1.5pt);
+\draw[color=black] (1.08,2.14) node {$v_3$};
+\draw [fill=black] (1.0,-2.0) circle (1.5pt);
+\draw[color=black] (1.08,-2.2) node {$v_9$};
+\end{scriptsize}
+\end{tikzpicture}
+\end{center}
+        \vfill
+  %Graphical Limit
+  \item (8 points) For each of the following sequences, determine if they are a degree sequence of a graph.  For those that are degree sequences, draw a graph that has that sequence.  Justify if it is not a degree sequence. If it is not a degree sequence, determine if it is a score sequence of a tournament.
+  \begin{enumerate}
+  \item $(0,1,2,3,4)$
+
+  Not a degree sequence. If it were a degree sequence then the 0 represents an isolated vertex, meaning that the above is a degree sequence only if $(1,2,3,4)$ is a degree sequence. But a graph of order 4 can't have a vertex of degree 4.
+
+  This is, however, the score sequence of a (transitive) tournament by Theorem 4.13.
+  \item $(1,1,2,2,3,3)$
+  With Havel-Hakimi:
+  \[
+  (3,3,2,2,1,1)\to(2,1,1,1,1)\to(0,0,1,1)
+  \]
+  Which is graphical.
+
+  \begin{tikzpicture}[main_node/.style={node distance=1cm,circle,draw,text=black,inner sep=1pt,outer sep=0pt]}]
+    \node[main_node] (1) {};
+    \node[main_node] (2) [above of=1] {};
+    \node[main_node] (3) [right of=2] {};
+    \node[main_node] (4) [below of=3] {};
+    \node[main_node] (5) [right of=4] {};
+    \node[main_node] (6) [above of=5] {};
+    \draw (1)--(2);
+    \draw (1)--(3);
+    \draw (1)--(4);
+    \draw (5)--(6);
+    \draw (2)--(3);
+    \draw (2)--(4);
+  \end{tikzpicture}
+  \item $(1,1,2,3,5)$
+
+  Not a degree sequence. A graph can only have vertices with degrees less than the order of the graph.
+
+  Also not a score sequence for basically the same reason. If you have a tournament $T$ of order $5$ then $\text{od}(v)\le 4$ for all $v\in V(T)$.
+  \item $(2,2,2,2,2,2,2)$
+  \[
+  (2,2,2,2,2,2,2)\to(2,2,2,2,1,1)\to(2,1,1,1,1)\to(1,1)
+  \]
+  And $(1,1)$ is graphical so we are done.
+
+  \begin{tikzpicture}[main_node/.style={node distance=1cm,circle,draw,text=black,inner sep=1pt,outer sep=0pt]}]
+  \draw (0:1cm) \foreach \x in {50,100,...,300} {
+            -- (\x:1cm) circle (2pt)
+        } -- (0:1cm) circle (2pt);
+  \end{tikzpicture}
+  \end{enumerate}
+\vfill
+  \item (8 points) Consider Eulerianness and Hamiltonicity of graphs.  Draw four graphs: one that has both properties, one that has neither property, and two graphs with one property, but not the other. Justify each claim.
+  
+\tikz\path [graphs/.cd, nodes={shape=circle, draw, inner sep=1pt,outer sep=0pt}, empty nodes]
+  graph { 1 -- 2;3 -- 4;1--3;2--4 }
+  [shift=(0:1.5)]
+  graph { 1;2--3--4;5;1--2;2--5;1--4;5--4 }
+  [shift=(0:2.5)]
+  graph { 1 -- 2;3 -- 4;1--3;2--4;1--4 }
+  [shift=(0:1.5)]
+  graph { 1--2;3;4--5;1--3;3--4;2--3;3--5}
+  ;
+
+  The first graph is both Hamiltonian and Eulerian, this is obvious, the only cycle in the graph is both Hamiltonian and Eulerian.
+
+  The second and third graph are not Eulerian as they both have vertices of degree 3 which is odd.
+
+  The fourth graph is Eulerian because all of the vertices have even degrees.
+
+  The third graph is Hamiltonian as a consequence of the first graph being Hamiltonian.
+
+  Lets make sure the second and fourth graphs are not Hamiltonian. Notice that there are 3 regions with 4 edge boundaries in the second graph. There are no other regions. Looking at theorem 6.37 we notice that we must have at least one region interior and one region exterior to our hypothetical Hamiltonian circuit. So we have $\left|\sum\limits_{i=3}^5{(i-2)(r_i-r_i'}\right|=|2\cdot(2-1)|=2\ne 0$. So it is not Hamiltonian.
+
+  Now we look at the fourth graph. The graph actually only has two cycles, neither of which spans the graph. This graph can't be Hamiltonian.
+%  \pagebreak
+  \item (10 points) Prove or disprove the following claim. There is a $k$-connected (but not $(k+1)$-connected) graph $G$ such that there exists $u,v\in \text{V}(G)$ where there are more than $k$ internally disjoint $u-v$ paths, but no other pair of vertices satisfies this condition.
+
+  Note that if $k=1$ and $u,v$ are connected by two internally disjoint paths, then they must be on a cycle. But a cycle has at least three vertices, so there must be at least one other vertex ($w$) on the cycle. Now there are two internally disjoint $u-w$ paths and two internally disjoint $v-w$ paths on this cycle. So the hypothesis could only hold when $k>1$.
+
+  We have proven the hypothesis false, but that is boring, and probably not the intent of the question. Let us assume that $k\ge 2$ and proceed accordingly.
+
+  Let us first denote $k-2=r$ and $k+1=n$. Now we start with an $r$-regular graph of order $n$. If $k$ is even then $r$ is also but $n$ is odd. Similarly if $k$ is odd then so is $r$ but $n$ is even. Thus we know from theorem $1.7$ that this graph exists.
+
+  \vfill
+  % Average ROC
+  \item (8 points) Give an example of a weakly connected digraph that is not strong, but has no sinks or sources.
+
+  \begin{tikzpicture}[main_node/.style={node distance=1cm,circle,draw,text=black,inner sep=1pt,outer sep=0pt]}]
+    \node[main_node] (1) {};
+    \node[main_node] (2) [above right of=1] {};
+    \node[main_node] (3) [below right of=1] {};
+    \node[main_node] (4) [right of=2] {};
+    \node[main_node] (5) [below right of=4] {};
+    \node[main_node] (6) [below left of=5] {};
+    \draw (1) edge node[rotate=45] {$>$} (2);
+    \draw (2) edge node[rotate=-90] {$>$} (3);
+    \draw (3) edge node[rotate=-45] {$<$} (1);
+    \draw (4) edge node[rotate=-45] {$>$} (5);
+    \draw (5) edge node[rotate=45] {$<$} (6);
+    \draw (6) edge node[rotate=90] {$>$} (4);
+    \draw (2) edge node {$>$} (4);
+    \draw (3) edge node {$>$} (6);
+  \end{tikzpicture}
+  No sinks or sources, and no paths from any of the vertices on the right triangle to any of the vertices on the left triangle.
+  \vfill
+  %Algebraic derivatives
+  \item (12 points) Prove or disprove the following claim. For all $n\geq 3$, there exists a tournament with $n$ players in which there is exactly one upset. I.e., there is exactly one directed triangle.
+
+  We begin with the tournament of $n$ players which contains no upsets. We will call this tournament $T$. The score sequence of $T$ is $0,1,\dots,n-1$. We denote the vertex with a score of $n-i$ as $v_i$. Now lets replace the $(v_1,v_3)$ arc with a $(v_3,v_1)$ arc to form $T'$. Now because this is the only arc we changed, any cyclic triangles in $T'$ must contain $v_1$ and $v_3$ and some third point. Now notice that the score of $v_1$ in $T$ is $n-1$ so it wins against everyone. Similarly $v_2$ only loses to $v_1$. In particular it wins against $v-3$. Now in $T'$ we know that $v_2$ still wins against $v_3$. In fact because $v_3$ in $T$ has a score of $n-3$ we know that it only loses to $v_1$ and $v_2$. So in $T'$ we see that $v_3$ only loses to $v_2$. So any cyclic triangle that contains $v_3$ must also contain $v_2$. Thus we have established that any cyclic triangle in $T'$ must contain $v_1$, $v_2$, and $v_3$. This leaves us with only one choice for the three vertexes of our triangle. We have already established the existence of the $(v_3,v_1)$ and $(v_2,v_3)$ arcs. Now we know that $v_1$ wins against all but $v_3$ and so there must be a $(v_1,v_2)$ arc. Thus the triangle exists and we are done.
+  \vfill
+  \item (12 points) Which of the following graphs is planar?  If planar, draw it as such; if not planar, indicate why, labeling vertices as needed.
+  \begin{multicols}{2}
+  \begin{center}
+  \begin{tikzpicture}[scale=.55][line cap=round,line join=round,>=triangle 45,x=1.0cm,y=1.0cm]
+%\clip(-4.3,-7.76) rectangle (23.06,6.3);
+\draw (0.88,5.56)-- (4.02,4.82);
+\draw (0.88,5.56)-- (-1.84,3.88);
+\draw (0.88,5.56)-- (-0.96,-1.96);
+\draw (5.68,2.08)-- (4.02,4.82);
+\draw (5.68,2.08)-- (-1.84,3.88);
+\draw (5.68,2.08)-- (-0.96,-1.96);
+\draw (-2.62,0.8)-- (4.02,4.82);
+\draw (-2.62,0.8)-- (-1.84,3.88);
+\draw (-2.62,0.8)-- (-0.96,-1.96);
+\draw (0.88,5.56)-- (2.16,-2.74);
+\draw (2.16,-2.74)-- (5.68,2.08);
+\draw (2.16,-2.74)-- (-2.62,0.8);
+\draw (-0.96,-1.96)-- (4.88,-1.06);
+\draw (4.88,-1.06)-- (-1.84,3.88);
+\draw (4.88,-1.06)-- (4.02,4.82);
+\begin{scriptsize}
+\draw [fill=black] (4.02,4.82) circle (3.8pt) node[above=2] {1};
+\draw [fill=black] (0.88,5.56) circle (3.8pt) node[above=2] {2};
+\draw [fill=black] (5.68,2.08) circle (3.8pt) node[above=2] {3};
+\draw [fill=black] (-1.84,3.88) circle (3.8pt) node[above=2] {4};
+\draw [fill=black] (-0.96,-1.96) circle (3.8pt) node[below=2] {5};
+\draw [fill=black] (-2.62,0.8) circle (3.8pt) node[left] {6};
+\draw [fill=black] (2.16,-2.74) circle (3.8pt) node[below=2] {7};
+\draw [fill=black] (4.88,-1.06) circle (3.8pt) node[right] {8};
+%\draw [fill=black] (-1.86,3.9) circle (3.8pt) node[above=2] {9};
+%\draw [fill=black] (-2.62,0.78) circle (3.8pt) node[above=2] {0};
+\end{scriptsize}
+\end{tikzpicture}
+\end{center}
+\columnbreak
+\begin{center}
+\begin{tikzpicture}[scale=.45][line cap=round,line join=round,>=triangle 45,x=1.0cm,y=1.0cm]
+%\clip(-15.845691564544923,-11.815854162998225) rectangle (30.828248690065475,12.26304276026176);
+\draw (-4.0,-2.0)-- (4.0,4.0);
+\draw (4.0,4.0)-- (-1.2432232623438377,-4.430310148721002);
+\draw (-1.2432232623438377,-4.430310148721002)-- (-4.0,4.0);
+\draw (-4.0,4.0)-- (8.0,6.0);
+\draw (8.0,6.0)-- (8.0,-2.0);
+\draw (4.0,4.0)-- (-4.0,4.0);
+\draw (0.0,6.0)-- (8.0,-2.0);
+\draw (-1.2432232623438377,-4.430310148721002)-- (-4.0,-2.0);
+\draw (0.0,6.0)-- (8.0,6.0);
+\draw (8.0,-2.0)-- (-1.2432232623438377,-4.430310148721002);
+\draw (8.0,-2.0)-- (-4.0,4.0);
+\draw (-1.2432232623438377,-4.430310148721002)-- (8.0,6.0);
+\draw (0.0,6.0)-- (-1.2432232623438377,-4.430310148721002);
+\draw (-4.0,-2.0)-- (8.0,-2.0);
+\begin{scriptsize}
+\draw [fill=black] (-4.0,-2.0) circle (4pt);
+\draw [fill=black] (0.0,6.0) circle (4pt);
+\draw [fill=black] (4.0,4.0) circle (4pt);
+\draw [fill=black] (-4.0,4.0) circle (4pt);
+\draw [fill=black] (8.0,6.0) circle (4pt);
+\draw [fill=black] (8.0,-2.0) circle (4pt);
+\draw [fill=black] (-1.2432232623438377,-4.430310148721002) circle (4pt);
+\end{scriptsize}
+\end{tikzpicture}
+\end{center}
+\end{multicols}
+  \begin{tikzpicture}[main_node/.style={node distance=1cm,circle,draw,text=black,inner sep=1pt,outer sep=0pt]}]
+    \node[main_node] (1) at (0:1.5cm) {};
+    \draw (0:1.75cm) node {$v_1$};
+    \node[main_node] (2) at (1*45:1.5cm) {};
+    \draw (1*45:1.75cm) node {$v_2$};
+    \node[main_node] (3) at (2*45:1.5cm) {};
+    \draw (2*45:1.75cm) node {$v_3$};
+    \node[main_node] (4) at (3*45:1.5cm) {};
+    \draw (3*45:1.75cm) node {$v_4$};
+    \node[main_node] (5) at (4*45:1.5cm) {};
+    \draw (4*45:1.75cm) node {$v_5$};
+    \node[main_node] (6) at (5*45:1.5cm) {};
+    \draw (5*45:1.75cm) node {$v_6$};
+    \node[main_node] (7) at (6*45:1.5cm) {};
+    \draw (6*45:1.75cm) node {$v_7$};
+    \node[main_node] (8) at (7*45:1.5cm) {};
+    \draw (7*45:1.75cm) node {$v_8$};
+    \draw (1) -- (2) -- (3) -- (4) -- (5) -- (6) -- (8) -- (2) -- (5) -- (7) -- (1) -- (4) -- (8);
+    \draw (1) -- (6) -- (3) -- (7);
+  \end{tikzpicture}
+  \begin{tikzpicture}[main_node/.style={node distance=1cm,circle,draw,text=black,inner sep=1pt,outer sep=0pt]}]
+    \node[main_node] (1) at (0:1.5cm) {};
+    \draw (0:1.75cm) node {$v_1$};
+    \node[main_node] (2) at (1*45:1.5cm) {};
+    \draw (1*45:1.75cm) node {$v_2$};
+    \node[main_node] (3) at (2*45:1.5cm) {};
+    \draw (2*45:1.75cm) node {$v_3$};
+    \node[main_node] (4) at (3*45:1.5cm) {};
+    \draw (3*45:1.75cm) node {$v_4$};
+    \node[main_node] (5) at (4*45:1.5cm) {};
+    \draw (4*45:1.75cm) node {$v_5$};
+    \node[main_node] (6) at (5*45:1.5cm) {};
+    \draw (5*45:1.75cm) node {$v_6$};
+    \draw (1) -- (2) -- (3) -- (4) -- (5) -- (6) -- (2) -- (5) -- (1) -- (4) -- (2);
+    \draw (1) -- (6) -- (3) -- (5);
+  \end{tikzpicture}
+  \begin{tikzpicture}[main_node/.style={node distance=1cm,circle,draw,text=black,inner sep=1pt,outer sep=0pt]}]
+    \node[main_node] (1) at (0:1.5cm) {};
+    \draw (0:1.75cm) node {$v_1$};
+    \node[main_node] (2) at (1*45:1.5cm) {};
+    \draw (1*45:1.75cm) node {$v_2$};
+    \node[main_node] (3) at (2*45:1.5cm) {};
+    \draw (2*45:1.75cm) node {$v_3$};
+    \node[main_node] (4) at (3*45:1.5cm) {};
+    \draw (3*45:1.75cm) node {$v_4$};
+    \node[main_node] (5) at (4*45:1.5cm) {};
+    \draw (4*45:1.75cm) node {$v_5$};
+    \node[main_node] (6) at (5*45:1.5cm) {};
+    \draw (5*45:1.75cm) node {$v_6$};
+    \draw (3) -- (4);
+    \draw (6) -- (2) -- (5) -- (1) -- (4) -- (2);
+    \draw (1) -- (6) -- (3) -- (5);
+  \end{tikzpicture}
+
+  For the first graph, we contract the $v_5v_7$ and the $v_8v_2$ edges, then delete the $v_1v_2,v_2v_3,v_4v_5$ and $v_5v_6$ edges, to get $K_{3,3}$. And so it is not planar.
+
+  \begin{tikzpicture}[main_node/.style={node distance=1cm,circle,draw,text=black,inner sep=1pt,outer sep=0pt]}]
+    \node[main_node] (1) at (1,3)   {1}; \node[main_node] (2) at (3,3)   {2};
+    \node[main_node] (3) at (0,2.5) {3}; \node[main_node] (4) at (2,2.5) {4};
+    \node[main_node] (5) at (0,1)   {5}; \node[main_node] (6) at (3,1) {6};
+    \node[main_node] (7) at (1,0)   {7};
+    \draw (1)--(2)--(3)--(4)--(5)--(6)--(7)--(1)--(6)--(5)--(4)--(7)--(2)--(6)--(3)--(7)--(5);
+  \end{tikzpicture}
+  \begin{tikzpicture}[main_node/.style={node distance=1cm,circle,draw,text=black,inner sep=1pt,outer sep=0pt]}]
+    \node[main_node] (1) at (2,1)   {1}; \node[main_node] (2) at (3,3)   {2};
+    \node[main_node] (3) at (6,-1)   {3}; \node[main_node] (4) at (3,-0.5) {4};
+    \node[main_node] (5) at (3,0.25)   {5}; \node[main_node] (6) at (3,1) {6};
+    \node[main_node] (7) at (0,-1)   {7};
+    \draw (1)--(2)--(3)--(4)--(5)--(6)--(7)--(1)--(6)--(5)--(4)--(7)--(2)--(6)--(3)--(7)--(5);
+  \end{tikzpicture}
+
+  Obviously, the second graph is planar.
+  \vfill
+  \item (14 points) For each condition below, classify all graphs (or types of graphs) satisfying the condition.
+  \begin{enumerate}
+  \item $G\cong \text{L}(G)$
+  \item $\lim_{n\rightarrow\infty}|\text{L}^n(G)|=0$
+  \item $\lim_{n\rightarrow\infty}|\text{L}^n(G)|=\infty$
+  \end{enumerate}
+  where $\text{L}^n(G)=\underbrace{\text{L}(\text{L}(\text{L}(\cdots(\text{L}}_{n \text{ times}}(G))\cdots)$
+  \vfill
+  \item (12 points) Prove that there are infinitely many $n$ such that Theorem 6.28 is stronger than Theorem 6.27.  Show that Theorem 6.28 fails for $n<5$.
+
+  If theorem $6.28$ is stronger then it means that we can find some $N\in \mathbb{N}$ such that $\frac{1}{5}\binom{n}{4}>m-3n+6$ for all $n>N$ and $m=\frac{n(n-1)}{2}$ (we are just looking at complete graphs).
+  First we tweak the inequality into something useful.
+  \begin{align*}
+    \frac{1}{5}\binom{n}{4}&>\frac{n(n-1)}{2}-3n+6\\
+    \frac{1}{5}\frac{n!}{4!(n-4)!}&>\frac{n^2-n-6n+12}{2}\\
+    \frac{n(n-1)(n-2)(n-3)}{5!}&>\frac{n^2-7n+12}{2}\\
+    \frac{n(n-1)(n-2)(n-3)}{60}&>(n-3)(n-4)\\
+    n(n-1)(n-2)&>60n-240\\
+    (n^2-n)(n-2)-60n+240&>0\\
+    n^3-2n^2-n^2+2n-60n+240&>0\\
+    n^3-3n^2-58n+240&>0\\
+  \end{align*}
+  And 240 decomposes to $5\cdot3\cdot2^4$ so with some dirty synthetic division:\\
+    \polyhornerscheme[x=5]{x^3-3x^2-58x+240}
+
+    Now that leaves us with $3\cdot2^4$ leftover from our earlier decomposition, of which $2^3-3\cdot2=8-6=2$.
+    And so in the end we have $(n-5)(n+8)(n-6)>0$.
+    We have a positive leading coefficient and a very nice cubic equation, so we don't even have to do any derivatives to know that this equation has at most two local extrema.
+    Our zeros tell us that these are in the intervals $(-8,5)$ and $(5,6)$.
+    And because our leading coefficient is positive, we know that we increase without bound to the right of the local minimum in $(5,6)$.
+    This means that when $n>6$ theorem $6.28$ is stronger than theorem $6.27$.
+
+    In order to prove that Theorem 6.28 fails for $n<5$ we just check $n=4$. We know that 0 is a lower bound for crossings of $K_4$. So we have $0\ge cr(K_n)\ge \frac{1}{5}\binom{4}{4}=\frac{1}{5}\cdot 1\ge 0$. Obviously, $\frac{1}{5}\not in \{0\}$ and so the theorem fails for $n<5$.
+  \vfill
+  \item (10 points) Let $H$ be a hypergraph such that $H^*\cong H$. State the necessary and sufficient condition(s) on $A(H)$ or on $H$ required for this property and give 3 examples of hypergraphs satisfying the condition(s). Avoid multihypergraphs if possible.
+  
+\end{enumerate}
+
+\end{document}
