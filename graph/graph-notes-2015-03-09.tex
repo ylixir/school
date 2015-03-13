@@ -1,0 +1,55 @@
+\documentclass[letterpaper]{article}
+
+\usepackage{fullpage}
+\usepackage{nopageno}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{tikz}
+\usepackage[utf8]{luainputenc}
+\usepackage{aeguill}
+\usepackage{setspace}
+
+\tikzstyle{edge} = [fill,opacity=.5,fill opacity=.5,line cap=round, line join=round, line width=50pt]
+\usetikzlibrary{graphs,graphdrawing}
+\usegdlibrary{trees}
+
+\pgfdeclarelayer{background}
+\pgfsetlayers{background,main}
+
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+
+\begin{document}
+\title{Notes}
+\date{9 mars, 2015}
+\maketitle
+\section*{7.1 genus of a graph}
+last chapter we discussed ``how far'' from planar a graph was. we used the crossing \#
+
+in the same vein, but more useful is the genus of a graph. we know that $K_{3,3}$ cannot be embedded on the plane. what about on a donut (torus)?
+
+recall that $\text{cr}(K_5)=1$.
+
+Now we can ``mold'' the torus into figure 7.5 on page 271.
+
+so handles can get around crossings.
+
+a sphere with $k$ handles is called a surface with genus $k$. the book calls it $S_k$. think a $k$ holed torus. 
+
+an easier way:
+
+think of the torus as a plane rolled up into a tube, with edges connected. now we associated  opposite edges. use arrows or something to show this
+
+with this interpretation
+
+\subsection*{thrm}
+if $G$ is connected with $|G|=n, |E(G)|=m$ and $G$ is embedded minimally with $r$ regions, then we have the $n-m+2=2-2\gamma(G)$ where $\gamma(G)=$minimal genus
+
+like before we get a bound right away:
+
+if $G$ is a connected graph with $|G|\ge 3$ then $\gamma(G)\ge \frac{m}{6}-\frac{n}{2}+1$
+
+\section*{Homework}
+2,8,11
+\end{document}

@@ -245,6 +245,7 @@ These graphs are both minimal spanning trees built with Kruskal's algorithm, and
 \end{scriptsize}
 \end{tikzpicture}
 \end{center}
+        \vfill
   %Graphical Limit
   \item (8 points) For each of the following sequences, determine if they are a degree sequence of a graph.  For those that are degree sequences, draw a graph that has that sequence.  Justify if it is not a degree sequence. If it is not a degree sequence, determine if it is a score sequence of a tournament.
   \begin{enumerate}
@@ -291,6 +292,7 @@ These graphs are both minimal spanning trees built with Kruskal's algorithm, and
         } -- (0:1cm) circle (2pt);
   \end{tikzpicture}
   \end{enumerate}
+\vfill
   \item (8 points) Consider Eulerianness and Hamiltonicity of graphs.  Draw four graphs: one that has both properties, one that has neither property, and two graphs with one property, but not the other. Justify each claim.
   
 \tikz\path [graphs/.cd, nodes={shape=circle, draw, inner sep=1pt,outer sep=0pt}, empty nodes]
@@ -321,18 +323,9 @@ These graphs are both minimal spanning trees built with Kruskal's algorithm, and
 
   We have proven the hypothesis false, but that is boring, and probably not the intent of the question. Let us assume that $k\ge 2$ and proceed accordingly.
 
-  Let us first denote $k-2=r$ and $k+1=n$. Now we start with an $r$-regular graph of order $n$ called $G$. If $k$ is even then $r$ is also but $n$ is odd. Similarly if $k$ is odd then so is $r$ but $n$ is even. Thus we know from theorem $1.7$ that this graph exists.
+  Let us first denote $k-2=r$ and $k+1=n$. Now we start with an $r$-regular graph of order $n$. If $k$ is even then $r$ is also but $n$ is odd. Similarly if $k$ is odd then so is $r$ but $n$ is even. Thus we know from theorem $1.7$ that this graph exists.
 
-  If $n\le 4$ then we will use the following graphs:
-
-  \tikz\path [graphs/.cd, nodes={shape=circle, draw, text=black,inner sep=1pt,outer sep=0pt}]
-    graph { 1;2;3 }
-    [shift=(0:2)]
-    graph { 1--2;3--4 };
-
-  Let us construct this graph for $n>4$. We label the vertices of the graph $v_1,\dots v_n$ and define $v_{0}=v_{n}$ and $v_{n+1}=v_1$. Now if $n$ is even, then we make $v_iv_{i+n/2}$ edges for all $1\le i\le n/2$. Now regardles of the parity of $n$, for every $v_i$ we create a $v_iv_{i+j}$ edge and a $v_iv_{i-j}$ edge where $1\le j\le \left\lfloor\frac{n-3}{2}\right\rfloor$. Now for any two vertices $v_k,v_l$ we know that one of $v_k$ or $v_{k-1}$ or $v_{k+1}$ is connected to $v_l$. And so we have a $v_k-v_l$ path. Now we know that $v_lv_{l-1}$ and $v_lv_{l+1}$ are both edges, and that $v_kv_{k+1}$ and $v_kv_{k-1}$ are all edges, with at least two edges between the $k$ group and the $l$ group. And so we can find two more paths between $v_k$ and $v_l$ that are disjoint from our first path. We continue this way, using our $v_kv_{k\pm i}$ and $v_kv_{k\pm j}$ edges to skip any vertices we have already used. In this way we can find $r$ paths between any two vertices. And because each vertice has degree $r$, then we know that there are no more than $r$ paths between any two vertices.
-
-Now because this graph is  $r$ connected we can add some vertices $u,v$ to $G$ to form a new graph $H$. Then add edges between $u$ and every vertex of $G$. Now add edges between $v$ and every vertex of $G$. Now there are $k+1$ paths from $u$ to $v$, one for every vertex in $G$. We have also added a path through $u$ and through $v$ to every vertex in $G$. However, because we only added two vertices, we can't have added more than two internally disjoint paths between any two other vertices. And so we have created the graph required.
+  \vfill
   % Average ROC
   \item (8 points) Give an example of a weakly connected digraph that is not strong, but has no sinks or sources.
 
@@ -353,10 +346,12 @@ Now because this graph is  $r$ connected we can add some vertices $u,v$ to $G$ t
     \draw (3) edge node {$>$} (6);
   \end{tikzpicture}
   No sinks or sources, and no paths from any of the vertices on the right triangle to any of the vertices on the left triangle.
+  \vfill
   %Algebraic derivatives
   \item (12 points) Prove or disprove the following claim. For all $n\geq 3$, there exists a tournament with $n$ players in which there is exactly one upset. I.e., there is exactly one directed triangle.
 
   We begin with the tournament of $n$ players which contains no upsets. We will call this tournament $T$. The score sequence of $T$ is $0,1,\dots,n-1$. We denote the vertex with a score of $n-i$ as $v_i$. Now lets replace the $(v_1,v_3)$ arc with a $(v_3,v_1)$ arc to form $T'$. Now because this is the only arc we changed, any cyclic triangles in $T'$ must contain $v_1$ and $v_3$ and some third point. Now notice that the score of $v_1$ in $T$ is $n-1$ so it wins against everyone. Similarly $v_2$ only loses to $v_1$. In particular it wins against $v-3$. Now in $T'$ we know that $v_2$ still wins against $v_3$. In fact because $v_3$ in $T$ has a score of $n-3$ we know that it only loses to $v_1$ and $v_2$. So in $T'$ we see that $v_3$ only loses to $v_2$. So any cyclic triangle that contains $v_3$ must also contain $v_2$. Thus we have established that any cyclic triangle in $T'$ must contain $v_1$, $v_2$, and $v_3$. This leaves us with only one choice for the three vertexes of our triangle. We have already established the existence of the $(v_3,v_1)$ and $(v_2,v_3)$ arcs. Now we know that $v_1$ wins against all but $v_3$ and so there must be a $(v_1,v_2)$ arc. Thus the triangle exists and we are done.
+  \vfill
   \item (12 points) Which of the following graphs is planar?  If planar, draw it as such; if not planar, indicate why, labeling vertices as needed.
   \begin{multicols}{2}
   \begin{center}
@@ -493,6 +488,7 @@ Now because this graph is  $r$ connected we can add some vertices $u,v$ to $G$ t
   \end{tikzpicture}
 
   Obviously, the second graph is planar.
+  \vfill
   \item (14 points) For each condition below, classify all graphs (or types of graphs) satisfying the condition.
   \begin{enumerate}
   \item $G\cong \text{L}(G)$
@@ -519,27 +515,20 @@ Now because this graph is  $r$ connected we can add some vertices $u,v$ to $G$ t
     [shift=(0:2)]
     graph [tree layout] {1--2;1--3;2--3;4--3;5--3;5--4};
 
-    And we observe that $L^2(K_{1,4})$ contains $K_{1+1,3}$ and $|L^2(K_{1,4})|>|K_{1+1,3}|$.
-
     \tikz\path [graphs/.cd, nodes={shape=circle, draw, text=black,inner sep=1pt,outer sep=0pt}]
       graph { 1 -- 2;3--4;{2,1}--{3,4};{1,2}--{3,4} }
       [shift=(0:1)];
-    \begin{tikzpicture}[main_node/.style={node distance=1cm,circle,draw,text=black,inner sep=1pt,outer sep=0pt}]
+    \begin{tikzpicture}[main_node/.style={node distance=20cm,circle,draw,text=black,inner sep=1pt,outer sep=0pt}]
       \node[main_node] (1) {1};
       \node[main_node] (2) [above right of=1] {2};
       \node[main_node] (3) [below right of=1] {3};
       \node[main_node] (4) [right of=2] {4};
       \node[main_node] (5) [right of=3] {5};
       \node[main_node] (6) [below right of=4] {6};
-      \draw (1)--(2)--(4)--(1)--(3)--(5)--(1);
-      \draw (6)--(2)--(5)--(6)--(3)--(4)--(6);
+      \draw (1)--(2);
     \end{tikzpicture}
 
-    Now we know that $\lim_{n\to\infty}L^n(K_{3})=\lim_{n\to\infty}L^n(K_{1,3})=K_{3}$. And if any graph $G$ other than $K_{1,3}$ contains a vertex of degree 3 or more then $\lim_{n\to \infty}|L^n(G)|=\infty$. Now we look at 2-regular graphs (cycles). We any edge $uv$ in any 2-regular graph $G$. Now vertex $v$ is of degree 2, as is vertex $u$ and so each of them will generate $\binom{2}{2}$ edges in $L(G)$. This means that the $uv$ vertex in $L(G)$ will have degree 2. Now because each edge in $G$ generates one vertex in $L(G)$ and each vertex in $G$ generates one edge in $L(G)$ we know that $|L(G)|=|G|$. And obviously any two cycles of the same size are isomorphic.
-
-    Now if we have a connected graph with all vertices less than three, but not all two, then we have exactly two vertices with degree one. That is we have a path which we will again call $G$. Now $G$ is a tree and so if it has $n$ vertices, then it has $n-1$ edges. And so $|L(G)|=|G|-1$. Each vertex in $G$ with degree two will generate one edge, but the vertices of degree one will generate no. Now we have a graph of order $|G|-1$ and size $|G|-2$. That is a tree that is one edge and vertex smaller than $G$. Further, because any vertex in $L(G)$ formed by some vertices $u,v\in G$ has degree $\binom{\deg u-1}{1}+\binom{\deg v-1}{1}=\deg u+\deg v-2\le 2+2-2=2$ we know that we have another path (it's not a cycle because from the order and size we know it is a tree). Now because $|G|$ is finite, if we keep making line graphs, we will eventually run out of edges. And the line graph of a vertice is empty.
-
-    Now we have exhausted all possible graphs and we see that $G\cong L(G)$ if $G$ is a 2-regular graph, and $\lim_{n\to\infty}|L^n(G)|=0$ if $G$ is a path or the trivial graph, and $\lim_{n\to\infty}|L^n(G)|=\infty$ if $G$ has any vertices of degree 3 or more but is not $K_{1,3}$.
+  \vfill
   \item (12 points) Prove that there are infinitely many $n$ such that Theorem 6.28 is stronger than Theorem 6.27.  Show that Theorem 6.28 fails for $n<5$.
 
   If theorem $6.28$ is stronger then it means that we can find some $N\in \mathbb{N}$ such that $\frac{1}{5}\binom{n}{4}>m-3n+6$ for all $n>N$ and $m=\frac{n(n-1)}{2}$ (we are just looking at complete graphs).
@@ -565,9 +554,9 @@ Now because this graph is  $r$ connected we can add some vertices $u,v$ to $G$ t
     This means that when $n>6$ theorem $6.28$ is stronger than theorem $6.27$.
 
     In order to prove that Theorem 6.28 fails for $n<5$ we just check $n=4$. We know that 0 is a lower bound for crossings of $K_4$. So we have $0\ge cr(K_n)\ge \frac{1}{5}\binom{4}{4}=\frac{1}{5}\cdot 1\ge 0$. Obviously, $\frac{1}{5}\not\in [0,0]$ and so the theorem fails for $n<5$.
+  \vfill
   \item (10 points) Let $H$ be a hypergraph such that $H^*\cong H$. State the necessary and sufficient condition(s) on $A(H)$ or on $H$ required for this property and give 3 examples of hypergraphs satisfying the condition(s). Avoid multihypergraphs if possible.
   
-  A hypergraph $H$ has an adjacency matrix $A(H)$ such that $a_{ij}=1$ if $v_i\in e_j$ or else $a_{ij}=0$. Now if $H^*\cong H$ then $A(H)=A(H^*)$ and so if $v_i\in e_j$ then $v_j\in e_i$
 \end{enumerate}
 
 \end{document}
