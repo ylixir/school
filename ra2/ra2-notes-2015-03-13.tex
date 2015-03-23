@@ -1,0 +1,54 @@
+\documentclass[letterpaper]{article}
+
+\usepackage[utf8]{luainputenc}
+\usepackage{fullpage}
+\usepackage{nopageno}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+
+\begin{document}
+\title{Notes}
+\date{13 mars, 2015}
+\maketitle
+let $\epsilon>0$ and $f\in C[0,1]$
+Then there is $N$ such that $||f-B_n(f)||_\infty<\epsilon$ for all $n>N$.
+
+$B_n(f)=\sum\limits_{k=0}^n{f(\frac{k}{n}\binom{n}{k}x^k(1-x)^{n-k}}$
+
+\begin{enumerate}
+\item
+since $[0,1]$ is compact and $f\in C[0,1]$ f is uniformly continuous on $[0,1]$ so there is $\delta$ such that $|f(x)-f(y)|<\frac{\epsilon}{2}$ when $|x-y|< \delta$
+\item
+$f$ is bounded on $[0,1]$ so $|f(x)|\le M=\sup\{|f(x)|\}$ for all $x\in [0,1]$
+\item
+now for $a\in [0,1]$, if $|x-a|<\delta$ then $|f(x)-f(a)|<\epsilon/2+\frac{2M}{\delta^2}(x-a)^2$
+
+if $|x-a|\epsilon \delta$ then $|f(x)-f(a)\le|f(x)|+|f(a)|\le 2M\le 2M/\left(x-a)/\delta\right)^2\le \frac{2M}{\delta^2}(x-a)^2+\frac{\epsilon}{2}$
+
+so for a fixed $a$, no matter what $x$ we let $|f(x)-f(a)|<\epsilon/2+\frac{2M}{\delta^2}(x-a)^2$.
+
+this is not a good estimate, but it's an estimate that works no matter what.
+
+\item
+$B_n(f(x)-f(a)\cdot 1)=B_n(f(x))-B_n(f(a)\cdot1)=B_n(f(x))-f(a)B_n(1)=B_n(f(x))-f(a)\cdot 1$ where $1$ is the function that is one for all $x$ and $f(a)$ is a constant.
+
+
+\end{enumerate}
+
+so $|B_n(f(x))-f(a)|=|B_n(f(x)-f(a)\cdot1)|\le B_n(|f(x)-f(a)\cdot 1|)\le B_n(\epsilon/2+2M/\delta^2(x-a)^2)=B_n(\epsilon/2)+2M/\delta^2B_n((x-a)^2)=\epsilon/2+2M/\delta^2[B_n(x^2-2ax+a^2]=\frac{\epsilon}{2}+2M/\delta^2(B_n(x^2)-2aB_n(x)+a^2)=\frac{\epsilon}{2}+\frac{2M}{\delta^2}((x^2+\frac{x-x^2}{n})-2a(x)+a^2$
+
+recall that $B_n(1)=1, B_n(x)=x,$ and $B_n(x^2)=\frac{x+(n-1)x^2}{n}=x^2+\frac{x-x^2}{n}$
+
+if $g(x)=x-x^2$ then it's max in $[0,1]$ is $g(\frac{1}{2})=\frac{1}{4}$ and so $|(B_n(f))(a)-f(a)\cdot 1|<\epsilon/2+2M/\delta^2$
+
+so $|(B_n(f))(a)-f(a)\cdot 1|<\epsilon/2+2M/\delta^2\frac{a-a^2}{n}$ so $|(B_n(f))(a)-f(a)\cdot 1|<\epsilon/2+2M/\delta^2(\frac{1}{4n})$
+
+\subsubsection*{finish}
+this inequality does not depend on $a$. $||B_n(f)-f||_\infty<\epsilon/2+\frac{2M}{\delta^2}\frac{1}{4n}$. Choos $N$ such that $N\ge \frac{M}{\delta^2\epsilon}$
+
+so $\frac{M}{2\delta^2N}<\epsilon/2$ and $||B_n(f)-f||_\infty<\epsilon/2+\epsilon/2=\epsilon$ for any $n>N$ in other words, $\{B_n(f)\}$ converges to $f$ uniformly on $[0,1]$
+\end{document}
+

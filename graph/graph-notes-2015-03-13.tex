@@ -1,0 +1,64 @@
+\documentclass[letterpaper]{article}
+
+\usepackage{fullpage}
+\usepackage{nopageno}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{tikz}
+\usepackage[utf8]{luainputenc}
+\usepackage{aeguill}
+\usepackage{setspace}
+
+\tikzstyle{edge} = [fill,opacity=.5,fill opacity=.5,line cap=round, line join=round, line width=50pt]
+\usetikzlibrary{graphs,graphdrawing}
+\usegdlibrary{trees}
+
+\pgfdeclarelayer{background}
+\pgfsetlayers{background,main}
+
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+
+\begin{document}
+\title{Notes}
+\date{13 mars, 2015}
+\maketitle
+\section*{the happy ending problem}
+\subsubsection*{task:}
+draw 5 points in a plane with no 3 colinear points.
+
+this is called general position.
+
+\subsubsection*{question}
+are there 4 points that form a convex quadrilateral?
+
+\subsubsection*{answer}
+yes
+
+\subsection*{proof}
+only way to have a non convex quadrilateral is to have a triangle with a dot in the middle. the options for where to put the fifth dot are: in the concave bit, which forms one, or in the pennisula in the quad, next to the concave bit, and so on
+
+at nine points you can always find a convex pentagon
+
+what is the minimum number of points in general required to guarantee a convex n-gon?
+
+3 for 3, 4 requires 5, 5 requires 9, $C(6)=17$ the general answer is unknown, but $C(n)\ge 1+2^{n-2}$ where $C(n)$ is the number of points and $n$ is the order of the convex n-gon. this theorem is from forties or fifties.
+
+\subsubsection*{thrm}
+$C(n)\le \binom{2n-5}{n-2}<\infty$
+
+above 6 the problem is open.
+
+
+\section*{ramsey theory}
+what is the minimum number of widgets with proposition required to guarantee another proposition?
+
+\subsection*{modification}
+require no points inside convex polygon
+
+then $C'(3)=3, C'(4)=5, C'(5)=?$
+
+\subsubsection*{thrm}
+if only empty n-gons are allowed, then $C(7)\not<\infty$
+\end{document}
