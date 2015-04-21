@@ -1,0 +1,113 @@
+\documentclass[letterpaper]{article}
+
+\usepackage[utf8]{luainputenc}
+\usepackage{fullpage}
+\usepackage{nopageno}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+
+\begin{document}
+\title{Notes}
+\date{20 avril, 2015}
+\maketitle
+\section*{quiz}
+\begin{enumerate}
+\item
+$D:\pi\to\pi$ with $D(e^{2\pi it})=e^{2\pi i(2t)}$
+\item
+$T:[0,1]\to[0,1]$
+$T(x)=\begin{cases}2x&0\le x\le \frac{1}{2}\\2-2x&\frac{1}{2}\le x\le 1\end{cases}$
+
+dense
+\end{enumerate}
+
+\section*{last time}
+$T_\alpha:[0,1]\to[0,1]$
+
+$T_\alpha(x)=x\oplus \alpha$
+
+$\alpha$ irrational
+
+$x,y\in [0,1]$ and $\epsilon>0$ find $M$ such that $|T^m(x)-y|<\epsilon$
+
+\begin{enumerate}
+\item
+given any $\epsilon>0$ there is $N$ such that $|T^n(0)|<\epsilon$
+\subsubsection*{proof}
+choose $N'$ such that $\frac{1}{N'}<\epsilon$
+
+now $[0,1]=[0,\frac{1}{N'}]\cup[\frac{1}{N'},\frac{2}{N'}]\cup\dots\cup[\frac{N'-1}{N'},1]$
+
+
+$T^0_\alpha(0),\dots,T^{N'}_\alpha(0)$ find $j,k$ such that $|T^j_\alpha(0)-T^k_\alpha(0)|<\epsilon$
+
+if $m=k-j$ $|T^m_\alpha(0)|=|T^{k-j}-T^{0}|=|T^{j}(T^{k-j})-T^j(T^0)|=|T^k-T^j|$
+\item
+given any point in $[0,1]$ there is $M'$ such that $T^{M'}_0(0)$ is arbitrarily close to the point we care about
+\begin{align*}
+  0&<|T_\alpha^m(0)|<\epsilon\\
+  \epsilon&<|T^{2m}_0|=|T^m(0)|+|T^m(0)|<2\epsilon\\
+  2\epsilon&<|T^{3m}|<3\epsilon\\
+  \vdots\\
+  1-\epsilon<|T^{nm}(0)|<1
+\end{align*}
+
+given $x,y\in [0,1]$ consider $x\ominus y$ then there is $k$ such that $|(x\ominus y)-T^{km}(0)|<\epsilon$
+\subsubsection*{note} because alpha is irrational you will always get an irrational back out, not 0
+\item
+finish
+let $\epsilon>0$ and $x,y\in [0,1]$
+
+\begin{align*}
+  |y-T^{km}_\alpha(x)|&=|y\ominus x\oplus km\alpha|\\
+  &=|y\ominus x\ominus 0\oplus km\alpha|\\
+  &=|y\ominus x - T^{km}_\alpha(0)|<\epsilon\\
+\end{align*}
+\end{enumerate}
+
+\subsection*{lemma}
+$T:[a,b]\to[a,b]$ is continuous then $T$ has a fixed point
+
+\subsubsection*{proof}
+let $f(x)=Tx-x$ is continuous then $f(a)\\epsilon0$ and $f(b)\le 0$. there is $c\in [a,b]$ such that $f(c)=0$ and $0=T(c)-c\Rightarrow T(c)=c$
+
+\subsection*{lemma}
+$T:[a,b]\to\mathbb{R}$ is continuous such that $T([a,b])\supseteq [a,b]$then $T$ has a fixed point
+
+\subsubsection*{proof}
+\begin{align*}
+  f(x)&=T(x)-x\\
+  c,d&\in[a,b] \text{ where } T(c)=a,T(d)=b\\
+  f(c)&=T(c)-c=a-c\le 0\\
+  f(d)&=T(d)-d=b-d\ge 0
+\end{align*}
+there is $e$ such that $f(e)=0\Rightarrow T(e)=e$
+
+\subsubsection*{fact}
+if $T:[a,b]\to \mathbb{R}$ and is continuous then image is compact and connected so $T([a,b])=[x,y]$ for some $x,y$.
+
+\subsection*{lemma}
+if $[c,d]\subseteq[x,y]$ there $a',b'\in[a,b]$ such that $T([a',b']=[c,d]$ and $T({a',b'})={c,d}$
+
+note that we don't know whether $a'\to c$ or $a'\to d$ and same for $b'$
+
+\subsubsection*{proof}
+\begin{enumerate}
+\item
+notice $T^{-1}({c})$ is closed and $T^{-1}(\{d\})$ is closed and both are nonempty.
+
+let $a_0\in T^{-1}({c})$ and $b_0\in T^{-1}({d})$. Say $T(a_0)=c$ and $T(b_0)=d$
+
+recall that $[x,y]$ is range. now for any closed interval in the range we want to find a region in our domain that hits closed interval but never leaves it
+
+choose $a_0<b_0$ for first case
+
+$a'=\sup \{x\in [a,b_0]:Tx=c\}$ which is nonempty and $a_0\le a'$
+
+let $b'=\inf \{x\in [a',b_0]:T(x)=d\}$ nonempty and notice $a'<b'$
+\end{enumerate}
+\end{document}
+

@@ -1,0 +1,103 @@
+\documentclass[letterpaper]{article}
+
+\usepackage{fullpage}
+\usepackage{nopageno}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{tikz}
+\usepackage[utf8]{luainputenc}
+\usepackage{aeguill}
+\usepackage{setspace}
+
+\tikzstyle{edge} = [fill,opacity=.5,fill opacity=.5,line cap=round, line join=round, line width=50pt]
+\usetikzlibrary{graphs,graphdrawing}
+\usegdlibrary{trees}
+
+\pgfdeclarelayer{background}
+\pgfsetlayers{background,main}
+
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+
+\begin{document}
+\title{Notes}
+\date{20 avril, 2015}
+\maketitle
+\section*{Heawood Map-coloring theorem} 
+Sylvester converted maps into planar graphs
+
+we are biased towards planar graphs because we live on a sphere
+
+suppose we lived on a toroidal planet in addition to strange gravity we would color things differently
+
+\subsubsection*{question?}
+is there a four color theorem for toroidal graphs?
+
+heawood was interested in the ``chromatic number of a surface''.
+
+\subsection*{definition}
+let $S_k$ be the surface of genus $k$ (ie the $k$-holed torus) $\chi(S_k)$ is the largest chromatic number of any graph embeddable on the surface $S_k$.
+\subsubsection*{note}
+we are not assuming 2-cell embedding, in general we don't care about the embedding (it will happen naturally that we focus on more complicated embeddings)
+
+\subsubsection*{example}
+four color theorem: 
+$\chi(S_0)=4$
+
+\subsubsection*{task}
+lower bounds on $\chi(S_1)$, ie find graphs of various chromatic numbers embeddable on $S_1$
+
+\section*{thrm 7.9?}
+$\tau(k_n)=\lceil\frac{(n-3)(n-4)}{12}\rceil$
+
+we have that $K_7$ embeds on $S_1$ but $k_8$ does not. this shows $\chi(S_1)\ge 7$ but does not show $\chi(S_1)\le 8$.
+
+\section*{thm}
+$\chi(S_1)=7$
+
+\subsubsection*{proof}
+$k_7$ embeds in $S_1$ so $\chi(S_1)\ge 7$. we will use $\chi(G)\le 1+\delta(G)$ (1 plus minimal degree) to show that $\chi(S_1)\le 7$
+
+we need to show that for every graph embeddable on the torus has a degree of no more than six.
+
+let $G$ be a toroidal graph and $\delta(G)$ is maximal among all toroidal graphs.
+
+if $|G|\le 7$ then $\delta(G)\le 6$. this finishes the claim, so we have $|G|>7$.
+
+since $\tau(G)\le 1$ we have $1\ge \tau(G)\ge \frac{m}{6}-\frac{n}{2}+1$
+
+solving for $m$ we have $m\le 3n$. 
+
+further back $\sum\limits{\deg_G(v_i)}=2m$ (twice the edges)
+
+now $\sum\limits{\deg_G(v_i)}=2m\le 6n$ therefore average degree is 6 and minimum degree is less than or equal to average degree.
+
+\section*{another theorem}
+for $k>0$ $\chi(S_k)\le\left\lfloor\frac{7+\sqrt{1+48k}}{2}\right\rfloor$
+
+what about equality?
+
+recall thm 7.9: $\tau(k_n)=\lceil\frac{(n-3)(n-4)}{12}\rceil$
+
+$\tau(k_n)\ge \frac{(n-3)(n-4)}{12}$
+
+let $n=\left\lfloor\frac{7+\sqrt{1+48k}}{2}\right\rfloor$ so $n\le\frac{7+\sqrt{1+48k}}{2}$
+
+solving we have $\frac{(2n-7)^2-1}{48}\le k$
+
+$\frac{4n^2-28n+48}{48}=\frac{n^2-7n+12}{12}\le k$
+
+$\frac{(n-3)(n-4)}{12}\le k$
+
+$\tau(k_n)=\lceil\frac{(n-3)(n-4)}{12}\rceil\le k$
+
+hence the chromatic number of the complete graph on $\chi(k_{\tau(k_n)})\le \chi(S_k)$
+
+since $k_{\tau (k_n)}$ is trivially embeddable (one vertex for each hole) on $S_{\tau(k_n)}$
+
+so it follow that $\chi(S_k)\ge n=$ 1+48 root mess
+
+\section*{homework}
+1,2,3
+\end{document}

@@ -1,0 +1,72 @@
+\documentclass[letterpaper]{article}
+
+\usepackage{fullpage}
+\usepackage{nopageno}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{tikz}
+\usepackage[utf8]{luainputenc}
+\usepackage{aeguill}
+\usepackage{setspace}
+
+\tikzstyle{edge} = [fill,opacity=.5,fill opacity=.5,line cap=round, line join=round, line width=50pt]
+\usetikzlibrary{graphs,graphdrawing}
+\usegdlibrary{trees}
+
+\pgfdeclarelayer{background}
+\pgfsetlayers{background,main}
+
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+
+\begin{document}
+\title{Notes}
+\date{13 avril, 2015}
+\maketitle
+8.4 list colorings,
+9.1 4 color theorem
+
+recall a list coloring is a proper coloring of $G$ ($C:V(G)\to\mathbb{Z}$) where each vertex has a restricted list of possible colors
+
+\section*{4 color thm}
+every planar graph is 4 colorable, ie $G$ planar implies chromatic G less than 4 $\chi(G)\le 4$
+
+\section*{9.2 colorings of planar graphs}
+
+n friday we mentioned Haewood's counterexample to part of kempe's (erroneous) proof of the 4 color theorem.
+
+\subsection*{haewood 5 color theorem}
+$G$ planar implies $\chi(G)\le 5$.
+
+\subsubsection*{proof} in book, like half a page.
+
+\subsection*{2 questions}
+\subsubsection*{what planar graphs have chromatic number less than 4?}
+\begin{enumerate}
+\item
+disconnected points (trivial graphs)
+\item
+bipartite (including trees)
+\item
+when does this happen?
+
+partial answer:
+a maximal planar graph $G$ of order 3 or more has chromatic number 3 if and only if $G$ is Eulerian.
+
+you can remove edges without making coloring go up?
+\end{enumerate}
+\subsubsection*{is every planar graph 4-choosable}
+
+
+\subsection*{thomassen thm}
+every planar graph is 5-choosable
+
+are there planar graphs that are not 4-choosable? answer is yes.
+
+\subsubsection*{thm}
+Mirzakhani graph is planar but not 4-choosable and has order 63 which betters the 238 order previous counter example.
+
+homework:
+3,4 due with 8.5
+\end{document}
