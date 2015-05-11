@@ -1,0 +1,476 @@
+\documentclass[reqno]{amsart}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb,enumerate}
+\usepackage{graphicx}
+\usepackage{amsfonts}
+\usepackage[all]{xy}
+\usepackage{amsmath}
+\usepackage[margin=1in]{geometry}
+\usepackage{centernot}
+\usepackage{tikz}
+\usepackage{multicol}
+\usetikzlibrary{arrows}
+\usetikzlibrary{graphs,graphdrawing}
+\usegdlibrary{trees}
+
+\theoremstyle{plain}
+\newtheorem{lem}{Lemma} %[section]
+\newtheorem{cor}[lem]{Corollary}
+\newtheorem{prop}[lem]{Proposition}
+\newtheorem{thm}[lem]{Theorem}
+\newtheorem{conj}[lem]{Conjecture}
+\newtheorem{intthm}{Theorem}
+\renewcommand{\theintthm}{\Alph{intthm}}
+
+\theoremstyle{definition}
+\newtheorem{defn}[lem]{Definition}
+\newtheorem{ex}[lem]{Example}
+\newtheorem{question}[lem]{Question}
+\newtheorem{problem}[lem]{Problem}
+\newtheorem{disc}[lem]{Remark}
+\newtheorem{construction}[lem]{Construction}
+\newtheorem{notn}[lem]{Notation}
+\newtheorem{fact}[lem]{Fact}
+\newtheorem{para}[lem]{}
+\newtheorem{exer}[lem]{Exercise}
+\newtheorem{remarkdefinition}[lem]{Remark/Definition}
+\newtheorem{notation}[lem]{Notation}
+\newtheorem{step}{Step}
+\newtheorem{convention}[lem]{Convention}
+
+%\numberwithin{equation}{lem}
+\newcommand{\bbt}{\mathbb{T}}
+\newcommand{\bbs}{\mathbb{S}}
+\newcommand{\bbk}{\mathbb{K}}
+\newcommand{\bbp}{\mathbb{P}}
+\newcommand{\bbz}{\mathbb{Z}}
+\newcommand{\bbr}{\mathbb{R}}
+\newcommand{\bbq}{\mathbb{Q}}
+\newcommand{\bbn}{\mathbb{N}}
+\newcommand{\bbc}{\mathbb{C}}
+\newcommand{\inc}{\nearrow}
+\newcommand{\Ra}{\Rightarrow}
+\newcommand{\La}{\Leftarrow}
+\newcommand{\nrm}{\trianglelefteq}
+\newcommand{\LA}{\left\langle}
+\newcommand{\RA}{\right\rangle}
+\newcommand{\op}{\oplus}
+\newcommand{\od}{\odot}
+\newcommand{\lcm}{\operatorname{lcm}}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\spn}{\operatorname{Span}}
+\newcommand{\cn}{\centernot}
+\newcommand{\gf}{\operatorname{GF}}
+\newcommand{\aut}{\operatorname{Aut}}
+\newcommand{\inn}{\operatorname{Inn}}
+\newcommand{\col}{\operatorname{Col}}
+\newcommand{\nul}{\operatorname{Nul}}
+\newcommand{\zz}{\bbz_2\times\bbz_2}
+\newcommand{\Ker}{\operatorname{Ker}}
+\newcommand{\isom}{\cong}
+\definecolor{uuuuuu}{rgb}{0.26,0.26,0.26}
+%\DeclareUnicodeCharacter{0177}{\^y}
+\begin{document}
+
+\Large
+\begin{flushright}
+Math 430/630\\
+Take Home Final\\
+Spring 2015
+\end{flushright}
+\vspace{0.45cm}
+
+\begin{center}
+\fbox{\fbox{\parbox{1.0\linewidth}{\centering{\bf Instructions:} The majority of the credit you earn will be based on the neatness, clarity, and correctness of the work you show.  If you wish to be eligible for partial credit, show all of your work in a coherent and organized manner. All graphs are assumed to be simple, but not necessarily connected.  There are 110ish possible points, but the grade will be out of 100. Work alone using only your head, notes and book. If you are unable to fully answer a question, giving examples and trains of thought is better than nothing.}}}
+\end{center}
+\vspace{0.5cm}
+\begin{flushright}
+\noindent Name: Jon Allen\\ 
+\end{flushright}
+\vspace{1cm}
+
+
+
+
+\begin{enumerate}[1.)]
+%Numerical Limit
+	\item (12 points) 
+			Suppose $G$ is a nonplanar graph, but that every subgraph of $G$ \emph{is} planar.  Prove that $G$ is at least 2-connected. Give an example of a graph satisfying this condition that is exactly 2-connected.
+
+First we show that no disconnected or 1-connected graph can be nonplanar with no nonplanar subgraphs. Then we give the example which will show that 2-connected graphs can meet the necessary criteria.
+
+If $G$ is a disconnected graph then it has two or more components. We choose one of these component and call it $G_1$ and say that $G_2=G-G_1$. Now if $G_1$ and $G_2$ are both planar, then obviously $G$ is planar (you could just draw them right next to one another). So then if $G$ is nonplanar, at least one of $G_1$ or $G_2$ must also be nonplanar. But then $G_1$ and $G_2$ are subgraphs of $G$ so we have a contradiction.
+
+And what if $G$ is one connected? Then there is some vertex $v$ which will disconnect $G$ if removed. We choose one of the components of $G-v$ and call it $G_1$. We say that $G_2=G-G_1$. Now $G_1+v$ is the induced subgraph of $G$ formed by the vertices $V(G_1)+v$ and so is $G_2+v$. Both of these graphs are planar. But then we can draw a cute little mini $G_2+v$ in a region/face of $G_1+v$ that is bordered by $v$. Now we have a planar isomorph of $G$ and so $G$ is planar.
+
+\begin{tikzpicture}[main_node/.style={node distance=1cm,circle,draw,text=black,inner sep=1pt,outer sep=0pt]}]
+  \node[main_node] (1) at (0,0) {};
+  \node[main_node] (2) at (0,1) {};
+  \node[main_node] (3) at (1,1.2) {};
+  \node[main_node] (4) at (1.7,0.5) {};
+  \node[main_node] (5) at (1,-0.2) {};
+  \node[main_node] (6) at (1.7,-0.2) {};
+  \draw (1)--(2)--(3)--(4)--(6)--(5)--(1)--(3)--(5)--(2)--(4)--(1);
+\end{tikzpicture}
+
+Now this graph is a two connected subdivision of $K_5$. It is easy to see that any subgraph of this graph will not be a subdivision of $K_5$ or $K_{3,3}$. Thus by Kuratowski's Theorem we have a 2-connected nonplanar graph whose every subgraph is planar.
+%\vfill
+	
+	\item (10 points) 
+			Does $K_{3,3}$ have a 2-cell embedding on the 2-holed torus? Justify.
+
+From Corollary 7.25, the maximal genus of $K_{3,3}$ is $\lfloor\frac{(3-1)(3-1)}{2}\rfloor=2$.
+And so we can have a 2-cell embedding on $S_2$ also known as a 2 holed torus. Note that $K_{3,3}$ is not planar so actually the torus and the 2-holed torus are the only surfaces that it can be embedded on.
+%\vfill
+	\item (10 points) 
+			Consider the greedy coloring algorithm.  Give an example of a labeled graph for each case.
+			\begin{enumerate}
+			\item The algorithm uses $\Delta(G)+1$ colors.
+
+\begin{tikzpicture}[main_node/.style={node distance=1cm,circle,draw,text=black,inner sep=1pt,outer sep=0pt]}]
+  \node[main_node] (1) at (0,0) {};
+  \node[main_node] (2) at (1,0) {};
+  \node[main_node] (3) at (1,1) {};
+  \draw (1)node[left=1] {$v_1$}--(2)node[right=1] {$v_2$}--(3)node[above=1] {$v_3$}--(1);
+\end{tikzpicture}
+
+Actually for this example the labelling doesn't really matter, it's an odd cycle and so must take at least three colors. It also only has 3 nodes so can't have more than 3 colors. And of course all the vertices have degree 2 and so $\Delta(G)+1=3$
+			\item For some $r$, the algorithm uses $r$ colors with $\chi(G)<r<\Delta(G)+1$.
+
+\begin{tikzpicture}[main_node/.style={node distance=1cm,circle,draw,text=black,inner sep=1pt,outer sep=0pt]}]
+  \node[main_node] (1) at (0,0) {};
+  \node[main_node] (2) at (0.5,0) {};
+  \node[main_node] (3) at (0.5,1) {};
+  \node[main_node] (4) at (0,1) {};
+  \node[main_node] (5) at (1,1.7) {};
+  \node[main_node] (6) at (2,1) {};
+  \node[main_node] (7) at (2,0) {};
+  \node[main_node] (8) at (1,-.7) {};
+  \draw (1)node[left=1] {$v_5$}--(2)node[right=1] {$v_6$}--(3)node[right=1] {$v_7$}--(4)node[left=1] {$v_8$}--(5)node[above=1] {$v_1$}--(6)node[right=1] {$v_3$}--(7)node[right=1] {$v_4$}--(8)node[below=1] {$v_2$}--(1)--(4);
+\end{tikzpicture}
+
+This graph is two even cycles glued together and one can easily verify that $\chi(G)=2$. Also $\Delta(G)+1=4$. Applying the greedy algorithm to the vertices as numbered give the coloring $c(v_1)=1,c(v_2)=1,c(v_3)=2,c(v_4)=3,c(v_5)=2,c(v)6)=1,c(v_7)=2,c(v_8)=3$. That's 3 colors, which is between 4 and 2 (duh).
+
+			\item The algorithm uses $\chi(G)$ colors.
+
+\begin{tikzpicture}[main_node/.style={node distance=1cm,circle,draw,text=black,inner sep=1pt,outer sep=0pt]}]
+  \node[main_node] (1) at (0,0) {};
+  \node[main_node] (2) at (1,0) {};
+  \node[main_node] (3) at (1,1) {};
+  \node[main_node] (4) at (0,1) {};
+  \draw (1)node[left=1] {$v_1$}--(2)node[right=1] {$v_2$}--(3)node[right=1] {$v_3$}--(4)node[left=1] {$v_4$}--(1);
+\end{tikzpicture}
+
+This will give the coloring $c(v_1)=1, c(v_2)=2,c(v_3)=1,c(v_4)=2$ and because this is an even cycle we know that $\chi(G)=2$
+			\end{enumerate}
+%\vfill
+	\item (8 points) If $G$ is $k$-factorable, prove that $G$ is $r$-regular for some $r=ak$.
+
+A $k$-factor is a spanning $k$-regular subgraph of $G$. Now because $G$ is $k$-factorable we know that $G$ has a factorization composed entirely of $a\in \mathbb{N}$ $k$-regular spanning subgraphs of $G$. We will call these factors $G_i$ where $1\le i\le a$. Now $G=\bigcup_{i=1}^aG_i$, $V(G)=V(G_i)$, and for all $i\ne j$ where $i,j\in[1,a]$ we have $E(G_i)\cap E(G_j)=\emptyset$. If we take $\bigcup_{i=1}^nG_i$ then each vertex will have degree $nk$. This is because the edges of our factors are disjoint so every edge from every factors is contributed to the union. Furthermore, because each factor is $k$ regular it contributes $k$ edges to each vertex. Finally because all the factors have the same vertex set, they all contribute $k$ edges to every vertex of the union. So then in particular we have $\bigcup_{i=1}^a=G$ and every vertex of $G$ has degree $ak$.
+%\vfill
+	
+	\item (10 points) Prove or disprove that $\alpha'(G)=\alpha(L(G))$ for all connected graphs $G$.
+
+Observe that a $L(G)$ is formed by taking all the edges of $G$ and making them vertices. Any two vertices are then connected if and only if the edges from whence they came were adjacent. Now let us take a maximal matching $M$ where $M\subseteq E(G)$ and $\alpha'(G)=|M|$. Similarly we take a maximal independent vertex set $M_v$ where $M_v\subseteq V(L(G))$ and $|M_v|=\alpha(L(G))$. Now if we assume that $|M|>|M_v|$. Notice that none of the edges in $M$ are adjacent. This means that the vertices in $L(G)$ formed by the edges in $M$ will not be adjacent. This set, call it $M'$ then has the same cardinality at $M$ and thus $|M'|>|M_v|$. But $M_v$ was maximal by definition.
+
+Now let us assume that $|M_v|>|M|$. Because no vertices in $M_v$ are adjacent, we know that there is a corresponding set of edges in $G$ which are not adjacent. Thus there is some $M_v'\subseteq G$ such that $|M_v'|>|M|$. But $M$ is maximal by assumption. And so because neither is greater than the other, we know that $\alpha'(G)=\alpha(L(G))$
+%\vfill
+	
+	\item (12 points) Compute $P(G,\lambda)$ for 
+		\begin{center}
+		\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1.0cm,y=1.0cm]
+
+\draw (1.0,2.0)node[above=1] {$u$}-- (-1.0,2.0);
+\draw (-1.0,2.0)-- (-2.0,0.2679491924311226);
+\draw (-2.0,0.2679491924311226)-- (-1.0000000000000002,-1.464101615137755);
+\draw (-1.0000000000000002,-1.464101615137755)node[below=1] {$v$}-- (0.9999999999999996,-1.4641016151377557);
+\draw (0.9999999999999996,-1.4641016151377557)-- (2.0,0.26794919243112103);
+\draw (2.0,0.26794919243112103)-- (1.0,2.0);
+\draw (-1.0,2.0)-- (-1.0000000000000002,-1.464101615137755);
+\draw (1.0,2.0)-- (0.9999999999999996,-1.4641016151377557);
+\draw (2.0,0.26794919243112103)-- (-2.0,0.2679491924311226);
+\begin{scriptsize}
+\draw [fill=black] (1.0,2.0) circle (1.5pt);
+\draw [fill=black] (-1.0,2.0) circle (1.5pt);
+\draw [fill=black] (-2.0,0.2679491924311226) circle (1.5pt);
+\draw [fill=black] (-1.,-1.46) circle (1.5pt);
+\draw [fill=black] (1,-1.46) circle (1.5pt);
+\draw [fill=black] (2.0,0.26794919243112103) circle (1.5pt);
+\end{scriptsize}
+\end{tikzpicture}
+\end{center}
+
+\begin{tikzpicture}[main_node/.style={node distance=1cm,circle,draw,text=black,inner sep=1pt,outer sep=0pt]}]
+\draw (0,1)node {$=$}; \draw (0,0)node { };
+\end{tikzpicture}
+\begin{tikzpicture}[main_node/.style={node distance=1cm,circle,draw,text=black,inner sep=1pt,outer sep=0pt]}]
+\node[main_node] (1) at (-1,0) {}; \node[main_node] (2) at (-.5,-1) {};
+\node[main_node] (3) at (.5,-1) {}; \node[main_node] (4) at (1,0) {};
+\node[main_node] (5) at (.5,1) {}; \node[main_node] (6) at (-.5,1) {};
+\draw (6)node[above=1] {$u$}; \draw (3)node[below=1] {$v$};
+\draw (1)--(2)--(3)--(4)--(5)--(6)--(1);
+\draw (1)--(4);
+\draw (6)--(2)--(5)--(3);
+\end{tikzpicture}
+\begin{tikzpicture}[main_node/.style={node distance=1cm,circle,draw,text=black,inner sep=1pt,outer sep=0pt]}]
+\draw (0,1)node {$+$}; \draw (0,0)node { };
+\end{tikzpicture}
+\begin{tikzpicture}[main_node/.style={node distance=1cm,circle,draw,text=black,inner sep=1pt,outer sep=0pt]}]
+\node[main_node] (1) at (-1,0) {}; \node[main_node] (2) at (-.5,-1) {};
+\node[main_node] (3) at (.5,-1) {}; \node[main_node] (4) at (1,0) {};
+\node[main_node] (5) at (0,1) {};
+\draw (5)node[above=1] {$u$}; \draw (3)node[right=1] {$v$}; \draw (3)node[below=1] { };
+\draw (1)--(2)--(3)--(4)--(2)--(5)--(1);
+\draw (1)--(4);
+\end{tikzpicture}
+
+\begin{tikzpicture}[main_node/.style={node distance=1cm,circle,draw,text=black,inner sep=1pt,outer sep=0pt]}]
+\draw (0,1)node {$=$}; \draw (1,0) to[in=20,out=20,bend left] (1,2);
+\end{tikzpicture}
+\begin{tikzpicture}[main_node/.style={node distance=1cm,circle,draw,text=black,inner sep=1pt,outer sep=0pt]}]
+\node[main_node] (1) at (-1,0) {}; \node[main_node] (2) at (-.5,-1) {};
+\node[main_node] (3) at (.5,-1) {}; \node[main_node] (4) at (1,0) {};
+\node[main_node] (5) at (.5,1) {}; \node[main_node] (6) at (-.5,1) {};
+\draw (6)node[above=1] {$u$}; \draw (4)node[right=1] {$v$};
+\draw (1)--(2)--(3)--(4)--(5)--(6)--(1);
+\draw (1)--(4);
+\draw (6)--(2)--(5)--(3)--(6);
+\end{tikzpicture}
+\begin{tikzpicture}[main_node/.style={node distance=1cm,circle,draw,text=black,inner sep=1pt,outer sep=0pt]}]
+\draw (0,1)node {$+$}; \draw (0,0)node { };
+\end{tikzpicture}
+\begin{tikzpicture}[main_node/.style={node distance=1cm,circle,draw,text=black,inner sep=1pt,outer sep=0pt]}]
+\node[main_node] (1) at (-1,0) {}; \node[main_node] (2) at (-.5,-1) {};
+\node[main_node] (3) at (.5,-1) {}; \node[main_node] (4) at (1,0) {};
+\node[main_node] (5) at (0,1) {};
+\draw (1)--(2)--(3)--(4)--(5)--(3)--(1);
+\draw (1)--(4);
+\draw (2)--(5);
+\end{tikzpicture}
+\begin{tikzpicture}[main_node/.style={node distance=1cm,circle,draw,text=black,inner sep=1pt,outer sep=0pt]}]
+\draw (-.5,0) to[in=20,out=20,bend right] (-.5,2); \draw (0,1)node {$+$}; \draw (.5,0) to[in=20,out=20,bend left] (.5,2);
+\end{tikzpicture}
+\begin{tikzpicture}[main_node/.style={node distance=1cm,circle,draw,text=black,inner sep=1pt,outer sep=0pt]}]
+\node[main_node] (1) at (-1,0) {}; \node[main_node] (2) at (-.5,-1) {};
+\node[main_node] (3) at (.5,-1) {}; \node[main_node] (4) at (1,0) {};
+\node[main_node] (5) at (0,1) {};
+\draw (1)node[left=1] {$u$}; \draw (3)node[right=1] {$v$};
+\draw (1)--(2)--(3)--(4)--(2)--(5)--(1)--(4);
+\draw (3)--(5);
+\end{tikzpicture}
+\begin{tikzpicture}[main_node/.style={node distance=1cm,circle,draw,text=black,inner sep=1pt,outer sep=0pt]}]
+\draw (0,1)node {$+$}; \draw (0,0)node { };
+\end{tikzpicture}
+\begin{tikzpicture}[main_node/.style={node distance=1cm,circle,draw,text=black,inner sep=1pt,outer sep=0pt]}]
+\node[main_node] (1) at (-1,0) {}; \node[main_node] (2) at (-.5,-1) {};
+\node[main_node] (3) at (.5,-1) {}; \node[main_node] (4) at (1,0) {};
+\draw (1)--(2)--(3)--(4)--(1)--(3);
+\draw (2)--(4);
+\end{tikzpicture}
+\begin{tikzpicture}[main_node/.style={node distance=1cm,circle,draw,text=black,inner sep=1pt,outer sep=0pt]}]
+\draw (-1,0) to[in=20,out=20,bend right] (-1,2);
+\end{tikzpicture}
+
+\begin{tikzpicture}[main_node/.style={node distance=1cm,circle,draw,text=black,inner sep=1pt,outer sep=0pt]}]
+\draw (0,1)node {$=$}; \draw (1,0) to[in=20,out=20,bend left] (1,2);
+\end{tikzpicture}
+\begin{tikzpicture}[main_node/.style={node distance=1cm,circle,draw,text=black,inner sep=1pt,outer sep=0pt]}]
+\node[main_node] (1) at (-1,0) {}; \node[main_node] (2) at (-.5,-1) {};
+\node[main_node] (3) at (.5,-1) {}; \node[main_node] (4) at (1,0) {};
+\node[main_node] (5) at (.5,1) {}; \node[main_node] (6) at (-.5,1) {};
+\draw (1)node[above=1] {$u$}; \draw (5)node[right=1] {$v$};
+\draw (1)--(2)--(3)--(4)--(5)--(6)--(1);
+\draw (1)--(4)--(6);
+\draw (6)--(2)--(5)--(3)--(6);
+\end{tikzpicture}
+\begin{tikzpicture}[main_node/.style={node distance=1cm,circle,draw,text=black,inner sep=1pt,outer sep=0pt]}]
+\draw (0,1)node {$+$}; \draw (0,0)node { };
+\end{tikzpicture}
+\begin{tikzpicture}[main_node/.style={node distance=1cm,circle,draw,text=black,inner sep=1pt,outer sep=0pt]}]
+\node[main_node] (1) at (-1,0) {}; \node[main_node] (2) at (-.5,-1) {};
+\node[main_node] (3) at (.5,-1) {}; \node[main_node] (4) at (1,0) {};
+\node[main_node] (5) at (0,1) {};
+\draw (1)node[above=1] {$u$}; \draw (3)node[right=1] {$v$};
+\draw (1)--(2)--(3)--(4)--(5);
+\draw (1)--(4)--(2)--(5)--(3);
+\end{tikzpicture}
+\begin{tikzpicture}[main_node/.style={node distance=1cm,circle,draw,text=black,inner sep=1pt,outer sep=0pt]}]
+\draw (-.5,0) to[in=20,out=20,bend right] (-.5,2); \draw (0.25,1)node {$+\;2\cdot$}; \draw (1,0) to[in=20,out=20,bend left] (1,2);
+\end{tikzpicture}
+\begin{tikzpicture}[main_node/.style={node distance=1cm,circle,draw,text=black,inner sep=1pt,outer sep=0pt]}]
+\node[main_node] (1) at (-1,0) {}; \node[main_node] (2) at (-.5,-1) {};
+\node[main_node] (3) at (.5,-1) {}; \node[main_node] (4) at (1,0) {};
+\node[main_node] (5) at (0,1) {};
+\draw (5)node[left=1] {$u$}; \draw (4)node[right=1] {$v$};
+\draw (1)--(2)--(3)--(4)--(2)--(5)--(1)--(4);
+\draw (1)--(3)--(5);
+\end{tikzpicture}
+\begin{tikzpicture}[main_node/.style={node distance=1cm,circle,draw,text=black,inner sep=1pt,outer sep=0pt]}]
+\draw (0,1)node {$+$}; \draw (0,0)node { };
+\end{tikzpicture}
+\begin{tikzpicture}[main_node/.style={node distance=1cm,circle,draw,text=black,inner sep=1pt,outer sep=0pt]}]
+\node[main_node] (1) at (0,-1) {}; \node[main_node] (4) at (0,0) {};
+\node[main_node] (2) at (1,-1) {}; \node[main_node] (3) at (1,0) {};
+\draw (4)node[left=1] {$u$}; \draw (3)node[right=1] {$v$};
+\draw (1)--(2)--(3)--(1)--(4)--(2);
+\end{tikzpicture}
+\begin{tikzpicture}[main_node/.style={node distance=1cm,circle,draw,text=black,inner sep=1pt,outer sep=0pt]}]
+\draw (-1,0) to[in=20,out=20,bend right] (-1,2);
+\draw (0,1)node {$+\lambda^{(4)}$};
+%\draw (0,1)node {$+2\lambda^{(5)}+5\lambda^{(4)}+2\lambda^{(4)}$};
+\end{tikzpicture}
+
+\begin{tikzpicture}[main_node/.style={node distance=1cm,circle,draw,text=black,inner sep=1pt,outer sep=0pt]}]
+\draw (0,1)node {$=$}; \draw (0.5,0) to[in=20,out=20,bend left] (0.5,2);
+\end{tikzpicture}
+\begin{tikzpicture}[main_node/.style={node distance=1cm,circle,draw,text=black,inner sep=1pt,outer sep=0pt]}]
+\node[main_node] (1) at (-1,0) {}; \node[main_node] (2) at (-.5,-1) {};
+\node[main_node] (3) at (.5,-1) {}; \node[main_node] (4) at (1,0) {};
+\node[main_node] (5) at (.5,1) {}; \node[main_node] (6) at (-.5,1) {};
+\draw (2)node[left=1] {$u$}; \draw (4)node[right=1] {$v$};
+\draw (1)--(2)--(3)--(4)--(5)--(6)--(1)--(5);
+\draw (1)--(4)--(6)--(2)--(5)--(3)--(6);
+\end{tikzpicture}
+\begin{tikzpicture}[main_node/.style={node distance=1cm,circle,draw,text=black,inner sep=1pt,outer sep=0pt]}]
+\draw (0,1)node {$+$}; \draw (0,0)node { };
+\end{tikzpicture}
+\begin{tikzpicture}[main_node/.style={node distance=1cm,circle,draw,text=black,inner sep=1pt,outer sep=0pt]}]
+\node[main_node] (1) at (-1,0) {}; \node[main_node] (2) at (-.5,-1) {};
+\node[main_node] (3) at (.5,-1) {}; \node[main_node] (4) at (1,0) {};
+\node[main_node] (5) at (0,1) {};
+\draw (2)node[left=1] {$u$}; \draw (4)node[right=1] {$v$};
+\draw (2)--(3)--(4)--(1)--(5);
+\draw (4)--(5)--(2)--(1)--(3)--(5);
+\end{tikzpicture}
+\begin{tikzpicture}[main_node/.style={node distance=1cm,circle,draw,text=black,inner sep=1pt,outer sep=0pt]}]
+\draw (-.5,0) to[in=20,out=20,bend right] (-.5,2); \draw (0.25,1)node {$+$}; \draw (1,0) to[in=20,out=20,bend left] (1,2);
+\end{tikzpicture}
+\begin{tikzpicture}[main_node/.style={node distance=1cm,circle,draw,text=black,inner sep=1pt,outer sep=0pt]}]
+\node[main_node] (1) at (-1,0) {}; \node[main_node] (2) at (-.5,-1) {};
+\node[main_node] (3) at (.5,-1) {}; \node[main_node] (4) at (1,0) {};
+\node[main_node] (5) at (0,1) {};
+\draw (1)node[above=1] {$u$}; \draw (5)node[right=1] {$v$};
+\draw (3)--(1)--(2)--(3)--(4)--(5);
+\draw (1)--(4)--(2)--(5)--(3);
+\end{tikzpicture}
+\begin{tikzpicture}[main_node/.style={node distance=1cm,circle,draw,text=black,inner sep=1pt,outer sep=0pt]}]
+\draw (0,1)node {$+$}; \draw (0,0)node { };
+\end{tikzpicture}
+\begin{tikzpicture}[main_node/.style={node distance=1cm,circle,draw,text=black,inner sep=1pt,outer sep=0pt]}]
+\node[main_node] (2) at (-.5,-1) {};
+\node[main_node] (3) at (.5,-1) {}; \node[main_node] (4) at (1,0) {};
+\node[main_node] (5) at (0,1) {};
+%\draw (1)node[above=1] {$u$}; \draw (3)node[right=1] {$v$};
+\draw (2)--(3)--(4)--(5);
+\draw (4)--(2)--(5)--(3);
+\end{tikzpicture}
+\begin{tikzpicture}[main_node/.style={node distance=1cm,circle,draw,text=black,inner sep=1pt,outer sep=0pt]}]
+\draw (-1,0) to[in=20,out=20,bend right] (-1,2);
+%\draw (0,1)node {$+\lambda^{(4)}$};
+\draw (0,1.5)node {$+2\lambda^{(5)}$};
+\draw (.5,1)node {$+5\lambda^{(4)}$};
+\draw (1,.5)node {$+2\lambda^{(3)}$};
+\end{tikzpicture}
+
+\begin{tikzpicture}[main_node/.style={node distance=1cm,circle,draw,text=black,inner sep=1pt,outer sep=0pt]}]
+\draw (0,1)node {$=$}; \draw (0.5,0) to[in=20,out=20,bend left] (0.5,2);
+\end{tikzpicture}
+\begin{tikzpicture}[main_node/.style={node distance=1cm,circle,draw,text=black,inner sep=1pt,outer sep=0pt]}]
+\node[main_node] (1) at (-1,0) {}; \node[main_node] (2) at (-.5,-1) {};
+\node[main_node] (3) at (.5,-1) {}; \node[main_node] (4) at (1,0) {};
+\node[main_node] (5) at (.5,1) {}; \node[main_node] (6) at (-.5,1) {};
+\draw (1)node[left=1] {$u$}; \draw (3)node[right=1] {$v$};
+\draw (3)--(1)--(2)--(3)--(4)--(5)--(6)--(1)--(5);
+\draw (1)--(4)--(6)--(2)--(5)--(3)--(6);
+\end{tikzpicture}
+\begin{tikzpicture}[main_node/.style={node distance=1cm,circle,draw,text=black,inner sep=1pt,outer sep=0pt]}]
+\draw (0,1)node {$+$}; \draw (0,0)node { };
+\end{tikzpicture}
+\begin{tikzpicture}[main_node/.style={node distance=1cm,circle,draw,text=black,inner sep=1pt,outer sep=0pt]}]
+\node[main_node] (1) at (-1,0) {}; \node[main_node] (2) at (0,-1) {};
+\node[main_node] (4) at (1,0) {};
+\node[main_node] (5) at (.5,1) {}; \node[main_node] (6) at (-.5,1) {};
+%\draw (1)node[left=1] {$u$}; \draw (3)node[right=1] {$v$};
+\draw (2)--(1)--(4)--(5)--(6)--(1)--(5);
+\draw (4)--(6)--(2)--(5);
+\end{tikzpicture}
+\begin{tikzpicture}[main_node/.style={node distance=1cm,circle,draw,text=black,inner sep=1pt,outer sep=0pt]}]
+\draw (-.5,0) to[in=20,out=20,bend right] (-.5,2);
+\end{tikzpicture}
+\begin{tikzpicture}[main_node/.style={node distance=1cm,circle,draw,text=black,inner sep=1pt,outer sep=0pt]}]
+%\draw (0,1)node {$+\lambda^{(4)}$};
+\draw (0,1.5)node {$+4\lambda^{(5)}$};
+\draw (.5,1)node {$+8\lambda^{(4)}$};
+\draw (1,.5)node {$+2\lambda^{(3)}$};
+\end{tikzpicture}
+
+$
+\\
+=\lambda^{(6)}+6\lambda^{(5)}+9\lambda^{(4)}+2\lambda^{(3)}\\
+=\lambda(\lambda-1)(\lambda-2)((\lambda-3)(\lambda-4)(\lambda-5)+6(\lambda-3)(\lambda-4)+9(\lambda-3)+2)\\
+=\lambda^6-9\lambda^5+34\lambda^4-67\lambda^3+67\lambda^2-26\lambda
+$
+
+
+
+%	\vfill
+	\item (10 points) Find two nonisomorphic connected graphs with the same chromatic polynomial.
+
+        \tikz\path [graphs/.cd, nodes={shape=circle, draw,inner sep=1pt,outer sep=0pt}, empty nodes]
+          graph [tree layout,grow=right] { 1 -- 2 -- 3 -- 4}
+          [shift=(0:4)]
+          graph [tree layout,grow=right] { 1 -- 2 --{3 , 4} };
+
+        Justification is Corollary 9.15 on page 393 of the textbook.
+%	\vfill
+	\item (14 points) Suppose $G$ is a simple $r$-connected graph of even order with no $K_{1,r+1}$ as an induced subgraph for any positive $r$.  Prove that $G$ has a perfect matching.
+
+We look at the Peterson graph. This graph is 3 connected and has order 10. It is 3-regular and so cannot have $K_{1,4}$ as a subgraph. But the chromatic index of the Peterson graph is 4. And so being 3-regular with chromatic index 4, this graph is class two. Now by Theorem 11.5 a graph is 1-factorable if and only if it is class one. The Peterson graph must not be 1-factorable and so has no perfect matching.
+%	\vfill
+	\item (12 points) Prove that every overfull graph is class 2.
+
+From theorem 11.8 we know that if a graph $G$ has size $m$ such that $m>\alpha'(G)\cdot\Delta(G)$ then $G$ is of Class two.
+If a graph which is overfull is defined to have size $m>\lfloor\frac{n}{2}\rfloor\cdot\Delta(G)$.
+Now because each edge in a matching is connected to two unique vertices we know that $\alpha'(G)\le\lfloor\frac{n}{2}\rfloor$.
+And so $\alpha'(G)\Delta(G)\le\lfloor\frac{n}{2}\rfloor\Delta(G)$. But $m>\lfloor\frac{n}{2}\rfloor\cdot\Delta(G)$ by hypothesis and so $m>\alpha'(G)\cdot\Delta(G)$. And then by Theorem 11.8, an overfull graph is class 2.
+%	\vfill
+	\item (10 points) Find a graceful labeling of the double star 
+	%\vfill
+	\begin{center}
+	\begin{tikzpicture}[scale=.75][line cap=round,line join=round,>=triangle 45,x=1.0cm,y=1.0cm]
+%\clip(-11.140000000000006,-6.84) rectangle (16.54000000000001,7.54);
+\draw (-2.0,0.0)-- (2.0,0.0);
+\draw (2.0,2.0)-- (2.0,-2.0);
+\draw (4.0,0.0)-- (2.0,0.0);
+\draw (-2.0,2.0)-- (-2.0,-2.0);
+\draw (-2.0,0.0)-- (-4.0,0.0);
+\begin{scriptsize}
+\draw [fill=black] (-2.0,0.0) circle (1.5pt);
+\draw [fill=black] (2.0,0.0) circle (1.5pt);
+\draw [fill=black] (2.0,2.0) circle (1.5pt);
+\draw [fill=black] (2.0,-2.0) circle (1.5pt);
+\draw [fill=black] (4.0,0.0) circle (1.5pt);
+\draw [fill=black] (-2.0,2.0) circle (1.5pt);
+\draw [fill=black] (-2.0,-2.0) circle (1.5pt);
+\draw [fill=black] (-4.0,0.0) circle (1.5pt);
+\end{scriptsize}
+\end{tikzpicture}
+\begin{tikzpicture}[main_node/.style={node distance=1cm,circle,draw,text=black,inner sep=1pt,outer sep=0pt]}]
+  \node[main_node] (0) at (1.5,1.5) {0};
+  \node[main_node] (1) at (0,0) {1};
+  \node[main_node] (2) at (1.5,-1.5) {2};
+  \node[main_node] (7) at (1.5,0) {7};
+  \node[main_node] (3) at (4,0) {3};
+  \node[main_node] (4) at (4,1.5) {4};
+  \node[main_node] (5) at (5.5,0) {5};
+  \node[main_node] (6) at (4,-1.5) {6};
+  \draw (1)--(7)node[midway,above]{6}--(3)node[midway,above]{4}--(5)node[midway,above]{2};
+  \draw (0)--(7)node[midway,left]{7}--(2)node[midway,left]{5};
+  \draw (4)--(3)node[midway,left]{1}--(6)node[midway,left]{3};
+\end{tikzpicture}
+\end{center}
+	
+\end{enumerate}
+
+\end{document}
