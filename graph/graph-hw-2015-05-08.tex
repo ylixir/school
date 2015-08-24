@@ -1,0 +1,273 @@
+%shell-escape
+\documentclass[letterpaper]{article}
+
+\usepackage{fullpage}
+\usepackage{nopageno}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{gnuplottex}
+\usepackage{tikz}
+\usepackage[utf8]{luainputenc}
+\usepackage{luacode}
+
+\tikzstyle{edge} = [fill,opacity=.5,fill opacity=.5,line cap=round, line join=round, line width=50pt]
+\usetikzlibrary{graphs,graphdrawing}
+\usegdlibrary{trees}
+\usegdlibrary{layered}
+
+\pgfdeclarelayer{background}
+\pgfsetlayers{background,main}
+\newlength{\arrowsize}  
+\pgfarrowsdeclare{biggertip}{biggertip}{  
+  \setlength{\arrowsize}{0.4pt}  
+  \addtolength{\arrowsize}{.5\pgflinewidth}  
+  \pgfarrowsrightextend{0}  
+  \pgfarrowsleftextend{-5\arrowsize}  
+}{  
+  \setlength{\arrowsize}{0.6pt}  
+  \addtolength{\arrowsize}{.5\pgflinewidth}  
+  \pgfpathmoveto{\pgfpoint{-5\arrowsize}{4\arrowsize}}  
+  \pgfpathlineto{\pgfpointorigin}  
+  \pgfpathlineto{\pgfpoint{-5\arrowsize}{-4\arrowsize}}  
+  \pgfusepathqstroke  
+}
+
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+
+\begin{document}
+\title{Graph Theory Homework}
+\date{April 8, 2015}
+\author{Jon Allen}
+\maketitle
+\renewcommand{\labelenumi}{10.\arabic{enumi}}
+\renewcommand{\labelenumii}{\arabic{enumii}.}
+%\renewcommand{\labelenumii}{\Alph{enumii}.}
+\renewcommand{\labelenumiii}{(\alph{enumiii})}
+\renewcommand\thefigure{10.\arabic{figure}}
+The homework due tomorrow with the take home final is section 10.2, numbers 1, 2, and 3 and section 10.3, numbers 2, 5 and 8.  Note that for number 3, the graph Qn is defined on page 18. 
+
+I am omitting number 3 of 10.2.
+
+For number 1 of 10.2, show first that the Petersen graph has exactly two non-isomorphic 1-factors, then apply Tutte's theorem (p420).  Alternatively, use the hint in the book.  For number 2, think small, as in the smallest composite number.
+
+For 2 of 10.3, each vertex is identical to all the others, so pick any vertex to start your decomposition, and run into a contradiction. For 5a, look at theorem 10.25, and for 5b, just have a little fun with it and see what you come up with.  8a is another application of 10.25, as is 8b, but 8b is really tricky.  For 8b, start with a $K_2k-1$ and note that $2k-1=2(k-1)+1$, which starts to look more like 10.25.  Then you have to add a new vertex in a controlled manner.  It is probably the trickiest problem in the homework.
+\begin{enumerate}
+\setcounter{enumi}{1}
+\item
+\begin{enumerate}
+  \item
+  %10.2 #1
+  Show that the Peterson graph is not 1-factorable.
+
+  We first carefully explore all 1-factors of the Petersen graph. Actually they are all isomorphic, but it doesn't matter. We will use the following representation of the Petersen graph.
+
+\begin{tikzpicture}[main_node/.style={node distance=1cm,circle,draw,text=black,inner sep=1pt,outer sep=0pt]}]
+    \begin{luacode*}
+      for i=1,9 do
+        local x = 2*math.cos(i*2*math.pi/9)
+        local y = 2*math.sin(i*2*math.pi/9)
+
+        tex.print('\\node[main_node] ('..i..') at ('..x..','..y..') {};')
+        tex.print('\\node at ('..1.2*x..','..1.2*y..') {$v_'..i..'$};')
+      end
+    \end{luacode*}
+    \node[main_node] (0) at (0,0) {};
+    \node at (0.25,-0.10) {$v_0$};
+    \begin{luacode}
+      for i=1,9 do
+        tex.print('\\draw ('..i..')--('..((i\%9)+1)..');')
+      end
+      for i=1,9,3 do
+        tex.print('\\draw (0)--('..i..');')
+      end 
+      for i=2,9,3 do
+        tex.print('\\draw ('..i..')--('..(((i+3)\%9)+1)..');')
+      end 
+    \end{luacode}
+  \end{tikzpicture}
+\begin{tikzpicture}[main_node/.style={node distance=1cm,circle,draw,text=black,inner sep=1pt,outer sep=0pt]}]
+    \begin{luacode*}
+      for i=1,9 do
+        local x = 2*math.cos(i*2*math.pi/9)
+        local y = 2*math.sin(i*2*math.pi/9)
+
+        tex.print('\\node[main_node] ('..i..') at ('..x..','..y..') {};')
+        tex.print('\\node at ('..1.2*x..','..1.2*y..') {$v_'..i..'$};')
+      end
+    \end{luacode*}
+    \node[main_node] (0) at (0,0) {};
+    \node at (0.25,-0.10) {$v_0$};
+    \draw (0)--(1);\draw (2)--(3);\draw (4)--(5);\draw(6)--(7);\draw(8)--(9);
+\end{tikzpicture}
+\begin{tikzpicture}[main_node/.style={node distance=1cm,circle,draw,text=black,inner sep=1pt,outer sep=0pt]}]
+    \begin{luacode*}
+      for i=1,9 do
+        local x = 2*math.cos(i*2*math.pi/9)
+        local y = 2*math.sin(i*2*math.pi/9)
+
+        tex.print('\\node[main_node] ('..i..') at ('..x..','..y..') {};')
+        tex.print('\\node at ('..1.2*x..','..1.2*y..') {$v_'..i..'$};')
+      end
+    \end{luacode*}
+    \node[main_node] (0) at (0,0) {};
+    \node at (0.25,-0.10) {$v_0$};
+    \draw(0)--(1);\draw(2)--(6);\draw(7)--(8);\draw(9)--(5);\draw(3)--(4);
+\end{tikzpicture}
+
+  Next to the original graph I have drawn the only two possible perfect matchings. In doing so I considered the fact that every vertex must be adjacent to one and only one other vertex. Looking at $v_0$ I observed that it doesn't matter which vertex I choose for it's neighbor, they are all isomorphic. So the first element in both matchings is $v_0v_1$. Next I looked at $v_2$. We now have a choice of $v_2v_3$ or $v_2v_6$. This choice gives rise to the first and second matchings. Now we notice that for the first matching, if we look at the remaining even vertices in order, we have no choices left on how to pair them. Similarly for the second matching, after having chosen $v_0v_1$ and $v_2v_6$ we see that $v_7v_8,v_9v_5$ and $v_4v_3$ are forced in that order. Now we look at the complement of the matchings. If the Petersen graph is 1-factorable, then one of these will have a 1-factor.
+
+\begin{tikzpicture}[main_node/.style={node distance=1cm,circle,draw,text=black,inner sep=1pt,outer sep=0pt]}]
+  \begin{luacode*}
+    for i=1,9 do
+      local x = 2*math.cos(i*2*math.pi/9)
+      local y = 2*math.sin(i*2*math.pi/9)
+
+      tex.print('\\node[main_node] ('..i..') at ('..x..','..y..') {};')
+      tex.print('\\node at ('..1.2*x..','..1.2*y..') {$v_'..i..'$};')
+    end
+  \end{luacode*}
+  \node[main_node] (0) at (0,0) {};
+  \node at (0.25,-0.10) {$v_0$};
+  \begin{luacode}
+    for i=1,9,2 do
+      tex.print('\\draw ('..i..')--('..((i\%9)+1)..');')
+    end
+    for i=4,9,3 do
+      tex.print('\\draw (0)--('..i..');')
+    end 
+    for i=2,9,3 do
+      tex.print('\\draw ('..i..')--('..(((i+3)\%9)+1)..');')
+    end 
+  \end{luacode}
+\end{tikzpicture}
+\begin{tikzpicture}[main_node/.style={node distance=1cm,circle,draw,text=black,inner sep=1pt,outer sep=0pt]}]
+  \begin{luacode*}
+    for i=1,9 do
+      local x = 2*math.cos(i*2*math.pi/9)
+      local y = 2*math.sin(i*2*math.pi/9)
+
+      tex.print('\\node[main_node] ('..i..') at ('..x..','..y..') {};')
+      tex.print('\\node at ('..1.2*x..','..1.2*y..') {$v_'..i..'$};')
+    end
+  \end{luacode*}
+  \node[main_node] (0) at (0,0) {};
+  \node at (0.25,-0.10) {$v_0$};
+  \begin{luacode}
+    for i=1,9 do
+      if(i ~= 3 and i ~= 7) then
+        tex.print('\\draw ('..i..')--('..((i\%9)+1)..');')
+      end
+    end
+    for i=4,9,3 do
+      tex.print('\\draw (0)--('..i..');')
+    end 
+  \end{luacode}
+  \draw(8)--(3);
+\end{tikzpicture}
+
+But both of these leave us with two copies of $C_5$ which obviously has no 1-factor. The Petersen graph then is not 1-factorable.
+  \item
+  %10.2 #2
+  Give an example of a connected graph $G$ of composite size having the property that whenever $F$ is a factor of $G$ and the size of $F$ divides the size of $G$, then $G$ is $F$-factorable.
+
+  \tikz\path [graphs/.cd]
+    graph { "$v_1$" -- "$v_2$";"$v_3$" -- "$v_4$";"$v_1$" -- "$v_3$";"$v_2$" -- "$v_4$" }
+    [shift=(0:1)];
+
+  We let $G$ be the above square. So any factors of $G$ must have size between zero and four inclusive. Now if we can take some number $a$ and multiply it by the size of one of our factors and get $4$ then we can safely say that the size of our factor divides the size of $G$. We know this but I wanted to be careful about the empty graph. Obviously any factors of size 0 or 3 are out, leaving factors of size 4 or 2. The factor of size 4 is actually $G$. Obviously $\{E(G)\}$ partitions $E(G)$ and so $G$ is $G$-factorable. There are two non-isomorphic factors of size 2. I think it is easiest to just show those factors and the isomorphs which partition $E(G)$.
+
+  \tikz\graph { "$v_1$" -- "$v_2$";"$v_3$"--[draw=none]"$v_4$";"$v_1$" -- "$v_3$";"$v_2$" --[draw=none] "$v_4$"; };
+  \tikz\graph { "$v_1$" --[draw=none]"$v_2$";"$v_3$"--"$v_4$";"$v_1$" --[draw=none] "$v_3$";"$v_2$" -- "$v_4$"; };
+  \tikz\graph { "$v_1$" -- "$v_2$";"$v_3$"--"$v_4$";"$v_1$" --[draw=none] "$v_3$";"$v_2$" --[draw=none] "$v_4$"; };
+  \tikz\graph { "$v_1$" --[draw=none]"$v_2$";"$v_3$"--[draw=none]"$v_4$";"$v_1$" -- "$v_3$";"$v_2$" -- "$v_4$"; };
+
+  \item
+  %10.2 #3
+  \begin{enumerate}
+    \item
+    Prove that $Q_n$ is 1-factorable for all $n\ge 1$.
+
+    We know we can represent the vertex set of $Q_n$ as the set of ordered $n$-tuples $(a_0,a_2,\dot,a_{n-1})$ such that $a_i$ is 1 or 0 for $0\le i\le n-1$, such that two vertices are adjacent if and only if the corresponding ordered $n$-tuples differ at precisely one coordinate. See page 18 in the text for more details.
+
+    These tuples can be thought of as base two (binary) integers. That is to say that one can represent any of these tuples as a regular integer $b$ where $b=\sum\limits_{i=0}^n{a_i*2^i}$. Thus we can unambiguously refer to any vertex by a tuple label or an integer label.
+    Now we observe that if $i\ge 1$ then $2|2^i$. But $2\!\!\not|2^0$. Thus $2|b$ if and only if $a_0=0$. 
+
+    Enough setup. We divide the vertices of $Q_n$ into two sets. In the even set we have $a_0=0$ and in the odd set we have $a_0=1$. Now we choose any vertex from the even set whose integer label is $b$. Now $b+1$ will have $a_0=1$ and so be in the odd set. Furthermore, all the coordinates of $b$ and $b+1$ will be the same with the exception of $a_0$. This means that they are adjacent. We will take the $bb+1$ edge and put it in our matching. Now because the even and odd sets will have the same number of elements, we can find a match in the odd set for every element in the even set. And thus we have a perfect matching.
+
+    We can repeat this same procedure, dividing the vertices of $Q_n$ up based on whether their $a_i$ coordinate is 0 or 1. We then take any element $b$ of the zero set and match it with the $b+2^i$ element in the 1 set to find $n$ perfect matchings. Indeed these matchings are pairwise disjoint with one another as the match only happens if all coordinates other than $a_i$ are the same. Thus we have shown by construction that $Q_n$ is 1-factorable.
+    \item
+    Prove the $Q_n$ is $k$-factorable if and only if $k|n$.
+
+    For the forward direction we observe that $Q_n$ is $n$-regular. Now if we take the union of an arbitrary number (say $a$) of $k$-regular edge disjoint graphs who share a vertex set, then each vertex will be incident to $k$ edges from each of the $a$ graphs. Thus the result will be a $ka$ regular graph. Thus if we take the $k$-factors of $Q_n$ and put them together then we will have a graph that is $ka$-regualar. But this graph is $Q_n$ which is $n$ regular and so $n=ka$. Thus $k|n$.
+
+    For the opposite direction we assume that $k|n$. Thus there is some $a$ such that $ka=n$. Now we know that $Q_n$ is 1-factorable. Thus there are $n=ka$ 1-factors of $Q_n$. Now we take the union of $k$ 1-factors and we have a $k$-factor of $Q_n$. We can do this $a$ times and form $a$ $k$-factors. Thus partitioning $E(Q_n)$ and showing by construction that $Q_n$ is $k$-factorable.
+
+  \end{enumerate}
+
+\end{enumerate}
+\item
+\begin{enumerate}
+  \setcounter{enumii}{1}
+  \item
+  %10.3 #2
+  Show that the graph of the octahedron is not $K_{1,4}$-decomposable
+
+  \tikz\graph { {1 --[draw=none]" "--[draw=none] 2};1--2;" "--[draw=none]3;" "--[draw=none]4;{5 --[draw=none]" "--[draw=none] 6};5--6;{1,2}--3; 4--{5,6};{1,2}--4; 3--{5,6};{1,2}--{5,6} };
+  \tikz\graph { {1 --[draw=none]" "--[draw=none] 2};1--2;" "--[draw=none]3;{5 --[draw=none]" "--[draw=none] 6};5--6;{1,2}--3;  3--{5,6};{1,2}--{5,6} };
+  \tikz\graph { {1 --[draw=none]" "--[draw=none] 2};1--2;;{5 --[draw=none]" "--[draw=none] 6};5--6;{1,2}--{5,6} };
+
+  Since all points are isomorphic, we pick $4$ to be the center of our first $K_{1,4}$ star. Now we have only one vertex left with degree 4 so vertex 3 has to be the center of our next star. But now we have something that is not isomorphic to $K_{1,4}$ and has no vertices of degree at least four. So we can't decompose anymore, thus the octohedron is not $K_{1,4}$-decomposable
+  \setcounter{enumii}{4}
+  \item
+  %10.3 #5
+  \begin{enumerate}
+    \item
+    Use the fact thee $K_3$ is graceful to find a $K_3$-decomposition of $K_7$
+
+\begin{tikzpicture}[main_node/.style={node distance=1cm,circle,draw,text=black,inner sep=1pt,outer sep=0pt]}]
+    \begin{luacode*}
+      for i=0,6 do
+        local x = 2*math.cos(-i*2*math.pi/7)
+        local y = 2*math.sin(-i*2*math.pi/7)
+
+        tex.print('\\node[main_node] ('..i..') at ('..x..','..y..') {};')
+        tex.print('\\node at ('..1.2*x..','..1.2*y..') {'..i..'};')
+      end
+      for i=0,6 do
+        for j=i+1,6 do
+          tex.print('\\draw ('..i..')--('..j..');')
+        end
+      end
+    \end{luacode*}
+  \end{tikzpicture}
+
+    First we note that the triangle $(013)$ forms a graceful labelling. Thus by Theorem 10.25 we can use it do decompose $K_{2\cdot3+1}=K_{7}$ cyclically. So Then the decomposition consists of the triangles $(013),(124),(235),(346),(450),(561),(602)$
+
+    \item
+    Find a noncomplete regular connected $K_3$-decomposable graph.
+
+    \tikz\graph{1--2;3;4--5;{1,2}--3--{4,5}};
+  \end{enumerate}
+  \setcounter{enumii}{7}
+  \item
+  %10.3 #8
+  For each integer $k\ge 1$ show that
+  \begin{enumerate}
+    \item
+    $K_{2k+1}$ is $k_{1,k}$-decomposable
+
+    First note that we can label the vertex at the center of the star $0$ and the rest of the vertices $1$ through $k$ in any order. Now because each of the $1,\dots, k$ vertices are adjacent to $0$ and there are no other edges on the graph, then the edges will have be labelled with the numbers $1,\dots, k$ and so any star can be gracefully labelled. Thus by 10.25 any $K_{2k+1}$ can be decomposed by $K_{1,k}$
+    \item
+    $K_{2k}$ is $K_{1,k}$-decomposable
+
+    In the interest of keeping things simple we notice that if $K_2$ is $K_{1,1}$ decomposable then the problem is equivalent to asking whether $K_{2k+2}$ is $K_{1,k+1}$-deomposable. Note that $K_2=K_{1,1}$ and so $K_2$ is $K_{1,1}$ decomposable.
+
+    Now we know already that $K_{2k+1}$ is $K_{1,k}$ decomposable. Further the size of $K_{2k+1}$ is $\frac{(2k+1)(2k)}{2}=k(2k+1)$. Obviously the size of $K_{1,k}$ is $k$ so we have $2k+1$ stars in our $K_{2k+1}$. One for every vertex, which fits with they cyclic nature of theorem 10.25. Now we take $K_{2k+1}$ and add a vertex. We add an edge from this vertex to every $K_{1,k}$ star in the $K_{1,k}$ decomposition of $K_{2k+1}$. Note that we have connected this vertex to every vertex of $K_{2k+1}$ thus forming a $K_{2k+2}$. Note also that we have added an edge to every star, making every original $K_{1,k}$ into a $K_{1,k+1}$. And so we have our result.
+  
+  \end{enumerate}
+
+\end{enumerate}
+\end{enumerate}
+\end{document}
