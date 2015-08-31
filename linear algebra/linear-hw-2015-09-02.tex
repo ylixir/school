@@ -1,0 +1,130 @@
+\documentclass[letterpaper]{article}
+
+\usepackage{fullpage}
+\usepackage{nopageno}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+
+\begin{document}
+\title{Homework}
+\date{September 2, 2015}
+\author{Jon Allen}
+\maketitle
+%Section 1.1: 5,6(a,c,d,h),7,10(a,d),20-25,28(d)
+\renewcommand{\labelenumi}{1.\arabic{enumi}}
+\renewcommand{\labelenumii}{\arabic{enumii}.}
+\renewcommand{\labelenumiii}{(\alph{enumiii})}
+\begin{enumerate}
+\item
+  \begin{enumerate}
+  \setcounter{enumii}{4}
+  \item
+  Let $\ell$ be the line given parametrically by $\mathbf{x}=(1,3)+t(-2,1),t\in \mathbb{R}$. Which of the following points lie on $\ell$? Give your reasoning.
+    \begin{enumerate}
+    \item
+    $\mathbf{x}=(-1,4)$
+    \begin{align*}
+      (-1,4)&=(1,3)+t(-2,1) & (-1-1,4-3)=(-2,1)&=t(-2,1) & t&=1
+    \end{align*}
+    lies on the line
+    \item
+    $\mathbf{x}=(7,0)$
+    \begin{align*}
+      (7-1,0-3)=(6,-3)&=t(-2,1)&t&=-3
+    \end{align*}
+    also lies on the line
+    \item
+    $\mathbf{x}=(6,2)$
+    \begin{align*}
+      (6-1,2-3)=(5,-1)&\ne t(-2,1)
+    \end{align*}
+    \end{enumerate}
+  \item
+  Find a parametric equation of each of the following lines:
+    \begin{enumerate}
+    \item
+    $3x_1+4x_2=6$
+    \begin{align*}
+      x_2&=-\frac{3}{4}x_1+\frac{6}{4}\\
+      (x_1,x_2)&=(0,\frac{6}{4})+t(-3,4)\\
+      \mathbf{x}&=(2,0)+t(-3,4)
+    \end{align*}
+    \setcounter{enumiii}{2}
+    \item
+    the line with the slope $2/5$ that passes through $A=(3,1)$
+    \begin{align*}
+      \mathbf{x}=(3,1)+t(5,2)
+    \end{align*}
+    \item
+    the line through $A=(-2,1)$ parallel to $\mathbf{x}=(1,4)+t(3,5)$
+    \begin{align*}
+      \mathbf{x}=(-2,1)+t(3,5)
+    \end{align*}
+    \setcounter{enumiii}{7}
+    \item
+    the line through $(1, 1, 0, -1)$ parallel to $\mathbf{x}=(2+t,1-2t,3t,4-t)$
+    \begin{align*}
+      \mathbf{x}&=(2+t,1-2t,3t,4-t)\\
+      &=(2,1,0,4)+t(1,-2,3,-1)\\
+      \mathbf{x}'&=(1,1,0,-1)+t(1,-2,3,-1)
+    \end{align*}
+    \end{enumerate}
+  \item
+  Suppose $\mathbf{x}=\mathbf{x}_0+t\mathbf{v}$ and $\mathbf{y}=\mathbf{y}_0+s\mathbf{w}$ are two parametric representations of the same line $\ell$ in $\mathbb{R}$.
+    \begin{enumerate}
+    \item
+    Show that there is a scalar $t_0$ so that $\mathbf{y}_0=\mathbf{x}_0+t_0\mathbf{v}$
+
+    By definition 2.2 the line goes through $\mathbf{y}_0$ and $\mathbf{x}_0$. Because $\ell=\{\mathbf{x}\in \mathbb{R}^n:\mathbf{x}=\mathbf{x}_0+t\mathbf{v}\text{ for some }t\in \mathbb{R}\}$ then there is some $t_0\in\mathbb{R}$ such that $\mathbf{y}_0=\mathbf{x}=\mathbf{x}_0+t_0\mathbf{v}$
+    \item
+    Show that $\mathbf{v}$ and $\mathbf{w}$ are parallel.
+    \end{enumerate}
+  \setcounter{enumii}{9}
+  \item
+  Find a parametric equation of each of the following planes:
+    \begin{enumerate}
+    \item
+    the plane containing the point $(-1,0,1)$ and the line $\mathbf{x}=(1,1,1)+t(1,7,-1)$
+    \setcounter{enumiii}{3}
+    \item
+    the plane in $\mathbb{R}^4$ containing the points $(1,1,-1,4),(2,3,0,1)$ and $(1,2,2,3)$
+    \end{enumerate}
+  \setcounter{enumii}{19}
+  \item
+  Assume that $\mathbf{u}$ and $\mathbf{v}$ are parallel vectors in $\mathbb{R}^n$. Prove that $\text{Span}(\mathbf{u},\mathbf{v})$ is a line.
+  \item
+  Suppose $\mathbf{v},\mathbf{w}\in \mathbb{R}^n$ and $c$ is a scalar. Prove that $\text{Span}(\mathbf{v}+c\mathbf{w},\mathbf{w})=\text{Span}(\mathbf{v},\mathbf{w})$. (See the blue box on p. 12.)
+  \item
+  Suppose  the vectors $\mathbf{v}$ and $\mathbf{w}$ are both linear combinations of $\mathbf{v}_1,\dots,\mathbf{v}_k$.
+    \begin{enumerate}
+    \item
+    Prove that for any scalar $c,c\mathbf{v}$ is a linear combination of $\mathbf{v}_1,\dots,\mathbf{v}_k$.
+    \item
+    Prove that $\mathbf{v}+\mathbf{w}$ is a linear combination of $\mathbf{v}_1,\dots,\mathbf{v}_k$
+    \end{enumerate}
+  \item
+  Consider the line $\ell: \mathbf{x}=\mathbf{x}_0+r\mathbf{v} (r\in \mathbb{R})$ and the plane $\mathcal{P}: \mathbf{x}=s\mathbf{u}+t\mathbf{v} (s,t\in \mathbb{R})$. Show that if $\ell$ and $\mathcal{P}$ intersect, then $\mathbf{x}_0\in \mathcal{P}$
+  \item
+  Consider the lines $\ell: \mathbf{x}=\mathbf{x}_0+t\mathbf{v}$ and $\mathit{m}: \mathbf{x}=\mathbf{x}_1+s\mathbf{u}$. Show that $\ell$ and $\mathit{m}$ intersect if and only if $\mathbf{x}_0-\mathbf{x}_1$ lies in $\text{Span}(\mathbf{u},\mathbf{v})$.
+  \item
+  Suppose $\mathbf{x},\mathbf{y}\in \mathbb{R}^n$ are nonparallel vectors. (Recall definition on p.3.)
+    \begin{enumerate}
+    \item
+    Prove that if $s\mathbf{x}+t\mathbf{y}=\mathbf{0}$ then $s=t=0$. ({\it Hint:} Show that neither $s\ne 0$ nor $t\ne 0$ is possible.)
+    \item
+    Prove that if $a\mathbf{x}+b\mathbf{y}=c\mathbf{x}+d\mathbf{y}$, then $a=c$ and $b=d$
+    \end{enumerate}
+  \setcounter{enumii}{27}
+  \item
+  Verify algebraically that the following properties of vector arithmetic hold. (Do so for $n=2$ if the general case is too intimidating.) Give the geometric interpretation of each property.
+    \begin{enumerate}
+    \setcounter{enumiii}{3}
+    \item
+    For each $\mathbf{x}\in \mathbb{R}^n$, there is a vector $-\mathbf{x}$ so that $\mathbf{x}+(-\mathbf{x})=\mathbf{0}$
+    \end{enumerate}
+  \end{enumerate}
+\end{enumerate}
+\end{document}
