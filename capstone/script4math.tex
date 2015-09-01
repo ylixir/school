@@ -1,0 +1,95 @@
+\documentclass[11pt,reqno]{amsart}
+\usepackage{amsfonts,amssymb,amscd,amsmath,mathrsfs,amsthm}
+\usepackage[pdftex]{graphicx}
+
+\setlength{\oddsidemargin}{0.25in}  %please do not change
+\setlength{\evensidemargin}{0.25in} %please do not change
+\setlength{\marginparwidth}{0in} %please do not change
+\setlength{\marginparsep}{0in} %please do not change
+\setlength{\marginparpush}{0in} %please do not change
+\setlength{\topmargin}{0in} %please do not change
+
+\setlength{\footskip}{.3in} %please do not change
+\setlength{\textheight}{8.75in} %please do not change
+\setlength{\textwidth}{6in} %please do not change
+\setlength{\parskip}{4pt} %please do not change
+
+%
+% The following lines set the environments for theorems, propositions, and definitions. 
+%
+
+\theoremstyle{plain}
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{prop}{Proposition}
+
+%  Alternatively, can use
+%  \newtheorem{thm}{Theorem}[section]
+%  to create theorems with numbering depending on the sections.
+%
+%  \newtheorem{prop}[thm]{Proposition} will generate propositions that use the same counter as theorems.
+
+\theoremstyle{definition}
+\newtheorem*{defi}{Definition}
+
+
+\newcommand{\ab}[2]{\left(\frac{#1}{#2}\right)}
+
+%  Mathematical sets; R, C, ...
+
+\begin{document}
+
+\section{List environments}\label{intro}
+
+Create the following list
+
+\begin{enumerate}
+\item The main list environments are enumerate and itemize.
+
+\item Separate items are created with the command \textbackslash{}item.
+
+\item Counters change automatically when generating sublists, or they can be changed manually.
+\begin{enumerate}
+
+\item First and
+\item second item
+\end{enumerate}
+\item This is the fourth item
+
+\end{enumerate}
+Generate the following itemized list.
+
+\begin{itemize}
+
+\item Item 1
+\item Item 2 contains another list:
+
+\begin{itemize}
+\item Item 3
+\item Item 4 
+\end{itemize}
+\end{itemize}
+
+Change counters: 
+
+\renewcommand{\theenumi}{(\Roman{enumi})}  % \theenumi is the command to print the formatted string related to the counter
+\renewcommand{\labelenumi}{\theenumi}            % \labelenumi formats the counter enumi. The syntax given here guarantees that references to
+                                                                               % these counters are printed correctly as well.
+
+
+\begin{enumerate}
+\item The main list environments are enumerate and itemize.
+
+\item Separate items are created with the command \textbackslash{}item.
+
+\item Counters change automatically when generating sublists, or they can be changed manually.
+\begin{enumerate}
+
+\item First and
+\item second item
+\end{enumerate}
+\item This is the fourth item
+
+\end{enumerate}
+
+
+\end{document}

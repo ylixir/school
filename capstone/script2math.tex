@@ -1,0 +1,78 @@
+\documentclass[11pt,reqno]{amsart}
+\usepackage{amsfonts,amssymb,amscd,amsmath,mathrsfs,amsthm}
+\usepackage[pdftex]{graphicx}
+
+\setlength{\oddsidemargin}{0.25in}  %please do not change
+\setlength{\evensidemargin}{0.25in} %please do not change
+\setlength{\marginparwidth}{0in} %please do not change
+\setlength{\marginparsep}{0in} %please do not change
+\setlength{\marginparpush}{0in} %please do not change
+\setlength{\topmargin}{0in} %please do not change
+
+\setlength{\footskip}{.3in} %please do not change
+\setlength{\textheight}{8.75in} %please do not change
+\setlength{\textwidth}{6in} %please do not change
+\setlength{\parskip}{4pt} %please do not change
+
+\begin{document}
+
+\section{Typesetting mathematical formulas}
+
+\begin{enumerate}
+
+\item  Typeset
+\[
+\delta(x) = \int_1^{15} \cos x\frac{ x\sin x + 4}{x^2-90} dx 
+\]
+
+\item Typeset
+\begin{align}
+\Gamma(x) = \sum_{j=0}^\infty \binom{j}{2} x^j
+\end{align}
+
+\item Typeset $x\in \mathbb{R}$, $y\in \mathbb{C}$. 
+
+\item Typeset
+\begin{align*}
+f(x) &= x^n e^{-x^2 \sin x}\\
+g(x) &= x^{2n} + f\left( \frac{\sqrt{x} }{\cos x} \right)
+\end{align*}
+
+\item Typeset (matrix with [] or bmatrix if amsmath is used)
+\[
+A = \left[ \begin{matrix} a & b \\ c & d \end{matrix} \right]
+\]
+
+\item Typeset
+\[
+f(x) = \begin{cases}
+\displaystyle \int_1^{30} e^{-xt} \sinh(t) dt\text{ if }x>0,\\[1.5ex]
+\displaystyle \int_{-30}^0 e^{-xt} \cosh(t) \text{ if }x\le 0.
+\end{cases}
+\]
+
+\item Typeset (note the position of the equation number)
+\begin{align}
+\begin{split}
+k_n & = \sum_{\substack{k\in\mathbb{Z} \\ k\neq 0}} k^{-n} (k+n!)\\
+\ell_n & = \sum_{\substack{ k\in\mathbb{N} \\ k>20}} k^{-n} (k+n!)
+\end{split}
+\end{align}
+
+\item Typeset: Define the set $A_n = \{ 1, \dots ,n\}$ and the matrix
+\[
+B = \begin{pmatrix}
+ a_{1,1} & \dots & a_{1,n} \\
+ a_{2,1} & \dots & a_{2,n} \\
+ \vdots & \ddots & \vdots \\
+ a_{n1,} & \dots & a_{n,n}
+\end{pmatrix}
+\]
+
+\item Typeset
+\[
+ C = \overset{\circ}{\bigcup_{j\ge 1}} A_j
+\]
+
+\end{enumerate}
+\end{document}

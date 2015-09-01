@@ -23,6 +23,8 @@
   \setcounter{enumii}{4}
   \item
   Let $\ell$ be the line given parametrically by $\mathbf{x}=(1,3)+t(-2,1),t\in \mathbb{R}$. Which of the following points lie on $\ell$? Give your reasoning.
+
+  No magic, just algebra, if we can work out a true equation it's on the line. If we work out a false equation, it's not.
     \begin{enumerate}
     \item
     $\mathbf{x}=(-1,4)$
@@ -78,9 +80,18 @@
     \item
     Show that there is a scalar $t_0$ so that $\mathbf{y}_0=\mathbf{x}_0+t_0\mathbf{v}$
 
-    By definition 2.2 the line goes through $\mathbf{y}_0$ and $\mathbf{x}_0$. Because $\ell=\{\mathbf{x}\in \mathbb{R}^n:\mathbf{x}=\mathbf{x}_0+t\mathbf{v}\text{ for some }t\in \mathbb{R}\}$ then there is some $t_0\in\mathbb{R}$ such that $\mathbf{y}_0=\mathbf{x}=\mathbf{x}_0+t_0\mathbf{v}$
+    By definition 2.2 the line goes through $\mathbf{y}_0$ and $\mathbf{x}_0$. Because $\mathbf{y}_0\in\ell=\{\mathbf{x}\in \mathbb{R}^n:\mathbf{x}=\mathbf{x}_0+t\mathbf{v}\text{ for some }t\in \mathbb{R}\}$ then there is some $t_0\in\mathbb{R}$ such that $\mathbf{y}_0=\mathbf{x}=\mathbf{x}_0+t_0\mathbf{v}$
     \item
     Show that $\mathbf{v}$ and $\mathbf{w}$ are parallel.
+
+    Let us choose some point $\mathbf{z}\in \ell$ other than $\mathbf{y}_0$. Then there exists some $t_1,s_1\in \mathbb{R}$ such that $\mathbf{y}_0+s_1\mathbf{w}=\mathbf{z}=\mathbf{x}_0+t_1\mathbf{v}$. We just saw that there exists some $t_0\in \mathbb{R}$ such that $\mathbf{y}_0=\mathbf{x}_0+t_0\mathbf{v}$. So then letting the algebra work itself out:
+    \begin{align*}
+      \mathbf{y}_0+s_1\mathbf{w}&=\mathbf{x}_0+t_1\mathbf{v}\\
+      (\mathbf{x}_0+t_0\mathbf{v})+s_1\mathbf{w}&=\mathbf{x}_0+t_1\mathbf{v}& \text{A1 and A4}\\
+      s_1\mathbf{w}&=t_1\mathbf{v}-t_0\mathbf{v}& \text{S1, S3, and S4}\\
+      \mathbf{w}&=\frac{t_1-t_0}{s_1}\mathbf{v}
+    \end{align*}
+    Now obviously $\frac{t_1-t_0}{s_1}\in \mathbb{R}$ and so by definition 1.7 we know that $\mathbf{v}$ and $\mathbf{w}$ are parallel.
     \end{enumerate}
   \setcounter{enumii}{9}
   \item
@@ -88,6 +99,12 @@
     \begin{enumerate}
     \item
     the plane containing the point $(-1,0,1)$ and the line $\mathbf{x}=(1,1,1)+t(1,7,-1)$
+
+    \begin{align*}
+      (-1,0,1)&=(1,1,1)+t(1,7,-1)+\mathbf{u}&\text{let }t&=0\\
+      (-2,-1,-2)&=\mathbf{u}& \text{By A3 and Theorem 11}\\
+      \mathcal{P}(\mathbf{x}_0,\mathbf{u},\mathbf{v})&=(1,1,1)+t(1,7,-1)+s(-2,1,-2)
+    \end{align*}
     \setcounter{enumiii}{3}
     \item
     the plane in $\mathbb{R}^4$ containing the points $(1,1,-1,4),(2,3,0,1)$ and $(1,2,2,3)$
@@ -95,6 +112,8 @@
   \setcounter{enumii}{19}
   \item
   Assume that $\mathbf{u}$ and $\mathbf{v}$ are parallel vectors in $\mathbb{R}^n$. Prove that $\text{Span}(\mathbf{u},\mathbf{v})$ is a line.
+
+  
   \item
   Suppose $\mathbf{v},\mathbf{w}\in \mathbb{R}^n$ and $c$ is a scalar. Prove that $\text{Span}(\mathbf{v}+c\mathbf{w},\mathbf{w})=\text{Span}(\mathbf{v},\mathbf{w})$. (See the blue box on p. 12.)
   \item

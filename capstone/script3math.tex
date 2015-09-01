@@ -1,0 +1,76 @@
+\documentclass[11pt,reqno]{amsart}
+\usepackage{amsfonts,amssymb,amscd,amsmath,mathrsfs,amsthm}
+\usepackage[pdftex]{graphicx}
+
+\setlength{\oddsidemargin}{0.25in}  %please do not change
+\setlength{\evensidemargin}{0.25in} %please do not change
+\setlength{\marginparwidth}{0in} %please do not change
+\setlength{\marginparsep}{0in} %please do not change
+\setlength{\marginparpush}{0in} %please do not change
+\setlength{\topmargin}{0in} %please do not change
+
+\setlength{\footskip}{.3in} %please do not change
+\setlength{\textheight}{8.75in} %please do not change
+\setlength{\textwidth}{6in} %please do not change
+\setlength{\parskip}{4pt} %please do not change
+
+%
+% The following lines set the environments for theorems, propositions, and definitions. 
+%
+
+\theoremstyle{plain}
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{prop}{Proposition}
+
+%  Alternatively, can use
+%  \newtheorem{thm}{Theorem}[section]
+%  to create theorems with numbering depending on the sections.
+%
+%  \newtheorem{prop}[thm]{Proposition} will generate propositions that use the same counter as theorems.
+
+\theoremstyle{definition}
+\newtheorem*{defi}{Definition}
+
+
+\newcommand{\ab}[2]{\left(\frac{#1}{#2}\right)}
+
+%  Mathematical sets; R, C, ...
+
+\begin{document}
+
+\section{Theorem environments}\label{intro}
+
+
+\begin{abstract}
+This is the abstract for the article.
+\end{abstract}
+
+This is an introduction to latex. A file with symbols and an introduction to latex is posted on blackboard. When creating your own latex file for your project, please use the commands before \textbackslash{}begin\{document\}. This will set the margins in such a way that the different files can easily be combined into one file afterwards.
+
+The following are templates for theorems and propositions. Change the newtheorem arguments to create different looks and counters.
+
+\begin{thm}\label{th1} This is a sample theorem.
+\end{thm}
+
+\begin{proof} This is an empty proof.
+\end{proof}
+
+\begin{defi} This is a definition.
+\end{defi}
+
+\begin{prop} This is an example of a proposition.
+\end{prop}
+
+\begin{thm}\label{th2} This is the second sample theorem.
+\end{thm}
+
+\section{References and counters}
+
+
+We give a brief example how theorem counters are referred to. We defined theorems \ref{th1}, \ref{th2} in Section \ref{intro}. A counter that is referred to must have been defined with the \textbackslash{}label command at some point in the latex file.
+
+\begin{thm} This is a theorem in the second section. The [section] optional parameter in the environment definition will change the counter so that it depends on the section.
+\end{thm}
+
+
+\end{document}
