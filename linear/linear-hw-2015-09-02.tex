@@ -1,18 +1,23 @@
 \documentclass[letterpaper]{article}
 
-\usepackage{fullpage}
-\usepackage{nopageno}
+\usepackage[utf8x]{luainputenc}
+\usepackage{aeguill}
+%\usepackage{nopageno}
 \usepackage{amsmath}
 \usepackage{amssymb}
+\usepackage{mathrsfs}
+\usepackage{fullpage}
+\usepackage{fancyhdr}
+\setlength{\headheight}{12pt}
+\pagestyle{fancy}
+\chead{Linear Algebra}
+\lhead{September 2, 2015}
+\rhead{Jon Allen}
 \allowdisplaybreaks
 
 \newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
 
 \begin{document}
-\title{Homework}
-\date{September 2, 2015}
-\author{Jon Allen}
-\maketitle
 %Section 1.1: 5,6(a,c,d,h),7,10(a,d),20-25,28(d)
 \renewcommand{\labelenumi}{1.\arabic{enumi}}
 \renewcommand{\labelenumii}{\arabic{enumii}.}
@@ -27,22 +32,11 @@
   No magic, just algebra, if we can work out a true equation it's on the line. If we work out a false equation, it's not.
     \begin{enumerate}
     \item
-    $\mathbf{x}=(-1,4)$
-    \begin{align*}
-      (-1,4)&=(1,3)+t(-2,1) & (-1-1,4-3)=(-2,1)&=t(-2,1) & t&=1
-    \end{align*}
-    lies on the line
+    $\mathbf{x}=(-1,4)$ leads to $(-1,4)=(1,3)+t(-2,1)$ and $(-1-1,4-3)=(-2,1)=t(-2,1)$. If we let $t=1$ then the equation holds, thus the point lies on the line
     \item
-    $\mathbf{x}=(7,0)$
-    \begin{align*}
-      (7-1,0-3)=(6,-3)&=t(-2,1)&t&=-3
-    \end{align*}
-    also lies on the line
+    $\mathbf{x}=(7,0)$ leads to $(7-1,0-3)=(6,-3)=t(-2,1)$. So we let $t=-3$ to make the equation hold and find that this point also lies on the line.
     \item
-    $\mathbf{x}=(6,2)$
-    \begin{align*}
-      (6-1,2-3)=(5,-1)&\ne t(-2,1)
-    \end{align*}
+    $\mathbf{x}=(6,2)$ leads to $(6-1,2-3)=(5,-1)\ne t(-2,1)$ and so the point is not on the line.
     \end{enumerate}
   \item
   Find a parametric equation of each of the following lines:
@@ -84,14 +78,16 @@
     \item
     Show that $\mathbf{v}$ and $\mathbf{w}$ are parallel.
 
-    Let us choose some point $\mathbf{z}\in \ell$ other than $\mathbf{y}_0$. Then there exists some $t_1,s_1\in \mathbb{R}$ such that $\mathbf{y}_0+s_1\mathbf{w}=\mathbf{z}=\mathbf{x}_0+t_1\mathbf{v}$. We just saw that there exists some $t_0\in \mathbb{R}$ such that $\mathbf{y}_0=\mathbf{x}_0+t_0\mathbf{v}$. So then letting the algebra work itself out:
+    We choose the point $\mathbf{y}_0+\mathbf{w}\in \ell$.
+    Note that because this point is on our line, then there exists some $t_1\in \mathbb{R}$ such that $\mathbf{y}_0+\mathbf{w}=\mathbf{x}_0+t_1\mathbf{v}$.
+    And we have already established that we have some $t_0\in \mathbb{R}$ such that $\mathbf{y}_0=\mathbf{x}_0+t_0\mathbf{v}$. 
+    Making the substitution we have $(\mathbf{x}_0+t_0\mathbf{v})+\mathbf{w}=\mathbf{x}_0+t_1\mathbf{v}$. Now using the algebraic properties of vectors and scalars from theorem 1.9:
     \begin{align*}
-      \mathbf{y}_0+s_1\mathbf{w}&=\mathbf{x}_0+t_1\mathbf{v}\\
-      (\mathbf{x}_0+t_0\mathbf{v})+s_1\mathbf{w}&=\mathbf{x}_0+t_1\mathbf{v}& \text{A1 and A4}\\
-      s_1\mathbf{w}&=t_1\mathbf{v}-t_0\mathbf{v}& \text{S1, S3, and S4}\\
-      \mathbf{w}&=\frac{t_1-t_0}{s_1}\mathbf{v}
+      (\mathbf{x}_0+t_0\mathbf{v})+\mathbf{w}&=\mathbf{x}_0+t_1\mathbf{v}\\
+      \mathbf{w}&=\mathbf{x}_0-\mathbf{x}_0+t_1\mathbf{v}-t_0\mathbf{v}\\
+      \mathbf{w}&=(t_1-t_0)\mathbf{v}
     \end{align*}
-    Now obviously $\frac{t_1-t_0}{s_1}\in \mathbb{R}$ and so by definition 1.7 we know that $\mathbf{v}$ and $\mathbf{w}$ are parallel.
+    We know from the definition of a line that $\mathbf{v}$ and $\mathbf{w}$ are not $\mathbf{0}$. So the above equation means that $\mathbf{v}$ and $\mathbf{w}$ fit the definition of parallel.
     \end{enumerate}
   \setcounter{enumii}{9}
   \item
@@ -100,41 +96,103 @@
     \item
     the plane containing the point $(-1,0,1)$ and the line $\mathbf{x}=(1,1,1)+t(1,7,-1)$
 
+    We know that the plane contains the points $(-1,0,1)$ and $(1,1,1)$.
+    Importantly $(-1,0,1)$ is not on our line.
+    So we just pick $(1,1,1)$ to be $\mathbf{x}_0$ and then choose the direction vector from our line to be one of the spanning vectors for the plane.
+    Plugging it all into the definition of a plane we get $(-1,0,1)=(1,1,1)+s\mathbf{u}+t(1,7,-1)$.
+    Because $(-1,0,1)$ is not on our line, so if we use $t=0$ and $s=1$ then applying theorem 1.9 and 11 should give us a second spanning vector.
     \begin{align*}
-      (-1,0,1)&=(1,1,1)+t(1,7,-1)+\mathbf{u}&\text{let }t&=0\\
-      (-2,-1,-2)&=\mathbf{u}& \text{By A3 and Theorem 11}\\
-      \mathcal{P}(\mathbf{x}_0,\mathbf{u},\mathbf{v})&=(1,1,1)+t(1,7,-1)+s(-2,1,-2)
+      \mathbf{x}&=\mathbf{x}_0+s\mathbf{u}+t\mathbf{v}\\
+      (-1,0,1)&=(1,1,1)+\mathbf{u}+0(1,7,-1)\\
+      (-1,0,1)-(1,1,1)&=\mathbf{u}\\
+      (-2,-1,-2)&=\mathbf{u}&\\
+      \mathcal{P}(\mathbf{x}_0,\mathbf{u},\mathbf{v})&=\{\mathbf{x}\in \mathbb{R}^n:\mathbf{x}=(1,1,1)+s(-2,1,-2)+t(1,7,-1)\quad\forall s,t\in \mathbb{R}\}
     \end{align*}
+    Note that we cannot multiply $(1,7,-1)$ by any real number and get $(-2,1,-2)$. Thus $(-2,1,-2)$ and $(1,7,-1)$ are not parallel and the above equation fits all the criteria for our plane.
     \setcounter{enumiii}{3}
     \item
     the plane in $\mathbb{R}^4$ containing the points $(1,1,-1,4),(2,3,0,1)$ and $(1,2,2,3)$
+
+    So we should be able to just pick a point from the three for an $\mathbf{x}_0$ or $\mathbf{y}_0$ and then find the equation for lines through this point and the other two points. That will give us our spanning vectors. So lets pick $(1,1,-1,4)=\mathbf{x}_0=\mathbf{y}_0$ and do the algebra.
+    \begin{align*}
+      \mathbf{x}&=\mathbf{x}_0+t\mathbf{v}&
+      \mathbf{y}&=\mathbf{y}_0+s\mathbf{u}\\
+      (2,3,0,1)&=(1,1,-1,4)+t\mathbf{v}&
+      (1,2,2,3)&=(1,1,-1,4)+s\mathbf{u}\\
+      t\mathbf{v}&=(2,3,0,1)-(1,1,-1,4)&
+      s\mathbf{u}&=(1,2,2,3)-(1,1,-1,4)\\
+      \text{choose }t&=1&
+      \text{choose }s&=1\\
+      \mathbf{v}&=(1,2,1,-3)&
+      \mathbf{u}&=(0,1,3,-1)
+    \end{align*}
+    I claim that the zero in $\mathbf{u}$ means that it is obviously not parallel to $\mathbf{v}$ which has no zeroes. Thus we have our plane in $\mathcal{P}\left((1,1,-1,4),(1,2,1,-3),(0,1,3,-1)\right)$
     \end{enumerate}
   \setcounter{enumii}{19}
   \item
   Assume that $\mathbf{u}$ and $\mathbf{v}$ are parallel vectors in $\mathbb{R}^n$. Prove that $\text{Span}(\mathbf{u},\mathbf{v})$ is a line.
 
+  First we note that $\text{Span}(\mathbf{u},\mathbf{v})=\{\mathbf{x}\in \mathbb{R}^n:a\mathbf{u}+b\mathbf{v}\quad\forall a,b\in \mathbb{R}\}$.
+  Of course we know that because $\mathbf{u}$ and $\mathbf{v}$ are parallel, then $\exists c\in \mathbb{R}$ such that $\mathbf{u}=c\mathbf{v}$.
+  And so we have $a\mathbf{u}+b\mathbf{v}=a(c\mathbf{v})+b\mathbf{v}=(ac+b)\mathbf{v}$.
+  Let $ac+b=t$ and $\mathbf{x}_0=(0,0,0)$.
+  Then $(ac+b)\mathbf{v}=\mathbf{x}_0+t\mathbf{v}$.
+  Thus $\text{Span}(\mathbf{u},\mathbf{v})=\{x\in \mathbb{R}^n:\mathbf{x}_0+t\mathbf{v}\}$.
+  From the definition of parallel we know that $\mathbf{v}\ne \mathbf{0}$ and so $\text{Span}(\mathbf{u},\mathbf{v})$ fits the definition of a line.
+  $\Box$
   
   \item
   Suppose $\mathbf{v},\mathbf{w}\in \mathbb{R}^n$ and $c$ is a scalar. Prove that $\text{Span}(\mathbf{v}+c\mathbf{w},\mathbf{w})=\text{Span}(\mathbf{v},\mathbf{w})$. (See the blue box on p. 12.)
+
+  Sometimes it's easier to let the math speak for itself, and so from the definition of span and from our established algebraic properties:
+  \begin{align*}
+    \text{Span}(\mathbf{v}+c\mathbf{w})&=\{\mathbf{x}\in \mathbb{R}^n:\mathbf{x}=a(\mathbf{v}+c\mathbf{w})+b(\mathbf{w})\quad \forall a,b\in \mathbb{R}\}\\
+    &=\{\mathbf{x}\in \mathbb{R}^n:\mathbf{x}=a\mathbf{v}+(ac+b)\mathbf{w}\quad \forall a,b\in \mathbb{R}\}
+  \end{align*}
+  Now of course if we fix any $a,c \in \mathbb{R}$ then we know that $\mathbb{R}=\{ac+b:\forall b\in \mathbb{R} \}$.
+  Lets just say $d=ac+b$.
+  And so:
+  \begin{align*}
+    \{\mathbf{x}\in \mathbb{R}^n:\mathbf{x}=a\mathbf{v}+(ac+b)\mathbf{w}\quad \forall a,b\in \mathbb{R}\}&=\{\mathbf{x}\in \mathbb{R}^n:\mathbf{x}=a\mathbf{v}+d\mathbf{w}\quad \forall a,d\in \mathbb{R}\}\\
+    &=\text{Span}(\mathbf{v},\mathbf{w})
+  \end{align*}
+  $\Box$
   \item
   Suppose  the vectors $\mathbf{v}$ and $\mathbf{w}$ are both linear combinations of $\mathbf{v}_1,\dots,\mathbf{v}_k$.
     \begin{enumerate}
     \item
     Prove that for any scalar $c,c\mathbf{v}$ is a linear combination of $\mathbf{v}_1,\dots,\mathbf{v}_k$.
+
+    Say $\mathbf{v}=a_1\mathbf{v}_1+\dots+a_k\mathbf{v}_k$ for some $a_1,\dots,a_k\in \mathbb{R}$. Then $c\mathbf{v}$ must be $c(a_1\mathbf{v}_1+\dots+a_k\mathbf{v}_k)=ca_1\mathbf{v}_1+\dots+ca_k\mathbf{v}_k$ and so $c\mathbf{v}$ is a linear combination of $\mathbf{v}_1,\dots,\mathbf{v}_k$.
     \item
     Prove that $\mathbf{v}+\mathbf{w}$ is a linear combination of $\mathbf{v}_1,\dots,\mathbf{v}_k$
+
+    Say $\mathbf{w}=b_1\mathbf{v}_1+\dots+b_k\mathbf{v}_k$. Then $\mathbf{v}+\mathbf{w}=a_1\mathbf{v}_1+\dots+a_k\mathbf{v}_k+b_1\mathbf{v}_1+\dots+b_k\mathbf{v}_k=(a_1+b_1)\mathbf{v}_1+\dots+(a_k+b_k)\mathbf{v}_k$. Naturally this is a linear combination of $\mathbf{v}_1,\dots,\mathbf{v}_k$.
     \end{enumerate}
   \item
   Consider the line $\ell: \mathbf{x}=\mathbf{x}_0+r\mathbf{v} (r\in \mathbb{R})$ and the plane $\mathcal{P}: \mathbf{x}=s\mathbf{u}+t\mathbf{v} (s,t\in \mathbb{R})$. Show that if $\ell$ and $\mathcal{P}$ intersect, then $\mathbf{x}_0\in \mathcal{P}$
+
+  If $\ell\cap\mathcal{P}\ne \emptyset$ then there exists some $r_0,s_0,t_0\in \mathbb{R}$ such that $\mathbf{x}_0+r_0\mathbf{v}=s_0\mathbf{u}+t_0\mathbf{v}$. Of course then $\mathbf{x}_0=s_0\mathbf{u}+(t_0-r_0)\mathbf{v}$. And because $t_0-r_0\in \mathbb{R}$ then $s_0\mathbf{u}+(t_0-r_0)\mathbf{v}\in \mathcal{P}$. So $\mathbf{x}_0$ is clearly on our plane.
   \item
   Consider the lines $\ell: \mathbf{x}=\mathbf{x}_0+t\mathbf{v}$ and $\mathit{m}: \mathbf{x}=\mathbf{x}_1+s\mathbf{u}$. Show that $\ell$ and $\mathit{m}$ intersect if and only if $\mathbf{x}_0-\mathbf{x}_1$ lies in $\text{Span}(\mathbf{u},\mathbf{v})$.
+
+  First let us assume that $\ell\cap \mathit{m}\ne \emptyset$. Then $\exists t_0,s_0\in \mathbb{R}$ such that $\mathbf{x}_0+t_0\mathbf{v}=\mathbf{x}_1+s_0\mathbf{u}$. Simple manipulation leads to $\mathbf{x}_0-\mathbf{x}_1=s_0\mathbf{u}+(-t_0)\mathbf{v}$. And since $\mathbf{x}_0-\mathbf{x}_1$ is a linear combination of $\mathbf{u}$ and $\mathbf{v}$ then $\mathbf{x}_0-\mathbf{x}_1\in \text{Span}(\mathbf{u},\mathbf{v})$
+
+  And if we assume that $\mathbf{x}_0-\mathbf{x}_1\in \text{Span}(\mathbf{u},\mathbf{v})$? Well then $\mathbf{x}_0-\mathbf{x}_1=c_1\mathbf{u}+c_2\mathbf{v}$. For some $c_1,c_2\in \mathbb{R}$. Again, simple manipulation leads to $\mathbf{x}_0+(-c_2)\mathbf{v}=\mathbf{x}_1+c_1\mathbf{u}$. Thus we have found two ways to represent the point where the two lines intersect. $\Box$
   \item
   Suppose $\mathbf{x},\mathbf{y}\in \mathbb{R}^n$ are nonparallel vectors. (Recall definition on p.3.)
+
     \begin{enumerate}
     \item
     Prove that if $s\mathbf{x}+t\mathbf{y}=\mathbf{0}$ then $s=t=0$. ({\it Hint:} Show that neither $s\ne 0$ nor $t\ne 0$ is possible.)
+
+    We first note that we have no definition of nonparallel, only parallel. Parallel vectors can not be zero, which kind of implies that nonparallel vectors might be. One can easily find a counterexample to the assertion if either vector is zero. I do not think that is the point of the exercise though, so we will assume that neither vector is the zero vector.
+
+    Now let us assume that $s\ne0$. Then with some simple algebra we go from $s\mathbf{x}+t\mathbf{y}=0$ to $\mathbf{x}=-\frac{t}{s}\mathbf{y}$. Thus $\mathbf{x}$ and $\mathbf{y}$ fit the definition of parallel. But they are not parallel, and so we know that $s=0$. Similarly, assuming $t\ne 0$ leads to $\mathbf{y}=-\frac{s}{t}\mathbf{x}$ and so we know that $t=0$. $\Box$
     \item
     Prove that if $a\mathbf{x}+b\mathbf{y}=c\mathbf{x}+d\mathbf{y}$, then $a=c$ and $b=d$
+
+    If we rearrange our equation a little, we arrive at $(a-c)\mathbf{x}=(d-b)\mathbf{y}$. Similarly to above we must now add to our premise that $\mathbf{x}$ and $\mathbf{y}$ are not zero. Now if we assume that $a\ne c$ then we find that $a-c\ne 0$. This allows us to arrange our equation as $\mathbf{x}=\frac{d-b}{a-c}\mathbf{y}$. Similarly, assuming $b\ne d$ leads us to $\mathbf{y}=\frac{a-c}{d-b}\mathbf{x}$. Either way we must conclude that $\mathbf{x}$ and $\mathbf{y}$ are parallel. But this is not true, and so we know that $a=c$ and $b=d$.
     \end{enumerate}
   \setcounter{enumii}{27}
   \item
@@ -143,6 +201,14 @@
     \setcounter{enumiii}{3}
     \item
     For each $\mathbf{x}\in \mathbb{R}^n$, there is a vector $-\mathbf{x}$ so that $\mathbf{x}+(-\mathbf{x})=\mathbf{0}$
+
+    Let $\mathbf{x}=(x_1,\dots,x_n)$. We know that for each $x_i\in \mathbb{R}$ there exists some $-x_i\in \mathbb{R}$ such that $x_i+(-x_i)=0$. Let us define $-\mathbf{x}=(-x_1,\dots,-x_n)$. Then
+    \begin{align*}
+      \mathbf{x}+(-\mathbf{x})&=(x_1,\dots,x_n)+(-x_1,\dots,-x_n)\\
+      &=(x_1+(-x_1),\dots,x_n+(-x_n))\\
+      &=(0,\dots,0)=\mathbf{0}
+    \end{align*}
+    Geometrically, for every vector, there exists another parallel vector with equal magnitude, and opposite direction.
     \end{enumerate}
   \end{enumerate}
 \end{enumerate}
