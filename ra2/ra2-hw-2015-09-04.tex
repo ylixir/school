@@ -1,0 +1,63 @@
+%shell-escape
+\documentclass[letterpaper]{article}
+
+\usepackage{amsmath}
+\usepackage[utf8x]{luainputenc}
+\usepackage{amssymb}
+\usepackage{gnuplottex}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\lhead{September 4, 2015}
+\chead{Real Analysis II Homework}
+\rhead{Jon Allen}
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+
+\begin{document}
+
+\renewcommand{\labelenumi}{\Alph{enumi}.}
+%\renewcommand{\labelenumii}{\arabic{enumii}.}
+\renewcommand{\labelenumii}{(\alph{enumii})}
+\section*{8.1}
+\begin{enumerate}
+\setcounter{enumi}{6}
+\item
+  Find all intervals on which the sequence $f_n(x)=\frac{x^{2n}}{n+x^{2n}},n\ge 1$, converges uniformly.
+
+  This function is asymptotic with $f(x)=1$ and $f_n(0)=0$. 
+  Further, we notice that if $|x|\le 1$ then we can make the denominator infinitely large, but the numerator will never be larger than 1, therefore for any \varepsilon we can find some $N$ such that if $n\ge N$ then $f_n(x)\le \varepsilon$ and so on the interval $[-1,1]$ we see that $f_n$ converges to $f=0$. Now if $|x|>1$ then we notice that the second derivatives of the top and bottom are both the same, so L'Hôpital tells us that we must converge to $f=1$. Now our problem spot is $-1,1$. Our maximum $f_n$ in the case of $|x|\le 1$ is at the ones. Obviously we can make $\frac{1}{n+1}$ as small as we want, so any subinterval of $[-1,1]$ will converge uniformly. Now lets pick $\varepsilon=\frac{1}{2}$. If we can find some $f_n(x)\le \frac{1}{2}$ for some $x\in (1,\infty)$ and for any $n$ then we have a problem.
+  \begin{align*}
+    \frac{1}{2}&=\frac{x^{2n}}{n+x^{2n}}\\
+    n&=x^{2n}\\
+    x&=\pm\sqrt[2n]{n}
+  \end{align*}
+  That's a strange number but it is bigger than one, so the function does not converge uniformly the interval $(1,\infty)$. We should be fine though if we choose any subinterval of $[a,\infty)$ where $a>1$. And the same thing for negatives.
+  \item
+  Suppose that $f_n:[0,1]\to \mathbb{R}$ is a sequence of $C^1$ functions (i.e., functions with continuous derivatives) that converges pointwise to a function $f$. If there is a constant $M$ such that $||f_n'||_\infty\le M$ for all $n$, then prove that $(f_n)$ converges to $f$ uniformly.
+
+  If we assume that $M$
+
+\item
+  Prove {\bfseries Dini's Theorem}: if $f$ and $f_n$ are continuous functions on $[a,b]$ such that $f_n\le f_{n+1}$ for all $n\ge 1$ and $(f_n)$ converges to $f$ pointwise, then $(f_n)$ converges to $f$ uniformly.
+
+  {\sc Hint}: Work with $g_n=f-f_n$ which decrease to $0$. Show that for any point $x_0$ and $\varepsilon>0$, there are an integer $N$ and a positive $r>0$ such that $g_N(x)\le \varepsilon$ on $(x_0-r,x_0+r)$. If convergence is not uniform, say $\lim||g_n||_\infty =d>0$, find $x_n$ such that $\lim g_n(x_n)=d$. Obtain a contradiction.
+
+  If we can show that $g_n=f-f_n$ converges uniformly to $g=0$ then we will have an equivalent result. Naturally if $f$ and $f_n$ are continuous functions, then $g_n$ must also be continuous. Thus we know that for any $\varepsilon>0$ and $x_0\in [a,b]$ we can find some $r>0$ and $N$ for all $x$ such that $|x-x_0|<r$ will satisfy $|g_N(x)-g_N(x_0)|<\varepsilon$. That is to say we can find some range $(x_0-r,x_0+r)$ where $g_N(x)\le \varepsilon$. And because $g_n$ is monotonic, then $g_k(x)\le \varepsilon$ for all $k\ge N$ and $x\in (x_0-r, x_0+r)$
+\item
+  Find an example which shows that Dini's Theorem is false if $[a,b]$ is replaced with a non compact subset of $\mathbb{R}$.
+
+  If we take $f_n(x)=-\left(\frac{x}{n}\right)^2$ then we have a function that converges pointwise to $f(x)=0$ and $-\left(\frac{x}{n}\right)^2\le -\left(\frac{x}{n+1}\right)^2$ for all $n\in \mathbb{N}$ and $x\in [0,\infty)$. If we have a compact subset we can get uniform convergence with this thing, but if we look at say $[0,\infty)$ then we see that no matter how small $\varepsilon$ is, if we go far enough out, we can always find some $x\in [0,\infty)$ such that $f_n(x)> \varepsilon$ for any $n$ no matter how big.
+\item
+  \begin{enumerate}
+  \item
+    Suppose that $f:\mathbb{R}\to \mathbb{R}$ is uniformly continuous. Let $f_n(x)=f(x+1/n)$. Prove that $f_n$ converges uniformly to $f$ on $\mathbb{R}$.
+
+    If we choose any $\varepsilon>0$ then we know we can find some $\delta>0$ so that if $||x-y||<\delta$ then $||f(x)-f(y)||<\varepsilon$. That is uniform continuity. So then we just need to pick $N$ large enough that $1/N<\delta$ and we have $||f(x)-f(x+1/n)||<\varepsilon$ for all $n\ge N$.
+  \item
+    Does this remain true if $f$ is just continuous? Prove it or provide a counterexample.
+
+    It does not remain true. Take $f(x)=x^2$ for example. If we choose $\varepsilon=1$ then we should be able to find some $N$ so that $|x^2-(x+1/n)^2|<1$ for all $x\in \mathbb{R}$ and $n\ge N$. But this implies that $|2x/n+1/n^2|<1$ which is clearly false for all $x\ge\frac{1}{2n}$ no matter how big we make $n$.
+  \end{enumerate}
+\end{enumerate}
+\end{document}
