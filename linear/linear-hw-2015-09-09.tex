@@ -11,7 +11,7 @@
 \setlength{\headheight}{12pt}
 \pagestyle{fancy}
 \chead{Linear Algebra}
-\lhead{September 2, 2015}
+\lhead{September 9, 2015}
 \rhead{Jon Allen}
 \allowdisplaybreaks
 
@@ -210,22 +210,51 @@
       Note that $\mathbf{0}$ is on the plane and so we just need to find two vectors that aren't parallel and are on the plane, and we have our solution. Lets take $(-3,1,1)$ and $(2,0,1)$. Then our equation is $\mathbf{x}=x_2(-3,1,1)+x_3(2,0,1)$
     \item
       Find a specific solution of the equation $x_1+5x_2-2x_3=3$ in $\mathbb{R}^3$; give the general solution.
+
+      $\mathbf{x}=(0,1,1)$ is a specific solution to the equation. Combining the specific solution with part $a$ we have $\mathbf{x}=(0,1,1)+x_2(-3,1,1)+x_3(2,0,1)$
     \item
       Give the general solution of the equation $x_1+5x_2-2x_3+x_4=0$ in $\mathbb{R}^4$. Now give the general solution of the equation $x_1+5x_2-2x_3+x_4=3$
+      
+      As before we notice that we are going through $\mathbf{0}$, so we find three vectors that are independent and we are golden. We can even steal two of them from the previous part. Take $(-3,1,1,0), (2,0,1,0)$ and $(0,1,1,-3)$. These are obviously all on our hyperplane, and we can easily see that they are independent. So for the first part we have $\mathbf{x}=x_2(-3,1,1,0)+x_3(2,0,1,0)+x_4(0,1,1,-3)$. For the second part we just need a point on the plane. we see that $3+5\cdot0-2\cdot0+0=3$ so we use $(3,0,0,0)$ and this gives us $\mathbf{x}=(3,0,0,0)+x_2(-3,1,1,0)+x_3(2,0,1,0)+x_4(0,1,1,-3)$
     \end{enumerate}
   \item
     The equation $2x_1-3x_2=5$ defines a line in $\mathbb{R}^2$.
     \begin{enumerate}
     \item
       Give a normal vector $\mathbf{a}$ to the line.
+
+      $2x_1-3x_2=(2,-3)\cdot(x_1,x_2)$ so our normal vector is $(2,-3)$
     \item
       Find the distance from the origin to the line by using projection.
+
+      $||\text{proj}_\mathbf{a}\mathbf{x}||=\frac{5}{\sqrt{4+9}}=\frac{5\sqrt{13}}{13}$
     \item
       Find the point on the line closest to the origin by using the parametric equation of the line through $\mathbf{0}$ with direction vector $\mathbf{a}$. Double-check your anser to part $b$.
+      \begin{align*}
+        \mathbf{x}&=t(2,-3)&2(2t)-3(-3t)&=5\\
+        13t&=5&
+        ||\mathbf{x}||&=\sqrt{\left(\frac{2\cdot5}{13}\right)^2+\left(\frac{-3\cdot5}{13}\right)^2}
+        =\frac{5}{13}\sqrt{13}
+      \end{align*}
     \item
       Find the distance from the point $\mathbf{w}=(3,1)$ to the line by using projection.
+
+      \begin{align*}
+        \left\lvert||\text{proj}_{\mathbf{a}}\mathbf{w}||-||\text{proj}_{\mathbf{a}}\mathbf{\mathbf{x}}||\right\rvert&=\left\lvert\left\lvert\left\lvert\frac{\mathbf{w}\cdot\mathbf{a}}{||\mathbf{a}||^2}\mathbf{a}\right\rvert\right\rvert-\frac{5\sqrt{13}}{13}\right\rvert\\
+        &=\left\lvert\frac{|6-3|}{||(2,-3||}-\frac{5\sqrt{13}}{13}\right\rvert\\
+        &=\left\lvert\frac{3}{\sqrt{13}}-\frac{5\sqrt{13}}{13}\right\rvert=\frac{2\sqrt{13}}{13}\\
+      \end{align*}
     \item
       Find the point on the line closest to $\mathbf{w}$ by using the parametric equation of the line through $\mathbf{w}$ with direction vector $\mathbf{a}$. Double-check your answer to part $d$
+
+      \begin{align*}
+      (3,1)+t(2,-3)=(2t+3,-3t+1)&=\mathbf{x}&
+      2(2t+3)-3(-3t+1)&=5\\
+      13t&=2\\
+      \left\lvert\left\lvert\left(2\frac{2}{13}+3,-3\frac{2}{13}+1\right)-\mathbf{w}\right\rvert\right\rvert&=\sqrt{\frac{4^2+(-6)^2}{13^2}}\\
+      &=\frac{\sqrt{2^2(2^2+3^2)}}{13}\\
+      &=\frac{2\sqrt{13}}{13}
+      \end{align*}
     \end{enumerate}
   \setcounter{enumii}{8}
   \item
@@ -233,20 +262,115 @@
     \begin{enumerate}
     \item
       Give a normal vector $\mathbf{a}$ to the hyperplane.
+
+      $2x_1+2x_2-3x_3+8x_4=(2,2,-3,8)\cdot(x_1,x_2,x_3,x_4)$ and so $\mathbf{a}=(2,2,-3,8)$
     \item
       Find the distance from the origin to the hyperplane using projection.
+
+      $||\text{proj}_{\mathbf{a}}\mathbf{x}||=\frac{6}{\sqrt{4+4+9+64}}=\frac{2}{3}$
     \item
       Find the point on the plane closest to the origin by using the parametric equation of the line through $\mathbf{0}$ with direction vector $\mathbf{a}$. Double-check your answer to part $b$.
+
+      \begin{align*}
+        \mathbf{x}&=t(2,2,-3,8)&2(2t)+2(2t)-3(-3t)+8(8t)&=6\\
+        &&81t&=6\\
+        \mathbf{x}_0&=\left\lvert\left\lvert\left(\frac{12}{81},\frac{12}{81},\frac{-18}{81},\frac{48}{81}\right)\right\rvert\right\rvert&=\sqrt{\frac{3^24^2+3^24^2+6^23^2+6^28^2}{81^2}}\\
+        &=\frac{2\sqrt{18+18+81+9\cdot64}}{81}&=\frac{2\cdot3\sqrt{81}}{81}\\
+        &=\frac{2}{3}
+      \end{align*}
     \item
-      Find the distance from the point $\mathbf{w}=(1,1,1,1)$ to the hyperplane by using projection.
+      Find the distance from the point $\mathbf{w}=(1,1,1,1)$ to the hyperplane by using dot products.
+
+      $\left\lvert\frac{\left\lvert\mathbf{w}\cdot\mathbf{a}\right\rvert}{||\mathbf{a}||}-\frac{2}{3}\right\rvert=\left\lvert\frac{\left\lvert 2+2-3+8\right\rvert}{\sqrt{4+4+9+64}}-\frac{2}{3}\right\rvert=\left\lvert\frac{9-6}{9}\right\rvert=\frac{1}{3}$
     \item
-      Find the pointon the plane closest to $\mathbf{w}$ by using the parametric equation of the line through $\mathbf{w}$ with direction vector $\mathbf{a}$. Double-check your answer to part $d$
+      Find the point on the plane closest to $\mathbf{w}$ by using the parametric equation of the line through $\mathbf{w}$ with direction vector $\mathbf{a}$. Double-check your answer to part $d$
+
+      \begin{align*}
+        \mathbf{x}&=(1,1,1,1)+t(2,2,-3,8)=(2t+1,2t+1,-3t+1,8t+1)\\
+        6&=2(2t+1)+2(2t+1)-3(-3t+1)+8(8t+1)=(4+4+9+64)t+(2+2-3+8)\\
+        t&=-\frac{3}{81}=-\frac{1}{27}\\
+        ||\mathbf{x}-\mathbf{w}||&=||-\frac{1}{27}(2,2,-3,8)||=\frac{\sqrt{81}}{27}=\frac{1}{3}
+      \end{align*}
     \end{enumerate}
   \item
-  \item
-  \item
-  \item
+    \begin{enumerate}
+    \item
+      The equations $x_1=0$ and $x_2=0$ describe planes in $\mathbb{R}^3$ that contain the $x_3$-axis. Write down the Cartesian equation of a general such plane.
 
+      Such a plane would be spanned by a vector that lies on the $x_3$ axis and a non-zero vector that lies on the $x_1\times x_2$ plane. Lets describe the plane by saying $(x_1,x_2,x_3)=\mathbf{x}=s(0,0,1)+t(a,b,0)$. Taking the dot product of both sides with $(-b,a,0)$ gives us $(-b,a,0)\cdot(x_1,x_2,x_3)=0=-bx_1+ax_2$. Of course since our original choices of $a$ and $b$ were arbitrary, we will just rewrite our equation to say $ax_1+b_x2=0$
+    \item
+      The equations $x_1-x_2=0$ and $x_1-x_3=0$ describe planes in $\mathbb{R}^3$ that contain the line through the origin with direction vector $(1,1,1)$. Write down the cartesian equation of a general such plane.
+
+      Such a plane must contain a non-zero vector on the $x_1\times x_2$ plane. Lets say $(a,b,0)$. This gives us $\mathbf{x}=s(1,1,1)+t(a,b,0)$. Now if we multiply both sides by the vector $(-b,a,b-a)$ then we get $-bx_1+ax_2+(b-a)x_3=0$. As before, our choice of $a$ and $b$ was arbitrary, and so we rewrite our equation to be $ax_1+bx_1-(b+a)x_3=0$
+    \end{enumerate}
+  \item Don't have to do after all
+
+%    \begin{enumerate}
+%    \item
+%      Assume $\mathbf{b}$ and $\mathbf{c}$ are nonparallel vectors in $\mathbb{R}^3$. Generalizing the result of Exercise 10, show that the plan $\mathbf{a}\cdot \mathbf{x}=0$ contains the inetersection of the planes $\mathbf{b}\cdot\mathbf{x}=0$ and $\mathbf{c}\cdot\mathbf{x}=0$ if and only if $\mathbf{a}=s\mathbf{b}+t\mathbf{c}$ for some $s,t\in \mathbb{R}$, not both $0$. Describe this result geometrically.
+%
+%      We assume that $\mathbf{a}=s\mathbf{b}+t\mathbf{c}$ and then $0=\mathbf{a}\mathbf{x}=s\mathbf{b}\mathbf{x}+t\mathbf{c}\mathbf{x}$
+%    \item
+%      Assume $\mathbf{b}$ and $\mathbf{c}$ are nonparallel vectors in $\mathbb{R}^n$. Formulate a conjecture about which hyperplanes $\mathbf{a}\cdot\mathbf{x}=0$ in $\mathbb{R}^n$ contain the intersection of the hyperplanes $\mathbf{b}\cdot\mathbf{x}=0$ and $\mathbf{c}\cdot\mathbf{x}=0$. Prove as much of your conjecture as you can.
+%    \end{enumerate}
+  \item
+    Suppose $\mathbf{a}\ne \mathbf{0}$ and $\mathcal{P}\subset \mathbb{R}^3$ is the plane through the origin with normal vector $\mathbf{a}$. Suppose $\mathcal{P}$ is spanned by $\mathbf{u}$ and $\mathbf{v}$
+    \begin{enumerate}
+    \item
+      Suppose $\mathbf{u}\cdot\mathbf{v}=0$. Show that for every $\mathbf{x}\in \mathcal{P}$, we have
+      \[\mathbf{x}=\text{proj}_{\mathbf{u}}\mathbf{x}+\text{proj}_{\mathbf{v}}\mathbf{x}\]
+
+      Using the definition of a plane and the definition of projection we have the following:
+      \begin{align*}
+        \text{proj}_{\mathbf{u}}\mathbf{x}+\text{proj}_{\mathbf{v}}\mathbf{x}
+        &=\frac{\mathbf{x}\mathbf{u}}{||\mathbf{u}||^2}\mathbf{u}+\frac{\mathbf{x}\mathbf{v}}{||\mathbf{v}||^2}\mathbf{v}\\
+        \exists s,t\in \mathbb{R} \text{ such that }\mathbf{x}&=s\mathbf{u}+t\mathbf{v}
+      \end{align*}
+      Making appropriate substitution gives us
+      \begin{align*}
+        \text{proj}_{\mathbf{u}}\mathbf{x}+\text{proj}_{\mathbf{v}}\mathbf{x}
+        &=\frac{(s\mathbf{u}+t\mathbf{v})\cdot\mathbf{u}}{||\mathbf{u}||^2}\mathbf{u}+\frac{(s\mathbf{u}+t\mathbf{v})\cdot\mathbf{v}}{||\mathbf{v}||^2}\mathbf{v}\\
+        &=\frac{s\mathbf{u}\cdot\mathbf{u}+t\mathbf{v}\cdot\mathbf{u}}{||\mathbf{u}||^2}\mathbf{u}+\frac{s\mathbf{u}\cdot\mathbf{v}+t\mathbf{v}\cdot\mathbf{v}}{||\mathbf{v}||^2}\mathbf{v}\\
+        &=\frac{s||\mathbf{u}||^2+t\mathbf{0}}{||\mathbf{u}||^2}\mathbf{u}+\frac{s\mathbf{0}+t||\mathbf{v}||^2}{||\mathbf{v}||^2}\mathbf{v}\\
+        &=s\mathbf{u}+s\mathbf{v}=\mathbf{x}\\
+      \end{align*}
+    \item
+      Suppose $\mathbf{u}\cdot\mathbf{v}=0$. Show that for every $\mathbf{x}\in\mathbb{R}^3$, we have
+      \[\mathbf{x}=\text{proj}_{\mathbf{a}}\mathbf{x}+\text{proj}_{\mathbf{u}}\mathbf{x}+\text{proj}_{\mathbf{v}}\mathbf{x}\]
+      (\emph{Hint:} Apply part $a$ to the vector $\mathbf{x}-\text{proj}_{\mathbf{a}}\mathbf{x}$)
+
+      First we note that $\mathbf{x}-\text{proj}_{\mathbf{a}}\mathbf{x}\in \mathcal{P}$ and so
+      \begin{align*}
+        \mathbf{x}-\text{proj}_{\mathbf{a}}\mathbf{x}
+        &=\text{proj}_{\mathbf{u}}(\mathbf{x}-\text{proj}_{\mathbf{a}}\mathbf{x})+\text{proj}_{\mathbf{v}}(\mathbf{x}-\text{proj}_{\mathbf{a}}\mathbf{x})\\
+        \text{proj}_{\mathbf{u}}(\mathbf{x}-\text{proj}_{\mathbf{a}}\mathbf{x})
+        &=\frac{(\mathbf{x}-\text{proj}_{\mathbf{a}}\mathbf{x})\cdot\mathbf{u}}{||\mathbf{u}||^2}\mathbf{u}\\
+        &=\frac{(\mathbf{x}-\frac{\mathbf{x}\cdot\mathbf{a}}{||\mathbf{||a||^2}}\mathbf{a})\cdot\mathbf{u}}{||\mathbf{u}||^2}\mathbf{u}\\
+      \end{align*}
+      Now of course $\mathbf{a}$ is orthogonal to every vector in $\mathcal{P}$ including $\mathbf{u}$ and so $\mathbf{a}\cdot\mathbf{u}=0$ which leads us to conclude that
+      \begin{align*}
+        \text{proj}_{\mathbf{u}}(\mathbf{x}-\text{proj}_{\mathbf{a}}\mathbf{x})
+        &=\frac{\mathbf{x}\cdot\mathbf{u}}{||\mathbf{u}||^2}\mathbf{u}\\
+        &=\text{proj}_{\mathbf{u}}\mathbf{x}
+      \end{align*}
+      In exactly the same way it can be shown that $\text{proj}_{\mathbf{v}}(\mathbf{x}-\text{proj}_{\mathbf{a}}\mathbf{x})=\text{proj}_{\mathbf{v}}\mathbf{x}$. Thus $\mathbf{x}-\text{proj}_{\mathbf{a}}\mathbf{x}=\text{proj}_{\mathbf{u}}\mathbf{x}+\text{proj}_{\mathbf{v}}\mathbf{x}$ or $\mathbf{x}=\text{proj}_{\mathbf{a}}\mathbf{x}+\text{proj}_{\mathbf{u}}\mathbf{x}+\text{proj}_{\mathbf{v}}\mathbf{x}$
+    \item
+      Give an example to show the result of part $a$ is false when $\mathbf{u}$ and $\mathbf{v}$ are not orthogonal
+
+      Let $\mathbf{a}=(0,0,1), \mathbf{x}=\mathbf{u}=(1,1,0),$ and $\mathbf{v}=(1,0,0)$. Then $\frac{\mathbf{x}\cdot\mathbf{u}}{||\mathbf{u}||^2}\mathbf{u}+\frac{\mathbf{x}\cdot \mathbf{v}}{||\mathbf{v}||^2}\mathbf{v}=\mathbf{u}+\mathbf{v}=(2,1,0)\ne \mathbf{x}$
+    \end{enumerate}
+  \item
+    Consider the line $\ell$ in $\mathbb{R}^3$ given parametrically by $\mathbf{x}=\mathbf{x}_0+t\mathbf{a}$. Let $\mathcal{P}_0$ denote the plane through the origin with normal vector $\mathbf{a}$ (so it is orthogonal to $\ell$).
+    \begin{enumerate}
+    \item
+      Show that $\ell$ and $\mathcal{P}_0$ intersect in the point $\mathbf{x}_0-\text{proj}_{\mathbf{a}}\mathbf{x}_0$
+
+      Well we know that $\mathbf{a}\cdot\mathbf{x}=0$ defines the plane. And so $\mathbf{a}\cdot\mathbf{x}_0+t\mathbf{a}\cdot\mathbf{a}=0$ and $-t=\frac{\mathbf{a}\cdot\mathbf{x}_0}{||\mathbf{a}||^2}$. Substituting $t$ back in we get $\mathbf{x}=\mathbf{x}_0-\frac{\mathbf{a}\cdot\mathbf{x}_0}{||\mathbf{a}||^2}\mathbf{a}=\mathbf{x}_0-\text{proj}_{\mathbf{a}}\mathbf{x}_0$.
+    \item
+      Conclude that the distance from the origin to $\ell$ is $||\mathbf{x}_0-\text{proj}_{\mathbf{a}}\mathbf{x}_0||$
+
+      Well the origin is on the plane, and so is our intersection point, so the vector from the origin to the intersection point is on the plane. Further, $\ell$ is orthogonal to the plane, and so $\ell$ must be orthogonal to the $\mathbf{x}_0-\text{proj}_{\mathbf{a}}\mathbf{x}_0$ vector. Thus the closest point to the origin on the line is where it intersects with the plane.
+    \end{enumerate}
   \end{enumerate}
 \end{enumerate}
 \end{document}
