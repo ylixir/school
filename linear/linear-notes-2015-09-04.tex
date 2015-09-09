@@ -1,0 +1,27 @@
+\documentclass[letterpaper]{article}
+
+\usepackage[utf8x]{luainputenc}
+\usepackage{aeguill}
+%\usepackage{nopageno}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathrsfs}
+\usepackage{fullpage}
+\usepackage{fancyhdr}
+\setlength{\headheight}{12pt}
+\pagestyle{fancy}
+\chead{Linear Algebra}
+\lhead{September 4, 2015}
+\rhead{Jon Allen}
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+
+\begin{document}
+\section*{hyperplanes}
+distance from origin to $H(\mathbf{x}_0,\mathbf{a})$. we are looking for a vector in the same direction as $\mathbf{a}$. Find $L(\mathbf{0},\mathbf{a})\cap H(\mathbf{x}_0,\mathbf{a})$. Now $\mathbf{x}\in L\cap H\Rightarrow x=t\mathbf{a} $ and $\mathbf{a}\cdot\mathbf{x}=\mathbf{a}\cdot\mathbf{x}_0\Rightarrow \mathbf{a}\cdot(t\mathbf{a})=\mathbf{a}\mathbf{x}_0\to t(\mathbf{a}\cdot\mathbf{a})=\mathbf{a}\mathbf{x}_0\to t=\frac{\mathbf{a}\cdot \mathbf{x}_0}{||a||^2}$
+
+and now take $t\mathbf{a}=\text{proj}_a(\mathbf{x}_0)$ and $||t\mathbf{a}||=\frac{|a\cdot\mathbf{x}_0|}{||a||^2}||a|=\frac{|a\cdot\mathbf{x}_0|}{||a||}$
+
+if we have another point $\mathbf{y}_0$ not on the hyperplane and we take $\text{proj}_{a}(\mathbf{x}_0-\mathbf{y}_0)$ then we have the distance from the hyperplane to $\mathbf{y}_0$
+\end{document}

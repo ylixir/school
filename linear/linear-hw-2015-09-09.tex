@@ -18,34 +18,235 @@
 \newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
 
 \begin{document}
-%Section 1.1: 5,6(a,c,d,h),7,10(a,d),20-25,28(d)
 \renewcommand{\labelenumi}{1.\arabic{enumi}}
 \renewcommand{\labelenumii}{\arabic{enumii}.}
-\renewcommand{\labelenumiii}{(\alph{enumiii})}
+\renewcommand{\labelenumiii}{\alph{enumiii}.}
 \begin{enumerate}
+\setcounter{enumi}{1}
 \item
   \begin{enumerate}
   \item
+    For each of the following pairs of vectors {\bfseries x} and {\bfseries y}, calculate $\mathbf{x}\cdot\mathbf{y}$ and the  angle $\theta$ between the vectors.
     \begin{enumerate}
     \setcounter{enumiii}{3}
     \item
+      $\mathbf{x}=(1,4,-3),\mathbf{y}=(5,1,3)$
+      \begin{align*}
+        ||\mathbf{x}||||\mathbf{y}||\cos \theta&=\mathbf{x\cdot y}&
+        \cos \theta&=\frac{\mathbf{x\cdot y}}{||\mathbf{x}||||\mathbf{y}||}&
+        \theta&=\cos^{-1}\frac{\mathbf{x\cdot y}}{||\mathbf{x}||||\mathbf{y}||}\\
+        \theta&=\cos^{-1}\frac{5+4-9}{||\mathbf{x}||||\mathbf{y}||}&
+        \theta&=\cos^{-1}0&
+        \theta&=\frac{\pi}{2}
+      \end{align*}
     \end{enumerate}
   \item
+    For each pair in exercise 1, calculate $\text{proj}_{\mathbf{y}}\mathbf{x}$ and $\text{proj}_{\mathbf{x}}\mathbf{y}$
     \begin{enumerate}
     \setcounter{enumiii}{3}
     \item
+      The vectors are orthogonal. The projection of either onto the other is the zero vector.
     \end{enumerate}
   \setcounter{enumii}{6}
   \item
+    Suppose $\mathbf{x}$, $\mathbf{y}\in \mathbb{R}^n, ||\mathbf{x}||=\sqrt{2}, ||\mathbf{y}||=1$, and the angle between $x$ and $y$ is $3\pi/4$. Show that the vectors $2\mathbf{x}+3\mathbf{y}$ and $\mathbf{x}-\mathbf{y}$ are orthogonal.
+
+    Using proposition 2.1 we see that $(2\mathbf{x}+3\mathbf{y})\cdot(\mathbf{x}-\mathbf{y})=2\mathbf{x}\cdot\mathbf{x}-2\mathbf{x}\cdot\mathbf{y}+3\mathbf{y}\cdot\mathbf{x}-3\mathbf{y}\cdot\mathbf{y}=2||\mathbf{x}||^2+\mathbf{x}\cdot\mathbf{y}-3||\mathbf{y}||^2$. From the definition of the angle between two vectors we can further simplify this expression to $2\cdot 2+||\mathbf{x}||||\mathbf{y}||\cos \frac{3\pi}{4}+3=4+\sqrt{2}\cdot(-\frac{\sqrt{2}}{2})-3=0$ and so the vectors are orthogonal.
   \setcounter{enumii}{9}
   \item
+    Let $\mathbf{x}=(1,1,1,\dots,1)\in \mathbb{R}^n$ and $\mathbf{y}=(1,2,3,\dots,n)\in \mathbb{R}^n$. Let $\theta_n$ be the angle between $\mathbf{x}$ and $\mathbf{y}$ in $\mathbb{R}^n$. Find $\displaystyle \lim_{n\to \infty}\theta_n$. (The formulas $1+2+\dots+n=n(n+1)/2$ and $1^2+2^2+\dots+n^2=n(n+1)(2n+1)/6$ may be useful.)
+
+    We know that by definition $\theta_n=\cos^{-1}\frac{\mathbf{x}\cdot\mathbf{y}}{||\mathbf{x}||||\mathbf{y}||}$ and so
+    \begin{align*}
+      \lim_{n\to\infty}\theta_n&=\lim_{n\to\infty}\cos^{-1}\frac{\mathbf{x}\cdot\mathbf{y}}{||\mathbf{x}||||\mathbf{y}||}\\
+      &=\lim_{n\to\infty}\cos^{-1}\frac{1\cdot1+1\cdot2+\dots+1\cdot n}{\sqrt{n}\sqrt{1^2+2^2+\cdots+n^2}}\\
+      &=\lim_{n\to\infty}\cos^{-1}\frac{\sqrt{6}n(n+1)}{2\sqrt{n}\sqrt{n(n+1)(2n+1)}}\\
+      &=\lim_{n\to\infty}\cos^{-1}\sqrt{\frac{3(n+1)}{2(2n+1)}}
+      =\lim_{n\to\infty}\cos^{-1}\sqrt{\frac{3(n+1/2+1/2)}{4(n+1/2)}}\\
+      &=\lim_{n\to\infty}\cos^{-1}\sqrt{\frac{3}{4}\left(1+\frac{1/2}{n+1/2}\right)}
+      =\cos^{-1}\sqrt{\frac{3}{4}\left(1+\lim_{n\to\infty}\frac{1/2}{n+1/2}\right)}\\
+      &=\cos^{-1}\sqrt{\frac{3}{4}\left(1+0\right)}
+      =\frac{\pi}{6}
+    \end{align*}
   \item
+    Suppose $\mathbf{x}, \mathbf{v}_1,\dots,\mathbf{v}_k\in \mathbb{R}^n$ and $\mathbf{x}$ is orthogonal to each of the vectors $\mathbf{v}_1,\dots\mathbf{v}_k$. Show that $\mathbf{x}$ is orthogonal to any linear combination $c_1\mathbf{v}_1+c_2\mathbf{v}_2+\dots+c_k\mathbf{v}_k$.
+
+    We know that $\mathbf{x}$ is orthogonal if and only if the dot product is zero. So lets just find it.
+    \begin{align*}
+      \mathbf{x}\cdot(c_1\mathbf{v}_1+\dots+c_k\mathbf{v}_k)
+      &=\mathbf{x}\cdot(c_1\mathbf{v}_1)+\dots+\mathbf{x}\cdot(c_k\mathbf{v}_k)\\
+      &=c_1(\mathbf{x}\cdot\mathbf{v}_1)+\dots+c_k(\mathbf{x}\cdot\mathbf{v}_k)
+    \end{align*}
+    But then $\mathbf{x}$ is orthogonal to $\mathbf{v}_i$ for all $0<i\le k$. Which leads us to $\mathbf{x}\cdot\mathbf{v}_i=0$ and $\mathbf{x}\cdot(c_1\mathbf{v}_1+\dots+c_k\mathbf{v}_k)=c_1\cdot0+\dots+c_k\cdot0=0$. And we have our result.
   \setcounter{enumii}{12}
   \item
+    Use the algebraic properties of the dot product to show that
+    \[||\mathbf{x}+\mathbf{y}||^2+||\mathbf{x}-\mathbf{y}||^2=2(||\mathbf{x}||^2+||\mathbf{y}||^2).\]
+    Interpret the result geometrically.
+    \begin{align*}
+      ||\mathbf{x}+\mathbf{y}||^2+||\mathbf{x}-\mathbf{y}||^2
+      &=||\mathbf{x}+\mathbf{y}||^2+||\mathbf{x}+(-\mathbf{y})||^2\\
+      &=(||\mathbf{x}||^2+2\mathbf{x}\cdot\mathbf{y}+||\mathbf{y}||^2)+(||\mathbf{x}||^2+2\mathbf{x}\cdot(-\mathbf{y})+||-\mathbf{y}||^2)\\
+      &=||\mathbf{x}||^2+2\mathbf{x}\cdot\mathbf{y}+||\mathbf{y}||^2+||\mathbf{x}||^2-2\mathbf{x}\cdot\mathbf{y}+||\mathbf{y}||^2\\
+      &=||\mathbf{x}||^2+||\mathbf{y}||^2+||\mathbf{x}||^2+||\mathbf{y}||^2\\
+      &=2(||\mathbf{x}||^2+||\mathbf{y}||^2)
+    \end{align*}
   \item
+    Use the dot product to prove the law of cosines: As shown in Figure 2.8.
+    \[c^2=a^2+b^2-2ab\cos \theta\]
+
+    Let $\overline{CB}=\mathbf{a}, \overline{CA}=\mathbf{b},$ and $\overline{BA}=\mathbf{c}$.
+    Notice that $\mathbf{c}=\mathbf{b}-\mathbf{a}$.
+    And so $c=||\mathbf{b}-\mathbf{a}||$, $a=||\mathbf{a}||$, and $b=||\mathbf{b}||$.
+    Using corollary 2.3 from the notes and definition 2.9 from the notes we have
+    \begin{align*}
+      c^2&=||\mathbf{b}-\mathbf{a}||^2\\
+      &=||\mathbf{b}||^2-2\mathbf{b}\cdot\mathbf{a}+||\mathbf{a}||^2\\
+      &=||\mathbf{a}||^2+||\mathbf{b}||^2-2\mathbf{b}\cdot\mathbf{a}\frac{||\mathbf{a}||||\mathbf{b}||}{||\mathbf{a}||||\mathbf{b}||}\\
+      &=a^2+b^2-2ab\frac{\mathbf{a}\cdot\mathbf{b}}{||\mathbf{a}||||\mathbf{b}||}\\
+      &=a^2+b^2-2ab\cos \theta\\
+    \end{align*}
+    Boom.$\Box$
   \setcounter{enumii}{16}
   \item
+    If $\mathbf{x}=(x_1,x_2)\in \mathbb{R}^2$, set $\rho(\mathbf{x})=(-x_2,x_1)$.
+    \begin{enumerate}
+    \item
+      Check that $\rho(\mathbf{x})$ is orthogonal to $\mathbf{x}$. (Indeed, $\rho(\mathbf{x})$ is obtained by rotating $\mathbf{x}$ an angle $\pi/2$ counterclockwise.)
+      \[\mathbf{x}\cdot\rho(\mathbf{x})=(x_1,x_2)\cdot(-x_2,x_1)=-x_1x_2+x_1x_2=0\]
+    \item
+      Given $\mathbf{x},\mathbf{y}\in\mathbb{R}^2$,show that $\mathbf{x}\cdot\rho(\mathbf{y})=-\rho(\mathbf{x})\cdot\mathbf{y}$. Interpret this statement geometrically.
+
+      Let $\mathbf{y}=(y_1,y_2)$. Then \[\mathbf{x}\cdot\rho(\mathbf{y})=(x_1,x_2)\cdot(-y_2,y_1)=-x_1y_2+x_2y_1=-(-x_2y_1+x_1y_2)=-\rho(\mathbf{x})\cdot\mathbf{y}\]
+    \end{enumerate}
   \item
+    Prove the \emph{triangle inequality}: For any vectors $\mathbf{x}, \mathbf{y}\in \mathbb{R}^n, ||\mathbf{x}+\mathbf{y}||\le ||\mathbf{x}||+||\mathbf{y}||$. (\emph{Hint:} Use the dot product to calculate $||\mathbf{x}+\mathbf{y}||^2$.)
+
+    We know from Cauchy-Schwartz that $|\mathbf{x}\cdot\mathbf{y}|\le||\mathbf{x}||||\mathbf{y}|||$ and that $\mathbf{x}\cdot\mathbf{y}\le |\mathbf{x}\cdot\mathbf{y}|$.
+    Double both sides and we have $2\mathbf{x}\cdot\mathbf{y}\le 2||\mathbf{x}||||\mathbf{y}||$.
+    Of course $\mathbf{x}\cdot\mathbf{x}=||\mathbf{x}||^2\ge 0$ and $\mathbf{y}\cdot\mathbf{y}=||\mathbf{y}||^2\ge 0$ which leads us to $\mathbf{x}\cdot\mathbf{x}+2\mathbf{x}\cdot\mathbf{y}+\mathbf{y}\cdot\mathbf{y}\le ||\mathbf{x}||^2+2||\mathbf{x}||||\mathbf{y}||+||\mathbf{y}||^2$.
+    Factoring we get $(\mathbf{x}+\mathbf{y})\cdot(\mathbf{x}+\mathbf{y})=||\mathbf{x}+\mathbf{y}||^2\le (||\mathbf{x}||+||\mathbf{y}||)^2$.
+    And finally, because $||\mathbf{x}+\mathbf{y}||\ge 0$ and $||\mathbf{x}||+||\mathbf{y}||\ge 0$ it is safe to say that $||\mathbf{x}+\mathbf{y}||\le ||\mathbf{x}||+||\mathbf{y}||$
+  \end{enumerate}
+\item
+  \begin{enumerate}
+  \setcounter{enumii}{3}
+  \item
+    Find a normal vector to the given hyperplane and use it to find the distance from the origin to the hyperplane.
+    \begin{enumerate}
+    \item
+      $\mathbf{x}=(-1,2)+t(3,2)$
+      \begin{align*}
+        (-2,3)\cdot\mathbf{x}&=(-2,3)\cdot(-1,2)+t(3,2)\cdot(-2,3)\\
+        (-2,3)\cdot\mathbf{x}&=7\\
+        ||\text{proj}_{\mathbf{a}}\mathbf{x}_0||&=\frac{|c|}{||\mathbf{a}||}=\frac{7}{\sqrt{4+9}}=\frac{7\sqrt{13}}{13}
+      \end{align*}
+      And so we have a normal vector of $(-2,3)$ and a distance of $\frac{7\sqrt{13}}{13}$
+    \item
+      The plane in $\mathbb{R}^3$ given by the equation $2x_1+x_2-x_3=5$
+      \begin{align*}
+        (2,1,-1)\cdot(x_1,x_2,x_3)&=5\\
+        ||\text{proj}_{\mathbf{a}}\mathbf{x}_0||&=\frac{5}{\sqrt{4+1+1}}
+      \end{align*}
+      And so we have a normal of $(2,1,-1)$ and a distance of $\frac{5\sqrt{6}}{6}$
+    \item
+      The plane passing through $(1,2,2)$ and orthogonal to the line $\mathbf{x}=(3,1,-1)+t(-1,1,-1)$
+
+      \begin{align*}
+        (-1,1,-1)\cdot\mathbf{x}&=(-1,1,-1)\cdot(1,2,2)=-1\\
+        ||\text{proj}_{\mathbf{a}}\mathbf{x}_0||&=\frac{1}{\sqrt{1+1+1}}\\
+      \end{align*}
+      Looks like a normal of $(-1,1,-1)$ and a distance of $\frac{\sqrt{3}}{3}$
+    \item
+      The plane passing through $(2,-1,1)$ and orthogonal to the  line $\mathbf{x}=(3,1,1)+t(-1,2,1)$
+
+      The normal is $(-1,2,1)$ and has a distance of $\frac{|-2-2+1|}{\sqrt{4+1+1}}=\frac{3\sqrt{6}}{6}$
+    \item
+      The plane spanned by $(1,1,4)$ and $(2,1,0)$ and passing through $(1,1,2)$
+
+      \begin{align*}
+        a_1+a_2+4a_3&=0&
+        2a_1+a_2&=0\\
+        a_1-2a_1+4a_3&=0&
+        4a_3&=a_1\\
+        a_3&=1&
+        a_1&=4\\
+        a_2&=-8&
+        \mathbf{a}&=(4,-8,1)
+      \end{align*}
+      So our normal vector is $(4,-8,1)$ and our distance is $\frac{|4-8+2|}{\sqrt{16+64+1}}=\frac{2}{9}$
+    \item
+      The plane spanned by $(1,1,1)$ and $(2,1,0)$ and passing through $(3,0,2)$
+      \begin{align*}
+        a_1+a_2+a_3&=0&
+        2a_1+a_2&=0\\
+        a_1&=1&
+        a_2&=-2\\
+        a_3&=1
+      \end{align*}
+      Normal is $(1,-2,1)$ and distance is $\frac{3+2}{\sqrt{1+4+1}}=\frac{5\sqrt{6}}{6}$.
+    \item
+      The hyperplane in $\mathbb{R}^4$ spanned by $(1,-1,1,-1),(1,1,-1,-1)$ and $(1,-1,-1,1)$ and passing through $(2,1,0,1)$
+
+      \begin{align*}
+        a_1-a_2-a_3+a_4&=0&
+        a_1-a_2+a_3-a_4&=0&
+        a_1+a_2-a_3-a_4&=0\\
+        a_1-a_2+a_3&=a_4&
+        a_1+a_2-a_3&=a_4&
+        2a_3&=2a_2\\
+        a_1-a_2-a_2+(a_1-a_2+a_2)&=0&
+        2a_1&=2a_2&
+        a4&=a_1+a_1-a_1\\
+      \end{align*}
+      So we let $(1,1,1,1)$ be the normal vector and $\frac{|2+1+0+1|}{\sqrt{4}}=2$
+    \end{enumerate}
+  \setcounter{enumii}{5}
+  \item
+    \begin{enumerate}
+    \item
+      Give the general solution of the equation $x_1+5x_2-2x_3=0$ in $\mathbb{R}^3$ (as a linear combination of two vectors, as in the text).
+
+      Note that $\mathbf{0}$ is on the plane and so we just need to find two vectors that aren't parallel and are on the plane, and we have our solution. Lets take $(-3,1,1)$ and $(2,0,1)$. Then our equation is $\mathbf{x}=x_2(-3,1,1)+x_3(2,0,1)$
+    \item
+      Find a specific solution of the equation $x_1+5x_2-2x_3=3$ in $\mathbb{R}^3$; give the general solution.
+    \item
+      Give the general solution of the equation $x_1+5x_2-2x_3+x_4=0$ in $\mathbb{R}^4$. Now give the general solution of the equation $x_1+5x_2-2x_3+x_4=3$
+    \end{enumerate}
+  \item
+    The equation $2x_1-3x_2=5$ defines a line in $\mathbb{R}^2$.
+    \begin{enumerate}
+    \item
+      Give a normal vector $\mathbf{a}$ to the line.
+    \item
+      Find the distance from the origin to the line by using projection.
+    \item
+      Find the point on the line closest to the origin by using the parametric equation of the line through $\mathbf{0}$ with direction vector $\mathbf{a}$. Double-check your anser to part $b$.
+    \item
+      Find the distance from the point $\mathbf{w}=(3,1)$ to the line by using projection.
+    \item
+      Find the point on the line closest to $\mathbf{w}$ by using the parametric equation of the line through $\mathbf{w}$ with direction vector $\mathbf{a}$. Double-check your answer to part $d$
+    \end{enumerate}
+  \setcounter{enumii}{8}
+  \item
+    The equation $2x_1+2x_2-3x_3+8x_4=6$ defines a hyperplane in $\mathbb{R}^4$.
+    \begin{enumerate}
+    \item
+      Give a normal vector $\mathbf{a}$ to the hyperplane.
+    \item
+      Find the distance from the origin to the hyperplane using projection.
+    \item
+      Find the point on the plane closest to the origin by using the parametric equation of the line through $\mathbf{0}$ with direction vector $\mathbf{a}$. Double-check your answer to part $b$.
+    \item
+      Find the distance from the point $\mathbf{w}=(1,1,1,1)$ to the hyperplane by using projection.
+    \item
+      Find the pointon the plane closest to $\mathbf{w}$ by using the parametric equation of the line through $\mathbf{w}$ with direction vector $\mathbf{a}$. Double-check your answer to part $d$
+    \end{enumerate}
+  \item
+  \item
+  \item
+  \item
+
   \end{enumerate}
 \end{enumerate}
 \end{document}
