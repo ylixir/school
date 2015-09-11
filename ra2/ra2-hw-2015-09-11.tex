@@ -1,0 +1,66 @@
+%shell-escape
+\documentclass[letterpaper]{article}
+
+\usepackage{amsmath}
+\usepackage[utf8x]{luainputenc}
+\usepackage{amssymb}
+\usepackage{gnuplottex}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\lhead{September 11, 2015}
+\chead{Real Analysis II Homework}
+\rhead{Jon Allen}
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+
+\begin{document}
+
+\renewcommand{\labelenumi}{\Alph{enumi}.}
+%\renewcommand{\labelenumii}{\arabic{enumii}.}
+\renewcommand{\labelenumii}{(\alph{enumii})}
+\section*{8.2}
+%bdfgi
+\begin{enumerate}
+\setcounter{enumi}{1}
+%8.2 B
+\item
+Show that $h_n(x)=\frac{n+x}{4n+x}$ converges uniformly on $[0,N]$ for any $N>\infty$ but not uniformly on $[0,\infty)$.
+
+First we note that $\displaystyle \lim_{n\to\infty}h_n$ is $h(x)=\frac{1}{4}$. 
+We have a discontinuity when $4n+x=0$ but since $n\ge 1$ and $x\ge 0$ we needn't worry about that. So lets find $||h_n-h||_\infty$. The partial derivative of $h_n-h$ with respect to $x$ is $\displaystyle \frac{3n}{(4n+x)^2}$ with a second derivative of $\displaystyle -\frac{6n}{(4n+x)^3}$. Because $3n$ and $4n+x)$ are never zero and the second derivative is the negative of a positive over a positive then we know we are dealing with a function that has no relative extrema and that it is concave. So then the point on $[0,N]$ where $h_n$ is farthest from $h$ is either $0$ or $N$ either way, because the function converges pointwise, then so do these points. It then follows that $\displaystyle \lim_{k\to\infty}||h_k-h||_\infty=0$ on $[0,N]$. However, notice that the limit of $h_n$ as $x$ goes to infinity is $1$. And so no matter how large we make $n$ we can always find some $x$ in $[0,\infty)$ were $h_n(x)$ is greater than any number in $(\frac{1}{4},1)$ and so in this case $\lim_{k\to\infty}||f_k-f||_\infty=\frac{3}{4}$ and so this thing doesn't converge uniformly over all of $x\ge 0$.
+\setcounter{enumi}{3}
+%8.2 D
+\item
+Let $(f_n)$ and $(g_n)$ be sequences of continuous functions on $[a,b]$. Suppose that $(f_n)$ converges uniformly to $f$ and $(g_n)$ converges uniformly to $g$ on $[a,b]$. Prove that $(f_ng_n)$ converges uniformly to $fg$ on $[a,b]$
+\setcounter{enumi}{5}
+%8.2 F
+\item
+Let $f_n(x)=\arctan(nx)/\sqrt{n}$.
+  \begin{enumerate}
+  \item
+  Find $\displaystyle f(x)=\lim_{n\to\infty}f_n(x)$, and show that $(f_n)$ converges uniformly to $f$ on $\mathbb{R}$
+
+  This thing is bounded by $\left[\frac{\pi}{2\sqrt{n}},\frac{\pi}{2\sqrt{n}}\right]$ and so it has to converge uniformly to $f(x)=0$
+  \item
+  Compute $\displaystyle \lim_{n\to\infty}f_n'(x)$, and compare this with $f'(x)$.
+  The derivative is $f_n'(x)=\frac{\sqrt{n}}{n^2x^2+1}$ and when we take the limit as $n$ goes to infinity of that thing we get $\displaystyle \lim_{n\to\infty}f_n'=\begin{cases}\sqrt{n}&x=0\\0&x\ne 0\end{cases}0$. Almost $f'$ but not quite
+  \item
+  Where is the convergence of $f_n'$ uniform? Prove your answer.
+
+  If we look at $f_n''(x)=\frac{2x\sqrt{n}}{n^2(x^2+n^-2)^2}$ we see immediately that our place of interest is $x=0$, but we already knew that. Since for any $[a,\pm\infty)$ with $|a|>0$ we have an upper bound at $f_n(a)$ which goes to zero, then we know that we converge uniformly in either of these domains. However, taking the contrapositive of theorem 8.2.1 we find that when we include zero in our domain, then our limit is discontinuous, and so either our sequence is not continuous, or we do not converge uniformly. We know our sequence is continuous, and so we must not converge uniformly.
+  \end{enumerate}
+%8.2 G
+\item
+Suppose that functions $f_k$ defined on $\mathbb{R}^n$ converge uniformly to a function $f$. Suppose that each $f_n$ is bounded, say by $A_k$. Prove that $f$ is bounded.
+
+We know that for any given $\varepsilon>0$ we can find some $N$ such that if $k\ge N$ then $||f_k-f||_\infty<\varepsilon$. If we pick, say $1=\varepsilon$ then we get $1>||f_k-f||_\infty\ge |||f_k|||_\infty-||f||_\infty|=|A_k-||f||_\infty|$ and so $-1<A_k-||f||_\infty<1$ or $A_k+1>||f||_\infty>A_k-1$ and so $f$ is bounded.
+\setcounter{enumi}{8}
+%8.2 I
+\item
+Give an example of a sequence of discontinuous functions $f_n$ that converges uniformly to a continuous function.
+
+\[f_n(x)=\begin{cases}0&x=0\\\frac{|x|}{xn}&x\ne 0\end{cases}\]
+
+\end{enumerate}
+\end{document}
