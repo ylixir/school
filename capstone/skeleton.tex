@@ -1,0 +1,101 @@
+\documentclass[11pt]{amsart}
+
+\usepackage{amsfonts,amssymb,amscd,amsmath,mathrsfs,amsthm,tikz}
+\usepackage{forest}
+\usepackage{cancel}
+\usepackage{graphicx}
+\usepackage{titlesec}
+
+% Uncomment the following line in order to include graphics
+
+%\usepackage[pdftex]{graphicx}
+
+%
+%  The following are margin definitions used in the publication at the end of term.
+%
+
+\setlength{\oddsidemargin}{0.25in}  %please do not change
+\setlength{\evensidemargin}{0.25in} %please do not change
+\setlength{\marginparwidth}{0in} %please do not change
+\setlength{\marginparsep}{0in} %please do not change
+\setlength{\marginparpush}{0in} %please do not change
+\setlength{\topmargin}{0in} %please do not change
+
+\setlength{\footskip}{.3in} %please do not change
+\setlength{\textheight}{8.75in} %please do not change
+\setlength{\textwidth}{6in} %please do not change
+\setlength{\parskip}{4pt} %please do not change
+
+\theoremstyle{plain}
+\newtheorem{thm}{Theorem}
+\newtheorem{prop}{Proposition}
+\newtheorem{lemma}{Lemma}
+\newtheorem{cor}{Corollary}
+\newtheorem{fact}{Fact}
+\newtheorem{exa}{Example}
+
+\theoremstyle{definition}
+\newtheorem*{defi}{Definition}
+\renewcommand\qedsymbol{$\blacksquare$}
+
+\titleformat{\section}{\centering\bfseries}{\thesection.}{.5em}{}
+\titleformat{\title}{\centering}{\thesection.}{.5em}{}
+
+\begin{document}
+
+%\centerline{\bf{\LARGE{Sample Capstone Paper}}}
+%\medskip
+%\centerline{\large{by Math Student}}
+%\bigskip
+\title{On the Markov Basis}
+\author{Jon Allen}
+\begin{abstract}
+In this article will study Markov bases. We will see how Markov bases are used in algebraic statistics and algebraic geometry. First we will start by looking at the relationship between Markov bases and numerical semigroups.
+\end{abstract}
+\maketitle
+\section{Introduction}
+Here we will sketch out what and how markov bases are used and give a heads up of the goodies coming up in the paper.
+%\bigskip
+\section{Prerequisites}
+Any prerequisites that we need to know. I'm not sure exactly how in depth I need to be here. Can I assume that the reader has a decent grasp of abstract algebra? Or that they should google the things they don't know that are in 420? Or should I just define everything that you probably wouldn't encounter in a class under 400 level?
+%\medskip
+I'm inclined to just define everything, and the reader can just skip what they know and use this as a reference for what they don't.
+
+For sure I will cover the things I don't now. Like what a lattice is.
+\begin{defi}
+A \emph{lattice} is a partially ordered set in which every two elements have a unique supremum and a unique infimum.
+\end{defi}
+%\medskip
+\begin{exa}
+An example would $\mathbb{N}$ ordered by division. The least common multiple forms a supremum and an infimum is formed by the greatest common denominator.
+\end{exa}
+I stole that from wikipedia, and I'm not citing it, because I plan on using stuff from Dr. McGuires presentation dimensions of posets.
+
+I don't need most of the \LaTeX examples, but it might be useful to remember how to make a $\oplus$.
+
+One can write a statement, its proof and end sign of the proof as follows:
+
+\begin{fact}
+This is a theorem that I'm gonna prove. Kept just for reference.
+
+\begin{proof}
+Blah blah, irrefutable logic.
+\end{proof}
+\end{fact}
+
+\section{Numerical Semigroups}
+This is the section where we will go over what use Markov bases are to numerical semigroups.
+%Typically a paper begins with an Abstract, Introduction, a section where basic tools and techniques are introduced, and subsequent sections where the subject is developed.
+\section{And now for something completely different}
+And this is the section where, time willing, I will explore something that hasn't been looked at much up until now.
+
+I hope that this is not the quality of work I would ordinarily turn in, but it's not listed as points on the syllabus and it was asked for so here it is.
+\nocite{*}
+\bibliographystyle{amsplain}
+\bibliography{bib}
+
+
+\end{document}
+
+
+
