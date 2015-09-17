@@ -27,12 +27,53 @@
 \item
 Show that $h_n(x)=\frac{n+x}{4n+x}$ converges uniformly on $[0,N]$ for any $N>\infty$ but not uniformly on $[0,\infty)$.
 
-First we note that $\displaystyle \lim_{n\to\infty}h_n$ is $h(x)=\frac{1}{4}$. 
-We have a discontinuity when $4n+x=0$ but since $n\ge 1$ and $x\ge 0$ we needn't worry about that. So lets find $||h_n-h||_\infty$. The partial derivative of $h_n-h$ with respect to $x$ is $\displaystyle \frac{3n}{(4n+x)^2}$ with a second derivative of $\displaystyle -\frac{6n}{(4n+x)^3}$. Because $3n$ and $4n+x)$ are never zero and the second derivative is the negative of a positive over a positive then we know we are dealing with a function that has no relative extrema and that it is concave. So then the point on $[0,N]$ where $h_n$ is farthest from $h$ is either $0$ or $N$ either way, because the function converges pointwise, then so do these points. It then follows that $\displaystyle \lim_{k\to\infty}||h_k-h||_\infty=0$ on $[0,N]$. However, notice that the limit of $h_n$ as $x$ goes to infinity is $1$. And so no matter how large we make $n$ we can always find some $x$ in $[0,\infty)$ were $h_n(x)$ is greater than any number in $(\frac{1}{4},1)$ and so in this case $\lim_{k\to\infty}||f_k-f||_\infty=\frac{3}{4}$ and so this thing doesn't converge uniformly over all of $x\ge 0$.
+First we note that $\displaystyle \lim_{n\to\infty}h_n$ is $h(x)=\frac{1}{4}$.
+
+Our discontinuity at $4n+x=0$ can not happen when $n\ge 1$ and $x\ge 0$. This will not affect us then.
+
+Lets find $||h_n-h||_\infty$.
+The partial derivative of $h_n-h$ with respect to $x$ is $\displaystyle \frac{3n}{(4n+x)^2}$ with a second derivative of $\displaystyle -\frac{6n}{(4n+x)^3}$.
+Notice that $3n>0, 6n>0,$ and $4n+x>0$ when $n\ge 1$ and $x\ge0$. And so we have no critical points and our function is concave over the entire domain.
+So then $||h_n-\frac{1}{4}||_\infty=\max(||h_n(0)-\frac{1}{4}||,||h_n(N)-\frac{1}{4}||)$.
+Because both $h_n(0)$ and $h_n(N)$ both converge to $\frac{1}{4}$ then $||h_n-\frac{1}{4}||_\infty$ must converge to $\frac{1}{4}$.
+It then follows that $\displaystyle \lim_{k\to\infty}||h_k-h||_\infty=0$ on $[0,N]$.
+
+Now let us broaden our view a little and look at what happens when $x\in[0,\infty)$. Let's choose $\varepsilon=\frac{1}{2}$ and $n$ arbitrarily large and see what happens when $x\ge 8n$. Keep in mind that we never have to deal with negative numbers.
+\begin{align*}
+  x&\ge 8n\\
+  \frac{1}{4}x&\ge 2n\\
+  n+x&\ge3n+\frac{3}{4}x\\
+  \frac{n+x}{4n+x}&\ge\frac{3n+\frac{3}{4}x}{4n+x}=\frac{3}{4}\cdot\frac{4n+x}{4n+x}\\
+  \frac{n+x}{4n+x}-\frac{1}{4}&\ge\frac{3}{4}-\frac{1}{4}=\varepsilon
+\end{align*}
+And so regardless of our choice of $n$ we have $||h_n-h||\ge \varepsilon$ for all $x\ge 8n$. This breaks the definition of uniform convergence, thus this function does not converge uniformly over $[0,\infty)$
+%However, notice that the limit of $h_n$ as $x$ goes to infinity is $1$.
+%This means that if we choose $n\in \mathbb{N}$ arbitrarily large we can always find some $x$ in $[0,\infty)$ were $h_n(x)$ is greater than any number in $(\frac{1}{4},1)$. and so in this case $\lim_{k\to\infty}||f_k-f||_\infty=\frac{3}{4}$ and so this thing doesn't converge uniformly over all of $x\ge 0$.
 \setcounter{enumi}{3}
 %8.2 D
 \item
 Let $(f_n)$ and $(g_n)$ be sequences of continuous functions on $[a,b]$. Suppose that $(f_n)$ converges uniformly to $f$ and $(g_n)$ converges uniformly to $g$ on $[a,b]$. Prove that $(f_ng_n)$ converges uniformly to $fg$ on $[a,b]$
+
+First we observe that because $f_n$ and $g_n$ are both continuous and both converge uniformly, then $f$ and $g$ must also be continuous. From the extreme value theorem we know then that all of $f_n,g_n,f,$ and $g$ are all bounded. First we need to find a bound for all the $g_n$s.
+
+We know that for all $\varepsilon>0$ there exists some $N\in \mathbb{N}$ such that for all $n\ge N$ we have $||g_n-g||_\infty<\varepsilon$.
+If we choose $\varepsilon=1$ then we can find some $N\in \mathbb{N}$ such that $||g_n-g||_\infty<\varepsilon$ for all $n\ge\mathbb{N}$.
+Lets set $M_g=\max(||g_1||_\infty,\dots,||g_N||_\infty,||g||_\infty)+1$.
+Now obviously $M_g>g_n$ when $n<N$ and if $n\ge N$ then for all $x\in[a,b]$ we have $||g_n(x)||=||g_n(x)-g(x)+g(x)||\le ||g_n(x)-g(x)||+||g(x)||\le ||g_n(x)-g(x)||+(M_g-1)\le\varepsilon+M_g-1$.
+Remembering that $\varepsilon=1$ we have $||g_n(x)||\le M_g$ for all $x$ and so $||g_n||_\infty\le M_g$.
+
+Okay now we have found our bound of $M_g$ for $g_n$.
+Keeping in mind that $f$ is also bounded, we can find some $M$ that bounds both $g_n$ and $f$.
+Lets say $M=\max(M_g,||f||_\infty)$.
+Now we choose some arbitrary $\varepsilon>0$. We know that we can find some $N\in \mathbb{N}$ large enough that $||g_n-g||_\infty\le\frac{\varepsilon}{2M}$ and $||f_n-f||_\infty<\frac{\varepsilon}{2M}$ for all $n>N$.
+
+Back to where we started, we can do some algebra on $||f_n(x)g_n(x)-f(x)g(x)||$ to make things a little more manageable. Lets to that. The following is true for all $x\in [a,b]$ so will leave the $x$s out of the notation.
+\begin{align*}
+  ||f_ng_n-fg||&=||f_ng_n-fg_n+fg_n-fg||\\
+  &\le||f_ng_n-fg_n||+||fg_n-fg||\\
+  &=||g_n||\cdot||f_n-f||+||f||\cdot||g_n-g||\\
+\end{align*}
+If we remember that $||g_n||$ and $||f||$ are both no bigger than $M$ while $||g_n-g||$ and $||f_n-f||$ are smaller than $\frac{\varepsilon}{2M}$ then we have $||f_ng_n-fg||< M\frac{\varepsilon}{2M}+M\frac{\varepsilon}{2M}=\varepsilon$. And because this is true for every $x\in[a,b]$ then we have $||f_ng_n-fg||_\infty<\varepsilon$. Thus $\displaystyle \lim_{n\to\infty}||f_ng_n-fg||_\infty=0$ as required.$\Box$
 \setcounter{enumi}{5}
 %8.2 F
 \item
@@ -41,20 +82,30 @@ Let $f_n(x)=\arctan(nx)/\sqrt{n}$.
   \item
   Find $\displaystyle f(x)=\lim_{n\to\infty}f_n(x)$, and show that $(f_n)$ converges uniformly to $f$ on $\mathbb{R}$
 
-  This thing is bounded by $\left[\frac{\pi}{2\sqrt{n}},\frac{\pi}{2\sqrt{n}}\right]$ and so it has to converge uniformly to $f(x)=0$
+  Our function is bounded by $\left[-\frac{\pi}{2\sqrt{n}},\frac{\pi}{2\sqrt{n}}\right]$.
+  The limit of $\pm\frac{\pi}{2\sqrt{n}}$ as $n$ goes to infinity is 0 and this function must converge uniformly to $f(x)=0$
   \item
   Compute $\displaystyle \lim_{n\to\infty}f_n'(x)$, and compare this with $f'(x)$.
-  The derivative is $f_n'(x)=\frac{\sqrt{n}}{n^2x^2+1}$ and when we take the limit as $n$ goes to infinity of that thing we get $\displaystyle \lim_{n\to\infty}f_n'=\begin{cases}\sqrt{n}&x=0\\0&x\ne 0\end{cases}0$. Almost $f'$ but not quite
+
+  The derivative is $f_n'(x)=\frac{\sqrt{n}}{n^2x^2+1}$ and when we take the limit as $n$ goes to infinity of that thing we get
+  \begin{align*}
+    \displaystyle \lim_{n\to\infty}f_n'
+    &=\begin{cases}\lim_{n\to\infty}\sqrt{n}&x=0\\\frac{1}{x^2}\lim_{n\to\infty}\frac{\sqrt{n}}{n^2+1/x^2}&x\ne 0\end{cases}\\
+    &=\begin{cases}\infty&x=0\\\frac{1}{x^2}\lim_{n\to\infty}\frac{\sqrt{n}}{n^2+1/x^2}&x\ne 0\end{cases}\\
+    &=\begin{cases}\infty&x=0\\\frac{1}{x^2}\lim_{n\to\infty}\frac{1}{n^{3/2}+1/(\sqrt{n}x^2)}&x\ne 0\end{cases}\\
+    &=\begin{cases}\infty&x=0\\0&x\ne 0\end{cases}
+  \end{align*}
+  And $f'=0$ so the derivative of the limit and the limit of the derivative are the same everywhere except $x=0$
   \item
   Where is the convergence of $f_n'$ uniform? Prove your answer.
 
-  If we look at $f_n''(x)=\frac{2x\sqrt{n}}{n^2(x^2+n^-2)^2}$ we see immediately that our place of interest is $x=0$, but we already knew that. Since for any $[a,\pm\infty)$ with $|a|>0$ we have an upper bound at $f_n(a)$ which goes to zero, then we know that we converge uniformly in either of these domains. However, taking the contrapositive of theorem 8.2.1 we find that when we include zero in our domain, then our limit is discontinuous, and so either our sequence is not continuous, or we do not converge uniformly. We know our sequence is continuous, and so we must not converge uniformly.
+  Look at $f_n''(x)=\frac{\mathrm{d}}{\mathrm{d}x}\left(\frac{\sqrt{n}}{n^2x^2+1}\right)=\frac{\mathrm{d}}{\mathrm{d}x}\left(n^{3/2}x^2+n^{-1/2}\right)^{-1}=-(n^{3/2}x^2+n^{-1/2})^{-2}2n^{3/2}x$. We see immediately that because $n\ge 1$ then our only zero term is $x=0$. If we think about the graph of arctan, this matches our intuition. The slope increases as we approach zero from either direction and decreases as we get farther away. Compressing the graph vertically and horizontally by any factor will not change this. Since for any $[a,\pm\infty)$ with $|a|>0$ we have an upper bound at $f_n'(a)$ which goes to zero, then we know that we converge uniformly in either of these domains. However, taking the contrapositive of theorem 8.2.1 we find that when we include zero in our domain, then our limit is discontinuous, and so either our sequence is not continuous, or we do not converge uniformly. We know our sequence is continuous, and so we must not converge uniformly.
   \end{enumerate}
 %8.2 G
 \item
 Suppose that functions $f_k$ defined on $\mathbb{R}^n$ converge uniformly to a function $f$. Suppose that each $f_n$ is bounded, say by $A_k$. Prove that $f$ is bounded.
 
-We know that for any given $\varepsilon>0$ we can find some $N$ such that if $k\ge N$ then $||f_k-f||_\infty<\varepsilon$. If we pick, say $1=\varepsilon$ then we get $1>||f_k-f||_\infty\ge |||f_k|||_\infty-||f||_\infty|=|A_k-||f||_\infty|$ and so $-1<A_k-||f||_\infty<1$ or $A_k+1>||f||_\infty>A_k-1$ and so $f$ is bounded.
+We know that for any given $\varepsilon>0$ we can find some $N$ such that if $k\ge N$ then $||f_k-f||_\infty<\varepsilon$. If we pick $1=\varepsilon$ then we get $1>||f_k-f||_\infty\ge |||f_k|||_\infty-||f||_\infty|=|A_k-||f||_\infty|$ and so $-1<A_k-||f||_\infty<1$ or $A_k+1>||f||_\infty>A_k-1$ and so $f$ is bounded.
 \setcounter{enumi}{8}
 %8.2 I
 \item
@@ -62,5 +113,6 @@ Give an example of a sequence of discontinuous functions $f_n$ that converges un
 
 \[f_n(x)=\begin{cases}0&x=0\\\frac{|x|}{xn}&x\ne 0\end{cases}\]
 
+This function is $\pm\frac{1}{n}$ when $x\ne 0$ and $0$ when $x=0$. Obviously this is discontinuous, but $\pm\frac{1}{n}$ approaches zero as $n$ goes to infinity and so it must converge uniformly since we can find $\frac{1}{n}<\varepsilon$ for any $\varepsilon>0$
 \end{enumerate}
 \end{document}
