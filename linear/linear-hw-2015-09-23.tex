@@ -1,0 +1,112 @@
+\documentclass[letterpaper]{article}
+
+\usepackage[utf8x]{luainputenc}
+\usepackage{aeguill}
+%\usepackage{nopageno}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathrsfs}
+\usepackage{fullpage}
+\usepackage{fancyhdr}
+\setlength{\headheight}{12pt}
+\pagestyle{fancy}
+\chead{Linear Algebra}
+\lhead{September 23, 2015}
+\rhead{Jon Allen}
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+
+\begin{document}
+%\renewcommand{\labelenumii}{\alph{enumii}.}
+%\renewcommand{\labelenumiii}{\alph{enumiii}.}
+%\renewcommand{\labelenumi}{(\arabic{enumi})}
+\section*{Excercise Set 1}
+\begin{enumerate}
+\item
+Prove the matrix
+\[A=\left[\begin{array}{cc}a&b\\c&d\end{array}\right]\]
+is invertible if and only if $ad-bc\ne 0$. Find $A^{-1}$ in this case by solving a system of two equations with two unknowns.
+
+We need some matrix $A^{-1}$ such that $AA^{-1}=I_2$.
+Assume $A^{-1}$ exists, then let $A^{-1}=\left[\begin{array}{cc}a'&b'\\c'&d'\end{array}\right]$ and we have
+\begin{align*}
+  AA^{-1}&= \left[\begin{array}{cc}a&b\\c&d\end{array}\right]
+            \left[\begin{array}{cc}a'&b'\\c'&d'\end{array}\right]\\
+  &=\left[\begin{array}{cc}aa'+bc'&ab'+bd'\\ca'+dc'&cb'+dd'\end{array}\right]
+  =\left[\begin{array}{cc}1&0\\0&1\end{array}\right]\\
+\end{align*}
+In particular
+\begin{align*}
+  aa'+bc'&=1&
+  ca'+dc'&=0\\
+\end{align*}
+Now if $c=0$ then $d=0$ or $c'=0$. We know that $d\ne 0$ because $cb'+dd'=1$. And so if $c=0$ then $c'=0$. But then $aa'+bc'=1$ so $a\ne 0$ in this case. We will proceed in two cases then for $c\ne 0$ and $a\ne 0$.
+
+If we assume that $c\ne 0$ then we have
+\begin{align*}
+  ca'+dc'&=0&
+  a'+\frac{d}{c}c'&=0&
+  -aa'-\frac{ad}{c}c'&=0\\
+\end{align*}
+Now if we add $aa'+bc'=1$ to the above result we get $\left(b-\frac{ad}{c}\right)c'=1$. Solving for $c'$ gives us $c'=-\frac{c}{ad-bc}$
+
+The case when $a\ne 0$ is similar.
+\begin{align*}
+  ab'+bd'&=0&cb'+dd'&=1\\
+  -cb'-\frac{cb}{a}d'&=0&cb'+dd'&=1\\
+  \left(d-\frac{cb}{a}\right)d'&=1&d'&=\frac{a}{ad-bc}\\
+\end{align*}
+
+\item
+Let
+\[A=\left[\begin{array}{ccc}0&0&1\\1&0&2\\0&1&-3\end{array}\right]\]
+  \begin{enumerate}
+  \item
+  Show that $A^3+3A^2-2A-I_3=\mathbf{0}$
+  \begin{align*}
+    A^3+3A^2-2A-I_3&=0\\
+    (A^2+3A-2I_3)A&=I_3\\
+    \left( \left[\begin{array}{ccc}0&0&1\\1&0&2\\0&1&-3\end{array}\right]^2
+    +3\left[\begin{array}{ccc}0&0&1\\1&0&2\\0&1&-3\end{array}\right]
+    +\left[\begin{array}{ccc}-2&0&0\\0&-2&0\\0&0&-2\end{array}\right]
+    \right)A&=I_3\\
+    \left( \left[\begin{array}{ccc}0&1&-3\\0&2&-5\\1&-3&11\end{array}\right]
+    +\left[\begin{array}{ccc}0&0&3\\3&0&6\\0&3&-9\end{array}\right]
+    +\left[\begin{array}{ccc}-2&0&0\\0&-2&0\\0&0&-2\end{array}\right]
+    \right)A&=I_3\\
+    \left[\begin{array}{ccc}-2&1&0\\3&0&1\\1&0&0\end{array}\right]
+    \left[\begin{array}{ccc}0&0&1\\1&0&2\\0&1&-3\end{array}\right]&=I_3\\
+    \left[\begin{array}{ccc}1&0&0\\0&1&0\\0&0&1\end{array}\right]&=I_3
+  \end{align*}
+  \item
+  Use part (a) to see that $A$ is invertible and compute $A^{-1}$
+  
+  Obviously $A^{-1}=A^2+3A-2I_3=\left[\begin{array}{ccc}-2&1&0\\3&0&1\\1&0&0\end{array}\right]$
+  \end{enumerate}
+\item
+Let $A\in \mathcal{M}_n$ be a diagonal matrix. Prove that $A$ is invertible if and only if $\text{ent}_{ii}(A)\ne0$ for all $i\le n$. Find $A^{-1}$ in this case.
+\item
+If $A,B\in \mathcal{M_n}$ are invertible such that $A+B\ne 0$, does it follow that $(A+B)^{-1}$ exists? Prove or find a counterexample.
+\end{enumerate}
+\section*{Excercise Set 2}
+
+\[A=
+\left[\begin{array}{ccccc}
+  a_{11}&a_{12}&a_{13}&a_{14}&a_{15}\\
+  a_{21}&a_{22}&a_{23}&a_{24}&a_{25}\\
+  a_{31}&a_{32}&a_{33}&a_{34}&a_{35}\\
+  a_{41}&a_{42}&a_{43}&a_{44}&a_{45}
+\end{array}\right]\]
+
+\begin{enumerate}
+\item
+For the matrix $A$ in the example above, determine $E_{3\to c3}$ where $c$ is any nonzero real number.
+\item
+For the matrix $A$ in the example above, determine $E_{4\to4+c2}$ where $c$ is any nonzero real number.
+\item
+Prove that each of $E_{i\leftrightarrow k},E_{i\to ci}, E_{i\to i+ck}$ is invertible by finding an inverse. Prove that the inverse of an elementary matrix is an elementary matrix. 
+\item
+Define a relation $\sim$ on $\mathcal{M}_{m\times n}$ given by $A\sim B$ if and only if there exists a $P\in \mathcal{M}_{m\times n}$ such that $A=PB$ where $P\in \mathcal{M}_{m\times n}$ is a product of elementary matrices.
+\end{enumerate}
+\end{document}
