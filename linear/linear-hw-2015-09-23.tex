@@ -49,7 +49,11 @@ If we assume that $c\ne 0$ then we have
   a'+\frac{d}{c}c'&=0&
   -aa'-\frac{ad}{c}c'&=0\\
 \end{align*}
-Now if we add $aa'+bc'=1$ to the above result we get $\left(b-\frac{ad}{c}\right)c'=1$. Solving for $c'$ gives us $c'=-\frac{c}{ad-bc}$
+Now if we add $aa'+bc'=1$ to the above result we get $\left(b-\frac{ad}{c}\right)c'=1$. Solving for $c'$ gives us $c'=-\frac{c}{ad-bc}$. Using we can solve $ca'+dc'=0$ to find $a'=\frac{d}{ad-bc}$. Moving on we have
+\begin{align*}
+  cb'+dd'&=1&b'+\frac{d}{c}d'&=\frac{1}{c}&-ab'-\frac{ad}{c}d'&=-\frac{a}{c}
+\end{align*}
+Adding in $ab'+bd'=0$ leads us to $\frac{bc-ad}{c}d'=\frac{-a}{c}$, or $d'=\frac{a}{ad-bc}$. And finally substituting $d'$ in for $cb'+dd'=1$ leads to $cb'+d\frac{a}{ad-bc}=cb'+1+\frac{bc}{ad-bc}=1$ or $b'=-\frac{b}{ad-bc}$.
 
 The case when $a\ne 0$ is similar.
 \begin{align*}
@@ -57,7 +61,10 @@ The case when $a\ne 0$ is similar.
   -cb'-\frac{cb}{a}d'&=0&cb'+dd'&=1\\
   \left(d-\frac{cb}{a}\right)d'&=1&d'&=\frac{a}{ad-bc}\\
 \end{align*}
+If we continue as we did when $c\ne 0$ then we will arrive at $A^{-1}=\frac{1}{ad-bc}\left[\begin{array}{cc}d&-b\\-c&a\end{array}\right]$ just as we did when $c\ne 0$.
 
+In this way we see that when we assume that $A^{-1}$ exists and that $ad-bc=0$ we arrive at a contradiction. Namely that $\frac{1}{ad-bc}$ is undefined and therefore $A^{-1}$ can't exist. However, if we assume that $ad-bc\ne 0$ we find our inverse, and so it must exist. Thus we have proven both directions of the hypothesis.
+$\Box$
 \item
 Let
 \[A=\left[\begin{array}{ccc}0&0&1\\1&0&2\\0&1&-3\end{array}\right]\]
@@ -86,8 +93,22 @@ Let
   \end{enumerate}
 \item
 Let $A\in \mathcal{M}_n$ be a diagonal matrix. Prove that $A$ is invertible if and only if $\text{ent}_{ii}(A)\ne0$ for all $i\le n$. Find $A^{-1}$ in this case.
+
+Let us assume that there exists some $\text{ent}_{ii}(A)=0$ and that $A^{-1}$ exists with $\text{ent}_{jk}(A^{-1})=a_{jk}^{-1}$ and $\text{ent}_{jk}(A)=a_{jk}$. Then $\text{ent}_{ii}(AA^{-1})=\sum\limits_{k=1}^n{a_{ik}a_{ki}^{-1}}=\sum\limits_{k=1}^n{0a_{ki}^{-1}}=0$. But $AA^{-1}=I_n$ and $\text{ent}_{ii}(I_n)=1$ and so we have a contradiction.
+
+Now lets assume that $\text{ent}_{ii}(A)=c_i$ with $i\le n$ and $c_i\ne 0$. Lets choose another diagonal matrix and name it $A^{-1}$. We will assign $\text{ent}_{ii}(A^{-1})=c_{i}^{-1}$. Now we see that if we choose any $i\le n,j\le n$ such that $j\ne i$ then we see that $\text{ent}_{ij}(AA^{-1})=\sum\limits_{k=1}^n{a_{ik}a_{kj}^{-1}}=0+\dots+a_{ii}a_{ij}^{-1}+a_{ij}a_{jj}^{-1}+\dots0=0+\dots+a_{ii}0+0a_{jj}^{-1}+\dots0=0$.
+But $\text{ent}_{ii}(AA^{-1})=\sum\limits_{k=1}^n{a_{ik}a_{ki}^{-1}}=0+\dots+a_{ii}a_{ii}^{-1}+\dots+0=cc^{-1}=1$. And so we see that $AA^{-1}$ is a diagonal matrix with all ones for its entries. But that is $I_n$ and so we have found the inverse of $A^{-1}$.
+$\Box$
 \item
 If $A,B\in \mathcal{M_n}$ are invertible such that $A+B\ne 0$, does it follow that $(A+B)^{-1}$ exists? Prove or find a counterexample.
+
+\[
+\left[\begin{array}{cc}3&2\\8&4\end{array}\right]+
+\left[\begin{array}{cc}3&2\\4&4\end{array}\right]
+=\left[\begin{array}{cc}6&4\\12&16\end{array}\right]
+\]
+
+Notice that $3\cdot 4-8\cdot 2=-4$ and $3\cdot 4-2\cdot 4=4$ but $6\cdot8-4\cdot 12=6\cdot4\cdot2-4\cdot2\cdot6=0$ and so by excercise 1 we have found a counterexample.
 \end{enumerate}
 \section*{Excercise Set 2}
 
@@ -102,11 +123,70 @@ If $A,B\in \mathcal{M_n}$ are invertible such that $A+B\ne 0$, does it follow th
 \begin{enumerate}
 \item
 For the matrix $A$ in the example above, determine $E_{3\to c3}$ where $c$ is any nonzero real number.
+
+\[E_{3\to c3}=\left[\begin{array}{cccc}1&0&0&0\\0&1&0&0\\0&0&c&0\\0&0&0&1\\\end{array}\right]\]
+
 \item
 For the matrix $A$ in the example above, determine $E_{4\to4+c2}$ where $c$ is any nonzero real number.
+
+\[E_{4\to 4+c2}=\left[\begin{array}{cccc}1&0&0&0\\0&1&0&0\\0&0&1&0\\0&c&0&1\\\end{array}\right]\]
+
 \item
 Prove that each of $E_{i\leftrightarrow k},E_{i\to ci}, E_{i\to i+ck}$ is invertible by finding an inverse. Prove that the inverse of an elementary matrix is an elementary matrix. 
+
+We assume that $i\ne k$.
+We posit that $E_{i\leftrightarrow k}$ is the identity matrix, save that $\text{ent}_{ii}E_{i\leftrightarrow k}=\text{ent}_{kk}E_{i\leftrightarrow k}=0$ and $\text{ent}_{ki}E_{i\leftrightarrow k}=\text{ent}_{ik}E_{i\leftrightarrow k}=0$
+
+We shall now verify this claim.
+First we choose some $j\not\in\{i,k\}$ and any $l$.
+Now we see that for any $A\in \mathcal{M}_n$ we have $\text{ent}_{jl}(E_{i\leftrightarrow k}A)=\sum\limits_{m=1}^n{\text{ent}_{jm}(E_{i\leftrightarrow k})a_{ml}}=a_{jl}$ because all entries in the elementary matrix row are zero except the $j$ element which is one.
+And so as we wish $E_{i\leftrightarrow k}$ leaves everything off of rows $i$ and $k$ undisturbed.
+Now lets see what happens for $\text{ent}_{il}(E_{i\leftrightarrow k}A)$ and $\text{ent}_{kl}(E_{i\leftrightarrow k}A)$.
+\begin{align*}
+  \text{ent}_{il}(E_{i\leftrightarrow k}A)
+  &=\sum\limits_{m=1}^n{\text{ent}_{im}(E_{i\leftrightarrow k})a_{ml}}=a_{kl}\\
+  \text{ent}_{kl}(E_{i\leftrightarrow k}A)
+  &=\sum\limits_{m=1}^n{\text{ent}_{km}(E_{i\leftrightarrow k})a_{ml}}=a_{il}
+\end{align*}
+Thus we see that the $i$ and $k$ rows of $A$ and its product with the elementary matrices have been switched. This occurs because $\text{ent}_{ki}(E_{i\leftrightarrow k})=\text{ent}_{ik}(E_{i\leftrightarrow k})=1$ but all other entries on these two rows is zero.
+
+Now that we know what $E_{i\leftrightarrow k}$ is, we see that for
+$i\ne l$ we have $\text{ent}_{il}(E_{i\leftrightarrow k}E_{i\leftrightarrow k})=\text{ent}_{kl}(E_{i\leftrightarrow k})=0$.
+And we have $\text{ent}_{ii}(E_{i\leftrightarrow k}E_{i\leftrightarrow k})=\text{ent}_{ki}(E_{i\leftrightarrow k})=1$.
+Similarly 
+we have $\text{ent}_{kl}(E_{i\leftrightarrow k}E_{i\leftrightarrow k})=\text{ent}_{il}(E_{i\leftrightarrow k})=0$ when $k\ne l$ and
+$\text{ent}_{kk}(E_{i\leftrightarrow k}E_{i\leftrightarrow k})=\text{ent}_{ik}(E_{i\leftrightarrow k})=1$ when $k=l$. Thus $E_{i\leftrightarrow k}^{2}=I_n$ and so this matrix is it's own inverse.
+
+For the matrix $E_{i\to ci}$ we must have $c\ne 0$.
+Now if we take the identity matrix, but change $\text{ent}_{ii}$ to be $c$ then I claim we have our elementary matrix.
+As above, when $j\ne i$ we have $\text{ent}_{jk}(E_{i\to ci}A)=a_{jk}$ for any  $A\in \mathcal{M}_n$ and $k\le n$.
+And so our matrix leaves all rows but $i$ untouched. Now if we examine row $i$ we see that $\text{ent}_{ik}(E_{i\to ci}A)=\sum\limits_{l=1}^n{\text{ent}_{il}(E_{i\to ci})a_{li}}=ca_{ik}$ as desired. So we have found our elementary matrix.
+
+Now let us examine $E_{i\leftrightarrow (1/c)i}E_{i\leftrightarrow ci}$. We have already seen that $\text{ent}_{jk}(E_{i\leftrightarrow (1/c)i}E_{i\to ci})=\text{ent}_{jk}(E_{i\to ci})=\text{ent}_{jk}(I_n)$. And $\text{ent}_{ik}(E_{i\leftrightarrow (1/c)i}E_{i\to ci})=\frac{1}{c}\text{ent}_{ik}(E_{i\to ci})$. Of course when $k\ne i$ then this is zero and when $k=i$ then this entry will be $\frac{1}{c}c=1$. Thus we have exactly the identity matrix. And so we have found our inverse.
+
+Finally we look at $E_{i\to i+ck}$. As before we start with the identity matrix. This time the only entry on $I_n$ that we change is $\text{ent}_{ik}(E_{i\to i+ck})=c$.
+
+Obviously if we have $j\ne i, l\le n$ and any $A\in\mathcal{M}_n$ then $\text{ent}_{jl}(E_{i\to i+ck}A)=\sum\limits_{m=1}^n{\text{ent}_{jm}(E_{i\to i+ck})a_{ml}}=a_{jl}$.
+But $\text{ent}_{il}(E_{i\to i+ck}A)=\sum\limits_{m=1}^n{\text{ent}_{im}(E_{i\to i+ck})a_{ml}}=a_{il}+ca_{kl}$. Fantastic, we have found something that takes the entry from row k and multiplies it by c and adds it to the entry in row i, then places the result in row i. This then is the elementary matrix we require.
+
+Now if we take $E_{i\to i-ck}$ for 
+$j\ne i, l\le n$ we have $$\text{ent}_{jl}(E_{i\to i-ck}E_{i\to i+ck})=\sum\limits_{m=1}^n{\text{ent}_{jm}(E_{i\to i-ck})\text{ent}_{jm}(E_{i\to i+ck})}=\text{ent}_{jl}(I_n)$$
+
+And $\text{ent}_{il}(E_{i\to i-ck}E_{i\to i+ck})=\sum\limits_{m=1}^n{\text{ent}_{im}(E_{i\to i-ck})\text{ent}_{im}(E_{i\to i+ck})}=\text{ent}_{il}(E_{i\to i+ck})-c\cdot\text{ent}_{kl}(E_{i\to i+ck})$. Of course if $i=l$ then this will give us $1-0=1$ and if $k=l$ then we have $c-c=0$. This will leave us with our identity. And so we have our inverse.
+
+For each of the three elementary matrices we have found an inverse, and thus one must exist. Further, these inverses are simply elementary matrices themselves.
+$\Box$
 \item
 Define a relation $\sim$ on $\mathcal{M}_{m\times n}$ given by $A\sim B$ if and only if there exists a $P\in \mathcal{M}_{m\times n}$ such that $A=PB$ where $P\in \mathcal{M}_{m\times n}$ is a product of elementary matrices.
+
+We know that $A=I_nA$ and $I_n$ is an elementary matrix and so this relation is reflexive.
+
+We also know that every elementary matrix has an inverse and that inverse is an elementary matrix. And so if $P=E_1E_2\dots E_n$ then $P^{-1}$ exists. In fact $P^{-1}=E_n^{-1}\dots E_1^{-1}$ which is the product of elementary matrices also. Therefore if $A=PB$ then $P^{-1}A=B$ and so commutativity is preserved with this relation.
+
+Now of we have $P_1,P_2$ both products of elementary matrices, then it follows that $P_1P_2$ is also the product of elementary matrices. And so if $A=P_1B$ and $B=P_2C$ then $A=P_1(P_2C)=(P_1P_2)C$ and so the relation is transitive.
+
+Those are the three properties we need for the relation to fit the definition of an equivalence relation.
+$\Box$
 \end{enumerate}
 \end{document}
+%hw 1.5:1,2b,3ce,10,11,13,14,15
