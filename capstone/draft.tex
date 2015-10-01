@@ -1,0 +1,127 @@
+\documentclass[11pt]{amsart}
+
+\usepackage{amsfonts,amssymb,amscd,amsmath,mathrsfs,amsthm,tikz}
+\usepackage{forest}
+\usepackage{cancel}
+\usepackage{graphicx}
+\usepackage{titlesec}
+
+% Uncomment the following line in order to include graphics
+
+%\usepackage[pdftex]{graphicx}
+
+%
+%  The following are margin definitions used in the publication at the end of term.
+%
+
+\setlength{\oddsidemargin}{0.25in}  %please do not change
+\setlength{\evensidemargin}{0.25in} %please do not change
+\setlength{\marginparwidth}{0in} %please do not change
+\setlength{\marginparsep}{0in} %please do not change
+\setlength{\marginparpush}{0in} %please do not change
+\setlength{\topmargin}{0in} %please do not change
+
+\setlength{\footskip}{.3in} %please do not change
+\setlength{\textheight}{8.75in} %please do not change
+\setlength{\textwidth}{6in} %please do not change
+\setlength{\parskip}{4pt} %please do not change
+
+\theoremstyle{plain}
+\newtheorem{thm}{Theorem}
+\newtheorem{prop}{Proposition}
+\newtheorem{lemma}{Lemma}
+\newtheorem{cor}{Corollary}
+\newtheorem{fact}{Fact}
+\newtheorem{exa}{Example}
+
+\theoremstyle{definition}
+\newtheorem{defi}{Definition}
+\renewcommand\qedsymbol{$\blacksquare$}
+
+\titleformat{\section}{\centering\bfseries}{\thesection.}{.5em}{}
+\titleformat{\title}{\centering}{\thesection.}{.5em}{}
+
+\begin{document}
+
+%\centerline{\bf{\LARGE{Sample Capstone Paper}}}
+%\medskip
+%\centerline{\large{by Math Student}}
+%\bigskip
+\title{On the Markov Basis}
+\author{Jon Allen}
+\begin{abstract}
+In this article will study Markov bases. We will see how Markov bases are used in algebraic statistics and algebraic geometry. First we will start by looking at the relationship between Markov bases and numerical semigroups.
+\end{abstract}
+\maketitle
+\section{Introduction}
+Here we will sketch out what and how markov bases are used and give a heads up of the goodies coming up in the paper.
+%\bigskip
+\section{Prerequisites}
+Lets discuss the various things we will need to know moving forward.
+
+The first few things we need to understand are some common maps that the literature takes for granted.
+
+There is a straightforward map between $\mathbb{N}^n$ and monomials.
+We choose some $\mathbf{\alpha}\in \mathbb{N}^n$ such that $\mathbf{\alpha}=(a_1,\dots,a_n)$.
+We map this vector to a monomial $x^\mathbf{\alpha}=x_1^{a_1}\dots x_n^{a_n}$.
+We can do the same thing with binomials.
+In the binomial case we start with some $\mathbf{z}\in \mathbb{Z}^n$.
+We define $\mathbf{z}=(z_1,\dots,z_n)$.
+We also define $\mathbf{\alpha}=(a_1,\dots,a_n)$ and $\mathbf{\beta}=(b_1,\dots,b_n)$ where
+\begin{align*}
+  a_i&=\begin{cases}z_i&z_i\ge 0\\1&z_i<0\end{cases}&
+  b_i&=\begin{cases}1&z> 0\\-z_i&z_i\le0\end{cases}
+\end{align*}
+If we let $x^\alpha=x_1^{a_1}\dots x_n^{a_i}$ and $y^\beta=y_1^{b_1}\dots y_n^{b_i}$ then we can map $\mathbf{z}$ to a binomial $x^\alpha-y^\beta$
+(citation needed)
+
+What are Markov bases? We are given a definition of \emph{Markov basis} by \cite{bernd}.
+
+\defi
+Let $\mathcal{M}_A$ be the log-linear model associated with a matrix $A$ whose integer kernel we denote by $\ker_\mathbb{Z}(A)$.
+A finite subset $\mathcal{B}\subset\ker_{\mathbb{Z}}(A)$ is a \emph{Markov basis} for $\mathcal{M}_A$ if for all $u\in \mathcal{T}(n)$ and all pairs $v,v'\in \mathcal{F}(u)$ there exists a sequence $u_1,\dots,u_L\in  \mathcal{B}$ such that
+\[v'=v+\sum\limits_{k=1}^L{u_k}\text{ and }v+\sum\limits_{k=1}^l{u_k}\ge 0\text{ for all }l=1,\dots,L.\]
+
+The literature often refers to the elements of a Markov basis as \emph{moves}\cite[p.16]{bernd}
+
+These bases are relevant because of the fundamental theorem of Markov bases which follows\cite{aoki}
+\begin{thm}
+A finite set of moves $\mathcal{B}$ is a Markov basis for $A$ if and only if the set of binomials $\{p^{\mathbf{z}^+}-p^{\mathbf{z}^-}|\mathbf{z}\in \mathcal{B}\}$ generates the toric ideal $I_A$.
+\end{thm}
+
+We will be dealing extensively with lattices. Informally, a lattice is what you think it is. For example $\mathbb{N}^n$ forms a lattice over $\mathbb{R}^n$.
+\begin{defi}
+A \emph{lattice} is a partially ordered set in which every two elements have a unique least upper bound and a unique greatest lower bound. (citation needed)
+\end{defi}
+\begin{exa}
+Notice that $(1,2)$ and $(2,1)$ have a lower bound of $(1,1)$ and an upper bound of $(2,2)$.
+\end{exa}
+%\medskip
+\begin{exa}
+We can form a lattice if we order $\mathbb{N}$ by division. The least common multiple forms a least upper bound and an greatest lower bound is formed by the greatest common denominator.
+\end{exa}
+
+%\begin{fact}
+%This is a theorem that I'm gonna prove. Kept just for reference.
+
+%\begin{proof}
+%Blah blah, irrefutable logic.
+%\end{proof}
+%\end{fact}
+
+\section{Numerical Semigroups}
+This is the section where we will go over what use Markov bases are to numerical semigroups.
+%Typically a paper begins with an Abstract, Introduction, a section where basic tools and techniques are introduced, and subsequent sections where the subject is developed.
+\section{And now for something completely different}
+And this is the section where, time willing, I will explore something that hasn't been looked at much up until now.
+
+%I hope that this is not the quality of work I would ordinarily turn in, but it's not listed as points on the syllabus and it was asked for so here it is.
+\nocite{*}
+\bibliographystyle{amsplain}
+\bibliography{bib}
+
+
+\end{document}
+
+
+

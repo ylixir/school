@@ -1,0 +1,144 @@
+%shell-escape
+\documentclass[letterpaper]{article}
+
+\usepackage{amsmath}
+\usepackage[utf8x]{luainputenc}
+\usepackage{amssymb}
+\usepackage{gnuplottex}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\lhead{September 28, 2015}
+\chead{Real Analysis II Homework}
+\rhead{Jon Allen}
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+
+\begin{document}
+
+\renewcommand{\labelenumi}{\Alph{enumi}.}
+%\renewcommand{\labelenumii}{\arabic{enumii}.}
+\renewcommand{\labelenumii}{(\alph{enumii})}
+\section*{8.3}
+%abdeh
+\begin{enumerate}
+\item
+%8.3 A
+For $x\in [-1,1]$ let $F(x)=\int_0^1{x(1-x^2y^2)^{-1/2}\mathrm{d}y}$. Show that $F'(x)=(1-x^2)^{-1/2}$ and deduce that $F(x)=\arcsin(x)$.
+
+We let $\displaystyle f(x,y)=\frac{x}{\sqrt{1-x^2y^2}}$.
+Then $\displaystyle \frac{\partial}{\partial x}f(x,t)=(1-x^2y^2)^{-1/2}-\frac{1}{2}x(1-x^2y^2)^{-3/2}(-2xy^2)=\frac{1-x^2y^2+x^2y^2}{(1-x^2y^2)^{3/2}}=(1-x^2y^2)^{-3/2}$.
+We note that we can find critical points when $x\in \{-1,0,1\}$ and $y\in\{0,1\}$.
+As $x\to 0$ and $y\to 0$ we see that $1-x^2y^2\to 1$, and so as we approach zero on the numerator of $f(x,y)$ then the denominator approaches $1$.
+As we go away from zero, then the numerator increases, and the denominator decreases, and so $f(x)$ increases.
+Similarly, $\frac{\partial}{\partial x}f(x,y)$ is at a minimum when $(x,y)=(0,0)$ and increases as we go away from zero.
+Further, as $y\to 1$ and $x^2\to 1$ then $1-x^2y^2\to 0$.
+Thus we have a discontinuous point when $y=1$ and $x^2=1$.
+This problem occurs in both the function and it's partial derivative.
+The exercise is practically begging us to use Leibniz's Rule, but this rule is only defined on continuous functions.
+Let us reformulate the question as follows: 
+\[F(x)=\lim_{n\to 1}\int_0^n{\frac{x}{\sqrt{1-x^2y^2}}\mathrm{d}y}\]
+Now, because $0\le n< 1$ we have a continuous function we can work with and so by Leibniz's Rule we have
+\[F'(x)=\lim_{n\to 1}\int_0^n{(1-x^2y^2)^{-3/2}\mathrm{d}y}\]
+The trick here is to notice that $-1<xy<1$ and so we can make the substitution $xy=\sin u$ and $\mathrm{d}y=\frac{\cos u}{x}\mathrm{d}u$. Of course $u=\arcsin xy$ and $\arcsin x\cdot0=0$. Let us assign $m=\arcsin xn$
+\begin{align*}
+  \lim_{n\to 1}\int_0^n{(1-x^2y^2)^{-3/2}\;\mathrm{d}y}
+  &=\frac{1}{x}\lim_{n\to 1}\int_0^m{(1-\sin^2u)^{-3/2}cos u\;\mathrm{d}u}\\
+  &=\frac{1}{x}\lim_{n\to 1}\int_0^m{\frac{1}{\cos^2 u}\;\mathrm{d}u}\\
+  &=\frac{1}{x}\lim_{n\to 1}\int_0^m{\frac{\sin^2u+\cos^2u}{\cos^2 u}\;\mathrm{d}u}\\
+  &=\frac{1}{x}\lim_{n\to 1}\left[\int_0^m{\frac{\sin^2u}{\cos^2 u}\;\mathrm{d}u}+\int_0^m{1\;\mathrm{d}u}\right]\\
+\end{align*}
+And continuing with substitution by parts:
+\begin{align*}
+  w&=\sin u&\mathrm{d}w&=\cos u\;\mathrm{d}u\\
+  \mathrm{d}v&=\frac{\sin u}{\cos^2u}\mathrm{d}u&v&=\frac{1}{\cos u}
+\end{align*}
+\begin{align*}
+  \lim_{n\to 1}\int_0^n{(1-x^2y^2)^{-3/2}\;\mathrm{d}y}
+  &=\frac{1}{x}\lim_{n\to 1}\left[\left.\frac{\sin u}{\cos u}\right|_0^m-\int_0^m{\frac{\cos u}{\cos u}\;\mathrm{d}u}+\int_0^m{1\;\mathrm{d}u}\right]\\
+  &=\lim_{n\to 1}\left.\frac{\sin u}{x\cos u}\right|_0^m
+  =\lim_{n\to 1}\left.\frac{\sin u}{x\sqrt{1-\sin^2u}}\right|_0^m\\
+  &=\lim_{n\to 1}\left.\frac{y}{\sqrt{1-x^2y^2}}\right|_0^n\\
+  F'(x)
+  &=\lim_{n\to 1}\left(\frac{n}{\sqrt{1-x^2n^2}}-\frac{0}{\sqrt{1-x^20^2}}\right)\\
+  &=\frac{1}{\sqrt{1-x^2}}\\
+\end{align*}
+Integrating $F'(x)$ by using the trig substitution of $x=\sin u$ gives us
+\begin{align*}
+  \int{\frac{1}{\sqrt{1-x^2}}\;\mathrm{d}x}
+  &=\int{\frac{1}{\sqrt{1-\sin^2u}}\cos u\;\mathrm{d}u}\\
+  &=\int{\frac{\cos u}{\sqrt{\cos^2u}}\;\mathrm{d}u}=\int{\;\mathrm{d}u}\\
+  &=u+C=\arcsin x+C
+\end{align*}
+Thus we have $F(x)=\arcsin x+C$. Substituting in $x=0$ for both versions of $F(x)$ gives us $F(0)=\int_0^1{0\cdot(1-0)^{-1/2}\;\mathrm{d}y}=0=\arcsin 0+C=0+C$. And so we have $F(x)=\arcsin x$
+\item
+%8.3 B
+For $n\ge 1$, define function $f_n$ on $[0,\infty)$ by
+
+\[
+f_n(x)
+  =\begin{cases}
+  e^{-x}&\text{for}\quad0\le x\le n,\\
+  e^{-2n}(e^n+n-x)&\text{for}\quad n\le x\le n+e^n,\\
+  0&\text{for}\quad x\ge n+e^n,\\
+  \end{cases}
+\]
+  \begin{enumerate}
+  \item
+  Find the pointwise limit $f$ of $(f_n)$. Show that the convergence is uniform on $[0,\infty)$
+
+  Obviously for any $x$ we know that for all $k\in \mathbb{N}$ where $k>x$ we have $f_k(x)=e^{-x}$ and so our pointwise limit is just $e^{-x}$.
+
+  And just as obvious, if we raise any number greater than zero to any power we must get a number greater than zero. Thus $e^{-x}>0$. And we can immediately conclude that $\frac{\mathrm{d}}{\mathrm{d}x}e^{-x}=-e^{-x}< 0$. Because the derivative is always smaller than zero and the function is greater than zero we have a monotonically decreasing function that is bounded below by $0$. 
+
+  Let us move onto the second piece of our function.
+  Note that $e^{-2n}(e^n-n+x)=\frac{1}{e^n}+\frac{n}{e^{2n}}-\frac{x}{e^{2n}}$.
+  Notice that this is a linear function of $x$ with a negative slope of $-e^{-2n}$.
+  It is clear that $e^{-2n}(e^n-n+x)=e^{-x}$ when $x=n$.
+  And when $x=n+e^n$ then we have $e^{-2n}(e^n+n-(n+e^n))=0$.
+  And so, this piece of the function is bounded above by $\frac{1}{e^n}$ and below by $0$.
+
+  Now let us choose some $\varepsilon>0$ and some $N\in \mathbb{N}$ such that $e^{-N}<\varepsilon$. We let $k\ge N$. Now if $x\le N$ then $||f_k(x)-f(x)||=0$ and if $x>N$ then we know that $0\le f(x)\le \frac{1}{e^N}$ and $0\le f_k(x)\le \frac{1}{e^N}$. And so $||f_k(x)-f(x)||\le \left\lvert\frac{1}{e^n}-0\right\rvert<\varepsilon$.
+
+  And so we have uniform continuity.
+  \item
+  Compute $\displaystyle \int_0^\infty{f(x)\mathrm{d}x}$ and $\displaystyle \lim_{n\to\infty}\int_0^\infty{f_n(x)\mathrm{d}x}$.
+  \begin{align*}
+    \int_0^\infty{f(x)\;\mathrm{d}x}
+    &=\lim_{k\to\infty}\int_0^k{e^{-x}\;\mathrm{d}x}\\
+    &=\lim_{k\to\infty}-\int_0^k{-e^{-x}\;\mathrm{d}x}\\
+    &=\left.\lim_{k\to\infty}-e^{-x}\right\rvert_0^k\\
+    &=\lim_{k\to\infty}\left(-e^{-k}+e^{0}\right)=1\\
+    \lim_{n\to\infty}\int_0^\infty{f_n(x)\mathrm{d}x}
+    &=\lim_{n\to\infty}\left[\int_0^n{e^{-x}\mathrm{d}x}+\int_n^{n+e^n}{e^{-2n}(e^n+n-x)\;\mathrm{d}x}+\int_{n+e^n}^\infty{0\;\mathrm{d}x}\right]\\
+    &=\lim_{n\to\infty}\left(\left.-e^{-x}\right\rvert_0^n+e^{-2n}\left[x(e^{n}+n)-\frac{x^2}{2}\right]_n^{n+e^n}+0\right)\\
+    &=\lim_{n\to\infty}\left(e^{-2n}\left[(n+e^n)(e^{n}+n)-\frac{(n+e^n)^2}{2}\right.\right.\\&\qquad\qquad\left.\left.-n(e^{n}+n)+\frac{n^2}{2}\right]-e^{-n}+1\right)\\
+    &=\lim_{n\to\infty}\left(e^{-2n}\left[n^2+2ne^n+e^{2n}-\frac{n^2}{2}-ne^n-\frac{e^{2n}}{2}\right.\right.\\&\qquad\qquad\left.\left.-ne^{n}-n^2+\frac{n^2}{2}\right]-e^{-n}+1\right)\\
+    &=\lim_{n\to\infty}\left(e^{-2n}e^{2n}-e^{-2n}\frac{e^{2n}}{2}-e^{-n}+1\right)\\
+    &=\lim_{n\to\infty}\left(1-\frac{1}{2}-e^{-n}+1\right)=\frac{3}{2}
+  \end{align*}
+  \item Why does this not contradict theorem 8.3.1?
+
+  Because the theorem is for closed intervals. $[0,\infty)$ is not closed.
+  \end{enumerate}
+\setcounter{enumi}{3}
+\item
+%8.3 D
+Find $\displaystyle \lim_{n\to\infty}\int_0^\pi{\frac{\sin nx}{nx}\mathrm{d}x}$ {\scshape Hint:} Find the limit of the integral over $[\varepsilon,\pi]$ and estimate the rest.
+\item
+%8.3 E
+Define $\displaystyle f(x)=\int_0^\pi{\frac{\sin xt}{t}\mathrm{d}t}$.
+  \begin{enumerate}
+  \item
+  Prove that this integral is defined.
+  \item
+  Compute $f'(x)$ explicitly.
+  \item
+  Prove that $f'$ is continuous at 0.
+  \end{enumerate}
+\setcounter{enumi}{7}
+\item
+%8.3 H
+Suppose that $f\in \mathbb{C}^2[0,1]$ such that $f''(x)+bf'(x)+cf(x)=0, f(0)=0$, and $f'(x)=1$. Let $d(x)$ be continuous on $[0,1]$ and define $g(x)=\int_0^x{f(x-d)d(t)\mathrm{d}t}$. Prove that $g(0)=g'(0)=0$ and $g''(x)+bg'(x)=cg(x)=d(x)$
+\end{enumerate}
+\end{document}
