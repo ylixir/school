@@ -125,20 +125,87 @@ f_n(x)
 \item
 %8.3 D
 Find $\displaystyle \lim_{n\to\infty}\int_0^\pi{\frac{\sin nx}{nx}\mathrm{d}x}$ {\scshape Hint:} Find the limit of the integral over $[\varepsilon,\pi]$ and estimate the rest.
+
+First lets just rewrite this expression with $u=nx$ and replace 0 with $\varepsilon\to 0$.
+
+\[\lim_{\varepsilon\to0}\lim_{n\to\infty}\frac{1}{n}\int_\varepsilon^{\pi n}{\frac{\sin u}{u}\mathrm{d}u}\]
+
+Of course $-1\le \sin u\le 1$ and so $-\frac{1}{u}\le \frac{\sin u}{u}\le \frac{1}{u}$. Looking for the first zero of the integrand we obtain $\sin u=0$ or $u=k\pi$ where $k\in \mathbb{N}$. Thus our functions first zero is at $u=\pi$. Now we have an upper bound at $\varepsilon$. Using L'hopital, we have $\lim_{u\to0}\frac{\sin u}{u}=1$ and so we have $\int_0^\pi{1\;\mathrm{d}u}\ge \int_0^\pi{\frac{\sin u}{u}\mathrm{d}u}$. We also know that $\displaystyle \left\lvert\int_\pi^{n\pi}{\frac{\sin u}{u}}\right\rvert\le \int_\pi^{n\pi}{\frac{1}{u}\;\mathrm{d}u}$.
+
+We are going to assume without loss of generality that $\int_\pi^{n\pi}{\frac{\sin u}{u}}\le 0$ and so we have
+
+\begin{align*}
+  \lim_{\varepsilon\to0}\lim_{n\to\infty}\frac{1}{n}\int_\varepsilon^{\pi n}{\frac{\sin u}{u}\mathrm{d}u}
+  &\le \lim_{\varepsilon\to0}\lim_{n\to\infty}\frac{1}{n}\left[\int_\varepsilon^\pi{\mathrm{d}u}+\int_\pi^{n\pi}{\frac{1}{u}\;\mathrm{d}u}\right]\\
+  &= \lim_{n\to\infty}\frac{1}{n}\left[\lim_{\varepsilon\to0}\left(\pi-\varepsilon\right)+\log n\pi-\log\pi\right]\\
+  &= \lim_{n\to\infty}\left[\frac{\pi}{n}+\frac{\log n}{n}\right]\\
+  &= 0+\lim_{n\to\infty}\frac{1}{n} \text{ from L'Hôpital}
+  &=0
+\end{align*}
+And so we see that the limit of the integral is zero.
 \item
 %8.3 E
 Define $\displaystyle f(x)=\int_0^\pi{\frac{\sin xt}{t}\mathrm{d}t}$.
   \begin{enumerate}
   \item
   Prove that this integral is defined.
+
+  First notice that $\displaystyle \lim_{t\to 0}\sin xt=0$ and $\displaystyle \lim_{t\to0}t=0$.
+  Applying L'Hôpitals rule we get $\displaystyle \lim_{t\to0}\frac{\sin xt}{t}=\lim_{t\to 0}\frac{x\cos xt}{1}=x\cos 0=x$.
+
+  Now if we look at this integrand, then we see the $\sin$ function which is being scaled vertically by a factor of $1/t$. Now $\sin xt$ gets bigger as $t\to 0$ and so does $1/t$. Thus this function will be farthest from the $t$ axis as $t\to 0$. Because this limit is bounded, then our integrand is bounded and so we will be able to find an integral.
   \item
   Compute $f'(x)$ explicitly.
+
+  The integrand is continuous on $[\varepsilon,\pi]$ for all $\epsilon>0$. And so we can compute the integrand with a limit and Leibniz's Rule.
+  \begin{align*}
+    f'(x)
+    &=\lim_{\varepsilon\to0}\int_\varepsilon^\pi{\frac{\partial}{\partial x}\frac{\sin xt}{t}\;\mathrm{d}t}\\
+      &=\lim_{\varepsilon\to0}\int_\varepsilon^\pi{\cos xt\;\mathrm{d}t}\\
+      &=\int_0^\pi{\cos xt\;\mathrm{d}t}\\
+      \intertext{we must be careful about what happens at zero}
+      &=\begin{cases}\frac{\sin \pi x}{x}-\frac{\sin 0\cdot x}{x}&x\ne 0\\
+      \int_0^\pi{\cos 0\;\mathrm{d}t}&x=0\end{cases}\\
+      &=\begin{cases}\frac{\sin \pi x}{x}&x\ne 0\\\pi&x=0\end{cases}\\
+  \end{align*}
   \item
   Prove that $f'$ is continuous at 0.
+  
+  Our function is clearly continuous at all points other than zero.
+
+  We need to show that $\lim_{x\to0}f'(0)=f'(0)=\pi$. Now $\sin \pi 0=0$ so we have the $\frac{0}{0}$ case needed for L'Hôpitals Rule.
+  \begin{align*}
+    \lim_{x\to0}\frac{\sin \pi x}{x}&=\lim_{x\to0}\frac{\pi\cos \pi x}{1}\\
+    &=\pi\cos 0=\pi\\
+  \end{align*}
+  And so our function is continuous.
   \end{enumerate}
 \setcounter{enumi}{7}
 \item
 %8.3 H
-Suppose that $f\in \mathbb{C}^2[0,1]$ such that $f''(x)+bf'(x)+cf(x)=0, f(0)=0$, and $f'(x)=1$. Let $d(x)$ be continuous on $[0,1]$ and define $g(x)=\int_0^x{f(x-d)d(t)\mathrm{d}t}$. Prove that $g(0)=g'(0)=0$ and $g''(x)+bg'(x)=cg(x)=d(x)$
+Suppose that $f\in \mathbb{C}^2[0,1]$ such that $f''(x)+bf'(x)+cf(x)=0, f(0)=0$, and $f'(0)=1$. Let $d(x)$ be continuous on $[0,1]$ and define $g(x)=\int_0^x{f(x-t)d(t)\mathrm{d}t}$. Prove that $g(0)=g'(0)=0$ and $g''(x)+bg'(x)+cg(x)=d(x)$
+
+We use the result from part G to obtain $g'(x)=\int_0^x{f'(x-t)d(t)\;\mathrm{d}t}+f(0)d(x)$ and $g''(x)=\int_0^x{f''(x-t)d(t)\;\mathrm{d}t}+f'(0)d(x)$
+It doesn't take much to see that $g(0)=g'(0)=0$
+\begin{align*}
+  g(0)&=g'(0)\\
+  \int_0^0{f(-t)d(t)\mathrm{d}t}&=\int_0^0{f'(-t)d(t)\;\mathrm{d}t}
+\end{align*}
+This seems like a problem at first glance because we have $f(-t)$ and $f'(-t)$ as terms in both functions. But remember that in this case, $t\in [0,0]$. And $f(-0)=0$ while $f'(-0)=1$. Similarly $d(x)$ is continuous on $[0,1]$ so it must be defined for $d(0)$. Thus we have
+\begin{align*}
+   \int_0^0{0\;\mathrm{d}t}&=\int_0^0{d(t)\;\mathrm{d}t} 
+\end{align*}
+We know that the integral for $d(x)$ is defined because it is continuous. Let us say the $s(x)=\int{d(x)\;\mathrm{d}x}$. Then 
+\begin{align*}
+   \int_0^0{0\;\mathrm{d}t}&=0\\
+   \int_0^0{d(t)\;\mathrm{d}t} &=s(0)-s(0)=0
+\end{align*}
+As for the second part:
+\begin{align*}
+  g''(x)+bg'(x)+cg(x)&=\int_0^x{f''(x-t)d(t)\;\mathrm{d}t}+d(x)+b\int_0^x{f'(x-t)d(t)\;\mathrm{d}t}+\\&\qquad\qquad c\int_0^x{f(x-t)d(t)\;\mathrm{d}t}\\
+  &=\int_0^x{(f''(x-t)+bf'(x-t)+cf(x-t))d(t)\;\mathrm{d}t}+d(x)\\
+  &=\int_0^x{0\cdot d(t)\;\mathrm{d}t}+d(x)\\
+  &=d(x)
+\end{align*}
 \end{enumerate}
 \end{document}
