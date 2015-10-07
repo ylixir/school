@@ -1,0 +1,64 @@
+\documentclass[letterpaper]{article}
+
+\usepackage[utf8x]{luainputenc}
+\usepackage{aeguill}
+%\usepackage{nopageno}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathrsfs}
+\usepackage{fullpage}
+\usepackage{fancyhdr}
+\setlength{\headheight}{12pt}
+\pagestyle{fancy}
+\chead{Linear Algebra}
+\lhead{October 7, 2015}
+\rhead{Jon Allen}
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+
+\begin{document}
+%\renewcommand{\labelenumii}{\alph{enumii}.}
+%\renewcommand{\labelenumiii}{\alph{enumiii}.}
+%\renewcommand{\labelenumi}{(\arabic{enumi})}
+\section*{3.1}
+%6, 8, 9(b,c), 11, 15, 16.
+\begin{enumerate}
+\setcounter{enumi}{5}
+\item
+  \begin{enumerate}
+  \item
+  Let $U$ and $V$
+  \end{enumerate}
+\setcounter{enumi}{7}
+\item
+Let $\mathbf{v}_1,\dots,\mathbf{v}_k\in \mathbb{R}^n$ and let $\mathbf{v}\in \mathbb{R}^n$. Prove that $\text{Span}(\mathbf{v}_1,\dots,\mathbf{v}_k)=\text{Span}(\mathbf{v}_1,\dots,\mathbf{v}_k,\mathbf{v})$ if and only if $\mathbf{v}\in \text{Span}(\mathbf{v}_1,\dots,\mathbf{v}_k)$.
+
+Define $A=\text{Span}(\mathbf{v}_1,\dots,\mathbf{v}_k)$ and $B=\text{Span}(\mathbf{v}_1,\dots,\mathbf{v}_k,\mathbf{v})$.
+
+We know that $A\le R^{n}$. 
+\item
+Determine the intersection of the subspaces $\mathcal{P}_1$ and $\mathcal{P}_2$ in each case:
+  \begin{enumerate}
+  \setcounter{enumii}{1}
+  \item
+    $\mathcal{P}_1=\text{Span}\left((1,2,2),(0,1,1)\right),\mathcal{P}_2=\text{Span}\left((2,1,1),(1,0,0)\right)$
+  \item
+    $\mathcal{P}_1=\text{Span}\left((1,0,-1),(1,2,3)\right),\mathcal{P}_2=\{\mathbf{x}:x_1-x_2+x_3=0\}$
+  \end{enumerate}
+\setcounter{enumi}{10}
+\item
+Suppose $V$ and $W$ are orthogonal subspaces of $\mathbb{R}^n$, i.e., $\mathbf{v}\cdot\mathbf{w}=0$ for every $\mathbf{v}\in V$ and every $\mathbf{w}\in W$. Prove that $V\cap V^{\perp}=\{\mathbf{0}\}$
+\setcounter{enumi}{14}
+\item
+Let $A$ be an $m\times n$ matrix. Let $V\subset \mathbb{R}^n$ and $W\subset \mathbb{R}^m$ be subspaces.
+  \begin{enumerate}
+  \item
+  Show that $\{\mathbf{x}\in \mathbb{R}^n:A\mathbf{x}\in W\}$ is a subspace of $\mathbb{R}^n$.
+  \item
+  Show that $\{\mathbf{y}\in \mathbb{R}^m:\mathbf{y}=A\mathbf{x}\text{ for some }\mathbf{x}\in V\}$ is a subspace of $\mathbb{R}^m$
+  \end{enumerate}
+\item
+Suppose $A$ is a symmetric $n\times n$ matrix. Let $V\subset \mathbb{R}^n$ be a  subspace with the property that $A\mathbf{x}\in V$ for every $\mathbf{x}\in V$. 
+\end{enumerate}
+\end{document}
