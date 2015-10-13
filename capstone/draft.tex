@@ -5,6 +5,7 @@
 \usepackage{cancel}
 \usepackage{graphicx}
 \usepackage{titlesec}
+\usepackage{gnuplottex}
 
 % Uncomment the following line in order to include graphics
 
@@ -50,30 +51,37 @@
 \title{On the Markov Basis}
 \author{Jon Allen}
 \begin{abstract}
-In this article will study Markov bases. We will see how Markov bases are used in algebraic statistics and algebraic geometry. First we will start by looking at the relationship between Markov bases and numerical semigroups.
+In this article will study Markov bases, numerical semigroups and Gaussian integers. We will study the relationship between these objects, and study  the usefulness of maps between these objects.
 \end{abstract}
 \maketitle
 \section{Introduction}
-Here we will sketch out what and how markov bases are used and give a heads up of the goodies coming up in the paper.
+We will proceed by first going over some basic maps between elements of $\mathbb{N}^n$ and monomials. We will also touch on similar maps from $\mathbb{Z}^n$ and binomials.
+
+We will then touch on Markov bases and their relationships to the numerical semigroups we will be looking at.
+
+We will also look at what numeric semigroups are, along with the logic of their construction. We will later use this information and logic to create a similar construction with the Gaussian integers.
+
+We will finally look the structure of the numerical semigroups and see a surprising result in the Gaussian analogue of these.
 %\bigskip
 \section{Prerequisites}
 Lets discuss the various things we will need to know moving forward.
 
 The first few things we need to understand are some common maps that the literature takes for granted.
 
-There is a straightforward map between $\mathbb{N}^n$ and monomials.
-We choose some $\mathbf{\alpha}\in \mathbb{N}^n$ such that $\mathbf{\alpha}=(a_1,\dots,a_n)$.
-We map this vector to a monomial $x^\mathbf{\alpha}=x_1^{a_1}\dots x_n^{a_n}$.
+There is a straightforward map between $\mathbb{N}^n$ and monomials over a field $k$.
+We choose some $\mathbf{\alpha}\in \mathbb{N}^n$ such that $\mathbf{\alpha}=(\alpha_1,\dots,\alpha_n)$.
+Now we define a map for $\varphi_\mathbb{N}:\mathbb{N}^n\to k[x_1,\dots,x_n]$ such that $\mathbf{\alpha}\mapsto \mathbf{x}^\alpha$
+%We map this vector to a monomial $x^\mathbf{\alpha}=x_1^{a_1}\dots x_n^{a_n}$.
+
 We can do the same thing with binomials.
 In the binomial case we start with some $\mathbf{z}\in \mathbb{Z}^n$.
 We define $\mathbf{z}=(z_1,\dots,z_n)$.
-We also define $\mathbf{\alpha}=(a_1,\dots,a_n)$ and $\mathbf{\beta}=(b_1,\dots,b_n)$ where
+We also define $\mathbf{z}^+$ and $\mathbf{z}^-$ to be what one might guess. $\mathbf{z}^+=(z_1^+,\dots,z_n^+)$ and $\mathbf{z}^-=(z_1^-,\dots,z_n^-)$ where
 \begin{align*}
-  a_i&=\begin{cases}z_i&z_i\ge 0\\1&z_i<0\end{cases}&
-  b_i&=\begin{cases}1&z> 0\\-z_i&z_i\le0\end{cases}
+  z_i^+&=\begin{cases}z_i&z_i> 0\\0&z_i\le 0\end{cases}&
+  z_i^-&=\begin{cases}0&z\ge 0\\-z_i&z_i<0\end{cases}
 \end{align*}
-If we let $x^\alpha=x_1^{a_1}\dots x_n^{a_i}$ and $y^\beta=y_1^{b_1}\dots y_n^{b_i}$ then we can map $\mathbf{z}$ to a binomial $x^\alpha-y^\beta$
-(citation needed)
+Now we can map an element of $\mathbb{Z}^n$ to the binomials over field $k$ if we define $\varphi_\mathbb{Z}:\mathbb{Z}^n\to k[x_1\dots x_n]$ as $\mathbf{z}\mapsto \mathbf{x}^{\mathbf{z}^+}-\mathbf{x}^{\mathbf{z}^-}$
 
 What are Markov bases? We are given a definition of \emph{Markov basis} by \cite{bernd}.
 
@@ -89,9 +97,9 @@ These bases are relevant because of the fundamental theorem of Markov bases whic
 A finite set of moves $\mathcal{B}$ is a Markov basis for $A$ if and only if the set of binomials $\{p^{\mathbf{z}^+}-p^{\mathbf{z}^-}|\mathbf{z}\in \mathcal{B}\}$ generates the toric ideal $I_A$.
 \end{thm}
 
-We will be dealing extensively with lattices. Informally, a lattice is what you think it is. For example $\mathbb{N}^n$ forms a lattice over $\mathbb{R}^n$.
+We will be dealing extensively with lattices. Informally, a lattice is what you think it is. For example $\mathbb{N}^n$ forms a lattice over $\mathbb{R}^n$. Formally though:
 \begin{defi}
-A \emph{lattice} is a partially ordered set in which every two elements have a unique least upper bound and a unique greatest lower bound. (citation needed)
+A \emph{lattice} is a partially ordered set in which every two elements have a unique least upper bound and a unique greatest lower bound. \cite{stanley}
 \end{defi}
 \begin{exa}
 Notice that $(1,2)$ and $(2,1)$ have a lower bound of $(1,1)$ and an upper bound of $(2,2)$.
@@ -110,13 +118,100 @@ We can form a lattice if we order $\mathbb{N}$ by division. The least common mul
 %\end{fact}
 
 \section{Numerical Semigroups}
-This is the section where we will go over what use Markov bases are to numerical semigroups.
+We will go into a little greater depth here than we would ordinarily need to, but we will use some of this logic to make some decisions later when we examine Gaussian integers.
+
+If we take a set of unique integers $\mathbf{z}=\{z_1,\dots,z_n\}$.
+This construction is trivial if $\mathbf{z}=\{0,\dots,0\}$ or if $n=1$, therefore we only consider $z_i\ne 0$ and $n>1$.
+
+We can form a semigroup $S\subset \mathbb{Z}$ over addition with elements of the form $a_1z_1+\dots+a_nz_n\in S$ where $a_i\in \mathbb{N}$.
+Now if the elements of $\mathbf{z}$ have a greatest common denominator $k\ne 1$ then $k|s$ for every element $s\in S$.
+We can form a bijection between this semigroup and a semigroup with a greatest common denominator of one by multiplying or dividing every element in the group by $k$.
+Therefore we will only consider semigroups with coprime bases.
+
+Now consider $z_i,z_j\in \mathbf{z}$.
+Then $\{az_i+bz_j>0|a,b\in \mathbb{Z}\}=E$.
+There is at least one element in this set ($z_i$) and so there is a smallest element. Let this smallest element be $c=az_i+bz_j$.
+Now if we divide $z_i$ by $c$ then we obtain $z_i=cq+r$ with $0\le r<c$.
+This leads to $r=z_i-cq=z_i-(az_i+bz_j)q=(1-aq)z_i+bqz_j\in E$. Now because $0\le r<c$ and $c$ is a minimal element then $r=0$. And so we have $z_i=cq$.
+That is to say $c|z_i$. Similarly $c|z_j$ and so $c=1$.
+
+Now if $1\in E\subseteq S$ then $a,b\ge0$ because the multiplication is just shorthand for the group addition. And so we have $1=az_i+bz_j$.
+Now if $a,b\ge 0$ then either $z_i=1$ or $z_j=1$ or one of $z_i,z_j<0$. In any of these cases we have $S=\mathbb{Z}$ which is not interesting, and so we restrict $z_i$ to be in $\mathbb{N}$.
+
+This construction is called a numerical semigroup and has a finite complement in $\mathbb{N}$.\cite{aoki}
+
+Notice that this semigroup corresponds exactly to the monomial maps we discussed earlier.
+
+We further observe that these objects are also lattices.
 %Typically a paper begins with an Abstract, Introduction, a section where basic tools and techniques are introduced, and subsequent sections where the subject is developed.
-\section{And now for something completely different}
-And this is the section where, time willing, I will explore something that hasn't been looked at much up until now.
+\section{Bijections}
+We indicated that there is a bijection between these lattices/semigroups and Markov bases. We will discuss moving from a Markov basis to a numerical semigroup. We first create a matrix $A$ such that the rows of $A$ correspond to the elements of the Markov base. There exists two matrices $U,V$ and a diagonal matrix
+\[B=\left[\begin{array}{cccc}a_1&\dots&0\\\vdots&\ddots&\vdots\\0&\dots&a_r&\end{array}\right]\text{ with }a_i|a_{i+1}\]
+such that $UAV=B$. This is called the Smith normal form of $A$ \cite{adkins}. We can use the software package Xcas to easily compute these matrices. The last column of $V$ is a vector that is parallel and has the same magnitude as the basis for our semigroup.
+
+(cite Dr. McGuire?)
+
+We can then use Theorem 1 to convert back to our Markov basis.
+\section{Frobenius Number}
+The fact that numerical semigroups have a finite complement in $\mathbb{N}$ has a consequence. Namely that for some semigroup $S$ there exists some $N$ such that for $n\in S$ for every  $n>N$. This number is called the Frobenius number.
+
+We have a semigroup $S$ generated by the positive integers $\mathbf{z}=\langle z_1,\dots,z_n\rangle$. Let $z_\text{max}=\text{max}(\{z_1,\dots,z_n\})$ and $z_\text{min}=\text{min}(\{z_1,\dots,z_n\})$. If we choose some $s_1\in S$ then there exists at least one $s_2$ such that $s_1<s_2\le s_2+z_\text{max}$. In fact, for any $z_i\in \mathbf{z},s_1\in S$ we know that $s_1<s_1+z_i\le z_\text{max}$. This may seem obvious but let us continue.
+
+This suggests a simple algorithm for finding a Frobenius number. Let us consider the numerical semigroup $\langle z_1,\dots,z_n\rangle$. We know that every numerical semigroup contains zero. Thus our first candidate for a Frobenius number is -1.
+
+For this algorithm it will be convenient to work with the conductor, which is the Frobenius number plus one.
+And so we have our first conductor candidate $c_1=0$.
+At this point we have obviously accounted for every element in our semigroup smaller than our conductor candidate, and so we begin our algorithm by lettting $c_i=c_1$ and the set $F_i=\{c_i+z_1,\dots,c_i+z_n\}$.
+It is good to know that $F_i$ has a maximum cardinality of $z_\text{max}$, which is all the numbers we will need to keep track of for this algorithm.
+
+Now we start our algorithm.
+Let us check the interval $[c_1+1,c_1+z_\text{min}]$.
+If every element of this interval is contained in our set, then we have found our conductor $c_i$ and we are done.
+
+Otherwise, we know that we have accounted for every member of our semigroup up to $\min F_i$. That means that we can make the smallest number of our set the new candidate for conductor, and then remove that number from our set. And so we take $c_{i+1}=\min F_i$. Now if we add our new candidate to every element in our semigroup basis and put it in the set, then we know that we will have generated every number in our semigroup up to the smallest element in our set. So let us make $F_{i+1}=F_i\setminus \{c_{i+1}\} + \{c_{i+1}+z_1,\dots c_{i+1}+z_n\}$. Now we set $i=i+1$ and go back to the beginning of the algorithm.
+
+This algorithm will find the Frobenius number within a linear multiple of the number of elements in the semigroup and the size of the Frobenius number. There may be faster ways of finding this number, but for our purposes, it is simple to implement and works quickly enough.\cite{frobmask}.
+\section{Gaussian Integers}
+Notice that the real and complex parts of Gaussian integers do not interact under addition. Now lets take the linear combination of some finite set of Gaussian integers.
+
+If we do not restrict ourselves to positive coefficients, then we wind up with semigroups that span the entire number line along multiples of a greatest common denominator. This is as uninteresting now as it was with numerical semigroups, and so we will only look at positive values from here.
+
+Now let us take some ``Gaussian semigroup'' $\mathbf{z}=\langle x_1+y_1i,\dots,x_n+y_ni\rangle$ where $x_i,y_i\ge 0$. Notice that this semigroup is actually just the direct sum of two numerical semigroups. Say $\mathbf{z}=\mathbf{x}\oplus\mathbf{y}=\langle x_1,\dots,x_n\rangle\oplus\langle y_1,\dots,y_n\rangle$.
+
+Now as you may have guessed from our choice of notation, we are going to think of this direct sum as a Cartesian product. Now we know that the semigroup $\mathbf{x}$ has some Frobenius number after which every number is in the semigroup.
+
+\begin{gnuplot}
+set multiplot
+set xrange [0:10]
+set yrange [0:10]
+set trange [0:10]
+set parametric
+plot 5,t; plot 6,t; plot 7,t; plot 8,t; plot 9,t; plot 10,t
+\end{gnuplot}
+
+And if we add in $\mathbf{y}$ then we have
+
+\begin{gnuplot}
+set multiplot
+set xrange [0:10]
+set yrange [0:10]
+set trange [0:10]
+set parametric
+plot t,5; plot t,6; plot t,7; plot t,8; plot t,9; plot t,10
+plot 5,t; plot 6,t; plot 7,t; plot 8,t; plot 9,t; plot 10,t
+\end{gnuplot}
+
+\section*{TODO}
+\begin{itemize}
+\item
+Fix erroneous proof that assumes coprime integers in semigroup basis.
+\item
+Add proof using the above fix to show the finiteness of the complement of the semigroups in $\mathbb{N}$
+\end{itemize}
+
 
 %I hope that this is not the quality of work I would ordinarily turn in, but it's not listed as points on the syllabus and it was asked for so here it is.
-\nocite{*}
+%\nocite{*}
 \bibliographystyle{amsplain}
 \bibliography{bib}
 
