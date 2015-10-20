@@ -1,0 +1,252 @@
+\documentclass[letterpaper]{article}
+
+\usepackage[utf8x]{luainputenc}
+\usepackage{aeguill}
+%\usepackage{nopageno}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathrsfs}
+\usepackage{fullpage}
+\usepackage{fancyhdr}
+\setlength{\headheight}{12pt}
+\pagestyle{fancy}
+\chead{Linear Algebra}
+\lhead{October 19, 2015}
+\rhead{Jon Allen}
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+
+\begin{document}
+%\renewcommand{\labelenumii}{\alph{enumii}.}
+%\renewcommand{\labelenumiii}{\alph{enumiii}.}
+%\renewcommand{\labelenumi}{(\arabic{enumi})}
+\section*{3.2}
+\begin{enumerate}
+\setcounter{enumi}{1}
+\item
+Find Null($A$), Row($A$), Null($A^T$), Col($A$) for
+  \begin{enumerate}
+  \item
+  \[
+  A=
+  \left[\begin{array}{rr}
+    3&-1\\
+    6&-2\\
+    -9&3
+  \end{array}\right]
+  \Rightarrow
+  \left[\begin{array}{rr}
+    3&-1\\
+    0&0\\
+    0&0
+  \end{array}\right]
+  \]
+  So Null($A$)=Span((1,3)) and Row($A$)=Span((3,-1))
+  \[
+  A^T=
+  \left[\begin{array}{rrr}
+    3&6&-9\\
+    -1&-2&3
+  \end{array}\right]
+  \Rightarrow
+  \left[\begin{array}{rrr}
+    1&2&-3\\
+    0&0&0
+  \end{array}\right]
+  \]
+  So Null($A^T$)=Span((-2,1,0),(3,0,1)) and Col(A)=Span((1,2,-3))
+  \end{enumerate}
+\item
+Find Null($A$), Row($A$), Null($A^T$), Col($A$) for
+  \begin{enumerate}
+  \setcounter{enumii}{2}
+  \item
+  \[
+  A=
+  \left[\begin{array}{rrr}
+    1&1&1\\
+    1&2&0\\
+    1&1&1\\
+    1&0&2\\
+  \end{array}\right]
+  \Rightarrow
+  \left[\begin{array}{rrr}
+    1&1&1\\
+    0&1&-1\\
+    0&0&0\\
+    0&-1&1\\
+  \end{array}\right]
+  \Rightarrow
+  \left[\begin{array}{rrr}
+    1&0&2\\
+    0&1&-1\\
+    0&0&0\\
+    0&0&0\\
+  \end{array}\right]
+  \]
+  So Row(A)=Span((1,0,2),(0,1,-1)) and Null(A)=Span((-2,1,1))
+  \[
+  A^T=
+  \left[\begin{array}{rrrr}
+    1&1&1&1\\
+    1&2&1&0\\
+    1&0&1&2\\
+  \end{array}\right]
+  \Rightarrow
+  \left[\begin{array}{rrrr}
+    1& 1&1& 1\\
+    0& 1&0&-1\\
+    0&-1&0& 1\\
+  \end{array}\right]
+  \Rightarrow
+  \left[\begin{array}{rrrr}
+    1& 0&1& 2\\
+    0& 1&0&-1\\
+    0& 0&0& 0\\
+  \end{array}\right]
+  \]
+  So Col(A)=Span((1,0,1,2),(0,1,0,-1)) and Null($A^T$)=Span((-1,0,1,0),(-2,1,0,1))
+  \end{enumerate}
+\setcounter{enumi}{5}
+\item
+  \begin{enumerate}
+  \item
+  Construct a matrix whose column space contains [1,1,1] and [0,1,1] and whose nullspace contains [1,0,1]and [0,1,0], or explain why none can exist.
+
+  If we know the matrix is $3\times 3$ and because $[0,1,0]$ is in the nullspace then the center column must be all zeroes. And because $[1,0,1]$ is in the nullspace then the first column is equal to the negative of the last column. So the column space of our vector is Span((1,1,1)). But $[0,1,1]$ is not in this form so we cannot construct such a matrix.
+  \item
+  Construct a matrix whose column space contains $[1,1,1]$ and $[0,1,1]$ and whose nullspace contains $[1,0,1,0]$ and $[1,0,0,1]$, or explain why none can exist.
+
+  \[\left[\begin{array}{rrrr}1&0&-1&-1\\1&1&-1&-1\\1&1&-1&-1\end{array}\right]\]
+  \end{enumerate}
+\item
+  Let $A=\left[\begin{array}{rrr}1&1&0\\1&1&0\\0&1&1\end{array}\right]$ and $B=\left[\begin{array}{rrr}1&1&0\\-1&-1&0\\0&-1&-1\end{array}\right]$
+  \begin{enumerate}
+  \item
+  Give $\mathbf{C}(A)$ and $\mathbf{C}(B)$. Are they lines, planes or all of $\mathbb{R}^3$?
+
+  \begin{align*}
+    A^T&=
+    \left[\begin{array}{rrr}
+      1&1&0\\
+      1&1&1\\
+      0&0&1\\
+    \end{array}\right]
+    &&\Rightarrow
+    \left[\begin{array}{rrr}
+      1&1&0\\
+      0&0&1\\
+      0&0&0\\
+    \end{array}\right]\\
+    B^T&=
+    \left[\begin{array}{rrr}
+      1&-1& 0\\
+      1&-1&-1\\
+      0& 0&-1\\
+    \end{array}\right]
+    &&\Rightarrow
+    \left[\begin{array}{rrr}
+      1&-1& 0\\
+      0& 0& 1\\
+      0& 0& 0\\
+    \end{array}\right]
+  \end{align*}
+  So $\mathbf{C}(A)=\text{Span}([1,1,0],[0,0,1])$ and $\mathbf{C}(B)=\text{Span}([1,-1,0],[0,0,1])$ which are both planes.
+  \item
+  Describe $\mathbf{C}(A+B)$ and $\mathbf{C}(A)+\mathbf{C}(B)$. Compare your answers. 
+
+  This question is confusing to me. It is asking me to compare a set with two sets under a binary operation, but doesn't really define what the operation is. I don't think it's a direct sum. I guess it's either a union,  or the sum of any two elements from each set.
+
+  First I guess we will figure out what $\mathbf{C}(A+B)$ is.
+  \[
+  (A+B)^T=
+  \left[\begin{array}{rrr}2&2&0\\0&0&0\\0&0&0\end{array}\right]^T
+  =\left[\begin{array}{rrr}2&0&0\\2&0&0\\0&0&0\end{array}\right]
+  \Rightarrow\left[\begin{array}{rrr}1&0&0\\0&0&0\\0&0&0\end{array}\right]
+  \]
+  \end{enumerate}
+  So $\mathbf{C}(A+B)=\text{Span}([1,0,0])$, which is a line.
+  
+  Now $a[1,1,0]\ne b[1,-1,0]\forall a,b\in \mathbb{R}$ and so $\mathbf{C}(A)$ and $\mathbf{C}(B)$ are not the same planes, but they both contain $[0,0,1]$ and so they are nonparallel and intersecting. So $\mathbf{C}(A)\cup\mathbf{C}B)$ is two nonparallel planes.
+
+  Now as we have noted, $[1,1,0]$ and $[1,-1,0]$ are linearly independent. Obviously these are both idependant to $[0,0,1]$ and so these three vectors form a basis for $\mathbb{R}^3$. Thus we can represent any element of $\mathbb{R}^3$ as a linear combination of these vectors, which in turn means that we can represent any $x\in \mathbb{R}^3$ as $x=u+v$ where $u\in \mathbf{C}(A)$ and $v\in \mathbf{C}(B)$.
+\item
+  \begin{enumerate}
+  \item
+  Construct a $3\times 3$ matrix $A$ with $\mathbf{C}(A)\subset \mathbf{N}(A)$.
+
+  \[A=\left[\begin{array}{rrr}1&-1&0\\1&-1&0\\0&0&0\end{array}\right]\]
+  \item
+  Construct a $3\times 3$ matrix $A$ with $\mathbf{N}(A)\subset \mathbf{C}(A)$.
+
+  \[A=\left[\begin{array}{ccc}1&0&0\\0&1&0\\0&0&1\end{array}\right]\]
+  \item
+  Do you think there can be a $3\times 3$ matrix $A$ with $\mathbf{N}(A)=\mathbf{C}(A)$? Why or why not?
+  
+  There can't. $\dim \mathbf{N}(A)=3-\text{rank } A=3-\mathbf{R}(A)=3-\mathbf{C}(A)$. And so because $3$ is odd then the nullspace and the column space can't have the same dimension, and so can't be the same.
+  \item
+  Construct a $4\times 4$ matrix $A$ with $\mathbf{C}(A)=\mathbf{N}(A)$.
+
+  \[A=\left[\begin{array}{rrrr}1&-1&0&0\\1&-1&0&0\\0&0&1&-1\\0&0&1&-1\end{array}\right]\]
+  \end{enumerate}
+\setcounter{enumi}{9}
+\item
+Let $A$ be an $m\times n$ matrix and $B$ be an $n\times p$ matrix. Prove that
+  \begin{enumerate}
+  \item
+  $\mathbf{N}(B)\subset\mathbf{N}(AB)$
+
+  We take any $\mathbf{x}\in \mathbf{N}(B)$. Then $B\mathbf{x}=\mathbf{0}$ and $AB\mathbf{x}=A\mathbf{0}=\mathbf{0}$. And so $\mathbf{x}\in \mathbf{N}(AB)$
+
+  \item
+  $\mathbf{C}(AB)\subset\mathbf{C}(A)$
+
+  We choose some $\mathbf{b}\in \mathbf{C}(AB)$. We know that $\mathbf{b}=(AB)\mathbf{x}$ for some $\mathbf{x}\in \mathbb{R}^p$. But then $(AB)\mathbf{x}=A(B\mathbf{x})$ and so $\mathbf{b}\in \mathbf{C}(A)$ also by proposition 2.1 and so we are done.
+  \item
+  $\mathbf{N}(B)=\mathbf{N}(AB)$ when $A$ is $n\times n$ and nonsingular
+
+  If $A$ is nonsingular than it is invertible. And so if we have $AB\mathbf{x}=\mathbf{0}$ then we also have $A^{-1}AB\mathbf{x}=A^{-1}\mathbf{0}$ or $B\mathbf{x}=\mathbf{0}$. Thus if $\mathbf{x}\in \mathbf{N}(AB)$ then $\mathbf{x}\in \mathbf{N}(B)$. We already did the reverse containment in part a
+  \item
+  $\mathbf{C}(AB)=\mathbf{C}(A)$ when $B$ is $n\times n$ and nonsingular
+
+  We choose some $\mathbf{b}\in \mathbf{C}(A)$. Then $\mathbf{b}=A\mathbf{x}$ for some $\mathbf{x}\in \mathbb{R}^n$. And so $\mathbf{b}=ABB^{-1}=AB(B^{-1}x)$. Because $B^{-1}\mathbf{x}$ exists, then $\mathbf{b}$ is in $\mathbf{C}(AB)$. The reverse containment was done above.
+  \end{enumerate}
+\item
+Let $A$ be an $m\times n$ matrix. Prove that $\mathbf{N}(A^TA)=N(A)$
+
+If $A\mathbf{x}=\mathbf{0}$ then $A^TA\mathbf{x}=A^T\mathbf{0}=\mathbf{0}$ and so $\mathbf{N}(A)\subset \mathbf{N}(A^TA)$. Now from 2.5.15 we know that if $A^TA\mathbf{x}=\mathbf{0}$ then $A\mathbf{x}=\mathbf{0}$ and so $\mathbf{N}(A^TA)\subset \mathbf{N}(A)$.
+\item
+Suppose $A$ and $B$ are $m\times n$ matrices. Prove that $\mathbf{C}(A)$ and $\mathbf{C}(B)$ are orthogonal subspaces of $\mathbb{R}^m$ if and only if $A^TB=O$
+
+If $\mathbf{C}(A)$ and $\mathbf{C}(B)$ are orthogonal subspaces, then $\text{row}_i(A^TB)=\text{row}_i(A^T)B=\text{col}_i(A)B=[\text{col}_i(A)\cdot\text{col}_1(B),\dots,\text{col}_i(A)\cdot\text{col}_n]=\mathbf{0}$. Similarly, if they are not orthogonal subspaces, then there must exist some $k,l$ such that $\text{col}_k(A)\cdot\text{col}_l(B)\ne 0$. But then $\text{row}_k(A^T)\cdot\text{col}_l(B)=\text{elem}_kl(A^TB)\ne 0$. And so then $A^TB\ne O$.
+\item
+Suppose $A$ is an $n\times n$ matrix with the property that $A^2=A$.
+  \begin{enumerate}
+  \item
+  Prove that $\mathbf{C}(A)=\{\mathbf{x}\in \mathbb{R}^n:\mathbf{x}=A\mathbf{x}\}$.
+
+  If $\mathbf{x}=A\mathbf{x}$ then $\mathbf{x}\in \mathbf{C}(A)$ by Theorem 4. Let us choose $\mathbf{b}\in \mathbf{C}(A)$. Then we know that $\mathbf{b}=A\mathbf{x}$ for some $\mathbf{x}$. Now because $A^2=A$ then $A\mathbf{b}=A^2\mathbf{x}=A\mathbf{x}$. But $A\mathbf{x}=\mathbf{b}$ and so $\mathbf{b}=A\mathbf{b}$. Thus if $\mathbf{b}\in \mathbf{C}(A)$ then $\mathbf{b}\in \{\mathbf{x}\in \mathbb{R}^n:\mathbf{x}=A\mathbf{x}\}$ and so we have equality.
+  \item
+  Prove that $\mathbf{N}(A)=\{\mathbf{x}\in \mathbb{R}^n:\mathbf{x}=\mathbf{u}-A\mathbf{u}\text{ for some }\mathbf{u}\in \mathbb{R}^n\}$.
+
+  If $\mathbf{x}=\mathbf{u}-A\mathbf{u}$ then $A\mathbf{x}=A(\mathbf{u}-A\mathbf{u})=A\mathbf{u}-A^2\mathbf{u}=A\mathbf{u}-A\mathbf{u}=\mathbf{0}$ and so $\mathbf{x}\in \mathbf{N}(A)$. Now if $\mathbf{x}\in \mathbf{N}(A)$ then $A\mathbf{x}=\mathbf{0}$. Obviously $A\mathbf{0}=\mathbf{0}$ and so $A\mathbf{x}=\mathbf{0}-A\mathbf{0}$ and so $\mathbf{x}\in \{x\in \mathbb{R}^n:\mathbf{x}=\mathbf{u}-A\mathbf{u}\}$. Thus we have equality.
+  \item
+  Prove that $\mathbf{C}(A)\cap\mathbf{N}(A)=\{\mathbf{0}\}$.
+
+  Let us choose some $\mathbf{b}\in \mathbf{C}(A)$ such that $\mathbf{b}\ne \mathbf{0}$. Now then we know that $\mathbf{b}=A\mathbf{x}$ for some $\mathbf{x}$. And because $A=A^2$ then $A\mathbf{b}=A\mathbf{x}$. But because $\mathbf{b}\ne \mathbf{0}$ then $A\mathbf{x}\ne0$ and $A\mathbf{b}\ne 0$. Thus $\mathbf{b}\ne 0$ and so $\mathbf{b}\not\in \mathbf{N}(A)$. It is obvious that $\mathbf{0}$ is in the span of any set of vectors, including $\mathbf{C}(A)$. Just as obviously $A\mathbf{0}=\mathbf{0}$ and so $\mathbf{0}\in \mathbf{C}(A)\cap \mathbf{N}(A)$. And so we have our proof.
+  \item
+  Prove that $\mathbf{C}(A)+\mathbf{N}(A)=\mathbb{R}^n$.
+
+  We choose any $\mathbf{x}\in \mathbb{R}^n$. Then $A\mathbf{x}\in \mathbf{C}(A)$ and $\mathbf{x}-A\mathbf{x}\in \mathbf{N}(A)$. And so $\mathbf{x}-A\mathbf{x}+A\mathbf{x}=\mathbf{x}$. Thus any element of $\mathbb{R}^n$ can be written as the sum of elements in $\mathbf{N}(A)$ and $\mathbf{C}(A)$.
+  \end{enumerate}
+\end{enumerate}
+\section*{2.5}
+\begin{enumerate}
+\setcounter{enumi}{14}
+\item
+Suppose $A$ is an $m\times n$ matrix and $\mathbf{x}\in \mathbb{R}^n$ satisfies $(A^{T}A)\mathbf{x}=\mathbf{0}$. Prove that $A\mathbf{x}=\mathbf{0}$.
+
+If $A^TA\mathbf{x}=\mathbf{0}$ then $(A^TA\mathbf{x})\cdot\mathbf{x}=\mathbf{0}$. This leads to $A^T(A\mathbf{x})\cdot\mathbf{x}=(A\mathbf{x})\cdot A\mathbf{x}=||A\mathbf{x}||^2=0$. This means that $A\mathbf{x}$ must be $\mathbf{0}$
+\end{enumerate}
+\end{document}
