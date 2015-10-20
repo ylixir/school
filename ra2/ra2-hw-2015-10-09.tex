@@ -1,0 +1,55 @@
+%shell-escape
+\documentclass[letterpaper]{article}
+
+\usepackage{amsmath}
+\usepackage[utf8x]{luainputenc}
+\usepackage{amssymb}
+\usepackage{gnuplottex}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\lhead{October 9, 2015}
+\chead{Real Analysis II Homework}
+\rhead{Jon Allen}
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+
+\begin{document}
+
+\renewcommand{\labelenumi}{\Alph{enumi}.}
+%\renewcommand{\labelenumii}{\arabic{enumii}.}
+\renewcommand{\labelenumii}{(\alph{enumii})}
+\section*{8.4}
+%defhj
+\begin{enumerate}
+\setcounter{enumi}{3}
+\item
+%8.4 D
+Does $\sum\limits_{n=1}^\infty{\frac{1}{x^2+n^2}}$ converge uniformly on the whole real line?
+\item
+%8.4 E
+Show that if $\sum\limits_{n=1}^\infty{\lvert a_n\rvert}<\infty$, then $\sum\limits_{n=1}^\infty{a_n\cos nx}$ converges uniformly on $\mathbb{R}$.
+\item
+%8.4 F
+  \begin{enumerate}
+  \item
+  Let $f_n(x)=\frac{x^2}{(1+x^2)^n}$ for $x\in \mathbb{R}$. Evaluate the sum $S(x)=\sum\limits_{n=0}^\infty{f_n(x)}$.
+  \item
+  Is this convergence uniform? For which values $a<b$ does this series converge uniformly on $[a,b]$?
+  \end{enumerate}
+\setcounter{enumi}{7}
+\item
+%8.4 H
+Suppose that $a_k(x)$ are continuous functions on $[0,1]$, and define $s_n(x)=\sum\limits_{k=1}^n{a_k(x)}$. Show that if $(s_n)$ converges uniformly on $[0,1]$, then $(a_n)$ converges uniformly to $0$.
+\setcounter{enumi}{9}
+\item
+%8.4 J
+Let $(f_n)$ be a sequence of functions defined on $\mathbb{N}$ such that $\lim\limits_{k\to\infty}f_n(k)=L_n$ exists for each $n\ge 0$. Suppose that $||f_n||_\infty\le M_n$, where $\sum\limits_{n=0}^\infty{M_n}<\infty$. Define a function $F(k)=\sum\limits_{n=0}^\infty{f_n(k)}$. Prove that $\lim\limits_{k\to\infty}F(k)=\sum\limits_{n=0}^\infty{L_n}$.
+{\scshape Hint:} Think of $f_n$ as a function $g_n$ on $\{\frac{1}{k}:k\ge 1\}\cup{0}$. How will you define $g_n(0)$?
+\end{enumerate}
+\section*{8.5}
+\begin{enumerate}
+\item
+\item
+\end{enumerate}
+\end{document}

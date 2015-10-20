@@ -171,6 +171,7 @@ If every element of this interval is contained in our set, then we have found ou
 Otherwise, we know that we have accounted for every member of our semigroup up to $\min F_i$. That means that we can make the smallest number of our set the new candidate for conductor, and then remove that number from our set. And so we take $c_{i+1}=\min F_i$. Now if we add our new candidate to every element in our semigroup basis and put it in the set, then we know that we will have generated every number in our semigroup up to the smallest element in our set. So let us make $F_{i+1}=F_i\setminus \{c_{i+1}\} + \{c_{i+1}+z_1,\dots c_{i+1}+z_n\}$. Now we set $i=i+1$ and go back to the beginning of the algorithm.
 
 This algorithm will find the Frobenius number within a linear multiple of the number of elements in the semigroup and the size of the Frobenius number. There may be faster ways of finding this number, but for our purposes, it is simple to implement and works quickly enough.\cite{frobmask}.
+
 \section{Gaussian Integers}
 Notice that the real and complex parts of Gaussian integers do not interact under addition. Now lets take the linear combination of some finite set of Gaussian integers.
 
