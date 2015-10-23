@@ -26,21 +26,57 @@
 \item
 %8.4 D
 Does $\sum\limits_{n=1}^\infty{\frac{1}{x^2+n^2}}$ converge uniformly on the whole real line?
+
+We know $0\le\sum\limits_{n=1}^\infty{\frac{1}{x^2+n^2}} <\sum\limits_{n=1}^\infty{\frac{1}{n^2}}$.
+Because $\frac{1}{n^2}$ is convergent, then $\frac{1}{x^2+n^2}$ must also be convergent.
+
+This also gives us uniform convergence, because  for every $\varepsilon>0$ there exists an $N$ such that $0\le||\sum\limits_{i=k+1}^l{\frac{1}{x^2+i^2}}\le ||\sum\limits_{i=k+1}^l{\frac{1}{i^2}}\le \varepsilon$ for every $l>k\ge N$ regardless of our choice of $x$.
 \item
 %8.4 E
 Show that if $\sum\limits_{n=1}^\infty{\lvert a_n\rvert}<\infty$, then $\sum\limits_{n=1}^\infty{a_n\cos nx}$ converges uniformly on $\mathbb{R}$.
+
+Because $0\le |\cos nx|\le 1$ then $|a_n\cos nx|\le |a_n|$. Now we know that $|a_n|$ converges and so then for any $\varepsilon>0$ there exists an $N$ such that $\sum\limits_{i=k+1}^l{|a_n|}<\varepsilon$ for any $l>k\ge N$. But $\sum\limits_{i=k+1}^l{|a_n\cos nx|}\le\sum\limits_{i=k+1}^l{|a_n|}<\varepsilon$ regardless of our choice of $x$. And since $|a_n\cos nx|$ converges uniformly, then we get $a_n\cos nx$ converging uniformly for free.
 \item
 %8.4 F
   \begin{enumerate}
   \item
   Let $f_n(x)=\frac{x^2}{(1+x^2)^n}$ for $x\in \mathbb{R}$. Evaluate the sum $S(x)=\sum\limits_{n=0}^\infty{f_n(x)}$.
+
+  At $x=0$ the sum is $0$. At all other values we have a geometric series which converges to $\frac{x^2}{1-(\frac{1}{1+x^2})}=\frac{x^2}{\frac{x^2}{1+x^2}}=1+x^2$
   \item
   Is this convergence uniform? For which values $a<b$ does this series converge uniformly on $[a,b]$?
+
+  The convergence is not uniform. Our series converges to a discontinuous function ($0<1+x^2$), and so it is not uniformly continuous, by theorem 8.4.4.
+
+  We take the derivative 
+  \begin{align*}
+    \frac{\partial }{\partial x}\frac{x^2}{(1+x^2)^n}
+    &=2x(1+x^2)^{-n}-nx^2(1+x^2)^{-n-1}2x\\
+    &=\frac{2x(1+x^2)}{(1+x^2)(1+x^2)^{n}}-\frac{2nx^3}{(1+x^2)(1+x^2)^{n}}\\
+    &=\frac{2x(1+x^2-nx^2)}{(1+x^2)(1+x^2)^{n}}\\
+    &=\frac{2x(1+x^2(1-n))}{(1+x^2)(1+x^2)^{n}}\\
+  \end{align*}
+  So the denominator of our derivative has no zeros, and our numerator has zeros at $x=0$ at $x=\pm\frac{1}{\sqrt{n-1}}$. Zero is obviously a minimum because the function has no negative terms. And $\frac{1}{\sqrt{n-1}}$ is less than $1$ for all $n>2$. So if comparing $x=\frac{1}{\sqrt{n-1}}$ and $x=1$ when $n=3$ we see that
+  \begin{align*}
+    \frac{\frac{1}{n-1}}{(1+\frac{1}{n-1})^3}&?\frac{1}{(1+1)^3}\\
+    \frac{\frac{1}{n-1}}{(\frac{n}{n-1})^3}&?\frac{1}{2^3}\\
+    \frac{1}{n-1}\left(\frac{n-1}{n}\right)^3&?\frac{1}{8}\\
+    \frac{(n-1)^2}{n^3}&?\frac{1}{8}\\
+    \frac{2^2}{3^3}&?\frac{1}{8}\\
+    0.\overline{148}&>.125\\
+  \end{align*}
+  And so $\frac{1}{\sqrt{n-1}}$ is a maximum. Observe that
+  \begin{align*}
+    \frac{\frac{1}{n-1}}{\left(1+\frac{1}{n-1}\right)^n}&=\frac{1}{n-1}\left(\frac{n-1}{n}\right)^n=\frac{(n-1)^{n-1}}{n^n}
+  \end{align*}
+  We have a higher degree on the bottom, so this will converge to zero. And so we have uniform convergence on $[a,\infty)$ for all $a>0$. And of course $(-\infty,-a]$ or any subinterval of these.
   \end{enumerate}
 \setcounter{enumi}{7}
 \item
 %8.4 H
 Suppose that $a_k(x)$ are continuous functions on $[0,1]$, and define $s_n(x)=\sum\limits_{k=1}^n{a_k(x)}$. Show that if $(s_n)$ converges uniformly on $[0,1]$, then $(a_n)$ converges uniformly to $0$.
+
+If we assume that $(a_n)$ does not converge uniformly to 0. Then either it does not converge at all or it converges to some non-zero value for some $x$. Let us assume that $\lim\limits_{n\to\infty}a_n(b)=c$ for some $c\ne 0$. Then $\lim\limits_{n\to\infty}s_n(b)=\infty$
 \setcounter{enumi}{9}
 \item
 %8.4 J
