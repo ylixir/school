@@ -7,7 +7,6 @@
 \usepackage{gnuplottex}
 \usepackage{fancyhdr}
 \pagestyle{fancy}
-\lhead{October 9, 2015}
 \chead{Real Analysis II Homework}
 \rhead{Jon Allen}
 \allowdisplaybreaks
@@ -46,7 +45,7 @@ Because $0\le |\cos nx|\le 1$ then $|a_n\cos nx|\le |a_n|$. Now we know that $|a
   \item
   Is this convergence uniform? For which values $a<b$ does this series converge uniformly on $[a,b]$?
 
-  The convergence is not uniform. Our series converges to a discontinuous function ($0<1+x^2$), and so it is not uniformly continuous, by theorem 8.4.4.
+  The convergence is not uniform. Our series converges to a discontinuous function ($0<1<1+x^2$), and so it is not uniformly continuous, by theorem 8.4.4.
 
   We take the derivative 
   \begin{align*}
@@ -76,16 +75,54 @@ Because $0\le |\cos nx|\le 1$ then $|a_n\cos nx|\le |a_n|$. Now we know that $|a
 %8.4 H
 Suppose that $a_k(x)$ are continuous functions on $[0,1]$, and define $s_n(x)=\sum\limits_{k=1}^n{a_k(x)}$. Show that if $(s_n)$ converges uniformly on $[0,1]$, then $(a_n)$ converges uniformly to $0$.
 
-If we assume that $(a_n)$ does not converge uniformly to 0. Then either it does not converge at all or it converges to some non-zero value for some $x$. Let us assume that $\lim\limits_{n\to\infty}a_n(b)=c$ for some $c\ne 0$. Then $\lim\limits_{n\to\infty}s_n(b)=\infty$
+If we assume that $(a_n)$ does not converge uniformly to 0.
+We know that $(a_n)$ converges to zero at least pointwise, else $(s_n)$ would not converge for some $x$. And so we assume that $(a_n)$ converges but not uniformly. Now $(s_n)$ must be uniformly Cauchy and so given any $\varepsilon>0$ there exists some $N$ large enough that $||\sum\limits_{i=k+1}^l{a_i(x)}||_\infty\le \varepsilon$ for all $l>k\ge N$ We take $l=k+1$ and obtain $||a_l(x)||_\infty\le \varepsilon\forall l\ge N$. But we are assuming that $(a_n)$ does not converge uniformly. Therefore $\lim\limits_{k\to\infty}||a_k||_\infty=L$ for some $L>0$. If we choose $\varepsilon=\frac{L}{2}$, then we have $||a_l||_\infty > \varepsilon$ for some $N$ and all $l>N$. Thus we have a contradiction, and $(a_n)$ must converge uniformly.
 \setcounter{enumi}{9}
 \item
 %8.4 J
 Let $(f_n)$ be a sequence of functions defined on $\mathbb{N}$ such that $\lim\limits_{k\to\infty}f_n(k)=L_n$ exists for each $n\ge 0$. Suppose that $||f_n||_\infty\le M_n$, where $\sum\limits_{n=0}^\infty{M_n}<\infty$. Define a function $F(k)=\sum\limits_{n=0}^\infty{f_n(k)}$. Prove that $\lim\limits_{k\to\infty}F(k)=\sum\limits_{n=0}^\infty{L_n}$.
 {\scshape Hint:} Think of $f_n$ as a function $g_n$ on $\{\frac{1}{k}:k\ge 1\}\cup{0}$. How will you define $g_n(0)$?
+
+We define $g_n(x)=f_n(\frac{1}{x})$. Because $\lim\limits_{k\to\infty}\frac{1}{k}=0$ and $\lim\limits_{k\to\infty}f_n(k)=L_n$ then it makes sense to define $g_n(0)=L_n$. Further, the Weierstrass M-Test tells us that the series converges uniformly and so $G(x)$ is continuous. Thus $g_n(x)$ is defined for all $x\in[0,1]$.
+
+Now we define $G(x)=\sum\limits_{n=0}^\infty{g_n(x)}$ and $\lim\limits_{k\to\infty}F(k)=G(0)=\sum\limits_{n=0}^\infty{L_n}$
 \end{enumerate}
 \section*{8.5}
 \begin{enumerate}
 \item
+Determine the interval of convergence of the following power series:
+  \begin{enumerate}
+  \item
+  $\sum\limits_{n=0}^\infty{n^3x^n}$ We have $\lim\limits_{n\to\infty}|\frac{(n+1)^3}{n^3}|=1$. Obviously $\sum\limits_{n=0}^\infty{n^3}$ and $\sum\limits_{n=0}^\infty{(-1)^nn^3}$ diverge, and so our interval of convergence is $(-1,1)$
+  \item
+  $\sum\limits_{n=1}^\infty{\frac{(-1)^n}{n^2}x^n}$. So $\lim\limits_{n\to\infty}\left\lvert\frac{(-1)^{n+1}n^2}{(-1)^n(n+1)^2}\right\rvert=1$. But $\sum\limits{(-1)^n/n^2}$ and $\sum\limits_{n=0}^\infty{1/n^2}$ both converge, and so our interval of convergence is $[-1,1]$.
+  \item
+  $\sum\limits_{n=0}^\infty{\frac{n^2}{2^n}x^n}$
+
+  The limit of $\left\lvert\frac{(n+1)^22^n}{2^{n+1}n^2}\right\rvert$ as $n\to\infty$ is $1/2$.
+  Now $\sum\limits_{n=0}^\infty{\frac{n^2}{2^n}(\pm2)^n}=\sum\limits_{n=0}^\infty{(-1)^nn^2}\text{ or }\sum\limits_{n=0}^\infty{n^2}$ and $\lim\limits_{n\to\infty}$ which obvious diverge, so our interval of convergence is $(-2,2)$
+  \item
+  $\sum\limits_{n=0}^\infty{\sqrt{n}x^n}$.
+  Now $\lim\limits_{n\to\infty}\frac{\sqrt{n+1}}{\sqrt{n}}=\sqrt{1}+\lim\limits_{n\to\infty}\frac{1}{\sqrt{n}}=1$. Of course $\sum\limits_{n=0}^\infty{\sqrt{n}}$ diverges along with $\sum\limits_{n=0}^\infty{(-1)^n\sqrt{n}}$ and so our interval is $(-1,1)$
+  \item
+  $\sum\limits_{n=0}^\infty{(-1)^n\frac{x^{2n}}{(2n)!}}$.
+So we define $a_{2k+1}=0$ and $a_{2k}=(-1)^k/(2k)!$. And $\lim\limits_{n\to\infty}\left\lvert\frac{(2k)!}{(2k+2)!}\right\rvert=\lim\limits_{n\to\infty}\frac{1}{(2k+2)(2k+1)}=0$. And so our sum only for any  interval in $\mathbb{R}$.
+  \item
+  $\sum\limits_{n=0}^\infty{x^{n!}}$.
+
+  Let us say $g(x)=x^{n!}$ and $g'(x)=n!x^{n!-1}$. Then $xg'(x)=n!g(x)$ and $g(0)=0$. Now we assume there is a power series $f(x)=\sum\limits_{n=0}^\infty{a_nx^n}$ that satisfies this DE. Then $x\sum\limits_{n=1}^\infty{na_nx^{n-1}}=n!\sum\limits_{n=0}^\infty{a_nx^n}$.
+  \item
+  $\sum\limits_{n=0}^\infty{\frac{n!}{n^n}x^n}$
+  Now $\lim\limits_{n\to\infty}\frac{(n+1)!n^n}{n!(n+1)^{n+1}}=\lim\limits_{n\to\infty}\frac{(n+1)n^n}{(n+1)(n+1)^n}=\lim\limits_{n\to\infty}\left(\frac{n+1}{n}\right)^{-n}=\frac{1}{e}$. And $\lim\left\lvert(-1)^n\frac{n!}{e/n}^n\right\rvert\ne 0$ because factorials grow faster than exponentials. And so our interval it $(-e,e)$
+  \item
+  $\sum\limits_{n=0}^\infty{\frac{(n!)^2}{(2n)!}x^n}$
+
+  $\lim\frac{((n+1)!)^2(2n)!}{(2n+2)!(n!)^2}=\lim\frac{(n+1)^2}{(2n+2)(2n+1)}=\frac{1}{4}$. And $\sum\frac{(n!)^2}{(2n)!}4^n=\sum\frac{n!4^n}{(n+1)\dots(n+n)}$. The computer claims this diverges, and so our interval of convergence is $(-4,4)$
+  \item
+  $\sum\limits_{n=0}^\infty{\frac{1}{n}x^n}$
+  
+  $\lim\frac{n}{n+1}=1$ but  $\frac{1}{n}$ diverges while $\frac{(-1)^n}{n}$ converges, so our interval is $[-1,1)$
+  \end{enumerate}
 \item
 \end{enumerate}
 \end{document}
