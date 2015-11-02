@@ -1,0 +1,412 @@
+\documentclass[letterpaper]{article}
+
+\usepackage[utf8x]{luainputenc}
+\usepackage{aeguill}
+%\usepackage{nopageno}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathrsfs}
+\usepackage{fullpage}
+\usepackage{fancyhdr}
+\setlength{\headheight}{12pt}
+\pagestyle{fancy}
+\chead{Linear Algebra}
+\lhead{October 28, 2015}
+\rhead{Jon Allen}
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+\newcommand{\proj}{\text{proj}}
+\newcommand{\rank}{\text{rank}}
+\newcommand{\Span}{\text{Span}}
+
+\begin{document}
+%\renewcommand{\labelenumii}{\alph{enumii}.}
+%\renewcommand{\labelenumiii}{\alph{enumiii}.}
+%\renewcommand{\labelenumi}{(\arabic{enumi})}
+\section*{3.3}
+\begin{enumerate}
+\setcounter{enumi}{2}
+\item
+%3.3 #3
+Decide whether the following sets fo vectors give a basis for the indicated space.
+  \begin{enumerate}
+  \item
+  %3.3 #3a
+  $[(1,2,1),(2,4,5),(1,2,3)]:\mathbb{R}^3$
+
+  \[
+  \left[\begin{array}{rrr}
+  1&2&1\\
+  2&4&5\\
+  1&2&3\\
+  \end{array}\right]
+  \Rightarrow
+  \left[\begin{array}{rrr}
+  1&2&1\\
+  0&0&3\\
+  0&0&2\\
+  \end{array}\right]
+  \]
+
+  So the span of the vectors has dimension 2, thus it is not a basis of $\mathbb{R}^3$ which has dimension 3.
+  \item
+  %3.3 #3b
+  $[(1,0,1),(1,2,4),(2,2,5),(2,2,-1)]:\mathbb{R}^3$
+
+  Not a basis. The dimension and the cardinality of the basis should be the same.
+  \item
+  %3.3 #3c
+  $[(1,0,2,3),(0,1,1,1),(1,1,4,4)]:\mathbb{R}^4$
+
+  Not a basis for the same reason as above.
+  \item
+  %3.3 #3d
+  $[(1,0,2,3),(0,1,1,1),(1,1,4,4),(2,-2,1,2)]:\mathbb{R}^4$
+
+  \[
+  \left[\begin{array}{rrrr}
+  1&0&2&3\\
+  0&1&1&1\\
+  1&1&4&4\\
+  2&-2&1&2\\
+  \end{array}\right]
+  \Rightarrow
+  \left[\begin{array}{rrrr}
+  1&0&2&3\\
+  0&1&1&1\\
+  0&1&2&1\\
+  0&-2&-3&-4\\
+  \end{array}\right]
+  \Rightarrow
+  \left[\begin{array}{rrrr}
+  1&0&2&3\\
+  0&1&1&1\\
+  0&0&1&0\\
+  0&0&1&2\\
+  \end{array}\right]
+  \]
+
+  And so the span of the vectors has dimension 4, and so it must be $\mathbb{R}^4$ since the vectors are in $\mathbb{R}^4$
+  \end{enumerate}
+\setcounter{enumi}{4}
+\item
+%3.3 #5
+Following example 10, for each of the following matrices $A$, give a basis for each of the subspaces $\mathbf{R}(A),\mathbf{C}(A),\mathbf{N}(A),$ and $\mathbf{N}(A^T)$.
+  \begin{enumerate}
+  \setcounter{enumii}{1}
+  \item
+  %3.3 #5b
+  $A=
+  \left[\begin{array}{rrr}
+  1&1&0\\
+  2&1&1\\
+  1&-1&2
+  \end{array}\right]
+  \Rightarrow
+  \left[\begin{array}{rrr}
+  1&1&0\\
+  0&-1&1\\
+  0&-2&2
+  \end{array}\right]
+  \Rightarrow
+  \left[\begin{array}{rrr}
+  1&0&1\\
+  0&1&-1\\
+  0&0&0
+  \end{array}\right]
+  $
+
+  And so
+  $\mathbf{R}(A)=\Span\left([1,0,1],[0,1,-1]\right)$,
+  $\mathbf{N}(A)=\Span\left([-1,1,1]\right)$,
+  and $\mathbf{C}(A)=\Span\left([1,2,1],[1,1,-1]\right)$.
+
+  We formed the zero row of the \emph{rref} by $(r_3-r_1)-2(r_2-2r_1)=3r_1-2r_2+r_3$. And so $\mathbf{N}(A^T)=\Span\left([3,-2,1]\right)$.
+  \end{enumerate}
+\setcounter{enumi}{6}
+\item
+%3.3 #7
+Let $V\subset \mathbb{R}^5$ be spanned by $(1,0,1,1,1)$ and $(0,1,-1,0,2)$. By finding the left nullspace of an appropriate matric, give a homogeneous system of equation having $V$ as its solution set. Explain how you are using Proposition 3.6.
+\setcounter{enumi}{8}
+\item
+%3.3 #9
+Suppose $\mathbf{u},\mathbf{v},\mathbf{w}\in \mathbb{R}^n$ form a linearly independent set. Prove that $\mathbf{u}+\mathbf{v}, \mathbf{v}+2\mathbf{w},$ and $-\mathbf{u}+\mathbf{v}+\mathbf{w}$ likewise form a linearly  independent set. 
+
+Let us assume to the contrary, that $\mathbf{u}+\mathbf{v}, \mathbf{v}+2\mathbf{w},$ and $-\mathbf{u}+\mathbf{v}+\mathbf{w}$ are linearly dependent. Then there exists some $a,b,c\in \mathbb{R}$ not zero such that $a(\mathbf{u}+\mathbf{v})+b(\mathbf{v}+2\mathbf{w})+c(-\mathbf{u}+\mathbf{v}+\mathbf{w})=\mathbf{0}$. Then $(a-c)\mathbf{u}+(a+b+c)\mathbf{v}+(2b+c)\mathbf{w}=\mathbf{0}$. But $\mathbf{u},\mathbf{v},\mathbf{w}$ are linearly independent, and so $a-c=a+b+c=2b+c=0$. But then $a=c$ so $b+2c=2b+c$ and so $b=c$. If $a=b=c$ and $a+b+c=0$ then $a=b=c=0$. But our assumption is that $a,b,c$ are not zero, and so $\mathbf{u}+\mathbf{v}, \mathbf{v}+2\mathbf{w}$ and $-\mathbf{u}+\mathbf{v}+\mathbf{w}$ must be linearly dependent.
+\setcounter{enumi}{9}
+\item
+%3.3 #10
+Suppose $\mathbf{v}_1,\dots,\mathbf{v}_k$ are nonzero vectors with the property that $\mathbf{v}_i\cdot\mathbf{v}_j=0$ whenever $i\ne j$. Prove that $\{\mathbf{v}_1,\dots,\mathbf{v}_k\}$ is linearly independent.
+
+Suppose $c_1\mathbf{v}_1+c_2\mathbf{v}_2+\dots+c_k\mathbf{v}_k=\mathbf{0}$.
+Then for any $i$ such that $1\le i\le k$ we have
+\begin{align*}
+  c_1\mathbf{v}_1+\dots+c_k\mathbf{v}_k)\cdot\mathbf{v}_i=\mathbf{0}\cdot\mathbf{v}_i\\
+  c_1\mathbf{v}_1\cdot\mathbf{v}_i+\dots+c_i\mathbf{v}_i\cdot\mathbf{v}_i+\dots+c_k\mathbf{v}_k\cdot\mathbf{v}_i=0\\
+  c_10+\dots+c_i||\mathbf{v}_i||^2+\dots+c_k0=0\\
+  c_i||\mathbf{v}_i||^2=0
+\end{align*}
+Now $\mathbf{v}_i$ is not zero by assumption, and so $||\mathbf{v}_i||^2>0$. Thus $c_i=0$.
+
+Because our choice of $c_i$ was arbitrary, we know that $\{\mathbf{v}_1,\dots,\mathbf{v}_k\}$ is linearly independent.
+\item
+%3.3 #11
+Suppose $\mathbf{v}_1,\dots,\mathbf{v}_n$ are nonzero, mutually orthogonal vectors in $\mathbb{R}^n$.
+  \begin{enumerate}
+  \item
+  %3.3 #11a
+  Prove that they form a basis for $\mathbb{R}^n$. (Use Exercise 10)
+
+  We know that they are linearly independent, and there are $n$ of them, therefore they form basis for an $n$-dimensional subspace. The vectors are in $\mathbb{R}^{n}$ and so they form a subspace in $\mathbb{R}^n$. But the only $n$-dimensional subspace of $\mathbb{R}^n$ is $\mathbb{R}^n$ and so our set must form a asis for $\mathbb{R}^n$
+  \item
+  %3.3 #11b
+  Given any $\mathbf{x}\in \mathbb{R}^n$, give an explicit formula for the coordinates of $\mathbf{x}$ with respect to the basis $\{\mathbf{v}_1,\dots,\mathbf{v}_n\}$.
+
+  If $\mathbf{x}=\sum\limits_{i=1}^n{\proj_{\mathbf{v}_i}\mathbf{x}}$ or if $\mathbf{x}=[x_1,\dots,x_n]$ and $\mathbf{v}_i=[v_{i_1},\dots,v_{i_n}]$. Then $x_k=\sum\limits_{i=1}^n{\frac{\mathbf{v}_i\cdot\mathbf{x}}{||\mathbf{x}||^2}x_i}$
+  \item
+  %3.3 #11c
+  Deduce from your answer to part \emph{b} that $\mathbf{x}=\sum\limits_{i=1}^n{\proj_{\mathbf{v}_i}\mathbf{x}}$
+  \end{enumerate}
+\setcounter{enumi}{13}
+\item
+%3.3 #14
+Suppose $\mathbf{v}_1,\dots,\mathbf{v}_k\in \mathbb{R}^n$ form a linearly independent set. Show that for any $1\le l<k$, the set $\{\mathbf{v}_1,\dots,\mathbf{v}_l\}$ is lenearly  independent as well.
+
+Assume that $\{\mathbf{v}_1,\dots,\mathbf{v}_l\}$ is linearly dependant. Thene there exists some $\{c_1,\dots,c_l\}$ not all zero such that $c_1\mathbf{v}_1+\dots+c_l\mathbf{v}_l=0$. Then $c_1\mathbf{v}_1+\dots+c_l\mathbf{v}_l+0\mathbf{v}_{l+1}+\dots0\mathbf{v}_k=0$ and so $\{\mathbf{v}_1,\dots\mathbf{v}_k\}$ is linearly dependent. And so we have proven the contrapositive.
+\setcounter{enumi}{20}
+\item
+%3.3 #21
+Let $A$ be an $m\times n$ matrix of rank $n$. Suppose $\mathbf{v}_1,\dots,\mathbf{v}_k\in \mathbb{R}^n$ and $\{\mathbf{v}_1,\dots,\mathbf{v}_k\}$ is linearly independent. Prove that $\{A\mathbf{v}_1,\dots,A\mathbf{v}_k\}\subset\mathbb{R}^m$ is likewise linearly independent. ({\bfseries N.B.}: If you did not explicitly make use of the assumption that $\text{rank}(A)=n$, your proof cannot be correct. Why?)
+\end{enumerate}
+\section*{3.4}
+\begin{enumerate}
+\item
+%3.4 #1
+Find a basis for each of the given subspaces and determine its dimension.
+  \begin{enumerate}
+  \setcounter{enumii}{1}
+  \item
+  %3.4 #1b
+  $V=\{\mathbf{x}=\mathbb{R}^4:x_1+x_2+x_3+x_4=0,x_2+x_4=0\}\subset\mathbb{R}^4$
+
+  We need the nullspace of $\left[\begin{array}{rrrr}1&1&1&1\\0&1&0&1\end{array}\right]$ which is $\Span([-1,0,1,0],[0,-1,0,1])$
+  \item
+  %3.4 #1c
+  $V=\left(\text{Span}\left((1,2,3)\right)\right)^\perp\subset\mathbb{R}^3$
+
+  We need all $\mathbf{x}$ such that $(\alpha[1,2,3])\cdot\mathbf{x}=0$ or the nullspace of $\left[\begin{array}{rrr}1&2&3\\0&0&0\\0&0&0\end{array}\right]$. Which is $\Span([-2,1,0],[-3,0,1])$.
+  \end{enumerate}
+\setcounter{enumi}{2}
+\item
+%3.4 #3
+Fore each of the following matrices $A$, give bases for $\mathbf{R}(A),\mathbf{N}(A),\mathbf{C}(A),$ and $\mathbf{N}(A^T)$. Check dimensions and orthogonality.
+  \begin{enumerate}
+  \setcounter{enumii}{1}
+  \item
+  %3.4 #3b
+  $A=
+  \left[\begin{array}{rrr}
+  2&1&3\\
+  4&3&5\\
+  3&3&3
+  \end{array}\right]
+  \Rightarrow
+  \left[\begin{array}{rrr}
+  2&1&3\\
+  1&0&2\\
+  3&3&3
+  \end{array}\right]
+  \Rightarrow
+  \left[\begin{array}{rrr}
+  0&1&-1\\
+  1&0&2\\
+  0&3&-3
+  \end{array}\right]
+  \Rightarrow
+  \left[\begin{array}{rrr}
+  1&0&2\\
+  0&1&-1\\
+  0&0&0
+  \end{array}\right]
+  $
+  
+  $r_3-3(r_2-r_3)-3(r_1-2(r_2-r_3))$ to get to the zero row in rref leads to $r_3-3r_2+3r_3-3r_1+6r_2-6r_3=-3r_1+3r_2-2r_3$. And so
+  $\mathbf{R}(A)=\Span([1,0,2],[0,1,-1])$,
+  $\mathbf{N}(A)=\Span([-2,1,1])$,
+  $\mathbf{C}(A)=\Span([2,4,3],[1,3,3])$, and
+  $\mathbf{N}(A^T)=\Span([-3,3,-2])$,
+  \setcounter{enumii}{4}
+  \item
+  %3.4 #3e
+  $A=
+  \left[\begin{array}{rrrrr}
+  1 & 1& 0& 1&-1\\
+  1 & 1& 2&-1& 1\\
+  2 & 2& 2& 0& 0\\
+  -1&-1& 2&-3& 3
+  \end{array}\right]
+  \Rightarrow
+  \left[\begin{array}{rrrrr}
+   1& 1& 0& 1&-1\\
+   0& 0& 2&-2& 2\\
+   0& 0& 2&-2& 2\\
+   0& 0& 2&-2& 2
+  \end{array}\right]
+  \Rightarrow
+  \left[\begin{array}{rrrrr}
+   1& 1& 0& 1&-1\\
+   0& 0& 1&-1& 1\\
+   0& 0& 0& 0& 0\\
+   0& 0& 0& 0& 0
+  \end{array}\right]
+  $
+
+  $(r2-r1)-(r3-2r1)=r1+r2-r3$ and $(r2-r1)-(r4+r1)=r2-r4$ are both zero.
+
+  $\mathbf{R}(A)=\Span([1,1,0,1,-1],[0,0,1,-1,1])$,
+  $\mathbf{N}(A)=\Span([-1,1,0,0,0],[-1,0,1,1,0],[1,0,-1,0,1])$,
+  $\mathbf{C}(A)=\Span([1,1,2,-1],[0,2,2,2])$, and
+  $\mathbf{N}(A^T)=\Span([1,1,-1,0],[0,1,0,-1])$.
+  \end{enumerate}
+\setcounter{enumi}{7}
+\item
+%3.4 #8
+In each case, construct a matrix with the requisite properties or explain why no such matrix exists.
+  \begin{enumerate}
+  \item
+  %3.4 #8a
+  The column space has basis $\left[\begin{array}{r}1\\0\\1\end{array}\right]$, and the nullspace contains $\left[\begin{array}{r}1\\2\\0\end{array}\right]$.
+
+  It must be a $3\times 3$ matrix. We need the first column to be a multiple of $[1,0,1]$ and the first element of a row should be twice the negative of the second element.
+  $\left[\begin{array}{rrr}2&-1&0\\0&0&0\\2&-1&0\end{array}\right]$
+  \item
+  %3.4 #8b
+  The nullspace contains
+  $\left[\begin{array}{r}1\\0\\1\end{array}\right]$,
+  $\left[\begin{array}{r}-1\\2\\1\end{array}\right]$, and the row space contains
+  $\left[\begin{array}{r}1\\1\\-1\end{array}\right]$
+
+  We notice that $[1,0,1]\cdot[1,1,-1]=0$ and $[-1,2,1]\cdot[1,1,-1]=0$ and so we can just make our matrix $[1,1,-1]$
+  \item
+  %3.4 #8c
+  The column spacce has basis
+  $\left[\begin{array}{r}1\\0\\1\end{array}\right]$,
+  $\left[\begin{array}{r}0\\1\\1\end{array}\right]$,
+  and the row space has basis
+  $\left[\begin{array}{r}1\\1\\1\end{array}\right]$,
+  $\left[\begin{array}{r}2\\0\\1\end{array}\right]$.
+
+  
+  \[
+  \left[\begin{array}{rrr}1&0&0\\0&1&0\\1&1&0\end{array}\right]\Rightarrow
+  \left[\begin{array}{rrr}2&0&1\\0&1&0\\2&1&0\end{array}\right]\Rightarrow
+  \left[\begin{array}{rrr}2&0&1\\0&2&0\\2&2&2\end{array}\right]\Rightarrow
+  \left[\begin{array}{rrr}2&0&1\\0&2&1\\2&2&2\end{array}\right]
+  \]
+
+  \item
+  %3.4 #8d
+  The column space and the nullspace both have basis $\left[\begin{array}{r}1\\0\end{array}\right]$.
+
+  $\left[\begin{array}{rr}0&1\\0&0\end{array}\right]$
+  \item
+  %3.4 #8e
+  The column space and the nullspace both have basis
+  $\left[\begin{array}{r}1\\0\\0\end{array}\right]$.
+  
+  The column space basis has the same cardinality as the row space basis. The cardinality of the nullspace basis and the rowspace basis should add up to three. But it adds up to two, and so we can't make a matrix.
+
+  \end{enumerate}
+\setcounter{enumi}{10}
+\item
+%3.4 #11
+Let $A=\left[\begin{array}{rrrr}1&-1&0&0\\0&0&1&-1\end{array}\right]$.
+  \begin{enumerate}
+  %3.4 #11a
+  \item
+  Given any $\mathbf{x}\in \mathbb{R}^4$, find $\mathbf{u}\in \mathbf{R}(A)$ and $\mathbf{v}\in \mathbf{N}(A)$ so that $\mathbf{x}=\mathbf{u}+\mathbf{v}$.
+
+  $\mathbf{R}(A)=\Span([1,-1,0,0],[0,0,1,-1])$ and $\mathbf{N}(A)=\Span([1,1,0,0],[0,0,1,1]$ and so $[x_1,x_2,x_3,x_4]=x_1/2([1,-1,0,0]+[1,1,0,0])+x_2/2(-[1,-1,0,0]+[1,1,0,0])+x_3/2([0,0,1,-1]+[0,0,1,1])+x_4/2(-[0,0,1,-1]+[0,0,1,1])$
+
+  Then $\mathbf{u}=[x_1/2-x_2/2,x_2/2-x_1/2,x_3/2-x_4/2,x_4/2-x_3/2]$ and $\mathbf{v}=[x_1/2+x_2/2,x_1/2+x_2/2,x_3/2+x_4/2,x_3/2+x_4/2]$
+  %3.4 #11b
+  \item
+  Given $\mathbf{b}\in \mathbb{R}^2$, give the unique element $\mathbf{x}\in \mathbf{R}(A)$ so that $A\mathbf{x}=\mathbf{b}$.
+
+  $\left[\begin{array}{rrrr}1&-1&0&0\\0&0&1&-1\end{array}\right]\left[\begin{array}{r}b_1/2\\-b_1/2\\b_2/2\\-b_2/2\end{array}\right]=\left[\begin{array}{r}b_1\\b_2\end{array}\right]$
+  \end{enumerate}
+\setcounter{enumi}{16}
+\item
+%3.4 #17
+Let $V\subset \mathbb{R}^n$ be a subspace, and suppose you are given a linearly independent set of vectors $\{\mathbf{v}_1,\dots,\mathbf{v}_k\}\subset V$. Show that if $\dim V>k$ then there are vectors $\mathbf{v}_k+1,\dots,\mathbf{v}_l\in V$ so that $\{\mathbf{v}_1,\dots,\mathbf{v}_l\}$ forms a basis for $V$.
+
+If $\dim V>k$ then we can choose some element $\mathbf{v}_{k+1}\in V$ and $\mathbf{v}_{k+1}\not\in \Span\left(v_1,\dots,v_k\right)$. The set $\{v_1,\dots,v_{k+1}\}$ is linearly independent. If $\dim V>k+1$ then we choose another element From $V$ which is not the span of our set. We can continue in this way, until there are $\dim V$ elements in our set. 
+\item
+%3.4 #18
+Suppose $V$ and $W$ are subspaces of $\mathbb{R}^n$ and $W\subset V$. Prove that $\dim W\le \dim V$. (\emph{Hint:} Start with a basis for $W$ and apply Exercise 17.)
+
+We choose a basis for $W$. This set contains $\dim W$ vectors. If $\dim W=\dim V$ then we are done. Otherwise, we choose some element of $V$ not in $W$ and proceed as in the last question until we have formed a basis for $V$. The size of this set is bigger than the size of the basis of $W$ and so $\dim W<\dim V$.
+\item
+%3.4 #19
+Suppose $A$ is an $n\times n$ matrix, and let $\mathbf{v}_1,\dots,\mathbf{v}_n\in \mathbb{R}^n$. Suppose $\{A\mathbf{v}_1,\dots,A\mathbf{v}_n\}$ is linearly independent. Prove that $A$ is nonsingular.
+
+If there exists a $v_i=0$ then $Av_i=0$ and $\{Av_1,\dots,Av_n\}$ is not linearly independent. So $v_i\ne 0$ for all $1\le i\le n$. Now let us assume that some $v_i=\alpha_1\mathbf{v}_1+\dots+\alpha_{i-1}\mathbf{v}_{i-1}+\alpha_{i+1}\mathbf{v}_{i+1}+\dots+\alpha_n\mathbf{v}_{n}$. Then $Av_i=\alpha_1A\mathbf{v}_1+\dots+\alpha_{i-1}A\mathbf{v}_{i-1}+\alpha_{i+1}A\mathbf{v}_{i+1}+\dots+\alpha_nA\mathbf{v}_{n}$. But then $\{A\mathbf{v}_1,\dots,A\mathbf{v}_n\}$ is not linearly independent, and so $\{v_1,\dots,v_k\}$ must be linearly independent. Thus $\Span(\mathbf{v}_1,\dots,\mathbf{v}_n)=\mathbb{R}^n$.
+
+Now if $\alpha_1A\mathbf{v}_1+\dots+\alpha_nA\mathbf{v}_n=0$ then $\alpha_i=0$ for all $1\le i\le n$. And of course $A(\alpha_1\mathbf{v}_1+\dots+\alpha_n\mathbf{v}_n)=0$. But if $A$ is singular, then there exists some $\mathbf{x}\ne \mathbf{0}$ so that $A\mathbf{x}=0$. And $\mathbf{x}\in \Span(\mathbf{v}_1,\dots,\mathbf{v}_2)$ so then there exists some $\alpha_i\ne 0$. But we have already established that $\alpha_i=0$ for all $\alpha_i$ and so we have a contradiction, thus $A$ is nonsingular.
+\setcounter{enumi}{20}
+\item
+%3.4 #21
+Let $U$ and $V$ be subspaces of $\mathbb{R}^n$. Prove that $\dim(U+V)=\dim U+\dim V-\dim(U\cap V).$ (\emph{Hint:} This is a generalization of Exercise 20. Start with a basis for $U\cap V$, and use Exercise 17.)
+
+Recall that $U\cap V\le U$ and $U\cap V\le V$. Now any element in $U+V$ is a linear combination of a basis for $U$ and a basis for $V$. But any elements of $U\cap V$ in the basis of $U$ can be expressed as a linear combination of elements from the basis in $V$. And so the dimension of $U+V$ is $\dim V+\dim U-\dim U\cap V$.
+\item
+%3.4 #22
+Continuing Exercise 3.2.10: Let $A$ be an $m\times n$, and let $B$ be an $n\times p$ matrix.
+  \begin{enumerate}
+  \item
+  %3.4 #22a
+  Prove that $\rank(AB)\le \rank(A).$ (\emph{Hint:} Look at part $b$ of Exercise 3.2.10.)
+
+  We showed in 3.2.10 that $\mathbf{C}(AB)\subset\mathbf{C}(A)$. And we know that $\dim \mathbf{C}(A)=\dim A=\rank A$ while $\dim \mathbf{C}(AB)=\dim AB=\rank AB$. And so $\rank(AB)\le \rank(A)$
+  \item
+  %3.4 #22b
+  Prove that if $n=p$ and $B$ is nonsingular, then $\rank(AB)=\rank(A)$
+
+  From 3.2.10d we know that $\mathbf{C}(AB)=\mathbf{C}(A)$ and so $\rank(AB)=\dim \mathbf{C}(AB)=\dim\mathbf{C}(A)=\rank(A)$
+  \item
+  %3.4 #22c
+  Prove that $\rank(AB)\le \rank(B)$. (\emph{Hint:} Use part $a$ of Exercise 3.2.10 and Theorem 4.6.)
+
+  $N(B)\subset N(AB)$ so $\dim N(B)\le \dim N(AB)$. But $\dim N(B)=p-\rank(B)$ and $\dim N(AB)=p-\rank(AB)$ and so it follows that $p-\rank(B)\le p-\rank(AB)$ or $\rank(AB)\le \rank(B)$
+  \item
+  %3.4 #22d
+  Prove that if $m=n$ and $A$ is nonsingular, then $\rank(AB)=\rank(B)$.
+
+  We have $\text{row}_i(AB)=a_{i1}\text{row}_1(B)+\dots+a_{in}\text{row}_n(B)\in\Span(\text{row}_1(AB),\dots,\text{row}_n(AB))$ and so $R(AB)\le R(B)$. If $AB=C$ then $B=A^{-1}C$ and $R(B)=R(A^{-1}C)\le R(C)=R(AB)$. Since the size of the rowspace is equal to the rank we have $\rank(AB)=\rank(B)$
+  \item
+  %3.4 #22e
+  Prove that if $\rank(AB)=n$, then $\rank(A)=\rank(B)=n$.
+
+  We know that $n=\rank(AB)\le \rank (A)\le n$ because the rank cannot be greater than the number of columns in $A$. And so $n\le \rank(A)\le n$. Similarly $n\le \rank(B)\le n$ because the rank must be less than the number of rows in $B$.
+  \end{enumerate}
+\setcounter{enumi}{23}
+\item
+%3.4 #24
+Continuing Exercise 3.2.10: Let $A$ be an $m\times n$ matrix.
+  \begin{enumerate}
+  \item
+  Use Theorem 2.5 to prove that $\mathbf{N}(A^TA)=\mathbf{N}(A)$. (\emph{Hint:} If $\mathbf{x}\in \mathbf{N}(A^TA)$, then $A\mathbf{x}\in \mathbf{C}(A)\cap \mathbf{N}(A^T)$.)
+
+  If $\mathbf{x}\in N(A)$ then $(A^TA)\mathbf{x}=A^T(A\mathbf{x})=A^T\mathbf{0}=0$ and so $N(A)\subset N(A^TA)$. Now if $\mathbf{x}\in N(A^TA)$ then $(A^TA)\mathbf{x}=0=A^T(A\mathbf{x})$ and $A\mathbf{x}\in N(A^T)$. Further $A\mathbf{x}\in C(A)$ by proposition 4.10. But $N(A^T)$ and $C(A)$ are orthogonal and so $A\mathbf{x}=0$. Thus $N(A^TA)\subset N(A)$
+  \item
+  Prove that $\rank(A)=\rank(A^TA)$.
+
+  $N(A)=n-\rank(A)=N(A^TA)=n-\rank(A^TA)$ and so $\rank(A)=\rank(A^TA)$
+  \item
+  Prove that $\mathbf{C}(A^TA)=\mathbf{C}(A^T)$.
+
+  From 3.2.10 we have $C(A^TA)\subset C(A^T)$ and from above we have $\dim C(A^TA)=\rank(A)$. And $C(A^T)=R(A)$, thus $\dim C(A^T)=\rank(A)$. And so because they have the same dimension, we know that $C(A^TA)=C(A^T)$
+  \end{enumerate}
+\end{enumerate}
+\end{document}
