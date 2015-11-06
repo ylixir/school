@@ -70,7 +70,7 @@ Let $f$ satisfy the hypotheses of Taylor's Theorem at $x=a$.
     \lim\limits_{x\to a}\sum\limits_{i=0}^n{\frac{a_ix^i}{(x-a)^n}}
     &=\sum\limits_{i=0}^n{\lim\limits_{x\to a}\frac{a_ix^i}{(x-a)^n}}\\
   \end{align*}
-  Now if we assume $P_n(x)\ne Q(x)$ then there exists some $a_i\ne 0$. If $i<n$ then $\frac{a_ix^i}{(x-a)^n}$ does not converge as $x\to a$, and so neither does $\frac{P_n(x)-Q(x)}{(x-a)^n}$, which is contrary to our assumption. Clearly then if $P_n(x)\ne Q(x)$ then $a_n\ne 0$. And $\lim\limits_{x\to a}\frac{a_nx^n}{(x-a)^n}=a_n$. Now we know that $a_i=0$ for $i\ne n$ and so $\lim\limits_{x\to a}\frac{P_n(x)-Q(x)}{(x-a)^n}=a_n\ne 0$ which is also a contradiction. Thus $P_n(x)=Q(x)$
+  Now if we assume $P_n(x)\ne Q(x)$ then there exists some $a_i\ne 0$. $\frac{a_ix^i}{(x-a)^n}$ does not converge as $x\to a$, and so neither does $\frac{P_n(x)-Q(x)}{(x-a)^n}$, which is contrary to our assumption.
   \end{enumerate}
 \setcounter{enumi}{5}
 \item
@@ -108,9 +108,8 @@ Let $f(x)=\log x$.
     \sum\limits_{k=1}^\infty{\frac{(-1)^{k+1}}{3^kk}}
     +\sum\limits_{k=1}^\infty{\frac{1}{3^kk}}\\
   \end{align*}
-  This expression should converge on $\log 2$ more rapidly than our earlier expression.
-  \item
-  Show that $\log 3=3\log0.96+5\log \frac{81}{80}-11\log0.9$. Find a finite expression that does not involve logs which estimates $\log3$ to 50 decimal places.
+
+  We know that our error is less than $\frac{M|x-1|^{n+1}}{(n+1)!}$ where $M\ge |f^{(n+1)}(x)|$
   \end{enumerate}
 \setcounter{enumi}{8}
 \item
@@ -133,5 +132,6 @@ Let $f(x)=(1+x)^{-1/2}$
 \begin{enumerate}
 \setcounter{enumi}{3}
 \item
+Suppose that $f$ is a continuous function on $[0,1]$ such that $\int_0^1{f(x)x^n\;\mathrm{d}x}=0$ for all $n\ge 0$. Prove that $f=0$. {\scshape Hint:} Use the Weierstrass Theorem to show that $\int_0^1{|f(x)|^2\;\mathrm{d}x}=0$
 \end{enumerate}
 \end{document}

@@ -56,6 +56,7 @@ In this article will study Markov bases, numerical semigroups and Gaussian integ
 \maketitle
 \section{Introduction}
 We will proceed by first going over some basic maps between elements of $\mathbb{N}^n$ and monomials. We will also touch on similar maps from $\mathbb{Z}^n$ and binomials.
+%TM: What monomials? Binomials?
 
 We will then touch on Markov bases and their relationships to the numerical semigroups we will be looking at.
 
@@ -64,25 +65,26 @@ We will also look at what numeric semigroups are, along with the logic of their 
 We will finally look the structure of the numerical semigroups and see a surprising result in the Gaussian analogue of these.
 %\bigskip
 \section{Prerequisites}
-Lets discuss the various things we will need to know moving forward.
+Let us discuss the various things we will need to know moving forward.
 
 The first few things we need to understand are some common maps that the literature takes for granted.
 
 There is a straightforward map between $\mathbb{N}^n$ and monomials over a field $k$.
 We choose some $\mathbf{\alpha}\in \mathbb{N}^n$ such that $\mathbf{\alpha}=(\alpha_1,\dots,\alpha_n)$.
-Now we define a map for $\varphi_\mathbb{N}:\mathbb{N}^n\to k[x_1,\dots,x_n]$ such that $\mathbf{\alpha}\mapsto \mathbf{x}^\alpha$
+Now we define a map for $\varphi:\mathbb{N}^n\to k[x_1,\dots,x_n]$ such that $\mathbf{\alpha}\mapsto \mathbf{x}^\alpha$
 %We map this vector to a monomial $x^\mathbf{\alpha}=x_1^{a_1}\dots x_n^{a_n}$.
 
 We can do the same thing with binomials.
 In the binomial case we start with some $\mathbf{z}\in \mathbb{Z}^n$.
 We define $\mathbf{z}=(z_1,\dots,z_n)$.
-We also define $\mathbf{z}^+$ and $\mathbf{z}^-$ to be what one might guess. $\mathbf{z}^+=(z_1^+,\dots,z_n^+)$ and $\mathbf{z}^-=(z_1^-,\dots,z_n^-)$ where
+We also define $\mathbf{z}^+$ and $\mathbf{z}^-$ as follows:
 \begin{align*}
-  z_i^+&=\begin{cases}z_i&z_i> 0\\0&z_i\le 0\end{cases}&
-  z_i^-&=\begin{cases}0&z\ge 0\\-z_i&z_i<0\end{cases}
+  \mathbf{z}^+&=\mathbf{z}\vee\mathbf{0}&
+  \mathbf{z}^-&=-(\mathbf{z}\wedge\mathbf{0})
 \end{align*}
-Now we can map an element of $\mathbb{Z}^n$ to the binomials over field $k$ if we define $\varphi_\mathbb{Z}:\mathbb{Z}^n\to k[x_1\dots x_n]$ as $\mathbf{z}\mapsto \mathbf{x}^{\mathbf{z}^+}-\mathbf{x}^{\mathbf{z}^-}$
+Now we can map an element of $\mathbb{Z}^n$ to the binomials over field $k$ if we define $\varphi:\mathbb{Z}^n\to k[x_1\dots x_n]$ as $\mathbf{z}\mapsto \mathbf{x}^{\mathbf{z}^+}-\mathbf{x}^{\mathbf{z}^-}$
 
+%TM: Too abrupt
 What are Markov bases? We are given a definition of \emph{Markov basis} by \cite{bernd}.
 
 \defi
@@ -92,19 +94,22 @@ A finite subset $\mathcal{B}\subset\ker_{\mathbb{Z}}(A)$ is a \emph{Markov basis
 
 The literature often refers to the elements of a Markov basis as \emph{moves}\cite[p.16]{bernd}
 
-These bases are relevant because of the fundamental theorem of Markov bases which follows\cite{aoki}
+These bases are relevant because of the fundamental theorem of Markov bases which follows
 \begin{thm}
+\cite[p.~54]{aoki}
 A finite set of moves $\mathcal{B}$ is a Markov basis for $A$ if and only if the set of binomials $\{p^{\mathbf{z}^+}-p^{\mathbf{z}^-}|\mathbf{z}\in \mathcal{B}\}$ generates the toric ideal $I_A$.
 \end{thm}
 
-We will be dealing extensively with lattices. Informally, a lattice is what you think it is. For example $\mathbb{N}^n$ forms a lattice over $\mathbb{R}^n$. Formally though:
+We will be dealing extensively with lattices.
+%TM: nix
+%Informally, a lattice is what you think it is. For example $\mathbb{N}^n$ forms a lattice over $\mathbb{R}^n$. Formally though:
 \begin{defi}
-A \emph{lattice} is a partially ordered set in which every two elements have a unique least upper bound and a unique greatest lower bound. \cite{stanley}
+\cite{stanley}
+A \emph{lattice} is a partially ordered set in which every two elements have a unique least upper bound and a unique greatest lower bound.
 \end{defi}
 \begin{exa}
-Notice that $(1,2)$ and $(2,1)$ have a lower bound of $(1,1)$ and an upper bound of $(2,2)$.
+$\mathbb{N}^2$ is a lattice with supremum and infinum for any two elements which belong two it. Notice that $(1,2)$ and $(2,1)$ have a lower bound of $(1,1)$ and an upper bound of $(2,2)$.
 \end{exa}
-%\medskip
 \begin{exa}
 We can form a lattice if we order $\mathbb{N}$ by division. The least common multiple forms a least upper bound and an greatest lower bound is formed by the greatest common denominator.
 \end{exa}
@@ -121,10 +126,13 @@ We can form a lattice if we order $\mathbb{N}$ by division. The least common mul
 We will go into a little greater depth here than we would ordinarily need to, but we will use some of this logic to make some decisions later when we examine Gaussian integers.
 
 If we take a set of unique integers $\mathbf{z}=\{z_1,\dots,z_n\}$.
-This construction is trivial if $\mathbf{z}=\{0,\dots,0\}$ or if $n=1$, therefore we only consider $z_i\ne 0$ and $n>1$.
+We can form an additive semigroup $S\subset \mathbb{Z}$ with elements of the form $a_1z_1+\dots+a_nz_n\in S$ where $a_i\in \mathbb{N}$.
+If $\mathbf{z}=\mathbf{0}$ then our semigroup consists solely of the element $0$, which is not interesting. Similarly if there exists some $z_i=0$ then the semigroup formed by $\{z_1,\dots,z_n\}$ is isomorphic to $\{z_1,\dots,z_{i-1},z_{i+1},\dots,z_n\}$. In order to keep things simple we will define $z_i\ne 0$ for all $1\le i\le n$.
 
-We can form a semigroup $S\subset \mathbb{Z}$ over addition with elements of the form $a_1z_1+\dots+a_nz_n\in S$ where $a_i\in \mathbb{N}$.
+Further, if $\mathbf{z}$ consists of only one element, then $S\simeq\mathbb{N}$. This is also less than interesting.
 Now if the elements of $\mathbf{z}$ have a greatest common denominator $k\ne 1$ then $k|s$ for every element $s\in S$.
+
+This construction is trivial if $\mathbf{z}=\{0,\dots,0\}$ or if $n=1$, therefore we only consider $z_i\ne 0$ and $n>1$.
 We can form a bijection between this semigroup and a semigroup with a greatest common denominator of one by multiplying or dividing every element in the group by $k$.
 Therefore we will only consider semigroups with coprime bases.
 
@@ -173,7 +181,7 @@ Otherwise, we know that we have accounted for every member of our semigroup up t
 This algorithm will find the Frobenius number within a linear multiple of the number of elements in the semigroup and the size of the Frobenius number. There may be faster ways of finding this number, but for our purposes, it is simple to implement and works quickly enough.\cite{frobmask}.
 
 \section{Gaussian Integers}
-Notice that the real and complex parts of Gaussian integers do not interact under addition. Now lets take the linear combination of some finite set of Gaussian integers.
+Notice that the real and complex parts of Gaussian integers do not interact under addition. Now let us take the linear combination of some finite set of Gaussian integers.
 
 If we do not restrict ourselves to positive coefficients, then we wind up with semigroups that span the entire number line along multiples of a greatest common denominator. This is as uninteresting now as it was with numerical semigroups, and so we will only look at positive values from here.
 
