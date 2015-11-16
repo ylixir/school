@@ -130,15 +130,41 @@ Let $f(x)=(1+x)^{-1/2}$
   \[f^{(k)}(0)={-\frac{1}{2} \choose k}:=\frac{-\frac{1}{2}(-\frac{1}{2}-1)\cdots(-\frac{1}{2}+1-k)}{k!}=\frac{(-1)^k(2k)!}{2^{2k}(k!)^2}=\left(\frac{-1}{4}\right)^k{2k\choose k}.\]
 
   \begin{align*}
-    f^{(k)}&=(1+x)^{-1/2-k}\prod\limits_{i=1}^k{\frac{1}{2}-i}
+    f^{(k)}(x)&=(1+x)^{-1/2-k}\prod\limits_{i=1}^k{\frac{1}{2}-i}\\
+    &=(1+x)^{-1/2-k}\binom{-1/2}{k}k!\\
+    f^{(k)}(0)&=\binom{-1/2}{k}k!=\frac{-\frac{1}{2}\left(-\frac{1}{2}-1\right)\cdots\left(-\frac{1}{2}-(k-1)\right)}{k!}k!\\
+    &=\left(-\frac{1}{2}\right)^k(1+0)\left(1+2\right)\cdots\left(2k-1\right)\\
+    &=\left(-\frac{1}{2}\right)^k\frac{1\cdot3\cdots\left(2k-1\right)\cdot2\cdot4\cdots2k}{2\cdot4\cdots2k}\\
+    &=\left(-\frac{1}{2}\right)^k\frac{(2k)!}{2^k(1\cdot2\cdots k)}\\
+    &=\left(-\frac{1}{2}\right)^k\frac{(2k)!}{2^kk!}
+    =\frac{(-1)^k(2k)!}{2^{2k}k!}=\left(\frac{-1}{4}\right)^k\binom{2k}{k}k!\\
   \end{align*}
   \item
   Show that the Taylor series for $f$ about $x=0$ is $\sum\limits_{k=0}^\infty{{2k\choose k}\left(\frac{-x}{4}\right)^k}$, and compute the radius of convergence.
+
+  By definition the Taylor series is $\sum\limits_{k=0}^\infty{\left(-\frac{1}{4}\right)^k{2k\choose k}\frac{k!}{k!}(x-0)^k}=\sum\limits_{k=0}^\infty{\left(-\frac{x}{4}\right)^k\frac{(2k)!}{(k!)^2}}$. And
+  \begin{align*}
+    \lim\limits_{k\to\infty}\left\lvert\frac{(2(k+1))!2^{2k}(k!)^2}{(2k)!2^{2(k+1)}((k+1)!)^2}\right\rvert
+    &=\lim\limits_{k\to\infty}\frac{(2k+1)(2k+2)}{2^2(k+1)^2}\\
+    &=\lim\limits_{k\to\infty}\frac{(2k+1)}{2k+2}=1
+  \end{align*}
+  So the series has a radius of convergence of 1 by Hadamard's theorem.
   \item
   Show that $\sqrt{2}=1.4f(-0.02)$.
   Hence compute $\sqrt{2}$ to $8$ decimal places.
+  \[1.4f(-0.02)=\frac{\sqrt{1.4^2}}{\sqrt{1-0.02}}=\frac{\sqrt{1.96}}{\sqrt{.98}}=\sqrt{2}\]
+
+  To compute to 8 decimal places we need $\displaystyle |f(-.02)-\sum|\le \frac{|f^{(k+1)}(-.02)|(.02)^{k+1}}{(k+1)!}<0.5\cdot10^{-8}$ or $\displaystyle \frac{(.98)^{-1/2-k-1}(2k+2)!\cdot.02^{k+1}}{2^{2k+2}(k+1)!^2}-0.5\cdot 10^{-8}<0$. Using the computer we find that $k=4$ is sufficient to make said expression smaller than zero. And again using the computer to evaluate the taylor series for the first five terms we have $\sqrt{2}\approx1.41421356$
   \item
   Express $\sqrt{2}=1.415f(\varepsilon)$, where $\varepsilon$ is expressed as a fraction in lowest terms. Use this to obtain an alternating series for $\sqrt{2}$. How many terms are needed to estimate $\sqrt{2}$ to 100 decimal places?
+
+  \begin{align*}
+    \sqrt{2}&=1.415\frac{1}{\sqrt{1+\varepsilon}}=\frac{283}{200\sqrt{1+\varepsilon}}\\
+    2&=\frac{80089}{40000\sqrt{1+\varepsilon}}\\
+    \frac{80089}{80000}&=1+\varepsilon\\
+    \varepsilon&=\frac{89}{80000}
+  \end{align*}
+  To compute to 100 decimal places we need $\displaystyle |f(89/80000)-\sum|\le \frac{|f^{(k+1)}(89/80000)|(89/80000)^{k+1}}{(k+1)!}<0.5\cdot10^{-100}$ or $\displaystyle \frac{(80089/80000)^{-1/2-k-1}(2k+2)!\cdot(89/80000)^{k+1}}{2^{2k+2}(k+1)!^2}-0.5\cdot 10^{-100}<0$. Using a computer we find that $k=33$ gives a negative value, so we would need 34 terms.
   \end{enumerate}
 \end{enumerate}
 \section*{10.2}
@@ -146,5 +172,7 @@ Let $f(x)=(1+x)^{-1/2}$
 \setcounter{enumi}{3}
 \item
 Suppose that $f$ is a continuous function on $[0,1]$ such that $\int_0^1{f(x)x^n\;\mathrm{d}x}=0$ for all $n\ge 0$. Prove that $f=0$. {\scshape Hint:} Use the Weierstrass Theorem to show that $\int_0^1{|f(x)|^2\;\mathrm{d}x}=0$
+
+From the Weierstrass Theorem, we know there there is a sequence of polynomials $p_n$ that converge uniformly to $f$ on $[0,1]$. This means that $\lim\limits_{n\to\infty}\int_0^1{p_n(x)\;\mathrm{d}x}=\int_0^1{f(x)\;\mathrm{d}x}$. Thus $\int_0^1{f(x)^2\;\mathrm{d}x}=\lim\limits_{n\to\infty}\int_0^1{p_n(x)f(x)\;\mathrm{d}x}$. But we know that $\int_0^1{f(x)x^n\;\mathrm{d}x}=0$ and every term of $f(x)p_n(x)$ will go to zero under the integral. Thus $\int_0^1{|f(x)|^2\;\mathrm{d}x}=\int_0^1{f(x)^2\;\mathrm{d}x}=0$. Now if $\int_0^1{|f(x)|^2\;\mathrm{d}x}=0$ then surely $\int_0^1{|f(x)|\;\mathrm{d}x}=0$ as well. Now we are told that $f$ is continuous on $[0,1]$. And so if we assume that $\exists x$ such that $|f(x)|>0$ then by continuity we must have $\int_0^1{|f(x)|\;\mathrm{d}x}>0$. And so $|f(x)|=0$. Thus $f(x)=0$.
 \end{enumerate}
 \end{document}

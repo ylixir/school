@@ -1,0 +1,207 @@
+\documentclass[letterpaper]{article}
+
+\usepackage[utf8x]{luainputenc}
+\usepackage{aeguill}
+%\usepackage{nopageno}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathrsfs}
+\usepackage{fullpage}
+\usepackage{fancyhdr}
+\setlength{\headheight}{12pt}
+\pagestyle{fancy}
+\chead{Linear Algebra}
+\lhead{November 4, 2015}
+\rhead{Jon Allen}
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+\newcommand{\proj}{\text{proj}}
+\newcommand{\rank}{\text{rank}}
+\newcommand{\Span}{\text{Span}}
+
+\begin{document}
+%\renewcommand{\labelenumii}{\alph{enumii}.}
+%\renewcommand{\labelenumiii}{\alph{enumiii}.}
+%\renewcommand{\labelenumi}{(\arabic{enumi})}
+\begin{enumerate}
+\item
+Let
+\[
+B=
+\left\{\left(\begin{array}{r}1\\2\end{array}\right),\left(\begin{array}{r}3\\-1\end{array}\right)\right\}
+\text{ and }
+C=\left\{\left(\begin{array}{r}1\\0\\0\end{array}\right),\left(\begin{array}{r}1\\1\\0\end{array}\right),\left(\begin{array}{r}1\\1\\1\end{array}\right)\right\}
+\]
+be bases of $\mathbb{R}^2$ and $\mathbb{R}^3$ (resp). Let $T:\mathbb{R}^2\to \mathbb{R}^3$ be given by
+\[T\left(\begin{array}{r}x\\y\end{array}\right)=\left(\begin{array}{c}x+2y\\-x\\y\end{array}\right)\]
+and let
+\[\mathbf{x}=\left(\begin{array}{r}-7\\7\end{array}\right)\]
+  \begin{enumerate}
+  \item
+  Find the image $T(\mathbf{x})$ of the vector $\mathbf{x}$ under the action of $T$.
+
+  $T(\mathbf{x})=\left(\begin{array}{r}7\\7\\7\end{array}\right)$
+  \item
+  Find the change of basis matrices $P=M(1_{\mathbb{R}^2},S_2,B)$ and $Q=M(1_{\mathbb{R}^3},S_3,C)$.
+
+  $ P=\left[\begin{array}{rr}1&3\\2&-1\end{array}\right]^{-1}
+  \Rightarrow
+  \left[\begin{array}{rr|rr}1&3&1&0\\2&-1&0&1\end{array}\right]
+  \Rightarrow
+  \left[\begin{array}{rr|rr}
+    1& 3& 1& 0\\
+    0&-7&-2& 1
+  \end{array}\right]
+  \Rightarrow
+  \left[\begin{array}{rr|rr}
+    1& 0&1/7&3/7\\
+    0& 1&2/7&-1/7
+  \end{array}\right] $
+
+  $Q=
+  \left[\begin{array}{rrr}
+    1&1&1\\
+    0&1&1\\
+    0&0&1
+  \end{array}\right]^{-1}
+  \Rightarrow
+  \left[\begin{array}{rrr|rrr}
+    1&1&1&1&0&0\\
+    0&1&1&0&1&0\\
+    0&0&1&0&0&1
+  \end{array}\right]
+  \Rightarrow
+  \left[\begin{array}{rrr|rrr}
+    1&0&0&1&-1& 0\\
+    0&1&0&0& 1&-1\\
+    0&0&1&0& 0& 1
+  \end{array}\right]
+  $
+
+  $\displaystyle P=\frac{1}{7}
+  \left[\begin{array}{rr}
+    1&3\\
+    2&-1
+  \end{array}\right]
+  \qquad
+  Q=
+  \left[\begin{array}{rrr}
+    1&-1& 0\\
+    0& 1&-1\\
+    0& 0& 1
+  \end{array}\right] $
+  \item
+  Use part (b) to compute $[\mathbf{x}]_B$ and $[T(\mathbf{x})]_C$.
+
+  $\displaystyle[\mathbf{x}]_B=P\mathbf{x}=\frac{1}{7}\left(\begin{array}{r}14\\-21\end{array}\right)=\left(\begin{array}{r}2\\-3\end{array}\right)$
+
+  $\displaystyle[T(\mathbf{x})]_C=QT(\mathbf{x})=\left(\begin{array}{r}0\\0\\7\end{array}\right)$
+
+  \item
+  Find $M(T,B,C)$ using the method of Example 7.
+  \begin{align*}
+    T\left(\begin{array}{r}1\\2\end{array}\right)=\left(\begin{array}{r}5\\-1\\2\end{array}\right)
+    &=c_{11}\left(\begin{array}{r}1\\0\\0\end{array}\right)
+    +c_{21}\left(\begin{array}{r}1\\1\\0\end{array}\right)
+    +c_{31}\left(\begin{array}{r}1\\1\\1\end{array}\right)\\
+    &=6\left(\begin{array}{r}1\\0\\0\end{array}\right)
+    +-3\left(\begin{array}{r}1\\1\\0\end{array}\right)
+    +2\left(\begin{array}{r}1\\1\\1\end{array}\right)\\
+    T\left(\begin{array}{r}3\\-1\end{array}\right)=\left(\begin{array}{r}1\\-3\\-1\end{array}\right)
+    &=c_{12}\left(\begin{array}{r}1\\0\\0\end{array}\right)
+    +c_{22}\left(\begin{array}{r}1\\1\\0\end{array}\right)
+    +c_{32}\left(\begin{array}{r}1\\1\\1\end{array}\right)\\
+    &=4\left(\begin{array}{r}1\\0\\0\end{array}\right)
+    +-2\left(\begin{array}{r}1\\1\\0\end{array}\right)
+    +-1\left(\begin{array}{r}1\\1\\1\end{array}\right)\\
+    M(T,B,C)&=\left[\begin{array}{rr}6&4\\-3&-2\\2&-1\end{array}\right]
+  \end{align*}
+  \item
+  Find $M(T,B,C)$ using the method of example 10.
+
+  $M(T,B,C)=QA_TP^{-1}=
+  \left[\begin{array}{rrr}1&-1&0\\0&1&-1\\0&0&1\end{array}\right]
+  \left[\begin{array}{rr}1&2\\-1&0\\0&1\end{array}\right]
+  \left[\begin{array}{rr}1&3\\2&-1\end{array}\right]
+  =
+  \left[\begin{array}{rr}6&4\\-3&-2\\2&-1\end{array}\right]
+  $
+  \item
+  Check our answer in part (c) by verifying that $M(T,B,C)[\mathbf{x}]_B=[T(\mathbf{x})]_C$.
+  
+  $
+  \left[\begin{array}{rr}6&4\\-3&-2\\2&-1\end{array}\right]
+  \left(\begin{array}{r}2\\-3\end{array}\right)
+  =
+  \left(\begin{array}{r}0\\0\\7\end{array}\right)
+  $
+  \end{enumerate}
+\item
+Let
+\[
+B=
+\left\{\left(\begin{array}{r}-3\\2\end{array}\right),\left(\begin{array}{r}4\\-2\end{array}\right)\right\}
+\text{ and }
+C=
+\left\{\left(\begin{array}{r}-1\\2\end{array}\right),\left(\begin{array}{r}2\\-2\end{array}\right)\right\}
+\]
+be bases of $\mathbb{R}^2$. If
+\[M(T,B,B)=\left[\begin{array}{rr}-2&7\\-3&7\end{array}\right]\]
+find $M(T,B,B)$.
+
+Maybe we are meant to find $M(T,C,C)$?
+\begin{align*}
+  M(T,B,B)&=\left[\begin{array}{rr}-2&7\\-3&7\end{array}\right]\\
+  &=\left[\begin{array}{rr}-3&4\\2&-2\end{array}\right]^{-1}
+  T
+  \left[\begin{array}{rr}-3&4\\2&-2\end{array}\right]\\
+  T&=\left[\begin{array}{rr}-3&4\\2&-2\end{array}\right]
+  \left[\begin{array}{rr}-2&7\\-3&7\end{array}\right]
+  \left[\begin{array}{rr}-3&4\\2&-2\end{array}\right]^{-1}\\
+  T&=\left[\begin{array}{rr}-3&4\\2&-2\end{array}\right]
+  \left[\begin{array}{rr}-2&7\\-3&7\end{array}\right]
+  \left[\begin{array}{rr}1&2\\1&\frac{3}{2}\end{array}\right]\\
+  M(T,C,C)&=\left[\begin{array}{rr}-1&2\\2&-2\end{array}\right]^{-1}
+  \left[\begin{array}{cc} 1 & -\frac{3}{2} \\ 2 & 4 \end{array}\right]
+  \left[\begin{array}{rr}-1&2\\2&-2\end{array}\right]\\
+  &=\left[\begin{array}{rr}2&1\\-1&3\end{array}\right]
+\end{align*}
+\item
+Prove Theorem 11. Let $B_1,B_2$ be bases for $\mathbb{R}^n$ and let $C_1,C_2$ be bases for $\mathbb{R}^m$. If $T:\mathbb{R}^n\to\mathbb{R}^m$ is a linear transformation, then $\rank(M(T,B_1,C_1))=\rank(M(T,B_2,C_2))$.
+
+Now $M(T,B_1,C_1)[\mathbf{x}]_{B_1}=[T(\mathbf{x})]_{C_1}$
+and $M(T,B_2,C_2)[\mathbf{x}]_{B_2}=[T(\mathbf{x})]_{C_2}$.
+But $[T(\mathbf{x})]_{C_1}$ and $[T(\mathbf{x})]_{C_2}$
+
+Let $B_1=\{\mathbf{v}_{11},\dots,\mathbf{v}_{1n}\}$
+and $B_2=\{\mathbf{v}_{21},\dots,\mathbf{v}_{2n}\}$
+while $C_1=\{\mathbf{w}_{11},\dots,\mathbf{w}_{1m}\}$
+and $C_2=\{\mathbf{w}_{21},\dots,\mathbf{w}_{2m}\}$
+\item
+Let $T:\mathbb{R}^n\to\mathbb{R}^n$ be a linear transformation and suppose that $V\le \mathbb{R}^n$ is invariant under $T$ (that is $T(V)\subseteq V$). Prove that there exists a basis $B$ such that
+\[M(T,B,B)=\left[\begin{array}{rr}A&B\\0&C\end{array}\right]\]
+where $A$ is a $\dim(V)\times\dim(V)$ matrix.
+\item
+Let $T:\mathbb{R}^n\to\mathbb{R}^m$ be a linear transformation of $\rank(T)=r$. Prove there exist bases $B,C$ of $\mathbb{R}^n,\mathbb{R}^m$ (resp) such that
+\[M(T,B,C)=\left[\begin{array}{rr}I_R&0\\0&0\end{array}\right]\]
+Do you see how this establishes the Rank Nullity Theorem?
+%such that $B=PAP^{-1}$. If $A~B$, we say that $A$ is similar to $B$. This relation is a special case of Example 10 where $B=PAQ^{-1}$
+\item
+Prove that $\sim$ is an equivalence relation on $\mathcal{M}_n$
+
+If we have some matrix $A$ then $A=I_nAI_n=I_nAI_n^{-1}$ and so we have reflexivity. Now if $B=PAP^{-1}$ then $P^{-1}BP=A$ and so if $A\sim B$ then $B\sim A$. Now if $C=QBQ^{-1}$ and $B=PAP^{-1}$ then $C=(QP)A(P^{-1}Q^{-1})$. Because $QP$ and $Q^{-1}P^{-1}$ are inverses, we know that $C\sim A$. Thus we have an equivalence relation.
+\item
+Prove that $A\sim A'$ if and only if $A$ and $A'$ represent the same linear transformation $T:\mathbb{R}^n\to\mathbb{R}^n$.  That is, $A\sim A'$ if and only if $A=M(T,B,B)$ and $A'=M(T,B',B')$ for some bases $B,B'$ of $\mathbb{R}^n$.
+
+If $A=M(T,B,B)$ then $A=M(I_n,E_n,B)M(T,E_n,E_n)M(I_n,E_n,B)^{-1}$. And $A'=M(T,B',B')=M(I_n,E_n,B')M(T,E_n,E_n)M(I_n,E_n,B')^{-1}$. Thus $A\sim M(T,E_n,E_n)\sin A'$ and so by transitivity we have $A\sim A'$.
+
+If $A\sim A'$ then
+\item
+Prove that if $A\sim B$, then $A^{-1}\sim B^{-1}$ and $A^T\sim B^T$.
+
+If $A\sim B$ then $A=PBP^{-1}$ for some $P$. Now $PBP^{-1}PB^{-1}P^{-1}=I$ and so $A^{-1}=PB^{-1}P^{-1}$. Thus $A^{-1}\sim B^{-1}$
+
+If $A\sim B$ then $A=PBP^{-1}$.  Taking the transpose of both sides we have $A^T=(PBP^{-1})^T=(P^{-1})^T(PB)^T=(P^{-1})^TB^TP^T$ and so $A^T\sim B^T$
+\end{enumerate}
+\end{document}
