@@ -1,0 +1,90 @@
+%shell-escape
+\documentclass[letterpaper]{article}
+
+\usepackage{amsmath}
+\usepackage[utf8x]{luainputenc}
+\usepackage{amssymb}
+\usepackage{gnuplottex}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+%\chead{Real Analysis II Homework}
+\rhead{Jon Allen}
+\lhead{Real Analysis 2}
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+
+\begin{document}
+
+\renewcommand{\labelenumi}{\Alph{enumi}.}
+%\renewcommand{\labelenumii}{\arabic{enumii}.}
+\renewcommand{\labelenumii}{(\alph{enumii})}
+\section*{10.4}
+\begin{enumerate}
+\setcounter{enumi}{6}
+%10.4 G
+\item
+Show that if $\lim\limits_{\delta\to0^+}\frac{\omega(f;\delta)}{\delta}=0$,
+then $f$ is constant.
+
+We assume that $f$ is not constant. Then there exists some $c$ such that
+$\lim\limits_{\delta\to0^+}\frac{\left\lvert f(c+\delta)-f(c)\right\rvert}{\delta}>0$.
+Of course
+$\sup\{|f(x_1)-f(x_2)|:|x_1-x_2|<\delta,x_1,x_2\in[a,b]\}\ge \left\lvert f(c+\delta)-f(c)\right\rvert$.
+Thus
+$\lim\limits_{\delta\to0^+}\frac{\omega(f;\delta)}{\delta}\ge\lim\limits_{\delta\to0^+}\frac{\left\lvert f(c+\delta)-f(c)\right\rvert}{\delta}>0$. But the limit is zero, so by contradiction, $f$ must be constant.
+\end{enumerate}
+
+\section*{10.5}
+\begin{enumerate}
+\setcounter{enumi}{2}
+%10.5 C
+\item
+Find \emph{all} closest lines $p(x)=ax+b$ to $f(x)=x^2$ in the $C^1[0,1]$ norm.
+Note that the best approximation is not unique.
+
+We are looking for the values of $a,b$ which will give us
+$E_1(f)=\inf\left\{\max\limits_{0\le i\le  1}
+||\frac{\mathrm{d^i}}{\mathrm{d}x^i} x^2-ax-b||_\infty\right\}$.
+Now we note that the first derivative is $2x-a$.  As $x$ varies in $[0,1]$ it
+is clear that if $a=1$ then $||2x-a||_\infty=1$ , but if $a\ne 1$ then
+$||2x-a||_\infty>1$ therefore $E_1(f)=1$. As long as $||x^2-x-b||_\infty\le 1$ then $p(x)=x-b$. Now we start with the functions $f(x)=x^2$ and $q(x)=x$. On our interval of $[0,1]$ these two functions intersect at their endpoints $x=0,1$, have the property that $x\ge x^2$ and are farthest apart at $\frac{\mathrm{d}}{\mathrm{d}x}x-x^2=0$ or $x=1/2\to q(1/2)=1/4$. Now moving $q(x)=x$ up or down by any value will give $p(x)=x+b$. Notice that because $x\ge x^2$, as $b$ grows negatively, the first moment in which $||x^2-x-b||_\infty>1$ is when $b<-1$. And of course as $p(x)=x+b$ moves up, the first moment when $||x^2-x-b||_\infty>1$ is when $(1/2)+b=1+1/4$ or $b=3/4$. Thus $p(x)=x+b$ where $-1\le b\le 3/4$
+%10.5 D
+\item
+Find the closest polynomial to $\sin x$ on $\mathbb{R}$.
+
+Let $p(x)=a_0+a_1x+\dots+a_nx^n$ be the closest polynomial to $\sin x$. Now if any $a_i\ne 0$ where $i>0$ then $||\sin x-p(x)||_\infty=\infty$ but if $p(x)=a_0$ then $||\sin x-p(x)||_\infty=1+|a_0|\ge 1$. And so we see that $||\sin x-p(x)||_\infty\ge ||\sin x-0||_\infty$. Therefore the closest polynomial to $\sin x$ on $\mathbb{R}$ is $p(x)=0$
+\setcounter{enumi}{6}
+%10.5 G
+\item
+Recall that a norm is strictly convex if $||x||=||y||=||(x+y)/2||$ implies that $x=y$.
+  \begin{enumerate}
+  \item
+  Suppose that $V$ is a vector space with a strictly convex norm and $M$ is a finite-dimensional subspace of $V$. Prove that each $v\in V$ has a unique closest point in $M$.
+
+  We choose two points $u,w\in M$ such that $||u-v||=||w-v||\le||z-v||$ for all $z\in M$. In particular $||\frac{u+w}{2}-v||\ge ||u-v||$. Some algebraic manipulation gives us $||\frac{u+w}{2}-v||=||\frac{u-v+w-v}{2}||=\frac{1}{2}||(u-v)+(w-v)||\le \frac{1}{2}||u-v||+\frac{1}{2}||w-v||=||u-v||$. And so $||\frac{u-v+w-v}{2}||=||u-v||=||w-v||$ and because $V$ is strictly convex then we know that $u-v=w-v$ or $u=w$. And so we know there is only one closest point to $v$ in $M$ 
+  \item
+  Prove that an inner product norm is strictly convex.
+
+  First we observe that if $\langle a,x\rangle=0$ for any $x$ then in particular $\langle a,a\rangle=0$ and so $a=0$.
+
+  Now if we start with $||x||=||y||=||(x+y)/2||$ and apply the definition of an inner product norm, then we can do some manipulations to achieve the result we are looking for.
+  \begin{align*}
+    ||x||=||y||&=||(x+y)/2||\\
+    \sqrt{\langle x,x\rangle}=\sqrt{\langle y,y\rangle}&=\sqrt{\langle (x+y)/2,(x+y)/2\rangle}\\
+    \langle x,x\rangle=\langle y,y\rangle&=1/2\langle x,(x+y)/2\rangle+1/2\langle y,(x+y)/2\rangle\\
+    \langle x,x\rangle=\langle y,y\rangle&=1/2\langle (x+y)/2,x\rangle+1/2\langle (x+y)/2,y\rangle\\
+    \langle x,x\rangle=\langle y,y\rangle&=1/4\langle x,x\rangle+1/2\langle x,y\rangle+1/4\langle y,y\rangle\\
+    \langle x,x\rangle&=1/2\langle x,x\rangle+1/2\langle x,y\rangle\\
+    0&=-1/2\langle x,x\rangle+1/2\langle x,y\rangle=\langle y,x\rangle-\langle x,x\rangle\\
+    0&=\langle y-x,x\rangle
+  \end{align*}
+  As we observed at the start, $y-x=0$ and so $y=x$
+  \item
+  Show by example that $C[0,1]$ is not strictly convex.
+
+  $f(x)=(x-1/2)^3\in C[0,1]$
+  \end{enumerate}
+
+\end{enumerate}
+\end{document}
