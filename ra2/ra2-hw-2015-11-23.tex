@@ -1,0 +1,61 @@
+%shell-escape
+\documentclass[letterpaper]{article}
+
+\usepackage{amsmath}
+\usepackage[utf8x]{luainputenc}
+\usepackage{amssymb}
+\usepackage{gnuplottex}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+%\chead{Real Analysis II Homework}
+\rhead{Jon Allen}
+\lhead{Real Analysis 2}
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+
+\begin{document}
+
+\renewcommand{\labelenumi}{\Alph{enumi}.}
+%\renewcommand{\labelenumii}{\arabic{enumii}.}
+\renewcommand{\labelenumii}{(\alph{enumii})}
+\subsection*{10.5}
+\begin{enumerate}
+\setcounter{enumi}{6}
+%10.5 G
+\item
+Recall that a norm is strictly convex if $||x||=||y||=||(x+y)/2||$ implies that $x=y$.
+  \begin{enumerate}
+  \item
+  Suppose that $V$ is a vector space with a strictly convex norm and $M$ is a finite-dimensional subspace of $V$. Prove that each $v\in V$ has a unique closest point in $M$.
+
+  We choose two points $u,w\in M$ such that $||u-v||=||w-v||\le||z-v||$ for all $z\in M$. In particular $||\frac{u+w}{2}-v||\ge ||u-v||$. Some algebraic manipulation gives us $||\frac{u+w}{2}-v||=||\frac{u-v+w-v}{2}||=\frac{1}{2}||(u-v)+(w-v)||\le \frac{1}{2}||u-v||+\frac{1}{2}||w-v||=||u-v||$. And so $||\frac{u-v+w-v}{2}||=||u-v||=||w-v||$ and because $V$ is strictly convex then we know that $u-v=w-v$ or $u=w$. And so we know there is only one closest point to $v$ in $M$ 
+  \item
+  Prove that an inner product norm is strictly convex.
+
+  First, observe the following identity:
+  \begin{align*}
+    ||x+y||^2&=\langle x+y,x+y\rangle=\langle x,x\rangle+2\langle x,y\rangle+\langle y,y\rangle\\
+    ||x-y||^2&=\langle x-y,x-y\rangle=\langle x,x\rangle-2\langle x,y\rangle+\langle y,y\rangle\\
+    ||x+y||^2+||x-y||^2&=2\langle x,x\rangle+2\langle y,y\rangle=2(||x||^2+||y||^2)\\
+    ||x+y||^2&=2(||x||^2+||y||^2)-||x-y||^2
+  \end{align*}
+
+  Now if we assume that $||x||=||y||=||(x+y)/2||=c$ then we can use the above identity to obtain:
+  \begin{align*}
+    c^2&=\frac{1}{4}||x+y||^2\\
+    4c^2&=||x+y||^2\\
+    2c^2+2c^2&=2||x||^2+2||y||^2-||x-y||^2
+    0&=||x-y||^2\\
+    0&=\langle x-y,x-y\rangle
+  \end{align*}
+
+  But $\langle x-y,x-y\rangle=0$ if and only if $x-y=0$ so $x=y$
+  \item
+  Show by example that $C[0,1]$ is not strictly convex.
+
+  $\cos x,1\in C[0,1]$ and $||\cos x||_\infty=||1||_\infty=||(1+\cos x)/2||_\infty=1$ but $\cos x\ne 1$
+  \end{enumerate}
+
+\end{enumerate}
+\end{document}
