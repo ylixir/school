@@ -6,6 +6,7 @@
 \usepackage{graphicx}
 \usepackage{titlesec}
 \usepackage{gnuplottex}
+\usepackage[utf8]{inputenc}
 
 % Uncomment the following line in order to include graphics
 
@@ -51,27 +52,37 @@
 \title{On the Markov Basis}
 \author{Jon Allen}
 \begin{abstract}
-In this article will study Markov bases, numerical semigroups and Gaussian integers. We will study the relationship between these objects, and study  the usefulness of maps between these objects.
+In this article will study Markov bases, numerical semigroups and Gaussian
+integers. We will study the relationship between these objects, and study  the
+usefulness of maps between these objects.
 \end{abstract}
 \maketitle
 \section{Introduction}
-We will proceed by first going over some basic maps between elements of $\mathbb{N}^n$ and monomials. We will also touch on similar maps from $\mathbb{Z}^n$ and binomials.
+We will proceed by first going over some basic maps between elements of
+$\mathbb{N}^n$ and monomials. We will also touch on similar maps from
+$\mathbb{Z}^n$ and binomials.
 %TM: What monomials? Binomials?
 
-We will then touch on Markov bases and their relationships to the numerical semigroups we will be looking at.
+We will then touch on Markov bases and their relationships to the numerical
+semigroups we will be looking at.
 
-We will also look at what numeric semigroups are, along with the logic of their construction. We will later use this information and logic to create a similar construction with the Gaussian integers.
+We will also look at what numeric semigroups are, along with the logic of their
+construction. We will later use this information and logic to create a similar
+construction with the Gaussian integers.
 
-We will finally look the structure of the numerical semigroups and see a surprising result in the Gaussian analogue of these.
+We will finally look the structure of the numerical semigroups and see a
+surprising result in the Gaussian analogue of these.
 %\bigskip
 \section{Prerequisites}
 Let us discuss the various things we will need to know moving forward.
 
-The first few things we need to understand are some common maps that the literature takes for granted.
+The first few things we need to understand are some common maps that the
+literature takes for granted.
 
-There is a straightforward map between $\mathbb{N}^n$ and monomials over a field $k$.
-We choose some $\mathbf{\alpha}\in \mathbb{N}^n$ such that $\mathbf{\alpha}=(\alpha_1,\dots,\alpha_n)$.
-Now we define a map for $\varphi:\mathbb{N}^n\to k[x_1,\dots,x_n]$ such that $\mathbf{\alpha}\mapsto \mathbf{x}^\alpha$
+There is a straightforward map between $\mathbb{N}^n$ and monomials over a field
+$k$. We choose some $\mathbf{\alpha}\in \mathbb{N}^n$ such that $\mathbf{\alpha}
+=(\alpha_1,\dots,\alpha_n)$. Now we define a map for $\varphi:\mathbb{N}^n\to
+k[x_1,\dots,x_n]$ such that $\mathbf{\alpha}\mapsto \mathbf{x}^\alpha$
 %We map this vector to a monomial $x^\mathbf{\alpha}=x_1^{a_1}\dots x_n^{a_n}$.
 
 We can do the same thing with binomials.
@@ -125,19 +136,29 @@ We can form a lattice if we order $\mathbb{N}$ by division. The least common mul
 \section{Numerical Semigroups}
 We will go into a little greater depth here than we would ordinarily need to, but we will use some of this logic to make some decisions later when we examine Gaussian integers.
 
-If we take a set of unique integers $\mathbf{z}=\{z_1,\dots,z_n\}$.
-We can form an additive semigroup $S\subset \mathbb{Z}$ with elements of the form $a_1z_1+\dots+a_nz_n\in S$ where $a_i\in \mathbb{N}$.
-If $\mathbf{z}=\mathbf{0}$ then our semigroup consists solely of the element $0$, which is not interesting. Similarly if there exists some $z_i=0$ then the semigroup formed by $\{z_1,\dots,z_n\}$ is isomorphic to $\{z_1,\dots,z_{i-1},z_{i+1},\dots,z_n\}$. In order to keep things simple we will define $z_i\ne 0$ for all $1\le i\le n$.
+We begin with a set of unique positive integers $A=\{n_1,\dots,n_k\}$.
+We can form an additive semigroup $S\subset \mathbb{Z}$ with elements of the
+form $a_1n_1+\dots+a_kn_k\in S$ where $a_i\in \mathbb{N}$. If $A=\{0\}$ then
+our semigroup consists solely of the element $0$, which is not interesting.
+Similarly if there exists some $n_i=0\in A$ then the semigroup formed by $A$ is
+isomorphic to that formed by $A\setminus n_i$. In order to keep things simple we
+will define $n_i\ne 0$ for all $1\le i\le k$. Further, if the cardinality of $A$
+is 1, then $S\simeq\mathbb{N}$. This is also less than interesting.
 
-Further, if $\mathbf{z}$ consists of only one element, then $S\simeq\mathbb{N}$. This is also less than interesting.
-Now if the elements of $\mathbf{z}$ have a greatest common denominator $k\ne 1$ then $k|s$ for every element $s\in S$.
+Now if the elements of $A$ have a greatest common denominator $c\ne 1$ then
+$c|s$ for every element $s\in S$. We can construct a semigroup
+$S'=\{a_1n_1/c+\dots+a_kn_k/c:a_i\in \mathbb{N},n_i\in A\}$ where $S\simeq S'$.
+So we see that we can form a bijection between our $S$ semigroup and a semigroup
+with a greatest common denominator of one by multiplying or dividing every
+element in the group by $c$. Therefore we will only consider semigroups with
+coprime bases.
 
-This construction is trivial if $\mathbf{z}=\{0,\dots,0\}$ or if $n=1$, therefore we only consider $z_i\ne 0$ and $n>1$.
-We can form a bijection between this semigroup and a semigroup with a greatest common denominator of one by multiplying or dividing every element in the group by $k$.
-Therefore we will only consider semigroups with coprime bases.
+This semigroup is called a numerical semigroup and has a finite complement in
+$\mathbb{N}$.\cite{aoki}
 
-Now consider $z_i,z_j\in \mathbf{z}$.
-Then $\{az_i+bz_j>0|a,b\in \mathbb{Z}\}=E$.
+%TODO fix this proof
+\proof
+Now consider $n_i,n_j\in A$. Then $\{an_i+bn_j>0|a,b\in \mathbb{Z}\}=E$.
 There is at least one element in this set ($z_i$) and so there is a smallest element. Let this smallest element be $c=az_i+bz_j$.
 Now if we divide $z_i$ by $c$ then we obtain $z_i=cq+r$ with $0\le r<c$.
 This leads to $r=z_i-cq=z_i-(az_i+bz_j)q=(1-aq)z_i+bqz_j\in E$. Now because $0\le r<c$ and $c$ is a minimal element then $r=0$. And so we have $z_i=cq$.
@@ -145,25 +166,43 @@ That is to say $c|z_i$. Similarly $c|z_j$ and so $c=1$.
 
 Now if $1\in E\subseteq S$ then $a,b\ge0$ because the multiplication is just shorthand for the group addition. And so we have $1=az_i+bz_j$.
 Now if $a,b\ge 0$ then either $z_i=1$ or $z_j=1$ or one of $z_i,z_j<0$. In any of these cases we have $S=\mathbb{Z}$ which is not interesting, and so we restrict $z_i$ to be in $\mathbb{N}$.
+$\Box$
 
-This construction is called a numerical semigroup and has a finite complement in $\mathbb{N}$.\cite{aoki}
+We can extend our monomial map to the whole numerical semigroup.
 
-Notice that this semigroup corresponds exactly to the monomial maps we discussed earlier.
-
-We further observe that these objects are also lattices.
 %Typically a paper begins with an Abstract, Introduction, a section where basic tools and techniques are introduced, and subsequent sections where the subject is developed.
 \section{Bijections}
-We indicated that there is a bijection between these lattices/semigroups and Markov bases. We will discuss moving from a Markov basis to a numerical semigroup. We first create a matrix $A$ such that the rows of $A$ correspond to the elements of the Markov base. There exists two matrices $U,V$ and a diagonal matrix
-\[B=\left[\begin{array}{cccc}a_1&\dots&0\\\vdots&\ddots&\vdots\\0&\dots&a_r&\end{array}\right]\text{ with }a_i|a_{i+1}\]
-such that $UAV=B$. This is called the Smith normal form of $A$ \cite{adkins}. We can use the software package Xcas to easily compute these matrices. The last column of $V$ is a vector that is parallel and has the same magnitude as the basis for our semigroup.
+We indicated that there is a bijection between these semigroups and Markov
+bases. We will discuss moving from a Markov basis to a numerical semigroup. We
+first create a matrix $A$ such that the rows of $A$ correspond to the elements
+of the Markov base. There exists two matrices $U,V$ and a diagonal matrix
+\[B=
+\left[\begin{array}{cccc}
+  a_1&\dots&0\\
+  \vdots&\ddots&\vdots\\
+  0&\dots&a_r&
+\end{array}\right]
+\text{ with }a_i|a_{i+1}\]
+such that $UAV=B$. This is called the Smith normal form of $A$ \cite{adkins}.
+We can use the software package Xcas\cite{xcas} to easily compute these matrices. The last
+column of $V$ is a vector that is parallel and has the same magnitude as the
+basis for our semigroup.
 
 (cite Dr. McGuire?)
 
 We can then use Theorem 1 to convert back to our Markov basis.
 \section{Frobenius Number}
-The fact that numerical semigroups have a finite complement in $\mathbb{N}$ has a consequence. Namely that for some semigroup $S$ there exists some $N$ such that for $n\in S$ for every  $n>N$. This number is called the Frobenius number.
+The fact that numerical semigroups have a finite complement in $\mathbb{N}$ has
+a consequence. Namely that for some semigroup $S$ there exists some minimal $N$
+such that for $n\in S$ for every  $n>N$. This number is called the Frobenius
+number.
 
-We have a semigroup $S$ generated by the positive integers $\mathbf{z}=\langle z_1,\dots,z_n\rangle$. Let $z_\text{max}=\text{max}(\{z_1,\dots,z_n\})$ and $z_\text{min}=\text{min}(\{z_1,\dots,z_n\})$. If we choose some $s_1\in S$ then there exists at least one $s_2$ such that $s_1<s_2\le s_2+z_\text{max}$. In fact, for any $z_i\in \mathbf{z},s_1\in S$ we know that $s_1<s_1+z_i\le z_\text{max}$. This may seem obvious but let us continue.
+We have a semigroup $S$ generated by the set of positive integers
+$A=\{ n_1,\dots,n_k\}$. Let $n_\text{max}=\text{max}(\{n_1,\dots,n_k\})$ and
+$n_{\min{}}=\min{\{n_1,\dots,n_k\}}$. If we choose some $s_1\in S$, then
+there exists at least one $s_2$ such that $s_1<s_2\le s_2+n_{\max{}}$. In
+fact, for any $n_i\in A,s_1\in S$ we know that
+$s_1<s_1+n_i\le n_\text{max}$. This may seem obvious but let us continue.
 
 This suggests a simple algorithm for finding a Frobenius number. Let us consider the numerical semigroup $\langle z_1,\dots,z_n\rangle$. We know that every numerical semigroup contains zero. Thus our first candidate for a Frobenius number is -1.
 
@@ -218,14 +257,13 @@ Fix erroneous proof that assumes coprime integers in semigroup basis.
 Add proof using the above fix to show the finiteness of the complement of the semigroups in $\mathbb{N}$
 \end{itemize}
 
+\section{Numerical Semigroups}
+\section{Bijections}
+\section{Markov Bases}
+\section{Gaussian Integers}
 
-%I hope that this is not the quality of work I would ordinarily turn in, but it's not listed as points on the syllabus and it was asked for so here it is.
-%\nocite{*}
 \bibliographystyle{amsplain}
 \bibliography{bib}
 
 
 \end{document}
-
-
-
