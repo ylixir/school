@@ -428,11 +428,37 @@ Markov basis for log linear statistical models\cite{markstats} and related them
 to commutative algebra. This work has been applied in many fields and has been
 particularly active in computational biology. However, we will be glossing over
 the statistical role of these bases and will instead focus on their algebraic
-properties. First we need to get a few definitions out of the way.
+properties. First we need to get a few definitions and some notation out of the
+way.
+
+We can represent a numerical semigroup $S=\langle n_1,\dots,n_m \rangle$ as a
+matrix $A=\left[\begin{array}{rrr}n_1&\cdots&n_m\end{array}\right]$. Then for
+every element $s\in S$ we can say $s=Au$ for some $u\in \mathbb{N}^m$.
 
 \begin{defi}
-  fiber
+  \cite{bernd}
+  The set of tables
+  \[\mathcal{F}(u)=\left\{v\in \mathbb{N}^m:Av=Au\right\}\]
+  is called the \emph{fiber} of a contingency table $u\in \mathcal{T}(n)$ with
+  respect to the model $\mathcal{M}_A$
 \end{defi}
+
+Contingency tables and matrix models are specific to statistics. The thing we
+should take from this definition, is that a fiber $\mathcal{F}(u)$ of an element
+$Au$ of our semigroup $A$ is the set of vectors $\left\{v\in \mathbb{N}^m:Av=Au
+\right\}$
+\begin{exa}
+  For the numerical semigroup $A=\left[\begin{array}{rrr}3&4&5\end{array}\right]$
+  we will find the fiber corresponding to the element $Au=8$.
+
+  We need to find all solutions to the equation $\left[\begin{array}{rrr}3&4&5
+\end{array}\right]\left[\begin{array}{rrr}x,y,z \end{array}\right]=8$ or
+$3x+4y+5z=8$ where $x,y,z\in \mathbb{N}$. We find that $3+5$ and $4\cdot 2$ are
+the only two possible solutions, and so for $Au=8$ we see that $\mathcal{F}(u)=
+\{(1,0,1),(0,2,0)\}$.
+\end{exa}
+
+Before we give the definiton of a Markov basis, we note that the literature often refers to the elements of a Markov basis as \emph{moves}\cite[p.16]{bernd}
 \begin{defi}
 \cite{bernd}
 Let $\mathcal{M}_A$ be the log-linear model associated with a matrix $A$ whose integer kernel we denote by $\ker_\mathbb{Z}(A)$.
@@ -440,13 +466,60 @@ A finite subset $\mathcal{B}\subset\ker_{\mathbb{Z}}(A)$ is a \emph{Markov basis
 \[v'=v+\sum\limits_{k=1}^L{u_k}\text{ and }v+\sum\limits_{k=1}^l{u_k}\ge 0\text{ for all }l=1,\dots,L.\]
 \end{defi}
 
-The literature often refers to the elements of a Markov basis as \emph{moves}\cite[p.16]{bernd}
+Now that we have some more insight as to what a Markov basis is, the process in
+example 8 should make more sense.
+\begin{exa}
+  We will find the Markov basis which corresponds to the numerical semigroup
+$A=\langle 3,4,5\rangle$. First we generate the fibers which correspond to the
+elements of our numerical semigroup.
+\[\left[\begin{array}{r|rrr}
+&3&4&5\\
+\hline
+3&1&0&0\\
+4&0&1&0\\
+5&0&0&1\\
+6&2&0&0\\
+7&1&1&0\\
+8&1&0&1\\
+8&0&2&0\\
+9&3&0&0\\
+9&0&1&1\\
+10&2&1&0\\
+10&0&0&2\\
+\end{array}\right]
+\]
+We are particularly interested in fibers with more than one element. These are
+the fibers associated with the elements $8,9$ and $10$. From the definition of
+the Markov basis, we know that the product of $A$ and an element of the Markov
+basis is $0$. Furthermore, we know that we can add a sequence of elements of the
+Markov basis to any of the elements of a fiber to obtain any other element of
+that fiber. Taking the difference of two elements from the same fiber will
+meet both of these criteria.
 
-These bases are relevant because of the fundamental theorem of Markov bases which follows
+Thus if $Au=8$ then $\mathcal{F}(u)=\{(1,0,1),(0,2,0)\}$ and so
+$(-1,2,-1)\in\mathcal{B}$.
+If $Av=9$ then $\mathcal{F}(v)=\{(3,0,0),(0,1,1)\}$ and so
+$(3,-1,-1)\in\mathcal{B}$.
+And if $Aw=10$ then $\mathcal{F}(w)=\{(2,1,0),(0,0,2)\}$ and so
+$(-2,-1,2)\in\mathcal{B}$.
+And so we have built our Markov basis.
+\[
+  \mathcal{B}=\left[\begin{array}{rrr}
+  3&-1&-1\\
+  -1&2&-1\\
+  -2&-1&2\\
+  \end{array}\right]
+\]
+\end{exa}
+
+
+We also have the fundamental theorem of Markov bases which provides a direct relation
+to a lattice ideal.
 \begin{thm}
 \cite[p.~54]{aoki}
 A finite set of moves $\mathcal{B}$ is a Markov basis for $A$ if and only if the set of binomials $\{p^{\mathbf{z}^+}-p^{\mathbf{z}^-}|\mathbf{z}\in \mathcal{B}\}$ generates the toric ideal $I_A$.
 \end{thm}
+
 \section{Gaussian Integers}
 Notice that the real and complex parts of Gaussian integers do not interact under addition. Now let us take the linear combination of some finite set of Gaussian integers.
 
