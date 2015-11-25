@@ -418,10 +418,23 @@ $
 \end{exa}
 We can use the software package Xcas\cite{xcas} to easily compute these matrices.
 \section{Markov Bases}
-%TM: Too abrupt
-What are Markov bases? A definition of Markov basis follows\cite{bernd}.
+We have been speaking of Markov bases, but we have not explored what they are or
+where they come from. In this section we will explore their history and their
+relevance.
+
+Markov bases play a central role in the recent field of algebraic statistics.
+One of the earliest papers on this field\cite{bernd} introduced the idea of a
+Markov basis for log linear statistical models\cite{markstats} and related them
+to commutative algebra. This work has been applied in many fields and has been
+particularly active in computational biology. However, we will be glossing over
+the statistical role of these bases and will instead focus on their algebraic
+properties. First we need to get a few definitions out of the way.
 
 \begin{defi}
+  fiber
+\end{defi}
+\begin{defi}
+\cite{bernd}
 Let $\mathcal{M}_A$ be the log-linear model associated with a matrix $A$ whose integer kernel we denote by $\ker_\mathbb{Z}(A)$.
 A finite subset $\mathcal{B}\subset\ker_{\mathbb{Z}}(A)$ is a \emph{Markov basis} for $\mathcal{M}_A$ if for all $u\in \mathcal{T}(n)$ and all pairs $v,v'\in \mathcal{F}(u)$ there exists a sequence $u_1,\dots,u_L\in  \mathcal{B}$ such that
 \[v'=v+\sum\limits_{k=1}^L{u_k}\text{ and }v+\sum\limits_{k=1}^l{u_k}\ge 0\text{ for all }l=1,\dots,L.\]
