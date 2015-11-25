@@ -51,7 +51,7 @@
 %\medskip
 %\centerline{\large{by Math Student}}
 %\bigskip
-\title{On the Markov Basis}
+\title{A Study of Numerical Semigroups, Markov Bases, and Gaussian Integers}
 \author{Jon Allen}
 \begin{abstract}
 In this article will study Markov bases, numerical semigroups and Gaussian
@@ -60,9 +60,34 @@ usefulness of maps between these objects.
 \end{abstract}
 \maketitle
 \section{Introduction}
-We will proceed by first going over some basic maps between elements of
-$\mathbb{N}^n$ and monomials. We will also touch on similar maps from
-$\mathbb{Z}^n$ and binomials.
+This paper is broken into four main sections. They are: Numerical Semigroups,
+Bijections, Markov Bases, Gaussian Integers.
+
+Instead of simply heading straight for a definition of numerical semigroups,
+we will instead construct them from scratch. It will be necessary to understand
+the reasoning behind the construction of these groups if we wish to create an
+analogous construction with Gaussian integers later. After we have constructed
+this semigroup, we will then define it and show some examples. Finally we will
+discuss Frobenius numbers, which are related to the fact that numerical
+semigroups have a finite complement.
+
+After we discuss numerical semigroups, then we will talk about the kinds of things
+which are in bijection with them. These objects include lattice ideals, and Markov
+bases. This leads us to ask what exactly Markov Ideals are.
+
+The third section will define Markov bases and present a theorem that is central
+to the usefulness of these objects. We our better understanding of Markov bases
+we will revisit the map between these and numerical semigroups before we move
+onto Gaussian integers.
+
+The cocept of numerical semigroups leads us to ask what kind of other similar
+constructions we can create. We examine what happens when we extend this object
+from $\mathbb{N}$ to $\mathbb{N}\times \mathbb{N}$. Here we will encounter an
+exciting and surpising fact.
+
+%We will proceed by first going over some basic maps between elements of
+%$\mathbb{N}^n$ and monomials. We will also touch on similar maps from
+%$\mathbb{Z}^n$ and binomials.
 %TM: What monomials? Binomials?
 
 We will then touch on Markov bases and their relationships to the numerical
@@ -200,22 +225,6 @@ Now we can map an element of $\mathbb{Z}^n$ to the binomials over field $k$ if
 we define $\varphi:\mathbb{Z}^n\to k[x_1\dots x_n]$ as $\mathbf{z}\mapsto
 \mathbf{x}^{\mathbf{z}^+}-\mathbf{x}^{\mathbf{z}^-}$
 
-\subsection{Numerical Semigroups in Lattice Theory}
-\begin{defi}
-\cite{stanley}
-A \emph{lattice} is a partially ordered set in which every two elements have a
-unique least upper bound and a unique greatest lower bound.
-\end{defi}
-\begin{exa}
-$\mathbb{N}^2$ is a lattice with supremum and infinum for any two elements which
-belong to it. Notice that $(1,2)$ and $(2,1)$ have a lower bound of $(1,1)$ and
-an upper bound of $(2,2)$.
-\end{exa}
-\begin{exa}
-We can form a lattice if we order $\mathbb{N}$ by division. The least common
-multiple forms a least upper bound and an greatest lower bound is formed by the
-greatest common denominator.
-\end{exa}
 \subsection{Markov Bases}
 As we will see in Theorem 2 we can map a numerical semigroup to a Markov
 basis\cite{bernd}.
@@ -417,6 +426,67 @@ $
 
 \end{exa}
 We can use the software package Xcas\cite{xcas} to easily compute these matrices.
+\subsection{Numerical Semigroups in Lattice Theory}
+\begin{defi}
+\cite{stanley}
+A \emph{lattice} is a partially ordered set in which every two elements have a
+unique least upper bound and a unique greatest lower bound.
+\end{defi}
+\begin{exa}
+$\mathbb{N}^2$ is a lattice with supremum and infinum for any two elements which
+belong to it. Notice that $(1,2)$ and $(2,1)$ have a lower bound of $(1,1)$ and
+an upper bound of $(2,2)$.
+\end{exa}
+\begin{exa}
+We can form a lattice if we order $\mathbb{N}$ by division. The least common
+multiple forms a least upper bound and an greatest lower bound is formed by the
+greatest common denominator.
+\end{exa}
+The fundamental theorem of Markov bases (which we will discuss in the next section)
+claims that there is a bijection between a lattice ideal and a Markov basis. As
+we have already seen, Markov bases are in bijection with numerical semigroups.
+
+Thus we see that every numerical semigroup is in bijection with a lattice ideal.
+
+\begin{exa}
+  We begin with a lattice ideal
+  \[
+  I_\Lambda=
+  \begin{cases}
+    x^3-yz\\
+    y^2-xz\\
+    z^2-xy
+  \end{cases}
+  \]
+  Now this ideal is a set of binomials which we can map in the usual way to a set
+  of vectors.
+  \[
+  \begin{cases}
+    x^3-yz\\
+    y^2-xz\\
+    z^2-x^2y
+  \end{cases}
+  \Rightarrow
+  \left[\begin{array}{rrr}
+    3&-1&-1\\
+    -1&2&-1\\
+    -1&-1&2
+  \end{array}\right]
+  \]
+  The key here, is that we are guaranteed by Theorem 2, that these vectors are
+  actually a Markov basis. And as we saw in the previous two sections, this basis
+  corresponds to the numerical semigroup $\langle 3,4,5\rangle$. And so we see
+  \[
+  \begin{cases}
+    x^3-yz\\
+    y^2-xz\\
+    z^2-xy
+  \end{cases}
+  \mapsto\langle 3,4,5\rangle
+  \]
+  The reverse map is similarly straightforward.
+\end{exa}
+
 \section{Markov Bases}
 We have been speaking of Markov bases, but we have not explored what they are or
 where they come from. In this section we will explore their history and their
