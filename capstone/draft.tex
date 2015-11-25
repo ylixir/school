@@ -170,16 +170,35 @@ This algorithm will find the Frobenius number within a linear multiple of the nu
 
 \section{Bijections}
 The things we need to understand is a common map that the literature takes for
-granted. There is a straightforward map between $\mathbb{N}^n$ and monomials
-over a field $k$. We choose some $\mathbf{\alpha}\in \mathbb{N}^n$ such that
-$\mathbf{\alpha}=(\alpha_1,\dots,\alpha_n)$. Now we define a map for
-$\varphi:\mathbb{N}^n\to k[x_1,\dots,x_n]$ such that $\mathbf{\alpha}\mapsto
+granted. There is a straightforward map between $\mathbb{N}^m$ and monomials
+over a field $k$. We choose some $\mathbf{\alpha}\in \mathbb{N}^m$ such that
+$\mathbf{\alpha}=(\alpha_1,\dots,\alpha_m)$. Now we define a map for
+$\varphi:\mathbb{N}^n\to k[x_1,\dots,x_m]$ such that $\mathbf{\alpha}\mapsto
 \mathbf{x}^\alpha$.
 
-Now we let $S=\langle n_1,\ldots,n_m\rangle$ be any numerical semigroup, and
-$s\in S$ be an element of that semigroup, then $s=a_1n_1+\cdots+{a_m}n_m$. Of
-course $(a_1,\ldots,a_m)\in \mathbb{N}^m$. Thus we have a very natural bijective
-map between a numerical semigroup and a monomial.
+\begin{lemma}
+Let $S$ be a numerical semigroup.  Then $\varphi(S)$ is the set of monic
+monomials of a monomial ideal of $k[x]$, where $\varphi$ is as above.
+\begin{proof}
+  We take a numerical semigroup $S=\langle n_1,\dots,n_m\rangle$. Under
+$\varphi$ this set maps to $\{x^{s}:s\in S\}$. Of course $s=a_1n_1+\cdots+a_mn_m$
+where $a_i\in \mathbb{N}$. Of course multiplying monomials is simply a matter
+of adding exponents, and so if $I=\langle x^{n_1},\dots,x^{n_m}\rangle$ then
+$\varphi:S\to I$
+\end{proof}
+\end{lemma}
+
+We can do a similar map with binomials.
+In the binomial case we start with some $\mathbf{z}\in \mathbb{Z}^n$.
+We define $\mathbf{z}=(z_1,\dots,z_n)$.
+We also define $\mathbf{z}^+$ and $\mathbf{z}^-$ as follows:
+\begin{align*}
+  \mathbf{z}^+&=\mathbf{z}\vee\mathbf{0}&
+  \mathbf{z}^-&=-(\mathbf{z}\wedge\mathbf{0})
+\end{align*}
+Now we can map an element of $\mathbb{Z}^n$ to the binomials over field $k$ if
+we define $\varphi:\mathbb{Z}^n\to k[x_1\dots x_n]$ as $\mathbf{z}\mapsto
+\mathbf{x}^{\mathbf{z}^+}-\mathbf{x}^{\mathbf{z}^-}$
 
 \subsection{Numerical Semigroups in Lattice Theory}
 \begin{defi}
@@ -189,7 +208,7 @@ unique least upper bound and a unique greatest lower bound.
 \end{defi}
 \begin{exa}
 $\mathbb{N}^2$ is a lattice with supremum and infinum for any two elements which
-belong two it. Notice that $(1,2)$ and $(2,1)$ have a lower bound of $(1,1)$ and
+belong to it. Notice that $(1,2)$ and $(2,1)$ have a lower bound of $(1,1)$ and
 an upper bound of $(2,2)$.
 \end{exa}
 \begin{exa}
@@ -197,12 +216,71 @@ We can form a lattice if we order $\mathbb{N}$ by division. The least common
 multiple forms a least upper bound and an greatest lower bound is formed by the
 greatest common denominator.
 \end{exa}
+\subsection{Markov Bases}
+As we will see in Theorem 2 we can map a numerical semigroup to a Markov
+basis\cite{bernd}.
+Each element $a$ of a numerical semigroup $S=\langle n_1,\dots,n_m\rangle$ takes
+the form $a=a_1n_1+\dots+a_mn_m$. Now we examine the vectors $(a_1,\dots,a_m)$.
+Note that any given $a\in S$ may have more than one vector associated with it.
+\begin{exa}
+  $S=\langle 3,4,5\rangle$. Notice that $8=2\cdot 4=3+5$. Thus we have two
+  vectors associated with $8\in S$.
+\end{exa}
+We are looking for elements of our numerical semigroup which have multiple
+associated but disconnected vectors. The vectors ${\bf a}=(a_1,\dots,a_m)$
+and ${\bf b}=(b_1,\dots,b_m)$ are connected if there exists some $i$
+such that $a_i>0$ and $b_i>0$. Furthermore, if ${\bf a}$ is connected to
+${\bf b}$ and ${\bf b}$ is connected to ${\bf c}$ then ${\bf a}$ is connected to
+${\bf c}$. Once we have found two disconnected vectors associated with an
+element of our numerical semigroup, then we subtract them to find an element
+of our Markov basis. We continue until we have found the elements of our Markov
+basis guaranteed by Theorem 2.
 
+\begin{exa}
+  We will find the Markov basis which corresponds to the numerical semigroup
+$\langle 3,4,5\rangle$. First we generate a list of vectors which correspond
+to the elements of our numerical semigroup.
+\[\left[\begin{array}{r|rrr}
+&3&4&5\\
+\hline
+3&1&0&0\\
+4&0&1&0\\
+5&0&0&1\\
+6&2&0&0\\
+7&1&1&0\\
+8&1&0&1\\
+8&0&2&0\\
+9&3&0&0\\
+9&0&1&1\\
+10&2&1&0\\
+10&0&0&2\\
+\end{array}\right]
+\]
+Now we see that $8,9,10$ all have two associated but disconnected vectors. We
+subtract these vectors to obtain
+\[
+  \left[\begin{array}{rrr}
+  3&-1&-1\\
+  -1&2&-1\\
+  -2&-1&2\\
+  \end{array}\right]
+\]
+Which is our Markov basis.
+\end{exa}
+
+It is convenient to write our Markov basis as a matrix, whose rows consist of
+the elements of the Markov basis.
 \subsection{Smith Normal Form}
-We first create a matrix $A$ such that the rows of $A$ correspond to the elements
-of the Markov base. There exists two matrices $U,V$ and a diagonal matrix
+We choose a Markov basis matrix $M$ and it's associated numerical semigroup $S$.
+Every row $v$ of $M$ consists of two vectors $a,b$ where $v=a-b$. Let $S=
+\langle n_1,\dots,n_m\rangle$ and define the vector $s=(n_1,\dots,n_m)$. Now
+$s\cdot a=s\cdot b$. And so $s\cdot v=0$. This means that if we have $M$, we can
+find our numerical semigroup $S$ by finding a nontrivial solution to $Ms=0$.
+
+This suggests that we could use the Smith normal form of our Markov basis matrix
+to find our numerical semigroup.
 \begin{defi}
-  If we are given some matrix $A$ whose entries are in a principal ideal domain,
+  If we are given some matrix $M$ whose entries are in a principal ideal domain,
   then we can find some matrices $U,V,B$ such that
 \[UAV=B=
 \left[\begin{array}{cccc}
@@ -339,14 +417,6 @@ $
 
 \end{exa}
 We can use the software package Xcas\cite{xcas} to easily compute these matrices.
-\subsection{Markov Bases}
-We indicated that there is a bijection between these semigroups and Markov
-bases. We will discuss moving from a Markov basis to a numerical semigroup.
-The last column of $V$ is a vector that is parallel and has the same magnitude as the
-basis for our semigroup.
-
-We can then use Theorem 1 to convert back to our Markov basis.
-
 \section{Markov Bases}
 %TM: Too abrupt
 What are Markov bases? A definition of Markov basis follows\cite{bernd}.
@@ -365,17 +435,6 @@ These bases are relevant because of the fundamental theorem of Markov bases whic
 A finite set of moves $\mathcal{B}$ is a Markov basis for $A$ if and only if the set of binomials $\{p^{\mathbf{z}^+}-p^{\mathbf{z}^-}|\mathbf{z}\in \mathcal{B}\}$ generates the toric ideal $I_A$.
 \end{thm}
 \section{Gaussian Integers}
-
-We can do the same thing with binomials.
-In the binomial case we start with some $\mathbf{z}\in \mathbb{Z}^n$.
-We define $\mathbf{z}=(z_1,\dots,z_n)$.
-We also define $\mathbf{z}^+$ and $\mathbf{z}^-$ as follows:
-\begin{align*}
-  \mathbf{z}^+&=\mathbf{z}\vee\mathbf{0}&
-  \mathbf{z}^-&=-(\mathbf{z}\wedge\mathbf{0})
-\end{align*}
-Now we can map an element of $\mathbb{Z}^n$ to the binomials over field $k$ if we define $\varphi:\mathbb{Z}^n\to k[x_1\dots x_n]$ as $\mathbf{z}\mapsto \mathbf{x}^{\mathbf{z}^+}-\mathbf{x}^{\mathbf{z}^-}$
-
 Notice that the real and complex parts of Gaussian integers do not interact under addition. Now let us take the linear combination of some finite set of Gaussian integers.
 
 If we do not restrict ourselves to positive coefficients, then we wind up with semigroups that span the entire number line along multiples of a greatest common denominator. This is as uninteresting now as it was with numerical semigroups, and so we will only look at positive values from here.
