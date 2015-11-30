@@ -45,32 +45,44 @@ following are equivalent:
     $f^{-1}(U)=\{x\in X:f(x)\in U\}$ is open in $X$ for every open set $U$ in $Y$.
   \end{enumerate}
 
-  We start by assuming that $f$ is continuous on $X$. 
+  We start by assuming that $f$ is continuous on $X$. Now we know that for every $\delta>0$ there exists some $N$ such that $\rho(x_n,a)<\delta$ for all $n\ge N$. Thus for every 
 \renewcommand{\labelenumii}{(\alph{enumii})}
 \setcounter{enumi}{7}
 \item
 %9.1 H
 Two metrics $\rho$ and $\sigma$ on a set $X$ are {\bf equivalent} if there are
-constants $0<c<C$ such that $c\rho(x,y)\le\sigma(x,y)\le C\sigma(x,y)$ for all
+constants $0<c<C$ such that $c\rho(x,y)\le\sigma(x,y)\le C\rho(x,y)$ for all
 $x,y\in X$
   \begin{enumerate}
     \item
     Prove that equivalent metrics are topologically equivalent
     \item
     Prove that equivalent metrics have the saame Cauchy sequences
+
+    We begin with some Cauchy sequence $(x_n)\in \rho$.
+    Then for every $\varepsilon/C>0$ there exists some $N$ such that $\rho(x_i,x_j)<\varepsilon/C$.
+    But $\sigma(x_i,x_j)\le C\rho(x_i,x_j)<\varepsilon$ and so the sequence is Cauchy in $\sigma$.
+    Now let us assume that our sequence is Cauchy in $\sigma$.
+    Then for every $c\varepsilon>0$ there exists some $N$ such that $c\rho(x_i,x_j)\le \sigma(x_i,x_j)<c\varepsilon$ and so certainly $\rho(x_i,x_j)<\varepsilon$.
     \item
     Give examples of topologically equivalent metrics that are not equivalent
   \end{enumerate}
 \setcounter{enumi}{10}
 \item
 %9.1 K
-Recal the 2-adic metric of examples 9.1.2 (4) and 9.1.5 (4). Extend it to
+Recall the 2-adic metric of examples 9.1.2 (4) and 9.1.5 (4). Extend it to
 $\mathbb{Q}$ by setting $\rho_2(a/b,a/b)=0$ and, if $a/b\ne c/d$, then
 $\rho_2(a/b,c/d)=2^{-e}$, where $e$ is the unique integer such that
 $a/b-c/d=2^e(f/g)$ and both $f$ and $g$ are odd integers
   \begin{enumerate}
     \item
     Prove that $\rho_2$ is a metric on $\mathbb{Q}$
+
+    if $a/b\ne c/d$ then $a/b-c/d=\frac{ad-cb}{db}$. Now $ad-cb=2^{i}f$ for some odd $f$ and $db=2^{j}g$ for some odd $g$. Then $a/b-c/d=2^{i-j}(f/g)$. Of course $2^{i-j}$ is non-zero and so $\rho_2(a/b,c/d)\ne 0$.
+
+    Now we assume that $a/b-c/b=2^e\frac{f}{g}$. Then $c/d-a/b=2^e(-f/g)$ and so $\rho_2(x,y)=\rho)2(y,x)$.
+
+    And finally, if $\rho_2(a/b,c/d)=2^{-i+l}$, $\rho_2(a/b,e/f)=2^{-k+l}$ and $\rho_2(c/d,e/f)=2^{-j+l}$ then $a/b-c/d=(adf-bcf)/bdf$ and $c/d-e/f=(bcf-bde)/bdf$ while $a/b-e/f=(adf-bde)/bdf=(adf-bcf)/bdf+(bcf-bde)/bdf$. Now we see that $\rho_2(a/b,e/f)=2^{-i-j+l}\le 2^{-i-j+2l}=2^{-i+l}+2^{-j+l}$
     \item
     Show that the sequence of integers $a_n=(1-(-2)^n)/3$ converges in
 $(\mathbb{Q},\rho_2)$
