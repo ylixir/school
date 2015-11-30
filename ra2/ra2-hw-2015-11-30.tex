@@ -1,0 +1,81 @@
+%shell-escape
+\documentclass[letterpaper]{article}
+
+\usepackage{amsmath}
+\usepackage[utf8x]{luainputenc}
+\usepackage{amssymb}
+\usepackage{gnuplottex}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+%\chead{Real Analysis II Homework}
+\rhead{Jon Allen}
+\lhead{Real Analysis 2}
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+
+\begin{document}
+
+\renewcommand{\labelenumi}{\Alph{enumi}.}
+%\renewcommand{\labelenumii}{\arabic{enumii}.}
+\renewcommand{\labelenumii}{(\alph{enumii})}
+\subsection*{9.1}
+\begin{enumerate}
+\setcounter{enumi}{1}
+\item
+%9.1 B
+Show that every subset of a discrete metric space is both open and closed.
+
+We have a discrete metric $d$ on a set $X$. Now we take $U\subset X$. For any $x\in U$ we have $B(x,r)\subset U$ if $r\le 1$ because the ball will contain only the point $x$. Note that this is trivially true even if $U=\emptyset$ because there is no $x\in U$ that does not have a ball around it. Now because our choice of $U$ was arbitrary we know that all subsets of $X$ are open. And the complements of any subsets of $X$ are themselves subsets of $X$, and so they are open. But they are the complement of an open set, and so  they must be closed. Thus every subset of a discrete metric space is both open and closed.
+\setcounter{enumi}{3}
+\item
+%9.1 D
+Prove Theorem 9.1.7
+
+Let $f$ map a metric space $(X,\rho)$ into a metric space $(Y,\rho)$. The
+following are equivalent:
+\renewcommand{\labelenumii}{(\arabic{enumii})}
+  \begin{enumerate}
+    \item
+    $f$ is continuous on $X$;
+    \item
+    for every sequence $(x_n)$ with $\lim\limits_{n\to\infty}x_n=a\in X$, we
+    have $\lim\limits_{n\to\infty}f(x_n)=f(x)$; and
+    \item
+    $f^{-1}(U)=\{x\in X:f(x)\in U\}$ is open in $X$ for every open set $U$ in $Y$.
+  \end{enumerate}
+
+  We start by assuming that $f$ is continuous on $X$. 
+\renewcommand{\labelenumii}{(\alph{enumii})}
+\setcounter{enumi}{7}
+\item
+%9.1 H
+Two metrics $\rho$ and $\sigma$ on a set $X$ are {\bf equivalent} if there are
+constants $0<c<C$ such that $c\rho(x,y)\le\sigma(x,y)\le C\sigma(x,y)$ for all
+$x,y\in X$
+  \begin{enumerate}
+    \item
+    Prove that equivalent metrics are topologically equivalent
+    \item
+    Prove that equivalent metrics have the saame Cauchy sequences
+    \item
+    Give examples of topologically equivalent metrics that are not equivalent
+  \end{enumerate}
+\setcounter{enumi}{10}
+\item
+%9.1 K
+Recal the 2-adic metric of examples 9.1.2 (4) and 9.1.5 (4). Extend it to
+$\mathbb{Q}$ by setting $\rho_2(a/b,a/b)=0$ and, if $a/b\ne c/d$, then
+$\rho_2(a/b,c/d)=2^{-e}$, where $e$ is the unique integer such that
+$a/b-c/d=2^e(f/g)$ and both $f$ and $g$ are odd integers
+  \begin{enumerate}
+    \item
+    Prove that $\rho_2$ is a metric on $\mathbb{Q}$
+    \item
+    Show that the sequence of integers $a_n=(1-(-2)^n)/3$ converges in
+$(\mathbb{Q},\rho_2)$
+    \item
+    Find the limit of $\displaystyle \frac{n!}{n!+1}$ in this metric.
+  \end{enumerate}
+\end{enumerate}
+\end{document}
