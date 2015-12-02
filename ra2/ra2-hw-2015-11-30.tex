@@ -38,6 +38,7 @@ following are equivalent:
   \begin{enumerate}
     \item
     $f$ is continuous on $X$;
+
     \item
     for every sequence $(x_n)$ with $\lim\limits_{n\to\infty}x_n=a\in X$, we
     have $\lim\limits_{n\to\infty}f(x_n)=f(x)$; and
@@ -45,7 +46,9 @@ following are equivalent:
     $f^{-1}(U)=\{x\in X:f(x)\in U\}$ is open in $X$ for every open set $U$ in $Y$.
   \end{enumerate}
 
-  We start by assuming that $f$ is continuous on $X$. Now we know that for every $\delta>0$ there exists some $N$ such that $\rho(x_n,a)<\delta$ for all $n\ge N$. Thus for every 
+  We start by assuming that $f$ is continuous on $X$. Now we know that for every $a\in X$ and $\varepsilon>0$ there exists a $\delta>0$ such that $\sigma(f(x),f(a))<\varepsilon$ whenever $\rho(x,a)<\\delta$. We also know that the limit of $\rho(x,a)$ is zero as $x\to a$. Now from the definition of limit, we know that we can find some $\delta>0$ such that $\rho(x,a)<\delta$. But then from the definition of continuity we can have $\sigma(f(x),f(a))<\varepsilon$ which means that the limit of $\sigma(f(x),f(a))$ is zero as $f(x)\to f(a)$ as required.
+
+  Now if we assume 1 is false, and $f$ is discontinuous at some point $a$ then we can find some number $\varepsilon>0$
 \renewcommand{\labelenumii}{(\alph{enumii})}
 \setcounter{enumi}{7}
 \item
@@ -56,6 +59,8 @@ $x,y\in X$
   \begin{enumerate}
     \item
     Prove that equivalent metrics are topologically equivalent
+
+    If we say $\sigma(x,y)=r$ and let $s=r/c$ then we have $B_s^\rho(x)\subset  B_r^\sigma(x)$, straight from the inequality in the definition of equivalence. Now if $\rho(x,y)=r$ then $\sigma(x,y)/C\le r/c=s$ because $C>c$ and so we see that $B_s^\sigma(x)\subset B_r^\rho$.
     \item
     Prove that equivalent metrics have the saame Cauchy sequences
 
@@ -66,6 +71,10 @@ $x,y\in X$
     Then for every $c\varepsilon>0$ there exists some $N$ such that $c\rho(x_i,x_j)\le \sigma(x_i,x_j)<c\varepsilon$ and so certainly $\rho(x_i,x_j)<\varepsilon$.
     \item
     Give examples of topologically equivalent metrics that are not equivalent
+
+    If we let $\sigma(x,y)=\min\{1,\rho(x,y)\}$ and $\rho(x,y)=|x-y|$ then, no
+    matter how small we make $c$, we can make $y=x+1/c+1$ and then no matter
+    our choice of $c$ we can make $y=x+1/c+1$ and $\sigma(x,x+1/c+1)=1$ but $c\rho(x,x+1/c+1)=c+1>\sigma(x,x+1/c+1)$ so they are not equivalent. But if we choose any $r$ for $B_r^\sigma(x)$ we will have either all real numbers or all real numbers in $[-r,r]$. Either way, we can certainly can say that $s=\min(1/2,r/2)$ and then $B_s^\rho(x)\subset B_r^\sigma(x)$ and $B_s^\sigma(x)\subset B_r\rho(x)$
   \end{enumerate}
 \setcounter{enumi}{10}
 \item
@@ -85,9 +94,13 @@ $a/b-c/d=2^e(f/g)$ and both $f$ and $g$ are odd integers
     And finally, if $\rho_2(a/b,c/d)=2^{-i+l}$, $\rho_2(a/b,e/f)=2^{-k+l}$ and $\rho_2(c/d,e/f)=2^{-j+l}$ then $a/b-c/d=(adf-bcf)/bdf$ and $c/d-e/f=(bcf-bde)/bdf$ while $a/b-e/f=(adf-bde)/bdf=(adf-bcf)/bdf+(bcf-bde)/bdf$. Now we see that $\rho_2(a/b,e/f)=2^{-i-j+l}\le 2^{-i-j+2l}=2^{-i+l}+2^{-j+l}$
     \item
     Show that the sequence of integers $a_n=(1-(-2)^n)/3$ converges in
-$(\mathbb{Q},\rho_2)$
+    $(\mathbb{Q},\rho_2)$
+
+    $(1-(-2)^n)/3-1/3=-(-1)^n2^n/3$ so $\rho_2((1-(-2)^n)/3,1/3)=2^{-n}$ which converges to zero, so $(a_n)$ converges to $\frac{1}{3}$
     \item
     Find the limit of $\displaystyle \frac{n!}{n!+1}$ in this metric.
+
+    We know that $n!$ is even for $n\ge 2$, so $n!+1$ is odd for $n\ge 2$. We also know that every other term of $n!$ adds at least one factor of 2 to $n!$. Thus $\rho_2(n!/(n!+1),0)\le2^{-n/2}$. And so we know that if we choose $N$ large enough that $0<2^{N/2}\le \varepsilon$ for any $\varepsilon>0$ then $\rho_2(n!/(n!+1),0)\le2^{-n/2}\le 2^{-N/2}$ for all $n>N$. We see that the limit must be 0.
   \end{enumerate}
 \end{enumerate}
 \end{document}
