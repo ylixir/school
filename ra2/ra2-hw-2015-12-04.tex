@@ -1,0 +1,75 @@
+%shell-escape
+\documentclass[letterpaper]{article}
+
+\usepackage{amsmath}
+\usepackage[utf8]{luainputenc}
+\usepackage{amssymb}
+\usepackage{gnuplottex}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+%\chead{Real Analysis II Homework}
+\rhead{Jon Allen}
+\lhead{Real Analysis 2}
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+
+\begin{document}
+
+\renewcommand{\labelenumi}{\Alph{enumi}.}
+%\renewcommand{\labelenumii}{\arabic{enumii}.}
+\renewcommand{\labelenumii}{(\alph{enumii})}
+\subsubsection*{7.3}
+\begin{enumerate}
+\setcounter{enumi}{5}
+\item
+%7.3 F
+Let $\mathbb{R}^n$ have the max morm $||\mathbf{x}||_\infty=\max\{|x_i|:1\le  i\le n\}$. Let $K$ be the unit ball of $V$ and let $v=(2,0,\dots,0)$. Find all closest points to $v$ in $K$. 
+
+We need $\min\{||\mathbf{v}-\mathbf{x}||:\mathbf{x}\in K\}$. We know that $|v_i-x_i|=x_i$ if $i\ne 1$ so let us look at $v_1$. We just need $\min|v_1-x_1|$. Since $-1\le x_1\le 1$ then we can't do better than $x_1=1$. So the closes points to $v$ in $K$ are $\{(1,x_2,\dots,x_n):|x_i|\le 1\}$
+\end{enumerate}
+\subsubsection*{7.4}
+\begin{enumerate}
+\setcounter{enumi}{1}
+\item
+%7.4 B
+Show that every iiner product space stisfies the parallelogram law:
+\[||x+y||^2+||x-y||^2=2||x||^2+2||y||^2\text{ for all } x,y\in V\]
+
+  \begin{align*}
+    ||x+y||^2&=\langle x+y,x+y\rangle=\langle x,x\rangle+2\langle x,y\rangle+\langle y,y\rangle\\
+    ||x-y||^2&=\langle x-y,x-y\rangle=\langle x,x\rangle-2\langle x,y\rangle+\langle y,y\rangle\\
+    ||x+y||^2+||x-y||^2&=2\langle x,x\rangle+2\langle y,y\rangle=2(||x||^2+||y||^2)\\
+    ||x+y||^2+||x-y||^2&=2||x||^2+2||y||^2
+%    ||x+y||^2&=2(||x||^2+||y||^2)-||x-y||^2
+  \end{align*}
+
+
+\item
+%7.4 C
+Minimize the quantity $||x||^2-2t\langle x,y\rangle +t^2||y||^2$ over $t\in \mathbb{R}$. You will see why we chose $t$ as we did in th proof of the Cauchy-Schwarz inequality.
+
+\setcounter{enumi}{6}
+\item
+%7.4 G
+A normed vector space is {\bf strictly convex} if $||u||=||v||=||u+v)/2||=1$ for vectors $u,v\in V$ implies that $u=v$
+\begin{enumerate}
+\item
+Show that an inner product space is always strictly convex.
+
+We assume that $||u||=||v||=||(u+v)||/2||=1$. Then
+\begin{align*}
+  1&=||(u+v)/2||\\
+  1^2&=(\frac{1}{2}||(u+v)||)^2\\
+  1&=\frac{1}{4}||(u+v)||)^2\\
+  4=2+2&=||u+v||^2=2||u||^2+2||v||^2-||u-v||^2\\
+  0&=||y-v||^2=\langle u-v,u-v\rangle=\langle0,0\rangle
+\end{align*}
+Thus $u=v$
+\item
+Show that $\mathbb{R}^2$ with the norm $||(x,y)||_\infty=\max\{|x|,|y|\}$ is not strictly convex.
+
+We take $(1,1)$ and $(1,0)$. Then $||(1,1)||=||(1,0)||=||(2,1)/2||=1$ but $(1,1)\ne (1,0)$.
+\end{enumerate}
+\end{enumerate}
+\end{document}
