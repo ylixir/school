@@ -49,6 +49,11 @@ Show that every iiner product space stisfies the parallelogram law:
 %7.4 C
 Minimize the quantity $||x||^2-2t\langle x,y\rangle +t^2||y||^2$ over $t\in \mathbb{R}$. You will see why we chose $t$ as we did in th proof of the Cauchy-Schwarz inequality.
 
+First we need to find any critical points.
+\begin{align*}
+  \frac{\mathrm{d}}{\mathrm{d}x}\left(||x||^2-2t\langle x,y\rangle +t^2||y||^2\right)&=-2\langle x,y\rangle+2t||y||^2\\
+\end{align*}
+Notice that the derivative has no asymptotes or discontinuities. It's only zero is at $t=\frac{\langle x,y\rangle}{||y||^2}$. The second derivative is $2||y||^2\ge 0$ and so the expression is convex with a minimum at $\frac{\langle x,y\rangle}{||y||^2}$
 \setcounter{enumi}{6}
 \item
 %7.4 G
