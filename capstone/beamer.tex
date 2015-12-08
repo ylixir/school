@@ -46,16 +46,17 @@
 
 %\usepackage{times}
 %\usepackage[T1]{fontenc}
-\usepackage{pgf,tikz}
+%\usepackage{pgf,tikz}
+\usepackage{tikz}
 \usepackage{color}
 \usepackage{xcolor}
 \usepackage{cases}
 \tikzstyle{edge} = [fill,opacity=.5,fill opacity=.5,line cap=round, line join=round, line width=50pt]
-\usetikzlibrary{graphs,graphdrawing}
+\usetikzlibrary{graphs,graphdrawing,shapes,arrows,positioning,arrows.meta}
 \usegdlibrary{trees}
 
-\pgfdeclarelayer{background}
-\pgfsetlayers{background,main}
+%\pgfdeclarelayer{background}
+%\pgfsetlayers{background,main}
 
 \def\mathunderline#1#2{\color{#1}\underline{{\color{black}#2}}\color{black}}
 \usetikzlibrary{arrows}
@@ -188,7 +189,7 @@ A numerical semigroup is a nonempty subset $S$ of $\mathbb{N}$ that is closed un
 \pause
 \item It is generated from positive (nonzero) integers
 \pause
-\item The greatest common factor of its generators is 1
+\item The greatest common divisor of its generators is 1
 \end{itemize}
 \end{frame}
 \begin{frame}\frametitle{Example}
@@ -257,7 +258,7 @@ These vectors are not necessarily unique.
 
 
 \begin{frame}\title{Fibers}
-A fiber is the set of vectors associated with each element of our NSG.
+A fiber is the set of vectors which forms the preimage of each element of our NSG.
 \pause
 \begin{example}
 \begin{align*}
@@ -303,30 +304,46 @@ Fibers can be \textcolor{green}{disconnected} or \textcolor{red}{connected}.
 \end{example}
 \end{frame}
 \begin{frame}
-It may be easier to think of a fiber as a graph.
+It is useful to think of a fiber as a graph.
 \begin{example}
-$\mathcal{F}(14)=\{(1,0,1),(0,2,0)\}$:\\
+\begin{tabular}{cc}
+$\mathcal{F}(5)=\{(1,0,0)\}$&$\mathcal{F}(12)=\{(1,1,0)\}$ \\
+\begin{tikzpicture}[main_node/.style={circle,draw,text=black,inner sep=1pt,outer sep=0pt}]
+  \node[main_node] {5};
+  \node (dummy) at (0,-0.75) {};
+\end{tikzpicture}&
+\begin{tikzpicture}[main_node/.style={circle,draw,text=black,inner sep=1pt,outer sep=0pt}]
+  \node[main_node]{5}
+    child{node[main_node] {7}};
+  \node (dummy) at (0,0.25) {};
+\end{tikzpicture}\\
+$\mathcal{F}(14)=\{(1,0,1),(0,2,0)\}$&$\mathcal{F}(19)=\{(2,0,1),(1,2,0)\}$\\
 \begin{tikzpicture}[main_node/.style={circle,draw,text=black,inner sep=1pt,outer sep=0pt}]
   \node[main_node]{5}
     child{node[main_node] {9}};
   \node[main_node] at (1,0) {7};
-\end{tikzpicture}\\
-$\mathcal{F}(19)=\{(2,0,1),(1,2,0)\}$:\\
+  \node (dummy) at (0,0.25) {};
+\end{tikzpicture}
+&
 \begin{tikzpicture}[main_node/.style={circle,draw,text=black,inner sep=1pt,outer sep=0pt}]
   \node[main_node]{5}
     child{node[main_node] {9}}
     child{node[main_node] {7}};
-\end{tikzpicture}
-
+  \node (dummy) at (0,0.25) {};
+\end{tikzpicture}\\
+\end{tabular}
 \end{example}
 \end{frame}
 \begin{frame}\title{Moves}
 \begin{itemize}
 \item
-Moves happen when elements of fibers are disconnected.
+Moves happen when fibers are disconnected.
 \pause
 \item
-Moves are the elements of the Markov basis and are the difference of disconnected elements of fibers.
+Moves are the elements of the Markov basis.
+\pause
+\item
+Moves are the difference between disconnected elements of fibers.
 \end{itemize}
 \pause
 \begin{example}
@@ -346,7 +363,7 @@ Moves are the elements of the Markov basis and are the difference of disconnecte
 \section{Integer Lattice}
 
 \begin{frame}\title{Integer Lattice}
-We have an easy bijection between our Markov basis and an integer lattice ideal.
+We have an easy bijection between our Markov basis and a lattice ideal.
 \pause
 \begin{example}
 \[
@@ -364,19 +381,18 @@ We have actually explicitly built our Markov basis to be the null space of the n
 \item
 \pause
 If we can find some vector $\vec{x}$ such that
-$
+$$
 \left[\begin{array}{rrr}1&-2&1\\5&-1&-2\\-4&-1&3\end{array}\right]
-\vec{x} =0$
-
+\vec{x} =0$$
 Then we will have found our semigroup!
 
 \end{itemize}
 \end{frame}
 \begin{frame}
 What we need is the Smith Normal Form.
-\[UAV=
+\[
 \left[\begin{array}{rrr}1&-2&1\\5&-1&-2\\-4&-1&3\end{array}\right]
-\]
+=UAV\]
 \end{frame}
 \begin{frame}
 We start with identity matrices on either side of our Markov matrix.
@@ -561,11 +577,21 @@ $$
    0& 1& 0\\
    0& 0& 0\end{array}\right]
   \left[\begin{array}{rrr}
-  1&-2&5\\
-  0&-3&7\\
-  0&-4&9\\
+  1&-2&\textcolor{blue}{5}\\
+  0&-3&\textcolor{blue}{7}\\
+  0&-4&\textcolor{blue}{9}\\
   \end{array}\right]
 $$
+\end{frame}
+\begin{frame}
+\begin{tikzpicture}[every node/.style={outer sep=2}]
+  \node[draw,ellipse] (1) {Numerical Semigroup in $\mathbb{N}$};
+  \node[draw,ellipse,below right = 2cm and -2cm of 1] (2) {Markov Bases in $\mathbb{Z}^n$};
+  \node[draw,ellipse,below right = 1cm and -2cm of 2] (3) {Binomial ideals in $k[x_1,\dots,x_n]$};
+  \draw[bend right,->] (1) to node[pos=0.5,left] {Fibers} (2);
+  \draw[bend right,->] (2) to node[pos=0.5,right] {Smith Normal Form} (1);
+  \draw[<->] (2) to (3);
+\end{tikzpicture}
 \end{frame}
 \begin{frame}
 \begin{center}
