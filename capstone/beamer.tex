@@ -51,6 +51,7 @@
 \usepackage{color}
 \usepackage{xcolor}
 \usepackage{cases}
+\usepackage{multirow}
 \tikzstyle{edge} = [fill,opacity=.5,fill opacity=.5,line cap=round, line join=round, line width=50pt]
 \usetikzlibrary{graphs,graphdrawing,shapes,arrows,positioning,arrows.meta}
 \usegdlibrary{trees}
@@ -347,17 +348,20 @@ Moves are the difference between disconnected elements of fibers.
 \end{itemize}
 \pause
 \begin{example}
-\begin{tabular}{|r|rrr|rrr}
+\begin{center}
+\begin{tabular}{|r|rrr|rrrc|}
 \hline
-&5&7&5&&&\\
+&5&7&9&\multicolumn{4}{c|}{Markov Basis}\\
 \hline
-14&1&0&1&&&\\
-14&0&2&0&1&-2&1\\
-25&5&0&0&&&\\
-25&0&1&2&5&-1&-2\\
-27&0&0&3&&&\\
-27&4&1&0&-4&-1&3
+14&1&0&1&&&&\\
+14&0&2&0&1&-2&1&\\
+25&5&0&0&&&&\\
+25&0&1&2&5&-1&-2&\\
+27&0&0&3&&&&\\
+27&4&1&0&-4&-1&3&\\
+\hline
 \end{tabular}
+\end{center}
 \end{example}
 \end{frame}
 \section{Integer Lattice}
@@ -383,7 +387,7 @@ We have actually explicitly built our Markov basis to be the null space of the n
 If we can find some vector $\vec{x}$ such that
 $$
 \left[\begin{array}{rrr}1&-2&1\\5&-1&-2\\-4&-1&3\end{array}\right]
-\vec{x} =0$$
+\vec{x} =\vec{0}$$
 Then we will have found our semigroup!
 
 \end{itemize}
@@ -391,8 +395,9 @@ Then we will have found our semigroup!
 \begin{frame}
 What we need is the Smith Normal Form.
 \[
-\left[\begin{array}{rrr}1&-2&1\\5&-1&-2\\-4&-1&3\end{array}\right]
-=UAV\]
+%U\left[\begin{array}{rrr}1&-2&1\\5&-1&-2\\-4&-1&3\end{array}\right]V
+UAV
+=B=\left[\begin{array}{rrr}b_1&\dots&0\\\vdots&\ddots&\vdots\\0&\dots&b_r\end{array}\right]\]
 \end{frame}
 \begin{frame}
 We start with identity matrices on either side of our Markov matrix.
