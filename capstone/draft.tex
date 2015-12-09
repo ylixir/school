@@ -9,6 +9,7 @@
 \usepackage{titlesec}
 \usepackage{gnuplottex}
 \usepackage[utf8]{inputenc}
+\usepackage{multirow}
 
 % Uncomment the following line in order to include graphics
 
@@ -272,6 +273,19 @@ Frobenius number. There may be faster ways of finding this number, but for our
 purposes, it is simple to implement and lends itself to a great deal of optimization when run on binary computer system.\cite{frobmask}
 
 The following is a pseudocode implementation of the algorithm. Given a numerical semigroup $S=\langle A\rangle$ where $A=\{n_1,\dots,n_k\}$, the algorithm takes $A$ as input and produces the conductor $c$ of the NSG as output.
+
+\begin{tabular}{lll}
+\multicolumn{2}{l}{INPUT: }&$F=(n_1,\dots,n_k)$ where $\gcd(n_1,\dots,n_k)=1$\\
+\multicolumn{2}{l}{OUTPUT: }&A conductor $c$ for $\langle n_1,\dots,n_k\rangle$
+\\\\
+\qquad&\multicolumn{2}{l}{
+$c:=0$
+}\\
+\qquad&\multicolumn{2}{l}{
+WHILE $[c+1,c+m]\not\in F$
+}\\
+&&$c:=\min(F)$
+\end{tabular}
 \begin{align*}
   &\text{Input: } \langle A\rangle=\langle n_1,\dots,n_k\rangle\\
   &\text{Output: a conductor } c \text{ for } \langle A\rangle

@@ -367,7 +367,7 @@ Moves are the difference between disconnected elements of fibers.
 \section{Integer Lattice}
 
 \begin{frame}\title{Integer Lattice}
-We have an easy bijection between our Markov basis and a lattice ideal.
+We have an easy map between our Markov basis and a lattice ideal.
 \pause
 \begin{example}
 \[
@@ -592,7 +592,7 @@ $$
 \begin{tikzpicture}[every node/.style={outer sep=2}]
   \node[draw,ellipse] (1) {Numerical Semigroup in $\mathbb{N}$};
   \node[draw,ellipse,below right = 2cm and -2cm of 1] (2) {Markov Bases in $\mathbb{Z}^n$};
-  \node[draw,ellipse,below right = 1cm and -2cm of 2] (3) {Binomial ideals in $k[x_1,\dots,x_n]$};
+  \node[draw,ellipse,below right = 1cm and -3.5cm of 2] (3) {certain binomial ideals in $k[x_1,\dots,x_n]$};
   \draw[bend right,->] (1) to node[pos=0.5,left] {Fibers} (2);
   \draw[bend right,->] (2) to node[pos=0.5,right] {Smith Normal Form} (1);
   \draw[<->] (2) to (3);
