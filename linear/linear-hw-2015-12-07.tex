@@ -1,0 +1,127 @@
+\documentclass[letterpaper]{article}
+
+\usepackage[utf8x]{luainputenc}
+\usepackage{aeguill}
+%\usepackage{nopageno}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathrsfs}
+\usepackage{fullpage}
+\usepackage{fancyhdr}
+\setlength{\headheight}{12pt}
+\pagestyle{fancy}
+\chead{Linear Algebra}
+\lhead{HW 14}
+\rhead{Jon Allen}
+\allowdisplaybreaks
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+\newcommand{\proj}{\text{proj}}
+\newcommand{\rank}{\text{rank}}
+\newcommand{\Span}{\text{Span}}
+
+\begin{document}
+%\renewcommand{\labelenumii}{\alph{enumii}.}
+%\renewcommand{\labelenumiii}{\alph{enumiii}.}
+%\renewcommand{\labelenumi}{(\arabic{enumi})}
+\begin{enumerate}
+\item
+Let 
+\[A=\left[\begin{array}{rrrr}
+1&1&1&1\\
+0&2&1&1\\
+0&0&0&1\\
+0&0&0&3\\
+\end{array}\right]\]
+Justify all responses
+  \begin{enumerate}
+  \item
+  Is $A$ invertible?
+
+  No, by theorem 13
+  \item
+  Write down the characteristic polynomial $\chi_A(x)$
+
+  $\chi_A(x)=x(x-1)(x-2)(x-3)$ by definition.
+  \item
+  Write down all eigenvalues of $A$.
+
+  By theorem 14 the eigenvalues are $0,1,2,3$
+  \item
+  Write down the basis vectors for each eigenspace.
+
+  $\lambda=0$:
+  \begin{align*}
+    \left[\begin{array}{rrrr}
+    1&1&1&1\\
+    0&2&1&1\\
+    0&0&0&1\\
+    0&0&0&3\\
+    \end{array}\right] 
+    &\Rightarrow
+    \left[\begin{array}{rrrr}
+    1&1&1&1\\
+    0&2&1&1\\
+    0&0&0&1\\
+    0&0&0&3\\
+    \end{array}\right]   \end{align*}
+  \item
+  Is $A$ diagonalizable? If so, find an invertible matrix $P$ and a diagonal matrix $D$ such that $D=PAP^{-1}$
+  \end{enumerate}
+\item
+Let 
+\[A=\left[\begin{array}{rrrrrr}
+2&1&0&0&0&0\\
+0&2&1&0&0&0\\
+0&0&2&0&0&0\\
+0&0&0&3&0&1\\
+0&0&0&0&3&0\\
+0&0&0&0&0&3\\
+\end{array}\right]\]
+Justify all responses
+  \begin{enumerate}
+  \item
+  Is $A$ invertible?
+
+  Theorem 13 says, yes
+  \item
+  Write down the characteristic polynomial $\chi_A(x)$
+
+  $\chi_A(x)=(x-2)^3(x-3)^3$
+  \item
+  Write down all eigenvalues of $A$.
+
+  By theorem 14 we have eigenvalues of $2,3$
+  \item
+  Write down the basis vectors for each eigenspace.
+  \item
+  Is $A$ diagonalizable? If so, find an invertible matrix $P$ and a diagonal matrix $D$ such that $D=PAP^{-1}$
+  \end{enumerate}
+\item
+Let $f(x)\in F[x]$ and let $\lambda\in F$ be an eigenvalue of $T\in \mathcal{A}(F^n)$. Prove the following statements.
+  \begin{enumerate}
+  \item
+  $f(\lambda)$ is an eigenvalue of $f(T)$.
+  \item
+  $f(T)=0$ implies $f(\lambda)=0$.
+  \item
+  $f(T)=0$ and $f(\mu)=0$ does not imply $\mu$ is an eigenvalue of $T$. (Give a counterexample and a careful explanation.)
+  \end{enumerate}
+\item
+Upper triangularity is really neeeded in theorem 13! Give an example of a square matrix $A\in \mathcal{M}_n$ with the following properites.
+  \begin{enumerate}
+  \item
+  $\text{ent}_{ii}(A)\ne0$ for each $i\le n$ but $A$ is not invertible.
+  \[\left[\begin{array}{cc}1&1\\1&1\end{array}\right]\]
+  \item
+  $\text{ent}_{ii}(A)=0$ for each $i\le n$ but $A$ is invertible.
+  \[\left[\begin{array}{cc}0&1\\1&0\end{array}\right]\]
+  \end{enumerate}
+\item
+Let $S,T\in \mathcal{A}(F^n)$ with $S$ invertible. Given any polynomial $p(x)\in F[x]$, prove that $p(STS^{-1})=Sp(T)S^{-1}$.
+\item
+Let $T\in \mathcal{A}(\mathbb{C}^n)$ and $p(x)\in \mathbb{C}[x]$. Prove that $\lambda\in \mathbb{C}$ is an eigenvalue of $p(T)$ if and only if $T$ has an eigenvalue $\mu\in \mathbb{C}$ such that $p(\mu)=\lambda$. Does the result hold if $\mathbb{C}$ is replaced by $\mathbb{R}$?
+\item
+Let $T\in \mathcal{A}(F^n)$. Prove that for each $k\in \{1,2,\dots,n\}$, there is a $T$-invariant subspace $U_k\le F^n$ such that $\dim(U_k)=k$.
+\end{enumerate}
+\end{document}
