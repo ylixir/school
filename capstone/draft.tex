@@ -274,22 +274,20 @@ purposes, it is simple to implement and lends itself to a great deal of optimiza
 
 The following is a pseudocode implementation of the algorithm. Given a numerical semigroup $S=\langle A\rangle$ where $A=\{n_1,\dots,n_k\}$, the algorithm takes $A$ as input and produces the conductor $c$ of the NSG as output.
 
-\begin{tabular}{lll}
-\multicolumn{2}{l}{INPUT: }&$F=(n_1,\dots,n_k)$ where $\gcd(n_1,\dots,n_k)=1$\\
-\multicolumn{2}{l}{OUTPUT: }&A conductor $c$ for $\langle n_1,\dots,n_k\rangle$
-\\\\
-\qquad&\multicolumn{2}{l}{
-$c:=0$
-}\\
-\qquad&\multicolumn{2}{l}{
-WHILE $[c+1,c+m]\not\in F$
-}\\
-&&$c:=\min(F)$
-\end{tabular}
-\begin{align*}
-  &\text{Input: } \langle A\rangle=\langle n_1,\dots,n_k\rangle\\
-  &\text{Output: a conductor } c \text{ for } \langle A\rangle
-\end{align*}
+\texttt{
+\noindent
+\\INPUT: $A=(n_1,\dots,n_k)$ where $\gcd(n_1,\dots,n_k)=1$\\
+OUTPUT: A conductor $c$ for $\langle n_1,\dots,n_k\rangle$ \\
+\\
+\hspace*{1em}$c:=0$ \\
+\hspace*{1em}$F:=A$ \\
+\hspace*{1em}WHILE $[c+1,c+m]\not\in F$ \\
+\hspace*{2em}$c:=\min(F)$\\
+\hspace*{2em}$F:=F\setminus\{\min(F)\}$\\
+\hspace*{2em}$F:=F\cup\{c+n_i:\forall n_i\in A\}$
+\hspace*{2em}
+\hspace*{2em}
+}
 \section{Bijections}
 The things we need to understand is a common map that the literature takes for
 granted. There is a straightforward map between $\mathbb{N}^k$ and monomials
