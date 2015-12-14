@@ -11,8 +11,10 @@
 \usepackage[utf8]{inputenc}
 \usepackage{multirow}
 \usepackage{luacode}
+\usepackage{url}
 \usetikzlibrary{arrows.meta}
-
+\def\UrlBreaks{\do\/}
+\allowdisplaybreaks
 % Uncomment the following line in order to include graphics
 
 %\usepackage[pdftex]{graphicx}
@@ -117,8 +119,7 @@ A\setminus \{n_i\}\rangle$ as a semigroup. Going forward we assume that
 $n_i\ne 0$ for all $i$.
 
 As before, we let $A=\{n_1,\dots,n_k\}$. We will say $c=\gcd(n_1,\dots,n_k)$ and
-$A'=\{n_1/c,\dots,n_k/c\}$. Consider the following function:
-
+$A'=\{\frac{n_1}{c},\dots,\frac{n_k}{c}\}$. Consider the following function:
 \begin{align*}
   \varphi:&\langle A\rangle \to \langle A'\rangle\\
   &n_i\mapsto \frac{n_i}{c}
@@ -290,6 +291,7 @@ OUTPUT: The conductor of $\langle A\rangle$ is $c$
 \begin{exa}
 We let $\langle A\rangle=\langle 5,7,9\rangle$. Then $c_1=0$ and $F_1=\{5,7,9\}$ while $\min(A)=5$. We iterate our algorithm in the table below:
 
+\begin{center}
 \begin{tabular}{l|l|l}
   Conductor&Working NSG Window&Termination\\
   \hline
@@ -301,7 +303,7 @@ We let $\langle A\rangle=\langle 5,7,9\rangle$. Then $c_1=0$ and $F_1=\{5,7,9\}$
   $c_6=12$&$F_6=\{14,15,16,17,18,19,21\}$&$\{12,13,14,15\}\not\subset F_6$\\
   $c_7=14$&$F_7=\{15,16,17,18,19,21,23\}$&$\{15,16,17,18\}\subset F_7$\\
 \end{tabular}
-
+\end{center}
 And so we see that $13$ is the Frobenius number for $\langle 5,7,9\rangle$
 \end{exa}
 \section{Markov Bases}
@@ -354,13 +356,14 @@ A finite subset $\mathcal{B}\subset\ker_{\mathbb{Z}}(A)$ is a \emph{Markov basis
 \[v'=v+\sum\limits_{k=1}^L{u_k}\text{ and }v+\sum\limits_{k=1}^l{u_k}\ge 0\text{ for all }l=1,\dots,L.\]
 \end{defi}
 
-Now that we have some more insight as to what a Markov basis is, the process in
-example 8 should make more sense.
 \begin{exa}
   We will find the Markov basis which corresponds to the numerical semigroup
 $A=\langle 3,4,5\rangle$. First we generate the fibers which correspond to the
 elements of our NSG.
-\[\left[\begin{array}{r|rrr}
+\begin{center}
+\textnormal{
+\begin{tabular}{|r|rrr|}
+\hline
 &3&4&5\\
 \hline
 3&1&0&0\\
@@ -374,8 +377,10 @@ elements of our NSG.
 9&0&1&1\\
 10&2&1&0\\
 10&0&0&2\\
-\end{array}\right]
-\]
+\hline
+\end{tabular}
+}
+\end{center}
 We are particularly interested in fibers with more than one element. These are
 the fibers associated with the elements $8,9$ and $10$. From the definition of
 the Markov basis, we know that the product of $A$ and an element of the Markov
@@ -398,6 +403,7 @@ And so we have built our Markov basis.
   -2&-1&2\\
   \end{array}\right]
 \]
+We acknowledge that we have given no explanation as to why we stopped searching for elements of the Markov basis. In general there is no easy termination criteria when searching for these. However, we will come back to this example later, and show that in this case we have found all the elements of our basis.
 \end{exa}
 
 
@@ -468,7 +474,10 @@ basis guaranteed by Theorem 2.
   We will find the Markov basis which corresponds to the NSG
 $\langle 3,4,5\rangle$. First we generate a list of vectors which correspond
 to the elements of our NSG.
-\[\left[\begin{array}{r|rrr}
+\begin{center}
+\textnormal{
+\begin{tabular}{|r|rrr|}
+\hline
 &3&4&5\\
 \hline
 3&1&0&0\\
@@ -482,10 +491,28 @@ to the elements of our NSG.
 9&0&1&1\\
 10&2&1&0\\
 10&0&0&2\\
-\end{array}\right]
-\]
-Now we see that $8,9,10$ all have two associated but disconnected vectors. We
-subtract these vectors to obtain
+\hline
+\end{tabular}
+\begin{tabular}{|r|rrr|}
+\hline
+&3&4&5\\
+\hline
+11&2&0&1\\
+11&1&2&0\\
+12&4&0&0\\
+12&0&3&0\\
+12&1&1&1\\
+13&3&1&0\\
+13&1&0&2\\
+13&0&2&1\\
+14&2&2&0\\
+14&0&1&2\\
+14&3&0&1\\
+\hline
+\end{tabular}
+}
+\end{center}
+Now we see that $8,9,10$ all have two associated but disconnected vectors. The fibers of $11,12,13$ and $14$ are all connected. We further observe that the Frobenius number of this semigroup is 2. Now the fiber of 12 contains the special vector $(1,1,1)$. If we choose any element $n>14$ of our semigroup, then we can say $n=12+n'$. We know that $n'$ is also in our semigroup because $2$ is our Frobenius number. Thus the fiber of every element $n>14$ contains a vector that is the sum of $(1,1,1)$ and some other vector. Thus the fibers of all elements greater than $10$ are in fact connected. And so we can subtract the vectors in the fibers of $8,9,10$ to obtain all the elements of our Markov basis.
 \[
   \left[\begin{array}{rrr}
   3&-1&-1\\
